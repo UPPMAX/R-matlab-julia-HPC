@@ -48,14 +48,12 @@ Schedule Fall 2024
 
    * - Day
      - Language
-   * - Tuesday 22 October
-     - Python 
-   * - Wednesday 23 October
-     - Julia
-   * - Thursday 24 October
+   * - Monday 24 March
      - R 
-   * - Friday 25 October
+   * - Tuesday 25 March
      - Matlab
+   * - Wednesday 26 March
+     - Julia
    
 
 .. admonition:: Some practicals
@@ -297,36 +295,6 @@ Content of the course
    common/login.rst
    common/ondemand-desktop.rst
    common/use_tarball.rst
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Python Lessons:
-
-   python/intro.rst
-   python/load_runPython.rst
-   python/packages.rst
-   python/isolated.rst
-   python/batchPython.md
-   python/GPU.rst
-   python/interactivePython.md
-   python/jupyter.md
-   common/parallel.rst
-   python/condaUPPMAX.rst
-   python/summaryPython.rst
-   python/evaluationPython.rst
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: Julia Lessons:
-
-   julia/introJulia.rst
-   julia/load_runJulia.rst
-   julia/isolatedJulia.rst
-   julia/batchJulia.rst
-   common/parallel.rst
-   julia/interactiveJulia.rst
-   julia/summaryJulia.rst
-   julia/evaluationJulia.rst
    
 .. toctree::
    :maxdepth: 2
@@ -359,6 +327,19 @@ Content of the course
    matlab/summaryMatlab.rst
    matlab/evaluationMatlab.rst
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Julia Lessons:
+
+   julia/introJulia.rst
+   julia/load_runJulia.rst
+   julia/isolatedJulia.rst
+   julia/batchJulia.rst
+   common/parallel.rst
+   julia/interactiveJulia.rst
+   julia/summaryJulia.rst
+   julia/evaluationJulia.rst
+   
 .. toctree::
    :maxdepth: 2
    :caption: Extra reading:
