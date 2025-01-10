@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Session: Matlab in Jupyter &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="summaryMatlab.html" />
+    <link rel="prev" title="Session-UPPMAX: Matlab client on the desktop" href="local_desktopMatlab.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Session: Matlab in Jupyter</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/matlab/jupyterMatlab.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="session-matlab-in-jupyter">
+<h1>Session: Matlab in Jupyter<a class="headerlink" href="#session-matlab-in-jupyter" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How to reach the calculation nodes</p></li>
+<li><p>How do I proceed to work interactively?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Show how to reach the calculation nodes on UPPMAX and HPC2N by using Jupyter-lab</p></li>
+<li><p>Test some commands on the calculation nodes</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>It is possible to run Matlab directly on the login (including ThinLinc) nodes.</p></li>
+<li><p>But this should <em>only</em> be done for shorter jobs or jobs that do not use a lot of resources, as the login nodes can otherwise become slow for all users.</p></li>
+<li><p>If you want to work interactively with your code or data, you should start an interactive session. In the present
+lesson you will see how to run interactive jobs by using Jupyter-lab.</p></li>
+</ul>
+</div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">naiss2024-22-1202</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2024-114</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2024-7-80</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code></p></li>
+<li><p>Cosmos: your home directory should have plenty of space</p></li>
+</ul>
+</div>
+<p>There are several ways to run Matlab interactively</p>
+<ul class="simple">
+<li><p>Directly on the login nodes: <strong>only</strong> do this for short jobs that do not take a lot of resources</p></li>
+<li><p>As an interactive job on the computer nodes, launched via the batch system or Desktop On-Demand (LUNARC)</p></li>
+<li><p>Jupyter notebooks (HPC2N, UPPMAX)</p></li>
+<li><dl class="simple">
+<dt>Like for Python it is possible to run Matlab in a notebook, i.e. in a web interface with possibility of inline</dt><dd><p>figures and debugging. An easy way to do this is to load <em>Python</em> and <em>Matlab</em> modules. In shell:</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Load<span class="w"> </span>Matlab
+<span class="gp">$ </span>ml<span class="w"> </span>matlab/2023a
+<span class="gp"># </span>Load<span class="w"> </span>a<span class="w"> </span>Python<span class="w"> </span>version<span class="w"> </span>compatible<span class="w"> </span>with<span class="w"> </span>Matlab
+<span class="gp">$ </span>ml<span class="w"> </span>python/3.10.8
+<span class="gp"># </span>Create<span class="w"> </span>an<span class="w"> </span>environment<span class="w"> </span>called<span class="w"> </span>matlabenv<span class="w"> </span><span class="o">(</span>you<span class="w"> </span>can<span class="w"> </span>change<span class="w"> </span>this<span class="w"> </span>name<span class="o">)</span>
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./matlabenv
+<span class="gp"># </span>Activate<span class="w"> </span>this<span class="w"> </span>environment
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>matlabenv/bin/activate
+<span class="gp"># </span>Perform<span class="w"> </span>installations:<span class="w"> </span>upgrade<span class="w"> </span>pip,<span class="w"> </span>and<span class="w"> </span>packages<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>will<span class="w"> </span>need
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-learn
+<span class="gp"># </span>Install<span class="w"> </span>Jupyterlab
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
+<span class="gp"># </span>Install<span class="w"> </span>the<span class="w"> </span>Matlab<span class="w"> </span>proxy
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>jupyter-matlab-proxy
+<span class="gp">$ </span>deactivate
+</pre></div>
+</div>
+<p>Start interactive session to not interfere with other users</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>suitable<span class="w"> </span>amount<span class="w"> </span>of<span class="w"> </span>time.<span class="w"> </span>Remember,<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span><span class="nb">time</span><span class="w"> </span>the<span class="w"> </span>Jupyter<span class="w"> </span>notebook<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>available!<span class="w"> </span>HHH:MM:SS.
+<span class="gp">$ </span>interactive<span class="w"> </span>-A<span class="w"> </span>Project_ID<span class="w"> </span>-p<span class="w"> </span>core<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:0:0
+<span class="gp"># </span>If<span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>a<span class="w"> </span>GPU<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>this<span class="w"> </span>snippet<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>interactive<span class="w"> </span><span class="nb">command</span><span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>clarity<span class="w"> </span>after<span class="w"> </span>project<span class="w"> </span>ID
+<span class="gp"># </span>-M<span class="w"> </span>snowy<span class="w"> </span>--gres:gpu:1
+
+<span class="gp">$ </span>ml<span class="w"> </span>matlab/2023a
+<span class="gp">$ </span>ml<span class="w"> </span>python/3.10.8
+
+<span class="gp"># </span>Source<span class="w"> </span>the<span class="w"> </span>environment
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>matlabenv/bin/activate
+<span class="gp"># </span>Start<span class="w"> </span>JupyterLab
+<span class="gp">$ </span>jupyter<span class="w"> </span>lab<span class="w"> </span>--no-browser<span class="w"> </span><span class="p">&amp;</span>
+<span class="gp">$ </span>&lt;press<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>to<span class="w"> </span>active<span class="w"> </span>prompt&gt;
+<span class="gp">$ </span>firefox<span class="w"> </span>&lt;url<span class="w"> </span>from<span class="w"> </span>output<span class="w"> </span>above&gt;<span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+<p>When the Jupyter notebook interface starts, you can choose the <strong>MATLAB kernel</strong> version from the module you loaded. When you try to run a notebook, Matlab will ask for a type of license. Because you are running this notebook on our HPC center, you can choose the option Existing License and then Start MATLAB. It can take a minute or so to start.</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Load<span class="w"> </span>Matlab
+<span class="gp">$ </span>ml<span class="w"> </span>MATLAB/2023a.Update4
+<span class="gp"># </span>Load<span class="w"> </span>a<span class="w"> </span>Python<span class="w"> </span>version<span class="w"> </span>compatible<span class="w"> </span>with<span class="w"> </span>Matlab<span class="w"> </span>and<span class="w"> </span>also<span class="w"> </span>CUDA<span class="w"> </span><span class="o">(</span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>will<span class="w"> </span>run<span class="w"> </span>on<span class="w"> </span>GPUs<span class="o">)</span>
+<span class="gp">$ </span>ml<span class="w"> </span>GCCcore/11.3.0<span class="w">  </span>Python/3.10.4<span class="w"> </span>CUDA/11.7.0
+<span class="gp"># </span>Create<span class="w"> </span>an<span class="w"> </span>environment<span class="w"> </span>called<span class="w"> </span>matlabenv<span class="w"> </span><span class="o">(</span>you<span class="w"> </span>can<span class="w"> </span>change<span class="w"> </span>this<span class="w"> </span>name<span class="o">)</span>
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./matlabenv
+<span class="gp"># </span>Activate<span class="w"> </span>this<span class="w"> </span>environment
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>matlabenv/bin/activate
+<span class="gp"># </span>Perform<span class="w"> </span>installations:<span class="w"> </span>upgrade<span class="w"> </span>pip,<span class="w"> </span>and<span class="w"> </span>packages<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>will<span class="w"> </span>need
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-learn
+<span class="gp"># </span>Install<span class="w"> </span>Jupyterlab
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
+<span class="gp"># </span>Install<span class="w"> </span>the<span class="w"> </span>Matlab<span class="w"> </span>proxy
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>jupyter-matlab-proxy
+<span class="gp">$ </span>deactivate
+</pre></div>
+</div>
+<p>Fix the project ID in this batch job job.sh and send it to the queue:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Here you should put your own project id</span>
+<span class="c1">#SBATCH -A Project_ID</span>
+<span class="c1"># This example asks for 1 core</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1"># Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.</span>
+<span class="c1">#SBATCH --time=06:20:00</span>
+<span class="c1"># If you use the GPU nodes uncomment the following lines</span>
+<span class="c1">#SBATCH --gpus=l40s:1</span>
+
+<span class="c1"># Clear the environment from any previously loaded modules</span>
+module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="c1"># Load the module environment suitable for the job</span>
+ml<span class="w"> </span>MATLAB/2023a.Update4
+ml<span class="w"> </span>GCCcore/11.3.0<span class="w">  </span>Python/3.10.4
+ml<span class="w"> </span>CUDA/11.7.0
+
+<span class="c1"># Source the environment</span>
+<span class="nb">source</span><span class="w"> </span>matlabenv/bin/activate
+<span class="c1"># Start JupyterLab</span>
+jupyter<span class="w"> </span>lab<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="w"> </span><span class="k">$(</span>hostname<span class="k">)</span>
+</pre></div>
+</div>
+<p>Then, in the output file <em>slurm-&lt;jobID&gt;.out</em> file, copy the url that starts with <em>http://b-cn1403.hpc2n.umu.se:8888/lab</em> and
+paste it in a Firefox browser on Kebnekaise. When the Jupyter notebook interface starts, you can choose the <strong>MATLAB kernel</strong>
+version from the module you loaded. When you try to run a notebook, Matlab will ask for a type of license. Because you are
+running this notebook on our HPC center, you can choose the option Existing License and then Start MATLAB.</p>
+<p>If you don’t need any longer the Jupyter job, you should cancel the job with <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">job_ID</span></code>. Otherwise it will keep running
+until the time limit of your batch script is reached.</p>
+<div class="admonition-running-matlab-in-jupyter-on-compute-nodes-at-hpc2n admonition">
+<p class="admonition-title">Running Matlab in Jupyter on compute nodes at HPC2N</p>
+<ul class="simple">
+<li><p>On Kebnekaise, you can run Jupyter notebooks with Matlab kernels by using batch scripts</p></li>
+<li><p>Notebook example: <a class="reference external" href="https://github.com/hpc2n/intro-course/blob/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb">https://github.com/hpc2n/intro-course/blob/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb</a></p></li>
+<li><p><a class="reference external" href="https://docs.hpc2n.umu.se/tutorials/jupyter/">https://docs.hpc2n.umu.se/tutorials/jupyter/</a></p></li>
+</ul>
+</div>
+</div></div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>There are several ways to run MATLAB jobs interactively. One can use the MATLAB GUI, the interactive sessions:
+<code class="docutils literal notranslate"><span class="pre">salloc</span></code> (HPC2N), <code class="docutils literal notranslate"><span class="pre">interactive</span></code> (UPPMAX), and also by running a Jupyter notebook on the computing nodes.</p></li>
+<li><p>To run a Jupyter notebook on the computing nodes you will need to follow the prerequisites mentioned in the lesson.</p></li>
+<li><p>If the Jupyter job is no longer needed, cancel it with <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">job_ID</span></code>. It will not be canceled automatically if you just
+close the web browser.</p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="local_desktopMatlab.html" class="btn btn-neutral float-left" title="Session-UPPMAX: Matlab client on the desktop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="summaryMatlab.html" class="btn btn-neutral float-right" title="Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

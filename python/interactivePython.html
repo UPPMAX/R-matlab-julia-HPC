@@ -1,0 +1,1052 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive work on the compute nodes &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Interactive work on the compute nodes</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/python/interactivePython.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interactive-work-on-the-compute-nodes">
+<h1>Interactive work on the compute nodes<a class="headerlink" href="#interactive-work-on-the-compute-nodes" title="Link to this heading"></a></h1>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Learning objectives</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">For teachers</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Understand what an interactive session is</p></li>
+<li><p>Understand why one may need an interactive session</p></li>
+<li><p>Start an interactive session</p></li>
+<li><p>Test to be on an interactive node with the right amount of cores</p></li>
+<li><p>End an interactive session</p></li>
+<li><p>Start an interactive session with multiple cores</p></li>
+<li><p>Test to be on an interactive node with multiple cores</p></li>
+<li><p>Run an interactive-friendly Python script on multiple cores</p></li>
+<li><p>Run an interactive-unfriendly Python script on multiple cores</p></li>
+<li><p>End an interactive session with multiple cores</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Teaching goals are:</p>
+<ul class="simple">
+<li><p>Learners have heard what an interactive session is</p></li>
+<li><p>Learners have heard why one may need an interactive session</p></li>
+<li><p>Learners have started an interactive session</p></li>
+<li><p>Learners have tested to be on an interactive node</p></li>
+<li><p>Learners have ended an interactive session</p></li>
+<li><p>Learners have started an interactive session with multiple cores</p></li>
+<li><p>Learners have tested to be on an interactive node with multiple cores</p></li>
+<li><p>Learners have ended an interactive session with multiple cores</p></li>
+</ul>
+<p>Lesson plan (60 minutes in total):</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>5 mins: prior knowledge</dt><dd><ul>
+<li><p>What types of nodes do our HPC clusters have?</p></li>
+<li><p>What is the purpose of each of these nodes?</p></li>
+<li><p>Imagine you are developing a Python script in a line-by-line fashion. How to do so best?</p></li>
+<li><p>Why not do so on the login node?</p></li>
+<li><p>Why not do so by using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>5 mins: presentation</p></li>
+<li><p>20 mins: challenge</p></li>
+<li><p>5 mins: feedback</p></li>
+<li><p>20 mins: continue challenge</p></li>
+<li><dl class="simple">
+<dt>5 mins: feedback</dt><dd><ul>
+<li><p>What is the drawback of using an interactive node?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Shortened lesson plan (20 minutes in total):</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>5 mins: prior knowledge</dt><dd><ul>
+<li><p>What types of nodes do our HPC clusters have?</p></li>
+<li><p>What is the purpose of each of these nodes?</p></li>
+<li><p>Imagine you are developing a Python script in a line-by-line fashion. How to do so best?</p></li>
+<li><p>Why not do so on the login node?</p></li>
+<li><p>Why not do so by using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>5 mins: presentation</p></li>
+<li><p>5 mins: challenge</p></li>
+<li><dl class="simple">
+<dt>5 mins: recap</dt><dd><ul>
+<li><p>What is the drawback of using an interactive node?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">naiss2024-22-1202</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2024-114</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2024-7-80</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code></p></li>
+</ul>
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Some users develop Python code in a line-by-line fashion.
+These users typically want to run a (calculation-heavy)
+script frequently, to test if the code works.
+However, scheduling each new line is too slow, as it
+can take minutes before the new code is run.
+Instead, there is a way to directly work
+with such code: use an interactive session.</p>
+<p>Some other users want to run programs that
+(1) use a lot of CPU and memory, and (2) need to be persistent/available.
+One good example is Jupyter.
+Running such a program on a login nodes would
+harm all other users on the login node.
+Running such a program on a computer node using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>
+would not allow a user to connect to it.
+In such a case: use an interactive session.</p>
+<div class="admonition-about-jupyter admonition">
+<p class="admonition-title"><strong>About Jupyter</strong></p>
+<p>For HPC2N, using
+<a class="reference external" href="https://docs.hpc2n.umu.se/tutorials/jupyter/">Jupyter on HPC2N</a> is possible,
+through a batch job. This will be show in the Kebnekaise part of the simultaneous session.</p>
+<p>For UPPMAX, using Jupyter is easier
+and this will be shown in this course, in <a class="reference external" href="https://uppmax.github.io/HPC-python/jupyter.html">the UPPMAX-only session on Jupyter</a>.</p>
+<p>For LUNARC, using Jupyter <a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Python/#jupyter">https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Python/#jupyter</a>-lab() works best using the <a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/">LUNARC HPC Desktop</a>. Go to the Applications menu, hover over Applications - Python, and select Jupyter Lab from the menu that pops up to the right.</p>
+</div>
+<p>An interactive session is a session with direct access to a compute node.
+Or alternatively: an interactive session is a session,
+in which there is no queue before a command is run on a compute node.</p>
+<p>In this session, we show how to:</p>
+<ul class="simple">
+<li><p>the different ways HPC2N, UPPMAX, and LUNARC provide for an interactive session</p></li>
+<li><p>start an interactive session</p></li>
+<li><p>check to be in an interactive session</p></li>
+<li><p>check to have booked the expected amount of cores</p></li>
+<li><p>end the interactive session</p></li>
+</ul>
+</section>
+<section id="the-different-way-hpc2n-uppmax-and-lunarc-provide-for-an-interactive-session">
+<h2>The different way HPC2N, UPPMAX, and LUNARC provide for an interactive session<a class="headerlink" href="#the-different-way-hpc2n-uppmax-and-lunarc-provide-for-an-interactive-session" title="Link to this heading"></a></h2>
+<img src="../_images/mermaid-b4cb46316fa24eacf67bdf4e88c0b0dd2085bec7.png" alt="flowchart TD
+  subgraph uppmax[UPPMAX]
+  subgraph login_node[Login nodes]
+    user_on_login_node[User on login node]
+  end
+
+  subgraph compute_node[Compute nodes]
+    user_on_computer_node[User on compute node]
+    job_on_compute_node[Job on compute node]
+  end
+  end
+
+  subgraph hpc2n[HPC2N]
+  subgraph hpc2n_login_node[Login nodes]
+    hpc2n_user_on_login_node[User on login node]
+    hpc2n_user_in_interactive_mode[User on login node in interactive session]
+  end
+
+  subgraph hpc2n_compute_node[Compute nodes]
+    hpcn2_job_on_compute_node[Job on compute node]
+  end
+  end
+
+  user_on_login_node --&gt; |interactive| user_on_computer_node
+  user_on_login_node --&gt; |sbatch| job_on_compute_node
+
+  user_on_computer_node --&gt; |exit| user_on_login_node
+  user_on_computer_node --&gt; |srun| user_on_computer_node
+
+
+  hpc2n_user_on_login_node --&gt; |salloc| hpc2n_user_in_interactive_mode
+  hpc2n_user_in_interactive_mode --&gt; |exit| hpc2n_user_on_login_node
+  hpc2n_user_on_login_node --&gt; |sbatch| hpcn2_job_on_compute_node
+  hpc2n_user_in_interactive_mode --&gt; |srun| hpcn2_job_on_compute_node" />
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/cosmos-interactive.png"><img alt="../_images/cosmos-interactive.png" src="../_images/cosmos-interactive.png" style="width: 400px;" />
+</a>
+</figure>
+<p>Here we define an interactive session as a session
+with direct access to a compute node.
+Or alternatively: an interactive session is a session,
+in which there is no queue before a command is run on a compute node.</p>
+<p>This differs between HPC2N, UPPMAX, and LUNARC:</p>
+<ul class="simple">
+<li><p>HPC2N: the user remains on a login node.
+All commands can be sent directly to the compute node using <code class="docutils literal notranslate"><span class="pre">srun</span></code></p></li>
+<li><p>UPPMAX: the user is actually on a computer node.
+Whatever command is done, it is run on the compute node</p></li>
+<li><p>LUNARC: the user is actually on a computer node if the correct menu option is chosen.
+Whatever command is done, it is run on the compute node</p></li>
+</ul>
+</section>
+<section id="start-an-interactive-session">
+<h2>Start an interactive session<a class="headerlink" href="#start-an-interactive-session" title="Link to this heading"></a></h2>
+<p>To start an interactive session, one needs to allocate resources on the cluster first.
+On the LUNARC HPC desktop, this is done by choosing applications from the Desktop On Demand
+Applications menu and selecting/filling in resources in the GfxLauncher popup.
+For HPC2N and UPPMAX, this must be done at the command line. See also the following table:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Cluster</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">interactive</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">salloc</span></code></p></th>
+<th class="head"><p>GfxLauncher</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HPC2N</p></td>
+<td><p>Works</p></td>
+<td><p>Recommended</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>UPPMAX</p></td>
+<td><p>Recommended</p></td>
+<td><p>Works</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>LUNARC</p></td>
+<td><p>Works</p></td>
+<td><p>N/A</p></td>
+<td><p>Recommended</p></td>
+</tr>
+</tbody>
+</table>
+<section id="start-an-interactive-session-in-the-simplest-way">
+<h3>Start an interactive session in the simplest way<a class="headerlink" href="#start-an-interactive-session-in-the-simplest-way" title="Link to this heading"></a></h3>
+<p>To start an interactive session in the simplest way, is shown here:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">LUNARC</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Use:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">interactive -A [project_name]</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">[project_name]</span></code> is the UPPMAX project name,
+for example <code class="docutils literal notranslate"><span class="pre">interactive</span> <span class="pre">-A</span> <span class="pre">naiss2024-22-107</span></code>.</p>
+<p>The output will look similar to this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[richel@rackham4 ~]$ </span>interactive<span class="w"> </span>-A<span class="w"> </span>naiss2024-22-107
+<span class="go">You receive the high interactive priority.</span>
+<span class="go">You may run for at most one hour.</span>
+<span class="go">Your job has been put into the devcore partition and is expected to start at once.</span>
+<span class="gp gp-VirtualEnv">(Please remember, you may not simultaneously have more than one devel/devcore job, running or queued, in the batch system.)</span>
+
+<span class="go">Please, use no more than 8 GB of RAM.</span>
+
+<span class="go">salloc: Pending job allocation 9093699</span>
+<span class="go">salloc: job 9093699 queued and waiting for resources</span>
+<span class="go">salloc: job 9093699 has been allocated resources</span>
+<span class="go">salloc: Granted job allocation 9093699</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes r314 are ready for job</span>
+<span class="go"> _   _ ____  ____  __  __    _    __  __</span>
+<span class="go">| | | |  _ \|  _ \|  \/  |  / \   \ \/ /   | System:    r314</span>
+<span class="go">| | | | |_) | |_) | |\/| | / _ \   \  /    | User:      richel</span>
+<span class="go">| |_| |  __/|  __/| |  | |/ ___ \  /  \    |</span>
+<span class="go"> \___/|_|   |_|   |_|  |_/_/   \_\/_/\_\   |</span>
+
+<span class="gp">#</span><span class="c1">##############################################################################</span>
+
+<span class="go">              User Guides: http://docs.uppmax.uu.se/</span>
+
+<span class="go">              Write to support@uppmax.uu.se, if you have questions or comments.</span>
+
+
+<span class="gp">[richel@r314 ~]$</span>
+</pre></div>
+</div>
+<p>Note that the prompt has changed to show that one is on an interactive node.</p>
+</div></blockquote>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">salloc -A [project_name]</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">[project_name]</span></code> is the HPC2N project name,
+for example <code class="docutils literal notranslate"><span class="pre">interactive</span> <span class="pre">-A</span> <span class="pre">hpc2n2024-025</span></code>.</p>
+<p>This will look similar to this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ salloc -n 4 --time=00:10:00 -A hpc2n2024-025</span>
+<span class="go">salloc: Pending job allocation 20174806</span>
+<span class="go">salloc: job 20174806 queued and waiting for resources</span>
+<span class="go">salloc: job 20174806 has been allocated resources</span>
+<span class="go">salloc: Granted job allocation 20174806</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes b-cn0241 are ready for job</span>
+<span class="go">b-an01 [~]$ module load GCC/12.3.0 Python/3.11.3</span>
+<span class="go">b-an01 [~]$</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>See <a class="reference external" href="https://uppmax.github.io/R-python-julia-matlab-HPC/common/ondemand-desktop.html#how-do-i-start">https://uppmax.github.io/R-python-julia-matlab-HPC/common/ondemand-desktop.html#how-do-i-start</a></p>
+</div></div>
+<p>Indeed, all you really need is the project name.
+However, this way may have some default settings
+that do not fit you.</p>
+</section>
+<section id="start-an-interactive-session-in-a-more-elaborate-way">
+<h3>Start an interactive session in a more elaborate way<a class="headerlink" href="#start-an-interactive-session-in-a-more-elaborate-way" title="Link to this heading"></a></h3>
+<p>The simplest way to start an interactive session
+may have some defaults settings that do not fit you:</p>
+<ul class="simple">
+<li><p>session duration is too short</p></li>
+<li><p>the session has too few cores available</p></li>
+</ul>
+<p>Here we show how start an interactive session in a more elaborate way,
+with a custom session duration and a custom amount of cores:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>Here we start an interactive session on the <code class="docutils literal notranslate"><span class="pre">devcore</span></code> partition,
+with a custom session duration and a custom amount of cores:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">interactive -p devcore -n [n_tasks] --time=[duration] -A naiss2024-22-107</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">[n_tasks]</span></code> is the number of tasks,
+<code class="docutils literal notranslate"><span class="pre">[duration]</span></code> is the time given in <code class="docutils literal notranslate"><span class="pre">HHH:MM:SS</span></code> format,
+and <code class="docutils literal notranslate"><span class="pre">[project_name]</span></code> is the UPPMAX project name.</p>
+<p>The parameters <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">devcore</span></code> mean that the <code class="docutils literal notranslate"><span class="pre">devcore</span></code> partition is used,
+which results in jobs that start either faster or just as fast. Nice!</p>
+<p>As an example, here an interactive job is started with 4 tasks,
+for 1 hour, for the UPPMAX project <code class="docutils literal notranslate"><span class="pre">naiss2024-22-107</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">interactive -p devcore -n 4 --time=1:00:00 -A naiss2024-22-107</span>
+</pre></div>
+</div>
+<p>Note that, as Slurm uses 1 task per core by default, we request 4 cores.</p>
+<p>The output will be similar to this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@rackham2 ~]$ </span>interactive<span class="w"> </span>-A<span class="w"> </span>naiss2024-22-107<span class="w"> </span>-p<span class="w"> </span>devcore<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">10</span>:00
+<span class="go">You receive the high interactive priority.</span>
+<span class="go">There are free cores, so your job is expected to start at once.</span>
+
+<span class="go">Please, use no more than 6.4 GB of RAM.</span>
+
+<span class="go">Waiting for job 29556505 to start...</span>
+<span class="go">Starting job now -- you waited for 1 second.</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>Here we start an interactive session,
+with a custom session duration and a custom amount of cores:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">interactive -n [n_tasks] --time=[duration] -A naiss2024-22-107</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">[n_tasks]</span></code> is the number of tasks,
+<code class="docutils literal notranslate"><span class="pre">[duration]</span></code> is the time given in <code class="docutils literal notranslate"><span class="pre">HHH:MM:SS</span></code> format,
+and <code class="docutils literal notranslate"><span class="pre">[project_name]</span></code> is the HPC2N project name.</p>
+<p>As an example, here an interactive job is started with 4 tasks,
+for 1 hour, for the HPC2N project <code class="docutils literal notranslate"><span class="pre">hpc2n2024-025</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">salloc -n 4 --time=1:00:00 -A hpc2n2024-025</span>
+</pre></div>
+</div>
+<p>Note that, as Slurm uses 1 task per core by default, we request 4 cores.</p>
+</div></div>
+</section>
+</section>
+<section id="check-to-be-in-an-interactive-session">
+<h2>Check to be in an interactive session<a class="headerlink" href="#check-to-be-in-an-interactive-session" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p>To check to be in an interactive session, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hostname</span>
+</pre></div>
+</div>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are on a computer node. Well done!</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p>To check to be in an interactive session, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are more-or-less on a computer node. Well done!</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">[something</span> <span class="pre">else]</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+<p>This is an example of output when 4 cores have been booked:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ srun hostname</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+</pre></div>
+</div>
+<p>Misleading would be to use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hostname</span>
+</pre></div>
+</div>
+<p>This will always show that you are on a login node</p>
+</div></div>
+</section>
+<section id="check-to-have-booked-the-expected-amount-of-cores">
+<h2>Check to have booked the expected amount of cores<a class="headerlink" href="#check-to-have-booked-the-expected-amount-of-cores" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p>To check to have booked the expected amount of cores:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>The output should be one line of <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked one core.</p>
+<p>If the output is more than one line of <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked more than one core.</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+<p>Here is an example of output when 4 cores had been booked:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@r483 ~]$ </span>srun<span class="w"> </span>hostname
+<span class="go">r483.uppmax.uu.se</span>
+<span class="go">r483.uppmax.uu.se</span>
+<span class="go">r483.uppmax.uu.se</span>
+<span class="go">r483.uppmax.uu.se</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p>To check to have booked the expected amount of cores:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>The output should be one line of <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked one core.</p>
+<p>If the output is more than one line of <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked more than one core.</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">[something</span> <span class="pre">else]</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+<p>This is an example of output when 4 cores have been booked:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ srun hostname</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="running-a-python-script-in-an-interactive-session">
+<h2>Running a Python script in an interactive session<a class="headerlink" href="#running-a-python-script-in-an-interactive-session" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p>To run a Python script in an interactive session,
+first load the Python modules:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.8</span>
+</pre></div>
+</div>
+<p>To run a Python script on 1 core, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python [my_script.py]</span>
+</pre></div>
+</div>
+<p>where <cite>[my_script.py]</cite> is the path to a Python script, for example
+<code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">python</span> <span class="pre">~/my_script.py</span></code>.</p>
+<p>To run a Python script on each of the requested cores, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun python [my_script.py]</span>
+</pre></div>
+</div>
+<p>where <cite>[my_script.py]</cite> is the path to a Python script, for example
+<code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">python</span> <span class="pre">~/my_script.py</span></code>.</p>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p>To run a Python script in an interactive session,
+first load the Python modules:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.8</span>
+</pre></div>
+</div>
+<p>To run a Python script on each of the requested cores, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun python [my_script.py]</span>
+</pre></div>
+</div>
+<p>where <cite>[my_script.py]</cite> is the path to a Python script, for example
+<code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">python</span> <span class="pre">~/my_script.py</span></code>.</p>
+</div></div>
+<p>Not all Python scripts are suitable for an interactive session.
+This will be demonstrated by two Python example scripts.</p>
+<p>Our first example Python script is called <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/sum-2args.py">sum-2args.py</a>:
+it is a simple script that adds two numbers from command-line arguments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sum of the two numbers is: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">sum</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Our second example Python script is called <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/add2.py">add2.py</a>:
+it is a simple script that adds two numbers from user input:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This program will add two numbers that are provided by the user</span>
+
+<span class="c1"># Get the numbers</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the first number: &quot;</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the second number: &quot;</span><span class="p">))</span>
+
+<span class="c1"># Add the two numbers together</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># Output the sum</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sum of </span><span class="si">{0}</span><span class="s2"> and </span><span class="si">{1}</span><span class="s2"> is </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="nb">sum</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="end-the-interactive-session">
+<h2>End the interactive session<a class="headerlink" href="#end-the-interactive-session" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><p>To end and interactive session, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">exit</span>
+</pre></div>
+</div>
+<p>This will look similar to this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@r484 ~]$ </span><span class="nb">exit</span>
+
+<span class="go">exit</span>
+<span class="go">[screen is terminating]</span>
+<span class="go">Connection to r484 closed.</span>
+
+<span class="gp">[bjornc@rackham2 ~]$</span>
+</pre></div>
+</div>
+<p>Note that the prompt has changed to contain <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">[number]</span></code> is a number, which indicates one is back on a login node.</p>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p>To end and interactive session, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">exit</span>
+</pre></div>
+</div>
+<p>It will look similar to this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ exit</span>
+<span class="go">exit</span>
+<span class="go">salloc: Relinquishing job allocation 20174806</span>
+<span class="go">salloc: Job allocation 20174806 has been revoked.</span>
+<span class="go">b-an01 [~]$</span>
+</pre></div>
+</div>
+<p>The prompt will remain the same.</p>
+</div></div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<p>In these exercises:</p>
+<ul class="simple">
+<li><p>we prepare to use two Python example scripts</p></li>
+<li><p>we use a minimal interactive session</p></li>
+<li><p>we use a more optimized interactive session</p></li>
+</ul>
+</section>
+<section id="exercise-0-be-able-to-use-the-python-scripts">
+<h2>Exercise 0: be able to use the Python scripts<a class="headerlink" href="#exercise-0-be-able-to-use-the-python-scripts" title="Link to this heading"></a></h2>
+<section id="exercise-0-1-be-able-to-use-the-first-python-script">
+<h3>Exercise 0.1. be able to use the first Python script<a class="headerlink" href="#exercise-0-1-be-able-to-use-the-first-python-script" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">Exercise 0.1. be able to use the first Python script</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-7-7-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-2" name="7-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p>Find or download the first Python script, <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/sum-2args.py">sum-2args.py</a>.</p>
+<p>Run it using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">sum-2args.py</span> <span class="pre">3</span> <span class="pre">14</span></code>.</p>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p>Navigate to the folder with exercises, or download the script locally:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Go<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>folder<span class="w"> </span>with<span class="w"> </span>exercises:
+<span class="go">cd /proj/r-py-jl/[username]/[exercise_folder]</span>
+<span class="gp"># </span>For<span class="w"> </span>example
+<span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/proj/r-py-jl/sven/my_exercises
+
+<span class="gp"># </span>Download<span class="w"> </span>the<span class="w"> </span>script<span class="w"> </span>locally:
+<span class="go">wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/sum-2args.py</span>
+</pre></div>
+</div>
+<p>After loading a Python module, run it.</p>
+</div><div aria-labelledby="tab-7-7-2" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-2" name="7-2" role="tabpanel" tabindex="0"><p>Navigate to the folder with exercises, or download the script locally:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Go<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>folder<span class="w"> </span>with<span class="w"> </span>exercises:
+<span class="go">cd /proj/nobackup/hpc2n2024-025/[username]/[exercise_folder]</span>
+<span class="gp"># </span>For<span class="w"> </span>example
+<span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/proj/nobackup/hpc2n2024-025/sven/my_exercises
+
+<span class="gp"># </span>Download<span class="w"> </span>the<span class="w"> </span>script<span class="w"> </span>locally:
+<span class="go">wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/sum-2args.py</span>
+</pre></div>
+</div>
+<p>After loading the modules needed to run Python, run the script as indicated.</p>
+</div></div>
+</section>
+<section id="exercise-0-2-be-able-to-use-the-second-python-script">
+<h3>Exercise 0.2. be able to use the second Python script<a class="headerlink" href="#exercise-0-2-be-able-to-use-the-second-python-script" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">Exercise 0.2. be able to use the second Python script</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-8-8-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-2" name="8-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><p>Find or download the second Python script, <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/add2.py">add2.py</a>,</p>
+<p>Run it using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">add2.py</span></code>.</p>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p>Navigate to the folder with exercises, or download the script locally:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Go<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>folder<span class="w"> </span>with<span class="w"> </span>exercises:
+<span class="go">cd /proj/r-py-jl/[username]/[exercise_folder]</span>
+<span class="gp"># </span>For<span class="w"> </span>example
+<span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/proj/r-py-jl/sven/my_exercises
+
+<span class="gp"># </span>Download<span class="w"> </span>the<span class="w"> </span>script<span class="w"> </span>locally:
+<span class="go">wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/add2.py</span>
+</pre></div>
+</div>
+<p>After loading a Python module, run it.</p>
+</div><div aria-labelledby="tab-8-8-2" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-2" name="8-2" role="tabpanel" tabindex="0"><p>Navigate to the folder with exercises, or download the script locally:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Go<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>folder<span class="w"> </span>with<span class="w"> </span>exercises:
+<span class="go">cd /proj/nobackup/hpc2n2024-025/[username]/[exercise_folder]</span>
+<span class="gp"># </span>For<span class="w"> </span>example
+<span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/proj/nobackup/hpc2n2024-025/sven/my_exercises
+
+<span class="gp"># </span>Download<span class="w"> </span>the<span class="w"> </span>script<span class="w"> </span>locally:
+<span class="go">wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/add2.py</span>
+</pre></div>
+</div>
+<p>After loading the modules needed to run Python, run the script as indicated.</p>
+</div></div>
+</section>
+</section>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading"></a></h2>
+<div class="admonition-learning-objectives admonition">
+<p class="admonition-title">Learning objectives</p>
+<ul class="simple">
+<li><p>Start an interactive session with 1 core</p></li>
+<li><p>Test to be on an interactive node</p></li>
+<li><p>Test to be on an interactive session with 1 core</p></li>
+<li><p>Run Python scripts on 1 core</p></li>
+<li><p>End an interactive session</p></li>
+</ul>
+</div>
+<section id="exercise-1-1-start-an-interactive-node">
+<h3>Exercise 1.1: start an interactive node<a class="headerlink" href="#exercise-1-1-start-an-interactive-node" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">Exercise 1.1: start an interactive node</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-9-9-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-2" name="9-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><p>Start an interactive node in the simplest way possible.</p>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><p>On UPPMAX, <code class="docutils literal notranslate"><span class="pre">interactive</span></code> is recommended:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">interactive -A naiss2024-22-107</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-2" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-2" name="9-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">salloc -A hpc2n2024-025</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-1-2-check-to-be-in-an-interactive-session">
+<h3>Exercise 1.2: check to be in an interactive session<a class="headerlink" href="#exercise-1-2-check-to-be-in-an-interactive-session" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-10-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-10-10-0" name="10-0" role="tab" tabindex="0">Exercise 1.2: confirm to be on a compute node</button><button aria-controls="panel-10-10-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-1" name="10-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-10-10-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-2" name="10-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-10-10-0" class="sphinx-tabs-panel" id="panel-10-10-0" name="10-0" role="tabpanel" tabindex="0"><p>Confirm to be on a compute node.</p>
+</div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hostname</span>
+</pre></div>
+</div>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are on a computer node. Well done!</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+</div><div aria-labelledby="tab-10-10-2" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-2" name="10-2" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are more-or-less on a computer node. Well done!</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">[something</span> <span class="pre">else]</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+<p>Misleading would be to use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hostname</span>
+</pre></div>
+</div>
+<p>This will always show that you are on a login node</p>
+</div></div>
+</section>
+<section id="exercise-1-3-check-to-have-booked-the-expected-amount-of-cores">
+<h3>Exercise 1.3: check to have booked the expected amount of cores<a class="headerlink" href="#exercise-1-3-check-to-have-booked-the-expected-amount-of-cores" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-11-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-11-11-0" name="11-0" role="tab" tabindex="0">Exercise 1.3: confirm to have booked one core</button><button aria-controls="panel-11-11-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-1" name="11-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-11-11-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-2" name="11-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-11-11-0" class="sphinx-tabs-panel" id="panel-11-11-0" name="11-0" role="tabpanel" tabindex="0"><p>Confirm to have booked one core.</p>
+</div><div aria-labelledby="tab-11-11-1" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-1" name="11-1" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>The output should be one line of <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked one core.</p>
+<p>If the output is more than one line of <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked more than one core.</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+</div><div aria-labelledby="tab-11-11-2" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-2" name="11-2" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>The output should be one line of <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked one core.</p>
+<p>If the output is more than one line of <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked more than one core.</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">[something</span> <span class="pre">else]</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+</div></div>
+</section>
+<section id="exercise-1-4-1-running-the-first-python-script-in-an-interactive-session">
+<h3>Exercise 1.4.1. Running the first Python script in an interactive session<a class="headerlink" href="#exercise-1-4-1-running-the-first-python-script-in-an-interactive-session" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-12-12-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-12-12-0" name="12-0" role="tab" tabindex="0">Exercise 1.4.1. Running the first Python script in an interactive session</button><button aria-controls="panel-12-12-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-12-12-1" name="12-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-12-12-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-12-12-2" name="12-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-12-12-0" class="sphinx-tabs-panel" id="panel-12-12-0" name="12-0" role="tabpanel" tabindex="0"><p>Run the first Python example script, <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/sum-2args.py">sum-2args.py</a>,
+in the interactive session.</p>
+</div><div aria-labelledby="tab-12-12-1" class="sphinx-tabs-panel" hidden="true" id="panel-12-12-1" name="12-1" role="tabpanel" tabindex="0"><p>Run the script using <code class="docutils literal notranslate"><span class="pre">python</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ python sum-2args.py 3 4</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">b-an01 [~]$</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-12-12-2" class="sphinx-tabs-panel" hidden="true" id="panel-12-12-2" name="12-2" role="tabpanel" tabindex="0"><p>Run the script using <code class="docutils literal notranslate"><span class="pre">srun</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ srun python sum-2args.py 3 4</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">b-an01 [~]$</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-1-4-2-running-a-second-python-script-in-an-interactive-session-on-all-nodes">
+<h3>Exercise 1.4.2. Running a second Python script in an interactive session on all nodes<a class="headerlink" href="#exercise-1-4-2-running-a-second-python-script-in-an-interactive-session-on-all-nodes" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-13-13-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-13-13-0" name="13-0" role="tab" tabindex="0">Exercise 1.4.2. Running a second Python script in an interactive session</button><button aria-controls="panel-13-13-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-13-13-1" name="13-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-13-13-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-13-13-2" name="13-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-13-13-0" class="sphinx-tabs-panel" id="panel-13-13-0" name="13-0" role="tabpanel" tabindex="0"><p>Run the second Python example script, <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/add2.py">add2.py</a>,
+in the interactive session.</p>
+</div><div aria-labelledby="tab-13-13-1" class="sphinx-tabs-panel" hidden="true" id="panel-13-13-1" name="13-1" role="tabpanel" tabindex="0"><p>Run the script using <code class="docutils literal notranslate"><span class="pre">python</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ python add2.py</span>
+<span class="go">Enter the first number: 2</span>
+<span class="go">Enter the second number: 3</span>
+<span class="go">The sum of 2 and 3 is 5</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-13-13-2" class="sphinx-tabs-panel" hidden="true" id="panel-13-13-2" name="13-2" role="tabpanel" tabindex="0"><p>Run the script using <code class="docutils literal notranslate"><span class="pre">srun</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ srun python add2.py</span>
+<span class="go">Enter the first number: 2</span>
+<span class="go">Enter the second number: 3</span>
+<span class="go">The sum of 2 and 3 is 5</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-1-5-exit">
+<h3>Exercise 1.5: exit<a class="headerlink" href="#exercise-1-5-exit" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-14-14-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-14-14-0" name="14-0" role="tab" tabindex="0">Exercise 1.5: exit</button><button aria-controls="panel-14-14-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-14-14-1" name="14-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-14-14-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-14-14-2" name="14-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-14-14-0" class="sphinx-tabs-panel" id="panel-14-14-0" name="14-0" role="tabpanel" tabindex="0"><p>Exit the interactive node</p>
+</div><div aria-labelledby="tab-14-14-1" class="sphinx-tabs-panel" hidden="true" id="panel-14-14-1" name="14-1" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">exit</span>
+</pre></div>
+</div>
+<p>The prompt should change to contain <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">[number]</span></code> is a number, which indicates you are back on a login node.</p>
+</div><div aria-labelledby="tab-14-14-2" class="sphinx-tabs-panel" hidden="true" id="panel-14-14-2" name="14-2" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">exit</span>
+</pre></div>
+</div>
+<p>The prompt will remain the same.</p>
+</div></div>
+</section>
+</section>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading"></a></h2>
+<div class="admonition-learning-objectives admonition">
+<p class="admonition-title">Learning objectives</p>
+<ul class="simple">
+<li><p>Start an interactive session with multiple cores</p></li>
+<li><p>Test to be on an interactive node with multiple cores</p></li>
+<li><p>Run an interactive-friendly Python script on multiple cores</p></li>
+<li><p>Run an interactive-unfriendly Python script on multiple cores</p></li>
+<li><p>End an interactive session</p></li>
+</ul>
+</div>
+<section id="exercise-2-1-start-an-interactive-node">
+<h3>Exercise 2.1: start an interactive node<a class="headerlink" href="#exercise-2-1-start-an-interactive-node" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-15-15-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-15-15-0" name="15-0" role="tab" tabindex="0">Exercise 2.1: start an interactive node</button><button aria-controls="panel-15-15-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-15-15-1" name="15-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-15-15-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-15-15-2" name="15-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-15-15-0" class="sphinx-tabs-panel" id="panel-15-15-0" name="15-0" role="tabpanel" tabindex="0"><p>Start an interactive node in the simplest way possible.</p>
+</div><div aria-labelledby="tab-15-15-1" class="sphinx-tabs-panel" hidden="true" id="panel-15-15-1" name="15-1" role="tabpanel" tabindex="0"><p>On UPPMAX, <code class="docutils literal notranslate"><span class="pre">interactive</span></code> is recommended:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">interactive -A naiss2024-22-107</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-15-15-2" class="sphinx-tabs-panel" hidden="true" id="panel-15-15-2" name="15-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">salloc -A hpc2n2024-025</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-2-2-check-to-be-in-an-interactive-session">
+<h3>Exercise 2.2: check to be in an interactive session<a class="headerlink" href="#exercise-2-2-check-to-be-in-an-interactive-session" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-16-16-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-16-16-0" name="16-0" role="tab" tabindex="0">Exercise 2.2: confirm to be on a compute node</button><button aria-controls="panel-16-16-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-16-16-1" name="16-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-16-16-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-16-16-2" name="16-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-16-16-0" class="sphinx-tabs-panel" id="panel-16-16-0" name="16-0" role="tabpanel" tabindex="0"><p>Confirm to be on a compute node.</p>
+</div><div aria-labelledby="tab-16-16-1" class="sphinx-tabs-panel" hidden="true" id="panel-16-16-1" name="16-1" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hostname</span>
+</pre></div>
+</div>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are on a computer node. Well done!</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+</div><div aria-labelledby="tab-16-16-2" class="sphinx-tabs-panel" hidden="true" id="panel-16-16-2" name="16-2" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are more-or-less on a computer node. Well done!</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">[something</span> <span class="pre">else]</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+<p>Misleading would be to use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hostname</span>
+</pre></div>
+</div>
+<p>This will always show that you are on a login node</p>
+</div></div>
+</section>
+<section id="exercise-2-3-check-to-have-booked-the-expected-amount-of-cores">
+<h3>Exercise 2.3: check to have booked the expected amount of cores<a class="headerlink" href="#exercise-2-3-check-to-have-booked-the-expected-amount-of-cores" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-17-17-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-17-17-0" name="17-0" role="tab" tabindex="0">Exercise 2.3: confirm to have booked one core</button><button aria-controls="panel-17-17-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-17-17-1" name="17-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-17-17-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-17-17-2" name="17-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-17-17-0" class="sphinx-tabs-panel" id="panel-17-17-0" name="17-0" role="tabpanel" tabindex="0"><p>Confirm to have booked one core.</p>
+</div><div aria-labelledby="tab-17-17-1" class="sphinx-tabs-panel" hidden="true" id="panel-17-17-1" name="17-1" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>The output should be one line of <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked one core.</p>
+<p>If the output is more than one line of <code class="docutils literal notranslate"><span class="pre">r[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked more than one core.</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+</div><div aria-labelledby="tab-17-17-2" class="sphinx-tabs-panel" hidden="true" id="panel-17-17-2" name="17-2" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun hostname</span>
+</pre></div>
+</div>
+<p>The output should be one line of <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked one core.</p>
+<p>If the output is more than one line of <code class="docutils literal notranslate"><span class="pre">b-cn[number].hpc2n.umu.se</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you have booked more than one core.</p>
+<p>If the output is <code class="docutils literal notranslate"><span class="pre">[something</span> <span class="pre">else]</span></code>, where <code class="docutils literal notranslate"><span class="pre">[number]</span></code>
+is a number, you are still on a login node.</p>
+</div></div>
+</section>
+<section id="exercise-2-4-1-running-the-first-python-script-in-an-interactive-session-on-all-nodes">
+<h3>Exercise 2.4.1. Running the first Python script in an interactive session on all nodes<a class="headerlink" href="#exercise-2-4-1-running-the-first-python-script-in-an-interactive-session-on-all-nodes" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-18-18-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-18-18-0" name="18-0" role="tab" tabindex="0">Exercise 2.4.1. Running the first Python script in an interactive session</button><button aria-controls="panel-18-18-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-18-18-1" name="18-1" role="tab" tabindex="-1">HPC2N and UPPMAX</button></div><div aria-labelledby="tab-18-18-0" class="sphinx-tabs-panel" id="panel-18-18-0" name="18-0" role="tabpanel" tabindex="0"><p>Run the first Python example script, <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/sum-2args.py">sum-2args.py</a>,
+in an interactive session, on all nodes.</p>
+</div><div aria-labelledby="tab-18-18-1" class="sphinx-tabs-panel" hidden="true" id="panel-18-18-1" name="18-1" role="tabpanel" tabindex="0"><p>Run the script using <code class="docutils literal notranslate"><span class="pre">srun</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ srun python sum-2args.py 3 4</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">b-an01 [~]$</span>
+</pre></div>
+</div>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">hostname</span></code>,
+this script is run once per node
+and works as expected.</p>
+</div></div>
+</section>
+<section id="exercise-2-4-2-running-a-second-python-script-in-an-interactive-session-on-all-nodes">
+<h3>Exercise 2.4.2. Running a second Python script in an interactive session on all nodes<a class="headerlink" href="#exercise-2-4-2-running-a-second-python-script-in-an-interactive-session-on-all-nodes" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-19-19-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-19-19-0" name="19-0" role="tab" tabindex="0">Exercise 2.4.2. Running a second Python script in an interactive session</button><button aria-controls="panel-19-19-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-19-19-1" name="19-1" role="tab" tabindex="-1">HPC2N and UPPMAX</button></div><div aria-labelledby="tab-19-19-0" class="sphinx-tabs-panel" id="panel-19-19-0" name="19-0" role="tabpanel" tabindex="0"><p>Run the second Python example script, <a class="reference external" href="https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/python/add2.py">add2.py</a>,
+in an interactive session, on all nodes.</p>
+</div><div aria-labelledby="tab-19-19-1" class="sphinx-tabs-panel" hidden="true" id="panel-19-19-1" name="19-1" role="tabpanel" tabindex="0"><p>Run the script using <code class="docutils literal notranslate"><span class="pre">srun</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">b-an01 [~]$ srun python add2.py</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">Enter the first number: Enter the second number: The sum of 2 and 3 is 5</span>
+<span class="go">Enter the first number: Enter the second number: The sum of 2 and 3 is 5</span>
+<span class="go">Enter the first number: Enter the second number: The sum of 2 and 3 is 5</span>
+<span class="go">Enter the first number: Enter the second number: The sum of 2 and 3 is 5</span>
+</pre></div>
+</div>
+<p>As you can see, it is possible,
+but it will not show any interaction it otherwise would have.</p>
+</div></div>
+</section>
+<section id="exercise-2-5-exit">
+<h3>Exercise 2.5: exit<a class="headerlink" href="#exercise-2-5-exit" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-20-20-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-20-20-0" name="20-0" role="tab" tabindex="0">Exercise 2.5: exit</button><button aria-controls="panel-20-20-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-20-20-1" name="20-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-20-20-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-20-20-2" name="20-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-20-20-0" class="sphinx-tabs-panel" id="panel-20-20-0" name="20-0" role="tabpanel" tabindex="0"><p>Exit the interactive node</p>
+</div><div aria-labelledby="tab-20-20-1" class="sphinx-tabs-panel" hidden="true" id="panel-20-20-1" name="20-1" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">exit</span>
+</pre></div>
+</div>
+<p>The prompt should change to contain <code class="docutils literal notranslate"><span class="pre">rackham[number].uppmax.uu.se</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">[number]</span></code> is a number, which indicates you are back on a login node.</p>
+</div><div aria-labelledby="tab-20-20-2" class="sphinx-tabs-panel" hidden="true" id="panel-20-20-2" name="20-2" role="tabpanel" tabindex="0"><p>Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">exit</span>
+</pre></div>
+</div>
+<p>The prompt will remain the same.</p>
+</div></div>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<p>You have:</p>
+<ul class="simple">
+<li><p>seen how to use a compute node interactively,
+which differs between HPC2N and UPPMAX</p></li>
+<li><p>checked if we are in an interactive session</p></li>
+<li><p>checked if we have booked the right number of cores</p></li>
+<li><p>run Python scripts in an interactive session,
+which differs between HPC2N and UPPMAX</p></li>
+<li><p>seen that not all Python scripts
+can be run interactively on multiples cores</p></li>
+<li><p>exited an interactive session</p></li>
+</ul>
+</div>
+</section>
+<section id="links">
+<h2>Links<a class="headerlink" href="#links" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/Rt7-sGEHrp0?si=4AB4Nu6BpLhNJXzE">This session taught at 2023-12-01</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

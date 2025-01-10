@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction Python &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction Python</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/python/intro.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-python">
+<h1>Introduction Python<a class="headerlink" href="#introduction-python" title="Link to this heading"></a></h1>
+<dl class="simple">
+<dt><a class="reference external" href="https://uppmax.github.io/R-python-julia-matlab-HPC/index.html">Welcome page and syllabus</a></dt><dd><ul class="simple">
+<li><p>Also link at House symbol 🏠 at top of page</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title"><strong>Learning outcomes</strong></p>
+<ul class="simple">
+<li><p>Load Python modules and site-installed Python packages</p></li>
+<li><p>Create a virtual environment</p></li>
+<li><p>Install Python packages with pip (Kebnekaise, Rackham, Snowy, Cosmos)</p></li>
+<li><p>Write a batch script for running Python</p></li>
+</ul>
+</div>
+<div class="admonition-exercises admonition">
+<p class="admonition-title">Exercises</p>
+<ul class="simple">
+<li><p>You can download the exercises from the course GitHub repo, under the <code class="docutils literal notranslate"><span class="pre">exercises/python</span></code> directory: &lt;<a class="reference external" href="https://github.com/UPPMAX/R-python-julia-matlab-HPC/tree/main/exercises/python">https://github.com/UPPMAX/R-python-julia-matlab-HPC/tree/main/exercises/python</a>&gt;</p>
+<ul>
+<li><p>Download all exercises at once: <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/exercises.tar.gz</span></code></p></li>
+</ul>
+</li>
+<li><p>Or you can copy them from the computer system you are on (only until 2024-11-01):</p>
+<ul>
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/proj/r-py-jl-m-rackham/exercises.tar.gz</span></code> .</p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/proj/nobackup/r-py-jl-m/exercises.tar.gz</span></code> .</p></li>
+</ul>
+</li>
+<li><p>Then afterwards you unpack it with <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xzvf</span> <span class="pre">exercises.tar.gz</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-your-expectations admonition">
+<p class="admonition-title"><strong>Your expectations?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Learn best practices for using Python at UPPMAX, HPC2N, and LUNARC</p></li>
+<li><p>Packages</p></li>
+<li><p>Get HPC performance with Python</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Not covered</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Improving Python <em>coding</em> skills</p></li>
+<li><p>Other clusters (though they mostly work in a very similar way)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<section id="schedule">
+<h2>Schedule<a class="headerlink" href="#schedule" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Topic</p></th>
+<th class="head"><p>Teacher(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9:00</p></td>
+<td><p>(optional) First login</p></td>
+<td><p>BB + PO + RB + RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>9:45</p></td>
+<td><p>Break</p></td>
+<td><p>.</p></td>
+</tr>
+<tr class="row-even"><td><p>10:00</p></td>
+<td><p>Syllabus</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:10</p></td>
+<td><p>Python in general</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-even"><td><p>10:20</p></td>
+<td><p>Load modules and run</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:50</p></td>
+<td><p>Break</p></td>
+<td><p>.</p></td>
+</tr>
+<tr class="row-even"><td><p>11:05</p></td>
+<td><p>Packages</p></td>
+<td><p>RB</p></td>
+</tr>
+<tr class="row-odd"><td><p>11:35</p></td>
+<td><p>Isolated environments</p></td>
+<td><p>RB</p></td>
+</tr>
+<tr class="row-even"><td><p>12:00</p></td>
+<td><p>Lunch</p></td>
+<td><p>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>13:00</p></td>
+<td><p>Batch</p></td>
+<td><p>BB</p></td>
+</tr>
+<tr class="row-even"><td><p>13:30</p></td>
+<td><p>GPU</p></td>
+<td><p>BB</p></td>
+</tr>
+<tr class="row-odd"><td><p>13:50</p></td>
+<td><p>Break</p></td>
+<td><p>.</p></td>
+</tr>
+<tr class="row-even"><td><p>14:05</p></td>
+<td><p>Simultaneous sessions</p></td>
+<td><p>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>.</p></td>
+<td><p>HPC2N: Jupyter</p></td>
+<td><p>BB</p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>LUNARC: Interactive, Spyder, Jupyter</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>.</p></td>
+<td><p>UPPMAX: Interactive, Jupyter</p></td>
+<td><p>RB</p></td>
+</tr>
+<tr class="row-even"><td><p>14:35</p></td>
+<td><p>Break</p></td>
+<td><p>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>14:50</p></td>
+<td><p>Parallel and multi-threaded functions</p></td>
+<td><p>PO</p></td>
+</tr>
+<tr class="row-even"><td><p>15:35</p></td>
+<td><p>Summary and evaluation</p></td>
+<td><p>RB</p></td>
+</tr>
+<tr class="row-odd"><td><p>15:50</p></td>
+<td><p>End of the day</p></td>
+<td><p>.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>RB: suggests ‘Batch’ to get 10 more minutes
+and more all sessions
+in the next course iteration</p></li>
+</ul>
+</section>
+<section id="what-is-python">
+<h2>What is python?<a class="headerlink" href="#what-is-python" title="Link to this heading"></a></h2>
+<p>As you probably already know…</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Python combines remarkable power with very clear syntax.</p></li>
+<li><p>It has modules, classes, exceptions, very high level dynamic data types, and dynamic typing.</p></li>
+<li><p>There are interfaces to many system calls and libraries, as well as to various windowing systems. …“</p></li>
+</ul>
+</div></blockquote>
+<p>In particular, what sets Python apart from other languages is its fantastic
+open-source ecosystem for scientific computing and machine learning with
+libraries like NumPy, SciPy, scikit-learn, Pandas, and Pytorch.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/doc/">Official Python documentation</a></p></li>
+<li><p><a class="reference external" href="https://python-forum.io/">Python forum</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/">NumPy documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/tutorial/index.html">SciPy user guide</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/index.html#user-guide">Pandas user guide</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/">scikit-Learn documentation</a></p></li>
+<li><p>…etc.</p></li>
+</ul>
+<section id="material-for-improving-your-programming-skills">
+<h3>Material for improving your programming skills<a class="headerlink" href="#material-for-improving-your-programming-skills" title="Link to this heading"></a></h3>
+<section id="first-level">
+<h4>First level<a class="headerlink" href="#first-level" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://carpentries.org/">The Carpentries</a>  teaches basic lab skills for research computing.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://swcarpentry.github.io/python-novice-inflammation/">“Programming with Python”</a></p></li>
+<li><p><a class="reference external" href="http://swcarpentry.github.io/python-novice-gapminder/">“Plotting and Programming in Python”</a></p></li>
+</ul>
+</section>
+</section>
+<section id="second-level">
+<h3>Second level<a class="headerlink" href="#second-level" title="Link to this heading"></a></h3>
+<p>CodeRefinery develops and maintains training material on software best practices for researchers that already write code. Their material addresses all academic disciplines and tries to be as programming language-independent as possible.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://coderefinery.org/lessons/">Lessons</a></p></li>
+<li><p><a class="reference external" href="https://coderefinery.github.io/data-visualization-python/">Data visualization using Python</a></p></li>
+<li><p><a class="reference external" href="https://coderefinery.github.io/jupyter/">Jupyter</a></p></li>
+</ul>
+<p>Aalto Scientific Computing</p>
+<ul>
+<li><p><a class="reference external" href="https://aaltoscicomp.github.io/data-analysis-workflows-course/">Data analysis workflows with R and Python</a></p></li>
+<li><p><a class="reference external" href="https://aaltoscicomp.github.io/python-for-scicomp/">Python for Scientific Computing</a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://aaltoscicomp.github.io/python-for-scicomp/dependencies/">Introduction to packages</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="third-level">
+<h3>Third level<a class="headerlink" href="#third-level" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://enccs.se/">ENCCS (EuroCC National Competence Centre Sweden)</a> is a national centre that supports industry, public administration and academia accessing and using European supercomputers. They give higher-level training of programming and specific software.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://enccs.github.io/hpda-python/">High Performance Data Analytics in Python</a></p></li>
+<li><p>The youtube video <a class="reference external" href="https://www.youtube.com/watch?v=Bv25Dwe84g0">Thinking about Concurrency</a> is a good introduction to writing concurrent programs in Python</p></li>
+<li><p>The book <a class="reference external" href="https://www.oreilly.com/library/view/high-performance-python/9781492055013/">High Performance Python</a> is a good resource for ways of speeding up Python code.</p></li>
+</ul>
+</section>
+</section>
+<section id="other-naiss-centres">
+<h2>Other NAISS centres<a class="headerlink" href="#other-naiss-centres" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>C3SE</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.c3se.chalmers.se/documentation/applications/python/">Python</a></p></li>
+<li><p><a class="reference external" href="https://www.c3se.chalmers.se/documentation/applications/jupyter/">Jupyter</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NSC</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.nsc.liu.se/software/python/">Python</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PDC</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.pdc.kth.se/software/software/python/index_general.html">Python</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<p>We will:</p>
+<ul class="simple">
+<li><p>Teach you how to navigate the module system</p></li>
+<li><p>Show you how to find out which versions of Python and packages are installed</p></li>
+<li><p>Use the package handler <strong>pip</strong></p></li>
+<li><p>Explain briefly how to create and use virtual environments</p></li>
+<li><p>Show you how to run batch jobs</p></li>
+<li><p>Show some examples with parallel computing and using GPUs</p></li>
+</ul>
+<p>Most of this will be the same or very similar to how it is done at other HPC centres in Sweden</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python packages &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Python packages</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/python/packages.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python-packages">
+<h1>Python packages<a class="headerlink" href="#python-packages" title="Link to this heading"></a></h1>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Learning objectives</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">For teachers</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>navigate the documentation</p></li>
+<li><p>determine which Python packages are installed</p></li>
+<li><p>load a module that adds more pre-installed Python packages</p></li>
+<li><p>install a Python package</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Teaching goals are:</p>
+<ul class="simple">
+<li><p>Learners have navigated the documentation</p></li>
+<li><p>Learners have determined which Python packages are installed</p></li>
+<li><p>Learners have loaded a module
+that adds more pre-installed Python packages</p></li>
+<li><p>Learners have installed a Python package</p></li>
+</ul>
+<p>Lesson plan (30 minutes in total):</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>5 mins: prior knowledge</dt><dd><ul>
+<li><p>What are Python packages?</p></li>
+<li><p>Why use Python packages?</p></li>
+<li><p>How to find out if a package is already installed?</p></li>
+<li><p>How to install a Python package?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>5 mins: presentation</p></li>
+<li><p>15 mins: challenge</p></li>
+<li><dl class="simple">
+<dt>5 mins: feedback</dt><dd><ul>
+<li><p>What are Python packages?</p></li>
+<li><p>Why use Python packages?</p></li>
+<li><p>How to find out if a package is already installed?</p></li>
+<li><p>How to install a Python package?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">naiss2024-22-1202</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2024-114</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2024-7-80</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code></p></li>
+</ul>
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Packages are pieces of Python code written to be used by others.
+When possible, using an existing Python package
+is usually smarter than writing code yourself.
+In this session, we practice working with packages.</p>
+</section>
+<section id="finding-packages">
+<h2>Finding packages<a class="headerlink" href="#finding-packages" title="Link to this heading"></a></h2>
+<img src="../_images/mermaid-8e61310c05c83605cc3d4eb49f56e0c1724e5f4a.png" alt="flowchart TD
+  using_python_packages[Using Python packages]
+  installed_with_python[Installed with Python module?]
+  use_python[1.Done]
+  installed_with_module[Installed with Python package module?]
+  use_module[2.Load Python module]
+  install_yourself[3.Install it yourself]
+
+  using_python_packages --&gt; installed_with_python
+  installed_with_python --&gt;|yes|use_python
+  installed_with_python --&gt;|no|installed_with_module
+  installed_with_module --&gt;|yes|use_module
+  installed_with_module --&gt;|no|install_yourself" />
+<p>The most common Python packages come installed when loading a regular Python module.
+Some of the more complex packages, are part of a module for more complex Python packages.
+If a package is not installed, however, you can also install it.</p>
+</section>
+<section id="python-package-installers">
+<h2>Python package installers<a class="headerlink" href="#python-package-installers" title="Link to this heading"></a></h2>
+<img src="../_images/mermaid-b7ad8111fac83e1616c6e846728252193e60dfab.png" alt="flowchart TD
+  python[Python]
+  packages[packages]
+  code_written_by_others[code written by others]
+  package_install_system[package installation system]
+  pip[pip]
+  conda[conda]
+  uppmax[UPPMAX's Rackham]
+  hpc2n[HPC2N]
+  lunarc[LUNARC]
+
+  python --&gt;|has| packages
+  packages --&gt;|are|code_written_by_others
+  packages --&gt;|installed by|package_install_system
+  package_install_system --&gt; pip
+  package_install_system --&gt; conda
+  conda --&gt;|works on|uppmax
+  conda --&gt;|works on|lunarc
+  pip --&gt;|works on|uppmax
+  pip --&gt;|works on|hpc2n
+  pip --&gt;|works on|lunarc" />
+<p>There are two Python package installers, called <code class="docutils literal notranslate"><span class="pre">conda</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<p>In this session, we use <code class="docutils literal notranslate"><span class="pre">pip</span></code>, as it can be used on all
+the HPC clusters used in this course:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package installer</p></th>
+<th class="head"><p>HPC2N</p></th>
+<th class="head"><p>LUNARC</p></th>
+<th class="head"><p>UPPMAX’s Rackham</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span></code></p></td>
+<td><p>Unsupported</p></td>
+<td><p>Recommended</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pip</span></code></p></td>
+<td><p>Recommended</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+</tbody>
+</table>
+<p>In this session we use <code class="docutils literal notranslate"><span class="pre">pip</span></code>, because it is a commonly-used package installation system that works on all HPC clusters used in this course.
+The use of <code class="docutils literal notranslate"><span class="pre">conda</span></code> (and its differences with <code class="docutils literal notranslate"><span class="pre">pip</span></code>) can be read at
+<a class="reference external" href="https://uppmax.github.io/R-python-julia-matlab-HPC/python/condaUPPMAX.html">this course’s ‘Extra Reading’ section Conda at UPPMAX</a>.</p>
+<p>In this session, we will install packages to your default user folder.
+Because this one default user folder, installing a different version of one package
+for one computational experiment, may have consequences for others.
+These problems are addressed in the session on isolated environments.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="dropdown admonition">
+<p class="admonition-title">Need a video?</p>
+<p>You can see a video on how these exercises are done here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/lXfSvy_gRLc">HPC2N</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/jlvrgRP94mw">LUNARC</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/nIkjk8R8rx0">UPPMAX</a></p></li>
+</ul>
+</div>
+<p>These exercises follow a common user journey,
+for a user that needs to use a certain Python packages:</p>
+<ul class="simple">
+<li><p>In exercise 1, we use a Python package that comes with the Python module</p></li>
+<li><p>In exercise 2, we use a Python package that comes with a software module</p></li>
+<li><p>In exercise 3, we install a Python package ourselves</p></li>
+</ul>
+<p>Like any user, we’ll try to be autonomous and read your favorite HPC center’s
+documentation.</p>
+</section>
+<section id="exercise-1-loading-a-python-package-that-comes-with-the-python-module">
+<h2>Exercise 1: loading a Python package that comes with the Python module<a class="headerlink" href="#exercise-1-loading-a-python-package-that-comes-with-the-python-module" title="Link to this heading"></a></h2>
+<div class="admonition-learning-objectives admonition">
+<p class="admonition-title">Learning objectives</p>
+<ul class="simple">
+<li><p>Practice reading documentation</p></li>
+<li><p>Apply/rehearse the documentation to load a module</p></li>
+<li><p>Apply the documentation to show if a Python package is already installed</p></li>
+</ul>
+</div>
+<p>Some Python packages come with loading a Python module.
+Here we see this in action.</p>
+<p>For this exercise, use the documentation of your HPC center:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.hpc2n.umu.se/tutorials/userinstalls/#python__packages">HPC2N python packages</a></p></li>
+<li><p><a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Python/">LUNARC Python</a></p></li>
+<li><p><a class="reference external" href="http://docs.uppmax.uu.se/software/python/">UPPMAX Python</a></p></li>
+</ul>
+<p>Load the Python module of the correct version,
+including prerequisite modules if needed:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Center</p></th>
+<th class="head"><p>Python version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HPC2N</p></td>
+<td><p>3.11.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>LUNARC</p></td>
+<td><p>3.11.3</p></td>
+</tr>
+<tr class="row-even"><td><p>UPPMAX</p></td>
+<td><p>3.11.8</p></td>
+</tr>
+</tbody>
+</table>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer HPC2N</p>
+<p>To search for the main Python module in general:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>Python
+</pre></div>
+</div>
+<p>To find out how to load the Python 3.11.3 module:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>Python/3.11.3
+</pre></div>
+</div>
+<p>Do what the documentation indicates:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w"> </span>Python/3.11.3
+</pre></div>
+</div>
+<p>If you get an error, because you’ve already loaded
+(conflicting) modules, do the command below and try again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer LUNARC</p>
+<p>To search for the main Python module in general:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>Python
+</pre></div>
+</div>
+<p>To find out how to load the Python 3.11.3 module:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>Python/3.11.3
+</pre></div>
+</div>
+<p>Do what the documentation indicates:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>GCCcore/12.3.0<span class="w"> </span>Python/3.11.3
+</pre></div>
+</div>
+<p>If you get an error, because you’ve already loaded
+(conflicting) modules, do the command below and try again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer UPPMAX</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>python/3.11.8
+</pre></div>
+</div>
+<p>If you get an error, because you’ve already loaded
+(conflicting) modules, do the command below and try again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>uppmax
+</pre></div>
+</div>
+</div>
+<p>How to determine if a Python package is installed?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>There are multiple ways. One easy one, is, in a terminal, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="nb">list</span>
+</pre></div>
+</div>
+</div>
+<p>The Python package <code class="docutils literal notranslate"><span class="pre">wheel</span></code> is known to be installed. Which version?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer HPC2N</p>
+<p>When doing <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code>, look for <code class="docutils literal notranslate"><span class="pre">wheel</span></code> in the list.
+You’ll find <code class="docutils literal notranslate"><span class="pre">wheel</span></code> to have version <code class="docutils literal notranslate"><span class="pre">0.40.0</span></code></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer LUNARC</p>
+<p>When doing <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code>, look for <code class="docutils literal notranslate"><span class="pre">wheel</span></code> in the list.
+You’ll find <code class="docutils literal notranslate"><span class="pre">wheel</span></code> to have version <code class="docutils literal notranslate"><span class="pre">0.40.0</span></code></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer UPPMAX</p>
+<p>When doing <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code>, look for <code class="docutils literal notranslate"><span class="pre">wheel</span></code> in the list.
+You’ll find <code class="docutils literal notranslate"><span class="pre">wheel</span></code> to have version <code class="docutils literal notranslate"><span class="pre">0.42.0</span></code></p>
+</div>
+</section>
+<section id="exercise-2-loading-a-python-package-that-comes-with-a-module">
+<h2>Exercise 2: loading a Python package that comes with a module<a class="headerlink" href="#exercise-2-loading-a-python-package-that-comes-with-a-module" title="Link to this heading"></a></h2>
+<div class="admonition-learning-objectives admonition">
+<p class="admonition-title">Learning objectives</p>
+<ul class="simple">
+<li><p>Practice reading documentation</p></li>
+<li><p>Load a Python package module</p></li>
+</ul>
+</div>
+<p>Some Python packages need another module to be loaded.
+In this exercise, we search for and use a module to use a pre-installed
+Python package.
+The Python package we use differs by center:</p>
+<ul class="simple">
+<li><p>HPC2N: Theano, as a Python 3.7.4 package</p></li>
+<li><p>LUNARC: <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> version 3.8.2</p></li>
+<li><p>UPPMAX: TensorFlow, as a Python 3.11.8 package for CPU</p></li>
+</ul>
+<p>Try to find your center’s documentation to find out which module to load your Python
+package with.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer HPC2N</p>
+<p>It is hard to find useful information on Theano
+at the HPC2N documentation at <a class="reference external" href="https://docs.hpc2n.umu.se/">https://docs.hpc2n.umu.se/</a>.</p>
+<p>Instead, search the main HPC2N website at
+<a class="reference external" href="https://www.hpc2n.umu.se/">https://www.hpc2n.umu.se/</a>.</p>
+<p>Searching for ‘Theano’ at the main HPC2N website (not the documentation!)
+at <a class="reference external" href="https://www.hpc2n.umu.se/">https://www.hpc2n.umu.se/</a> will take you to
+<a class="reference external" href="https://www.hpc2n.umu.se/resources/software/theano">the Theano page</a></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer LUNARC</p>
+<p>There is no documentation on this (yet).
+Instead, use the
+<a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept">LUNARC documentation on modules</a>
+to find the module yourself</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer UPPMAX</p>
+<p>Searching for <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code> at
+<a class="reference external" href="https://docs.uppmax.uu.se">the UPPMAX documentation</a>
+takes you to
+<a class="reference external" href="https://docs.uppmax.uu.se/software/tensorflow">the TensorFlow page</a>.
+There, clicking on ‘TensorFlow as a Python package for CPU’ takes you to
+the header <a class="reference external" href="https://docs.uppmax.uu.se/software/tensorflow/#tensorflow-as-a-python-package-for-cpu">TensorFlow as a Python package for CPU</a>.</p>
+</div>
+<p>Load the module for the Python package and verify if it is loaded.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer HPC2N</p>
+<p>At <a class="reference external" href="https://www.hpc2n.umu.se/resources/software/theano">the HPC2N Theano page</a>,
+it is recommended to do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>theano
+</pre></div>
+</div>
+<p>There are two versions of Theano, we need the second one:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Theano/1.1.2-PyMC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Theano/1.0.4-Python-3.7.4</span></code></p></li>
+</ul>
+<p>Getting the information of it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>Theano/1.0.4-Python-3.7.4
+</pre></div>
+</div>
+<p>This tells us to do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>GCC/8.3.0<span class="w"> </span>OpenMPI/3.1.4<span class="w"> </span>Theano/1.0.4-Python-3.7.4
+</pre></div>
+</div>
+<p>If you get an error, because you’ve already loaded
+(conflicting) modules, do the command below and load
+the modules above again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+</pre></div>
+</div>
+<p>With all modules loaded, finding out the package version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>list
+</pre></div>
+</div>
+<p>Gives us:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Theano<span class="w">                        </span><span class="m">1</span>.0.4
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer LUNARC</p>
+<p>There is no documentation on this (yet).
+Instead, use the
+<a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept">LUNARC documentation on modules</a>
+to find the module yourself.</p>
+<p>To search for it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>matplotlib
+</pre></div>
+</div>
+<p>We indeed find the version needed, <code class="docutils literal notranslate"><span class="pre">matplotlib/3.8.2</span></code></p>
+<p>Getting the information of it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>matplotlib/3.8.2
+</pre></div>
+</div>
+<p>This tells us to do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w"> </span>matplotlib/3.8.2
+</pre></div>
+</div>
+<p>If you get an error, because you’ve already loaded
+(conflicting) modules, do the command below and load
+the modules above again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+</pre></div>
+</div>
+<p>With all modules loaded, finding out the package version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>list
+</pre></div>
+</div>
+<p>Gives us:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>matplotlib<span class="w">                        </span><span class="m">3</span>.8.2
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer UPPMAX</p>
+<ul class="simple">
+<li><p>Copy from the documentation: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">python_ML_packages/3.11.8-cpu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> to find <code class="docutils literal notranslate"><span class="pre">tensorflow-cpu</span></code> with version <code class="docutils literal notranslate"><span class="pre">2.16.1</span></code></p></li>
+</ul>
+</div>
+</section>
+<section id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading"></a></h2>
+<div class="admonition-learning-objectives admonition">
+<p class="admonition-title">Learning objectives</p>
+<ul class="simple">
+<li><p>Practice reading documentation</p></li>
+<li><p>Install a new package.</p></li>
+</ul>
+</div>
+<p>Some Python packages are not pre-installed on your HPC cluster.
+Here we install a Python package ourselves.</p>
+<p>Use your center’s documentation to find out how to install Python packages
+using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer HPC2N</p>
+<p>Searching for ‘pip install’ at <cite>the HPC2N documentation &lt;https://docs.hpc2n.umu.se/&gt;</cite>
+takes one to <a class="reference external" href="https://docs.hpc2n.umu.se/tutorials/userinstalls/#working__with__venv">Working with venv</a>
+(whatever that is). Searching for <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> takes use to
+the HPC2N recommendation there to use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--no-cache-dir</span> <span class="pre">--no-build-isolation</span> <span class="pre">MYPACKAGE</span></code></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer LUNARC</p>
+<p>Searching for ‘pip’ at <cite>the LUNARC documentation &lt;https://lunarc-documentation.readthedocs.io/&gt;</cite>
+takes one to <a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Python/#python-installations">Python installations</a>
+The LUNARC recommendation there is to use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--prefix=$HOME/local</span> <span class="pre">package_name</span></code></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer UPPMAX</p>
+<p>UPPMAX: searching for <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> at
+<a class="reference external" href="https://docs.uppmax.uu.se">the UPPMAX documentation</a>
+takes you to
+<a class="reference external" href="https://docs.uppmax.uu.se/software/python_install_packages/">Installing Python packages</a>.
+There, clicking on the link ‘pip’ takes you to
+<a class="reference external" href="https://docs.uppmax.uu.se/software/python_install_packages/#pip">pip</a>.
+The UPPMAX recommendation there to use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">[package</span> <span class="pre">name]</span></code></p>
+</div>
+<p>Install a Python package called <code class="docutils literal notranslate"><span class="pre">mhcnuggets</span></code>. Which version gets installed?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer HPC2N</p>
+<p>Do <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--no-cache-dir</span> <span class="pre">--no-build-isolation</span> <span class="pre">mhcnuggets</span></code>,
+then <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> to see that <code class="docutils literal notranslate"><span class="pre">mhcnuggets</span></code> version 2.4.1</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer LUNARC</p>
+<p>The documentation at LUNARC, to use
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--prefix=$HOME/mhcnuggets</span></code> is incomplete.
+The complete command should be <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--prefix=$HOME/mhcnuggets</span> <span class="pre">mhcnuggets</span></code>.
+However, as mentioned in the documentation ‘Make sure the installation
+location of your packages gets added to your PYTHONPATH environment variable’,
+without any details.
+Trying <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PYTHONPATH=&quot;${PYTHONPATH}:/${HOME}/mhcnuggets&quot;</span></code> fails.</p>
+<p>What does work:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mhcnuggets</span></code></p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> shows that <code class="docutils literal notranslate"><span class="pre">mhcnuggets</span></code> version 2.4.1
+gets installed.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer UPPMAX</p>
+<p>Do <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mhcnuggets</span></code>, then <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> to see that <code class="docutils literal notranslate"><span class="pre">mhcnuggets</span></code> version 2.4.1
+gets installed</p>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<p>You have:</p>
+<ul class="simple">
+<li><p>determined if a Python package is installed yes/no using <code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+<li><p>discovered some Python package are already installed upon
+loading a module</p></li>
+<li><p>installed a Python package using <code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+</ul>
+<p>However, the installed package was put into a shared (as in, not isolated)
+environment.</p>
+<p>Luckily, isolated environments are discussed in this course too :-)</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

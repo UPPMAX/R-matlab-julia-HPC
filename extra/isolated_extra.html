@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isolated environments, extra exercises &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="More about R packages" href="../r/morepackages.html" />
+    <link rel="prev" title="Evaluation" href="../julia/evaluationJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Isolated environments, extra exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-2-work-with-example-gpu">Exercise 2: work with <code class="docutils literal notranslate"><span class="pre">Example-gpu</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-1-load-the-modules-needed">Exercise 2.1: load the modules needed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-2-create-the-virtual-environment">Exercise 2.2: create the virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-3-activate-the-virtual-environment">Exercise 2.3: activate the virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-4-install-python-packages">Exercise 2.4: install Python packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-5-check-if-the-python-packages-are-installed">Exercise 2.5: check if the Python packages are installed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-6-use-the-virtual-environment">Exercise 2.6: use the virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-7-deactivate-the-virtual-environment">Exercise 2.7: deactivate the virtual environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-3-export-and-import-a-virtual-environment">Exercise 3: export and import a virtual environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-1-load-the-modules-needed">Exercise 3.1: load the modules needed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-2-create-the-virtual-environment">Exercise 3.2: create the virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-3-activate-the-virtual-environment">Exercise 3.3: activate the virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-4-install-python-packages">Exercise 3.4: install Python packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-5-check-if-the-python-packages-are-installed">Exercise 3.5: check if the Python packages are installed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-6-use-the-virtual-environment">Exercise 3.6: use the virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-7-deactivate-the-virtual-environment">Exercise 3.7: deactivate the virtual environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Isolated environments, extra exercises</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/extra/isolated_extra.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="isolated-environments-extra-exercises">
+<h1>Isolated environments, extra exercises<a class="headerlink" href="#isolated-environments-extra-exercises" title="Link to this heading"></a></h1>
+<section id="exercise-2-work-with-example-gpu">
+<h2>Exercise 2: work with <code class="docutils literal notranslate"><span class="pre">Example-gpu</span></code><a class="headerlink" href="#exercise-2-work-with-example-gpu" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Learning objectives</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">For teachers</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Rehearse creating a Python virtual environment from a step-by-step instruction</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Takes around 7 minutes for an experienced user.</p>
+<p>Installing the packages takes 6 minutes.</p>
+</div></div>
+<p>This exercise if for UPPMAX users only.</p>
+<p>In this exercise, we create another environment <code class="docutils literal notranslate"><span class="pre">Example-gpu</span></code>
+in the same step-by-step fashion as done in exercise 1:</p>
+<img src="../_images/mermaid-2ed48affbaba4d3e7ec9d6e7888050417fea0dbf.png" alt="flowchart TD
+  load_modules[1.Load modules]
+  create[2.Create]
+  activate[3.Activate]
+  install_libraries[4.Install Python libraries]
+  check[5.Check installed Python libraries]
+  use[6.Use]
+  deactivate[7.Deactivate]
+
+  load_modules --&gt; create
+  create --&gt; activate
+  activate --&gt; install_libraries
+  install_libraries --&gt; check
+  check --&gt; use
+  use --&gt; deactivate
+  deactivate --&gt; activate" />
+<p>This virtual environment called <code class="docutils literal notranslate"><span class="pre">Example-gpu</span></code>
+is used for examples where the use of GPUs is demonstrated,
+by using the <code class="docutils literal notranslate"><span class="pre">numba</span></code> and <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code> Python packages.</p>
+<p>Because the structure is the same as Exercise 1, see exercise 1 for details.</p>
+<section id="exercise-2-1-load-the-modules-needed">
+<h3>Exercise 2.1: load the modules needed<a class="headerlink" href="#exercise-2-1-load-the-modules-needed" title="Link to this heading"></a></h3>
+<p>Here we need an older Python module,
+as that is what available on the Snowy computer cluster:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.9.5</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-2-2-create-the-virtual-environment">
+<h3>Exercise 2.2: create the virtual environment<a class="headerlink" href="#exercise-2-2-create-the-virtual-environment" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m venv --system-site-packages /proj/r-py-jl/&lt;user&gt;/python/Example-gpu</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">[username]</span></code> is your UPPMAX username, for example <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">--system-site-packages</span> <span class="pre">/proj/r-py-jl/sven/python/Example-gpu</span></code>.</p>
+</section>
+<section id="exercise-2-3-activate-the-virtual-environment">
+<h3>Exercise 2.3: activate the virtual environment<a class="headerlink" href="#exercise-2-3-activate-the-virtual-environment" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source /proj/r-py-jl/&lt;user&gt;/python/Example-gpu/bin/activate</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">[username]</span></code> is your UPPMAX username, for example <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/proj/r-py-jl/sven/python/Example-gpu/bin/activate</span></code>.</p>
+</section>
+<section id="exercise-2-4-install-python-packages">
+<h3>Exercise 2.4: install Python packages<a class="headerlink" href="#exercise-2-4-install-python-packages" title="Link to this heading"></a></h3>
+<p>Installing these packages takes around 6 minutes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "(Example-gpu) $ ";
+}
+</style><span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>numba<span class="w"> </span>torch</span>
+</pre></div></div></section>
+<section id="exercise-2-5-check-if-the-python-packages-are-installed">
+<h3>Exercise 2.5: check if the Python packages are installed<a class="headerlink" href="#exercise-2-5-check-if-the-python-packages-are-installed" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt2:before {
+  content: "(vpyenv) $ ";
+}
+</style><span class="prompt2">pip<span class="w"> </span>list</span>
+</pre></div></div></section>
+<section id="exercise-2-6-use-the-virtual-environment">
+<h3>Exercise 2.6: use the virtual environment<a class="headerlink" href="#exercise-2-6-use-the-virtual-environment" title="Link to this heading"></a></h3>
+<p>Not now :-)</p>
+</section>
+<section id="exercise-2-7-deactivate-the-virtual-environment">
+<h3>Exercise 2.7: deactivate the virtual environment<a class="headerlink" href="#exercise-2-7-deactivate-the-virtual-environment" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">deactivate</span>
+</pre></div></div></section>
+</section>
+<section id="exercise-3-export-and-import-a-virtual-environment">
+<h2>Exercise 3: export and import a virtual environment<a class="headerlink" href="#exercise-3-export-and-import-a-virtual-environment" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Learning objectives</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">For teachers</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Rehearse creating a Python virtual environment</p></li>
+<li><p>Export a virtual environment from a step-by-step instruction</p></li>
+<li><p>Import a virtual environment from a step-by-step instruction</p></li>
+</ul>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>Takes around 14 minutes for an experienced user.</p>
+<p>Installing the packages takes 13 minutes.</p>
+</div></div>
+<p>In this exercise, we export and import a virtual environment.
+Additionally, you get to rehearse to create a virtual environment:
+as we have done this earlier, the answers will now be hidden :-)</p>
+<img src="../_images/mermaid-2ed48affbaba4d3e7ec9d6e7888050417fea0dbf.png" alt="flowchart TD
+  load_modules[1.Load modules]
+  create[2.Create]
+  activate[3.Activate]
+  install_libraries[4.Install Python libraries]
+  check[5.Check installed Python libraries]
+  use[6.Use]
+  deactivate[7.Deactivate]
+
+  load_modules --&gt; create
+  create --&gt; activate
+  activate --&gt; install_libraries
+  install_libraries --&gt; check
+  check --&gt; use
+  use --&gt; deactivate
+  deactivate --&gt; activate" />
+<section id="exercise-3-1-load-the-modules-needed">
+<h3>Exercise 3.1: load the modules needed<a class="headerlink" href="#exercise-3-1-load-the-modules-needed" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Step 1: load the modules needed</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>Load the modules for Python 3.11.x.</p>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.8</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load GCC/12.3.0 Python/3.11.3</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-3-2-create-the-virtual-environment">
+<h3>Exercise 3.2: create the virtual environment<a class="headerlink" href="#exercise-3-2-create-the-virtual-environment" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Step 2: create the virtual environment</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p>Create a virtual environment with the name <code class="docutils literal notranslate"><span class="pre">analysis</span></code>.</p>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m venv --system-site-packages /proj/r-py-jl/[username]/python/analysis</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m venv --system-site-packages /proj/nobackup/hpc2n2024-025/[username]/python/analysis</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-3-3-activate-the-virtual-environment">
+<h3>Exercise 3.3: activate the virtual environment<a class="headerlink" href="#exercise-3-3-activate-the-virtual-environment" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Step 3: activate the virtual environment</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p>Activate the virtual environment.</p>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source /proj/r-py-jl/[username]/python/analysis/bin/activate</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source /proj/nobackup/hpc2n2024-025/[username]/python/analysis/bin/activate</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-3-4-install-python-packages">
+<h3>Exercise 3.4: install Python packages<a class="headerlink" href="#exercise-3-4-install-python-packages" title="Link to this heading"></a></h3>
+<p>Installing these packages takes around 13 minutes.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">Step pre-4: create file</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p>Create a file called <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, with the following content:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.22.3
+<span class="nv">matplotlib</span><span class="o">==</span><span class="m">3</span>.5.2
+<span class="nv">pandas</span><span class="o">==</span><span class="m">1</span>.4.2
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p>Use <a class="reference external" href="http://docs.uppmax.uu.se/software/text_editors/">any text editor available on UPPMAX</a>.</p>
+</div><div aria-labelledby="tab-5-5-2" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-2" name="5-2" role="tabpanel" tabindex="0"><p>Use any text editor, for example, <code class="docutils literal notranslate"><span class="pre">nano</span></code>.</p>
+</div></div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">Step 4: install Python packages</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-6-6-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-2" name="6-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><blockquote>
+<div><p>Install packages by using the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -r requirements.txt</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p>Yup, just do that:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -r requirements.txt</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-2" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-2" name="6-2" role="tabpanel" tabindex="0"><p>Yup, just do that:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -r requirements.txt</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-3-5-check-if-the-python-packages-are-installed">
+<h3>Exercise 3.5: check if the Python packages are installed<a class="headerlink" href="#exercise-3-5-check-if-the-python-packages-are-installed" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">Step 5: check if the Python packages are installed</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-7-7-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-2" name="7-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p>Check that the packages were installed.</p>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip list</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-2" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-2" name="7-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip list</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-3-6-use-the-virtual-environment">
+<h3>Exercise 3.6: use the virtual environment<a class="headerlink" href="#exercise-3-6-use-the-virtual-environment" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">Step 6: use the virtual environment</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-8-8-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-2" name="8-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><p>Export the Python packages our virtual environment uses:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip freeze &gt; requirements.txt</span>
+</pre></div>
+</div>
+<p>View the file <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p>There are many ways to view a file, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cat requirements.txt</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-8-2" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-2" name="8-2" role="tabpanel" tabindex="0"><p>There are many ways to view a file, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cat requirements.txt</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="exercise-3-7-deactivate-the-virtual-environment">
+<h3>Exercise 3.7: deactivate the virtual environment<a class="headerlink" href="#exercise-3-7-deactivate-the-virtual-environment" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">Step 7: deactivate the virtual environment</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-9-9-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-2" name="9-2" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><p>Deactivate the virtual environment</p>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deactivate</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-2" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-2" name="9-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deactivate</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../julia/evaluationJulia.html" class="btn btn-neutral float-left" title="Evaluation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../r/morepackages.html" class="btn btn-neutral float-right" title="More about R packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
