@@ -1,4 +1,4 @@
-site_name: Introduction to running R, Python, and Julia in HPC
+site_name: Introduction to running R, Matlab, and Julia in HPC
 
 nav:
     - Overview: index.md

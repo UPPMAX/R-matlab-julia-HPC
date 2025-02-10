@@ -1,4 +1,4 @@
-.. R-python-julia-matlab-HPC documentation master file, created by
+.. R-matlab-julia-HPC documentation master file, created by
    sphinx-quickstart on Fri Jan 21 18:24:04 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -8,9 +8,9 @@ Introduction to running R, Python, Julia, and Matlab in HPC
 
 .. admonition:: Content
 
-   - This course aims to give a brief, but comprehensive introduction to using Python, Julia, R, and Matlab in an HPC environment.
+   - This course aims to give a brief, but comprehensive introduction to using R, Matlab, and Julia in an HPC environment.
    - You will learn how to
-      - start the **interpreters** of Python, Julia, R, and Matlab by the HPC module system
+      - start the **interpreters** of Julia, R, and Matlab by the HPC module system
       - find site **installed packages/libraries**
       - **install packages/libraries** yourself
       - use **virtual** environments
@@ -19,7 +19,7 @@ Introduction to running R, Python, Julia, and Matlab in HPC
          - write and submit batch scripts 
          - work interactivly
       - Learn about the batch system
-      - Learn about GPUs and Python
+      - Learn about GPUs
       - access parallel tools and run parallel codes 
 
    - This course will consist of lectures interspersed with hands-on sessions
@@ -31,15 +31,15 @@ Introduction to running R, Python, Julia, and Matlab in HPC
 
    - The course is a cooperation between **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on the compute systems at all three centres.
    - Although there are differences we will only have **few seperate sessions**.
-   - Most participants will use UPPMAX's systems for the course, as Kebnekaise and Cosmos are only for local users. Kebnekaise: UmU, IRF, MIUN, SLU, LTU. Cosmos: LU. 
+   - Most participants will use NSC's Tetralith systems for the course, as Kebnekaise, Rackham/Snowy, and Cosmos are only for local users. Kebnekaise: UmU, IRF, MIUN, SLU, LTU. Cosmos: LU, Rackham/Snowy: UU. 
    - The general information given in the course will be true for all/most HPC centres in Sweden. 
 
       - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres. 
-      - When present, links to the Python/Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
+      - When present, links to the Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
 
 
 
-Schedule Fall 2024
+Schedule Spring 2025
 --------------------
 
 .. list-table:: 
@@ -58,7 +58,7 @@ Schedule Fall 2024
 
 .. admonition:: Some practicals
 
-   - `Code of Conduct <https://github.com/UPPMAX/R-python-julia-matlab-HPC/blob/main/CODE_OF_CONDUCT.md>`_
+   - `Code of Conduct <https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/CODE_OF_CONDUCT.md>`_
       - Be nice to each other!
  
    - Zoom
