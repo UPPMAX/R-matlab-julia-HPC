@@ -95,7 +95,7 @@ Schedule Spring 2025
 
    - .. raw:: html
 
-        <a target='_blank' href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/Ebo1tbwHnz5GhBq7p04ex6sB9or9WlqWHHWIlcUTW230mA?e=45q4Aa">Q/A collaboration document</a>
+        <a target='_blank' href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EVIK4UtoAEBLoZaTgEH72-gBrsuVAhf7thq7iXKMzQCa2A?e=Rg3xCS">Q/A collaboration document</a>
 
    - Use this page for the workshop with your questions
    - It helps us identify content that is missing in the course material
@@ -104,7 +104,7 @@ Schedule Spring 2025
         
 .. warning::
 
-   - **Please be sure that you have gone through the `pre-requirements <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`_**
+   - **Please be sure that you have gone through the `pre-requirements <https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html>`_**
    - It mentions the familiarity with the LINUX command line.
    - The applications to connect to the clusters
       - terminals
@@ -116,8 +116,8 @@ Material for improving your programming skills
 - This course does not aim to improve your coding skills.
 - Rather you will learn to understand the ecosystems and navigations for the the different languages on a HPC cluster.
 
-Briefly about the cluster hardware and system at UPPMAX and HPC2N
------------------------------------------------------------------
+Briefly about the cluster hardware and system at NSC, UPPMAX, HPC2N, LUNARC
+---------------------------------------------------------------------------
 
 **What is a cluster?**
 
@@ -141,25 +141,30 @@ Briefly about the cluster hardware and system at UPPMAX and HPC2N
 
 - The **calculation nodes** have to be used for intense computing. 
 
-The HPC centers UPPMAX, HPC2N, and LUNARC
-=========================================
+The HPC centers NSC, UPPMAX, HPC2N, and LUNARC
+==============================================
 
-.. admonition:: Three HPC centers
+.. admonition:: Four HPC centers
 
    - There are many similarities:
    
      - Login vs. calculation/compute nodes
-     - Environmental module system with software hidden until loaded with ``module load``
+     - Environmental module system with (some) software hidden until loaded with ``module load``
      - Slurm batch job and scheduling system
      - ``pip install`` procedure
      
    - ... and small differences:
    
-     - commands to load Python, Python packages, R, Julia, and MATLAB
+     - commands to load R, Julia, and MATLAB
      - slightly different flags to Slurm
      
    - ... and some bigger differences:
-   
+
+
+     - NSC has one NAISS system (and several others)
+
+       - Tetralith (CPUs and GPUs)
+
      - UPPMAX has three different clusters: 
 
        - Rackham for general purpose computing on CPUs only
