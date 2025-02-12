@@ -12,7 +12,7 @@ Parallel and multithreaded functions
 
    - Learn basic concepts in parallel programming
    - Gain knowledge on the tools for parallel programming in different languages
-   - Familiarize with the tools to monitor the usage of resources 
+   - Get familiar with the tools to monitor the usage of resources 
 
 
 What is parallel programming?
