@@ -250,3 +250,12 @@ https://uppmax.github.io/R-python-julia-HPC/R/intro.html
     * Maybe use some from HPC2N/PDC course on R in HPC (14-15 December 2022): https://www.hpc2n.umu.se/events/courses/2022/R-in-HPC
     * UPPMAX background: https://www.uppmax.uu.se/support/user-guides/r-user-guide/
     * HPC2N R package install docco: https://www.hpc2n.umu.se/resources/software/user_installed/r
+
+
+
+## Misc
+- in the future
+    - rust
+- next HPC-python
+  - 12 April
+  - Refer back to the package-installation in this current course
