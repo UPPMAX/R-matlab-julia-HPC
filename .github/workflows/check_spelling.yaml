@@ -25,5 +25,6 @@ jobs:
       - name: Remove folders that do not care about spelling
         run: |
           rm -rf evaluations
+          rm -rf meeting_notes
 
       - uses: igsekor/pyspelling-any@v1.0.4
