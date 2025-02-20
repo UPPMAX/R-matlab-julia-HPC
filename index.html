@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to running R, Python, Julia, and Matlab in HPC &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/tabs.js?v=3030b3cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pre-requirements" href="prereqs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction to running R, Python, Julia, and Matlab in HPC</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-to-running-r-python-julia-and-matlab-in-hpc">
+<h1>Introduction to running R, Python, Julia, and Matlab in HPC<a class="headerlink" href="#introduction-to-running-r-python-julia-and-matlab-in-hpc" title="Link to this heading"></a></h1>
+<div class="admonition-content admonition">
+<p class="admonition-title">Content</p>
+<ul>
+<li><p>This course aims to give a brief, but comprehensive introduction to using R, Matlab, and Julia in an HPC environment.</p></li>
+<li><dl>
+<dt>You will learn how to</dt><dd><ul>
+<li><p>start the <strong>interpreters</strong> of Julia, R, and Matlab by the HPC module system</p></li>
+<li><p>find site <strong>installed packages/libraries</strong></p></li>
+<li><p><strong>install packages/libraries</strong> yourself</p></li>
+<li><p>use <strong>virtual</strong> environments</p></li>
+<li><p>use the <strong>computation nodes</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>write and submit batch scripts</p></li>
+<li><p>work interactivly</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Learn about the batch system</p></li>
+<li><p>Learn about GPUs</p></li>
+<li><p>access parallel tools and run parallel codes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>This course will consist of lectures interspersed with hands-on sessions
+where you get to try out what you have just learned.</p></li>
+<li><p>We aim to give this course in <strong>spring and fall every year</strong>.</p></li>
+</ul>
+</div>
+<div class="admonition-course-approach-to-deal-with-multiple-hpc-centers admonition">
+<p class="admonition-title">Course approach to deal with multiple HPC centers</p>
+<ul>
+<li><p>The course is a cooperation between <strong>UPPMAX</strong> (Rackham, Snowy, Bianca), <strong>HPC2N</strong> (Kebnekaise), and <strong>LUNARC</strong> (Cosmos) and will focus on the compute systems at all three centres.</p></li>
+<li><p>Although there are differences we will only have <strong>few seperate sessions</strong>.</p></li>
+<li><p>Most participants will use NSC’s Tetralith systems for the course, as Kebnekaise, Rackham/Snowy, and Cosmos are only for local users. Kebnekaise: UmU, IRF, MIUN, SLU, LTU. Cosmos: LU, Rackham/Snowy: UU.</p></li>
+<li><p>The general information given in the course will be true for all/most HPC centres in Sweden.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres.</p></li>
+<li><p>When present, links to the Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<section id="schedule-spring-2025">
+<h2>Schedule Spring 2025<a class="headerlink" href="#schedule-spring-2025" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Day</p></th>
+<th class="head"><p>Language</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Monday 24 March</p></td>
+<td><p>R</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tuesday 25 March</p></td>
+<td><p>Matlab</p></td>
+</tr>
+<tr class="row-even"><td><p>Wednesday 26 March</p></td>
+<td><p>Julia</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-some-practicals admonition">
+<p class="admonition-title">Some practicals</p>
+<ul>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></dt><dd><ul class="simple">
+<li><p>Be nice to each other!</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Zoom</dt><dd><ul>
+<li><p>You should have gotten an email with the links</p></li>
+<li><p>Zoom policy:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Zoom chat (maintained by co-teachers):</p>
+<ul>
+<li><p>technical issues of zoom</p></li>
+<li><p>technical issues of your settings</p></li>
+<li><p>direct communication</p></li>
+<li><p>each teacher may have somewhat different approach</p></li>
+</ul>
+</li>
+<li><p>collaboration document (see below):</p>
+<ul>
+<li><p>“explain again”</p></li>
+<li><p>elaborating the course content</p></li>
+<li><p>solutions for your own work</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>Recording policy:</dt><dd><ul>
+<li><p>The lectures and demos will be recorded.</p></li>
+<li><p>The questions asked per microphone during these sessions will be recorded</p></li>
+<li><p>If you don’t want your voice to appear use:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>use the collaboration document (see below)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>The Zoom main room is used for most lectures</p></li>
+<li><p>Some sessions use breakout rooms for exercises, some of which use a silent room</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition-collaboration-document admonition">
+<p class="admonition-title">Collaboration document</p>
+<ul>
+<li><a target='_blank' href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EVIK4UtoAEBLoZaTgEH72-gBrsuVAhf7thq7iXKMzQCa2A?e=Rg3xCS">Q/A collaboration document</a></li>
+<li><p>Use this page for the workshop with your questions</p></li>
+<li><p>It helps us identify content that is missing in the course material</p></li>
+<li><p>We answer those questions as soon as possible</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p><strong>Please be sure that you have gone through the `pre-requirements &lt;https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html&gt;`_</strong></p></li>
+<li><p>It mentions the familiarity with the LINUX command line.</p></li>
+<li><dl class="simple">
+<dt>The applications to connect to the clusters</dt><dd><ul>
+<li><p>terminals</p></li>
+<li><p>remote graphical desktop ThinLinc</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</section>
+<section id="material-for-improving-your-programming-skills">
+<h2>Material for improving your programming skills<a class="headerlink" href="#material-for-improving-your-programming-skills" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This course does not aim to improve your coding skills.</p></li>
+<li><p>Rather you will learn to understand the ecosystems and navigations for the the different languages on a HPC cluster.</p></li>
+</ul>
+</section>
+<section id="briefly-about-the-cluster-hardware-and-system-at-nsc-uppmax-hpc2n-lunarc">
+<h2>Briefly about the cluster hardware and system at NSC, UPPMAX, HPC2N, LUNARC<a class="headerlink" href="#briefly-about-the-cluster-hardware-and-system-at-nsc-uppmax-hpc2n-lunarc" title="Link to this heading"></a></h2>
+<p><strong>What is a cluster?</strong></p>
+<ul class="simple">
+<li><p>Login nodes and calculations/computation nodes</p></li>
+<li><p>A network of computers, each computer working as a <strong>node</strong>.</p></li>
+<li><p>Each node contains several processor cores and RAM and a local disk called scratch.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="_images/node.png" src="_images/node.png" />
+</figure>
+<ul class="simple">
+<li><p>The user logs in to <strong>login nodes</strong>  via Internet through ssh or Thinlinc.</p>
+<ul>
+<li><p>Here the file management and lighter data analysis can be performed.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id1">
+<img alt="https://docs.hpc2n.umu.se/images/cluster.png" src="https://docs.hpc2n.umu.se/images/cluster.png" />
+<figcaption>
+<p><span class="caption-text">Source: <a class="reference external" href="https://docs.hpc2n.umu.se/images/cluster.png">https://docs.hpc2n.umu.se/images/cluster.png</a></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The <strong>calculation nodes</strong> have to be used for intense computing.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-hpc-centers-nsc-uppmax-hpc2n-and-lunarc">
+<h1>The HPC centers NSC, UPPMAX, HPC2N, and LUNARC<a class="headerlink" href="#the-hpc-centers-nsc-uppmax-hpc2n-and-lunarc" title="Link to this heading"></a></h1>
+<div class="admonition-four-hpc-centers admonition">
+<p class="admonition-title">Four HPC centers</p>
+<ul class="simple">
+<li><p>There are many similarities:</p>
+<ul>
+<li><p>Login vs. calculation/compute nodes</p></li>
+<li><p>Environmental module system with (some) software hidden until loaded with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code></p></li>
+<li><p>Slurm batch job and scheduling system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> procedure</p></li>
+</ul>
+</li>
+<li><p>… and small differences:</p>
+<ul>
+<li><p>commands to load R, Julia, and MATLAB</p></li>
+<li><p>slightly different flags to Slurm</p></li>
+</ul>
+</li>
+<li><p>… and some bigger differences:</p>
+<ul>
+<li><p>NSC has one NAISS system (and several others)</p>
+<ul>
+<li><p>Tetralith (CPUs and GPUs)</p></li>
+</ul>
+</li>
+<li><p>UPPMAX has three different clusters:</p>
+<ul>
+<li><p>Rackham for general purpose computing on CPUs only</p></li>
+<li><p>Snowy available for local projects and suits long jobs (&lt; 1 month) and has GPUs</p></li>
+<li><p>Bianca for sensitive data and has GPUs</p></li>
+</ul>
+</li>
+<li><p>HPC2N has Kebnekaise with GPUs.</p></li>
+<li><p>LUNARC has Cosmos, with 9 GPUs (4 are partitions of Intel nodes).</p></li>
+<li><p>LUNARC has Desktop On Demand, allowing some applications to run on the back-end without the use of a terminal or batch script.</p></li>
+<li><p>Conda is recommended only for UPPMAX and LUNARC users, and only using the conda-forge repository.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="prepare-your-environment-now">
+<h2>Prepare your environment now!<a class="headerlink" href="#prepare-your-environment-now" title="Link to this heading"></a></h2>
+<div class="admonition-log-in-and-create-a-user-folder-if-not-done-already exercise important admonition" id="exercise-0">
+<p class="admonition-title">Log in and create a user folder (if not done already)</p>
+<ul class="simple">
+<li><p>Please log in to Rackham, Kebnekaise, Cosmos or other cluster that you are using.</p></li>
+</ul>
+<div class="admonition-use-thinlinc-or-terminal admonition">
+<p class="admonition-title">Use Thinlinc or terminal?</p>
+<ul class="simple">
+<li><p>It is up to you!</p></li>
+<li><p>Graphics come easier with Thinlinc</p></li>
+<li><p>For this course, when having many windows open, it may sometimes be better to run in terminal, for screen space issues.</p></li>
+</ul>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Cosmos</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ol class="arabic simple">
+<li><p>Log in to Rackham!</p></li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p>Terminal: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">&lt;user&gt;&#64;rackham.uppmax.uu.se</span></code></p></li>
+<li><p>ThinLinc app:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>server: <code class="docutils literal notranslate"><span class="pre">rackham-gui.uppmax.uu.se</span></code></p></li>
+<li><p>username: <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>ThinLinc in web browser: <code class="docutils literal notranslate"><span class="pre">https://rackham-gui.uppmax.uu.se</span></code></p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>If not already: <strong>create a working directory</strong> where you can code along.</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>We recommend creating it under the course project storage directory</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>Example. If your username is “mrspock” and you are at UPPMAX, then we recommend you create this folder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>/proj/r-py-jl-m-rackham/mrspock/
+</pre></div>
+</div>
+</li>
+</ol>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><ul>
+<li><p>Kebnekaise through terminal: <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;&#64;kebnekaise.hpc2n.umu.se</span></code></p></li>
+<li><p>Kebnekaise through ThinLinc app</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>server: <code class="docutils literal notranslate"><span class="pre">kebnekaise-tl.hpc2n.umu.se</span></code></p></li>
+<li><p>username: <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Create a working directory where you can code along.</p>
+<ul class="simple">
+<li><p>Example. If your username is <code class="docutils literal notranslate"><span class="pre">bbrydsoe</span></code> and you are at HPC2N, then we recommend you create this folder:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/proj/nobackup/r-py-jl-m/bbrydsoe/
+</pre></div>
+</div>
+</li>
+</ul>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><ul>
+<li><p>Cosmos through terminal: <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;&#64;cosmos.lunarc.lu.se</span></code></p></li>
+<li><p>Cosmos through ThinLinc app,  (requires 2FA)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>server: <code class="docutils literal notranslate"><span class="pre">cosmos-dt.lunarc.lu.se</span></code></p></li>
+<li><p>username: <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Create a working directory where you can code along. Users should have plenty of space in their home directories.</p></li>
+</ul>
+</div></div>
+</div>
+<div class="admonition-get-exercises admonition">
+<p class="admonition-title">Get exercises</p>
+<p>There are three main ways to get the exercises. In any case, you should do so from the directory you will be working in, on either Rackham, Kebnekaise, or Cosmos:</p>
+<ul>
+<li><p>Copy them from the computer system you are on (only until 2024-11-01) and unpack them by entering <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xzvf</span> <span class="pre">exercises.tar.gz</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/proj/r-py-jl-m-rackham/exercises.tar.gz</span></code> .</p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/proj/nobackup/r-py-jl-m/exercises.tar.gz</span></code> .</p></li>
+<li><p>(No local repository for Cosmos)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Clone them with git from the repo (see below about a warning): <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/UPPMAX/R-python-julia-matlab-HPC.git</span></code></p></li>
+<li><p>Copy the tarball from the web into your working directory with <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz</span></code> and unpack them with <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xzvf</span> <span class="pre">exercises.tar.gz</span></code></p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do you want the whole repo?</p>
+<ul class="simple">
+<li><p>If you are happy with just the exercises, the tarballs of the language specific ones are enough.</p></li>
+<li><p>By cloning the whole repo, you get all the materials, planning documents, and exercises.</p></li>
+<li><p>If you think this makes sense type this in the command line in the directory you want it.
+- <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/UPPMAX/R-python-julia-matlab-HPC.git</span></code></p></li>
+<li><dl class="simple">
+<dt>Note however, that if you during exercise work modify files, they will be overwritten if you make <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> (like if the teacher needs to modify something).</dt><dd><ul>
+<li><p>Then make a copy somewhere else with your answers!</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition-summary-of-project-id-and-directory-name admonition">
+<p class="admonition-title">Summary of Project ID and directory name</p>
+<ul>
+<li><p>Main project on UPPMAX:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Project ID: <code class="docutils literal notranslate"><span class="pre">naiss2024-22-1202</span></code></p></li>
+<li><p>Directory name on rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Please create a suitably named subdirectory below <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code>, for your own exercises.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Local project on HPC2N:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Project ID: <code class="docutils literal notranslate"><span class="pre">hpc2n2024-114</span></code></p></li>
+<li><p>Directory name on Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code></p></li>
+<li><p>Please create a suitably named subdirectory below <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code>, for your own exercises.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Where to work on LUNARC</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Project ID: <code class="docutils literal notranslate"><span class="pre">lu2024-7-80</span></code> (for use in slurm scripts)</p></li>
+<li><p>Home directories have much larger quotas at LUNARC than at UPPMAX or HPC2N. Create a suitable sub-directory in your home directory or a personal project folder.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</section>
+<section id="content-of-the-course">
+<h2>Content of the course<a class="headerlink" href="#content-of-the-course" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="prereqs.html">Pre-requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prereqs.html#log-in-to-one-of-the-hpc-systems-covered-in-this-course">Log in to one of the HPC systems covered in this course</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prereqs.html#use-a-text-editor">Use a text editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prereqs.html#get-familiar-with-the-linux-bash-command-line">Get familiar with the Linux/Bash command line</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/login.html">Log in session</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/login.html#log-in">Log in!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/login.html#test-an-editor">Test an editor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common/ondemand-desktop.html">Desktop On Demand</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/ondemand-desktop.html#what-is-desktop-on-demand">What is Desktop On Demand?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/ondemand-desktop.html#when-should-i-use-it">When should I use it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/ondemand-desktop.html#getting-started">Getting Started</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common/use_tarball.html">Use the tarball with exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/use_tarball.html#procedure">Procedure</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="r/introR.html">Introduction R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/introR.html#first-overview-of-r">First overview of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/introR.html#schedule">Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/introR.html#exercises-used-in-the-course">Exercises used in the course</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/load_runR.html">Load and run R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#find-an-r-module">1. Find an R module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#load-an-r-module">2. Load an R module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#use-the-r-interpreter">3. Use the R interpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#run-an-r-script">4. Run an R script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#exercise-1-find-an-r-module">Exercise 1: find an R module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#exercise-2-load-an-r-module">Exercise 2: load an R module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#exercise-3-use-the-r-interpreter">Exercise 3: use the R interpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#exercise-4-run-an-r-script">Exercise 4: run an R script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#exercise-5-download-and-extract-the-tarbal-with-exercises">Exercise 5: download and extract the tarbal with exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/load_runR.html#conclusions">Conclusions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/packagesR.html">Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/packagesR.html#package-libraries">Package libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/packagesR.html#preinstalled-package-libraries">Preinstalled package libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/packagesR.html#installing-your-own-packages">Installing your own packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/packagesR.html#install-own-packages-on-bianca">Install own packages on Bianca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/packagesR.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/isolatedR.html#general-procedures">General procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/isolatedR.html#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/isolatedR.html#conda-uppmax">Conda (UPPMAX)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/batchR.html">Running R in batch mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/batchR.html#overview-of-the-uppmax-systems">Overview of the UPPMAX systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/batchR.html#overview-of-the-hpc2n-system">Overview of the HPC2N system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/batchR.html#overview-of-the-lunarc-system">Overview of the LUNARC system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/batchR.html#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/batchR.html#useful-commands-to-the-batch-system">Useful commands to the batch system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/batchR.html#example-r-batch-scripts">Example R batch scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/batchR.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#what-is-parallel-programming">What is parallel programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#why-is-parallel-programming-needed">Why is parallel programming needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#common-parallel-programming-paradigms">Common parallel programming paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/interactiveR.html">Interactive work on the compute nodes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/interactiveR.html#overview-of-the-uppmax-systems">Overview of the UPPMAX systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/interactiveR.html#overview-of-the-hpc2n-system">Overview of the HPC2N system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/interactiveR.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/interactiveR.html#r-interactively-on-the-compute-nodes">R “interactively” on the compute nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/rstudio.html">Using RStudio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/rstudio.html#on-uppmax">On UPPMAX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/rstudio.html#on-hpc2n">On HPC2N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/rstudio.html#at-lunarc">At LUNARC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/MLR.html">ML with R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/MLR.html#running-your-code">Running your code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/MLR.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/evaluationR.html">Evaluation</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matlab/introMatlab.html">Introduction to MATLAB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matlab/introMatlab.html#preliminary-schedule">Preliminary schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/introMatlab.html#what-is-matlab">What is MATLAB?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/introMatlab.html#features-of-matlab">Features of MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/introMatlab.html#more-on-matlab">More on MATLAB?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/introMatlab.html#other-naiss-centres">Other NAISS centres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/load_runMatlab.html">Load and Run MATLAB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matlab/load_runMatlab.html#check-for-matlab-versions">Check for MATLAB versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/load_runMatlab.html#load-a-matlab-module">Load a MATLAB module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/load_runMatlab.html#start-matlab-and-run-a-script">Start MATLAB and Run a Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/load_runMatlab.html#starting-the-matlab-gui">Starting the MATLAB GUI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matlab/slurmMatlab.html#useful-commands-to-the-batch-system">Useful commands to the batch system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/slurmMatlab.html#first-time-configuration">First time configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/slurmMatlab.html#matlab-terminal-interface">MATLAB terminal interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/slurmMatlab.html#matlab-batch-jobs">MATLAB batch jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/slurmMatlab.html#gpu-code">GPU code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/jobsMatlab.html">MATLAB GUI and SLURM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matlab/jobsMatlab.html#matlab-desktop-graphical-interface">MATLAB Desktop/graphical interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/jobsMatlab.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#what-is-parallel-programming">What is parallel programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#why-is-parallel-programming-needed">Why is parallel programming needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#common-parallel-programming-paradigms">Common parallel programming paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/add_onsMatlab.html">Add-Ons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matlab/add_onsMatlab.html#matlab-add-ons-manager">MATLAB Add-Ons manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/add_onsMatlab.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matlab/local_desktopMatlab.html#let-s-get-started-together">Let’s get started together!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab/local_desktopMatlab.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="julia/introJulia.html">Introduction Julia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia/introJulia.html#preliminary-schedule">Preliminary schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/introJulia.html#what-is-julia">What is Julia?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/introJulia.html#features-of-julia">Features of Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/introJulia.html#shortcomings-of-julia">Shortcomings of Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/introJulia.html#more-on-julia">More on Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/introJulia.html#other-naiss-centres">Other NAISS centres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="julia/load_runJulia.html">Load and run Julia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia/load_runJulia.html#check-for-julia-versions">Check for Julia versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/load_runJulia.html#load-a-julia-module">Load a Julia module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/load_runJulia.html#workflow-in-julia-demo">Workflow in Julia (DEMO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/load_runJulia.html#run">Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/load_runJulia.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="julia/isolatedJulia.html">Packages and isolated environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia/isolatedJulia.html#create-a-project-environment">Create a project environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/isolatedJulia.html#create-a-package-environment">Create a package environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/isolatedJulia.html#customizing-the-set-of-visible-environments">Customizing the set of visible environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/isolatedJulia.html#environment-stacks">Environment stacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/isolatedJulia.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="julia/batchJulia.html">Running Julia in batch mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia/batchJulia.html#useful-commands-to-the-batch-system">Useful commands to the batch system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/batchJulia.html#examples-of-batch-scripts-for-julia">Examples of batch scripts for Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/batchJulia.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#what-is-parallel-programming">What is parallel programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#why-is-parallel-programming-needed">Why is parallel programming needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#common-parallel-programming-paradigms">Common parallel programming paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/parallel.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia/interactiveJulia.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/interactiveJulia.html#julia-interactively-on-the-compute-nodes">Julia “interactively” on the compute nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/interactiveJulia.html#running-ijulia-and-jupyter">Running IJulia and Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/interactiveJulia.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="extra/isolated_extra.html">Isolated environments, extra exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extra/isolated_extra.html#exercise-2-work-with-example-gpu">Exercise 2: work with <code class="docutils literal notranslate"><span class="pre">Example-gpu</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="extra/isolated_extra.html#exercise-3-export-and-import-a-virtual-environment">Exercise 3: export and import a virtual environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/morepackages.html">More about R packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/morepackages.html#r-packages-a-short-primer">R packages: A short Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/morepackages.html#finding-out-if-an-r-package-is-installed">Finding out if an R package is installed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/morepackages.html#installing-your-own-packages">Installing your own packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/morepackages.html#install-own-packages-on-bianca">Install own packages on Bianca</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="r/packagesBianca.html">Packages at Bianca (parallel session)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r/packagesBianca.html#check-current-available-packages">Check current available packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r/packagesBianca.html#install-own-packages-on-bianca">Install own packages on Bianca</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extra/matlab.html">Extra reading about MATLAB in HPC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extra/matlab.html#interaction-with-other-tools">Interaction with other tools</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="prereqs.html" class="btn btn-neutral float-right" title="Pre-requirements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
