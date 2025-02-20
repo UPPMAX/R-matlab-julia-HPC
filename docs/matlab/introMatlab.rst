@@ -160,7 +160,10 @@ Material for improving your programming skills
 If you have a Mathworks account that is less than 2 years old, Mathworks offers free `MATLAB self-paced online training courses <https://matlabacademy.mathworks.com/?page=1&fq=all-matlab&sort=featured&s_tid=ln_acad_learn_oc>`_. Students at any academic institution with a campus-wide license can use their university email addresses to create a free account to access these resources.
 
 The Mondays with MATLAB lecture series is offered every September. These and other events are posted `here <https://se.mathworks.com/company/events.html>`_. Mondays with MATLAB consist of 3 introductory lectures:
+
 - Introduction to MATLAB
+- Low-code AI/deep learning in MATLAB
+- Hands-on exercises on your national HPC resources (varies by country)
 
 If you have an account, you will be automatically signed up for the Mathworks mailing list, which will notify you of upcoming webinars as well as some featured packages. The webinars cover a broad range of topics and disciplines at varying skill levels, although these seminars tend to be more advanced.
 
