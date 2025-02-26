@@ -162,8 +162,8 @@ Serial code + self-installed package in virt. env.
 
 .. tabs::
 
-    Short serial example for running on Julia with a virtual environment. Create an environment ``my-third-env`` 
-    and install the package ``DFTK``. Here, there are batch scripts for using this environment:
+   Short serial example for running on Julia with a virtual environment. Create an environment ``my-third-env`` 
+   and install the package ``DFTK``. Here, there are batch scripts for using this environment:
 
    .. tab:: UPPMAX
 
@@ -292,10 +292,10 @@ Parallel code
 
 .. tabs::
 
-   .. tab:: UPPMAX
+    The ``Threaded`` and ``Distributed`` packages are included in the Base installation. However, 
+    in order to use MPI with Julia you will need to follow the next steps (only the first time): 
 
-        The ``Threaded`` and ``Distributed`` packages are included in the Base installation. However, 
-        in order to use MPI with Julia you will need to follow the next steps (only the first time): 
+   .. tab:: UPPMAX
 
         .. code-block:: console
 
@@ -325,9 +325,31 @@ Parallel code
             
 
    .. tab:: HPC2N
+       
+        .. code-block:: console
+      
+            # Load the tool chain which contains a MPI library
+            $ ml foss/2021b
+            # Load Julia
+            $ ml Julia/1.8.5-linux-x86_64
+            # Start Julia on the command line
+            $ julia 
+            # Change to ``package mode`` and add the ``MPI`` package 
+            (v1.8) pkg> add MPI 
 
-        The ``Threaded`` and ``Distributed`` packages are included in the Base installation. However, 
-        in order to use MPI with Julia you will need to follow the next steps (only the first time): 
+            # In the ``julian`` mode run these commands:
+            $ julia> using MPI 
+            $ julia> MPI.install_mpiexecjl() 
+                 [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
+                 [ Info: Done!
+
+        .. code-block:: console
+
+            # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+            $ export PATH=/home/u/username/.julia/bin:$PATH
+            # Now the wrapper should be available on the command line 
+
+   .. tab:: LUNARC
        
         .. code-block:: console
       
@@ -354,34 +376,27 @@ Parallel code
             $ export PATH=/home/u/username/.julia/bin:$PATH
             # Now the wrapper should be available on the command line 
 
-   .. tab:: LUNARC
-
-        The ``Threaded`` and ``Distributed`` packages are included in the Base installation. However, 
-        in order to use MPI with Julia you will need to follow the next steps (only the first time): 
+   .. tab:: PDC
        
         .. code-block:: console
       
-            # Load the tool chain which contains a MPI library
-            $ ml foss/2021b
-            # Load Julia
-            $ ml Julia/1.8.5-linux-x86_64
+            # Load the tool chain for Julia which already contains a MPI library
+            $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
             # Start Julia on the command line
             $ julia 
             # Change to ``package mode`` and add the ``MPI`` package 
-            (v1.8) pkg> add MPI 
-            # In the ``julian`` mode run these commands:
+            (v1.10) pkg> add MPI 
 
-        .. code-block:: julia
-        
-            julia> using MPI 
-            julia> MPI.install_mpiexecjl() 
-                 [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
+            # In the ``julian`` mode run these commands:
+            $ julia> using MPI 
+            $ julia> MPI.install_mpiexecjl() 
+                 [ Info: Installing `mpiexecjl` to `/cfs/klemming/home/u/username/.julia/bin`...
                  [ Info: Done!
 
         .. code-block:: console
 
             # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
-            $ export PATH=/home/u/username/.julia/bin:$PATH
+            $ export PATH=/cfs/klemming/home/u/username/.julia/bin:$PATH
             # Now the wrapper should be available on the command line 
 
 .. tabs:: 
