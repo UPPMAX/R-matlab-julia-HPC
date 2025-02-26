@@ -160,10 +160,10 @@ Serial code
 Serial code + self-installed package in virt. env. 
 ''''''''''''''''''''''''''''''''''''''''''''''''''
 
-.. tabs::
+Short serial example for running on Julia with a virtual environment. Create an environment ``my-third-env`` 
+and install the package ``DFTK``. Here, there are batch scripts for using this environment:
 
-   Short serial example for running on Julia with a virtual environment. Create an environment ``my-third-env`` 
-   and install the package ``DFTK``. Here, there are batch scripts for using this environment:
+.. tabs::
 
    .. tab:: UPPMAX
 
@@ -290,10 +290,11 @@ Serial code + self-installed package in virt. env.
 Parallel code
 '''''''''''''
 
-.. tabs::
+The ``Threaded`` and ``Distributed`` packages are included in the Base installation. However, 
+in order to use MPI with Julia you will need to follow the next steps (only the first time): 
 
-    The ``Threaded`` and ``Distributed`` packages are included in the Base installation. However, 
-    in order to use MPI with Julia you will need to follow the next steps (only the first time): 
+
+.. tabs::
 
    .. tab:: UPPMAX
 
@@ -323,7 +324,6 @@ Parallel code
             $ export PATH=~/.julia/bin:$PATH
             # Now the wrapper should be available on the command line 
             
-
    .. tab:: HPC2N
        
         .. code-block:: console
