@@ -122,7 +122,7 @@ What is Julia?
 --------------
 
 Julia is a relatively new Programming language (pre-released 1.0 announced in 2018), compared to well-known 
-and standard languages such as Fortran, C, C++, R, and Python (some of them dated back to the 70's). 
+and standard languages such as Fortran, C, C++, R, and Python (some of them date back to the 70's). 
 A common pattern in those well-established languages (traditional paradigm) is that they look after either:
 
   - productivity (fast deployment, fast prototyping) or,
@@ -180,7 +180,7 @@ More on Julia
    - UPPMAX: http://docs.uppmax.uu.se/software/julia/
    - HPC2N: https://www.hpc2n.umu.se/resources/software/julia
    - LUNARC: The user demand on Julia has been low, so there is currently no site-specific documentation.
-- Official Julia documentation is found `here: <https://docs.julialang.org/en/v1/>`_
+- Official Julia documentation is found `here <https://docs.julialang.org/en/v1/>`_
 - Slack channel for Julia and instructions for joining it are found here: https://julialang.org/slack/
 - `HPC2N YouTube video on Julia in HPC <https://www.youtube.com/watch?v=bXHe7Kj3Xxg>`_
 
