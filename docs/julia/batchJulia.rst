@@ -73,9 +73,9 @@ Examples of batch scripts for Julia
 Serial code
 '''''''''''
 
-.. tabs::
+Short serial example for running on different clusters.
 
-    Short serial example for running on different clusters.
+.. tabs::
 
    .. tab:: UPPMAX
 
@@ -596,7 +596,7 @@ The corresponding batch scripts for these examples are given here:
    
       .. tabs::
 
-         .. tab:: job-serial.sh  
+         .. tab:: serial.sh  
 
             .. code-block:: bash
         
@@ -614,7 +614,7 @@ The corresponding batch scripts for these examples are given here:
                time julia serial.jl
 
 
-         .. tab:: job-threaded.sh 
+         .. tab:: threaded.sh 
    
             .. code-block:: bash
             
@@ -631,7 +631,7 @@ The corresponding batch scripts for these examples are given here:
                # "time" command is optional
                time julia -t 8 threaded.jl               
    
-         .. tab:: job-distributed.sh 
+         .. tab:: distributed.sh 
    
    
             .. code-block:: bash
@@ -649,7 +649,7 @@ The corresponding batch scripts for these examples are given here:
                # "time" command is optional
                time julia -p 8 distributed.jl  
    
-         .. tab:: job-mpi.sh 
+         .. tab:: mpi.sh 
    
             .. code-block:: bash
            
@@ -674,7 +674,7 @@ The corresponding batch scripts for these examples are given here:
    
       .. tabs::
 
-         .. tab:: job-serial.sh  
+         .. tab:: serial.sh  
 
             .. code-block:: bash
         
@@ -693,7 +693,7 @@ The corresponding batch scripts for these examples are given here:
                time julia serial.jl
 
 
-         .. tab:: job-threaded.sh 
+         .. tab:: threaded.sh 
    
             .. code-block:: bash
             
@@ -711,7 +711,7 @@ The corresponding batch scripts for these examples are given here:
                # "time" command is optional
                time julia -t 8 threaded.jl               
    
-         .. tab:: job-distributed.sh 
+         .. tab:: distributed.sh 
    
    
             .. code-block:: sh
@@ -730,7 +730,7 @@ The corresponding batch scripts for these examples are given here:
                # "time" command is optional
                time julia -p 8 distributed.jl  
    
-         .. tab:: job-mpi.sh 
+         .. tab:: mpi.sh 
    
             .. code-block:: sh
            
@@ -755,7 +755,7 @@ The corresponding batch scripts for these examples are given here:
    
       .. tabs::
 
-         .. tab:: job-serial.sh  
+         .. tab:: serial.sh  
 
             .. code-block:: bash
         
@@ -774,7 +774,7 @@ The corresponding batch scripts for these examples are given here:
                time julia serial.jl
 
 
-         .. tab:: job-threaded.sh 
+         .. tab:: threaded.sh 
    
             .. code-block:: bash
             
@@ -792,7 +792,7 @@ The corresponding batch scripts for these examples are given here:
                # "time" command is optional
                time julia -t 8 threaded.jl               
    
-         .. tab:: job-distributed.sh 
+         .. tab:: distributed.sh 
    
    
             .. code-block:: sh
@@ -811,7 +811,7 @@ The corresponding batch scripts for these examples are given here:
                # "time" command is optional
                time julia -p 8 distributed.jl  
    
-         .. tab:: job-mpi.sh 
+         .. tab:: mpi.sh 
    
             .. code-block:: sh
            
@@ -832,7 +832,95 @@ The corresponding batch scripts for these examples are given here:
    
                time mpiexecjl -np 8 julia mpi.jl
 
- 
+   .. tab:: PDC 
+   
+      .. tabs::
+
+         .. tab:: serial.sh  
+
+            .. code-block:: bash
+        
+               #!/bin/bash            
+               #SBATCH -A naiss--------     # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH  -p shared           # name of the queue
+               #SBATCH  --ntasks=1          # nr. of tasks
+               #SBATCH --cpus-per-task=1    # nr. of cores per-task
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+   
+               # "time" command is optional
+               time julia serial.jl
+
+
+         .. tab:: threaded.sh 
+   
+            .. code-block:: bash
+            
+               #!/bin/bash            
+               #SBATCH -A naiss--------     # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH  -p shared           # name of the queue
+               #SBATCH  --ntasks=1          # nr. of tasks
+               #SBATCH --cpus-per-task=8    # nr. of cores per-task
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+   
+               # "time" command is optional
+               time julia -t 8 threaded.jl               
+   
+         .. tab:: distributed.sh 
+   
+            .. code-block:: bash
+           
+               #!/bin/bash            
+               #SBATCH -A naiss--------     # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH  -p shared           # name of the queue
+               #SBATCH  --ntasks=1          # nr. of tasks
+               #SBATCH --cpus-per-task=8    # nr. of cores per-task
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+   
+               # "time" command is optional
+               time julia -p 8 distributed.jl  
+   
+         .. tab:: mpi.sh 
+   
+            .. code-block:: bash
+           
+               #!/bin/bash            
+               #SBATCH -A naiss--------     # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH  -p shared           # name of the queue
+               #SBATCH  --ntasks=8          # nr. of tasks
+               #SBATCH --cpus-per-task=1    # nr. of cores per-task
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+   
+               # export the PATH of the Julia MPI wrapper
+               export PATH=cfs/klemming/home/u/username/.julia/bin:$PATH
+   
+               time mpiexecjl -np 8 julia mpi.jl
+
+
+
 GPU code
 ''''''''
 
