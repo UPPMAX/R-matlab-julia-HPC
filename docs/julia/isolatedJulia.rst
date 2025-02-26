@@ -389,14 +389,9 @@ A selection of the Julia packages and libraries installed on UPPMAX and HPC2N ar
           - DistributedArrays
           - PlotlyJS
 
-   .. tab:: HPC2N
+   .. tab:: HPC2N/LUNARC/PDC
 
-        The Julia versions installed at HPC2N include only the Base and Standard library
-        modules.
-
-   .. tab:: LUNARC
-
-        The Julia versions installed at LUNARC include only the Base and Standard library
+        The Julia versions installed at these centers include only the Base and Standard library
         modules.
 
 Exercises
@@ -466,7 +461,7 @@ Exercises
    - Environments in Julia created by Julia itself so third party software are not required.
    - You can check for centrally installed packages at UPPMAX
       - from the Julia shell 
-      - from BASH shell with ``ml help julia/1.8.5``
+      - from BASH shell with ``ml help julia/<version>``
 
    
  

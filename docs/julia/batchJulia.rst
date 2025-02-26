@@ -41,7 +41,8 @@ SLURM is an Open Source job scheduler, which provides three key functions
 
 In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
 Guides and documentation at: `HPC2N <http://www.hpc2n.umu.se/support>`_, `UPPMAX <https://docs.uppmax.uu.se/cluster_guides/slurm/>`_,
-and `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/>`_.
+`LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/>`_, and 
+`PDC < https://support.pdc.kth.se/doc/support/>`_.
 
 **Workflow**
 
@@ -74,9 +75,9 @@ Serial code
 
 .. tabs::
 
-   .. tab:: UPPMAX
+    Short serial example for running on different clusters.
 
-        Short serial example script for running on Rackham with Julia v. 1.8.5 
+   .. tab:: UPPMAX
 
         .. code-block:: bash
 
@@ -92,8 +93,6 @@ Serial code
             
 
    .. tab:: HPC2N
-
-        Short serial example for running on Kebnekaise with Julia v. 1.8.5
        
         .. code-block:: bash
    
@@ -112,8 +111,6 @@ Serial code
             julia serial.jl              # run the serial script
             
    .. tab:: LUNARC
-
-        Short serial example for running on Cosmos with Julia v. 1.8.5
        
         .. code-block:: bash
    
@@ -130,7 +127,25 @@ Serial code
             ml Julia/1.8.5-linux-x86_64  # Julia module
                        
             julia serial.jl              # run the serial script
-            
+
+   .. tab:: PDC
+       
+        .. code-block:: bash
+   
+            #!/bin/bash            
+            #SBATCH -A naiss--------     # your project_ID       
+            #SBATCH -J job-serial        # name of the job          
+            #SBATCH  -p shared           # name of the queue
+            #SBATCH  --ntasks=1          # nr. of tasks
+            #SBATCH --cpus-per-task=1    # nr. of cores per-task
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+            # Load dependencies and Julia version
+            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+
+            julia serial.jl              # run the serial script            
 
    .. tab:: serial.jl 
    
@@ -147,10 +162,10 @@ Serial code + self-installed package in virt. env.
 
 .. tabs::
 
-   .. tab:: UPPMAX
+    Short serial example for running on Julia with a virtual environment. Create an environment ``my-third-env`` 
+    and install the package ``DFTK``. Here, there are batch scripts for using this environment:
 
-        Short serial example for running on Rackham. Loading Julia v. 1.8.5 and using any Julia packages you have installed
-        with virtual environment. 
+   .. tab:: UPPMAX
 
         .. code-block:: bash
         
@@ -176,9 +191,6 @@ Serial code + self-installed package in virt. env.
             [acf6eb54] DFTK v0.6.2
 
    .. tab:: HPC2N
-
-        Short serial example for running on Kebnekaise. Loading Julia v. 1.8.5 and using any Julia packages you have installed
-        with virtual environment. 
        
         .. code-block:: bash
 
@@ -206,9 +218,6 @@ Serial code + self-installed package in virt. env.
             [acf6eb54] DFTK v0.6.2
 
    .. tab:: LUNARC
-
-        Short serial example for running on Cosmos. Loading Julia v. 1.8.5 and using any Julia packages you have installed
-        with virtual environment.
 
         .. code-block:: bash
    
@@ -238,6 +247,35 @@ Serial code + self-installed package in virt. env.
             [acf6eb54] DFTK v0.6.2                       
             julia serial.jl              # run the serial script
 
+   .. tab:: PDC
+       
+        .. code-block:: bash
+      
+            #!/bin/bash            
+            #SBATCH -A naiss--------     # your project_ID       
+            #SBATCH -J job-serial        # name of the job          
+            #SBATCH  -p shared           # name of the queue
+            #SBATCH  --ntasks=1          # nr. of tasks
+            #SBATCH --cpus-per-task=1    # nr. of cores per-task
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+            # Load dependencies and Julia version
+            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+                       
+            # Move to the directory where the ".toml" files 
+            # for the environment are located
+            julia --project=. serial-env.jl  # run the script 
+
+        If this works, you will see the installed packages in the output file. In the present case
+        because I installed the ``DFTK`` package only in ``my-third-env`` environment, I can 
+        see the following output:
+
+        .. code-block:: sh
+
+            Status `/pfs/proj/nobackup/path/Julia-Test/my-third-env/Project.toml`
+            [acf6eb54] DFTK v0.6.2
 
    .. tab:: serial-env.jl 
    
@@ -247,8 +285,6 @@ Serial code + self-installed package in virt. env.
         
             using Pkg
             Pkg.status()
-
-
 
 
 Parallel code

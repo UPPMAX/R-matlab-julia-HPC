@@ -68,8 +68,8 @@ Check for Julia versions
          $ module spider julia
 
       Notice that the output if you are working on the Intel (*kebnekaise.hpc2n.umu.se*) or AMD 
-      (*kebnekaise-amd.hpc2n.umu.se*) login nodes. In the former, you will see more installed versions of
-      Julia as this hardware is older.
+      (*kebnekaise-amd.hpc2n.umu.se*) login nodes is different. In the former, you will see more 
+      installed versions of Julia as this hardware is older.
       
       To see how to load a specific version of Julia, including the prerequisites, do 
 
