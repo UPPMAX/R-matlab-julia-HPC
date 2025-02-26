@@ -924,8 +924,11 @@ The corresponding batch scripts for these examples are given here:
 GPU code
 ''''''''
 
-In order to use the NVIDIA GPUs with Julia, you will need to load a CUDA toolkit module on the
-cluster and install the ``CUDA`` package in Julia as in the next sequence of commands:
+In order to use the NVIDIA GPUs with Julia (UPPMAX, HPC2N, and LUNARC), you will need to load a CUDA toolkit module on the
+cluster and install the ``CUDA`` package in Julia. 
+
+In the case of AMD GPUs with Julia (PDC and HPC2N), you will need to load a ROCM toolkit module on the
+cluster and install the ``AMDGPU`` package in Julia as in the next sequence of commands.
 
 
 .. tabs::
@@ -975,6 +978,19 @@ cluster and install the ``CUDA`` package in Julia as in the next sequence of com
                 Resolving package versions...
                 Installed CEnum ───────── v0.4.2
                 ...
+
+   .. tab:: PDC
+
+        .. code-block:: console
+
+            $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12   # Julia version
+            $ ml rocm/5.7.0  craype-accel-amd-gfx90a   # ROCM toolkit module
+            $ julia
+            (v1.10) pkg> add AMDGPI 
+                Updating registry at `~/.julia/registries/General.toml`
+                Resolving package versions...
+                Installed CEnum ───────── v0.4.2
+
 
 Once this initial setting is completed, you will be able to use the GPUs available on the
 cluster. Here, there is a simple example for computing a matrix-matrix multiplication. As a 
@@ -1072,6 +1088,68 @@ reference point, we show the simulation on CPUs as well.
             # Calculation on GPU
             @time A*B
                  
+
+.. tabs::
+
+        
+   .. tab:: PDC
+
+        .. code-block:: sh
+
+            #!/bin/bash            
+            #SBATCH -A naiss--------     # your project_ID       
+            #SBATCH -J job               # name of the job          
+            #SBATCH  -p gpu              # name of the queue
+            #SBATCH  --ntasks=1          # nr. of tasks
+            #SBATCH --cpus-per-task=1    # nr. of cores per-task
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+            # Load dependencies and Julia version
+            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+            # ROCM toolkit module
+            ml rocm/5.7.0  craype-accel-amd-gfx90a   
+
+            julia script-gpu.jl
+
+
+
+   .. tab:: script-gpu.jl 
+   
+        Julia AMD GPU example code.
+   
+        .. code-block:: julia
+         
+            using AMDGPU
+
+            AMDGPU.versioninfo()  # Display AMD GPU information
+
+            N = 2^8
+            x = rand(N, N)
+            y = rand(N, N)
+
+            A = ROCArray(x)  # Transfer data to AMD GPU
+            B = ROCArray(y)
+
+            # Calculation on CPU
+            @time x * y
+
+            # Calculation on AMD GPU
+            @time A * B
+
+            # Calculation on CPU (again)
+            @time x * y
+
+            # Calculation on AMD GPU (again)
+            @time A * B
+
+                 
+
+
+
+
+
 
 Cluster Managers
 ''''''''''''''''
