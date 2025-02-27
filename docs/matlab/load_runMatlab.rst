@@ -256,9 +256,9 @@ The GUI is typically the recommended interface where it is offered. The GUI prov
 
    .. tabs::
 
-      .. tab:: UPPMAX
+      .. tab:: UPPMAX and NSC (Tetralith)
    
-         Once you've loaded matlab/2023b, or your preferred version, type:
+         Once you've loaded your preferred version of MATLAB, type:
 
          .. code-block:: console
 
@@ -270,7 +270,7 @@ The GUI is typically the recommended interface where it is offered. The GUI prov
 
             $ matlab -nodisplay
 
-         to start MATLAB in the terminal.
+         to start MATLAB in the terminal. The maximum number of computational threads will be set to 1 automatically if you are on a log-in node.
  
       .. tab:: HPC2N
 
@@ -306,9 +306,9 @@ Running the MATLAB GUI requires that users be logged into a Thinlinc session. Se
 
 .. tabs::
 
-  .. tab:: HPC2N and UPPMAX
+  .. tab:: HPC2N, NSC, and UPPMAX
 
-      For HPC2N and UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You must still include ``-singleCompThread``!
+      For HPC2N and UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
       
       .. figure:: ../../img/Rackham-Matlab.png
          :width: 450
