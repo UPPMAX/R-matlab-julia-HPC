@@ -40,7 +40,7 @@ Check for MATLAB versions
    
    .. tabs::
 
-      .. tab:: UPPMAX
+      .. tab:: UPPMAX and NSC (Tetralith)
 
          Check all available MATLAB versions with:
 
@@ -133,7 +133,7 @@ Check for MATLAB versions
             
             ----------------------------------------------------------------------------
 
-.. admonition:: Output at LUNARC (Cosmos nodes) as of 4 Sep 2024  
+.. admonition:: Output at LUNARC (Cosmos nodes) as of 27 Feb 2025  
     :class: dropdown
 
         .. code-block:: console
@@ -146,6 +146,7 @@ Check for MATLAB versions
                     matlab/2022a
                     matlab/2023a
                     matlab/2023b
+                    matlab/2024b
                   
             ----------------------------------------------------------------------------
             For detailed information about a specific "matlab" package (including how to load the modules) use the module's full name. Note that names that have a trailing (E) are extensions provided by other modules.
@@ -153,6 +154,19 @@ Check for MATLAB versions
                   
             $ module spider matlab/2023b
             ----------------------------------------------------------------------------
+
+.. admonition:: Output at NSC (Tetralith) as of 27 Feb 2025  
+    :class: dropdown
+
+        .. code-block:: console
+
+            $ ml avail matlab
+            --------------------- /software/sse2/tetralith_el9/modules ---------------------
+               MATLAB/recommendation (D)    MATLAB/2023b-bdist
+               MATLAB/2023a-bdist           MATLAB/2024a-hpc1-bdist
+            
+              Where:
+               D:  Default Module
 
 
 Load a MATLAB module
@@ -212,6 +226,21 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), LUNARC (20
 
             $ ml matlab/2023b
 
+      .. tab:: NSC 
+
+         .. code-block:: console
+
+            $ module load MATLAB/2023b-bdist
+
+         Note: all Uppercase except for the letter after the year. 
+         For short, you can also use: 
+
+         .. code-block:: console
+
+            $ ml MATLAB/2023b
+
+         If you check with ``ml`` which version is loaded, you will see the ``-bdist`` suffix was added automatically. Versions without ``-bdist`` at the end only appear with ``ml spider matlab`` and they do not appear to be loadable.
+
 
 Start MATLAB and Run a Script
 -----------------------------
@@ -243,7 +272,7 @@ The GUI is typically the recommended interface where it is offered. The GUI prov
 
          to start MATLAB in the terminal.
  
-      .. tab:: HPC2N 
+      .. tab:: HPC2N
 
          The GUI can be started in a Thinlinc session by going to "Application" &rarr; "HPC2N Applications" &rarr; "Applications" &rarr; "Matlab <version>" and clicking the desired version.
 
