@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MATLAB GUI and SLURM &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Add-Ons" href="add_onsMatlab.html" />
+    <link rel="prev" title="Slurm job scheduler and MATLAB in terminal" href="slurmMatlab.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MATLAB GUI and SLURM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#matlab-desktop-graphical-interface">MATLAB Desktop/graphical interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-jobs">Serial jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-jobs">Parallel jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parfor"><code class="docutils literal notranslate"><span class="pre">parfor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spmd"><code class="docutils literal notranslate"><span class="pre">spmd</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parfeval"><code class="docutils literal notranslate"><span class="pre">parfeval</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#running-parallel-jobs">Running parallel jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-batch">Using <code class="docutils literal notranslate"><span class="pre">batch</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-parpool">Creating a <code class="docutils literal notranslate"><span class="pre">parpool</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MATLAB GUI and SLURM</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/matlab/jobsMatlab.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="matlab-gui-and-slurm">
+<h1>MATLAB GUI and SLURM<a class="headerlink" href="#matlab-gui-and-slurm" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What is a batch job?</p></li>
+<li><p>How to make a batch for MATLAB?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Understand and use the Slurm scheduler</p></li>
+<li><p>Start batch jobs from MATLAB Graphical User Interface (GUI)</p></li>
+<li><p>Try example</p></li>
+</ul>
+</div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">naiss2024-22-1202</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2024-114</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2024-7-80</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code></p></li>
+<li><p>Cosmos: your home directory should have plenty of space</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Any longer, resource-intensive, or parallel jobs must be run through a <strong>batch script</strong>.</p></li>
+<li><p>On the login-nodes MATLAB MUST be started with the option ‘-singleCompThread’, preventing MATLAB from using more than one thread.</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>MATLAB is well integrated with SLURM and because of that there are several options to run these jobs:</dt><dd><ul>
+<li><p>Writing a batch script as for any other software and submitting the job with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command from SLURM
+(This could be useful if you want to run long jobs, and you don’t need to modify the code in the meantime).
+You have seen this in the previous section.</p></li>
+<li><p>Using the job scheduler (<code class="docutils literal notranslate"><span class="pre">batch</span></code> command) in MATLAB graphical user interface (GUI) (This is the Recommended Use).</p></li>
+<li><p>Starting a <code class="docutils literal notranslate"><span class="pre">parpool</span></code> in the MATLAB GUI with a predefined cluster (This allows for more interactivity).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>In the following sections we will extend the last two options.</p></li>
+</ul>
+</div>
+<section id="matlab-desktop-graphical-interface">
+<h2>MATLAB Desktop/graphical interface<a class="headerlink" href="#matlab-desktop-graphical-interface" title="Link to this heading"></a></h2>
+<p>Jobs can be submitted to the SLURM queue directly from the the MATLAB GUI as an alternative
+to the standard bash scripts that are used with the command <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">my-script.sh</span></code>, for instance.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/matlab-gui.png"><img alt="../_images/matlab-gui.png" src="../_images/matlab-gui.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">MATLAB GUI</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To submit a job from the GUI, you will need to create a handle for the cluster and then use this
+handle to send the job and control the outputs:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Get a handle to the cluster</span>
+<span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;name-of-your-cluster&#39;</span><span class="p">)</span>
+<span class="c">% Run the job on CPU</span>
+<span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">myfunction</span><span class="p">,</span><span class="w"> </span><span class="n">N_out_values</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">input1</span><span class="p">,</span><span class="w"> </span><span class="n">input2</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="c">}, &#39;pool&#39;, N_workers&#39;)</span>
+<span class="c">% alternatively, j=batch(c, @myfunction, N_out_values, {input1, input2, ...}, &#39;pool&#39;, N_workers&#39;)</span>
+<span class="c">% Wait till the job has finished. Use j.State if you just want to poll the</span>
+<span class="c">% status and be able to do other things while waiting for the job to finish.</span>
+<span class="nb">j</span><span class="p">.</span><span class="n">wait</span>
+<span class="c">% Fetch the result after the job has finished</span>
+<span class="nb">j</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:}</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">batch</span></code> also accepts script names in place of function names, but these must be given in single quotes, with no <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> or <code class="docutils literal notranslate"><span class="pre">.m</span></code>. This is useful if your script is a job farm.</p>
+<section id="serial-jobs">
+<h3>Serial jobs<a class="headerlink" href="#serial-jobs" title="Link to this heading"></a></h3>
+<p>As an example consider the following serial function <code class="docutils literal notranslate"><span class="pre">hostnm</span></code> that is in a file called
+<code class="docutils literal notranslate"><span class="pre">hostnm.m</span></code> which gets the name of the host machine as an output:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>hn<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">hostnm</span><span class="p">()</span>
+<span class="w">   </span><span class="n">hn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">getenv</span><span class="p">(</span><span class="s">&#39;HOSTNAME&#39;</span><span class="p">);</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>We can send a job to the queue which executes this function and retrieving/printing out
+the results as follows:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;name-of-your-cluster&#39;</span><span class="p">);</span>
+<span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">hostnm</span><span class="p">,</span><span class="mi">1</span><span class="p">,{},</span><span class="s">&#39;pool&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="nb">j</span><span class="p">.</span><span class="n">wait</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">j</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:};</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Name of host: %s \n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="parallel-jobs">
+<h3>Parallel jobs<a class="headerlink" href="#parallel-jobs" title="Link to this heading"></a></h3>
+<p>Jobs can be parallelized in MATLAB using functionalities such as <code class="docutils literal notranslate"><span class="pre">parfor</span></code>, <code class="docutils literal notranslate"><span class="pre">spmd</span></code>, and <code class="docutils literal notranslate"><span class="pre">parfeval</span></code>.</p>
+<section id="parfor">
+<h4><code class="docutils literal notranslate"><span class="pre">parfor</span></code><a class="headerlink" href="#parfor" title="Link to this heading"></a></h4>
+<p>This function will assist you if you want to parallelize a <em>for loop</em>. Although it will be performant, it imposes some constraints on the loops:</p>
+<ol class="arabic simple">
+<li><p>The number of iterations must be well-defined,</p></li>
+<li><p>There can be no control over the individual workers, and</p></li>
+<li><p>There must be no data dependencies between the iterations.</p></li>
+</ol>
+<p>In the following example the name of the host machine will be printed <code class="docutils literal notranslate"><span class="pre">n</span></code> number of times  and this number will be divided across the available number of workers:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span>
+<span class="w">   </span><span class="nb">disp</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s">&quot;HOSTNAME&quot;</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</section>
+<section id="spmd">
+<h4><code class="docutils literal notranslate"><span class="pre">spmd</span></code><a class="headerlink" href="#spmd" title="Link to this heading"></a></h4>
+<p>Single program multiple data (SPMD) is supported in MATLAB through the <code class="docutils literal notranslate"><span class="pre">spmd</span></code> functionality, here
+you enclose the code that will be executed by some workers independently. The workers are labeled with
+the variable <code class="docutils literal notranslate"><span class="pre">labindex</span></code> that can be used to control the workload of each worker. In the following
+example the name of the host will be displayed as many times as the present number of workers:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">spmd</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">labindex</span><span class="p">;</span><span class="w">              </span><span class="c">% label for each worker</span>
+<span class="w">    </span><span class="nb">disp</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s">&quot;HOSTNAME&quot;</span><span class="p">))</span><span class="w">   </span><span class="c">% display the name of the host</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</section>
+<section id="parfeval">
+<h4><code class="docutils literal notranslate"><span class="pre">parfeval</span></code><a class="headerlink" href="#parfeval" title="Link to this heading"></a></h4>
+<p>This function is more advanced than the previous two and it allows you to do asynchronous calculations,
+which means that those calculations can start when resources are available but the execution order is not needed.
+The results can be fetched once the simulation finishes.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parfeval</span><span class="p">(@</span><span class="n">myFunction</span><span class="p">,</span><span class="s">&#39;nr. of outputs&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;list of input arguments&#39;</span><span class="p">);</span>
+<span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fetchOutputs</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-parallel-jobs">
+<h3>Running parallel jobs<a class="headerlink" href="#running-parallel-jobs" title="Link to this heading"></a></h3>
+<p>Parallel jobs which include functions like <code class="docutils literal notranslate"><span class="pre">parfor</span></code>, <code class="docutils literal notranslate"><span class="pre">spmd</span></code>, and <code class="docutils literal notranslate"><span class="pre">parfeval</span></code> can be handled in two ways
+in the MATLAB GUI either by using the <code class="docutils literal notranslate"><span class="pre">batch</span></code> command (we mentioned above for serial jobs) or by creating a <code class="docutils literal notranslate"><span class="pre">parpool</span></code>.</p>
+<section id="using-batch">
+<h4>Using <code class="docutils literal notranslate"><span class="pre">batch</span></code><a class="headerlink" href="#using-batch" title="Link to this heading"></a></h4>
+<p>It is recommended that you enclose the parallel code into a function and place it into a MATLAB script. In
+the <code class="docutils literal notranslate"><span class="pre">parfor</span></code> example mentioned above, we can write a script called <code class="docutils literal notranslate"><span class="pre">hostnm.m</span></code> containing this code:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>hn_all<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">hostnm</span><span class="p">(</span>n<span class="p">)</span>
+<span class="w">    </span><span class="n">hn_all</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<span class="w">       </span><span class="n">hn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s">&#39;HOSTNAME&#39;</span><span class="p">));</span>
+<span class="w">       </span><span class="n">hn_all</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">hn_all</span><span class="p">,</span><span class="n">hn</span><span class="p">];</span><span class="w">          </span><span class="c">% This array stores the host names for each worker</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Then, in the MATLAB GUI I can execute this function and retrieve/print out the results as follows:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;name-of-your-cluster&#39;</span><span class="p">);</span>
+<span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">hostnm</span><span class="p">,</span><span class="s">&#39;nr. outputs&#39;</span><span class="p">,{</span><span class="s">&#39;list of input args&#39;</span><span class="p">},</span><span class="s">&#39;pool&#39;</span><span class="p">,</span><span class="s">&#39;nr. workers&#39;</span><span class="p">);</span>
+<span class="nb">j</span><span class="p">.</span><span class="n">wait</span><span class="p">;</span><span class="w">                               </span><span class="c">% wait for the results</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">j</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:};</span><span class="w">                </span><span class="c">% fetch the results</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Name of host: %s \n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w">    </span><span class="c">% Print out the results</span>
+</pre></div>
+</div>
+<p>Notice that if you will use this sequence of commands to launch many jobs, it will be convenient to write
+a MATLAB script so that next time you have these commands at hand.</p>
+</section>
+<section id="creating-a-parpool">
+<h4>Creating a <code class="docutils literal notranslate"><span class="pre">parpool</span></code><a class="headerlink" href="#creating-a-parpool" title="Link to this heading"></a></h4>
+<p>If you are doing continuous modifications to your code and running it to make sure that it works,
+using a <code class="docutils literal notranslate"><span class="pre">parpool</span></code> could be a better option than the <code class="docutils literal notranslate"><span class="pre">batch</span></code> command. Here, you create a
+pool of workers with the <code class="docutils literal notranslate"><span class="pre">parpool</span></code> function that are available to run parallel functions such
+as those mentioned above (<code class="docutils literal notranslate"><span class="pre">parfor</span></code>, <code class="docutils literal notranslate"><span class="pre">spmd</span></code>, and <code class="docutils literal notranslate"><span class="pre">parfeval</span></code>) until this pool is deleted.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Notice that if you run a serial function (that maybe consumes 100% of the CPU) inside a <code class="docutils literal notranslate"><span class="pre">parpool</span></code>
+block, this function will be executed on the local machine (maybe the login node) and not on a
+compute node.</p>
+</div>
+<p>In the following example a pool of <code class="docutils literal notranslate"><span class="pre">n</span></code> workers is created that will solve a <code class="docutils literal notranslate"><span class="pre">parfor</span></code> loop
+which will display the host name:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Use parallel pool with &#39;parfor&#39;</span>
+<span class="n">parpool</span><span class="p">(</span><span class="s">&#39;name-of-your-cluster&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">);</span><span class="w">  </span><span class="c">% Start parallel pool with nworkers = n workers</span>
+
+<span class="w">    </span><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="nb">getenv</span><span class="p">(</span><span class="s">&quot;HOSTNAME&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="c">% Clean up the parallel pool</span>
+<span class="nb">delete</span><span class="p">(</span><span class="n">gcp</span><span class="p">(</span><span class="s">&#39;nocreate&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Notice that the host name displayed is the one where the job ran not where the MATLAB GUI is running.
+All parallel functionalities in MATLAB can be executed inside a <code class="docutils literal notranslate"><span class="pre">parpool</span></code>.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="dropdown exercise important admonition" id="exercise-0">
+<p class="admonition-title">Create and run a parallel code</p>
+<p>We have the following code in MATLAB that generates an array of 10000 random numbers and then the
+sum of all elements is stored in a variable called <strong>s</strong>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10000</span><span class="p">);</span>
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We want now to repeat these steps (generating the numbers and taking the sum) 6 times so that
+the steps are run at the same time. Use <code class="docutils literal notranslate"><span class="pre">parfor</span></code> to parallelize these steps. Once your code is
+parallelized enclose it in a <code class="docutils literal notranslate"><span class="pre">parpool</span></code> section and send the job to the queue.</p>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Nr. of workers</span>
+<span class="n">nworkers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+
+<span class="c">% Use parallel pool with &#39;parfor&#39;</span>
+<span class="n">parpool</span><span class="p">(</span><span class="s">&#39;name-of-your-cluster&#39;</span><span class="p">,</span><span class="n">nworkers</span><span class="p">);</span><span class="w">  </span><span class="c">% Start parallel pool with nworkers workers</span>
+
+<span class="n">myarray</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span><span class="c">% Optional in this exercise to store partial results</span>
+<span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">nworkers</span>
+<span class="w">   </span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10000</span><span class="p">);</span>
+<span class="w">   </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
+<span class="w">   </span><span class="n">myarray</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">myarray</span><span class="p">,</span><span class="n">s</span><span class="p">];</span>
+<span class="k">end</span>
+
+<span class="n">myarray</span><span class="w">  </span><span class="s">%</span><span class="w"> </span><span class="s">print</span><span class="w"> </span><span class="s">out</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">results</span><span class="w"> </span><span class="s">from</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">workers</span>
+
+<span class="c">% Clean up the parallel pool</span>
+<span class="nb">delete</span><span class="p">(</span><span class="n">gcp</span><span class="p">(</span><span class="s">&#39;nocreate&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="dropdown exercise important admonition" id="exercise-1">
+<p class="admonition-title">Run a parallel code with <code class="docutils literal notranslate"><span class="pre">batch</span></code> MATLAB function</p>
+<p>The following function uses <code class="docutils literal notranslate"><span class="pre">parfeval</span></code> to do some computation (specifically it takes the
+average per-column of a matrix with a size <code class="docutils literal notranslate"><span class="pre">nsize</span></code> equal to 1000):</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>results<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">parfeval_mean</span><span class="p">(</span>nsize<span class="p">)</span>
+<span class="w">    </span><span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parfeval</span><span class="p">(@</span><span class="nb">mean</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">rand</span><span class="p">(</span><span class="n">nsize</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Place this function in a file called <strong>parfeval_mean.m</strong> and submit this function with
+the MATLAB <code class="docutils literal notranslate"><span class="pre">batch</span></code> command.</p>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;name-of-your-cluster&#39;</span><span class="p">);</span>
+<span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parfeval_mean</span><span class="p">,</span><span class="mi">1</span><span class="p">,{</span><span class="mi">1000</span><span class="p">},</span><span class="s">&#39;pool&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="nb">j</span><span class="p">.</span><span class="n">wait</span><span class="p">;</span><span class="w">                               </span><span class="c">% wait for the results</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">j</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:};</span><span class="w">                </span><span class="c">% fetch the results</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Name of host: %.5f \n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w">    </span><span class="c">% Print out the results</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>The SLURM scheduler handles allocations to the calculation nodes</p></li>
+<li><p>MATLAB has good integration with SLURM and because of that one can submit jobs to the
+queue directly from the GUI.</p></li>
+<li><p>MATLAB has several tools to parallelize your code and we have explored here <code class="docutils literal notranslate"><span class="pre">parfor</span></code>, <code class="docutils literal notranslate"><span class="pre">spmd</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">parfeval</span></code>, but there are other <a class="reference external" href="https://se.mathworks.com/help/overview/parallel-computing.html?s_tid=hc_product_group_bc">tools available</a>.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="slurmMatlab.html" class="btn btn-neutral float-left" title="Slurm job scheduler and MATLAB in terminal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="add_onsMatlab.html" class="btn btn-neutral float-right" title="Add-Ons" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

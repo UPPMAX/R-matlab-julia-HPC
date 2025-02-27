@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summary &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Evaluation" href="evaluationMatlab.html" />
+    <link rel="prev" title="Session: Matlab in Jupyter" href="jupyterMatlab.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Summary</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/matlab/summaryMatlab.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
+<p><strong>Load and run</strong></p>
+<ul>
+<li><p>You can use the module system to load a specific version of Matlab</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load matlab</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>You can start the Matlab GUI</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">matlab &amp;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>or On-demand on LUNARC</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>You can run Matlab on the terminal</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">matlab -nodisplay [-singleCompThread -nosplash -nodesktop]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Slurm job scheduler and Matlab in terminal</strong></p>
+<ul>
+<li><p>You can configure the cluster</p>
+<blockquote>
+<div><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">configCluster</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="n">id</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">UPPMAX</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">LUNARC</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>You can can add job settings needed to run jobs from Matlab</p>
+<blockquote>
+<div><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="o">&lt;</span><span class="nb">properties</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">AccountName</span><span class="o">/</span><span class="n">WallTime</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>You can work in the Matlab terminal interface</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It works almost the same as with GUI.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>You can submit jobs from inside the Matlab terminal interface</p>
+<blockquote>
+<div><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">batch</span><span class="p">(</span><span class="s">&#39;myScript&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>You can write and submit a Matlab batch script</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">batchscript.sh</span></code></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!/bin/bash
+<span class="c1">#SBATCH -A my_account</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+module<span class="w"> </span>load<span class="w"> </span>&lt;matlab<span class="w"> </span>version&gt;
+matlab<span class="w"> </span>-nojvm<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;monte_carlo_pi(100000)&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sbatch batchscript.sh``</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>You can use GPUs with Matlab</p>
+<blockquote>
+<div><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GpusPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Matlab GUI and Slurm</strong></p>
+<ul>
+<li><p>You can submit jobs from inside the Matlab GUI</p>
+<blockquote>
+<div><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;name-of-your-cluster&#39;</span><span class="p">);</span>
+<span class="c">%extra slurm settings</span>
+<span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">myfunction</span><span class="p">,</span><span class="s">&#39;nr. outputs&#39;</span><span class="p">,{</span><span class="s">&#39;list of input args&#39;</span><span class="p">},</span><span class="s">&#39;pool&#39;</span><span class="p">,</span><span class="s">&#39;nr. workers&#39;</span><span class="p">);</span>
+<span class="nb">j</span><span class="p">.</span><span class="n">wait</span><span class="p">;</span><span class="w">                               </span><span class="c">% wait for the results</span>
+<span class="nb">j</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:};</span><span class="w">                </span><span class="c">% fetch the results</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Note that batch also accepts script names in place of function names, but these must be given in single quotes, with no &#64; or .m.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>You can work with Matlab in parallel</p>
+<blockquote>
+<div><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">parfor</span>
+<span class="k">spmd</span>
+<span class="n">parfeval</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>You can check that you are in an interactive session</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>After running <code class="docutils literal notranslate"><span class="pre">interactive..</span></code> on UPPMAX or LUNARC you will see that the linux prompt shows another hostname</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Add-Ons</strong></p>
+<ul>
+<li><p>You can view add-ons and toolboxes</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It is all more or less graphical</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>You can install add-ons</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Search in add-ons explorer and install.</p></li>
+<li><p>Ends up in local folder and is in the path so it should be reached wherever you are in the file tree.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Session-UPPMAX: Matlab client on the desktop</strong></p>
+<ul>
+<li><p>You can use the Matlab client on the desktop</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>download and decompress UPPMAX configure file.</p></li>
+<li><p>run configCluster on local MATLAB and set user name</p></li>
+<li><dl class="simple">
+<dt>Steps to run</dt><dd><ul>
+<li><p>set parcluster settings, like you do otherwise.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Session: Matlab in Jupyter</strong></p>
+<ul>
+<li><p>You can start run Matlab in Jupyter</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>You need to configure and install some python packages the first time</p></li>
+<li><p>After that starting jupyter will find the Matlab kernel</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="jupyterMatlab.html" class="btn btn-neutral float-left" title="Session: Matlab in Jupyter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="evaluationMatlab.html" class="btn btn-neutral float-right" title="Evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

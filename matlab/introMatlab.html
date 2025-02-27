@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to MATLAB &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Load and Run MATLAB" href="load_runMatlab.html" />
+    <link rel="prev" title="Evaluation" href="../r/evaluationR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to MATLAB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preliminary-schedule">Preliminary schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-matlab">What is MATLAB?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features-of-matlab">Features of MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-on-matlab">More on MATLAB?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#material-for-improving-your-programming-skills">Material for improving your programming skills</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-naiss-centres">Other NAISS centres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction to MATLAB</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/matlab/introMatlab.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-to-matlab">
+<h1>Introduction to MATLAB<a class="headerlink" href="#introduction-to-matlab" title="Link to this heading"></a></h1>
+<dl class="simple">
+<dt><a class="reference external" href="https://uppmax.github.io/R-python-julia-matlab-HPC/">Welcome page and syllabus</a></dt><dd><ul class="simple">
+<li><p>Also link at House symbol 🏠 at top of page</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<ul class="simple">
+<li><p>Load MATLAB modules and site-installed MATLAB packages</p></li>
+<li><p>Create a MATLAB environment</p></li>
+<li><p>Install MATLAB packages with <strong>Add-Ons</strong> manager</p></li>
+<li><p>Write a batch script for running MATLAB</p></li>
+<li><p>Use MATLAB in parallel mode</p></li>
+<li><p>Use GPUs with MATLAB</p></li>
+<li><p>Use MATLAB for ML</p></li>
+</ul>
+</div>
+<div class="admonition-your-expectations admonition">
+<p class="admonition-title">Your expectations?</p>
+<ul class="simple">
+<li><p>Find best practices for using MATLAB at UPPMAX, HPC2N, and LUNARC</p></li>
+<li><p>Toolboxes and Add-Ons</p></li>
+<li><p>HPC performance with MATLAB</p></li>
+</ul>
+<p><strong>Not covered</strong></p>
+<ul class="simple">
+<li><p>Improve MATLAB <em>coding</em> skills</p></li>
+<li><p>Other clusters</p></li>
+</ul>
+</div>
+<div class="admonition-matlab-exercise-files admonition">
+<p class="admonition-title">MATLAB Exercise files</p>
+<ul class="simple">
+<li><p>Link to exercises tarball: <a class="reference external" href="https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz">https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz</a></p></li>
+<li><p>Or you can copy them from the computer system you are on (only until 2024-11-01) and unpack them with <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xzvf</span> <span class="pre">exercises.tar.gz</span></code></p>
+<ul>
+<li><p>Rackham: cp /proj/r-py-jl-m-rackham/exercises.tar.gz .</p></li>
+<li><p>Kebnekaise: cp /proj/nobackup/r-py-jl-m/exercises.tar.gz .</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition-download-the-exercise-files exercise important admonition" id="exercise-0">
+<p class="admonition-title">Download the exercise files</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">wget</span></code> to download the tarball from the web, if you didn’t copy it from your local computer system.</p></li>
+<li><p>Un-tar it with <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xzvf</span> <span class="pre">&lt;filename.tar.gz&gt;</span></code> in your personal project folder, which you should have created a while ago (<a class="reference external" href="https://uppmax.github.io/R-python-julia-matlab-HPC/index.html#prepare-your-environment-now">https://uppmax.github.io/R-python-julia-matlab-HPC/index.html#prepare-your-environment-now</a>).</p></li>
+<li><p>Enter the directory and list the content with the <code class="docutils literal notranslate"><span class="pre">tree</span></code> command.</p></li>
+</ul>
+</div>
+<section id="preliminary-schedule">
+<h2>Preliminary schedule<a class="headerlink" href="#preliminary-schedule" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Preliminary times</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Topic</p></th>
+<th class="head"><p>Teacher(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9:00</p></td>
+<td><p>Log in</p></td>
+<td><p>Several</p></td>
+</tr>
+<tr class="row-odd"><td><p>9.45</p></td>
+<td><p><strong>Coffee break</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>10:00</p></td>
+<td><p>Syllabus</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>10.15</p></td>
+<td><p>Introduction, MATLAB in general</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-even"><td><p>10.25</p></td>
+<td><p>Loading modules and running MATLAB codes</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>10.50</p></td>
+<td><p><strong>Break</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>11.05</p></td>
+<td><p>Slurm job scheduler and Matlab</p></td>
+<td><p>BB</p></td>
+</tr>
+<tr class="row-odd"><td><p>12.00</p></td>
+<td><p><strong>LUNCH</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>13.00</p></td>
+<td><p>Matlab GUI and Slurm</p></td>
+<td><p>PO, RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>13.30</p></td>
+<td><p>Parallel and multithreaded functions</p></td>
+<td><p>PO</p></td>
+</tr>
+<tr class="row-even"><td><p>13.50</p></td>
+<td><p><strong>break</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>14.00</p></td>
+<td><p>Cont’d Parallel and multithreaded functions</p></td>
+<td><p>PO</p></td>
+</tr>
+<tr class="row-even"><td><p>14.30</p></td>
+<td><p>Add-Ons</p></td>
+<td><p>BC</p></td>
+</tr>
+<tr class="row-odd"><td><p>14.50</p></td>
+<td><p><strong>Coffee break</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>15.05</p></td>
+<td><p>Simultaneous session — UPPMAX: Client on the local desktop</p></td>
+<td><p>BC</p></td>
+</tr>
+<tr class="row-odd"><td><p>.</p></td>
+<td><p>Simultaneous session — MATLAB in Jupyter</p></td>
+<td><p>PO</p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>Simultaneous session — LUNARC: MATLAB with Desktop On Demand</p></td>
+<td><p>RP</p></td>
+</tr>
+<tr class="row-odd"><td><p>15.35</p></td>
+<td><p>Summary</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>15.40</p></td>
+<td><p>Evaluation</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>15.50</p></td>
+<td><p>Q&amp;A on-demand</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>16.00</p></td>
+<td><p>END</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-instructor-note instructor-note admonition" id="instructor-note-0">
+<p class="admonition-title">Instructor note</p>
+<ul class="simple">
+<li><p>Intro 10 min</p></li>
+<li><p>Lecture and demo 10 min</p></li>
+<li><p>Exercise 0 min</p></li>
+</ul>
+</div>
+</section>
+<section id="what-is-matlab">
+<h2>What is MATLAB?<a class="headerlink" href="#what-is-matlab" title="Link to this heading"></a></h2>
+<p>MATLAB is a numerical computing environment and fourth generation programming language. Developed by MathWorks, MATLAB allows matrix manipulation, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs in other languages. Although it is numeric only, an optional toolbox uses the MuPAD symbolic engine, allowing access to computer algebra capabilities.</p>
+</section>
+<section id="features-of-matlab">
+<h2>Features of MATLAB<a class="headerlink" href="#features-of-matlab" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Distinguishing pros of MATLAB include:</dt><dd><ul class="simple">
+<li><p>A “low-code” interactive development environment (IDE) in which many common data import methods, analysis techniques, plotting formats, and even AI/ML techniques can be run from menus and generate the code required to reproduce the results automatically</p></li>
+<li><p>A rich library of Toolboxes and Add-Ons for different STEM disciplines, especially for modeling and simulations, all written and tested by professionals</p></li>
+<li><p>Automatic multi-threading (note: this can also be a drawback)</p></li>
+<li><p>The ability to set cluster configurations and parallelization settings graphically, and save them to profiles that can be reloaded at a click.</p></li>
+<li><p>Full documentation available straight from the command line (requires internet)</p></li>
+</ul>
+</dd>
+<dt>Of course MATLAB also has some drawbacks:</dt><dd><ul class="simple">
+<li><p>It is proprietary software, so you need to buy a license and sign up for an account. Many Add-Ons require a separate license.</p></li>
+<li><p>With respect to the 2-language problem (where one can optimize for either performance or ease of prototyping, but not both), MATLAB even moreso than Python is geared toward usability. It can be slow.</p></li>
+<li><p>The way MATLAB automates multithreading means it will hog a full node unless you explicitly tell it not to by setting <cite>-SingleCompThread</cite> as an option at startup.</p></li>
+<li><p>The built-in plotting functions generate only very low-resolution raster graphics with no anti-aliasing, not suitable for publication.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="more-on-matlab">
+<h2>More on MATLAB?<a class="headerlink" href="#more-on-matlab" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Documentation at the HPC centres UPPMAX, HPC2N, and LUNARC</dt><dd><ul>
+<li><p>UPPMAX: <a class="reference external" href="http://docs.uppmax.uu.se/software/matlab/">http://docs.uppmax.uu.se/software/matlab/</a></p></li>
+<li><p>HPC2N: <a class="reference external" href="https://www.hpc2n.umu.se/resources/software/matlab">https://www.hpc2n.umu.se/resources/software/matlab</a> and <a class="reference external" href="https://www.hpc2n.umu.se/documentation/guides/parallel-matlab">https://www.hpc2n.umu.se/documentation/guides/parallel-matlab</a></p></li>
+<li><p>LUNARC: <a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/">https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Official MATLAB documentation is found <a class="reference external" href="https://se.mathworks.com/help/matlab/index.html?s_tid=hc_panel">here:</a></p></li>
+</ul>
+<section id="material-for-improving-your-programming-skills">
+<h3>Material for improving your programming skills<a class="headerlink" href="#material-for-improving-your-programming-skills" title="Link to this heading"></a></h3>
+<p>If you have a Mathworks account that is less than 2 years old, Mathworks offers free <a class="reference external" href="https://matlabacademy.mathworks.com/?page=1&amp;fq=all-matlab&amp;sort=featured&amp;s_tid=ln_acad_learn_oc">MATLAB self-paced online training courses</a>. Students at any academic institution with a campus-wide license can use their university email addresses to create a free account to access these resources.</p>
+<p>The Mondays with MATLAB lecture series is offered every September. These and other events are posted <a class="reference external" href="https://se.mathworks.com/company/events.html">here</a>. Mondays with MATLAB consist of 3 introductory lectures:</p>
+<ul class="simple">
+<li><p>Introduction to MATLAB</p></li>
+<li><p>Low-code AI/deep learning in MATLAB</p></li>
+<li><p>Hands-on exercises on your national HPC resources (varies by country)</p></li>
+</ul>
+<p>If you have an account, you will be automatically signed up for the Mathworks mailing list, which will notify you of upcoming webinars as well as some featured packages. The webinars cover a broad range of topics and disciplines at varying skill levels, although these seminars tend to be more advanced.</p>
+</section>
+</section>
+<section id="other-naiss-centres">
+<h2>Other NAISS centres<a class="headerlink" href="#other-naiss-centres" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.nsc.liu.se/software/catalogue/tetralith/modules/matlab.html">MATLAB at NSC</a></p></li>
+<li><p><a class="reference external" href="https://www.pdc.kth.se/software/software/matlab/index_general.html">MATLAB at PDC</a></p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>MATLAB is a 4th generation language with an interactive environment that can generate code that handles common problems for you.</p></li>
+<li><p>Parallelization is easy with the graphic user interface, but be careful to set <code class="docutils literal notranslate"><span class="pre">-SingleCompThread</span></code> when starting it at the command line or it may hog the nodes.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../r/evaluationR.html" class="btn btn-neutral float-left" title="Evaluation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="load_runMatlab.html" class="btn btn-neutral float-right" title="Load and Run MATLAB" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
