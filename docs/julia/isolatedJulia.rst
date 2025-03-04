@@ -6,18 +6,18 @@ Packages and isolated environments
 
    - How to install packages?
    - How to work with isolated environments?
-   - How to check for and use the UPPMAX pre-installed packages?
+   - How to check for and use the pre-installed packages?
    
 
 .. objectives:: 
 
    - Give a general *theoretical* introduction to isolated environments 
    - Show how to install own packages
-   - Show how to check for Julia packages at UPPMAX
+   - Show how to check for site-installed Julia packages
    
 .. admonition:: Julia packages and environments
    
-   - Julia **packages broaden the use of Julia** considerably! 
+   - Julia **packages** significantly expand Julia's usability! 
    - Instead of writing code yourself there may be others that have done the same!
    - Isolated environments solve a couple of problems:
 
@@ -61,6 +61,24 @@ If you have started Julia previously, you will get the folders like this in the 
    └── scratchspaces
 
 
+.. admonition:: Alternative to **tree** command
+   :class: dropdown
+
+   In case you don't have the **tree** command on your system you can use the **find** command 
+   which is more common on Linux:
+
+   .. code-block:: bash
+   
+      $ find .julia -mindepth 1 -maxdepth 1 -type d
+      .julia/registries
+      .julia/logs
+      .julia/packages
+      .julia/artifacts
+      .julia/conda
+      .julia/compiled
+      .julia/environments
+      .julia/prefs
+      .julia/scratchspaces
 
 Packages in Julia work as decentralized units which can be connected through their 
 universally unique identifiers (UUIDs) in the so-called federated package management. 
