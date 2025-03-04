@@ -94,11 +94,15 @@ The active environments can be seen with the command:
 
 where ``@`` is the current environment, ``@v#.#`` is the default environment for the 
 Julia version that is being in use, and ``@stdlib`` is the standard library. 
-At UPPMAX the central environment adds to the list with the element:
 
-.. code-block:: bash
+.. admonition:: Site-installed packages in environments
+   :class: dropdown
 
-   "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
+   At UPPMAX the central environment adds to the list with the element:
+
+   .. code-block:: bash
+
+      "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
 
 Thus, by default in addition to the current environment other environments are present
 which can potentially create conflicts for reproducibility if you are not aware of what
@@ -138,7 +142,7 @@ Now, the project information tells us about the recently installed package:
 Create a project environment
 ----------------------------
 
-Let's now create a **project environment**, this can be done as follows (if typing along, you have to change the path to your environment, like ``/proj/py-r-jl-m-rackham/$USER/julia`` on rackham):
+Let's now create a **project environment**, this can be done as follows (if typing along, you have to change the path to your environment, like ``/path-to-my-project/$USER/julia``):
 
 .. type-along::
 
@@ -148,11 +152,11 @@ Let's now create a **project environment**, this can be done as follows (if typi
       julia>;
       shell> mkdir my-first-env
       shell> cd my-first-env
-         /pfs/proj/nobackup/path/Julia-Test/my-first-env
+         /path-to-my-project/$USER/julia/my-first-env
       shell> #type backspace#
       julia> ]  
       (v1.8) pkg> activate . 
-         Activating new project at `/pfs/proj/nobackup/path/Julia-Test/my-first-env`
+         Activating new project at `/path-to-my-project/$USER/julia/my-first-env`
       (my-first-env) pkg> #type backspace
       julia> ;
       shell> ls  
@@ -174,9 +178,9 @@ Let's now create a **project environment**, this can be done as follows (if typi
 
       (my-first-env) pkg> add DFTK 
       Resolving package versions...
-      Updating `/pfs/proj/nobackup/path/Julia-Test/my-first-env/Project.toml`
+      Updating `/path-to-my-project/$USER/julia/my-first-env/Project.toml`
       [acf6eb54] + DFTK v0.6.2
-       Updating `/pfs/proj/nobackup/path/Julia-Test/my-first-env/Manifest.toml`
+       Updating `/path-to-my-project/$USER/julia/my-first-env/Manifest.toml`
 
    First, we notice that installation was much faster than before. This is because **Pkg** did not do a new installation but it just updated our environment with information of the available ``DFTK`` package. Specifically, if you take a look at the content of the current directory you will see the new files ``Project.toml`` and ``Manifest.toml``, the ``more`` command can display the content of these files:
 
@@ -254,7 +258,7 @@ One can activate this environment in the following way:
 
    shell> cd myfirstpackage 
    (v1.8) pkg> activate . 
-   Activating project at `/pfs/proj/nobackup/path/Julia-Test/my-first-env/myfirstpackage`
+   Activating project at `/path-to-my-project/$USER/julia/my-first-env/myfirstpackage`
    (myfirstpackage) pkg> 
 
 
@@ -263,7 +267,7 @@ The ``project`` function tells us that the current project has an UUID assigned 
 .. code-block:: julia-repl
 
    julia> Pkg.project()
-   Pkg.API.ProjectInfo("myfirstpackage", UUID("ca799254-944c-4043-b9e3-b70b93409f34"), v"0.1.0", true, Dict{String, Base.UUID}(), "/pfs/proj/nobackup/path/Julia-Test/my-first-env/myfirstpackage/Project.toml")
+   Pkg.API.ProjectInfo("myfirstpackage", UUID("ca799254-944c-4043-b9e3-b70b93409f34"), v"0.1.0", true, Dict{String, Base.UUID}(), "/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml")
 
 As in the ``project environment``, the ``package environment`` can see the default and 
 the standard library environments. 
@@ -277,7 +281,7 @@ Let's add the package ``Flux`` for Machine Learning routines:
      49 dependencies successfully precompiled in 92 seconds. 43 already precompiled.
    (myfirstpackage) pkg> status
      Project myfirstpackage v0.1.0
-     Status `/pfs/proj/nobackup/path/Julia-Test/my-first-env/myfirstpackage/Project.toml`
+     Status `/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml`
      [587475ba] Flux v0.13.11
 
 where the status function tells us information about the packages that are installed
@@ -334,7 +338,7 @@ content of ``LOAD_PATH`` (which path will be different for you):
 
    julia> empty!(LOAD_PATH)
    shell> pwd
-      /pfs/proj/nobackup/path/Julia-Test
+      /path-to-my-project/$USER/julia
 
    shell> mkdir my-second-env
 
@@ -358,9 +362,9 @@ path to ``LOAD_PATH``:
 
 .. code-block:: julia-repl
 
-   julia> push!(LOAD_PATH, "/pfs/proj/nobackup/path/Julia-Test/my-first-env/")
+   julia> push!(LOAD_PATH, "/path-to-my-project/$USER/julia/my-first-env/")
       1-element Vector{String}:
-      "/pfs/proj/nobackup/path/Julia-Test/my-first-env/"
+      "/path-to-my-project/$USER/julia/my-first-env/"
 
    julia> using DFTK
 
