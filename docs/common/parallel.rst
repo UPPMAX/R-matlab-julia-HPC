@@ -674,6 +674,25 @@ Exercises
                            ml GCCcore/12.3.0 Python/3.11.3
                            python integration2d_multiprocessing.py
 
+                  .. tab:: PDC
+
+                       .. code-block:: sh
+                           
+
+                           #!/bin/bash            
+                           #SBATCH -A naiss--------     # your project_ID       
+                           #SBATCH -J job-serial        # name of the job          
+                           #SBATCH  -p shared           # name of the queue
+                           #SBATCH  --ntasks=1          # nr. of tasks
+                           #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                           #SBATCH --time=00:03:00      # requested time
+                           #SBATCH --error=job.%J.err   # error file
+                           #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                           # Load dependencies and Python version
+                           ml ...
+
+                           python integration2d_multiprocessing.py
    
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
             1,2,4,8,12, and 14. Note: this number should match the number of processes 
@@ -827,6 +846,25 @@ Exercises
       
                            julia integration2D_distributed.jl 
 
+                  .. tab:: PDC
+      
+                     .. code-block:: bash                              
+
+                           #!/bin/bash            
+                           #SBATCH -A naiss--------     # your project_ID       
+                           #SBATCH -J job-serial        # name of the job          
+                           #SBATCH  -p shared           # name of the queue
+                           #SBATCH  --ntasks=1          # nr. of tasks
+                           #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                           #SBATCH --time=00:03:00      # requested time
+                           #SBATCH --error=job.%J.err   # error file
+                           #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                           # Load dependencies and Julia version
+                           ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+
+                           julia integration2D_distributed.jl 
+
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
             1,2,4,8,12, and 14. Note: this number should match the number of processes 
             (also a *FIXME* string) in the Julia script. Collect the timings that are
@@ -966,6 +1004,25 @@ Exercises
                             ml purge > /dev/null 2>&1
                             ml GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1
                             Rscript --no-save --no-restore integration2d.R
+
+                  .. tab:: PDC
+      
+                     .. code-block:: bash                              
+
+                           #!/bin/bash            
+                           #SBATCH -A naiss--------     # your project_ID       
+                           #SBATCH -J job-serial        # name of the job          
+                           #SBATCH  -p shared           # name of the queue
+                           #SBATCH  --ntasks=1          # nr. of tasks
+                           #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                           #SBATCH --time=00:03:00      # requested time
+                           #SBATCH --error=job.%J.err   # error file
+                           #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                           # Load dependencies and R version
+                           ml ...
+
+                           Rscript --no-save --no-restore integration2d.R
 
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
             1,2,4,8,12, and 14. Note: this number should match the number of processes 
@@ -1163,6 +1220,25 @@ Exercises
                         ml GCCcore/12.3.0  Python/3.11.3  SciPy-bundle/2023.07
                         python dscript-df.py
 
+               .. tab:: PDC
+
+                  .. code-block:: bash                              
+
+                        #!/bin/bash            
+                        #SBATCH -A naiss--------     # your project_ID       
+                        #SBATCH -J job-serial        # name of the job          
+                        #SBATCH  -p shared           # name of the queue
+                        #SBATCH  --ntasks=1          # nr. of tasks
+                        #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                        #SBATCH --time=00:03:00      # requested time
+                        #SBATCH --error=job.%J.err   # error file
+                        #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                        # Load dependencies and Python version
+                        ml ...
+
+                        python script-df.py
+
       .. tab:: Julia
 
          - First, be sure you have ``DataFrames`` installed as JuliaPackage.
@@ -1269,6 +1345,25 @@ Exercises
 
                        julia --threads 4 script-df.jl  # X number of threads
 
+            .. tab:: PDC
+
+               .. code-block:: bash                              
+
+                     #!/bin/bash            
+                     #SBATCH -A naiss--------     # your project_ID       
+                     #SBATCH -J job-serial        # name of the job          
+                     #SBATCH  -p shared           # name of the queue
+                     #SBATCH  --ntasks=1          # nr. of tasks
+                     #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                     #SBATCH --time=00:03:00      # requested time
+                     #SBATCH --error=job.%J.err   # error file
+                     #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                     # Load dependencies and Julia version
+                     ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+
+                     julia --threads 4 script-df.jl  # X number of threads
+
       .. tab:: R
 
          - Call the script ``script-df.R``.
@@ -1373,6 +1468,25 @@ Exercises
                        ml purge > /dev/null 2>&1
                        ml GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1
                        Rscript --no-save --no-restore script-df.R
+
+            .. tab:: PDC
+
+               .. code-block:: bash                              
+
+                     #!/bin/bash            
+                     #SBATCH -A naiss--------     # your project_ID       
+                     #SBATCH -J job-serial        # name of the job          
+                     #SBATCH  -p shared           # name of the queue
+                     #SBATCH  --ntasks=1          # nr. of tasks
+                     #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                     #SBATCH --time=00:03:00      # requested time
+                     #SBATCH --error=job.%J.err   # error file
+                     #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                     # Load dependencies and R version
+                     ml ... 
+
+                     Rscript --no-save --no-restore script-df.R
 
       .. tab:: Matlab
       
