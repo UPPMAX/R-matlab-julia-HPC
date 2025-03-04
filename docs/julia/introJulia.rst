@@ -214,7 +214,7 @@ Other NAISS centres
 -------------------
 
 - `Julia at NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
-- `Julia at PDC <https://www.pdc.kth.se/software/software/Julia/index_general.html>`_
+- `Julia at PDC <https://support.pdc.kth.se/doc/applications/>`_
 
 .. keypoints::
 

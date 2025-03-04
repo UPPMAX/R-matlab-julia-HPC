@@ -121,7 +121,7 @@ In a fresh Julia installation, we can see the following project information:
 Here, we can see among other things that nothing (any package) has been added to project,
 the UUID of the project, and the location of the *.toml* file.  
 Let's install a package ``DFTK``, for instance, that performs Density Functional Theory
-routines (`DFTK <https://juliapackages.com/p/dftk>`_):
+routines (`DFTK <https://docs.dftk.org/stable/>`_):
 
 .. code-block:: julia-repl
 
