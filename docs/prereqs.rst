@@ -122,7 +122,7 @@ Get familiar with the Linux/Bash command line
     
   - `Linux <http://docs.uppmax.uu.se/getting_started/linux/>`_
   - `Basic commands <http://docs.uppmax.uu.se/getting_started/linux_basics/>`_
-  - `Whole intro course material <https://www.uppmax.uu.se/support/courses-and-workshops/uppmax-introductory-course/>`_
+  - `Whole intro course material <https://docs.uppmax.uu.se/courses_workshops/uppmax_intro_course/>`_
       
 - HPC2N
     
