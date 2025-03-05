@@ -438,7 +438,7 @@ Install own packages on Bianca
    - Move package to local Bianca R package path
    - Test your installation
 - Demo and exercise from our Bianca course:
-   - `Installing R packages on Bianca <https://uppmax.github.io/bianca_workshop/extra/rpackages/>`_
+   - `Installing R packages on Bianca <https://uppmax.github.io/bianca_workshops/extra/rpackages/>`_
 
 
 Exercises
