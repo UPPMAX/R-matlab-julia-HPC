@@ -172,7 +172,7 @@ Other NAISS centres
 -------------------
 
 - `MATLAB at NSC <https://www.nsc.liu.se/software/catalogue/tetralith/modules/matlab.html>`_
-- `MATLAB at PDC <https://www.pdc.kth.se/software/software/matlab/index_general.html>`_
+- `MATLAB at PDC <https://support.pdc.kth.se/doc/applications/?sub=matlab/>`_
 
 .. keypoints::
 
