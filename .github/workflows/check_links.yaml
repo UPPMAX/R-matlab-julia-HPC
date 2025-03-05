@@ -6,8 +6,8 @@ name: Check links
 
 # Only run this on the main branch, or with Pull Requests
 on:
-  schedule:
-  - cron: "0 9-21/3 * * *"
+#  schedule:
+#  - cron: "0 9-21/3 * * *"
   workflow_dispatch:
   
 jobs:
