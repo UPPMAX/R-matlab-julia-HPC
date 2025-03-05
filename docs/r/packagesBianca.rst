@@ -42,4 +42,4 @@ Install own packages on Bianca
 
 - If an R package is not not available on Bianca already (like Conda repositories) you may have to use the wharf to install the library/package
 
-   - `Installing R packages on Bianca <https://uppmax.github.io/bianca_workshop/extra/rpackages/>`_
+   - `Installing R packages on Bianca <https://uppmax.github.io/bianca_workshops/extra/rpackages/>`_
