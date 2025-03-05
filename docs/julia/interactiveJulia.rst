@@ -323,7 +323,7 @@ Running IJulia and Jupyter
          - Jupyter is rather slow on the compute nodes. 
          - This can be fixed by opening jupyter in a web browsers on your local computer or in ThinLinc
          - Remember to load python as well and to go via the ``julia -p <number of cores>`` and ``notebook(<options>)`` inside the Julia session instead of starting ``jupiter-notebook`` in the bash shell.
-         - https://uppmax.github.io/HPC-python/jupyter.html
+         - https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
 
       **Jupyter from terminal**
       
