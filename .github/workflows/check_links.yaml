@@ -19,7 +19,7 @@ jobs:
       - name: Remove folders that need not to be checked
         run: |
           rm -rf docs/not_used/
-          rm -rf docs/python/not_used/
+          rm -rf docs/python/
           rm -rf docs/julia/not_used/
           rm -rf docs/R/not_used/
           rm -rf docs/matlab/not_used/
