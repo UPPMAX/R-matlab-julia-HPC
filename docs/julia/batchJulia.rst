@@ -95,7 +95,7 @@ Short serial example for running on different clusters.
             #SBATCH --output=job.%J.out    # output file                                                                                                        
             ml julia/1.8.5 # Julia module
            
-            julia serial.jl              # run the serial script
+            julia script.jl              # run the serial script
             
 
    .. tab:: HPC2N
@@ -114,7 +114,7 @@ Short serial example for running on different clusters.
             ml purge  > /dev/null 2>&1   # recommended purge
             ml Julia/1.8.5-linux-x86_64  # Julia module
                        
-            julia serial.jl              # run the serial script
+            julia script.jl              # run the serial script
             
    .. tab:: LUNARC
        
@@ -132,7 +132,7 @@ Short serial example for running on different clusters.
             ml purge  > /dev/null 2>&1   # recommended purge
             ml Julia/1.8.5-linux-x86_64  # Julia module
                        
-            julia serial.jl              # run the serial script
+            julia script.jl              # run the serial script
 
    .. tab:: PDC
        
@@ -151,9 +151,9 @@ Short serial example for running on different clusters.
             # Load dependencies and Julia version
             ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
 
-            julia serial.jl              # run the serial script            
+            julia script.jl              # run the serial script            
 
-   .. tab:: serial.jl 
+   .. tab:: script.jl 
    
         Julia example code.
    
@@ -582,7 +582,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
         
                #!/bin/bash -l
-               #SBATCH -A naiss2024-22-1202
+               #SBATCH -A naiss202t-uv-wxyz
                #SBATCH -J job
                #SBATCH -n 1
                #SBATCH --time=00:10:00
@@ -600,7 +600,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
             
                #!/bin/bash
-               #SBATCH -A naiss2024-22-1202
+               #SBATCH -A naiss202t-uv-wxyz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -618,7 +618,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
            
                #!/bin/bash
-               #SBATCH -A naiss2024-22-1202
+               #SBATCH -A naiss202t-uv-wxyz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -635,7 +635,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
            
                #!/bin/bash
-               #SBATCH -A naiss2024-22-1202
+               #SBATCH -A naiss202t-uv-wxyz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -660,7 +660,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
         
                #!/bin/bash
-               #SBATCH -A hpc2n2024-114
+               #SBATCH -A hpc2n202w-xyz
                #SBATCH -J job
                #SBATCH -n 1
                #SBATCH --time=00:10:00
@@ -679,7 +679,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
             
                #!/bin/bash
-               #SBATCH -A hpc2n2024-114
+               #SBATCH -A hpc2n202w-xyz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -695,10 +695,10 @@ The corresponding batch scripts for these examples are given here:
          .. tab:: distributed.sh 
    
    
-            .. code-block:: sh
+            .. code-block:: bash
            
                #!/bin/bash
-               #SBATCH -A hpc2n2024-114
+               #SBATCH -A hpc2n202w-xyz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -716,7 +716,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: sh
            
                #!/bin/bash
-               #SBATCH -A hpc2n2024-114
+               #SBATCH -A hpc2n202w-xyz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -741,7 +741,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
         
                #!/bin/bash
-               #SBATCH -A lu2024-7-80
+               #SBATCH -A lu202w-x-yz
                #SBATCH -J job
                #SBATCH -n 1
                #SBATCH --time=00:10:00
@@ -760,7 +760,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
             
                #!/bin/bash
-               #SBATCH -A lu2024-7-80
+               #SBATCH -A lu202w-x-yz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -779,7 +779,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: sh
            
                #!/bin/bash
-               #SBATCH -A lu2024-7-80
+               #SBATCH -A lu202w-x-yz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -797,7 +797,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: sh
            
                #!/bin/bash
-               #SBATCH -A lu2024-7-80
+               #SBATCH -A lu202w-x-yz
                #SBATCH -J job
                #SBATCH -n 8
                #SBATCH --time=00:10:00
@@ -822,7 +822,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
         
                #!/bin/bash            
-               #SBATCH -A naiss--------     # your project_ID       
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID       
                #SBATCH -J job               # name of the job          
                #SBATCH  -p shared           # name of the queue
                #SBATCH  --ntasks=1          # nr. of tasks
@@ -842,8 +842,8 @@ The corresponding batch scripts for these examples are given here:
    
             .. code-block:: bash
             
-               #!/bin/bash            
-               #SBATCH -A naiss--------     # your project_ID       
+               #!/bin/bash               
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID     
                #SBATCH -J job               # name of the job          
                #SBATCH  -p shared           # name of the queue
                #SBATCH  --ntasks=1          # nr. of tasks
@@ -863,7 +863,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
            
                #!/bin/bash            
-               #SBATCH -A naiss--------     # your project_ID       
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID       
                #SBATCH -J job               # name of the job          
                #SBATCH  -p shared           # name of the queue
                #SBATCH  --ntasks=1          # nr. of tasks
@@ -883,7 +883,7 @@ The corresponding batch scripts for these examples are given here:
             .. code-block:: bash
            
                #!/bin/bash            
-               #SBATCH -A naiss--------     # your project_ID       
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID        
                #SBATCH -J job               # name of the job          
                #SBATCH  -p shared           # name of the queue
                #SBATCH  --ntasks=8          # nr. of tasks
