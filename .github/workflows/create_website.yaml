@@ -27,14 +27,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
 
-      - name: Install sphinx-design, from https://sphinx-design.readthedocs.io/en/latest/get_started.html
-        run: pip install sphinx-design 
+#      - name: Install sphinx-design, from https://sphinx-design.readthedocs.io/en/latest/get_started.html
+#        run: pip install sphinx-design 
 
       - name: remove unused folders
         run: |
           rm -rf docs/julia/not_used
           rm -rf docs/r/not_used
-          rm -rf docs/python/not_used
+          rm -rf docs/python
           rm -rf docs/matlab/not_used
           rm -rf docs/matlab/README.md
           rm -rf docs/not_used
