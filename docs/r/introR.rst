@@ -86,7 +86,7 @@ Schedule
 
 .. raw:: html
 
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html"height="345px" width="100%"></iframe>
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html#preliminary-schedule" height="345px" width="100%"></iframe>
 
 https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html
 
