@@ -84,7 +84,12 @@ Schedule
 
 .. raw:: html
 
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleR.html" height="345px" width="100%"></iframe>
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleR.html"height="345px" width="100%"></iframe>
+
+.. raw:: html
+
+    <iframe src="https://uppmax.github.io/programming_formalisms/#schedule"height="345px" width="100%"></iframe>
+
 
 - RB: suggest to make 'Batch' 15 minutes longer and remove a session,
   in the next course iteration
