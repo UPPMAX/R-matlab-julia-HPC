@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ML with R &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="summaryR.html" />
+    <link rel="prev" title="Using RStudio" href="rstudio.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ML with R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-your-code">Running your code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#r-batch-scripts-for-ml">R batch scripts for ML</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ml-on-cpus">ML on CPUs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ml-on-gpus">ML on GPUs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ML with R</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/r/MLR.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ml-with-r">
+<h1>ML with R<a class="headerlink" href="#ml-with-r" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>Is R suitable for Machine Learning (ML)?</p></li>
+<li><p>How to run R ML jobs on a HPC system (UPPMAX, HPC2N, LUNARC, …)</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Short introduction to ML with R</p></li>
+<li><p>Workflow</p></li>
+<li><p>Show the structure of a suitable batch script</p></li>
+<li><p>Examples to try</p></li>
+</ul>
+</div>
+<p>R provides many packages that are specifically designed for machine learning. R is also known for its statistical capabilities for analysis and interpretation of data.</p>
+<p>This all makes it easier to develop and deploy models, also without having to write a lot of code yourself.</p>
+<p>The R community has contributed many powerful packages, both for machine learning and data science. Some of the popular packages are:</p>
+<ul class="simple">
+<li><p>Dplyr</p></li>
+<li><p>Tidyr</p></li>
+<li><p>Caret</p></li>
+<li><p>MLR</p></li>
+<li><p>ggplot2</p></li>
+<li><p>randomForest</p></li>
+<li><p>mlbench</p></li>
+<li><p>tidyverse</p></li>
+</ul>
+<p>and many many more.</p>
+<section id="running-your-code">
+<h2>Running your code<a class="headerlink" href="#running-your-code" title="Link to this heading"></a></h2>
+<p><strong>Workflow</strong></p>
+<ol class="arabic simple">
+<li><p>Determine if you need any R libraries that are not already installed (load R module and R_packages/R-bundle-Bioconductor and check)</p></li>
+<li><p>Determine if you want to run on CPUs or GPUs - some of the R version modules are not CUDA-aware</p></li>
+<li><p>Install any missing R libraries in an isolated environment</p></li>
+<li><p>Possibly download any datasets</p></li>
+<li><p>Write a batch script</p></li>
+<li><p>Submit the batch script</p></li>
+</ol>
+<p><strong>Example</strong></p>
+<div class="admonition-type-along type-along important admonition" id="type-along-0">
+<p class="admonition-title">Type-Along</p>
+<p>We will run a simple example taken from <a class="reference external" href="https://machinelearningmastery.com/machine-learning-in-r-step-by-step/">https://machinelearningmastery.com/machine-learning-in-r-step-by-step/</a></p>
+<p>If you cannot access remote data-sets, change the R code as mentioned inside to use a local data-set, which has already been downloaded</p>
+<p><strong>NOTE</strong>: normally we would not run this on the command line, but through a batch script, but since these are short examples we will run it on the command line.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">iris_ml.R</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>R/4.1.1<span class="w"> </span>R_packages/4.1.1
+<span class="gp">$ </span>Rscript<span class="w"> </span>iris_ml.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span>R/4.1.2<span class="w"> </span>R-bundle-Bioconductor/3.14-R-4.1.2
+<span class="gp">$ </span>Rscript<span class="w"> </span>iris_ml.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w"> </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1<span class="w"> </span>R-bundle-Bioconductor/3.15-R-4.2.1
+<span class="gp">$ </span>Rscript<span class="w"> </span>iris_ml.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="dropdown highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+
+<span class="c1"># COMMENT OUT THIS SECTION IF YOU CANNOT ACCESS REMOTE DATA-SETS</span>
+<span class="c1"># --------------------------------------------------------------</span>
+<span class="c1"># attach the iris dataset to the environment</span>
+<span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
+<span class="c1"># rename the dataset</span>
+<span class="n">dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span>
+<span class="c1"># ---------------------------------------------------------------</span>
+
+<span class="c1"># REMOVE THE COMMENTS ON THIS SECTION (except comments...) TO USE LOCAL DATA-SETS</span>
+<span class="c1"># -------------------------------------------------------------------------------</span>
+<span class="c1"># define the filename</span>
+<span class="c1">#filename &lt;- &quot;iris.csv&quot;</span>
+<span class="c1"># load the CSV file from the local directory</span>
+<span class="c1">#dataset &lt;- read.csv(filename, header=FALSE)</span>
+<span class="c1"># -------------------------------------------------------------------------------</span>
+
+<span class="c1"># set the column names in the dataset</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Sepal.Length&quot;</span><span class="p">,</span><span class="s">&quot;Sepal.Width&quot;</span><span class="p">,</span><span class="s">&quot;Petal.Length&quot;</span><span class="p">,</span><span class="s">&quot;Petal.Width&quot;</span><span class="p">,</span><span class="s">&quot;Species&quot;</span><span class="p">)</span>
+
+<span class="c1"># create a list of 80% of the rows in the original dataset we can use for training</span>
+<span class="n">validation_index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">dataset</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="m">0.80</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="c1"># select 20% of the data for validation</span>
+<span class="n">validation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dataset</span><span class="p">[</span><span class="o">-</span><span class="n">validation_index</span><span class="p">,]</span>
+<span class="c1"># use the remaining 80% of data to training and testing the models</span>
+<span class="n">dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dataset</span><span class="p">[</span><span class="n">validation_index</span><span class="p">,]</span>
+
+<span class="c1"># Run algorithms using 10-fold cross validation</span>
+<span class="n">control</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;cv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="n">metric</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Accuracy&quot;</span>
+
+<span class="c1"># a) linear algorithms</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
+<span class="n">fit.lda</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lda&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span><span class="w"> </span><span class="n">trControl</span><span class="o">=</span><span class="n">control</span><span class="p">)</span>
+<span class="c1"># b) nonlinear algorithms</span>
+<span class="c1"># CART</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
+<span class="n">fit.cart</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;rpart&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span><span class="w"> </span><span class="n">trControl</span><span class="o">=</span><span class="n">control</span><span class="p">)</span>
+<span class="c1"># kNN</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
+<span class="n">fit.knn</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;knn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span><span class="w"> </span><span class="n">trControl</span><span class="o">=</span><span class="n">control</span><span class="p">)</span>
+<span class="c1"># c) advanced algorithms</span>
+<span class="c1"># SVM</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
+<span class="n">fit.svm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;svmRadial&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span><span class="w"> </span><span class="n">trControl</span><span class="o">=</span><span class="n">control</span><span class="p">)</span>
+<span class="c1"># Random Forest</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
+<span class="n">fit.rf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;rf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span><span class="w"> </span><span class="n">trControl</span><span class="o">=</span><span class="n">control</span><span class="p">)</span>
+
+<span class="c1"># summarize accuracy of models</span>
+<span class="n">results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resamples</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">lda</span><span class="o">=</span><span class="n">fit.lda</span><span class="p">,</span><span class="w"> </span><span class="n">cart</span><span class="o">=</span><span class="n">fit.cart</span><span class="p">,</span><span class="w"> </span><span class="n">knn</span><span class="o">=</span><span class="n">fit.knn</span><span class="p">,</span><span class="w"> </span><span class="n">svm</span><span class="o">=</span><span class="n">fit.svm</span><span class="p">,</span><span class="w"> </span><span class="n">rf</span><span class="o">=</span><span class="n">fit.rf</span><span class="p">))</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="c1"># summarize Best Model</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">fit.lda</span><span class="p">)</span>
+
+<span class="c1"># estimate skill of LDA on the validation dataset</span>
+<span class="n">predictions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fit.lda</span><span class="p">,</span><span class="w"> </span><span class="n">validation</span><span class="p">)</span>
+<span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">validation</span><span class="o">$</span><span class="n">Species</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<section id="r-batch-scripts-for-ml">
+<h3>R batch scripts for ML<a class="headerlink" href="#r-batch-scripts-for-ml" title="Link to this heading"></a></h3>
+<p>Since most R codes for Machine Learning would run for a fairly long time, you would usually have to run them in a batch script.</p>
+<section id="ml-on-cpus">
+<h4>ML on CPUs<a class="headerlink" href="#ml-on-cpus" title="Link to this heading"></a></h4>
+<div class="admonition-type-along type-along important admonition" id="type-along-1">
+<p class="admonition-title">Type-Along</p>
+<p>Short serial batch example for running the R code above, <code class="docutils literal notranslate"><span class="pre">iris_ml.R</span></code></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">LUNARC</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Short serial example script for Rackham. Loading R/4.1.1 and R_packages/4.1.1</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2024-22-1202 # Course project id. Change to your own project ID after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.1.1 and R_packages/4.1.1</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.1.1<span class="w"> </span>R_packages/4.1.1
+
+<span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>Short serial example for running on Kebnekaise. Loading R/4.2.1 and prerequisites, also R-bundle-Bioconductor/3.15-R-4.2.1</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-114 # Change to your own project ID</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor/3.15-R-4.2.1</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w">  </span>R/4.2.1<span class="w"> </span>R-bundle-Bioconductor/3.15-R-4.2.1
+
+<span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites, alsoa suitable R-bundle-Bioconductor</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2024-7-80 # Change to your own project ID</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w">  </span>R/4.2.1<span class="w"> </span>R-bundle-Bioconductor/3.15-R-4.2.1
+
+<span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</pre></div>
+</div>
+</div></div>
+<p>Send the script to the batch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+</div>
+</section>
+<section id="ml-on-gpus">
+<h4>ML on GPUs<a class="headerlink" href="#ml-on-gpus" title="Link to this heading"></a></h4>
+<div class="admonition-type-along type-along important admonition" id="type-along-2">
+<p class="admonition-title">Type-Along</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-2-2-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-3" name="2-3" role="tab" tabindex="-1">Rscript.R</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>Short ML example for running on Snowy.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2024-22-1202</span>
+<span class="c1">#Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH -p node</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#Writing output and error files</span>
+<span class="c1">#SBATCH --output=output%J.out</span>
+<span class="c1">#SBATCH --error=error%J.error</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>R_packages/4.1.1
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>Rscript.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>Short ML example for running on Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-114 # Change to your own project ID</span>
+<span class="c1">#Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --gpus:1</span>
+<span class="c1">#SBATCH -C l40s</span>
+<span class="c1">#Writing output and error files</span>
+<span class="c1">#SBATCH --output=output%J.out</span>
+<span class="c1">#SBATCH --error=error%J.error</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w"> </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1<span class="w"> </span>CUDA/12.1.1
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>Rscript.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p>Short ML example for running on Cosmos.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2024-7-80 # Change to your own project ID</span>
+<span class="c1">#Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --gres=gpus:1</span>
+<span class="c1">#SBATCH -p gpua100</span>
+<span class="c1">#Writing output and error files</span>
+<span class="c1">#SBATCH --output=output%J.out</span>
+<span class="c1">#SBATCH --error=error%J.error</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w"> </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1<span class="w"> </span>CUDA/12.1.1
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>Rscript.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-3" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-3" name="2-3" role="tabpanel" tabindex="0"><p>Short ML example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">#Example taken from https://github.com/lgreski/datasciencectacontent/blob/master/markdown/pml-randomForestPerformance.md</span>
+library<span class="o">(</span>mlbench<span class="o">)</span>
+data<span class="o">(</span>Sonar<span class="o">)</span>
+library<span class="o">(</span>caret<span class="o">)</span>
+set.seed<span class="o">(</span><span class="m">95014</span><span class="o">)</span>
+
+<span class="c1"># create training &amp; testing data sets</span>
+inTraining<span class="w"> </span>&lt;-<span class="w"> </span>createDataPartition<span class="o">(</span>Sonar<span class="nv">$Class</span>,<span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.75,<span class="w"> </span><span class="nv">list</span><span class="o">=</span>FALSE<span class="o">)</span>
+training<span class="w"> </span>&lt;-<span class="w"> </span>Sonar<span class="o">[</span>inTraining,<span class="o">]</span>
+testing<span class="w"> </span>&lt;-<span class="w"> </span>Sonar<span class="o">[</span>-inTraining,<span class="o">]</span>
+
+<span class="c1"># set up training run for x / y syntax because model format performs poorly</span>
+x<span class="w"> </span>&lt;-<span class="w"> </span>training<span class="o">[</span>,-61<span class="o">]</span>
+y<span class="w"> </span>&lt;-<span class="w"> </span>training<span class="o">[</span>,61<span class="o">]</span>
+
+<span class="c1">#Serial mode</span>
+fitControl<span class="w"> </span>&lt;-<span class="w"> </span>trainControl<span class="o">(</span><span class="nv">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cv&quot;</span>,
+<span class="w">                           </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>,
+<span class="w">                           </span><span class="nv">allowParallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FALSE<span class="o">)</span>
+
+stime<span class="w"> </span>&lt;-<span class="w"> </span>system.time<span class="o">(</span>fit<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>x,y,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span>,data<span class="o">=</span>Sonar,trControl<span class="w"> </span><span class="o">=</span><span class="w"> </span>fitControl<span class="o">))</span>
+
+
+<span class="c1">#Parallel mode</span>
+library<span class="o">(</span>parallel<span class="o">)</span>
+library<span class="o">(</span>doParallel<span class="o">)</span>
+cluster<span class="w"> </span>&lt;-<span class="w"> </span>makeCluster<span class="o">(</span><span class="m">1</span><span class="o">)</span>
+registerDoParallel<span class="o">(</span>cluster<span class="o">)</span>
+
+fitControl<span class="w"> </span>&lt;-<span class="w"> </span>trainControl<span class="o">(</span><span class="nv">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cv&quot;</span>,
+<span class="w">                           </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>,
+<span class="w">                           </span><span class="nv">allowParallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE<span class="o">)</span>
+
+ptime<span class="w"> </span>&lt;-<span class="w"> </span>system.time<span class="o">(</span>fit<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>x,y,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span>,data<span class="o">=</span>Sonar,trControl<span class="w"> </span><span class="o">=</span><span class="w"> </span>fitControl<span class="o">))</span>
+
+stopCluster<span class="o">(</span>cluster<span class="o">)</span>
+registerDoSEQ<span class="o">()</span>
+
+fit
+fit<span class="nv">$resample</span>
+confusionMatrix.train<span class="o">(</span>fit<span class="o">)</span>
+
+<span class="c1">#Timings</span>
+timing<span class="w"> </span>&lt;-<span class="w"> </span>rbind<span class="o">(</span><span class="nv">sequential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>stime,<span class="w"> </span><span class="nv">parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ptime<span class="o">)</span>
+timing
+</pre></div>
+</div>
+</div></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-run-validation-r-with-rscript exercise important admonition" id="exercise-0">
+<p class="admonition-title">Run validation.R with Rscript</p>
+<p>This example is taken from <a class="reference external" href="https://www.geeksforgeeks.org/cross-validation-in-r-programming/">https://www.geeksforgeeks.org/cross-validation-in-r-programming/</a></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">validation.R</span></code></p>
+<blockquote>
+<div><div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># R program to implement</span>
+<span class="c1"># validation set approach</span>
+<span class="c1"># Taken from https://www.geeksforgeeks.org/cross-validation-in-r-programming/</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">datarium</span><span class="p">)</span>
+
+<span class="c1"># setting seed to generate a</span>
+<span class="c1"># reproducible random sampling</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+
+<span class="c1"># creating training data as 80% of the dataset</span>
+<span class="n">random_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">marketing</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="c1"># generating training dataset</span>
+<span class="c1"># from the random_sample</span>
+<span class="n">training_dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">marketing</span><span class="p">[</span><span class="n">random_sample</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="c1"># generating testing dataset</span>
+<span class="c1"># from rows which are not</span>
+<span class="c1"># included in random_sample</span>
+<span class="n">testing_dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">marketing</span><span class="p">[</span><span class="o">-</span><span class="n">random_sample</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="c1"># Building the model</span>
+
+<span class="c1"># training the model by assigning sales column</span>
+<span class="c1"># as target variable and rest other columns</span>
+<span class="c1"># as independent variables</span>
+<span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">sales</span><span class="w"> </span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">training_dataset</span><span class="p">)</span>
+
+<span class="c1"># predicting the target variable</span>
+<span class="n">predictions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="p">)</span>
+
+<span class="c1"># computing model performance metrics</span>
+<span class="nf">data.frame</span><span class="p">(</span><span class="w"> </span><span class="n">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">R2</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">),</span><span class="w"> </span><span class="n">RMSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">RMSE</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">),</span><span class="w"> </span><span class="n">MAE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">MAE</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>validation.R
+</pre></div>
+</div>
+</div>
+<div class="admonition-create-a-batch-script-to-run-validation-r exercise important admonition" id="exercise-1">
+<p class="admonition-title">Create a batch script to run <code class="docutils literal notranslate"><span class="pre">validation.R</span></code></p>
+<p>You can find example batch scripts in the <code class="docutils literal notranslate"><span class="pre">exercises/r</span></code> directory.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rstudio.html" class="btn btn-neutral float-left" title="Using RStudio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="summaryR.html" class="btn btn-neutral float-right" title="Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

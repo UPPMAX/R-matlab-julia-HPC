@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running Python in batch mode &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlab.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/isolated_extra.html">Isolated environments, extra exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Running Python in batch mode</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/python/batchPython.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-python-in-batch-mode">
+<h1>Running Python in batch mode<a class="headerlink" href="#running-python-in-batch-mode" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What is a batch job?</p></li>
+<li><p>How to make a batch job?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Short introduction to SLURM scheduler</p></li>
+<li><p>Show structure of a batch script</p></li>
+<li><p>Try example</p></li>
+</ul>
+</div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">naiss2024-22-1202</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2024-114</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2024-7-80</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code></p></li>
+</ul>
+</div>
+<p>Any longer, resource-intensive, or parallel jobs must be run through a <strong>batch script</strong>.</p>
+<p>The batch system used at UPPMAX, HPC2N, and LUNARC is called SLURM. The same is the case at most of the Swedish HPC centres.</p>
+<p>SLURM is an Open Source job scheduler, which provides three key functions</p>
+<ul class="simple">
+<li><p>Keeps track of available system resources</p></li>
+<li><p>Enforces local system resource usage and job scheduling policies</p></li>
+<li><p>Manages a job queue, distributing work across resources according to policies</p></li>
+</ul>
+<p>In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).</p>
+<p>Guides and documentation at:</p>
+<ul class="simple">
+<li><p>HPC2N: <a class="reference external" href="https://docs.hpc2n.umu.se/documentation/batchsystem/intro/">https://docs.hpc2n.umu.se/documentation/batchsystem/intro/</a></p></li>
+<li><p>UPPMAX: <a class="reference external" href="https://docs.uppmax.uu.se/cluster_guides/slurm/">https://docs.uppmax.uu.se/cluster_guides/slurm/</a></p></li>
+<li><p>LUNARC: <a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/">https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/</a></p></li>
+</ul>
+<p><strong>Workflow</strong></p>
+<ul class="simple">
+<li><p>Write a batch script</p>
+<ul>
+<li><p>Inside the batch script you need to load the modules you need (Python, Python packages … )</p></li>
+<li><p>Possibly activate an isolated/virtual environment to access own-installed packages</p></li>
+<li><p>Ask for resources depending on if it is a parallel job or a serial job, if you need GPUs or not, etc.</p></li>
+<li><p>Give the command(s) to your Python script</p></li>
+</ul>
+</li>
+<li><p>Submit batch script with <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">&lt;my-python-script.sh&gt;</span></code></p></li>
+</ul>
+<p>Common file extensions for batch scripts are <code class="docutils literal notranslate"><span class="pre">.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">.batch</span></code>, but they are not necessary. You can choose any name and extension that makes sense to you.</p>
+<section id="useful-commands-to-the-batch-system">
+<h2>Useful commands to the batch system<a class="headerlink" href="#useful-commands-to-the-batch-system" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Submit job: <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">&lt;jobscript.sh&gt;</span></code></p></li>
+<li><p>Get list of your jobs: <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">&lt;username&gt;</span></code></p></li>
+<li><p>Check on a specific job: <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">job</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+<li><p>Delete a specific job: <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+<li><p>Useful info about a job: <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-l</span> <span class="pre">-j</span> <span class="pre">&lt;job-id&gt;</span> <span class="pre">|</span> <span class="pre">less</span> <span class="pre">-S</span></code></p></li>
+<li><p>Url to a page with info about the job (Kebnekaise only): <code class="docutils literal notranslate"><span class="pre">job-usage</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+</ul>
+</section>
+<section id="example-python-batch-scripts">
+<h2>Example Python batch scripts<a class="headerlink" href="#example-python-batch-scripts" title="Link to this heading"></a></h2>
+<section id="serial-code">
+<h3>Serial code<a class="headerlink" href="#serial-code" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">mmmult.py</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Short serial example script for Rackham. Loading Python 3.11.8. Numpy is preinstalled and does not need to be loaded.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2024-22-1202 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here Python 3.11.x.</span>
+module<span class="w"> </span>load<span class="w"> </span>python/3.11.8
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>mmmult.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Short serial example for running on Kebnekaise. Loading SciPy-bundle/2023.07 and Python/3.11.3 (+ prerequisites)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-114 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.3 and compatible SciPy-bundle</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w"> </span>Python/3.11.3<span class="w"> </span>SciPy-bundle/2023.07
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>mmmult.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Short serial example for running on Kebnekaise. Loading SciPy-bundle/2023.07, Python/3.11.3 and prerequisites</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2024-7-80 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.3 and compatible SciPy-bundle</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w"> </span>Python/3.11.3<span class="w"> </span>SciPy-bundle/2023.07
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>mmmult.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><p>Python example code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1701</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is matrix A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of matrix A is &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is matrix B:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of matrix B is &quot;</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doing matrix-matrix multiplication...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The product of matrices A and B is:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of the resulting matrix is &quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time elapsed for generating matrices and multiplying them is &quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span> <span class="o">-</span> <span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>Send the script to the batch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+</section>
+<section id="serial-code-self-installed-package-in-virt-env">
+<h3>Serial code + self-installed package in virt. env.<a class="headerlink" href="#serial-code-self-installed-package-in-virt-env" title="Link to this heading"></a></h3>
+<p>Here we are using the virtual environment we created under the “isolated environments” session earlier. It is using the Python package “&lt;a href=”<a class="reference external" href="https://github.com/mwaskom/seaborn">https://github.com/mwaskom/seaborn</a>”&gt;seaborn&lt;/a&gt;”. In order to run the seaborn-code.py example, you need to download the data set “tips.csv” which you can find here: &lt;a href=”<a class="reference external" href="https://github.com/mwaskom/seaborn-data">https://github.com/mwaskom/seaborn-data</a>”&gt;https://github.com/mwaskom/seaborn-data&lt;/a&gt;. If you want, there are other datasets there to play with. (Note: the data set in question can now also be found in the exercises python section).</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">seaborn-code.py</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Short serial example for running on Rackham. Loading Python 3.11.x + using any Python packages you have installed yourself with venv. More information under the separate session for UPPMAX. Change to your directory name and venv name below.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2024-22-1202 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.x</span>
+module<span class="w"> </span>load<span class="w"> </span>python/3.11.8
+
+<span class="c1"># Activate your virtual environment.</span>
+<span class="c1"># CHANGE &lt;path-to-virt-env&gt; to the full path where you installed your virtual environment</span>
+<span class="c1"># Example: /proj/r-py-jl-m-rackham/&lt;user-dir&gt;/python/&lt;venv-name&gt;</span>
+<span class="nb">source</span><span class="w"> </span>/proj/r-py-jl-m-rackham/&lt;user-dir&gt;/&lt;path-to-virt-env&gt;/&lt;venv-name&gt;/bin/activate
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>seaborn-code.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>Short serial example for running on Kebnekaise. Loading SciPy-bundle/2023.07, Python/3.11.3, matplotlib + using any Python packages you have installed yourself with virtual environment - the one we named “vpyenv” should work well here. During the isolated environments session there was more about how to install something yourself this way.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-114 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.3 and compatible SciPy-bundle</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w">  </span>Python/3.11.3<span class="w"> </span>SciPy-bundle/2023.07<span class="w"> </span>matplotlib/3.7.2
+
+<span class="c1"># Activate your virtual environment.</span>
+<span class="c1"># CHANGE &lt;path-to-virt-env&gt; to the full path where you installed your virtual environment</span>
+<span class="c1"># Example: /proj/nobackup/r-py-jl-m/bbrydsoe/python/vpyenv</span>
+<span class="nb">source</span><span class="w"> </span>/proj/nobackup/r-py-jl-m/&lt;user-dir&gt;/&lt;path-to-virt-env&gt;/vpyenv/bin/activate
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>seaborn-code.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>Short serial example for running on Cosmos. Loading SciPy-bundle/2023.07, Python/3.11.3, matplotlib + using any Python packages you have installed yourself with virtual environment - the one we named “vpyenv” should work well here. During the isolated environments session there was more about how to install something yourself this way.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2024-7-80 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.3 and compatible SciPy-bundle</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w">  </span>Python/3.11.3<span class="w"> </span>SciPy-bundle/2023.07<span class="w"> </span>matplotlib/3.7.2
+
+<span class="c1"># Activate your virtual environment.</span>
+<span class="c1"># CHANGE &lt;path-to-virt-env&gt; to the full path where you installed your virtual environment</span>
+<span class="c1"># Example: /proj/nobackup/r-py-jl-m/bbrydsoe/python/vpyenv</span>
+<span class="nb">source</span><span class="w"> </span>&lt;path-to-my<span class="w"> </span>virt-env&gt;/vpyenv/bin/activate
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>seaborn-code.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><p>An example Python code using the “seaborn” package. It was (with minor changes) taken from &lt;a href=”<a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction.html">https://seaborn.pydata.org/tutorial/introduction.html</a>”&gt;https://seaborn.pydata.org/tutorial/introduction.html&lt;/a&gt;.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import seaborn, matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Apply the default theme</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
+
+<span class="c1"># Load an example dataset (local, with pandas)</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;tips.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Load an example dataset (remotely from repo. Only works at HPC2N and LUNARC - remove outcomment to use and comment out above line instead)</span>
+<span class="c1">#tips = sns.load_dataset(&quot;tips&quot;)</span>
+
+<span class="c1"># Create a visualization</span>
+<span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tipsplot.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>Send the script to the batch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+<p>Note that the slurm output file will be empty on success, and it will just create the file <code class="docutils literal notranslate"><span class="pre">tipsplot.png</span></code>.</p>
+</section>
+<section id="gpu-code">
+<h3>GPU code<a class="headerlink" href="#gpu-code" title="Link to this heading"></a></h3>
+<p><strong>We’ll not test this live, but you can try if you have Snowy access or if you have an account on Kebnekaise/Cosmos with GPU access</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is some problem with PyTorch under the ML package on UPPMAX, so you need to use the virtual environment</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">LUNARC</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>Short GPU example for running on Snowy. This runs the example pytorch_fitting_gpu.py program that you can find in the Exercises/Python directory</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2024-22-1202</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+
+<span class="c1"># Load any modules you need, here loading Python 3.9.5 and the corresponding ML packages module</span>
+
+module<span class="w"> </span>load<span class="w"> </span>uppmax
+module<span class="w"> </span>load<span class="w"> </span>python/3.11.8<span class="w"> </span>python_ML_packages/3.11.8-gpu
+
+<span class="c1"># Run your code</span>
+srun<span class="w"> </span>python<span class="w"> </span>pytorch_fitting_gpu.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>Short GPU example for running on Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-114 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00  # Asking for 10 minutes</span>
+<span class="c1"># Asking for one A100 card</span>
+<span class="c1">#SBATCH --gpus=1</span>
+<span class="c1">#SBATCH -C a100</span>
+
+<span class="c1"># Remove any loaded modules and load the ones we need</span>
+module<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w"> </span>OpenMPI/4.1.5<span class="w"> </span>PyTorch/2.1.2-CUDA-12.1.1
+
+<span class="c1"># Run your Python script</span>
+srun<span class="w"> </span>python<span class="w"> </span>pytorch_fitting_gpu.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p>Short GPU example for running on Cosmos.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Remember to change this to your own project ID after the course!</span>
+<span class="c1">#SBATCH -A lu2024-7-80</span>
+<span class="c1"># We are asking for 5 minutes</span>
+<span class="c1">#SBATCH --time=00:05:00</span>
+<span class="c1"># The following two lines splits the output in a file for any errors and a file for other output.</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+<span class="c1"># This is needed on LUNARC when running on GPUs</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1"># Asking for one A100. You need to give the gpua100 partition and then ask for one GPU</span>
+<span class="c1">#SBATCH -p gpua100</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+
+<span class="c1"># Remove any loaded modules and load the ones we need</span>
+module<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>GCC/11.3.0<span class="w"> </span>OpenMPI/4.1.4<span class="w"> </span>PyTorch/1.12.1-CUDA-11.7.0
+
+srun<span class="w"> </span>python<span class="w"> </span>pytorch_fitting_gpu.py
+</pre></div>
+</div>
+</div></div>
+<p>Send the script to the batch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-run-the-first-serial-example-script-from-further-up-on-the-page-for-this-short-python-code-sum-2args-py exercise important admonition" id="exercise-0">
+<p class="admonition-title">Run the first serial example script from further up on the page for this short Python code (sum-2args.py)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sum of the two numbers is: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">sum</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Remember to give the two arguments to the program in the batch script.</p>
+</div>
+<div class="dropdown solution important admonition" id="solution-0">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>This batch script is for Kebnekaise. Adding the numbers 2 and 3.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-114 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:05:00 # Asking for 5 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.3</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w">  </span>Python/3.11.3
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>sum-2args.py<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-1">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>This batch script is for UPPMAX. Adding the numbers 2 and 3.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2024-22-1202 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:05:00 # Asking for 5 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.8</span>
+module<span class="w"> </span>load<span class="w"> </span>Python/3.11.8
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>sum-2args.py<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-2">
+<p class="admonition-title">Solution for LUNARC</p>
+<blockquote>
+<div><p>This batch script is for LUNARC (Cosmos). Adding the numbers 2 and 3.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2024-7-80 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:05:00 # Asking for 5 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.3</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w">  </span>Python/3.11.3
+
+<span class="c1"># Run your Python script</span>
+python<span class="w"> </span>sum-2args.py<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>For parallel computing, you may get an introduction here: (<a class="reference external" href="https://uppmax.github.io/HPC-python/parallel.html">https://uppmax.github.io/HPC-python/parallel.html</a>)</p></li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li><p>The SLURM scheduler handles allocations to the calculation nodes</p></li>
+<li><p>Batch jobs runs without interaction with user</p></li>
+<li><p>A batch script consists of a part with SLURM parameters describing the allocation and a second part describing the actual work within the job, for instance one or several Python scripts.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Remember to include possible input arguments to the Python script in the batch script.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
