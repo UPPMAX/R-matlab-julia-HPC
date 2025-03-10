@@ -678,16 +678,16 @@ Exercises
 
                        .. code-block:: sh
                            
-
-                           #!/bin/bash            
-                           #SBATCH -A naiss--------     # your project_ID       
-                           #SBATCH -J job-serial        # name of the job          
+                                                                                                                                                                        
+                           #!/bin/bash
+                           #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+                           #SBATCH -J job               # name of the job          
                            #SBATCH  -p shared           # name of the queue
-                           #SBATCH  --ntasks=1          # nr. of tasks
+                           #SBATCH --ntasks=*FIXME*     # nr. of tasks
                            #SBATCH --cpus-per-task=1    # nr. of cores per-task
                            #SBATCH --time=00:03:00      # requested time
                            #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+                           #SBATCH --output=job.%J.out  # output file 
 
                            # Load dependencies and Python version
                            ml ...
@@ -1177,7 +1177,7 @@ Exercises
                     .. code-block:: sh
                         
                        #!/bin/bash -l
-                       #SBATCH -A naiss2024-22-107  # your project_ID
+                       #SBATCH -A naiss202t-uv-xyz  # your project_ID
                        #SBATCH -J job-parallel      # name of the job
                        #SBATCH -n 4                 # nr. tasks/coresw
                        #SBATCH --time=00:20:00      # requested time
@@ -1193,7 +1193,7 @@ Exercises
                     .. code-block:: sh
                         
                         #!/bin/bash            
-                        #SBATCH -A hpc2n202x-XXX     # your project_ID       
+                        #SBATCH -A hpc2n202w-xyz     # your project_ID       
                         #SBATCH -J job-parallel      # name of the job         
                         #SBATCH -n 4                 # nr. tasks  
                         #SBATCH --time=00:20:00      # requested time
@@ -1209,7 +1209,7 @@ Exercises
                     .. code-block:: sh
                            
                         #!/bin/bash            
-                        #SBATCH -A lu202X-XX-XX      # your project_ID
+                        #SBATCH -A lu202u-wx-yz      # your project_ID
                         #SBATCH -J job-parallel      # name of the job         
                         #SBATCH -n 4	             # nr. tasks  
                         #SBATCH --time=00:20:00      # requested time
@@ -1227,10 +1227,10 @@ Exercises
                   .. code-block:: bash                              
 
                         #!/bin/bash            
-                        #SBATCH -A naiss--------     # your project_ID       
-                        #SBATCH -J job-serial        # name of the job          
+                        #SBATCH -A naiss202t-uv-xyz  # your project_ID      
+                        #SBATCH -J job-parallel      # name of the job          
                         #SBATCH  -p shared           # name of the queue
-                        #SBATCH  --ntasks=1          # nr. of tasks
+                        #SBATCH  --ntasks=4          # nr. of tasks
                         #SBATCH --cpus-per-task=1    # nr. of cores per-task
                         #SBATCH --time=00:03:00      # requested time
                         #SBATCH --error=job.%J.err   # error file
@@ -1300,7 +1300,7 @@ Exercises
                .. code-block:: bash
 
                        #!/bin/bash -l
-                       #SBATCH -A naiss2024-22-107     # your project_ID
+                       #SBATCH -A naiss202t-uw-xyz  # your project_ID
                        #SBATCH -J job-parallel      # name of the job
                        #SBATCH -n 4                 # nr. tasks/coresw
                        #SBATCH --time=00:20:00      # requested time
@@ -1316,7 +1316,7 @@ Exercises
                .. code-block:: bash
                         
                         #!/bin/bash            
-                        #SBATCH -A hpc2n2023-110     # your project_ID       
+                        #SBATCH -A hpc2n202w-xyz     # your project_ID       
                         #SBATCH -J job-parallel      # name of the job         
                         #SBATCH -n 4                 # nr. tasks  
                         #SBATCH --time=00:20:00      # requested time
@@ -1334,7 +1334,7 @@ Exercises
                  .. code-block:: sh
                            
                        #!/bin/bash            
-                       #SBATCH -A lu202X-XX-XX      # your project_ID
+                       #SBATCH -A lu202u-w-yz      # your project_ID
                        #SBATCH -J job-parallel      # name of the job         
                        #SBATCH -n 4	            # nr. tasks  
                        #SBATCH --time=00:20:00      # requested time
@@ -1352,10 +1352,10 @@ Exercises
                .. code-block:: bash                              
 
                      #!/bin/bash            
-                     #SBATCH -A naiss--------     # your project_ID       
-                     #SBATCH -J job-serial        # name of the job          
+                     #SBATCH -A naiss202t-uw-xyz  # your project_ID  
+                     #SBATCH -J job-parallel      # name of the job          
                      #SBATCH  -p shared           # name of the queue
-                     #SBATCH  --ntasks=1          # nr. of tasks
+                     #SBATCH  --ntasks=4          # nr. of tasks
                      #SBATCH --cpus-per-task=1    # nr. of cores per-task
                      #SBATCH --time=00:03:00      # requested time
                      #SBATCH --error=job.%J.err   # error file
@@ -1426,7 +1426,7 @@ Exercises
                .. code-block:: bash
                         
                        #!/bin/bash -l
-                       #SBATCH -A naiss2024-22-107     # your project_ID
+                       #SBATCH -A naiss202t-uw-xyz  # your project_ID
                        #SBATCH -J job-parallel      # name of the job
                        #SBATCH -n 4                 # nr. tasks/coresw
                        #SBATCH --time=00:20:00      # requested time
@@ -1442,7 +1442,7 @@ Exercises
                .. code-block:: bash
 
                         #!/bin/bash            
-                        #SBATCH -A hpc2n202X-XYZ     # your project_ID       
+                        #SBATCH -A hpc2n202w-xyz     # your project_ID       
                         #SBATCH -J job-parallel      # name of the job         
                         #SBATCH -n 4                 # nr. tasks  
                         #SBATCH --time=00:20:00      # requested time
@@ -1459,7 +1459,7 @@ Exercises
                  .. code-block:: sh
                            
                        #!/bin/bash            
-                       #SBATCH -A lu202X-XX-XX      # your project_ID
+                       #SBATCH -A lu202u-wx-yz      # your project_ID
                        #SBATCH -J job-parallel      # name of the job         
                        #SBATCH -n 4                 # nr. tasks  
                        #SBATCH --time=00:20:00      # requested time
