@@ -53,7 +53,7 @@ Introduction Julia
    - Intro 5 min 
    - Lecture and 10 min
 
-`Preliminary schedule <Preliminary schedule>`_ 
+`Preliminary schedule <scheduleJulia.rst>`_ 
 
 What is Julia?
 --------------
