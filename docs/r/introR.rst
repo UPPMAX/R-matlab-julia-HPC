@@ -61,7 +61,7 @@ First overview of R
 R is a programming language for statistical computing and data visualization
 (from `Wikipedia <https://en.wikipedia.org/wiki/R_(programming_language)>`_).
 
-.. mermaid:: docs/r/intro_r_overview_r.mmd 
+.. mermaid:: ./intro_r_overview_r.mmd 
 
 The main general R resources are:
 
@@ -78,7 +78,7 @@ R is used in many NAISS centres:
 Schedule
 --------
 
-.. mermaid::  ./r/intro_r_overview_course_login_and_scheduler.mmd
+.. mermaid::  intro_r_overview_course_login_and_scheduler.mmd
 
 .. mermaid::  ./intro_r_overview_course_r_and_modules.mmd
 
