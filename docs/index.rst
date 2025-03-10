@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Introduction to running R, Python, Julia, and Matlab in HPC
+Introduction to running R, Matlab and Julia in HPC
 ===========================================================
 
 .. admonition:: Content
