@@ -76,20 +76,20 @@ R is used in many NAISS centres:
 
 
 Schedule
---------------------
+--------
 
 .. mermaid::  intro_r_overview_course_login_and_scheduler.mmd
+.. mermaid::  r/intro_r_overview_course_r_and_modules.mmd
 
-.. mermaid::  intro_r_overview_course_r_and_modules.mmd
-
-.. raw:: html
-
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleR.html"height="345px" width="100%"></iframe>
+---
 
 .. raw:: html
 
-    <iframe src="https://uppmax.github.io/programming_formalisms/#schedule"height="345px" width="100%"></iframe>
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/R/scheduleR.html"height="345px" width="100%"></iframe>
 
+https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html
+
+---
 
 - RB: suggest to make 'Batch' 15 minutes longer and remove a session,
   in the next course iteration
