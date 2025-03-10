@@ -896,10 +896,9 @@ The corresponding batch scripts for these examples are given here:
                ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
    
                # export the PATH of the Julia MPI wrapper
-               export PATH=cfs/klemming/home/u/username/.julia/bin:$PATH
+               export PATH=/cfs/klemming/home/u/username/.julia/bin:$PATH
    
                time mpiexecjl -np 8 julia mpi.jl
-
 
 
 GPU code
