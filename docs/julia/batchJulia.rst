@@ -17,14 +17,20 @@ Running Julia in batch mode
 .. admonition:: Compute allocations in this workshop 
 
    - Rackham: ``naiss2024-22-1202``
-   - Kebnekaise: ``hpc2n2024-114``
+   - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2024-7-80``
+   - Dardel: ``naiss2025-22-262`` 
+
+   Please, change the project IDs in the templates accordingly.
 
 .. admonition:: Storage space for this workshop 
 
    - Rackham: ``/proj/r-py-jl-m-rackham``
-   - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
+   - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
    - Cosmos: ``<your own good place>``
+   - Dardel: ``/cfs/klemming/projects/supr/r-matlab-julia-naiss``
+
+   Please, change the paths to the project storage in the templates accordingly.
 
 .. warning::
 
@@ -82,7 +88,7 @@ Short serial example for running on different clusters.
         .. code-block:: bash
 
             #!/bin/bash -l                 # -l cleans the environment in the batch job, recommended at UPPMAX
-            #SBATCH -A naiss2024-22-1202    # your project_ID
+            #SBATCH -A naiss202t-uv-wxyz    # your project_ID
             #SBATCH --time=00:10:00        # Asking for 10 minutes
             #SBATCH -n 1                   # Asking for 1 core
             #SBATCH --error=job.%J.err     # error file
@@ -97,7 +103,7 @@ Short serial example for running on different clusters.
         .. code-block:: bash
    
             #!/bin/bash            
-            #SBATCH -A hpc2n2024-114     # your project_ID       
+            #SBATCH -A hpc2n202w-xyz     # your project_ID       
             #SBATCH -J job-serial        # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
@@ -115,7 +121,7 @@ Short serial example for running on different clusters.
         .. code-block:: bash
    
             #!/bin/bash            
-            #SBATCH -A lu2024-7-80      # your project_ID       
+            #SBATCH -A lu202w-x-yz       # your project_ID       
             #SBATCH -J job-serial        # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
@@ -133,7 +139,7 @@ Short serial example for running on different clusters.
         .. code-block:: bash
    
             #!/bin/bash            
-            #SBATCH -A naiss--------     # your project_ID       
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID       
             #SBATCH -J job-serial        # name of the job          
             #SBATCH  -p shared           # name of the queue
             #SBATCH  --ntasks=1          # nr. of tasks
@@ -161,7 +167,8 @@ Serial code + self-installed package in virt. env.
 ''''''''''''''''''''''''''''''''''''''''''''''''''
 
 Short serial example for running on Julia with a virtual environment. Create an environment ``my-third-env`` 
-and install the package ``DFTK``. Here, there are batch scripts for using this environment:
+and install the package ``DFTK``. Here, there are batch scripts for using this environment (it is assumed that
+the batch scripts are in the ``my-third-env`` folder):
 
 .. tabs::
 
@@ -169,8 +176,8 @@ and install the package ``DFTK``. Here, there are batch scripts for using this e
 
         .. code-block:: bash
         
-            #!/bin/bash -l               # -l cleans the environment in the batch job, recommended at UPPMAX
-            #SBATCH -A naiss2024-22-1202   # Change to your own after the course
+            #!/bin/bash -l                # -l cleans the environment in the batch job, recommended at UPPMAX
+            #SBATCH -A naiss202t-uv-wxyz  # Change to your own after the course
             #SBATCH --time=00:10:00       # Asking for 10 minutes
             #SBATCH -n 1                  # Asking for 1 core
             #SBATCH --error=job.%J.err    # error file
@@ -181,21 +188,14 @@ and install the package ``DFTK``. Here, there are batch scripts for using this e
             # Move to the directory where the ".toml" files for the environment are located
             julia --project=. serial-env.jl  # run the script 
 
-        If this works, you will see the installed packages in the output file. In the present case
-        because I installed the ``DFTK`` package only in ``my-third-env`` environment, I can 
-        see the following output:
 
-        .. code-block:: sh
-
-            Status `path/Julia-Test/my-third-env/Project.toml`
-            [acf6eb54] DFTK v0.6.2
 
    .. tab:: HPC2N
        
         .. code-block:: bash
 
             #!/bin/bash            
-            #SBATCH -A hpc2n2024-114     # your project_ID       
+            #SBATCH -A hpc2n202w-xyz     # your project_ID       
             #SBATCH -J job-serial        # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
@@ -208,27 +208,18 @@ and install the package ``DFTK``. Here, there are batch scripts for using this e
             # for the environment are located
             julia --project=. serial-env.jl  # run the script 
 
-        If this works, you will see the installed packages in the output file. In the present case
-        because I installed the ``DFTK`` package only in ``my-third-env`` environment, I can 
-        see the following output:
-
-        .. code-block:: sh
-
-            Status `/pfs/proj/nobackup/path/Julia-Test/my-third-env/Project.toml`
-            [acf6eb54] DFTK v0.6.2
 
    .. tab:: LUNARC
 
         .. code-block:: bash
    
             #!/bin/bash            
-            #SBATCH -A lu2024-7-80      # your project_ID       
+            #SBATCH -A lu202w-x-yz       # your project_ID       
             #SBATCH -J job-serial        # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
             #SBATCH --error=job.%J.err   # error file
             #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
-
 
             ml purge  > /dev/null 2>&1   # recommended purge
             ml Julia/1.8.5-linux-x86_64  # Julia module
@@ -237,22 +228,12 @@ and install the package ``DFTK``. Here, there are batch scripts for using this e
             # for the environment are located
             julia --project=. serial-env.jl  # run the script 
 
-        If this works, you will see the installed packages in the output file. In the present case
-        because I installed the ``DFTK`` package only in ``my-third-env`` environment, I can 
-        see the following output:
-
-        .. code-block:: sh
-
-            Status `/path-to-your-folder/Julia-Test/my-third-env/Project.toml`
-            [acf6eb54] DFTK v0.6.2                       
-            julia serial.jl              # run the serial script
-
    .. tab:: PDC
        
         .. code-block:: bash
       
             #!/bin/bash            
-            #SBATCH -A naiss--------     # your project_ID       
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID       
             #SBATCH -J job-serial        # name of the job          
             #SBATCH  -p shared           # name of the queue
             #SBATCH  --ntasks=1          # nr. of tasks
@@ -268,15 +249,6 @@ and install the package ``DFTK``. Here, there are batch scripts for using this e
             # for the environment are located
             julia --project=. serial-env.jl  # run the script 
 
-        If this works, you will see the installed packages in the output file. In the present case
-        because I installed the ``DFTK`` package only in ``my-third-env`` environment, I can 
-        see the following output:
-
-        .. code-block:: sh
-
-            Status `/pfs/proj/nobackup/path/Julia-Test/my-third-env/Project.toml`
-            [acf6eb54] DFTK v0.6.2
-
    .. tab:: serial-env.jl 
    
         Julia example code where an environment is used.
@@ -285,6 +257,15 @@ and install the package ``DFTK``. Here, there are batch scripts for using this e
         
             using Pkg
             Pkg.status()
+
+You should see the installed packages in the output file. In the present case
+because I installed the ``DFTK`` package only in ``my-third-env`` environment, I can 
+see the following output:
+
+.. code-block:: sh
+
+    Status `/path-to-project-storage/my-third-env/Project.toml`
+    [acf6eb54] DFTK v0.6.2
 
 
 Parallel code
