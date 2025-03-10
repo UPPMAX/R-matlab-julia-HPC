@@ -10,6 +10,6 @@ myst_nb
 sphinxemoji
 sphinx-prompt
 sphinx-copybutton
-
+sphinx-design 
 sphinxcontrib-mermaid
 sphinxcontrib-plantuml
