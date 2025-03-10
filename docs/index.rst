@@ -305,6 +305,7 @@ Content of the course
    :maxdepth: 2
    :caption: R Lessons:
 
+   r/scheduleR.rst
    r/introR.rst
    r/load_runR.rst
    r/packagesR.rst
