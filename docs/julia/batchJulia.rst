@@ -907,7 +907,7 @@ GPU code
 In order to use the NVIDIA GPUs with Julia (UPPMAX, HPC2N, and LUNARC), you will need to load a CUDA toolkit module on the
 cluster and install the ``CUDA`` package in Julia. 
 
-In the case of AMD GPUs with Julia (PDC and HPC2N), you will need to load a ROCM toolkit module on the
+In the case of AMD GPUs for Julia (PDC and HPC2N), you will need to load a ROCM toolkit module on the
 cluster and install the ``AMDGPU`` package in Julia as in the next sequence of commands.
 
 
@@ -966,7 +966,7 @@ cluster and install the ``AMDGPU`` package in Julia as in the next sequence of c
             $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12   # Julia version
             $ ml rocm/5.7.0  craype-accel-amd-gfx90a   # ROCM toolkit module
             $ julia
-            (v1.10) pkg> add AMDGPI 
+            (v1.10) pkg> add AMDGPU 
                 Updating registry at `~/.julia/registries/General.toml`
                 Resolving package versions...
                 Installed CEnum ───────── v0.4.2
@@ -986,12 +986,12 @@ reference point, we show the simulation on CPUs as well.
 
           
             #!/bin/bash -l
-            #SBATCH -A naiss2024-22-1202    # your project_ID  
+            #SBATCH -A naiss202t-uv-wxyz     # your project_ID  
             #SBATCH -M snowy
             #SBATCH -p node
             #SBATCH --gres=gpu:1
             #SBATCH -N 1
-            #SBATCH --job-name=juliaGPU         # create a short name for your job
+            #SBATCH --job-name=juliaGPU      # create a short name for your job
             #SBATCH --time=00:15:00          # total run time limit (HH:MM:SS)
             #SBATCH --qos=short              # if test run t<15 min
             #SBATCH --mail-type=begin        # send email when job begins
@@ -1006,7 +1006,7 @@ reference point, we show the simulation on CPUs as well.
         .. code-block:: sh
 
             #!/bin/bash            
-            #SBATCH -A hpc2n2024-114     # your project_ID       
+            #SBATCH -A hpc2n202w-xyz     # your project_ID       
             #SBATCH -J job-serial        # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
@@ -1025,7 +1025,7 @@ reference point, we show the simulation on CPUs as well.
         .. code-block:: sh
 
             #!/bin/bash            
-            #SBATCH -A lu2024-7-80      # your project_ID       
+            #SBATCH -A lu202w-x-yz       # your project_ID       
             #SBATCH -J job-serial        # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
@@ -1077,7 +1077,7 @@ reference point, we show the simulation on CPUs as well.
         .. code-block:: sh
 
             #!/bin/bash            
-            #SBATCH -A naiss--------     # your project_ID       
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID       
             #SBATCH -J job               # name of the job          
             #SBATCH  -p gpu              # name of the queue
             #SBATCH  --ntasks=1          # nr. of tasks
