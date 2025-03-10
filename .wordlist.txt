@@ -47,6 +47,7 @@ cp
 CRAN
 cran
 Crex
+Dardel
 devcore
 devel
 dir
