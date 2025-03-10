@@ -974,7 +974,8 @@ cluster and install the ``AMDGPU`` package in Julia as in the next sequence of c
 
 Once this initial setting is completed, you will be able to use the GPUs available on the
 cluster. Here, there is a simple example for computing a matrix-matrix multiplication. As a 
-reference point, we show the simulation on CPUs as well. 
+reference point, we show the simulation on CPUs as well. You can call the batch script ``job-gpu.sh``, 
+for instance.
 
 .. tabs::
 
@@ -1124,21 +1125,16 @@ reference point, we show the simulation on CPUs as well.
             # Calculation on AMD GPU (again)
             @time A * B
 
-                 
-
-
-
-
 
 
 Cluster Managers
 ''''''''''''''''
 
 The package *ClusterManagers.jl* allows you to submit expensive parts of your simulation
-to the batch queue in a more *interactive* manner than by using batch scripts. This can
-useful, for instance if you are developing some code where just specific parts are computationally
-heavy while the rest is related to data analysis or visualization. In order to use this 
-package, you should add it in a Julia session.
+to the batch queue in a more *interactive* manner than by using batch scripts. *ClusterManagers.jl*
+needs to be installed through **Pkg**. This can useful, for instance if you are developing some 
+code where just specific parts are computationally heavy while the rest is related to data analysis 
+or visualization. In order to use this package, you should add it in a Julia session.
 
 .. code-block:: julia
 
@@ -1156,7 +1152,7 @@ package, you should add it in a Julia session.
     # 4) If the argument contains "_", they are replaced with "-",
     #    e.g. mem_per_cpu=100 => "--mem-per-cpu=100"
     # Example: add 2 processes, with your project ID, allocated 5 min, and 2 cores
-    addprocs(SlurmManager(2), A="project_ID", t="00:5:00", c="2")
+    addprocs(SlurmManager(2), A="project_ID", partition="name-of-partition", t="00:05:00", c="2")
     
     # Define a function that computes the square of a number
     @everywhere function square(x)
@@ -1209,7 +1205,7 @@ Exercises
             .. code-block:: sh
     
                 #!/bin/bash            
-                #SBATCH -A hpc2n2024-114     # your project_ID       
+                #SBATCH -A hpc2n202w-xyz     # your project_ID       
                 #SBATCH -J job-serial        # name of the job         
                 #SBATCH -n 1                 # nr. tasks  
                 #SBATCH --time=00:03:00      # requested time
@@ -1229,7 +1225,7 @@ Exercises
             .. code-block:: sh
     
                 #!/bin/bash -l
-                #SBATCH -A naiss2024-22-1202  # Change to your own after the course
+                #SBATCH -A naiss202t-uv-wxyz # Change to your own after the course
                 #SBATCH -J job-serial        # name of the job         
                 #SBATCH -n 1                 # nr. tasks  
                 #SBATCH --time=00:05:00 # Asking for 5 minutes
@@ -1239,15 +1235,15 @@ Exercises
                 
                 julia serial-sum.jl Arg1 Arg2    # run the serial script
                 
-    .. solution:: Solution for HPC2N
+    .. solution:: Solution for LUNARC
         :class: dropdown
         
-            This batch script is for Kebnekaise. 
+            This batch script is for LUNARC. 
             
             .. code-block:: sh
     
                 #!/bin/bash            
-                #SBATCH -A lu2024-7-80      # your project_ID       
+                #SBATCH -A lu202w-x-yz       # your project_ID       
                 #SBATCH -J job-serial        # name of the job         
                 #SBATCH -n 1                 # nr. tasks  
                 #SBATCH --time=00:03:00      # requested time
@@ -1259,34 +1255,35 @@ Exercises
                         
                 julia serial-sum.jl Arg1 Arg2    # run the serial script
 
+    .. solution:: Solution for PDC
+        :class: dropdown
+        
+            This batch script is for PDC. 
+            
+            .. code-block:: sh
+    
+                #!/bin/bash      
+                #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+                #SBATCH -J job               # name of the job          
+                #SBATCH  -p shared           # name of the queue
+                #SBATCH  --ntasks=1          # nr. of tasks
+                #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                #SBATCH --time=00:03:00      # requested time
+                #SBATCH --error=job.%J.err   # error file
+                #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                # Load dependencies and Julia version
+                ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+
+                julia serial-sum.jl Arg1 Arg2    # run the serial script
+
 .. challenge:: 2. Run the GPU script
     
     Run the following script ``script-gpu.jl``. Why are we running the simulations
     twice?
-    Note that at UPPMAX you will need a project will access to Snowy
+    Note that at UPPMAX you will need a project will access to Snowy. Remember that at PDC
+    we will use AMD GPUs.
 
-        .. code-block:: julia
-         
-            using CUDA 
-
-            CUDA.versioninfo()
-
-            N = 2^8
-            x = rand(N, N)
-            y = rand(N, N)
-
-            A = CuArray(x)
-            B = CuArray(y)
-
-            # Calculation on CPU
-            @time x*y
-            # Calculation on GPU
-            @time A*B
-
-            # Calculation on CPU
-            @time x*y
-            # Calculation on GPU
-            @time A*B
 
     .. solution:: Solution for HPC2N
         :class: dropdown
@@ -1299,7 +1296,7 @@ Exercises
             .. code-block:: sh
                 
                 #!/bin/bash            
-                #SBATCH -A hpc2n2024-114     # your project_ID       
+                #SBATCH -A hpc2n202w-xyz     # your project_ID       
                 #SBATCH -J job-serial        # name of the job         
                 #SBATCH -n 1                 # nr. tasks  
                 #SBATCH --time=00:03:00      # requested time
@@ -1330,7 +1327,7 @@ Exercises
             .. code-block:: sh
     
                 #!/bin/bash -l
-                #SBATCH -A naiss2024-22-1202   # your project_ID  
+                #SBATCH -A naiss202t-uv-wxyz   # your project_ID  
                 #SBATCH -M snowy
                 #SBATCH -p node
                 #SBATCH --gres=gpu:1
@@ -1383,7 +1380,7 @@ Exercises
             .. code-block:: sh
                 
                 #!/bin/bash            
-                #SBATCH -A lu2024-7-80      # your project_ID       
+                #SBATCH -A lu202w-x-yz       # your project_ID       
                 #SBATCH -J job-serial        # name of the job         
                 #SBATCH -n 1                 # nr. tasks  
                 #SBATCH --time=00:03:00      # requested time
@@ -1399,6 +1396,65 @@ Exercises
 
                 julia script-gpu.jl
   
+    .. solution:: Solution for PDC
+        :class: dropdown
+        
+            This batch script is for Dardel.
+
+            .. code-block:: sh
+                
+                #!/bin/bash
+                #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+                #SBATCH -J job               # name of the job          
+                #SBATCH  -p gpu              # name of the queue
+                #SBATCH  --ntasks=1          # nr. of tasks
+                #SBATCH --cpus-per-task=1    # nr. of cores per-task
+                #SBATCH --time=00:03:00      # requested time
+                #SBATCH --error=job.%J.err   # error file
+                #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                # Load dependencies and Julia version
+                ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+                # ROCM toolkit module
+                ml rocm/5.7.0  craype-accel-amd-gfx90a   
+
+                julia script-gpu.jl                
+
+            OUTPUT:
+
+                ┌───────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────┐
+                │ Available │ Name             │ Version   │ Path                                                                                                  │
+                ├───────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────┤
+                │     +     │ LLD              │ -         │ /opt/rocm-5.7.0/llvm/bin/ld.lld                                                                       │
+                │     +     │ Device Libraries │ -         │ /cfs/klemming/home/p/pedroom/.julia/artifacts/5ad5ecb46e3c334821f54c1feecc6c152b7b6a45/amdgcn/bitcode │
+                │     +     │ HIP              │ 5.7.31921 │ /opt/rocm-5.7.0/lib/libamdhip64.so                                                                    │
+                │     +     │ rocBLAS          │ 3.1.0     │ /opt/rocm-5.7.0/lib/librocblas.so                                                                     │
+                │     +     │ rocSOLVER        │ 3.23.0    │ /opt/rocm-5.7.0/lib/librocsolver.so                                                                   │
+                │     +     │ rocSPARSE        │ 2.5.4     │ /opt/rocm-5.7.0/lib/librocsparse.so                                                                   │
+                │     +     │ rocRAND          │ 2.10.5    │ /opt/rocm-5.7.0/lib/librocrand.so                                                                     │
+                │     +     │ rocFFT           │ 1.0.27    │ /opt/rocm-5.7.0/lib/librocfft.so                                                                      │
+                │     +     │ MIOpen           │ 2.20.0    │ /opt/rocm-5.7.0/lib/libMIOpen.so                                                                      │
+                └───────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+                ┌────┬─────────────────────┬────────────────────────┬───────────┬────────────┬───────────────┐
+                │ Id │                Name │               GCN arch │ Wavefront │     Memory │ Shared Memory │
+                ├────┼─────────────────────┼────────────────────────┼───────────┼────────────┼───────────────┤
+                │  1 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                │  2 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                │  3 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                │  4 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                │  5 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                │  6 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                │  7 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                │  8 │ AMD Instinct MI250X │ gfx90a:sramecc+:xnack- │        64 │ 63.984 GiB │    64.000 KiB │
+                └────┴─────────────────────┴────────────────────────┴───────────┴────────────┴───────────────┘
+
+                1.241600 seconds (2.27 M allocations: 152.229 MiB, 8.28% gc time, 91.71% compilation time)
+                0.604009 seconds (624.95 k allocations: 38.360 MiB, 68.01% compilation time)
+                0.001051 seconds (2 allocations: 512.047 KiB)
+                0.000077 seconds (13 allocations: 352 bytes)
+
+
 .. challenge:: 3. Machine Learning job on GPUs 
     
     Julia has already several packages for ML, one of them is ``Flux`` (https://fluxml.ai/). We will work with one of
@@ -1421,7 +1477,7 @@ Exercises
         .. code-block:: sh
         
             #!/bin/bash            
-            #SBATCH -A hpc2n2024-114        # your project_ID       
+            #SBATCH -A hpc2n202w-xyz        # your project_ID       
             #SBATCH -J job-serial        # name of the job         
             #SBATCH -n 1                 # nr. tasks        #remove this line for UPPMAX  
             #SBATCH --time=00:15:00      # requested time
@@ -1465,7 +1521,7 @@ Exercises
             .. code-block:: sh
                 
                #!/bin/bash -l
-               #SBATCH -A naiss2024-22-1202        # your project_ID
+               #SBATCH -A naiss202t-uv-wxyz        # your project_ID
                #SBATCH -J job-serial        # name of the job
                #SBATCH -M snowy
                #SBATCH -p node
@@ -1508,7 +1564,7 @@ Exercises
             .. code-block:: sh
                 
                 #!/bin/bash            
-                #SBATCH -A hpc2n2024-114     # your project_ID       
+                #SBATCH -A hpc2n202w-xyz     # your project_ID       
                 #SBATCH -J job-serial        # name of the job         
                 #SBATCH -n 1                 # nr. tasks  
                 #SBATCH --time=00:20:00      # requested time
