@@ -321,6 +321,7 @@ Content of the course
    :maxdepth: 2
    :caption: Matlab Lessons:
 
+   matlab/scheduleMatlab.rst
    matlab/introMatlab.rst
    matlab/load_runMatlab.rst
    matlab/slurmMatlab.rst
@@ -336,6 +337,7 @@ Content of the course
    :maxdepth: 2
    :caption: Julia Lessons:
 
+   julia/scheduleJulia.rst
    julia/introJulia.rst
    julia/load_runJulia.rst
    julia/isolatedJulia.rst
