@@ -850,11 +850,12 @@ Exercises
       
                      .. code-block:: bash                              
 
-                           #!/bin/bash            
-                           #SBATCH -A naiss--------     # your project_ID       
-                           #SBATCH -J job-serial        # name of the job          
+
+                           #!/bin/bash
+                           #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+                           #SBATCH -J job               # name of the job          
                            #SBATCH  -p shared           # name of the queue
-                           #SBATCH  --ntasks=1          # nr. of tasks
+                           #SBATCH --ntasks=*FIXME*     # nr. of tasks
                            #SBATCH --cpus-per-task=1    # nr. of cores per-task
                            #SBATCH --time=00:03:00      # requested time
                            #SBATCH --error=job.%J.err   # error file
@@ -1008,16 +1009,17 @@ Exercises
                   .. tab:: PDC
       
                      .. code-block:: bash                              
-
-                           #!/bin/bash            
-                           #SBATCH -A naiss--------     # your project_ID       
-                           #SBATCH -J job-serial        # name of the job          
+                                                                                                                                                                       
+                           #!/bin/bash
+                           #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+                           #SBATCH -J job               # name of the job          
                            #SBATCH  -p shared           # name of the queue
-                           #SBATCH  --ntasks=1          # nr. of tasks
+                           #SBATCH --ntasks=*FIXME*     # nr. of tasks
                            #SBATCH --cpus-per-task=1    # nr. of cores per-task
                            #SBATCH --time=00:03:00      # requested time
                            #SBATCH --error=job.%J.err   # error file
                            #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
 
                            # Load dependencies and R version
                            ml ...
@@ -1472,16 +1474,19 @@ Exercises
             .. tab:: PDC
 
                .. code-block:: bash                              
-
-                     #!/bin/bash            
-                     #SBATCH -A naiss--------     # your project_ID       
-                     #SBATCH -J job-serial        # name of the job          
+         
+                     #!/bin/bash
+                     #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+                     #SBATCH -J job               # name of the job          
                      #SBATCH  -p shared           # name of the queue
                      #SBATCH  --ntasks=1          # nr. of tasks
                      #SBATCH --cpus-per-task=1    # nr. of cores per-task
                      #SBATCH --time=00:03:00      # requested time
                      #SBATCH --error=job.%J.err   # error file
                      #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+                     # Load dependencies and Julia version
+                     ml PDC/23.12 julia/1.10.2-cpeGNU-23.12                                                                                                                                                                       
 
                      # Load dependencies and R version
                      ml ... 
