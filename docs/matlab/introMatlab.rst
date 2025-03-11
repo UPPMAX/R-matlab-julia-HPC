@@ -46,7 +46,7 @@ Schedule
 
 .. raw:: html
 
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html#preliminary-schedule" height="1050px" width="100%"></iframe>
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html#preliminary-schedule" height="1060px" width="100%"></iframe>
 
 
 .. instructor-note::
