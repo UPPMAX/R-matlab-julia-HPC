@@ -42,6 +42,10 @@ Introduction to MATLAB
 
 `Preliminary schedule <scheduleMatlab.rst>`_
 
+.. raw:: html
+
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html#preliminary-schedule" height="345px" width="100%"></iframe>
+
 
 .. instructor-note::
 
