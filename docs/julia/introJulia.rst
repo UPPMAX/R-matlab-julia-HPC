@@ -53,7 +53,13 @@ Introduction Julia
    - Intro 5 min 
    - Lecture and 10 min
 
-`Preliminary schedule <scheduleJulia.rst>`_ 
+Schedule
+--------
+
+.. raw:: html
+
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleJulia.html#preliminary-schedule" height="1000px" width="100%"></iframe>
+
 
 What is Julia?
 --------------
