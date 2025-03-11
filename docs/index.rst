@@ -285,13 +285,6 @@ Prepare your environment now!
         - Home directories have much larger quotas at LUNARC than at UPPMAX or HPC2N. Create a suitable sub-directory in your home directory or a personal project folder.
 
 
-Overview of the UPPMAX systems
-##############################
-
-.. mermaid:: mermaid/uppmax2.mmd
-
-
-
 Content of the course
 ---------------------
 
