@@ -1,6 +1,6 @@
 #!/bin/bash
 # A batch script for running the R program parallel_foreach.R on Cosmos 
-#SBATCH -A lu2024-7-80 # Change to your own project ID
+#SBATCH -A lu2025-7-24 # Change to your own project ID
 #SBATCH -t 00:10:00
 #SBATCH -N 1
 #SBATCH -c 4

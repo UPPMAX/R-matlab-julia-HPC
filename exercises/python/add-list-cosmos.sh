@@ -1,6 +1,6 @@
 #!/bin/bash
 # Batch script for running the numba program "add-list.py" on Kebnekaise
-#SBATCH -A lu2024-7-80 # Remember to change this to your own project ID
+#SBATCH -A lu2025-7-24 # Remember to change this to your own project ID
 # We are asking for 5 minutes
 #SBATCH --time=00:05:00
 #SBATCH --ntasks-per-node=1

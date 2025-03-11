@@ -1,6 +1,6 @@
 #!/bin/bash
 # Batch script for running the program "multiproc.py" on Rackham
-#SBATCH -A lu2024-7-80 # Remember to change this to your own project ID
+#SBATCH -A lu2025-7-24 # Remember to change this to your own project ID
 # We are asking for 5 minutes
 #SBATCH --time=00:05:00
 #SBATCH -n 4

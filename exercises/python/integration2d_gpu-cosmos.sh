@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A lu2024-7-80
+#SBATCH -A lu2025-7-24
 #SBATCH -t 00:30:00
 #SBATCH -n 24
 #SBATCH -o output_%j.out   # output file

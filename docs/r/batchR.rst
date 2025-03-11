@@ -18,7 +18,7 @@ Running R in batch mode
 
    - Rackham: ``naiss2024-22-107``
    - Kebnekaise: ``hpc2n2024-025``
-   - Cosmos: ``lu2024-7-80``
+   - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 
 
@@ -147,7 +147,7 @@ Serial code
          .. code-block:: sh 
 
             #!/bin/bash
-            #SBATCH -A lu2024-7-80 # Change to your own project ID
+            #SBATCH -A lu2025-7-24 # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -230,7 +230,7 @@ foreach and doParallel
 
             #!/bin/bash
             # A batch script for running the R program parallel_foreach.R on Kebnekaise 
-            #SBATCH -A lu2024-7-80 # Change to your own project ID
+            #SBATCH -A lu2025-7-24 # Change to your own project ID
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
@@ -347,7 +347,7 @@ Rmpi
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A lu2024-7-80 # Change to your own project ID
+            #SBATCH -A lu2025-7-24 # Change to your own project ID
             # Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 8
@@ -546,7 +546,7 @@ Example batch script
 
            #!/bin/bash
            # Remember to change this to your own project ID after the course!
-           #SBATCH -A lu2024-7-80
+           #SBATCH -A lu2025-7-24
            # Asking for runtime: hours, minutes, seconds. At most 1 week
            #SBATCH --time=HHH:MM:SS
            # Ask for GPU resources - x is how many cards, 1 or 2 
@@ -612,7 +612,7 @@ Exercises
           .. code-block:: sh
 
              #!/bin/bash
-             #SBATCH -A lu2024-7-80 # Change to your own project ID
+             #SBATCH -A lu2025-7-24 # Change to your own project ID
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
              

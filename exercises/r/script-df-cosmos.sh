@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A lu2024-7-80       # your project_ID
+#SBATCH -A lu2025-7-24       # your project_ID
 #SBATCH -J job-serial        # name of the job
 #SBATCH -n 1                 # nr. tasks
 #SBATCH --time=00:20:00      # requested time

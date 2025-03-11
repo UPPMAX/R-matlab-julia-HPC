@@ -15,7 +15,7 @@ Sessions: Interactive work on compute nodes
 
    - Rackham: ``naiss2024-22-1202``
    - Kebnekaise: ``hpc2n2024-114``
-   - Cosmos: ``lu2024-7-80``
+   - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 
 
@@ -80,7 +80,7 @@ Julia "interactively" on the compute nodes
 
       .. code-block:: console
           
-         $ interactive -n <tasks> --time=HHH:MM:SS -A lu2024-7-80
+         $ interactive -n <tasks> --time=HHH:MM:SS -A lu2025-7-24
       
 
       
@@ -169,7 +169,7 @@ Example **Code along**
    
          .. code-block:: console
       
-            [bjornc@cosmos1 ~]$ interactive -A lu2024-7-80 -n 4 -t 10:00
+            [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 10:00
             Cluster name: COSMOS   
             Waiting for JOBID 930844 to start
           

@@ -61,7 +61,7 @@ Interactive work on the compute nodes
 
    - Rackham: ``naiss2024-22-1202``
    - Kebnekaise: ``hpc2n2024-114``
-   - Cosmos: ``lu2024-7-80``
+   - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 
 

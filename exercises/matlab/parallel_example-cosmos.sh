@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A lu2024-7-80
+#SBATCH -A lu2025-7-24
 # Remember, there are 4 workers and 1 master!
 #SBATCH --ntasks=5
 #SBATCH --cpus-per-task=1

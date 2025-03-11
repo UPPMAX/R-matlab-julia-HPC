@@ -18,7 +18,7 @@ Running Python in batch mode
 
    - Rackham: ``naiss2024-22-1202``
    - Kebnekaise: ``hpc2n2024-114``
-   - Cosmos: ``lu2024-7-80``
+   - Cosmos: ``lu2025-7-24``
  
 .. admonition:: Storage space for this workshop 
 
@@ -117,7 +117,7 @@ Serial code
         .. code-block:: sh
 
            #!/bin/bash
-           #SBATCH -A lu2024-7-80 # Change to your own after the course
+           #SBATCH -A lu2025-7-24 # Change to your own after the course
            #SBATCH --time=00:10:00 # Asking for 10 minutes
            #SBATCH -n 1 # Asking for 1 core 
 
@@ -224,7 +224,7 @@ Here we are using the virtual environment we created under the "isolated environ
         .. code-block:: sh 
 
             #!/bin/bash
-            #SBATCH -A lu2024-7-80 # Change to your own after the course
+            #SBATCH -A lu2025-7-24 # Change to your own after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -336,7 +336,7 @@ GPU code
 
             #!/bin/bash
             # Remember to change this to your own project ID after the course!
-            #SBATCH -A lu2024-7-80
+            #SBATCH -A lu2025-7-24
             # We are asking for 5 minutes
             #SBATCH --time=00:05:00
             # The following two lines splits the output in a file for any errors and a file for other output.
@@ -423,7 +423,7 @@ Exercises
           .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A lu2024-7-80 # Change to your own after the course
+            #SBATCH -A lu2025-7-24 # Change to your own after the course
             #SBATCH --time=00:05:00 # Asking for 5 minutes
             #SBATCH -n 1 # Asking for 1 core
             

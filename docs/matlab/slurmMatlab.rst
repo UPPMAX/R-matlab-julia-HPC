@@ -18,7 +18,7 @@ Slurm job scheduler and MATLAB in terminal
 
    - Rackham: ``naiss2024-22-1202``
    - Kebnekaise: ``hpc2n2024-114``
-   - Cosmos: ``lu2024-7-80``
+   - Cosmos: ``lu2025-7-24``
  
 .. admonition:: Storage space for this workshop 
 
@@ -302,7 +302,7 @@ Asking for 1 hour walltime.
 
    - Rackham: naiss2024-22-1202
    - Kebnekaise: hpc2n2024-114
-   - Cosmos: lu2024-7-80 
+   - Cosmos: lu2025-7-24 
 
    Since we are just doing a short test, you can use 15 min instead of 1 hour as I did. 
 
@@ -611,7 +611,7 @@ Here is an example of a serial batch job for UPPMAX/HPC2N/LUNARC.
 
          #!/bin/bash
          # Change to your actual project number later
-         #SBATCH -A lu2024-7-80 
+         #SBATCH -A lu2025-7-24 
          # Asking for 1 core
          #SBATCH -n 1
          # Asking for 30 min (change as you want) 
@@ -752,7 +752,7 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
 
             #!/bin/bash
             # Change to your actual project number
-            #SBATCH -A lu2024-7-80
+            #SBATCH -A lu2025-7-24
             # Remember, there are 4 workers and 1 master! 
             #SBATCH --ntasks=5
             #SBATCH --cpus-per-task=1
@@ -950,7 +950,7 @@ In order to use GPUs in a batch job, you do something like this:
 
          #!/bin/bash
          # Change to your actual project number
-         #SBATCH -A lu2024-7-80
+         #SBATCH -A lu2025-7-24
          #SBATCH -n 1 
          #SBATCH -p gpua100
          # The number of GPUs.#gpus, can be 1 or 2 

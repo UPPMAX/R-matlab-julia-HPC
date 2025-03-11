@@ -18,7 +18,7 @@ Running Julia in batch mode
 
    - Rackham: ``naiss2024-22-1202``
    - Kebnekaise: ``hpc2n2025-062``
-   - Cosmos: ``lu2024-7-80``
+   - Cosmos: ``lu2025-7-24``
    - Dardel: ``naiss2025-22-262`` 
 
    Please, change the project IDs in the templates accordingly.

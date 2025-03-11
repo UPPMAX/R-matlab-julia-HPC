@@ -281,7 +281,7 @@ Prepare your environment now!
 
    - Where to work on LUNARC
 
-        - Project ID: ``lu2024-7-80`` (for use in slurm scripts)
+        - Project ID: ``lu2025-7-24`` (for use in slurm scripts)
         - Home directories have much larger quotas at LUNARC than at UPPMAX or HPC2N. Create a suitable sub-directory in your home directory or a personal project folder.
 
 Content of the course

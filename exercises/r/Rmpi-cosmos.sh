@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A lu2024-7-80 # Change to your own project ID
+#SBATCH -A lu2025-7-24 # Change to your own project ID
 # Asking for 10 min.
 #SBATCH -t 00:10:00
 #SBATCH -n 8

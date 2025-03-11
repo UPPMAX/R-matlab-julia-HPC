@@ -1,6 +1,6 @@
 #!/bin/bash
 # A script for running a serial R code on Cosmos 
-#SBATCH -A lu2024-7-80 # Change to your own project ID
+#SBATCH -A lu2025-7-24 # Change to your own project ID
 #SBATCH --time=00:10:00 # Asking for 10 minutes
 #SBATCH -n 1 # Asking for 1 core
 
