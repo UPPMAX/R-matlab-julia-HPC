@@ -40,11 +40,13 @@ Introduction to MATLAB
     - Un-tar it with ``tar -xzvf <filename.tar.gz>`` in your personal project folder, which you should have created a while ago (https://uppmax.github.io/R-python-julia-matlab-HPC/index.html#prepare-your-environment-now).
     - Enter the directory and list the content with the ``tree`` command.
 
-`Preliminary schedule <scheduleMatlab.rst>`_
+Schedule
+--------
+
 
 .. raw:: html
 
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html#preliminary-schedule" height="345px" width="100%"></iframe>
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html#preliminary-schedule" height="1000px" width="100%"></iframe>
 
 
 .. instructor-note::
