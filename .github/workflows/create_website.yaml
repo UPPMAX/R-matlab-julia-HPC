@@ -8,7 +8,7 @@ on:
 
 jobs:
   create_website:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.2.0
       - uses: actions/setup-python@v5
