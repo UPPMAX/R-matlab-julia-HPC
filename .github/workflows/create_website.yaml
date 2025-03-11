@@ -10,23 +10,23 @@ jobs:
   create_website:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4.2
+      - uses: actions/setup-python@v5
       # Install plantuml
       - name: Install OS package dependencies
         run: |
           sudo apt update
           sudo apt install plantuml
           #sudo apt install npm
-          #npm install mermaid
-          npm install -g @mermaid-js/mermaid-cli
+          npm install mermaid
+          #npm install -g @mermaid-js/mermaid-cli
           #npm install markmap
 
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
 
-#      - name: Install sphinx-design, from https://sphinx-design.readthedocs.io/en/latest/get_started.html
-#        run: pip install sphinx-design 
+      - name: Install sphinx-design, from https://sphinx-design.readthedocs.io/en/latest/get_started.html
+        run: pip install sphinx-design 
 
       - name: remove unused folders
         run: |
