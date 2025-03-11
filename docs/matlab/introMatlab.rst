@@ -46,7 +46,7 @@ Schedule
 
 .. raw:: html
 
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html#preliminary-schedule" height="1000px" width="100%"></iframe>
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html#preliminary-schedule" height="1050px" width="100%"></iframe>
 
 
 .. instructor-note::
@@ -54,7 +54,6 @@ Schedule
    - Intro 10 min 
    - Lecture and demo 10 min
    - Exercise 0 min
-
 
 
 What is MATLAB?
