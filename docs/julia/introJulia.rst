@@ -58,7 +58,7 @@ Schedule
 
 .. raw:: html
 
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleJulia.html#preliminary-schedule" height="950px" width="100%"></iframe>
+    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleJulia.html#preliminary-schedule" height="900px" width="100%"></iframe>
 
 
 What is Julia?
