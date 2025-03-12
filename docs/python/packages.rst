@@ -37,8 +37,8 @@ Python packages
 
 .. admonition:: Compute allocations in this workshop 
 
-    - Rackham: ``naiss2024-22-1202``
-    - Kebnekaise: ``hpc2n2024-114``
+    - Rackham: ``uppmax2025-2-272``
+    - Kebnekaise: ``hpc2n2025-062``
     - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 

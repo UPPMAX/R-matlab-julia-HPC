@@ -16,7 +16,7 @@ Running Julia in batch mode
 
 .. admonition:: Compute allocations in this workshop 
 
-   - Rackham: ``naiss2024-22-1202``
+   - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
    - Dardel: ``naiss2025-22-262`` 

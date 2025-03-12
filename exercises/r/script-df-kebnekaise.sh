@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A hpc2n2024-114     # your project_ID
+#SBATCH -A hpc2n2025-062     # your project_ID
 #SBATCH -J job-serial        # name of the job
 #SBATCH -n 1                 # nr. tasks
 #SBATCH --time=00:20:00      # requested time

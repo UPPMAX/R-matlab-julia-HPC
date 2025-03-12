@@ -13,8 +13,8 @@ Sessions: Interactive work on compute nodes
 
 .. admonition:: Compute allocations in this workshop 
 
-   - Rackham: ``naiss2024-22-1202``
-   - Kebnekaise: ``hpc2n2024-114``
+   - Rackham: ``uppmax2025-2-272``
+   - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 
@@ -68,7 +68,7 @@ Julia "interactively" on the compute nodes
 
       .. code-block:: console
           
-         $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2024-22-1202
+         $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-272
       
    .. tab:: HPC2N (salloc)
 
@@ -116,7 +116,7 @@ Example **Code along**
 
          .. code-block:: console
       
-            [bjornc@rackham2 ~]$ interactive -A naiss2024-22-1202 -p core -n 4 -t 10:00
+            [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 10:00
             You receive the high interactive priority.
             There are free cores, so your job is expected to start at once.
       
@@ -143,7 +143,7 @@ Example **Code along**
          
          .. code-block:: console
       
-            [~]$ salloc -n 4 --time=00:30:00 -A hpc2n2024-114
+            [~]$ salloc -n 4 --time=00:30:00 -A hpc2n2025-062
             salloc: Pending job allocation 20174806
             salloc: job 20174806 queued and waiting for resources
             salloc: job 20174806 has been allocated resources
@@ -361,7 +361,7 @@ Running IJulia and Jupyter
 
          #!/bin/bash
          # Here you should put your own project id
-         #SBATCH -A hpc2n2024-114
+         #SBATCH -A hpc2n2025-062
          # This example asks for 1 core
          #SBATCH -n 1
          # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.

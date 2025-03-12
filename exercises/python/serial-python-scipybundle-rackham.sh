@@ -1,7 +1,7 @@
 #!/bin/bash
 # Batch script for running serial Python code on Rackham
 # Loading Python and various scientific packages 
-#SBATCH -A naiss2024-22-1202 # Change to your own project ID
+#SBATCH -A uppmax2025-2-272 # Change to your own project ID
 #SBATCH --time=00:10:00 # Asking for 10 minutes
 #SBATCH -n 1 # Asking for 1 core
 

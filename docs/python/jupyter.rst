@@ -25,8 +25,8 @@ Jupyter on compute nodes
 
 .. admonition:: Compute allocations in this workshop 
 
-   - Rackham: ``naiss2024-22-1202``
-   - Kebnekaise: ``hpc2n2024-114``
+   - Rackham: ``uppmax2025-2-272``
+   - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 
@@ -199,7 +199,7 @@ Something like the file below will work. Remember to change the project id after
 .. code-block:: slurm
 		
    #!/bin/bash
-   #SBATCH -A hpc2n2024-114
+   #SBATCH -A hpc2n2025-062
    # This example asks for 1 core
    #SBATCH -n 1
    # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.
@@ -312,7 +312,7 @@ If you need extra Python modules and these modules are already installed at HPC2
 .. code-block:: sh
 
    #!/bin/bash
-   #SBATCH -A hpc2n2024-114
+   #SBATCH -A hpc2n2025-062
    # This example use 1 core
    #SBATCH -n 1
    # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.
@@ -395,7 +395,7 @@ Later you can remove the kernel if you feel like, using this:
 .. code-block:: sh
 		
    #!/bin/bash
-   #SBATCH -A hpc2n2024-114
+   #SBATCH -A hpc2n2025-062
    # Here allocating 1 core - change as suitable for your case
    #SBATCH -n 1
    # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available!

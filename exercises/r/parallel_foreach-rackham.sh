@@ -1,6 +1,6 @@
 #!/bin/bash
 # A batch script for running the program parallel_foreach.R on Rackham
-#SBATCH -A naiss2024-22-1202
+#SBATCH -A uppmax2025-2-272
 #SBATCH -t 00:10:00
 #SBATCH -N 1
 #SBATCH -c 4

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A naiss2024-22-1202
+#SBATCH -A uppmax2025-2-272
 # We are asking for 5 minutes
 #SBATCH --time=00:05:00
 #SBATCH -n 1
@@ -16,7 +16,7 @@ module load uppmax python/3.11.8 python_ML_packages/3.11.8-gpu
 # Create a virtual environment and install scikit-learn and TensorFlow 
 # Do the following:
 # Start an interactive job on Snowy: 
-# interactive -A naiss2024-22-1202 -n 1 -M snowy --gres=gpu:1  -t 1:00:01
+# interactive -A uppmax2025-2-272 -n 1 -M snowy --gres=gpu:1  -t 1:00:01
 # Load some modules 
 # module load uppmax python/3.11.8 python_ML_packages/3.11.8-gpu
 # Create the venv, activate it, and install to it 

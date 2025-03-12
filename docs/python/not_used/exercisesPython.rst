@@ -130,7 +130,7 @@ Batch
           .. code-block:: sh
  
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own after the course
+            #SBATCH -A hpc2n2025-062 # Change to your own after the course
             #SBATCH --time=00:05:00 # Asking for 5 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -148,7 +148,7 @@ Batch
           .. code-block:: sh
  
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202 # Change to your own after the course
+            #SBATCH -A uppmax2025-2-272 # Change to your own after the course
             #SBATCH --time=00:05:00 # Asking for 5 minutes
             #SBATCH -n 1 # Asking for 1 core
             

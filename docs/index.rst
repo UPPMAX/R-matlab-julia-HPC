@@ -268,14 +268,14 @@ Prepare your environment now!
 
    - Main project on UPPMAX:
      
-        - Project ID: ``naiss2024-22-1202``
+        - Project ID: ``uppmax2025-2-272``
         - Directory name on rackham: ``/proj/r-py-jl-m-rackham``
         - Please create a suitably named subdirectory below ``/proj/r-py-jl-m-rackham``, for your own exercises. 
    
 
    - Local project on HPC2N: 
 
-        - Project ID: ``hpc2n2024-114``
+        - Project ID: ``hpc2n2025-062``
         - Directory name on Kebnekaise: ``/proj/nobackup/r-py-jl-m``
         - Please create a suitably named subdirectory below ``/proj/nobackup/r-py-jl-m``, for your own exercises.
 

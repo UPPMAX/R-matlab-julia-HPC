@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A hpc2n2024-114
+#SBATCH -A hpc2n2025-062
 #SBATCH -t 00:30:00
 #SBATCH -N 1
 #SBATCH -n 28

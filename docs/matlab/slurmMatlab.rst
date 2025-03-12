@@ -16,8 +16,8 @@ Slurm job scheduler and MATLAB in terminal
 
 .. admonition:: Compute allocations in this workshop 
 
-   - Rackham: ``naiss2024-22-1202``
-   - Kebnekaise: ``hpc2n2024-114``
+   - Rackham: ``uppmax2025-2-272``
+   - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
  
 .. admonition:: Storage space for this workshop 
@@ -286,7 +286,7 @@ Asking for 1 hour walltime.
 .. code-block:: 
 
    >> c=parcluster('kebnekaise');
-   >> c.AdditionalProperties.AccountName = 'hpc2n2024-114';
+   >> c.AdditionalProperties.AccountName = 'hpc2n2025-062';
    >> c.AdditionalProperties.WallTime = '01:00:00';
    >> c.saveProfile
 
@@ -300,8 +300,8 @@ Asking for 1 hour walltime.
 
    Remember, the project-id is:
 
-   - Rackham: naiss2024-22-1202
-   - Kebnekaise: hpc2n2024-114
+   - Rackham: uppmax2025-2-272
+   - Kebnekaise: hpc2n2025-062
    - Cosmos: lu2025-7-24 
 
    Since we are just doing a short test, you can use 15 min instead of 1 hour as I did. 
@@ -495,7 +495,7 @@ Let us try running this on Kebnekaise, including checking state and then getting
 
    additionalSubmitArgs =
 
-      '--ntasks=5 --cpus-per-task=1 -A hpc2n2024-114 -t 01:00:00'
+      '--ntasks=5 --cpus-per-task=1 -A hpc2n2025-062 -t 01:00:00'
 
    >> j.State
 
@@ -559,7 +559,7 @@ Here is an example of a serial batch job for UPPMAX/HPC2N/LUNARC.
 
          #!/bin/bash
          # Change to your actual project number later
-         #SBATCH -A naiss2024-22-1202
+         #SBATCH -A uppmax2025-2-272
          # Asking for 1 core
          #SBATCH -n 1
          # Asking for 30 min (change as you want) 
@@ -585,7 +585,7 @@ Here is an example of a serial batch job for UPPMAX/HPC2N/LUNARC.
 
          #!/bin/bash
          # Change to your actual project number later
-         #SBATCH -A hpc2n2024-114
+         #SBATCH -A hpc2n2025-062
          # Asking for 1 core
          #SBATCH -n 1
          # Asking for 30 min (change as you want) 
@@ -696,7 +696,7 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
 
             #!/bin/bash
             # Change to your actual project number
-            #SBATCH -A naiss2024-22-1202 
+            #SBATCH -A uppmax2025-2-272 
             # Remember, there are 4 workers and 1 master! 
             #SBATCH --ntasks=5
             #SBATCH --cpus-per-task=1
@@ -724,7 +724,7 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
 
             #!/bin/bash
             # Change to your actual project number
-            #SBATCH -A hpc2n2024-114
+            #SBATCH -A hpc2n2025-062
             # Remember, there are 4 workers and 1 master! 
             #SBATCH --ntasks=5
             #SBATCH --cpus-per-task=1
@@ -811,7 +811,7 @@ Inside MATLAB
 
          .. code-block:: sh
 
-            interactive -A naiss2024-22-1202 -n 2 -M snowy --gres=gpu:1  -t 2:00:00
+            interactive -A uppmax2025-2-272 -n 2 -M snowy --gres=gpu:1  -t 2:00:00
 
          Load Matlab 
 
@@ -913,7 +913,7 @@ In order to use GPUs in a batch job, you do something like this:
 
          #!/bin/bash
          # Change to your actual project number
-         #SBATCH -A hpc2n2024-114
+         #SBATCH -A hpc2n2025-062
          #SBATCH -n 1 
          #SBATCH --gpus=<#gpus>
          #SBATCH -C <gpu-type>

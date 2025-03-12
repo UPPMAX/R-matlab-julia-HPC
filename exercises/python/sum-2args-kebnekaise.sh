@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A hpc2n2024-114 # Change to your own ID
+#SBATCH -A hpc2n2025-062 # Change to your own ID
 #SBATCH --time=00:05:00 # Asking for 5 minutes
 #SBATCH -n 1 # Asking for 1 core
 

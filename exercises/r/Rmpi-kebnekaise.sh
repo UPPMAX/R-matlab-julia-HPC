@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A hpc2n2024-114 # Change to your own project ID
+#SBATCH -A hpc2n2025-062 # Change to your own project ID
 #Asking for 10 min.
 #SBATCH -t 00:10:00
 #SBATCH -n 8

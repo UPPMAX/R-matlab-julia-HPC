@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A naiss2024-22-1202
+#SBATCH -A uppmax2025-2-272
 #Asking for 10 min.
 #SBATCH -t 00:10:00
 #SBATCH --exclusive

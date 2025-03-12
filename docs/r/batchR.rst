@@ -110,7 +110,7 @@ Serial code
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202 # Course project id. Change to your own project ID after the course
+            #SBATCH -A uppmax2025-2-272 # Course project id. Change to your own project ID after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -129,7 +129,7 @@ Serial code
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own project ID
+            #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -192,7 +192,7 @@ foreach and doParallel
          .. code-block:: sh
         
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202
+            #SBATCH -A uppmax2025-2-272
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
@@ -211,7 +211,7 @@ foreach and doParallel
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own project ID
+            #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
@@ -304,7 +304,7 @@ Rmpi
          .. code-block:: sh
         
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202
+            #SBATCH -A uppmax2025-2-272
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 8
@@ -327,7 +327,7 @@ Rmpi
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own project ID
+            #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 8
@@ -498,7 +498,7 @@ Example batch script
         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202
+            #SBATCH -A uppmax2025-2-272
             #Asking for runtime: hours, minutes, seconds. At most 1 week
             #SBATCH -t HHH:MM:SS
             #SBATCH --exclusive
@@ -522,7 +522,7 @@ Example batch script
         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own project ID
+            #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #Asking for runtime: hours, minutes, seconds. At most 1 week
             #SBATCH -t HHH:MM:SS
             #Ask for GPU resources. You pick type as one of the ones shown above 
@@ -575,7 +575,7 @@ Exercises
           .. code-block:: sh
  
              #!/bin/bash
-             #SBATCH -A naiss2024-22-1202 # Change to your own after the course
+             #SBATCH -A uppmax2025-2-272 # Change to your own after the course
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
              
@@ -594,7 +594,7 @@ Exercises
           .. code-block:: sh
  
              #!/bin/bash
-             #SBATCH -A hpc2n2024-114 # Change to your own project ID
+             #SBATCH -A hpc2n2025-062 # Change to your own project ID
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
              

@@ -98,7 +98,7 @@ Set some additional parameters related to Slurm on Rackham
 .. code-block:: matlab
 
    >> % Specify the account
-   >> c.AdditionalProperties.AccountName = 'naiss2024-22-1202';
+   >> c.AdditionalProperties.AccountName = 'uppmax2025-2-272';
 
    >> % Specify the wall time (e.g., 1 day, 5 hours, 30 minutes
    >> c.AdditionalProperties.WallTime = '00:30:00';

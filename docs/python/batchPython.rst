@@ -16,8 +16,8 @@ Running Python in batch mode
 
 .. admonition:: Compute allocations in this workshop 
 
-   - Rackham: ``naiss2024-22-1202``
-   - Kebnekaise: ``hpc2n2024-114``
+   - Rackham: ``uppmax2025-2-272``
+   - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
  
 .. admonition:: Storage space for this workshop 
@@ -81,7 +81,7 @@ Serial code
         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202 # Change to your own after the course
+            #SBATCH -A uppmax2025-2-272 # Change to your own after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -99,7 +99,7 @@ Serial code
         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own after the course
+            #SBATCH -A hpc2n2025-062 # Change to your own after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -179,7 +179,7 @@ Here we are using the virtual environment we created under the "isolated environ
         .. code-block:: sh
         
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202 # Change to your own after the course
+            #SBATCH -A uppmax2025-2-272 # Change to your own after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -202,7 +202,7 @@ Here we are using the virtual environment we created under the "isolated environ
         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own after the course
+            #SBATCH -A hpc2n2025-062 # Change to your own after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -292,7 +292,7 @@ GPU code
         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202
+            #SBATCH -A uppmax2025-2-272
             #SBATCH -t 00:10:00
             #SBATCH --exclusive
             #SBATCH -n 1
@@ -315,7 +315,7 @@ GPU code
         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own after the course
+            #SBATCH -A hpc2n2025-062 # Change to your own after the course
             #SBATCH --time=00:10:00  # Asking for 10 minutes
             # Asking for one A100 card
             #SBATCH --gpus=1
@@ -387,7 +387,7 @@ Exercises
           .. code-block:: sh
  
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own after the course
+            #SBATCH -A hpc2n2025-062 # Change to your own after the course
             #SBATCH --time=00:05:00 # Asking for 5 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -405,7 +405,7 @@ Exercises
           .. code-block:: sh
  
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202 # Change to your own after the course
+            #SBATCH -A uppmax2025-2-272 # Change to your own after the course
             #SBATCH --time=00:05:00 # Asking for 5 minutes
             #SBATCH -n 1 # Asking for 1 core
             

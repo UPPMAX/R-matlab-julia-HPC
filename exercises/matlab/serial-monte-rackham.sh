@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number later
-#SBATCH -A naiss2024-22-1202
+#SBATCH -A uppmax2025-2-272
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for 30 min (change as you want)

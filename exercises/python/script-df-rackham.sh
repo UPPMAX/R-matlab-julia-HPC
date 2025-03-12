@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH -A naiss2024-22-1202 # your project_ID
+#SBATCH -A uppmax2025-2-272 # your project_ID
 #SBATCH -J job-serial        # name of the job
 #SBATCH -n 4                 # nr. tasks/coresw
 #SBATCH --time=00:20:00      # requested time

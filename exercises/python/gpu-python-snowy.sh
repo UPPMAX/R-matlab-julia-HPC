@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A naiss2024-22-1202 # Change to your own after the course
+#SBATCH -A uppmax2025-2-272 # Change to your own after the course
 #SBATCH --time=00:10:00 # Asking for 10 minutes
 #SBATCH -n 1 
 # Running on Snowy for the GPUs

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A naiss2024-22-1202 
+#SBATCH -A uppmax2025-2-272 
 #SBATCH -t 00:30:00
 #SBATCH -n 4
 #SBATCH -M snowy

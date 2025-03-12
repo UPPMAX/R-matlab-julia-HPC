@@ -205,7 +205,7 @@ As before, we need the batch system to run the code. There are no GPUs on the lo
       
          .. code-block:: console
       
-            $ interactive -A naiss2024-22-1202 -n 1 -M snowy --gres=gpu:1  -t 1:00:01 --gres=gpu:1  -t 1:00:01 
+            $ interactive -A uppmax2025-2-272 -n 1 -M snowy --gres=gpu:1  -t 1:00:01 --gres=gpu:1  -t 1:00:01 
             You receive the high interactive priority.
 
             Please, use no more than 8 GB of RAM.
@@ -239,7 +239,7 @@ As before, we need the batch system to run the code. There are no GPUs on the lo
 
          .. code-block:: console
 
-            $ salloc -A hpc2n2024-114 --time=00:30:00 -n 1 --gpus=1 -C a100  
+            $ salloc -A hpc2n2025-062 --time=00:30:00 -n 1 --gpus=1 -C a100  
             salloc: Pending job allocation 29039771
             salloc: job 29039771 queued and waiting for resources
             salloc: job 29039771 has been allocated resources
@@ -260,7 +260,7 @@ As before, we need the batch system to run the code. There are no GPUs on the lo
 
             #!/bin/bash
             # Remember to change this to your own project ID after the course!
-            #SBATCH -A hpc2n2024-114     
+            #SBATCH -A hpc2n2025-062     
             # We are asking for 5 minutes
             #SBATCH --time=00:05:00
             # Asking for one A100 GPU
@@ -452,7 +452,7 @@ Here follows a solution for HPC2N. Try and make it run on Snowy, using the pytho
 
             #!/bin/bash
             # Remember to change this to your own project ID after the course!
-            #SBATCH -A hpc2n2024-114
+            #SBATCH -A hpc2n2025-062
             #SBATCH -t 00:08:00
             #SBATCH -N 1
             #SBATCH -n 28

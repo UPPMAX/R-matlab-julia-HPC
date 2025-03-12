@@ -1,6 +1,6 @@
 #!/bin/bash
 # This is a batch script for running several programs or variations of programs sequentially, on Snowy 
-#SBATCH -A naiss2024-22-1202 # Remember to change this to your own project ID
+#SBATCH -A uppmax2025-2-272 # Remember to change this to your own project ID
 # We are asking for 5 minutes
 #SBATCH --time=00:05:00
 #SBATCH -n 1

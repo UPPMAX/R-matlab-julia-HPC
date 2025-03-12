@@ -1,6 +1,6 @@
 #!/bin/bash
 # A batch script for running the R program parallel_foreach.R on Kebnekaise 
-#SBATCH -A hpc2n2024-114 # Change to your own project ID
+#SBATCH -A hpc2n2025-062 # Change to your own project ID
 #SBATCH -t 00:10:00
 #SBATCH -N 1
 #SBATCH -c 4

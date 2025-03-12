@@ -164,7 +164,7 @@ ML on CPUs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202 # Course project id. Change to your own project ID after the course
+            #SBATCH -A uppmax2025-2-272 # Course project id. Change to your own project ID after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -183,7 +183,7 @@ ML on CPUs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own project ID
+            #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -232,7 +232,7 @@ ML on GPUs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2024-22-1202
+            #SBATCH -A uppmax2025-2-272
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH --exclusive
@@ -257,7 +257,7 @@ ML on GPUs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2024-114 # Change to your own project ID
+            #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 1
