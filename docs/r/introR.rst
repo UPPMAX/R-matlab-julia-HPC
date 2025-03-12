@@ -82,7 +82,6 @@ Schedule
 
 .. mermaid::  ./intro_r_overview_course_r_and_modules.mmd
 
----
 
 .. raw:: html
 
