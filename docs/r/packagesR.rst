@@ -44,6 +44,14 @@ way to check is probably starting the interpreter and running the ``libPaths()``
 
 .. tabs::
 
+   .. tab:: NSC
+
+      Load ``R``, e.g. version 
+
+   .. tab:: PDC 
+
+      Load ``R``, e.g. version 
+
    .. tab:: UPPMAX
 
       Load ``R``, e.g. version 4.1.1 and start the Interpreter
