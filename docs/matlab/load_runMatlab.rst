@@ -242,8 +242,8 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), LUNARC (20
          If you check with ``ml`` which version is loaded, you will see the ``-bdist`` suffix was added automatically. Versions without ``-bdist`` at the end only appear with ``ml spider matlab`` and they do not appear to be loadable.
 
 
-Start MATLAB and Run a Script
------------------------------
+Start MATLAB at the Command Line
+--------------------------------
 Most of the time, you will run either MATLAB live scripts (``.mlx``) or basic script or function files (``.m``). Live scripts can only be opened and worked on in the GUI, while basic function or script files can also be run from a batch script and/or at the command line.
 
 It is important to note that at the command line, function definition is typically not supported unless the function is short and anonymous; user-defined functions must generally be written up and saved to separate ``.m`` files.
