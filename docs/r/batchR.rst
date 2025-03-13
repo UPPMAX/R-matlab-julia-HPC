@@ -16,14 +16,18 @@ Running R in batch mode
 
 .. admonition:: Compute allocations in this workshop 
 
-   - Rackham: ``naiss2024-22-107``
-   - Kebnekaise: ``hpc2n2024-025``
+   - Rackham: ``uppmax2025-2-272``
+   - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
+   - Tetralith: ``naiss-2025-22-262``
+   - Dardel: ``naiss-2025-22-262`` 
 
 .. admonition:: Storage space for this workshop 
 
-   - Rackham: ``/proj/r-py-jl-m-rackham``
-   - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
+   - Rackham: ``/proj/r-matlab-julia-uppmax``
+   - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
+   - Tetralith: ``/proj/r-matlab-julia-naiss/users/``
+   - Dardel: ``/proj/r-matlab-julia-naiss``
 
 Overview of the UPPMAX systems
 ##############################
@@ -41,10 +45,15 @@ Overview of the LUNARC system
 .. figure:: ../../img/cosmos-resources.png
       :width: 500
 
+Overview of the NSC system
+##########################
+
+.. figure:: ../../img/mermaid-tetralith.png 
+      :width: 500 
 
 Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
 
-The batch system used at UPPMAX, HPC2N, and LUNARC (and most other HPC centres in Sweden) is called Slurm.  
+The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC (and most other HPC centres in Sweden) is called Slurm.  
 
 Slurm is an Open Source job scheduler, which provides three key functions
 
@@ -54,7 +63,7 @@ Slurm is an Open Source job scheduler, which provides three key functions
 
 In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
 
-Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/  
+Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and 
 
 Workflow
 ########
@@ -74,7 +83,7 @@ Useful commands to the batch system
 ###################################
 
 - Submit job: ``sbatch <jobscript.sh>``
-- Get list of your jobs: ``squeue -u <username>``
+- Get list of your jobs: ``squeue --me`` OR ``squeue -u <username>``
 - Check on a specific job: ``scontrol show job <job-id>``
 - Delete a specific job: ``scancel <job-id>``
 - Useful info about a job: ``sacct -l -j <job-id> | less -S``
@@ -156,6 +165,23 @@ Serial code
             
             # Run your R script (here 'hello.R')
             R --no-save --quiet < hello.R
+
+      .. tab:: NSC 
+
+         Short serial example for running on Tetralith. Loading R/4.2.2 
+
+         .. code-block:: sh 
+
+            #!/bin/bash
+            #SBATCH -A naiss2025-22-262
+            #SBATCH --time=00:10:00 # Asking for 10 minutes
+            #SBATCH -n 1 # Asking for 1 core
+
+            # Load any modules you need, here R/4.2.2 
+            module load R/4.2.2-hpc1-gcc-11.3.0-bare 
+
+            # Run your R script (here 'hello.R')
+            R --no-save --quiet < hello.R 
 
       .. tab:: hello.R
    
@@ -241,6 +267,27 @@ foreach and doParallel
             # Batch script to submit the R program parallel_foreach.R
             R -q --slave -f parallel_foreach.R
 
+      .. tab:: NSC 
+
+         Short parallel example (using packages "foreach" and "doParallel" which you at Tetralith need to install first) for running on Tetralith. Loading R/4.2.2.   
+         Installing ``foreach`` and ``doParallel`` (with R module ``R/4.4.0-hpc1-gcc-11.3.0-bare`` loaded but not inside R): ``R --quiet --no-save --no-restore -e "install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` and ``R --quiet --no-save --no-restore -e "install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` 
+
+         .. code-block:: sh 
+
+            #!/bin/bash
+            # A batch script for running the R program parallel_foreach.R on Kebnekaise 
+            #SBATCH -A naiss2025-22-262 
+            #SBATCH -t 00:10:00
+            #SBATCH -N 1
+            #SBATCH -c 4
+
+            ml purge > /dev/null 2>&1
+            ml R/4.2.2-hpc1-gcc-11.3.0-bare 
+
+            # Batch script to submit the R program parallel_foreach.R
+            R -q --slave -f parallel_foreach.R 
+
+            
       .. tab:: parallel_foreach.R
  
          This R script uses packages "foreach" and "doParallel". 
@@ -322,7 +369,7 @@ Rmpi
 
       .. tab:: HPC2N
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.0.4 and its prerequisites. 
+         Short parallel example (using packages "Rmpi"). Loading R/4.1.1 and its prerequisites. 
        
          .. code-block:: sh
 
@@ -342,7 +389,7 @@ Rmpi
 
       .. tab:: LUNARC 
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.0.4 and its prerequisites. 
+         Short parallel example (using packages "Rmpi"). Loading R/4.2.1 and its prerequisites. 
        
          .. code-block:: sh
 
@@ -360,6 +407,24 @@ Rmpi
 
             mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
    
+      .. tab:: NSC 
+
+         Short parallel example (using packages "Rmpi"). Loading R/4.2.2. 
+
+         Note: for NSC you first need to install "Rmpi" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('Rmpi')``) 
+
+         .. code-block:: sh 
+
+            #!/bin/bash
+            #SBATCH -A naiss2025-22-262 
+            # Asking for 10 min.
+            #SBATCH -t 00:10:00
+            #SBATCH -n 8
+
+            export OMPI_MCA_mpi_warn_on_fork=0
+
+            ml purge > /dev/null 2>&1
+            ml R/4.2.2-hpc1-gcc-11.3.0-bare 
 
       .. tab:: Rmpi.R
 
@@ -488,6 +553,17 @@ These nodes are configured as exclusive access and will not be shared between us
 
 where <number> is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).
 
+NSC
+''' 
+
+Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch script or interactive job:
+
+... code-block:: 
+
+    #SBATCH -n 1
+    #SBATCH -c 32
+    #SBATCH --gpus-per-task=1
+
 Example batch script
 ''''''''''''''''''''
 
@@ -559,6 +635,26 @@ Example batch script
 
            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
 
+   .. tab:: NSC 
+
+      .. code-block:: sh
+
+         #!/bin/bash
+           # Remember to change this to your own project ID after the course!
+           #SBATCH -A naiss2025-22-262
+           # Asking for runtime: hours, minutes, seconds. At most 1 week
+           #SBATCH --time=HHH:MM:SS
+           # Ask for resources, including GPU resources
+           #SBATCH -n 1
+           #SBATCH -c 32
+           #SBATCH --gpus-per-task=1
+           
+           # Remove any loaded modules and load the ones we need
+           module purge  > /dev/null 2>&1
+           module load R/4.4.0-hpc1-gcc-11.3.0-bare 
+
+           R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+
 
 Exercises
 #########
@@ -622,6 +718,25 @@ Exercises
              # Run your R script 
              Rscript add2.R 2 3 
 
+.. solution:: Solution for NSC
+    :class: dropdown 
+
+          Serial script on R
+           
+          .. code-block:: sh 
+
+             #!/bin/bash
+             #SBATCH -A naiss2025-22-262 
+             #SBATCH --time=00:10:00 # Asking for 10 minutes
+             #SBATCH -n 1 # Asking for 1 core
+
+             # Load any modules you need, here for R/4.2.2 
+             module load R/4.2.2-hpc1-gcc-11.3.0-bare 
+
+             # Run your R script 
+             Rscript add2.R 2 3 
+
+   
 
 .. challenge:: Parallel job run
 
