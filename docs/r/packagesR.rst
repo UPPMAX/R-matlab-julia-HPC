@@ -46,7 +46,19 @@ way to check is probably starting the interpreter and running the ``libPaths()``
 
    .. tab:: NSC
 
-      Load ``R``, e.g. version 
+      Load ``R``, e.g. version 4.2.2 
+
+      .. code-block:: console 
+
+         $ ml R/4.2.2-hpc1-gcc-11.3.0-bare
+         $ R 
+
+      Then check find the path of the library using the ``libPaths()`` function.
+
+      .. code-block:: rconsole 
+
+         > .libPaths()
+         [1] "/software/sse2/tetralith_el9/manual/R/4.2.2/g11/hpc1/lib64/R/library"
 
    .. tab:: PDC 
 
@@ -106,7 +118,7 @@ way to check is probably starting the interpreter and running the ``libPaths()``
 Preinstalled package libraries
 ------------------------------
 
-UPPMAX, HPC2N, and LUNARC offer a large amount of preinstalled packages.
+UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer a large amount of preinstalled packages.
 
 .. admonition:: HPC2N
 
@@ -127,8 +139,16 @@ UPPMAX, HPC2N, and LUNARC offer a large amount of preinstalled packages.
 
    On LUNARC most of the R packages come with the ``R`` module. 
 
+.. admonition:: NSC
 
-There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within ``R``
+   On NSC, a small number of the R packages come with the ``R`` module. You will have to install the rest yourself.  
+
+.. admonition:: PDC
+
+   On PDC ???? 
+
+
+There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within ``R`` (you can also get a list of all packages with ``installed.packages()`` but that can be overwhelming): 
 
 .. code-block:: R
 
@@ -250,6 +270,43 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
              Loading required package: ggplot2
              Loading required package: lattice
              > 
+
+   .. tab:: NSC
+    
+      .. admonition:: Solution
+
+         .. code-block:: console 
+
+             $ ml R/4.2.2-hpc1-gcc-11.3.0-bare
+             $ R 
+
+             R version 4.2.2 (2022-10-31) -- "Innocent and Trusting"
+             Copyright (C) 2022 The R Foundation for Statistical Computing
+             Platform: x86_64-pc-linux-gnu (64-bit)
+
+             R is free software and comes with ABSOLUTELY NO WARRANTY.
+             You are welcome to redistribute it under certain conditions.
+             Type 'license()' or 'licence()' for distribution details.
+
+             R is a collaborative project with many contributors.
+             Type 'contributors()' for more information and
+             'citation()' on how to cite R or R packages in publications.
+
+             Type 'demo()' for some demos, 'help()' for on-line help, or
+             'help.start()' for an HTML browser interface to help.
+             Type 'q()' to quit R.
+             
+             > library(pillar)
+             Error in library(pillar) : there is no package called ‘pillar’
+             > library(caret)
+             Error in library(caret) : there is no package called ‘caret’
+             > 
+             
+   .. tab:: PDC 
+
+
+            
+
 
 Installing your own packages
 ----------------------------
@@ -381,15 +438,18 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
    - UPPMAX: ``module load R_packages/4.1.1``
    - HPC2N: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
    - LUNARC: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
+   - NSC: ``module load R/4.2.2-hpc1-gcc-11.3.0-bare`` 
 
    2)
 
    - ``echo R_LIBS_USER="$HOME/R-packages-%V" > ~/.Renviron``
 
-   OR (option if UPPMAX or HPC2N)
+   OR (option if UPPMAX, HPC2N, NSC, or PDC)
 
-   - UPPMAX: ``echo R_LIBS_USER="/proj/r-py-jl-m-rackham/<yourdir>/R-packages-%V" > ~/.Renviron``
-   - HPC2N: ``echo R_LIBS_USER="/proj/nobackup/r-py-jl-m/<yourdir>/R-packages-%V" > ~/.Renviron``
+   - UPPMAX: ``echo R_LIBS_USER="/proj/r-matlab-julia-uppmax/<yourdir>/R-packages-%V" > ~/.Renviron``
+   - HPC2N: ``echo R_LIBS_USER="/proj/nobackup/r-matlab-julia/<yourdir>/R-packages-%V" > ~/.Renviron``
+   - NSC: ``echo R_LIBS_USER="/proj/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
+   - PDC: ``echo R_LIBS_USER="/proj/r-matlab-julia-naiss/users/<yourdir>/R-packages-%V" > ~/.Renviron``
 
    3) Create directory for R packages:
 
@@ -399,7 +459,13 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
        - OR ``mkdir -p /proj/r-py-jl-m-rackham/<yourdir>/R-packages-4.1.1``
    - HPC2N:
        - ``mkdir -p $HOME/R-packages-4.2.1``
-       - OR ``mkdir -p /proj/nobackup/r-py-jl-m/<yourdir>/R-packages/4.2.1``
+       - OR ``mkdir -p /proj/nobackup/r-py-jl-m/<yourdir>/R-packages-4.2.1``
+   - NSC: 
+       - ``mkdir -p $HOME/R-packages-4.2.2``
+       - OR ``mkdir -p /proj/r-matlab-julia-naiss/users/<yourdir>/R-packages-4.2.2``
+   - PDC: 
+       - ``mkdir -p ``
+       - OR   
 
    4) Either of
 
@@ -454,7 +520,7 @@ Exercises
 
 .. challenge:: Install a package with automatic download
 
-   1. First do the setup of `.Renviron` and create the directory for installing R packages (Recommended load R version 4.1.1 on Rackham, 4.1.2 on Kebnekaise, and 4.2.1 on LUNARC)
+   1. First do the setup of `.Renviron` and create the directory for installing R packages (Recommended load R version 4.1.1 on Rackham, 4.1.2 on Kebnekaise, 4.2.1 on LUNARC, 4.2.2 on NSC, and ????? on PDC)
    2. From the command line. Suggestion: ``anomalize``
    3. From inside R. Suggestion: ``BGLR``
    4. Start R and see if the library can be loaded. 
