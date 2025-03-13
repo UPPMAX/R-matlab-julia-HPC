@@ -625,7 +625,7 @@ Exercises
                        .. code-block:: sh
                            
                           #!/bin/bash -l
-                          #SBATCH -A naiss202X-XY-XYZ     # your project_ID
+                          #SBATCH -A naiss202t-uv-xyz     # your project_ID
                           #SBATCH -J job-serial           # name of the job
                           #SBATCH -n *FIXME*              # nr. tasks/coresw
                           #SBATCH --time=00:20:00         # requested time
@@ -642,7 +642,7 @@ Exercises
                        .. code-block:: sh
                            
                            #!/bin/bash            
-                           #SBATCH -A hpc2n202X-XYZ     # your project_ID       
+                           #SBATCH -A hpc2n202w-xyz     # your project_ID       
                            #SBATCH -J job-serial        # name of the job         
                            #SBATCH -n *FIXME*           # nr. tasks  
                            #SBATCH --time=00:20:00      # requested time
@@ -660,7 +660,7 @@ Exercises
                        .. code-block:: sh
                            
                            #!/bin/bash            
-                           #SBATCH -A lu202X-XX-XX      # your project_ID
+                           #SBATCH -A lu202u-wx-yz      # your project_ID
                            #SBATCH -J job-serial        # name of the job         
                            #SBATCH -n *FIXME*           # nr. tasks  
                            #SBATCH --time=00:20:00      # requested time
@@ -677,7 +677,6 @@ Exercises
                   .. tab:: PDC
 
                        .. code-block:: sh
-                           
                                                                                                                                                                         
                            #!/bin/bash
                            #SBATCH -A naiss202t-uv-wxyz # your project_ID       
@@ -693,6 +692,25 @@ Exercises
                            ml ...
 
                            python integration2d_multiprocessing.py
+
+                  .. tab:: PDC
+
+                       .. code-block:: sh
+
+                           #!/bin/bash
+                           #SBATCH -A naiss202t-uv-xyz  # your project_ID
+                           #SBATCH -J job-serial        # name of the job
+                           #SBATCH -n *FIXME*           # nr. tasks
+                           #SBATCH --time=00:20:00      # requested time
+                           #SBATCH --error=job.%J.err   # error file
+                           #SBATCH --output=job.%J.out  # output file
+
+                           # Load any modules you need, here for Python
+                           ml buildtool-easybuild/4.8.0-hpce082752a2  GCCcore/12.3.0
+                           ml Python/3.11.3
+                           python integration2d_multiprocessing.py
+
+
    
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
             1,2,4,8,12, and 14. Note: this number should match the number of processes 
@@ -712,7 +730,7 @@ Exercises
             Here is a parallel code using the ``Distributed`` package in Julia (call it 
             ``integration2d_distributed.jl``):  
 
-            .. admonition:: integration2D_distributed.jl
+            .. admonition:: integration2d_distributed.jl
                :class: dropdown
 
                .. code-block:: julia
@@ -807,7 +825,7 @@ Exercises
       
                              ml julia/1.8.5
       
-                             julia integration2D_distributed.jl 
+                             julia integration2d_distributed.jl 
          
                   .. tab:: HPC2N
       
@@ -824,7 +842,7 @@ Exercises
                              ml purge  > /dev/null 2>&1
                              ml Julia/1.9.3-linux-x86_64
       
-                             julia integration2D_distributed.jl 
+                             julia integration2d_distributed.jl 
 
 
                   .. tab:: LUNARC
@@ -844,7 +862,7 @@ Exercises
                            ml purge  > /dev/null 2>&1
                            ml Julia/1.9.3-linux-x86_64
       
-                           julia integration2D_distributed.jl 
+                           julia integration2d_distributed.jl 
 
                   .. tab:: PDC
       
@@ -864,7 +882,25 @@ Exercises
                            # Load dependencies and Julia version
                            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
 
-                           julia integration2D_distributed.jl 
+                           julia integration2d_distributed.jl
+
+                  .. tab:: NSC
+      
+                     .. code-block:: bash     
+ 
+                           #!/bin/bash
+                           #SBATCH -A naiss202t-uv-xyz  # your project_ID
+                           #SBATCH -J job-serial        # name of the job
+                           #SBATCH -n *FIXME*           # nr. tasks
+                           #SBATCH --time=00:20:00      # requested time
+                           #SBATCH --error=job.%J.err   # error file
+                           #SBATCH --output=job.%J.out  # output file
+
+                           # Load any modules you need, here for Julia
+                           ml julia/1.9.4-bdist 
+
+                           julia integration2d_distributed.jl
+
 
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
             1,2,4,8,12, and 14. Note: this number should match the number of processes 
@@ -885,7 +921,7 @@ Exercises
             R version, otherwise install them with ``install.packages()``. The recommended R version
             for this exercise is ``ml GCC/12.2.0 OpenMPI/4.1.4 R/4.2.2`` (HPC2N).
 
-            .. admonition:: integrationd.R
+            .. admonition:: integration2d.R
                :class: dropdown
 
                .. code-block:: R
@@ -962,7 +998,7 @@ Exercises
                      .. code-block:: bash
       
                              #!/bin/bash -l
-                             #SBATCH -A naiss202X-XY-XYZ  # your project_ID
+                             #SBATCH -A naiss202u-wv-xyz  # your project_ID
                              #SBATCH -J job-serial        # name of the job
                              #SBATCH -n *FIXME*           # nr. tasks/coresw
                              #SBATCH --time=00:20:00      # requested time
@@ -978,7 +1014,7 @@ Exercises
                      .. code-block:: bash
       
                              #!/bin/bash            
-                             #SBATCH -A hpc2n202X-XYZ     # your project_ID       
+                             #SBATCH -A hpc2n202w-xyz     # your project_ID       
                              #SBATCH -J job-serial        # name of the job         
                              #SBATCH -n *FIXME*           # nr. tasks  
                              #SBATCH --time=00:20:00      # requested time
@@ -994,7 +1030,7 @@ Exercises
                        .. code-block:: sh
                            
                             #!/bin/bash            
-                            #SBATCH -A lu202X-XX-XX      # your project_ID
+                            #SBATCH -A lu202u-wy-yz      # your project_ID
                             #SBATCH -J job-serial        # name of the job         
                             #SBATCH -n *FIXME*           # nr. tasks  
                             #SBATCH --time=00:20:00      # requested time
@@ -1026,6 +1062,23 @@ Exercises
 
                            Rscript --no-save --no-restore integration2d.R
 
+                  .. tab:: NSC
+      
+                     .. code-block:: bash     
+ 
+                           #!/bin/bash
+                           #SBATCH -A naiss202t-uv-xyz  # your project_ID
+                           #SBATCH -J job-serial        # name of the job
+                           #SBATCH -n *FIXME*           # nr. tasks
+                           #SBATCH --time=00:20:00      # requested time
+                           #SBATCH --error=job.%J.err   # error file
+                           #SBATCH --output=job.%J.out  # output file
+
+                           # Load any modules you need, here for R 
+                           ml R/4.4.0-hpc1-gcc-11.3.0-bare
+
+                           Rscript --no-save --no-restore integration2d.R
+
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
             1,2,4,8,12, and 14. Note: this number should match the number of processes 
             (also a *FIXME* string) in the R script. Collect the timings that are
@@ -1053,7 +1106,7 @@ Exercises
                    num_workers = *FIXME*;
                    
                    % Use parallel pool with 'parfor'
-                   parpool('kebnekaise',num_workers);  % Start parallel pool with num_workers workers
+                   parpool('profile-name',num_workers);  % Start parallel pool with num_workers workers
                    
                    % Grid size
                    n = 6720;
