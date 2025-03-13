@@ -18,7 +18,7 @@ The goal is for ``renv`` to be a robust, stable replacement for the Packrat pack
 
 .. questions::
 
-   - How to work with isolated R environments at HPC2N, UPPMAX and LUNARC?
+   - How to work with isolated R environments at HPC2N, UPPMAX, LUNARC, NSC, and PDC?
  
 .. objectives:: 
 
@@ -68,7 +68,7 @@ Example - Creating a renv and installing ``knitr``
 
 .. type-along::
 
-   - First create a project under the course project directory (Kebnekaise and Rackham) or in your home directory (Cosmos) and cd to it
+   - First create a project under the course project directory (Kebnekaise, Rackham, Tetralith, and Dardel) or in your home directory (Cosmos) and cd to it
 
    .. tabs::
 
@@ -76,13 +76,13 @@ Example - Creating a renv and installing ``knitr``
 
          .. code-block:: console
    
-            $ mkdir -v /proj/r-py-jl-m-rackham/<your-dir>/r_proj && cd $_    
+            $ mkdir -v /proj/r-matlab-julia-uppmax/<your-dir>/r_proj && cd $_    
 
       .. tab:: HPC2N
  
          .. code-block:: console
    
-            $ mkdir -v /proj/nobackup/r-py-jl-m/<your-dir>/r_proj && cd $_
+            $ mkdir -v /proj/nobackup/r-matlab-julia/<your-dir>/r_proj && cd $_
 
       .. tab:: LUNARC 
 
@@ -90,7 +90,19 @@ Example - Creating a renv and installing ``knitr``
 
             $ mkdir -v $HOME/r_proj && cd $_ 
 
-   - Make sure you have loaded ``R`` and ``R_packages`` on UPPMAX or ``R`` and ``R-bundle-Bioconductor (and possibly R-bundle-CRAN if you use one of the newest versions of R)`` on HPC2N and ``R`` on LUNARC. 
+      .. tab:: NSC 
+
+         .. code-block:: console 
+
+            $ mkdir -v /proj/r-matlab-julia-naiss/users/<your-dir>/r_proj && cd $_ 
+
+      .. tab:: PDC 
+
+         .. code-block:: console 
+
+            $ mkdir -v ??????????????? 
+            
+   - Make sure you have loaded ``R`` and ``R_packages`` on UPPMAX or ``R`` and ``R-bundle-Bioconductor (and possibly R-bundle-CRAN if you use one of the newest versions of R)`` on HPC2N and ``R`` on LUNARC and R on NSC and ?????? on PDC. 
 
    .. tabs::
 
@@ -111,6 +123,18 @@ Example - Creating a renv and installing ``knitr``
          .. code-block:: console 
 
             $ ml GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 
+
+      .. tab:: NSC 
+
+         .. code-block:: console 
+
+            $ ml R/4.2.2-hpc1-gcc-11.3.0-bare
+
+      .. tab:: PDC 
+
+         .. code-block:: console 
+
+            $ 
 
    - Next, launch the ``R`` interpreter and initialize a ``renv`` environment.
 
@@ -173,14 +197,15 @@ Example - Creating a renv and installing ``knitr``
 
 .. exercise:: Installing "datarium"
 
-   We will need this for an exercise in the "ML with R" section (only on Cosmos and Kebnekaise - Rackham has the library included already). 
+   We will need this for an exercise in the "ML with R" section (only on Tetralith, Cosmos and Kebnekaise - Rackham has the library included already). 
 
-   - First create a new project under the course project directory (Kebnekaise and Rackham) or in your home directory (Cosmos) and cd to it. 
+   - First create a new project under the course project directory (Kebnekaise, Rackham, Tetralith) or in your home directory (Cosmos) and cd to it. 
 
    - Then make sure you have loaded the modules: 
     
       - Kebnekaise/Cosmos: R/4.2.1 and prerequsites + R-bundle-Bioconductor/3.15-R-4.2.1 
       - Rackham: R/4.1.1 R_packages/4.1.1 
+      - Tetralith: R/4.2.2-hpc1-gcc-11.3.0-bare   
 
    - Launch the R interpreter and initialize a renv environment.
 
@@ -217,17 +242,34 @@ Example - Creating a renv and installing ``knitr``
 
                 ml GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
 
+          .. tab:: Tetralith 
+
+             .. code-block:: 
+
+                ml R/4.2.2-hpc1-gcc-11.3.0-bare 
+
        3. Launch the R interpreter and initialize a renv environment.
 
        .. code-block:: 
 
           $ R
 
-       .. code-block::
+       .. tab:: Tetralith 
 
-          > renv::init()
+          .. code-block::
 
-       4. Install "datarium" 
+             > install.packages('renv', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+             > renv::init()
+
+       .. tab:: others 
+
+          .. code-block:: 
+
+             > renv::init()          
+
+       4. Exit R and restart it 
+                 
+       5. Install "datarium" - Pick repo Umeå 
 
        .. code-block:: 
 
@@ -295,4 +337,4 @@ Benefits of using Conda:
 
    - With a virtual environment you can tailor an environment with specific versions for R and packages, not interfering with other installed versions.
    - Make it for each project you have for reproducibility.
-   - UPPMAX and LUNARC have Conda as an alternative to ``renv``
+   - UPPMAX, LUNARC, and NSC have Conda as an alternative to ``renv``
