@@ -693,7 +693,7 @@ Exercises
 
                            python integration2d_multiprocessing.py
 
-                  .. tab:: PDC
+                  .. tab:: NSC
 
                        .. code-block:: sh
 
@@ -1097,7 +1097,7 @@ Exercises
             Here is a parallel code using the ``parfor`` tool from Matlab (call it 
             ``integration2d.m``). 
 
-            .. admonition:: integrationd.m
+            .. admonition:: integration2d.m
                :class: dropdown
 
                .. code-block:: matlab
@@ -1294,6 +1294,25 @@ Exercises
 
                         python script-df.py
 
+               .. tab:: NSC
+
+                     .. code-block:: sh
+
+                        #!/bin/bash
+                        #SBATCH -A naiss202t-uv-xyz  # your project_ID
+                        #SBATCH -J job-serial        # name of the job
+                        #SBATCH -n *FIXME*           # nr. tasks
+                        #SBATCH --time=00:20:00      # requested time
+                        #SBATCH --error=job.%J.err   # error file
+                        #SBATCH --output=job.%J.out  # output file
+
+                        # Load any modules you need, here for Python
+                        ml buildtool-easybuild/4.8.0-hpce082752a2  GCCcore/12.3.0
+                        ml Python/3.11.3
+
+                        python script-df.py
+      
+
       .. tab:: Julia
 
          - First, be sure you have ``DataFrames`` installed as JuliaPackage.
@@ -1416,6 +1435,23 @@ Exercises
 
                      # Load dependencies and Julia version
                      ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+
+                     julia --threads 4 script-df.jl  # X number of threads
+
+            .. tab:: NSC
+
+               .. code-block:: bash     
+
+                     #!/bin/bash
+                     #SBATCH -A naiss202t-uv-xyz  # your project_ID
+                     #SBATCH -J job-serial        # name of the job
+                     #SBATCH -n *FIXME*           # nr. tasks
+                     #SBATCH --time=00:20:00      # requested time
+                     #SBATCH --error=job.%J.err   # error file
+                     #SBATCH --output=job.%J.out  # output file
+
+                     # Load any modules you need, here for Julia
+                     ml julia/1.9.4-bdist 
 
                      julia --threads 4 script-df.jl  # X number of threads
 
@@ -1546,6 +1582,23 @@ Exercises
 
                      Rscript --no-save --no-restore script-df.R
 
+            .. tab:: NSC
+
+               .. code-block:: bash     
+
+                     #!/bin/bash
+                     #SBATCH -A naiss202t-uv-xyz  # your project_ID
+                     #SBATCH -J job-serial        # name of the job
+                     #SBATCH -n *FIXME*           # nr. tasks
+                     #SBATCH --time=00:20:00      # requested time
+                     #SBATCH --error=job.%J.err   # error file
+                     #SBATCH --output=job.%J.out  # output file
+
+                     # Load any modules you need, here for R 
+                     ml R/4.4.0-hpc1-gcc-11.3.0-bare
+
+                     Rscript --no-save --no-restore script-df.R
+
       .. tab:: Matlab
       
             .. code-block:: matlab
@@ -1556,7 +1609,7 @@ Exercises
                 data_tbl = table(*FIXME*, *FIXME*); % Create a table with the previous two features
 
                 % Matlab uses the so called parpool to create some workers
-                parpool('kebnekaise', *FIXME*);
+                parpool('profile-name', *FIXME*);
                 p = gcp;
 
                 % Measure time
