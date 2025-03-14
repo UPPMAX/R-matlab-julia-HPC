@@ -71,6 +71,49 @@ handle to send the job and control the outputs:
 Note that ``batch`` also accepts script names in place of function names, but these must be given in single quotes, with no ``@`` or ``.m``. This is useful if your script is a job farm.
 
 
+Job settings in the Cluster Profile Manager
+'''''''''''''''''''''''''''''''''''''''''''
+
+   You can change the job settings (or make them all together) inside the GUI. To do that, you change the job settings within the Cluster Profile Manager. 
+
+   Note that this is ONLY in the case you want to use the GUI. You can work completely from within the MATLAB terminal interface if you want. 
+
+If you run MATLAB in the GUI after having configured the cluster, MATLAB will start with a default cluster profile, typically something that includes the name of the cluster. This is just the set of configurations that were set by `configCluster`. You can view, edit, and/or add to this profile by clicking the ``Parallel`` menu icon and selecting ``Create and Manage Clusters``.
+
+.. figure:: img/Rackham-matlab-parallel.png
+   :width: 550
+   :align: center
+
+   Location of Parallel Menu in GUI.
+
+.. figure:: img/Rackham-matlab-cluster-profile-mgr.png
+   :width: 550
+   :align: center
+
+   Cluster Profile Manager.
+
+If you scroll down in the window that appears when you select the right cluster, you will see a box titled ``Scheduler Plugin``. This box lets you set SBATCH parameters like
+
+- Your account name (project name),
+- Your email address,
+- The memory per CPU, including units,
+- The number of processes per node,
+- Which partition you want,
+- Whether you need an exclusive node,
+- The name of your reservation, and most importantly,
+- The wall time for your job.
+
+.. figure:: img/Rackham-matlab-cluster-profile-mgr2.png
+   :width: 550
+   :align: center
+
+   Editing parameters of Scheduler Plugin in Cluster Profile Manager.
+
+In other words, almost anything you might otherwise set by calling ``c.AdditionalProperties.<insert_property>=...`` can be set in the GUI in this scheduler plugin. Just keep in mind that these settings are saved between sessions.
+
+If you are on Desktop On Demand on LUNARC, these settings do not override the parameters set in the GfxLauncher for the MATLAB GUI session itself, but rather to any batch jobs you submit from *within* the GUI.
+
+
 Serial jobs 
 '''''''''''
 
