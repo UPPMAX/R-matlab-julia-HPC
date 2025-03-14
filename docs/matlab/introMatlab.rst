@@ -43,7 +43,7 @@ Introduction to MATLAB
 Schedule
 --------
 
-`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html`_
+`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html>`_
 
 .. instructor-note::
 
