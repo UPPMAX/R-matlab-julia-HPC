@@ -254,18 +254,20 @@ Example - Creating a renv and installing ``knitr``
 
           $ R
 
-       .. tab:: Tetralith 
+       .. tabs:: 
 
-          .. code-block::
+           .. tab:: Tetralith 
 
-             > install.packages('renv', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-             > renv::init()
+              .. code-block::
 
-       .. tab:: others 
+                 > install.packages('renv', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+                 > renv::init()
 
-          .. code-block:: 
+           .. tab:: others 
 
-             > renv::init()          
+              .. code-block:: 
+
+                 > renv::init()          
 
        4. Exit R and restart it 
                  
