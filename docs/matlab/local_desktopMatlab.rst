@@ -244,7 +244,7 @@ Exercises
        - set ``parcluster`` settings, like you do otherwise.
    - Note: only ``parcluster`` will work, not ``parpool``.
 
-.. admonitions:: Do you get problems
+.. admonition:: Do you get problems?
 
    - Send a support ticket to UPPMAX via `supr.naiss.se/support <javascript:void(window.open('https://supr.naiss.se/support/?centre_resource=c4','_blank','toolbar=1,location=1,status=1,menubar=1,scrollbars=1,resizable=1'));>`_
 
