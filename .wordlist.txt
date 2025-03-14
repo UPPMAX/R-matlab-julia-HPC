@@ -908,7 +908,12 @@ addons
 searchforaddons
 clusterguide
 NSC's
+nsc
 Tetralith
+tetralith
 scheduleJulia
 scheduleMatlab
 scheduleR
+liu
+gcc
+gpus
