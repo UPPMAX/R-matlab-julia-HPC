@@ -353,6 +353,7 @@ Content of the course
    :maxdepth: 2
    :caption: Extra reading:
 
+   extra/r_extra.rst
    extra/isolated_extra.rst
    r/morepackages.rst
    r/packagesBianca.rst
