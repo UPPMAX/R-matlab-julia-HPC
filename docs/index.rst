@@ -212,7 +212,7 @@ Prepare your environment now!
 
             .. code-block:: console
 
-               $ mkdir /proj/r-py-jl-m-rackham/mrspock/
+               $ mkdir /proj/r-matlab-julia-uppmax/mrspock/
  
       .. tab:: HPC2N
 
@@ -229,11 +229,11 @@ Prepare your environment now!
 
            .. code-block:: console
 
-              $ /proj/nobackup/r-py-jl-m/bbrydsoe/
+              $ /proj/nobackup/r-matlab-julia/bbrydsoe/
 
       .. tab:: Cosmos
 
-         - Cosmos through terminal: ``<user>@cosmos.lunarc.lu.se``
+         - Cosmos through terminal, (requires 2FA): ``<user>@cosmos.lunarc.lu.se``
          - Cosmos through ThinLinc app,  (requires 2FA)
 
                - server: ``cosmos-dt.lunarc.lu.se``
@@ -241,18 +241,52 @@ Prepare your environment now!
 
          - Create a working directory where you can code along. Users should have plenty of space in their home directories.
 
+      .. tab:: Tetralith 
+
+         - Tetralith through terminal, (requires 2FA): ``<user>@tetralith.nsc.liu.se`` 
+         - Tetralith through ThinLinc app, (requires 2FA): 
+
+               - server: ``tetralith.nsc.liu.se``
+               - username: ``<user>``  
+
+         - Create a working directory where you can code along. 
+
+           - Example. If your username is ``x_birbr`` and you are at NSC, then we recommend you create this folder: 
+
+             .. code-block:: console 
+
+                $ /proj/r-matlab-julia-naiss/users/x_birbr/
+
+      .. tab:: Dardel   
+
+         - Dardel through terminal, (requires setup of SSH-keys): ``dardel.pdc.kth.se``
+         - Dardel through ThinLinc app, (requires setup of SSH-keys): 
+
+              - server: ``dardel-vnc.nsc.kth.se``
+              - username: ``<user>`` 
+
+         - Create a working directory where you can code along. 
+
+           - Example. If your username is ``bbrydsoe`` and you are at PDC, then we recommend you create this folder: 
+
+             .. code-block:: console
+
+                $ /cfs/klemming/projects/snic/r-matlab-julia-naiss/bbrydsoe/
+
 .. admonition:: Get exercises
 
    There are three main ways to get the exercises. In any case, you should do so from the directory you will be working in, on either Rackham, Kebnekaise, or Cosmos: 
 
-   - Copy them from the computer system you are on (only until 2024-11-01) and unpack them by entering ``tar -xzvf exercises.tar.gz``
+   - Copy them from the computer system you are on (only until 2025-04-01) and unpack them by entering ``tar -xzvf exercises.tar.gz``
 
-      - Rackham: ``cp /proj/r-py-jl-m-rackham/exercises.tar.gz`` .
-      - Kebnekaise: ``cp /proj/nobackup/r-py-jl-m/exercises.tar.gz`` .
+      - Rackham: ``cp /proj/r-matlab-julia-uppmax/exercises.tar.gz`` .
+      - Kebnekaise: ``cp /proj/nobackup/r-matlab-julia/exercises.tar.gz`` .
       - (No local repository for Cosmos)
+      - Tetralith: ``cp /proj/r-matlab-julia-naiss/exercises.tar.gz`` .
+      - Dardel: ``cp /cfs/klemming/projects/snic/r-matlab-julia-naiss/exercises.tar.gz`` .  
 
-   - Clone them with git from the repo (see below about a warning): ``git clone https://github.com/UPPMAX/R-python-julia-matlab-HPC.git``
-   - Copy the tarball from the web into your working directory with ``wget https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz`` and unpack them with ``tar -xzvf exercises.tar.gz``
+   - Clone them with git from the repo (see below about a warning): ``git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git``
+   - Copy the tarball from the web into your working directory with ``wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercises.tar.gz`` and unpack them with ``tar -xzvf exercises.tar.gz``
    
 
 .. warning:: Do you want the whole repo?
@@ -260,7 +294,7 @@ Prepare your environment now!
    - If you are happy with just the exercises, the tarballs of the language specific ones are enough.
    - By cloning the whole repo, you get all the materials, planning documents, and exercises.
    - If you think this makes sense type this in the command line in the directory you want it.
-     - ``git clone https://github.com/UPPMAX/R-python-julia-matlab-HPC.git``
+     - ``git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git``
    - Note however, that if you during exercise work modify files, they will be overwritten if you make ``git pull`` (like if the teacher needs to modify something).
       - Then make a copy somewhere else with your answers!
 
@@ -269,22 +303,35 @@ Prepare your environment now!
    - Main project on UPPMAX:
      
         - Project ID: ``uppmax2025-2-272``
-        - Directory name on rackham: ``/proj/r-py-jl-m-rackham``
-        - Please create a suitably named subdirectory below ``/proj/r-py-jl-m-rackham``, for your own exercises. 
+        - Directory name on rackham: ``/proj/r-matlab-julia-uppmax``
+        - Please create a suitably named subdirectory below ``/proj/r-matlab-julia-uppmax``, for your own exercises. 
    
 
    - Local project on HPC2N: 
 
         - Project ID: ``hpc2n2025-062``
-        - Directory name on Kebnekaise: ``/proj/nobackup/r-py-jl-m``
-        - Please create a suitably named subdirectory below ``/proj/nobackup/r-py-jl-m``, for your own exercises.
+        - Directory name on Kebnekaise: ``/proj/nobackup/r-matlab-julia``
+        - Please create a suitably named subdirectory below ``/proj/nobackup/r-matlab-julia``, for your own exercises.
 
    - Where to work on LUNARC
 
         - Project ID: ``lu2025-7-24`` (for use in slurm scripts)
-        - Home directories have much larger quotas at LUNARC than at UPPMAX or HPC2N. Create a suitable sub-directory in your home directory or a personal project folder.
+        - Home directories have much larger quotas at LUNARC than at UPPMAX, HPC2N, NSC, or PDC. Create a suitable sub-directory in your home directory or a personal project folder.
 
 
+   - Local project on NSC: 
+
+        - Project ID: ``naiss2025-22-262`` 
+        - Directory name on Tetralith: ``/proj/r-matlab-julia-naiss/users`` 
+        - There should already be a subdirectory under this for each of you, named as your username. Use that for your exercises. 
+
+   - Local project on PDC: 
+
+        - Project ID: ``naiss2025-22-262``
+        - Directory name on Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss`` 
+        - Please create a suitably named subdirectory below ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``, for your oen exercises. 
+
+ 
 Content of the course
 ---------------------
 
