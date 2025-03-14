@@ -134,7 +134,7 @@ Example - Creating a renv and installing ``knitr``
 
          .. code-block:: console 
 
-            $ 
+            $ ml  
 
    - Next, launch the ``R`` interpreter and initialize a ``renv`` environment.
 
@@ -273,7 +273,7 @@ Example - Creating a renv and installing ``knitr``
 
        .. code-block:: 
 
-          install.packages("datarium") 
+          > install.packages("datarium") 
 
        5. Save it
 
