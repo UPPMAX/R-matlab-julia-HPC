@@ -558,11 +558,11 @@ NSC
 
 Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch script or interactive job:
 
-... code-block:: 
+.. code-block:: 
 
-    #SBATCH -n 1
-    #SBATCH -c 32
-    #SBATCH --gpus-per-task=1
+   #SBATCH -n 1
+   #SBATCH -c 32
+   #SBATCH --gpus-per-task=1
 
 Example batch script
 ''''''''''''''''''''
