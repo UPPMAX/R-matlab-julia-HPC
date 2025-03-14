@@ -56,7 +56,7 @@ Introduction Julia
 Schedule
 --------
 
-`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleJulia.html`_
+`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleJulia.html>`_
 
 
 What is Julia?
