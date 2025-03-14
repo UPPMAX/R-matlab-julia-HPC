@@ -83,9 +83,7 @@ Schedule
 .. mermaid::  ./intro_r_overview_course_r_and_modules.mmd
 
 
-.. raw:: html
-
-    <iframe src="https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html#preliminary-schedule" height="740px" width="100%"></iframe>
+`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html`_
 
 ---
 
