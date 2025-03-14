@@ -1,3 +1,5 @@
+.. morepackages:
+
 More about R packages
 =====================
 
