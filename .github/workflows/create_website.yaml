@@ -39,7 +39,7 @@ jobs:
           rm -rf docs/matlab/README.md
           rm -rf docs/not_used
 
-      - name: Sphinx builds in nitpicky mode
+      - name: Sphinx builds
         run: sphinx-build -n docs _build
 
       - name: Deploy
