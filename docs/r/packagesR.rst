@@ -464,8 +464,8 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
        - ``mkdir -p $HOME/R-packages-4.2.2``
        - OR ``mkdir -p /proj/r-matlab-julia-naiss/users/<yourdir>/R-packages-4.2.2``
    - PDC: 
-       - ``mkdir -p ``
-       - OR   
+       - ``mkdir -p``
+       - OR
 
    4) Either of
 
