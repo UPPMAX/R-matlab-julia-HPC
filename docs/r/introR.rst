@@ -83,7 +83,7 @@ Schedule
 .. mermaid::  ./intro_r_overview_course_r_and_modules.mmd
 
 
-`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html`_
+`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html>`_
 
 ---
 
