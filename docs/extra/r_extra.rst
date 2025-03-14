@@ -8,3 +8,6 @@ Materials
 =========
 
 - `More about packages <r/morepackages.rst>`_
+
+
+.. _morepackages:
