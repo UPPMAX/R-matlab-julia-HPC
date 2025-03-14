@@ -637,9 +637,9 @@ Example batch script
 
    .. tab:: NSC 
 
-      .. code-block:: sh
+        .. code-block:: sh
 
-         #!/bin/bash
+           #!/bin/bash
            # Remember to change this to your own project ID after the course!
            #SBATCH -A naiss2025-22-262
            # Asking for runtime: hours, minutes, seconds. At most 1 week
