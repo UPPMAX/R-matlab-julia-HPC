@@ -100,9 +100,9 @@ Example - Creating a renv and installing ``knitr``
 
          .. code-block:: console 
 
-            $ mkdir -v ??????????????? 
+            $ mkdir -v /cfs/klemming/projects/snic/r-matlab-julia-naiss/<your-dir>/r_proj && cd $_ 
             
-   - Make sure you have loaded ``R`` and ``R_packages`` on UPPMAX or ``R`` and ``R-bundle-Bioconductor (and possibly R-bundle-CRAN if you use one of the newest versions of R)`` on HPC2N and ``R`` on LUNARC and R on NSC and ?????? on PDC. 
+   - Make sure you have loaded ``R`` and ``R_packages`` on UPPMAX or ``R`` and ``R-bundle-Bioconductor (and possibly R-bundle-CRAN if you use one of the newest versions of R)`` on HPC2N and ``R`` on LUNARC and R on NSC and R on PDC. 
 
    .. tabs::
 
@@ -134,9 +134,10 @@ Example - Creating a renv and installing ``knitr``
 
          .. code-block:: console 
 
-            $ ml  
+            $ ml PDC/23.12 R/4.4.1-cpeGNU-23.12   
 
    - Next, launch the ``R`` interpreter and initialize a ``renv`` environment.
+     **NOTE** if you are at NSC and PDC you need to install ``renv`` with ``install.packages('renv', repos='http://ftp.acc.umu.se/mirror/CRAN/')`` before you can initialize the ``renv`` environment. 
 
      .. code-block:: R
    
@@ -206,6 +207,7 @@ Example - Creating a renv and installing ``knitr``
       - Kebnekaise/Cosmos: R/4.2.1 and prerequsites + R-bundle-Bioconductor/3.15-R-4.2.1 
       - Rackham: R/4.1.1 R_packages/4.1.1 
       - Tetralith: R/4.2.2-hpc1-gcc-11.3.0-bare   
+      - Dardel: PDC/23.12 R/4.4.1-cpeGNU-23.12 
 
    - Launch the R interpreter and initialize a renv environment.
 
@@ -256,7 +258,7 @@ Example - Creating a renv and installing ``knitr``
 
        .. tabs:: 
 
-           .. tab:: Tetralith 
+           .. tab:: Tetralith, Dardel  
 
               .. code-block::
 
@@ -339,4 +341,4 @@ Benefits of using Conda:
 
    - With a virtual environment you can tailor an environment with specific versions for R and packages, not interfering with other installed versions.
    - Make it for each project you have for reproducibility.
-   - UPPMAX, LUNARC, and NSC have Conda as an alternative to ``renv``
+   - UPPMAX, LUNARC, NSC, and PDC have Conda as an alternative to ``renv``

@@ -19,7 +19,7 @@ Packages
    - What is an R package?
    - How do I find which packages and versions are available?
    - What to do if I need other packages?
-   - Are there differences between HPC2N, UPPMAX, and LUNARC?
+   - Are there differences between HPC2N, UPPMAX, LUNARC, NSC, and PDC?
    
 .. objectives:: 
 
@@ -46,7 +46,7 @@ way to check is probably starting the interpreter and running the ``libPaths()``
 
    .. tab:: NSC
 
-      Load ``R``, e.g. version 4.2.2 
+      Load ``R``, e.g. version 4.2.2 and start the Interpreter 
 
       .. code-block:: console 
 
@@ -62,7 +62,21 @@ way to check is probably starting the interpreter and running the ``libPaths()``
 
    .. tab:: PDC 
 
-      Load ``R``, e.g. version 
+      Load ``R``, e.g. version 4.4.1 and start the Interpreter 
+
+      .. code-block:: console 
+      
+         $ ml PDC/23.12 R/4.4.1-cpeGNU-23.12 
+         $ R 
+
+      Then check find the path of the library using the ``libPaths()`` function. 
+
+      .. code-block:: rconsole 
+
+         > .libPaths()
+         [1] "/cfs/klemming/home/b/bbrydsoe/.R/23.12/4.4.1/library"                                    
+         [2] "/cfs/klemming/pdc/software/dardel/23.12/eb/software/R/4.4.1-cpeGNU-23.12/lib64/R/library"
+         > 
 
    .. tab:: UPPMAX
 
@@ -118,11 +132,11 @@ way to check is probably starting the interpreter and running the ``libPaths()``
 Preinstalled package libraries
 ------------------------------
 
-UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer a large amount of preinstalled packages.
+UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer larger or smaller amounts of preinstalled packages.
 
 .. admonition:: HPC2N
 
-   - On HPC2N most of these (around 750 packages) come with the ``R`` module and additional ones in the ``R-bundle-Bioconductor``. However, for the newer versions of R, the packages on CRAN can be found in the module ``R-bundle-CRAN``. Use ``module spider <module>/<version>`` to check for prerequisites, as usual. 
+   - On HPC2N most of these (around 750 packages) come with the ``R`` module and additional ones in the ``R-bundle-Bioconductor``. However, for the newer versions of R, fewer packages are included with the core R module and the packages on CRAN can be found in the module ``R-bundle-CRAN``. Use ``module spider <module>/<version>`` to check for prerequisites, as usual. 
 
 .. admonition:: UPPMAX
 
@@ -145,7 +159,7 @@ UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer a large amount of preinstalled pac
 
 .. admonition:: PDC
 
-   On PDC ???? 
+   On PDC about 250 packages come with the ``R`` module. 
 
 
 There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within ``R`` (you can also get a list of all packages with ``installed.packages()`` but that can be overwhelming): 
@@ -304,10 +318,37 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
              
    .. tab:: PDC 
 
+      .. admonition:: Solution 
 
-            
+         .. code-block:: console 
 
+             $ ml PDC/23.12 R/4.4.1-cpeGNU-23.12 
+             $ R 
 
+             R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+             Copyright (C) 2024 The R Foundation for Statistical Computing
+             Platform: x86_64-suse-linux-gnu
+
+             R is free software and comes with ABSOLUTELY NO WARRANTY.
+             You are welcome to redistribute it under certain conditions.
+             Type 'license()' or 'licence()' for distribution details.
+
+               Natural language support but running in an English locale
+
+             R is a collaborative project with many contributors.
+             Type 'contributors()' for more information and
+             'citation()' on how to cite R or R packages in publications.
+
+             Type 'demo()' for some demos, 'help()' for on-line help, or
+             'help.start()' for an HTML browser interface to help.
+             Type 'q()' to quit R. 
+
+             > library(pillar)
+             > library(caret)
+             Error in library(caret) : there is no package called ‘caret’
+             >
+
+         
 Installing your own packages
 ----------------------------
 
@@ -353,6 +394,7 @@ It should look something like this when you are done:
 
 **NOTE** Replace ``/home/u/user`` with the value of ``$HOME``. Run ``echo $HOME`` to see its value.
 **NOTE** The ``%V`` should be written as-is, it's substituted at runtime with the active R version.
+**NOTE** At Dardel (NSC) the path is ``/cfs/klemming/home/u/user`` but you can see it with ``echo $HOME``. 
 
 For each version of R you are using, create a directory matching the pattern
 used in ``.Renviron`` to store your packages in. This example is shown for R
@@ -439,6 +481,7 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
    - HPC2N: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
    - LUNARC: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
    - NSC: ``module load R/4.2.2-hpc1-gcc-11.3.0-bare`` 
+   - PDC: ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12`` 
 
    2)
 
@@ -449,7 +492,7 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
    - UPPMAX: ``echo R_LIBS_USER="/proj/r-matlab-julia-uppmax/<yourdir>/R-packages-%V" > ~/.Renviron``
    - HPC2N: ``echo R_LIBS_USER="/proj/nobackup/r-matlab-julia/<yourdir>/R-packages-%V" > ~/.Renviron``
    - NSC: ``echo R_LIBS_USER="/proj/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
-   - PDC: ``echo R_LIBS_USER="/proj/r-matlab-julia-naiss/users/<yourdir>/R-packages-%V" > ~/.Renviron``
+   - PDC: ``echo R_LIBS_USER="/cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
 
    3) Create directory for R packages:
 
@@ -464,8 +507,8 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
        - ``mkdir -p $HOME/R-packages-4.2.2``
        - OR ``mkdir -p /proj/r-matlab-julia-naiss/users/<yourdir>/R-packages-4.2.2``
    - PDC: 
-       - ``mkdir -p``
-       - OR
+       - ``mkdir -p $HOME/R-packages-4.4.1``
+       - OR ``mkdir -p /cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-4.4.1```
 
    4) Either of
 
@@ -493,6 +536,8 @@ For other ways to install R packages, including from GitHub or manually, look at
 		- ``ml help R/<version>`` at UPPMAX
 		- ``ml spider R/<version>`` at HPC2N
                 - ``ml spider R/<version>`` at LUNARC 
+                - ``ml spider R/version>`` at NSC
+                - ``ml spider R/version> at PDC``
    - Installation of R packages can be done either from within R or from the
      command line (BASH shell)
    - CRAN is the recommended place to look for R-packages, but many packages
@@ -501,6 +546,28 @@ For other ways to install R packages, including from GitHub or manually, look at
      You would then either download and install manually or install with
      something like devtools, from within R. 
 
+Extra example, NSC
+****************** 
+
+For NSC you need to install ``doParallel``, ``foreach``, and ``Rmpi`` yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for ``nuggets`` or you do it later today, during the batch session. 
+
+- If you have the setup done, and R loaded, then: 
+    - Start R
+    - Then ``install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')``  
+    - and ``install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')``
+    - and ``install.packages('Rmpi', repos='http://ftp.acc.umu.se/mirror/CRAN/')``
+
+
+Extra example, PDC
+******************
+
+For PDC you need to install ``Rmpi`` yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for ``nuggets`` or you do it later today, during the batch session.
+
+- If you have the setup done, and the R module loaded, then:
+    - Start R
+    - Then ``install.packages('Rmpi', repos='http://ftp.acc.umu.se/mirror/CRAN/')``
+
+    
 Install own packages on Bianca
 ------------------------------
 
@@ -520,7 +587,7 @@ Exercises
 
 .. challenge:: Install a package with automatic download
 
-   1. First do the setup of `.Renviron` and create the directory for installing R packages (Recommended load R version 4.1.1 on Rackham, 4.1.2 on Kebnekaise, 4.2.1 on LUNARC, 4.2.2 on NSC, and ????? on PDC)
+   1. First do the setup of `.Renviron` and create the directory for installing R packages (Recommended load R version 4.1.1 on Rackham, 4.1.2 on Kebnekaise, 4.2.1 on LUNARC, 4.2.2 on NSC, and 4.4.1 on PDC)
    2. From the command line. Suggestion: ``anomalize``
    3. From inside R. Suggestion: ``BGLR``
    4. Start R and see if the library can be loaded. 
@@ -532,7 +599,7 @@ Exercises
 
 .. solution:: Solution for 4.1.1 on Rackham (change <user>) 
 
-   Solution is very similar for the other centres - just change the R version (for instance to R/4.2.1 for LUNARC and R/4.1.2 for HPC2N).  
+   Solution is very similar for the other centres - just change the R version (for instance to 4.2.1 for LUNARC and 4.1.2 for HPC2N and 4.2.2 for NSC and 4.4.1 for PDC).  
 
    .. tabs:: 
 
