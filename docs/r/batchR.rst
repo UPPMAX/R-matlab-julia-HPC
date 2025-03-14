@@ -48,7 +48,7 @@ Overview of the LUNARC system
 Overview of the NSC system
 ##########################
 
-.. figure:: ../../img/mermaid-tetralith.png 
+.. figure:: img/mermaid-tetralith.png 
       :width: 500 
 
 Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
