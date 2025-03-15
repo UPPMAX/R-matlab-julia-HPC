@@ -1,0 +1,833 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packages &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom_theme.css?v=98a0eeba" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Isolated environments with renv" href="isolatedR.html" />
+    <link rel="prev" title="Load and run R" href="load_runR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scheduleR.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runR.html">Load and run R</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#package-libraries">Package libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preinstalled-package-libraries">Preinstalled package libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-your-own-packages">Installing your own packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatical-download-and-install-from-cran">Automatical download and install from CRAN</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extra-example-nsc">Extra example, NSC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extra-example-pdc">Extra example, PDC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#install-own-packages-on-bianca">Install own packages on Bianca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/scheduleMatlab.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/scheduleJulia.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/r_extra.html">R - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Packages</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/r/packagesR.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packages">
+<h1>Packages<a class="headerlink" href="#packages" title="Link to this heading"></a></h1>
+<div class="admonition-r-packages admonition">
+<p class="admonition-title">R packages</p>
+<ul class="simple">
+<li><p>R packages is the main way of extending the functionality of R and
+<strong>broadens the use of R</strong> to almost infinity!</p></li>
+<li><p>Instead of writing code yourself there may be others that have done the
+same!</p></li>
+<li><p>Many <strong>scientific tools</strong> are distributed as <strong>R packages</strong>. This makes it possible to just run a script from the prompt. You can define files to be analysed and use arguments to define exactly what to do.</p></li>
+<li><p>For more details about packages and in particular developing your own,
+see: <a class="reference external" href="https://r-pkgs.org">R packages</a></p></li>
+</ul>
+</div>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What is an R package?</p></li>
+<li><p>How do I find which packages and versions are available?</p></li>
+<li><p>What to do if I need other packages?</p></li>
+<li><p>Are there differences between HPC2N, UPPMAX, LUNARC, NSC, and PDC?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Check if an R package is installed</p></li>
+<li><p>Load and use R packages</p></li>
+<li><p>Install R packages yourself</p></li>
+</ul>
+</div>
+<section id="package-libraries">
+<h2>Package libraries<a class="headerlink" href="#package-libraries" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>In R, a library is a directory containing installed packages, sort of like
+a library for books. Unfortunately, in the R world, you will frequently
+encounter confused usage of the words “library” and “package”. It’s common
+for someone to refer to dplyr, for example, as a library when it is
+actually a package (Wickham &amp; Hadley, 2023).</p>
+</div></blockquote>
+<p>We might want to know where the <code class="docutils literal notranslate"><span class="pre">R</span></code> interpreter will be searching for
+packages, i.e. where the libraries are located (could be several). The easiest
+way to check is probably starting the interpreter and running the <code class="docutils literal notranslate"><span class="pre">libPaths()</span></code> function.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">NSC</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">LUNARC</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Load <code class="docutils literal notranslate"><span class="pre">R</span></code>, e.g. version 4.2.2 and start the Interpreter</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+<span class="gp">$ </span>R
+</pre></div>
+</div>
+<p>Then check find the path of the library using the <code class="docutils literal notranslate"><span class="pre">libPaths()</span></code> function.</p>
+<div class="highlight-rconsole notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt; </span><span class="nf">.libPaths</span><span class="p">()</span>
+<span class="go">[1] &quot;/software/sse2/tetralith_el9/manual/R/4.2.2/g11/hpc1/lib64/R/library&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Load <code class="docutils literal notranslate"><span class="pre">R</span></code>, e.g. version 4.4.1 and start the Interpreter</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+<span class="gp">$ </span>R
+</pre></div>
+</div>
+<p>Then check find the path of the library using the <code class="docutils literal notranslate"><span class="pre">libPaths()</span></code> function.</p>
+<div class="highlight-rconsole notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt; </span><span class="nf">.libPaths</span><span class="p">()</span>
+<span class="go">[1] &quot;/cfs/klemming/home/b/bbrydsoe/.R/23.12/4.4.1/library&quot;</span>
+<span class="go">[2] &quot;/cfs/klemming/pdc/software/dardel/23.12/eb/software/R/4.4.1-cpeGNU-23.12/lib64/R/library&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Load <code class="docutils literal notranslate"><span class="pre">R</span></code>, e.g. version 4.1.1 and start the Interpreter</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>R/4.1.1
+<span class="gp">$ </span>R
+</pre></div>
+</div>
+<p>Then check find the path of the library using the <code class="docutils literal notranslate"><span class="pre">libPaths()</span></code> function.</p>
+<div class="highlight-rconsole notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt; </span><span class="nf">.libPaths</span><span class="p">()</span>
+<span class="go">[1] &quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><p>Load <code class="docutils literal notranslate"><span class="pre">R</span></code>, e.g. version 4.1.2 and start the Interpreter</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1<span class="w">  </span>R/4.1.2
+<span class="gp">$ </span>R
+</pre></div>
+</div>
+<p>Then check find the path of the library using the <code class="docutils literal notranslate"><span class="pre">libPaths()</span></code> function.</p>
+<div class="highlight-rconsole notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt; </span><span class="nf">.libPaths</span><span class="p">()</span>
+<span class="go">[1] &quot;/pfs/stor10/users/home/b/bbrydsoe/R-packages-4.1.2&quot;</span>
+<span class="go">[2] &quot;/cvmfs/ebsw.hpc2n.umu.se/amd64_ubuntu2004_bdw/software/R/4.1.2-foss-2021b/lib/R/library&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><p>Load <code class="docutils literal notranslate"><span class="pre">R</span></code>, e.g. version 4.2.1 and start the Interpreter</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+<span class="gp">$ </span>R
+</pre></div>
+</div>
+<p>Then check find the path of the library using the <code class="docutils literal notranslate"><span class="pre">libPaths()</span></code> function.</p>
+<div class="highlight-rconsole notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt; </span><span class="nf">.libPaths</span><span class="p">()</span>
+<span class="go">[1] &quot;/home/bbrydsoe/R-packages-4.2.1&quot;</span>
+<span class="go">[2] &quot;/sw/easybuild_milan/software/R/4.2.1-foss-2022a/lib64/R/library&quot;</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>“Modules on Dardel”</p>
+<p>If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> there, they will all be removed together with the application software modules you wanted to purge. This may cause problems.</p>
+<p>List of modules that are pre-loaded (March 2025) <em>and</em> which will be removed with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>:</p>
+<ul class="simple">
+<li><p>craype-x86-rome</p></li>
+<li><p>libfabric/1.20.1</p></li>
+<li><p>craype-network-ofi</p></li>
+<li><p>perftools-base/23.12.0</p></li>
+<li><p>xpmem/2.8.2-1.0_3.9__g84a27a5.shasta</p></li>
+<li><p>cce/17.0.0</p></li>
+<li><p>craype/2.7.30</p></li>
+<li><p>cray-dsmml/0.2.2</p></li>
+<li><p>cray-mpich/8.1.28</p></li>
+<li><p>cray-libsci/23.12.5</p></li>
+<li><p>PrgEnv-cray/8.5.0</p></li>
+<li><p>snic-env/1.0.0</p></li>
+</ul>
+<p>You may have to reload all of these if you do <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>. The easiest solution is this:</p>
+<ul class="simple">
+<li><p>Immediately after logging in, and before loading any modules (assuming you have not added any to <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> do</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module save preload</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>then, when you have done a <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> to remove some application software modules you have loaded (like R and prerequisites) and want to load a different version perhaps, do</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module restore preload</span>
+</pre></div>
+</div>
+<p>That will restore the preloaded modules.</p>
+</div>
+</section>
+<section id="preinstalled-package-libraries">
+<h2>Preinstalled package libraries<a class="headerlink" href="#preinstalled-package-libraries" title="Link to this heading"></a></h2>
+<p>UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer larger or smaller amounts of preinstalled packages.</p>
+<div class="admonition-hpc2n admonition">
+<p class="admonition-title">HPC2N</p>
+<ul class="simple">
+<li><p>On HPC2N most of these (around 750 packages) come with the <code class="docutils literal notranslate"><span class="pre">R</span></code> module and additional ones in the <code class="docutils literal notranslate"><span class="pre">R-bundle-Bioconductor</span></code>. However, for the newer versions of R, fewer packages are included with the core R module and the packages on CRAN can be found in the module <code class="docutils literal notranslate"><span class="pre">R-bundle-CRAN</span></code>. Use <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> to check for prerequisites, as usual.</p></li>
+</ul>
+</div>
+<div class="admonition-uppmax admonition">
+<p class="admonition-title">UPPMAX</p>
+<p>On UPPMAX the module <code class="docutils literal notranslate"><span class="pre">R_packages</span></code> is a package library containing almost all packages in the CRAN and BioConductor repositories. As of 2023-10-11 there are a total of:</p>
+<ul>
+<li><p>A total of 23476 R packages are installed</p></li>
+<li><p>A total of 23535 packages are available in CRAN and BioConductor</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>19809 CRAN packages are installed, out of 19976 available</p></li>
+<li><p>3544 BioConductor-specific packages are installed, out of 3559 available</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>121 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere</p></li>
+</ul>
+</div>
+<div class="admonition-lunarc admonition">
+<p class="admonition-title">LUNARC</p>
+<p>On LUNARC most of the R packages come with the <code class="docutils literal notranslate"><span class="pre">R</span></code> module.</p>
+</div>
+<div class="admonition-nsc admonition">
+<p class="admonition-title">NSC</p>
+<p>On NSC, a small number of the R packages come with the <code class="docutils literal notranslate"><span class="pre">R</span></code> module. You will have to install the rest yourself.</p>
+</div>
+<div class="admonition-pdc admonition">
+<p class="admonition-title">PDC</p>
+<p>On PDC about 250 packages come with the <code class="docutils literal notranslate"><span class="pre">R</span></code> module.</p>
+</div>
+<p>There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within <code class="docutils literal notranslate"><span class="pre">R</span></code> (you can also get a list of all packages with <code class="docutils literal notranslate"><span class="pre">installed.packages()</span></code> but that can be overwhelming):</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">package</span><span class="o">-</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To learn about other ways, see the page “More about R packages” under “Extra reading” in the left menu.</p>
+<div class="admonition-exercise exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise</p>
+<p>Start R (remember to load a module + prerequisites if you have not already). Check if the packages <code class="docutils literal notranslate"><span class="pre">pillar</span></code> and <code class="docutils literal notranslate"><span class="pre">caret</span></code> are installed, as shown above.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-1-1-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-4" name="1-4" role="tab" tabindex="-1">PDC</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>If you want, you can try loading the libraries inside R without loading the R_packages module and see almost nothing is installed.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>R/4.1.1
+<span class="go">Nearly all CRAN and BioConductor packages are installed and available by</span>
+<span class="go">loading the module R_packages/4.1.1</span>
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>R_packages/4.1.1
+<span class="go">R_packages/4.1.1: The RStudio packages pane is disabled when loading this module, due to performance issues. All packages are still available.</span>
+<span class="go">R_packages/4.1.1: For more information and instructions to re-enable it, see &#39;module help R_packages/4.1.1&#39;</span>
+
+<span class="gp">$ </span>R
+
+<span class="go">R version 4.1.1 (2021-08-10) -- &quot;Kick Things&quot;</span>
+<span class="go">Copyright (C) 2021 The R Foundation for Statistical Computing</span>
+<span class="go">Platform: x86_64-pc-linux-gnu (64-bit)</span>
+
+<span class="go">R is free software and comes with ABSOLUTELY NO WARRANTY.</span>
+<span class="go">You are welcome to redistribute it under certain conditions.</span>
+<span class="go">Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.</span>
+
+<span class="go">  Natural language support but running in an English locale</span>
+
+<span class="go">R is a collaborative project with many contributors.</span>
+<span class="go">Type &#39;contributors()&#39; for more information and</span>
+<span class="go">&#39;citation()&#39; on how to cite R or R packages in publications.</span>
+
+<span class="go">Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or</span>
+<span class="go">&#39;help.start()&#39; for an HTML browser interface to help.</span>
+<span class="go">Type &#39;q()&#39; to quit R.</span>
+
+<span class="go">&gt; library(pillar)</span>
+<span class="go">&gt; library(caret)</span>
+<span class="go">Loading required package: ggplot2</span>
+<span class="go">Loading required package: lattice</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1<span class="w"> </span>R/4.1.2
+<span class="gp">$ </span>R
+<span class="go">R version 4.1.2 (2021-11-01) -- &quot;Bird Hippie&quot;</span>
+<span class="go">Copyright (C) 2021 The R Foundation for Statistical Computing</span>
+<span class="go">Platform: x86_64-pc-linux-gnu (64-bit)</span>
+
+<span class="go">R is free software and comes with ABSOLUTELY NO WARRANTY.</span>
+<span class="go">You are welcome to redistribute it under certain conditions.</span>
+<span class="go">Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.</span>
+
+<span class="go">  Natural language support but running in an English locale</span>
+
+<span class="go">R is a collaborative project with many contributors.</span>
+<span class="go">Type &#39;contributors()&#39; for more information and</span>
+<span class="go">&#39;citation()&#39; on how to cite R or R packages in publications.</span>
+
+<span class="go">Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or</span>
+<span class="go">&#39;help.start()&#39; for an HTML browser interface to help.</span>
+<span class="go">Type &#39;q()&#39; to quit R.</span>
+
+<span class="go">[Previously saved workspace restored]</span>
+
+<span class="go">&gt; library(pillar)</span>
+<span class="go">&gt; library(caret)</span>
+<span class="go">Loading required package: ggplot2</span>
+<span class="go">Loading required package: lattice</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+<span class="gp">$ </span>R
+
+<span class="go">R version 4.2.1 (2022-06-23) -- &quot;Funny-Looking Kid&quot;</span>
+<span class="go">Copyright (C) 2022 The R Foundation for Statistical Computing</span>
+<span class="go">Platform: x86_64-pc-linux-gnu (64-bit)</span>
+
+<span class="go">R is free software and comes with ABSOLUTELY NO WARRANTY.</span>
+<span class="go">You are welcome to redistribute it under certain conditions.</span>
+<span class="go">Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.</span>
+
+<span class="go">  Natural language support but running in an English locale</span>
+
+<span class="go">R is a collaborative project with many contributors.</span>
+<span class="go">Type &#39;contributors()&#39; for more information and</span>
+<span class="go">&#39;citation()&#39; on how to cite R or R packages in publications.</span>
+
+<span class="go">Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or</span>
+<span class="go">&#39;help.start()&#39; for an HTML browser interface to help.</span>
+<span class="go">Type &#39;q()&#39; to quit R.</span>
+
+<span class="go">&gt; library(pillar)</span>
+<span class="go">&gt; library(caret)</span>
+<span class="go">Loading required package: ggplot2</span>
+<span class="go">Loading required package: lattice</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+<span class="gp">$ </span>R
+
+<span class="go">R version 4.2.2 (2022-10-31) -- &quot;Innocent and Trusting&quot;</span>
+<span class="go">Copyright (C) 2022 The R Foundation for Statistical Computing</span>
+<span class="go">Platform: x86_64-pc-linux-gnu (64-bit)</span>
+
+<span class="go">R is free software and comes with ABSOLUTELY NO WARRANTY.</span>
+<span class="go">You are welcome to redistribute it under certain conditions.</span>
+<span class="go">Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.</span>
+
+<span class="go">R is a collaborative project with many contributors.</span>
+<span class="go">Type &#39;contributors()&#39; for more information and</span>
+<span class="go">&#39;citation()&#39; on how to cite R or R packages in publications.</span>
+
+<span class="go">Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or</span>
+<span class="go">&#39;help.start()&#39; for an HTML browser interface to help.</span>
+<span class="go">Type &#39;q()&#39; to quit R.</span>
+
+<span class="go">&gt; library(pillar)</span>
+<span class="go">Error in library(pillar) : there is no package called ‘pillar’</span>
+<span class="go">&gt; library(caret)</span>
+<span class="go">Error in library(caret) : there is no package called ‘caret’</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-4" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-4" name="1-4" role="tabpanel" tabindex="0"><div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+<span class="gp">$ </span>R
+
+<span class="go">R version 4.4.1 (2024-06-14) -- &quot;Race for Your Life&quot;</span>
+<span class="go">Copyright (C) 2024 The R Foundation for Statistical Computing</span>
+<span class="go">Platform: x86_64-suse-linux-gnu</span>
+
+<span class="go">R is free software and comes with ABSOLUTELY NO WARRANTY.</span>
+<span class="go">You are welcome to redistribute it under certain conditions.</span>
+<span class="go">Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.</span>
+
+<span class="go">  Natural language support but running in an English locale</span>
+
+<span class="go">R is a collaborative project with many contributors.</span>
+<span class="go">Type &#39;contributors()&#39; for more information and</span>
+<span class="go">&#39;citation()&#39; on how to cite R or R packages in publications.</span>
+
+<span class="go">Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or</span>
+<span class="go">&#39;help.start()&#39; for an HTML browser interface to help.</span>
+<span class="go">Type &#39;q()&#39; to quit R.</span>
+
+<span class="go">&gt; library(pillar)</span>
+<span class="go">&gt; library(caret)</span>
+<span class="go">Error in library(caret) : there is no package called ‘caret’</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="installing-your-own-packages">
+<h2>Installing your own packages<a class="headerlink" href="#installing-your-own-packages" title="Link to this heading"></a></h2>
+<p>Sometimes you will need R packages that are not already installed. The solution
+to this is to install your own packages. These packages will usually come from
+CRAN (<a class="reference external" href="https://cran.r-project.org/">https://cran.r-project.org/</a>) - the Comprehensive R Archive Network, or
+sometimes from other places, like GitHub or R-Forge</p>
+<p>Here we will look at installing R packages with automatic download and with
+manual download. It is also possible to install from inside Rstudio.</p>
+<section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h3>
+<p>We need to create a place for the own-installed packages to be and to tell R
+where to find them. The initial setup only needs to be done once, but separate
+package directories need to be created for each R version used.</p>
+<p>R reads the <code class="docutils literal notranslate"><span class="pre">$HOME/.Renviron</span></code> file to setup its environment. It should be
+created by R on first run, or you can create it with the command: <code class="docutils literal notranslate"><span class="pre">touch</span>
+<span class="pre">$HOME/.Renviron</span></code></p>
+<p><strong>NOTE</strong>: In this example we are going to assume you have chosen to place the R packages in a directory under your home directory, but in general it might be good to use the project storage for space reasons. As mentioned, you will need
+separate ones for each R version.</p>
+<p>If you have not yet installed any packages to R yourself, the environment file should be empty and you can update it like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>If it is <strong>not empty</strong>, you can edit <code class="docutils literal notranslate"><span class="pre">$HOME/.Renviron</span></code> with your favorite editor so that <code class="docutils literal notranslate"><span class="pre">R_LIBS_USER</span></code> contains the path to your chosen directory for own-installed R packages.</p></li>
+</ul>
+</div>
+<p>It should look something like this when you are done:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;/home/u/user/R-packages-%V&quot;</span>
+</pre></div>
+</div>
+<p><strong>NOTE</strong> Replace <code class="docutils literal notranslate"><span class="pre">/home/u/user</span></code> with the value of <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>. Run <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$HOME</span></code> to see its value.
+<strong>NOTE</strong> The <code class="docutils literal notranslate"><span class="pre">%V</span></code> should be written as-is, it’s substituted at runtime with the active R version.
+<strong>NOTE</strong> At Dardel (NSC) the path is <code class="docutils literal notranslate"><span class="pre">/cfs/klemming/home/u/user</span></code> but you can see it with <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$HOME</span></code>.</p>
+<p>For each version of R you are using, create a directory matching the pattern
+used in <code class="docutils literal notranslate"><span class="pre">.Renviron</span></code> to store your packages in. This example is shown for R
+version 4.1.1:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/R-packages-4.1.1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you will be installing many R packages yourself, it is a good idea to place them in your project storage instead, as they can take up a lot of space and your home directory is not very large.</p>
+<p>In that case you would instead do the setup as:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;&lt;path-to-your-space-on-proj-storage&gt;/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+</pre></div>
+</div>
+<p>And then create directories for each R version you use there, like this, for R/4.1.1</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p &lt;path-to-your-space-on-proj-storage&gt;/R-packages-4.1.1</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="automatical-download-and-install-from-cran">
+<h3>Automatical download and install from CRAN<a class="headerlink" href="#automatical-download-and-install-from-cran" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You find a list of packages in CRAN (<a class="reference external" href="https://cran.r-project.org/">https://cran.r-project.org/</a>) and a list of repos here: <a class="reference external" href="https://cran.r-project.org/mirrors.html">https://cran.r-project.org/mirrors.html</a></p>
+<p>Please choose a location close to you when picking a repo.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">From command line</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">From inside R</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;&lt;r-package&gt;&#39;, repos=&#39;&lt;repo&gt;&#39;)&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;&lt;r-package&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;&lt;repo&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>In either case, the dependencies of the package will be downloaded and
+installed as well.</p>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h4>
+<p>In this example, we will install the R package <code class="docutils literal notranslate"><span class="pre">nuggets</span></code> and use the
+repository <a class="reference external" href="http://ftp.acc.umu.se/mirror/CRAN/">http://ftp.acc.umu.se/mirror/CRAN/</a></p>
+<p><strong>Note</strong>: You need to load R (and any prerequisites, and possibly R-bundle-Bioconductor if you need packages from that) before installing packages.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">From command line</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">From inside R</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;nuggets&#39;, repos=&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;)&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;nuggets&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition-solution-for-installing-nuggets solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution for installing nuggets</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<ul class="simple">
+<li><p>UPPMAX: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">R_packages/4.1.1</span></code></p></li>
+<li><p>HPC2N: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">GCC/11.3.0</span>&#160; <span class="pre">OpenMPI/4.1.4</span> <span class="pre">R/4.2.1</span></code></p></li>
+<li><p>LUNARC: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">GCC/11.3.0</span>&#160; <span class="pre">OpenMPI/4.1.4</span> <span class="pre">R/4.2.1</span></code></p></li>
+<li><p>NSC: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">R/4.2.2-hpc1-gcc-11.3.0-bare</span></code></p></li>
+<li><p>PDC: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">PDC/23.12</span> <span class="pre">R/4.4.1-cpeGNU-23.12</span></code></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">R_LIBS_USER=&quot;$HOME/R-packages-%V&quot;</span> <span class="pre">&gt;</span> <span class="pre">~/.Renviron</span></code></p></li>
+</ul>
+<p>OR (option if UPPMAX, HPC2N, NSC, or PDC)</p>
+<ul class="simple">
+<li><p>UPPMAX: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">R_LIBS_USER=&quot;/proj/r-matlab-julia-uppmax/&lt;yourdir&gt;/R-packages-%V&quot;</span> <span class="pre">&gt;</span> <span class="pre">~/.Renviron</span></code></p></li>
+<li><p>HPC2N: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">R_LIBS_USER=&quot;/proj/nobackup/r-matlab-julia/&lt;yourdir&gt;/R-packages-%V&quot;</span> <span class="pre">&gt;</span> <span class="pre">~/.Renviron</span></code></p></li>
+<li><p>NSC: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">R_LIBS_USER=&quot;/proj/r-matlab-julia-naiss/&lt;yourdir&gt;/R-packages-%V&quot;</span> <span class="pre">&gt;</span> <span class="pre">~/.Renviron</span></code></p></li>
+<li><p>PDC: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">R_LIBS_USER=&quot;/cfs/klemming/projects/snic/r-matlab-julia-naiss/&lt;yourdir&gt;/R-packages-%V&quot;</span> <span class="pre">&gt;</span> <span class="pre">~/.Renviron</span></code></p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Create directory for R packages:</p></li>
+</ol>
+<ul class="simple">
+<li><p>LUNARC: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">$HOME/R-packages-4.2.1</span></code></p></li>
+<li><dl class="simple">
+<dt>UPPMAX:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">$HOME/R-packages-4.1.1</span></code></p></li>
+<li><p>OR <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/proj/r-py-jl-m-rackham/&lt;yourdir&gt;/R-packages-4.1.1</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>HPC2N:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">$HOME/R-packages-4.2.1</span></code></p></li>
+<li><p>OR <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/proj/nobackup/r-py-jl-m/&lt;yourdir&gt;/R-packages-4.2.1</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NSC:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">$HOME/R-packages-4.2.2</span></code></p></li>
+<li><p>OR <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/proj/r-matlab-julia-naiss/users/&lt;yourdir&gt;/R-packages-4.2.2</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PDC:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">$HOME/R-packages-4.4.1</span></code></p></li>
+<li><p>OR <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/cfs/klemming/projects/snic/r-matlab-julia-naiss/&lt;yourdir&gt;/R-packages-4.4.1`</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Either of</p></li>
+</ol>
+<ul class="simple">
+<li><p>Start R and install: <code class="docutils literal notranslate"><span class="pre">install.packages('nuggets',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')</span></code></p></li>
+<li><p>Install from command line: <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">--quiet</span> <span class="pre">--no-save</span> <span class="pre">--no-restore</span> <span class="pre">-e</span> <span class="pre">&quot;install.packages('nuggets',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')&quot;</span></code></p></li>
+</ul>
+</div>
+<p>For other ways to install R packages, including from GitHub or manually, look at the “More about R packages” from the “Extra reading” section in the bottom left side of the menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Places to look for R packages</p>
+<ul class="simple">
+<li><p>CRAN (<a class="reference external" href="https://cran.r-project.org/">https://cran.r-project.org/</a>)</p></li>
+<li><p>R-Forge (<a class="reference external" href="https://r-forge.r-project.org/">https://r-forge.r-project.org/</a>)</p></li>
+<li><p>Project’s own GitHub page</p></li>
+<li><p>etc.</p></li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>You can check for installed packages</dt><dd><ul>
+<li><p>from inside R with <code class="docutils literal notranslate"><span class="pre">installed.packages()</span></code></p></li>
+<li><dl class="simple">
+<dt>from BASH shell with the</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">help</span> <span class="pre">R/&lt;version&gt;</span></code> at UPPMAX</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">spider</span> <span class="pre">R/&lt;version&gt;</span></code> at HPC2N</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">spider</span> <span class="pre">R/&lt;version&gt;</span></code> at LUNARC</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">spider</span> <span class="pre">R/version&gt;</span></code> at NSC</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">spider</span> <span class="pre">R/version&gt;</span> <span class="pre">at</span> <span class="pre">PDC</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Installation of R packages can be done either from within R or from the
+command line (BASH shell)</p></li>
+<li><p>CRAN is the recommended place to look for R-packages, but many packages
+can be found on GitHub and if you want the development version of a
+package you likely need to get it from GitHub or other place outside CRAN.
+You would then either download and install manually or install with
+something like devtools, from within R.</p></li>
+</ul>
+</div>
+</section>
+<section id="extra-example-nsc">
+<h4>Extra example, NSC<a class="headerlink" href="#extra-example-nsc" title="Link to this heading"></a></h4>
+<p>For NSC you need to install <code class="docutils literal notranslate"><span class="pre">doParallel</span></code>, <code class="docutils literal notranslate"><span class="pre">foreach</span></code>, and <code class="docutils literal notranslate"><span class="pre">Rmpi</span></code> yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for <code class="docutils literal notranslate"><span class="pre">nuggets</span></code> or you do it later today, during the batch session.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>If you have the setup done, and R loaded, then:</dt><dd><ul>
+<li><p>Start R</p></li>
+<li><p>Then <code class="docutils literal notranslate"><span class="pre">install.packages('foreach',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')</span></code></p></li>
+<li><p>and <code class="docutils literal notranslate"><span class="pre">install.packages('doParallel',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')</span></code></p></li>
+<li><p>and <code class="docutils literal notranslate"><span class="pre">install.packages('Rmpi',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="extra-example-pdc">
+<h4>Extra example, PDC<a class="headerlink" href="#extra-example-pdc" title="Link to this heading"></a></h4>
+<p>For PDC you need to install <code class="docutils literal notranslate"><span class="pre">Rmpi</span></code> yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for <code class="docutils literal notranslate"><span class="pre">nuggets</span></code> or you do it later today, during the batch session.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>If you have the setup done, and the R module loaded, then:</dt><dd><ul>
+<li><p>Start R</p></li>
+<li><p>Then <code class="docutils literal notranslate"><span class="pre">install.packages('Rmpi',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="install-own-packages-on-bianca">
+<h2>Install own packages on Bianca<a class="headerlink" href="#install-own-packages-on-bianca" title="Link to this heading"></a></h2>
+<ul>
+<li><p>If an R package is not not available on Bianca already (like Conda repositories) you may have to use the wharf to install the library/package</p></li>
+<li><p>Typical workflow</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Install on Rackham</p></li>
+<li><p>Transfer to Wharf</p></li>
+<li><p>Move package to local Bianca R package path</p></li>
+<li><p>Test your installation</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>Demo and exercise from our Bianca course:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://uppmax.github.io/bianca_workshops/extra/rpackages/">Installing R packages on Bianca</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-install-a-package-with-automatic-download exercise important admonition" id="exercise-1">
+<p class="admonition-title">Install a package with automatic download</p>
+<ol class="arabic simple">
+<li><p>First do the setup of <cite>.Renviron</cite> and create the directory for installing R packages (Recommended load R version 4.1.1 on Rackham, 4.1.2 on Kebnekaise, 4.2.1 on LUNARC, 4.2.2 on NSC, and 4.4.1 on PDC)</p></li>
+<li><p>From the command line. Suggestion: <code class="docutils literal notranslate"><span class="pre">anomalize</span></code></p></li>
+<li><p>From inside R. Suggestion: <code class="docutils literal notranslate"><span class="pre">BGLR</span></code></p></li>
+<li><p>Start R and see if the library can be loaded.</p></li>
+</ol>
+<p>These are both on CRAN, and this way any dependencies will be installed as well.</p>
+<p>Remember to pick a repo that is nearby, to install from: <a class="reference external" href="https://cran.r-project.org/mirrors.html">https://cran.r-project.org/mirrors.html</a></p>
+</div>
+<div class="admonition-solution-for-4-1-1-on-rackham-change-user solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution for 4.1.1 on Rackham (change &lt;user&gt;)</p>
+<p>Solution is very similar for the other centres - just change the R version (for instance to 4.2.1 for LUNARC and 4.1.2 for HPC2N and 4.2.2 for NSC and 4.4.1 for PDC).</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Setup</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Command line</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">Inside R</button><button aria-controls="panel-4-4-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-3" name="4-3" role="tab" tabindex="-1">Load library</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+<span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/R-packages-4.1.1
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p>Installing package “anomalize”. Using the repo <a class="reference external" href="http://ftp.acc.umu.se/mirror/CRAN/">http://ftp.acc.umu.se/mirror/CRAN/</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;anomalize&#39;, repo=&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;)&quot;</span>
+</pre></div>
+</div>
+<p>This assumes you have already loaded the R module. If not, then do so first.</p>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><p>Installing package “BGLR”. Using the repo <a class="reference external" href="http://ftp.acc.umu.se/mirror/CRAN/">http://ftp.acc.umu.se/mirror/CRAN/</a></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;BGLR&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="o">=</span><span class="s">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-3" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-3" name="4-3" role="tabpanel" tabindex="0"><blockquote>
+<div><div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">$</span><span class="w"> </span><span class="n">R</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;anomalize&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;BGLR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>“BGLR” outputs some text/advertisment when loaded. You can ignore this.</p>
+</div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="load_runR.html" class="btn btn-neutral float-left" title="Load and run R" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="isolatedR.html" class="btn btn-neutral float-right" title="Isolated environments with renv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

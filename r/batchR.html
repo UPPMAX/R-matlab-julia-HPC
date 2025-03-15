@@ -1,0 +1,1019 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running R in batch mode &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom_theme.css?v=98a0eeba" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parallel and multithreaded functions" href="../common/parallel.html" />
+    <link rel="prev" title="Isolated environments with renv" href="isolatedR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scheduleR.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running R in batch mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-uppmax-systems">Overview of the UPPMAX systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-hpc2n-system">Overview of the HPC2N system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-lunarc-system">Overview of the LUNARC system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-nsc-system">Overview of the NSC system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-commands-to-the-batch-system">Useful commands to the batch system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-r-batch-scripts">Example R batch scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-code">Serial code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-code">Parallel code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#foreach-and-doparallel">foreach and doParallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rmpi">Rmpi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-gpus-in-a-batch-job">Using GPUs in a batch job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#uppmax-only">UPPMAX only</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hpc2n">HPC2N</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lunarc">LUNARC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nsc">NSC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pdc">PDC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-batch-script">Example batch script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/scheduleMatlab.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/scheduleJulia.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/r_extra.html">R - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morepackages.html">More about R packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesBianca.html">Packages at Bianca (parallel session)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab.html">Extra reading about MATLAB in HPC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Running R in batch mode</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-MATLAB-HPC/blob/main/docs/r/batchR.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-r-in-batch-mode">
+<h1>Running R in batch mode<a class="headerlink" href="#running-r-in-batch-mode" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What is a batch job?</p></li>
+<li><p>How to write a batch script and submit a batch job?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Short introduction to SLURM scheduler</p></li>
+<li><p>Show structure of a batch script</p></li>
+<li><p>Examples to try</p></li>
+</ul>
+</div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">uppmax2025-2-272</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2025-062</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2025-7-24</span></code></p></li>
+<li><p>Tetralith: <code class="docutils literal notranslate"><span class="pre">naiss-2025-22-262</span></code></p></li>
+<li><p>Dardel: <code class="docutils literal notranslate"><span class="pre">naiss-2025-22-262</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-matlab-julia-uppmax</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-matlab-julia</span></code></p></li>
+<li><p>Tetralith: <code class="docutils literal notranslate"><span class="pre">/proj/r-matlab-julia-naiss/users/</span></code></p></li>
+<li><p>Dardel: <code class="docutils literal notranslate"><span class="pre">/cfs/klemming/projects/snic/r-matlab-julia-naiss</span></code></p></li>
+</ul>
+</div>
+<section id="overview-of-the-uppmax-systems">
+<h2>Overview of the UPPMAX systems<a class="headerlink" href="#overview-of-the-uppmax-systems" title="Link to this heading"></a></h2>
+<img src="../_images/mermaid-9b8712ee01100c69ff26b918b4d0cc4be4fc8db0.png" alt="graph TB
+
+  Node1 -- interactive --&gt; SubGraph2Flow
+  Node1 -- sbatch --&gt; SubGraph2Flow
+  subgraph &quot;Snowy&quot;
+  SubGraph2Flow(calculation nodes) 
+        end
+
+        ThinLinc -- usr-sensXXX + 2FA + VPN ----&gt; SubGraph1Flow
+        Terminal/ThinLinc -- usr --&gt; Node1
+        Terminal -- usr-sensXXX + 2FA + VPN ----&gt; SubGraph1Flow
+        Node1 -- usr-sensXXX + 2FA + no VPN ----&gt; SubGraph1Flow
+        
+        subgraph &quot;Bianca&quot;
+        SubGraph1Flow(Bianca login) -- usr+passwd --&gt; private(private cluster)
+        private -- interactive --&gt; calcB(calculation nodes)
+        private -- sbatch --&gt; calcB
+        end
+
+        subgraph &quot;Rackham&quot;
+        Node1[Login] -- interactive --&gt; Node2[calculation nodes]
+        Node1 -- sbatch --&gt; Node2
+        end" />
+</section>
+<section id="overview-of-the-hpc2n-system">
+<h2>Overview of the HPC2N system<a class="headerlink" href="#overview-of-the-hpc2n-system" title="Link to this heading"></a></h2>
+<img src="../_images/mermaid-70246c534051d358d45925cca44c4ae7447aa73b.png" alt="graph TB
+
+
+        Terminal/ThinLinc -- usr --&gt; Node1
+        
+
+        subgraph &quot;Kebnekaise&quot;
+        Node1[Login] -- interactive --&gt; Node2[compute nodes]
+        Node1 -- sbatch --&gt; Node2
+        end" />
+</section>
+<section id="overview-of-the-lunarc-system">
+<h2>Overview of the LUNARC system<a class="headerlink" href="#overview-of-the-lunarc-system" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/cosmos-resources.png"><img alt="../_images/cosmos-resources.png" src="../_images/cosmos-resources.png" style="width: 500px;" />
+</a>
+</figure>
+</section>
+<section id="overview-of-the-nsc-system">
+<h2>Overview of the NSC system<a class="headerlink" href="#overview-of-the-nsc-system" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/mermaid-tetralith.png"><img alt="../_images/mermaid-tetralith.png" src="../_images/mermaid-tetralith.png" style="width: 500px;" />
+</a>
+</figure>
+<p>Any longer, resource-intensive, or parallel jobs must be run through a <strong>batch script</strong>.</p>
+<p>The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC (and most other HPC centres in Sweden) is called Slurm.</p>
+<p>Slurm is an Open Source job scheduler, which provides three key functions</p>
+<ul class="simple">
+<li><p>Keeps track of available system resources</p></li>
+<li><p>Enforces local system resource usage and job scheduling policies</p></li>
+<li><p>Manages a job queue, distributing work across resources according to policies</p></li>
+</ul>
+<p>In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).</p>
+<p>Guides and documentation at: <a class="reference external" href="https://docs.hpc2n.umu.se/documentation/batchsystem/intro/">https://docs.hpc2n.umu.se/documentation/batchsystem/intro/</a> and <a class="reference external" href="https://docs.uppmax.uu.se/cluster_guides/slurm/">https://docs.uppmax.uu.se/cluster_guides/slurm/</a> and <a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/">https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/</a> and <a class="reference external" href="https://www.nsc.liu.se/support/batch-jobs/introduction/">https://www.nsc.liu.se/support/batch-jobs/introduction/</a> and <a class="reference external" href="https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/">https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/</a></p>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Write a batch script</p>
+<ul>
+<li><p>Inside the batch script you need to load the modules you need (R and any prerequisites)</p></li>
+<li><p>If you are using any own-installed packages, make sure R_LIBS_USER is set (export R_LIBS_USER=/path/to/my/R-packages)</p></li>
+<li><p>Ask for resources depending on if it is a parallel job or a serial job, if you need GPUs or not, etc.</p></li>
+<li><p>Give the command(s) to your R script</p></li>
+</ul>
+</li>
+<li><p>Submit batch script with <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">&lt;my-batch-script-for-R.sh&gt;</span></code></p></li>
+</ul>
+<p>Common file extensions for batch scripts are <code class="docutils literal notranslate"><span class="pre">.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">.batch</span></code>, but they are not necessary. You can choose any name that makes sense to you.</p>
+</section>
+<section id="useful-commands-to-the-batch-system">
+<h2>Useful commands to the batch system<a class="headerlink" href="#useful-commands-to-the-batch-system" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Submit job: <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">&lt;jobscript.sh&gt;</span></code></p></li>
+<li><p>Get list of your jobs: <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> OR <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">&lt;username&gt;</span></code></p></li>
+<li><p>Check on a specific job: <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">job</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+<li><p>Delete a specific job: <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+<li><p>Useful info about a job: <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-l</span> <span class="pre">-j</span> <span class="pre">&lt;job-id&gt;</span> <span class="pre">|</span> <span class="pre">less</span> <span class="pre">-S</span></code></p></li>
+<li><p>Url to a page with info about the job (Kebnekaise only): <code class="docutils literal notranslate"><span class="pre">job-usage</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>The Slurm scheduler handles allocations to the calculation nodes</p></li>
+<li><p>Interactive sessions was presented in the previous presentation</p></li>
+<li><p>Batch jobs runs without interaction with the user</p></li>
+<li><dl class="simple">
+<dt>A batch script consists of a part with Slurm parameters describing the allocation and a second part describing the actual work within the job, for instance one or several R scripts.</dt><dd><ul>
+<li><p>Remember to include possible input arguments to the R script in the batch script.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>“Modules on Dardel”</p>
+<p>If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> there, they will all be removed together with the application software modules you wanted to purge. This may cause problems.</p>
+<p>List of modules that are pre-loaded (March 2025) <em>and</em> which will be removed with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>:</p>
+<ul class="simple">
+<li><p>craype-x86-rome</p></li>
+<li><p>libfabric/1.20.1</p></li>
+<li><p>craype-network-ofi</p></li>
+<li><p>perftools-base/23.12.0</p></li>
+<li><p>xpmem/2.8.2-1.0_3.9__g84a27a5.shasta</p></li>
+<li><p>cce/17.0.0</p></li>
+<li><p>craype/2.7.30</p></li>
+<li><p>cray-dsmml/0.2.2</p></li>
+<li><p>cray-mpich/8.1.28</p></li>
+<li><p>cray-libsci/23.12.5</p></li>
+<li><p>PrgEnv-cray/8.5.0</p></li>
+<li><p>snic-env/1.0.0</p></li>
+</ul>
+<p>You may have to reload all of these if you do <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>. The easiest solution is this:</p>
+<ul class="simple">
+<li><p>Immediately after logging in, and before loading any modules (assuming you have not added any to <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> do</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module save preload</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>then, when you have done a <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> to remove some application software modules you have loaded (like R and prerequisites) and want to load a different version perhaps, do</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module restore preload</span>
+</pre></div>
+</div>
+<p>That will restore the preloaded modules.</p>
+</div>
+</section>
+<section id="example-r-batch-scripts">
+<h2>Example R batch scripts<a class="headerlink" href="#example-r-batch-scripts" title="Link to this heading"></a></h2>
+<section id="serial-code">
+<h3>Serial code<a class="headerlink" href="#serial-code" title="Link to this heading"></a></h3>
+<div class="admonition-type-along type-along important admonition" id="type-along-0">
+<p class="admonition-title">Type-Along</p>
+<p>Short serial batch example for running the code <code class="docutils literal notranslate"><span class="pre">hello.R</span></code></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-0-0-5" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-5" name="0-5" role="tab" tabindex="-1">hello.R</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Short serial example script for Rackham. Loading R/4.1.1</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A uppmax2025-2-272 # Course project id. Change to your own project ID after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.1.1</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.1.1
+
+<span class="c1"># Run your R script (here &#39;hello.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Short serial example for running on Kebnekaise. Loading R/4.1.2 and prerequisites</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2025-062 # Change to your own project ID</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.1.2 and prerequisites</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1<span class="w">  </span>R/4.1.2
+
+<span class="c1"># Run your R script (here &#39;hello.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2025-7-24 # Change to your own project ID</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.1.2 and prerequisites</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+
+<span class="c1"># Run your R script (here &#39;hello.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><p>Short serial example for running on Tetralith. Loading R/4.2.2</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.2.2</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+
+<span class="c1"># Run your R script (here &#39;hello.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><p>Short serial example for running on Dardel. Loading R/4.4.1</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.4.1</span>
+module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+
+<span class="c1"># Run your R script (here &#39;hello.R&#39;)</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-5" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-5" name="0-5" role="tabpanel" tabindex="0"><p>R example code</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">message</span><span class="w"> </span><span class="o">&lt;-</span><span class="s">&quot;Hello World!&quot;</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>Send the script to the batch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+</div>
+</section>
+<section id="parallel-code">
+<h3>Parallel code<a class="headerlink" href="#parallel-code" title="Link to this heading"></a></h3>
+<section id="foreach-and-doparallel">
+<h4>foreach and doParallel<a class="headerlink" href="#foreach-and-doparallel" title="Link to this heading"></a></h4>
+<div class="admonition-type-along type-along important admonition" id="type-along-1">
+<p class="admonition-title">Type-Along</p>
+<p>Short parallel example, using foreach and doParallel</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-1-1-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-4" name="1-4" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-1-1-5" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-5" name="1-5" role="tab" tabindex="-1">parallel_foreach.R</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Short parallel example (Since we are using packages “foreach” and “doParallel”, you need to use module R_packages/4.1.1 instead of R/4.1.1.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A uppmax2025-2-272</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -c 4</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>R_packages/4.1.1
+
+<span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “foreach” and “doParallel” which are included in the R module) for running on Kebnekaise. Loading R/4.0.4 and its prerequisites.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2025-062 # Change to your own project ID</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -c 4</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>GCC/10.2.0<span class="w">  </span>OpenMPI/4.0.5<span class="w">  </span>R/4.0.4
+
+<span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “foreach” and “doParallel” which are included in the R module) for running on Cosmos. Loading R/4.2.1 and its prerequisites.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># A batch script for running the R program parallel_foreach.R</span>
+<span class="c1">#SBATCH -A lu2025-7-24 # Change to your own project ID</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -c 4</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w">  </span>R/4.2.1
+
+<span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “foreach” and “doParallel” which you at Tetralith need to install first) for running on Tetralith. Loading R/4.2.2.
+Installing <code class="docutils literal notranslate"><span class="pre">foreach</span></code> and <code class="docutils literal notranslate"><span class="pre">doParallel</span></code> (with R module <code class="docutils literal notranslate"><span class="pre">R/4.4.0-hpc1-gcc-11.3.0-bare</span></code> loaded but not inside R): <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">--quiet</span> <span class="pre">--no-save</span> <span class="pre">--no-restore</span> <span class="pre">-e</span> <span class="pre">&quot;install.packages('foreach',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">--quiet</span> <span class="pre">--no-save</span> <span class="pre">--no-restore</span> <span class="pre">-e</span> <span class="pre">&quot;install.packages('doParallel',</span> <span class="pre">repos='http://ftp.acc.umu.se/mirror/CRAN/')&quot;</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># A batch script for running the R program parallel_foreach.R</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -c 4</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+
+<span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-4" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-4" name="1-4" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “foreach” and “doParallel” which are included in the R module) for running on Dardel. Loading R/4.4.1.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1"># A batch script for running the R program parallel_foreach.R</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -c 4</span>
+
+<span class="c1"># If you do ml purge you also need to restore the preloaded modules which you should have saved</span>
+<span class="c1"># when you logged in. Otherwise comment out the two following lines.</span>
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>restore<span class="w"> </span>preload
+module<span class="w"> </span>load<span class="w"> </span>PDC/23.12
+module<span class="w"> </span>load<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+
+<span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-5" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-5" name="1-5" role="tabpanel" tabindex="0"><p>This R script uses packages “foreach” and “doParallel”.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="c1"># Function for calculating PI with no values</span>
+<span class="n">calcpi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">no</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="n">no</span><span class="p">)</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="n">no</span><span class="p">)</span>
+<span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="m">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">z</span><span class="o">&lt;=</span><span class="m">1</span><span class="p">))</span><span class="o">*</span><span class="m">4</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1"># Detect the number of cores</span>
+<span class="n">no_cores</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">detectCores</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span>
+<span class="c1"># Loop to max number of cores</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">no_cores</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1"># print how many cores we are using</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">  </span><span class="c1"># Set start time</span>
+<span class="w">  </span><span class="n">start_time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Sys.time</span><span class="p">()</span>
+<span class="w">  </span><span class="c1"># Create a cluster</span>
+<span class="w">  </span><span class="n">nproc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span>
+<span class="w">  </span><span class="c1"># Create a vector 1000 length with 100 randomizations</span>
+<span class="w">  </span><span class="n">input</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span>
+<span class="w">  </span><span class="c1"># Use foreach on n cores</span>
+<span class="w">  </span><span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span>
+<span class="w">  </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;+&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="w">    </span><span class="nf">calcpi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">  </span><span class="c1"># Print the mean of the results</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">input</span><span class="p">))</span>
+<span class="w">  </span><span class="c1"># Stop the cluster</span>
+<span class="w">  </span><span class="nf">stopCluster</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span>
+<span class="w">  </span><span class="c1"># print end time</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+<p>Send the script to the batch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+</div>
+</section>
+<section id="rmpi">
+<h4>Rmpi<a class="headerlink" href="#rmpi" title="Link to this heading"></a></h4>
+<div class="admonition-type-along type-along important admonition" id="type-along-2">
+<p class="admonition-title">Type-Along</p>
+<p>Short parallel example using package “Rmpi”</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-2-2-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-3" name="2-3" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-2-2-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-4" name="2-4" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-2-2-5" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-5" name="2-5" role="tab" tabindex="-1">Rmpi.R</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>Short parallel example (using package “Rmpi”, so we need to load the module R_packages/4.1.1 instead of R/4.1.1 and we need to load a suitable openmpi module, openmpi/4.0.3)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A uppmax2025-2-272</span>
+<span class="c1">#Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -n 8</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_btl_openib_allow_ib</span><span class="o">=</span><span class="m">1</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>R_packages/4.1.1
+ml<span class="w"> </span>openmpi/4.0.3
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>Rmpi.R<span class="w"> </span>output.out
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “Rmpi”). Loading R/4.1.1 and its prerequisites.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2025-062 # Change to your own project ID</span>
+<span class="c1">#Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -n 8</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>GCC/10.2.0<span class="w">  </span>OpenMPI/4.0.5
+ml<span class="w"> </span>R/4.1.1
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>Rmpi.R<span class="w"> </span>output.out
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “Rmpi”). Loading R/4.2.1 and its prerequisites.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2025-7-24 # Change to your own project ID</span>
+<span class="c1"># Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -n 8</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4
+ml<span class="w"> </span>R/4.2.1
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>Rmpi.R<span class="w"> </span>output.out
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-3" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-3" name="2-3" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “Rmpi”). Loading R/4.2.2.</p>
+<p>Note: for NSC you first need to install “Rmpi” (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">R/4.4.0-hpc1-gcc-11.3.0-bare</span></code>, start <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">install.packages('Rmpi')</span></code>)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1"># Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -n 8</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>Rmpi.R<span class="w"> </span>output.out
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-4" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-4" name="2-4" role="tabpanel" tabindex="0"><p>Short parallel example (using packages “Rmpi”). Loading R/4.4.1.</p>
+<p>Note: for PDC you first need to install “Rmpi” (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">R/4.4.0-hpc1-gcc-11.3.0-bare</span></code>, start <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">install.packages('Rmpi')</span></code>)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1"># Asking for 10 min.</span>
+<span class="c1">#SBATCH -t 00:10:00</span>
+<span class="c1">#SBATCH -n 8</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+
+<span class="c1"># If you do ml purge you also need to restore the preloaded modules which you should have saved</span>
+<span class="c1"># when you logged in. Otherwise comment out the two following lines.</span>
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>restore<span class="w"> </span>preload
+ml<span class="w"> </span>PDC/23.12
+ml<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>Rmpi.R<span class="w"> </span>output.out
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-5" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-5" name="2-5" role="tabpanel" tabindex="0"><p>This R script uses package “Rmpi”.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the R MPI package if it is not already loaded.</span>
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>!is.loaded<span class="o">(</span><span class="s2">&quot;mpi_initialize&quot;</span><span class="o">))</span><span class="w"> </span><span class="o">{</span>
+library<span class="o">(</span><span class="s2">&quot;Rmpi&quot;</span><span class="o">)</span>
+<span class="o">}</span>
+print<span class="o">(</span>mpi.universe.size<span class="o">())</span>
+ns<span class="w"> </span>&lt;-<span class="w"> </span>mpi.universe.size<span class="o">()</span><span class="w"> </span>-<span class="w"> </span><span class="m">1</span>
+mpi.spawn.Rslaves<span class="o">(</span><span class="nv">nslaves</span><span class="o">=</span>ns<span class="o">)</span>
+<span class="c1">#</span>
+<span class="c1"># In case R exits unexpectedly, have it automatically clean up</span>
+<span class="c1"># resources taken up by Rmpi (slaves, memory, etc...)</span>
+.Last<span class="w"> </span>&lt;-<span class="w"> </span><span class="k">function</span><span class="o">(){</span>
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>is.loaded<span class="o">(</span><span class="s2">&quot;mpi_initialize&quot;</span><span class="o">)){</span>
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>mpi.comm.size<span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span><span class="o">){</span>
+print<span class="o">(</span><span class="s2">&quot;Please use mpi.close.Rslaves() to close slaves.&quot;</span><span class="o">)</span>
+mpi.close.Rslaves<span class="o">()</span>
+<span class="o">}</span>
+print<span class="o">(</span><span class="s2">&quot;Please use mpi.quit() to quit R&quot;</span><span class="o">)</span>
+.Call<span class="o">(</span><span class="s2">&quot;mpi_finalize&quot;</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="o">}</span>
+<span class="c1"># Tell all slaves to return a message identifying themselves</span>
+mpi.remote.exec<span class="o">(</span>paste<span class="o">(</span><span class="s2">&quot;I am&quot;</span>,mpi.comm.rank<span class="o">()</span>,<span class="s2">&quot;of&quot;</span>,mpi.comm.size<span class="o">()</span>,system<span class="o">(</span><span class="s2">&quot;hostname&quot;</span>,intern<span class="o">=</span>T<span class="o">)))</span>
+
+<span class="c1"># Test computations</span>
+x<span class="w"> </span>&lt;-<span class="w"> </span><span class="m">5</span>
+x<span class="w"> </span>&lt;-<span class="w"> </span>mpi.remote.exec<span class="o">(</span>rnorm,<span class="w"> </span>x<span class="o">)</span>
+length<span class="o">(</span>x<span class="o">)</span>
+x
+
+<span class="c1"># Tell all slaves to close down, and exit the program</span>
+mpi.close.Rslaves<span class="o">()</span>
+
+mpi.quit<span class="o">()</span>
+</pre></div>
+</div>
+</div><p>Send the script to the batch system:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="using-gpus-in-a-batch-job">
+<h3>Using GPUs in a batch job<a class="headerlink" href="#using-gpus-in-a-batch-job" title="Link to this heading"></a></h3>
+<p>There are generally either not GPUs on the login nodes or they cannot be accessed for computations. To use them you need to either launch an interactive job or submit a batch job.</p>
+<section id="uppmax-only">
+<h4>UPPMAX only<a class="headerlink" href="#uppmax-only" title="Link to this heading"></a></h4>
+<p>Rackham’s compute nodes do not have GPUs. You need to use Snowy for that.</p>
+<p>You need to use this batch command (for x being the number of cards, 1 or 2):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH --gres=gpu:x</span>
+</pre></div>
+</div>
+</section>
+<section id="hpc2n">
+<h4>HPC2N<a class="headerlink" href="#hpc2n" title="Link to this heading"></a></h4>
+<p>Kebnekaise’s GPU nodes are considered a separate resource, and the regular compute nodes do not have GPUs.</p>
+<p>Kebnekaise has a great many different types of GPUs:</p>
+<ul class="simple">
+<li><p>V100 (2 cards/node)</p></li>
+<li><p>A40 (8 cards/node)</p></li>
+<li><p>A6000 (2 cards/node)</p></li>
+<li><p>L40s (2 or 6 cards/node)</p></li>
+<li><p>A100 (2 cards/node)</p></li>
+<li><p>H100 (4 cards/node)</p></li>
+<li><p>MI100 (2 cards/node)</p></li>
+</ul>
+<p>To access them, you need to use this to the batch system:</p>
+<p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--gpus=x</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">x</span></code> is the number of GPU cards you want. Above are given how many are on each type, so you can ask for up to that number.</p>
+<p>In addition, you need to add this to the batch system:</p>
+<p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-C</span> <span class="pre">&lt;type&gt;</span></code></p>
+<p>where type is</p>
+<ul class="simple">
+<li><p>v100</p></li>
+<li><p>a40</p></li>
+<li><p>a6000</p></li>
+<li><p>l40s</p></li>
+<li><p>a100</p></li>
+<li><p>h100</p></li>
+<li><p>mi100</p></li>
+</ul>
+<p>For more information, see HPC2N’s guide to the different parts of the batch system: <a class="reference external" href="https://docs.hpc2n.umu.se/documentation/batchsystem/resources/">https://docs.hpc2n.umu.se/documentation/batchsystem/resources/</a></p>
+</section>
+<section id="lunarc">
+<h4>LUNARC<a class="headerlink" href="#lunarc" title="Link to this heading"></a></h4>
+<p>LUNARC has Nvidia A100 GPUs and Nvidia A40 GPUs, but the latter ones are reserved for interactive graphics work on the on-demand system, and Slurm jobs should not be submitted to them.</p>
+<p>Thus in order to use the A100 GPUs on Cosmos, add this to your batch script:</p>
+<ul class="simple">
+<li><p>A100 GPUs on AMD nodes:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p gpua100</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+</pre></div>
+</div>
+<p>These nodes are configured as exclusive access and will not be shared between users. User projects will be charged for the entire node (48 cores). A job on a node will also have access to all memory on the node.</p>
+<ul class="simple">
+<li><p>A100 GPUs on Intel nodes:</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p gpua100i</span>
+<span class="c1">#SBATCH --gres=gpu:&lt;number&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>where &lt;number&gt; is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).</p>
+</section>
+<section id="nsc">
+<h4>NSC<a class="headerlink" href="#nsc" title="Link to this heading"></a></h4>
+<p>Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch script or interactive job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH -c 32</span>
+<span class="c1">#SBATCH --gpus-per-task=1</span>
+</pre></div>
+</div>
+</section>
+<section id="pdc">
+<h4>PDC<a class="headerlink" href="#pdc" title="Link to this heading"></a></h4>
+<p>Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks per node=1</span>
+<span class="c1">#SBATCH -p gpu</span>
+</pre></div>
+</div>
+</section>
+<section id="example-batch-script">
+<h4>Example batch script<a class="headerlink" href="#example-batch-script" title="Link to this heading"></a></h4>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-3-3-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-3" name="3-3" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-3-3-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-4" name="3-4" role="tab" tabindex="-1">PDC</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A uppmax2025-2-272</span>
+<span class="c1">#Asking for runtime: hours, minutes, seconds. At most 1 week</span>
+<span class="c1">#SBATCH -t HHH:MM:SS</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH -p node</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH --gpus=1</span>
+<span class="c1">#SBATCH --gpus-per-node=1</span>
+<span class="c1">#Writing output and error files</span>
+<span class="c1">#SBATCH --output=output%J.out</span>
+<span class="c1">#SBATCH --error=error%J.error</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>R/4.1.1<span class="w"> </span>R_packages/4.1.1
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>MY-R-GPU-SCRIPT.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2025-062 # Change to your own project ID</span>
+<span class="c1">#Asking for runtime: hours, minutes, seconds. At most 1 week</span>
+<span class="c1">#SBATCH -t HHH:MM:SS</span>
+<span class="c1">#Ask for GPU resources. You pick type as one of the ones shown above</span>
+<span class="c1">#x is how many cards you want, at most as many as shown above</span>
+<span class="c1">#SBATCH --gpus:x</span>
+<span class="c1">#SBATCH -C type</span>
+<span class="c1">#Writing output and error files</span>
+<span class="c1">#SBATCH --output=output%J.out</span>
+<span class="c1">#SBATCH --error=error%J.error</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="c1">#R version 4.0.4 is the only one compiled for CUDA</span>
+ml<span class="w"> </span>GCC/10.2.0<span class="w">  </span>CUDA/11.1.1<span class="w"> </span>OpenMPI/4.0.5
+ml<span class="w"> </span>R/4.0.4
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>MY-R-GPU-SCRIPT.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Remember to change this to your own project ID after the course!</span>
+<span class="c1">#SBATCH -A lu2025-7-24</span>
+<span class="c1"># Asking for runtime: hours, minutes, seconds. At most 1 week</span>
+<span class="c1">#SBATCH --time=HHH:MM:SS</span>
+<span class="c1"># Ask for GPU resources - x is how many cards, 1 or 2</span>
+<span class="c1">#SBATCH -p gpua100</span>
+<span class="c1">#SBATCH --gres=gpu:x</span>
+
+<span class="c1"># Remove any loaded modules and load the ones we need</span>
+module<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1<span class="w"> </span>CUDA/12.1.1
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>MY-R-GPU-SCRIPT.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-3" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-3" name="3-3" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Remember to change this to your own project ID after the course!</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1"># Asking for runtime: hours, minutes, seconds. At most 1 week</span>
+<span class="c1">#SBATCH --time=HHH:MM:SS</span>
+<span class="c1"># Ask for resources, including GPU resources</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH -c 32</span>
+<span class="c1">#SBATCH --gpus-per-task=1</span>
+
+<span class="c1"># Remove any loaded modules and load the ones we need</span>
+module<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.4.0-hpc1-gcc-11.3.0-bare
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>MY-R-GPU-SCRIPT.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-4" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-4" name="3-4" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1"># Remember to change this to your own project ID after the course!</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1"># Asking for runtime: hours, minutes, seconds. At most 1 week</span>
+<span class="c1">#SBATCH --time=HHH:MM:SS</span>
+<span class="c1"># Ask for resources, including GPU resources</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks per node=1</span>
+<span class="c1">#SBATCH -p gpu</span>
+
+module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+
+R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>MY-R-GPU-SCRIPT.R
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-serial-batch-script-for-r exercise important admonition" id="exercise-0">
+<p class="admonition-title">Serial batch script for R</p>
+<p>Run the serial batch script from further up on the page, but for the add2.R code. Remember the arguments.</p>
+</div>
+<div class="dropdown solution important admonition" id="solution-0">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>Serial script on Rackham</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A uppmax2025-2-272 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for R/4.1.1</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.1.1
+
+<span class="c1"># Run your R script</span>
+Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-1">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>Serial script on Kebnekaise</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2025-062 # Change to your own project ID</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for R/4.1.2</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1<span class="w"> </span>R/4.1.2
+
+<span class="c1"># Run your R script</span>
+Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-2">
+<p class="admonition-title">Solution for LUNARC</p>
+<blockquote>
+<div><p>Serial script on R</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu2025-7-24 # Change to your own project ID</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for R/4.2.1</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+
+<span class="c1"># Run your R script</span>
+Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-3">
+<p class="admonition-title">Solution for NSC</p>
+<blockquote>
+<div><p>Serial script on R</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for R/4.2.2</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+
+<span class="c1"># Run your R script</span>
+Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-4">
+<p class="admonition-title">Solution for PDC</p>
+<blockquote>
+<div><p>Serial script on R</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for R/4.4.1</span>
+module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+
+<span class="c1"># Run your R script</span>
+Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition-parallel-job-run exercise important admonition" id="exercise-1">
+<p class="admonition-title">Parallel job run</p>
+<p>Try making a batch script for running the parallel example with “foreach” from further up on the page.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="isolatedR.html" class="btn btn-neutral float-left" title="Isolated environments with renv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../common/parallel.html" class="btn btn-neutral float-right" title="Parallel and multithreaded functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
