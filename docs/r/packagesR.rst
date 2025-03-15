@@ -129,40 +129,40 @@ way to check is probably starting the interpreter and running the ``libPaths()``
          [2] "/sw/easybuild_milan/software/R/4.2.1-foss-2022a/lib64/R/library"
 
 
-!!! warning "Modules on Dardel"
+.. warning:: "Modules on Dardel"
 
-    If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do ``module purge`` there, they will all be removed together with the application software modules you wanted to purge. This may cause problems. 
+   If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do ``module purge`` there, they will all be removed together with the application software modules you wanted to purge. This may cause problems. 
 
-    List of modules that are pre-loaded (March 2025) *and* which will be removed with ``module purge``: 
+   List of modules that are pre-loaded (March 2025) *and* which will be removed with ``module purge``: 
 
-    - craype-x86-rome
-    - libfabric/1.20.1
-    - craype-network-ofi
-    - perftools-base/23.12.0
-    - xpmem/2.8.2-1.0_3.9__g84a27a5.shasta
-    - cce/17.0.0
-    - craype/2.7.30
-    - cray-dsmml/0.2.2
-    - cray-mpich/8.1.28
-    - cray-libsci/23.12.5
-    - PrgEnv-cray/8.5.0
-    - snic-env/1.0.0
+   - craype-x86-rome
+   - libfabric/1.20.1
+   - craype-network-ofi
+   - perftools-base/23.12.0
+   - xpmem/2.8.2-1.0_3.9__g84a27a5.shasta
+   - cce/17.0.0
+   - craype/2.7.30
+   - cray-dsmml/0.2.2
+   - cray-mpich/8.1.28
+   - cray-libsci/23.12.5
+   - PrgEnv-cray/8.5.0
+   - snic-env/1.0.0
 
-    You may have to reload all of these if you do ``module purge``. The easiest solution is this: 
+   You may have to reload all of these if you do ``module purge``. The easiest solution is this: 
 
-    - Immediately after logging in, and before loading any modules (assuming you have not added any to ``.bashrc`` do 
+   - Immediately after logging in, and before loading any modules (assuming you have not added any to ``.bashrc`` do 
       
-    .. code-block:: console
+   .. code-block:: console
 
-       module save preload
+      module save preload
 
-    - then, when you have done a ``module purge`` to remove some application software modules you have loaded (like R and prerequisites) and want to load a different version perhaps, do 
+   - then, when you have done a ``module purge`` to remove some application software modules you have loaded (like R and prerequisites) and want to load a different version perhaps, do 
 
-    .. code-block:: console
+   .. code-block:: console
 
-       module restore preload 
+      module restore preload 
 
-    That will restore the preloaded modules. 
+   That will restore the preloaded modules. 
 
 
 Preinstalled package libraries

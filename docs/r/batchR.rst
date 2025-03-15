@@ -27,7 +27,7 @@ Running R in batch mode
    - Rackham: ``/proj/r-matlab-julia-uppmax``
    - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
    - Tetralith: ``/proj/r-matlab-julia-naiss/users/``
-   - Dardel: ``/proj/r-matlab-julia-naiss``
+   - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
 
 Overview of the UPPMAX systems
 ##############################
@@ -63,7 +63,7 @@ Slurm is an Open Source job scheduler, which provides three key functions
 
 In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
 
-Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and 
+Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/ 
 
 Workflow
 ########
@@ -98,6 +98,42 @@ Useful commands to the batch system
    - A batch script consists of a part with Slurm parameters describing the allocation and a second part describing the actual work within the job, for instance one or several R scripts.
       - Remember to include possible input arguments to the R script in the batch script.
     
+
+.. warning::  "Modules on Dardel"
+
+   If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do ``module purge`` there, they will all be removed together with the application software modules you wanted to purge. This may cause problems.
+
+   List of modules that are pre-loaded (March 2025) *and* which will be removed with ``module purge``:
+
+   - craype-x86-rome
+   - libfabric/1.20.1
+   - craype-network-ofi
+   - perftools-base/23.12.0
+   - xpmem/2.8.2-1.0_3.9__g84a27a5.shasta
+   - cce/17.0.0
+   - craype/2.7.30
+   - cray-dsmml/0.2.2
+   - cray-mpich/8.1.28
+   - cray-libsci/23.12.5
+   - PrgEnv-cray/8.5.0
+   - snic-env/1.0.0
+
+   You may have to reload all of these if you do ``module purge``. The easiest solution is this:
+
+   - Immediately after logging in, and before loading any modules (assuming you have not added any to ``.bashrc`` do
+
+   .. code-block:: console
+
+      module save preload
+
+   - then, when you have done a ``module purge`` to remove some application software modules you have loaded (like R and prerequisites) and want to load a different version perhaps, do
+
+   .. code-block:: console
+
+      module restore preload 
+
+   That will restore the preloaded modules.
+      
 
 
 Example R batch scripts
