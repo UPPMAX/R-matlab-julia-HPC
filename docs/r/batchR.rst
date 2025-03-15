@@ -154,7 +154,7 @@ Serial code
 
          .. code-block:: sh
 
-            #!/bin/bash
+            #!/bin/bash -l
             #SBATCH -A uppmax2025-2-272 # Course project id. Change to your own project ID after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
@@ -219,6 +219,23 @@ Serial code
             # Run your R script (here 'hello.R')
             R --no-save --quiet < hello.R 
 
+      .. tab:: PDC 
+
+         Short serial example for running on Dardel. Loading R/4.4.1  
+
+         .. code-block:: sh 
+
+            #!/bin/bash -l
+            #SBATCH -A naiss2025-22-262
+            #SBATCH --time=00:10:00 # Asking for 10 minutes
+            #SBATCH -n 1 # Asking for 1 core
+
+            # Load any modules you need, here R/4.4.1
+            module load PDC/23.12 R/4.4.1-cpeGNU-23.12
+
+            # Run your R script (here 'hello.R')
+            R --no-save --quiet < hello.R             
+
       .. tab:: hello.R
    
          R example code
@@ -253,7 +270,7 @@ foreach and doParallel
 
          .. code-block:: sh
         
-            #!/bin/bash
+            #!/bin/bash -l
             #SBATCH -A uppmax2025-2-272
             #SBATCH -t 00:10:00
             #SBATCH -N 1
@@ -291,7 +308,7 @@ foreach and doParallel
          .. code-block:: sh
 
             #!/bin/bash
-            # A batch script for running the R program parallel_foreach.R on Kebnekaise 
+            # A batch script for running the R program parallel_foreach.R
             #SBATCH -A lu2025-7-24 # Change to your own project ID
             #SBATCH -t 00:10:00
             #SBATCH -N 1
@@ -311,7 +328,7 @@ foreach and doParallel
          .. code-block:: sh 
 
             #!/bin/bash
-            # A batch script for running the R program parallel_foreach.R on Kebnekaise 
+            # A batch script for running the R program parallel_foreach.R 
             #SBATCH -A naiss2025-22-262 
             #SBATCH -t 00:10:00
             #SBATCH -N 1
@@ -323,6 +340,28 @@ foreach and doParallel
             # Batch script to submit the R program parallel_foreach.R
             R -q --slave -f parallel_foreach.R 
 
+      .. tab:: PDC 
+          
+         Short parallel example (using packages "foreach" and "doParallel" which are included in the R module) for running on Dardel. Loading R/4.4.1. 
+
+         .. code-block:: sh
+
+            #!/bin/bash -l
+            # A batch script for running the R program parallel_foreach.R
+            #SBATCH -A naiss2025-22-262 
+            #SBATCH -t 00:10:00
+            #SBATCH -N 1
+            #SBATCH -c 4
+
+            # If you do ml purge you also need to restore the preloaded modules which you should have saved 
+            # when you logged in. Otherwise comment out the two following lines. 
+            ml purge > /dev/null 2>&1
+            ml restore preload
+            module load PDC/23.12 
+            module load R/4.4.1-cpeGNU-23.12 
+
+            # Batch script to submit the R program parallel_foreach.R
+            R -q --slave -f parallel_foreach.R
             
       .. tab:: parallel_foreach.R
  
@@ -386,7 +425,7 @@ Rmpi
 
          .. code-block:: sh
         
-            #!/bin/bash
+            #!/bin/bash -l
             #SBATCH -A uppmax2025-2-272
             #Asking for 10 min.
             #SBATCH -t 00:10:00
@@ -462,6 +501,33 @@ Rmpi
             ml purge > /dev/null 2>&1
             ml R/4.2.2-hpc1-gcc-11.3.0-bare 
 
+            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
+
+      .. tab:: PDC 
+
+         Short parallel example (using packages "Rmpi"). Loading R/4.4.1. 
+
+         Note: for PDC you first need to install "Rmpi" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('Rmpi')``) 
+
+         .. code-block:: sh 
+
+            #!/bin/bash -l 
+            #SBATCH -A naiss2025-22-262 
+            # Asking for 10 min.
+            #SBATCH -t 00:10:00
+            #SBATCH -n 8
+
+            export OMPI_MCA_mpi_warn_on_fork=0
+
+            # If you do ml purge you also need to restore the preloaded modules which you should have saved 
+            # when you logged in. Otherwise comment out the two following lines. 
+            ml purge > /dev/null 2>&1
+            ml restore preload
+            ml PDC/23.12
+            ml R/4.4.1-cpeGNU-23.12
+
+            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
+  
       .. tab:: Rmpi.R
 
          This R script uses package "Rmpi". 
@@ -600,6 +666,17 @@ Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch sc
    #SBATCH -c 32
    #SBATCH --gpus-per-task=1
 
+PDC
+''' 
+
+Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job: 
+
+.. code-block::
+
+   #SBATCH -N 1
+   #SBATCH --ntasks per node=1
+   #SBATCH -p gpu  
+
 Example batch script
 ''''''''''''''''''''
 
@@ -609,7 +686,7 @@ Example batch script
 
         .. code-block:: sh
 
-            #!/bin/bash
+            #!/bin/bash -l 
             #SBATCH -A uppmax2025-2-272
             #Asking for runtime: hours, minutes, seconds. At most 1 week
             #SBATCH -t HHH:MM:SS
@@ -691,6 +768,24 @@ Example batch script
 
            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
 
+   .. tab:: PDC 
+
+        .. code-block:: sh
+
+           #!/bin/bash -l 
+           # Remember to change this to your own project ID after the course!
+           #SBATCH -A naiss2025-22-262
+           # Asking for runtime: hours, minutes, seconds. At most 1 week
+           #SBATCH --time=HHH:MM:SS
+           # Ask for resources, including GPU resources
+           #SBATCH -N 1
+           #SBATCH --ntasks per node=1
+           #SBATCH -p gpu 
+           
+           module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
+
+           R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+           
 
 Exercises
 #########
@@ -706,7 +801,7 @@ Exercises
           
           .. code-block:: sh
  
-             #!/bin/bash
+             #!/bin/bash -l
              #SBATCH -A uppmax2025-2-272 # Change to your own after the course
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
@@ -768,6 +863,24 @@ Exercises
 
              # Load any modules you need, here for R/4.2.2 
              module load R/4.2.2-hpc1-gcc-11.3.0-bare 
+
+             # Run your R script 
+             Rscript add2.R 2 3 
+
+.. solution:: Solution for PDC
+    :class: dropdown 
+
+          Serial script on R
+           
+          .. code-block:: sh 
+
+             #!/bin/bash
+             #SBATCH -A naiss2025-22-262 
+             #SBATCH --time=00:10:00 # Asking for 10 minutes
+             #SBATCH -n 1 # Asking for 1 core
+
+             # Load any modules you need, here for R/4.4.1 
+             module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
 
              # Run your R script 
              Rscript add2.R 2 3 
