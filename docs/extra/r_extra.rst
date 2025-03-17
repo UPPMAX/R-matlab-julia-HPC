@@ -9,6 +9,6 @@ Materials
 
 :ref:`R_morepackages`.
 
-:doc:`More about R packages <r/morepackages.rst>`.
+:doc:`More about R packages <../r/morepackages.rst>`.
 
 
