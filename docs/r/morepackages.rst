@@ -1,4 +1,4 @@
-.. morepackages:
+.. _R_morepackages:
 
 More about R packages
 =====================
