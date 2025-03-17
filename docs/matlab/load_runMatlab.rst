@@ -196,7 +196,21 @@ Check for MATLAB versions
         .. code-block:: console
 
             $ ml spider matlab
-            
+              Versions:
+                    matlab/r2020b
+                    matlab/r2021b
+                    matlab/r2022b
+                    matlab/r2023a
+                    matlab/r2024a-ps
+                    matlab/r2024a
+                    matlab/r2024b
+            $ ml spider matlab/r2024b
+            matlab: matlab/r2024b
+              You will need to load all module(s) on any one of the lines below before the "matlab/r2024b" module is available to load.
+                PDC/23.12
+              Help:
+                For more information, visit:
+                   https://www.mathworks.com
 
 
 Load a MATLAB module
@@ -204,7 +218,7 @@ Load a MATLAB module
 
 For reproducibility, we recommend ALWAYS loading a specific module instead of using the default version! 
 
-For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), LUNARC (2023b), and HPC2N (2023a.Update4).
+For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), NSC (2023b), and HPC2N (2023a.Update4), or R2024b at LUNARC (2024b) and PDC (r2024b).
 
 .. type-along::
     
@@ -220,19 +234,18 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), LUNARC (20
 
             $ module load matlab/R2023b
         
-         Note: all lowercase.
+         Note: all lowercase except the R.
          For short, you can also use: 
 
          .. code-block:: console
 
             $ ml matlab/R2023b
-
  
       .. tab:: HPC2N 
 
          .. code-block:: console
 
-            $ module load MATLAB/2023B
+            $ module load MATLAB/2023b
 
          Note: all Uppercase except for the letter after the year.   
          For short, you can also use: 
@@ -256,7 +269,9 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), LUNARC (20
 
             $ ml matlab/2023b
 
-      .. tab:: NSC 
+      .. tab:: NSC (Tetralith)
+     
+         Go back and check which MATLAB modules were available. To load version 2023b, do:
 
          .. code-block:: console
 
@@ -271,6 +286,23 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), LUNARC (20
 
          If you check with ``ml`` which version is loaded, you will see the ``-bdist`` suffix was added automatically. Versions without ``-bdist`` at the end only appear with ``ml spider matlab`` and they do not appear to be loadable.
 
+      .. tab:: PDC (Dardel)
+   
+         Go back and check which MATLAB modules were available, and what their prerequisites are. To load version 2024b, do:
+
+         .. code-block:: console
+
+            $ module load PDC/23.12 
+            $ module load matlab/r2024b
+        
+         Note: all lowercase including the ``r`` before the year.
+         For short, you can also use: 
+
+         .. code-block:: console
+
+            $ ml PDC/23.12 matlab/r2024b
+
+
 
 Start MATLAB at the Command Line
 --------------------------------
@@ -279,6 +311,8 @@ Most of the time, you will run either MATLAB live scripts (``.mlx``) or basic sc
 It is important to note that at the command line, function definition is typically not supported unless the function is short and anonymous; user-defined functions must generally be written up and saved to separate ``.m`` files.
 
 The GUI is typically the recommended interface where it is offered. The GUI provides ways to set up SLURM jobs through the ``Parallel Computing Toolbox``, which will be discussed later. 
+
+When starting MATLAB from the command line, the ``-singleCompThread`` is usually required to prevent MATLAB from spawning as many processes as it thinks it needs, which can cause the user to accidentally use up a full node. Most terminal instances launch MATLAB (either the GUI or command line) on a login node by default, so hogging a node can stall other users' jobs, a violation of the NAISS user agreement. Setting ``-singleCompThread`` does **not** prevent MATLAB from sending parallelized and/or multi-threaded jobs to SLURM or the MATLAB Distributed Computing Server (MDCS).
 
 .. type-along::
     
@@ -318,15 +352,15 @@ The GUI is typically the recommended interface where it is offered. The GUI prov
 
          It is recommended that GUI be started in Thinlinc at the LUNARC HPC Desktop On-Demand by going to ``Applications`` &rarr; ``Applications - Matlab`` &rarr; ``Matlab <version>`` and clicking the desired version number. A GfxLauncher window will pop up where you can specify your account, requested resources, and walltime for the GUI itself; these settings are distinct from and do not constrain SLURM jobs sent from the GUI to the compute nodes. For more details, see the section on `Desktop On-Demand <../common/ondemand-desktop.html>`_
 
-         To start MATLAB in the terminal, load matlab/2023b or your preferred version, and then type:
+         To start MATLAB in the terminal, you must first choose the correct terminal. There are several: three in ``Applications`` &rarr; ``Applications - General`` &rarr, which can safely launch either the MATLAB GUI or MATLAB command line on a compute node, and one in ``Applications`` &rarr; ``Favorites`` &rarr; ``Terminal``, which runs on a login node and should be avoided. Starting any of the three in ``Applications - General`` will open the GfxLauncher and prompt you for your account and resource selections. Even users who have been awarded GPU time are encouraged to use the CPU-only terminal whenever possible, as they are abundant and less resource intensive.
+
+         Once you've opened a terminal session and loaded your preferred version type:
 
          .. code-block:: console
 
             $ matlab -singleCompThread -nodisplay
 
-         There are several terminals: one in ``Applications`` &rarr; ``Favorites`` &rarr; ``Terminal``, which runs on a login node, and three in ``Applications`` &rarr; ``Applications - General`` &rarr, which can safely launch either the MATLAB GUI or MATLAB command line on a compute node. Starting any of the three in ``Applications - General`` will open the GfxLauncher (the user and prompt you for your account and resource requests first. Even users who have been awarded GPU time are encouraged to use the CPU-only terminal whenever possible, as they are less resource intensive and we have many more of them.
 
-The ``-singleCompThread`` is usually required to prevent MATLAB from spawning as many processes as it thinks it needs, which can cause the user to accidentally take over a full node. Most terminal instances launch MATLAB (either the GUI or command line) on a login node by default, so hogging a node can stall other users' jobs, a violation of the NAISS user agreement. Setting ``-singleCompThread`` does **not** prevent MATLAB from sending parallelized and/or multi-threaded jobs to SLURM or the MATLAB Distributed Computing Server (MDCS).
 
       .. tab:: Dardel (PDC)
 
@@ -370,7 +404,7 @@ Running the MATLAB GUI requires that users be logged into a Thinlinc session. Se
 
       The LUNARC HPC Desktop and Interactive HPC at PDC both use Desktop On-Demand and GfxLauncher to run certain interactive apps without going through a terminal interface. Go to the Applications menu at the top left, mouse over ``Applications-Matlab`` (LUNARC) or ``PDC-Matlab`` to see the versions available, and click your preferred version. That will open a GfxLauncher popup where you can set the resources needed to run the MATLAB GUI (note that batch jobs submitted from within the GUI are _not_ bound by the same settings as the GUI).
 
-      At PDC, setting the partition happens entirely within the GfxLauncher. On LUNARC's Cosmos cluster, there are 3 versions per MATLAB release in the Apps menu&mdash;regular, (CPU), and (HEP,CPU)&mdash;and your resource choices partly depend on which of those you select.
+      At PDC, setting the partition happens entirely within the GfxLauncher. On LUNARC's Cosmos cluster, there are 3 versions per MATLAB release in the Apps menu &mdash; regular, (CPU), and (HEP,CPU) &mdash; and your resource choices partly depend on which of those you select.
       
       .. figure:: ../../img/Cosmos-AppMenu-Matlab.png
          :width: 350
