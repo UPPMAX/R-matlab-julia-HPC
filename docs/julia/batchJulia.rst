@@ -153,6 +153,23 @@ Short serial example for running on different clusters.
 
             julia script.jl              # run the serial script            
 
+   .. tab:: NSC
+
+        .. code-block:: bash     
+
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-xyz  # your project_ID
+            #SBATCH -J job-serial        # name of the job
+            #SBATCH -n *FIXME*           # nr. tasks
+            #SBATCH --time=00:20:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load any modules you need, here for Julia
+            ml julia/1.9.4-bdist     
+
+            julia script.jl              # run the serial script 
+
    .. tab:: script.jl 
    
         Julia example code.
