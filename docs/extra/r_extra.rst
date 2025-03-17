@@ -12,8 +12,8 @@ Materials
 :doc:`More about R packages <docs/r/morepackages.rst>`.
 :doc:`More about R packages </docs/r/morepackages.rst>`.
 
-`More about R packages </docs/r/morepackages.rst>`
-`More about R packages <docs/r/morepackages.rst>`
-`More about R packages <r/morepackages.rst>`
-`More about R packages <../r/morepackages.rst>`
+- `More about R packages </docs/r/morepackages.rst>`
+- `More about R packages <docs/r/morepackages.rst>`
+- `More about R packages <r/morepackages.rst>`
+- `More about R packages <../r/morepackages.rst>`
 
