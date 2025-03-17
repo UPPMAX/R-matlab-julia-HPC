@@ -23,13 +23,17 @@ Most HPC centres in Sweden use the same or a similar module system for their sof
     - Unload a module: ``module unload <module>/<version>`` or ``ml -<module>/<version>``
     - More information about a module: ``module show <module>/<version>`` or ``ml show <module>/<version>``
     - Unload all modules except the 'sticky' modules: ``module purge`` or ``ml purge``
+    - Save currently loaded modules: ``module save <collection_name>`` (especially useful on Dardel)
+    - (Re)load modules from saved collection: ``module restore <collection_name>``
     
 .. warning::
    
-   - Note that the module systems at UPPMAX, HPC2N, and LUNARC are slightly different. 
-   - While all modules at UPPMAX not directly related to bio-informatics are shown by ``ml avail``, modules at HPC2N and LUNARC may be hidden until one has loaded a prerequisite like the compiler ``GCC``.
-   - Thus, you need to use ``module spider`` to see all modules at HPC2N and LUNARC, and ``ml avail`` for those available to load given your currently loaded prerequisites.  
+   - Note that the module systems at UPPMAX, HPC2N, LUNARC, NSC, and PDC are slightly different. 
+   - While all modules at UPPMAX and NSC not directly related to bio-informatics are shown by ``ml avail``, modules at the other centers may be hidden until one has loaded a prerequisite like the compiler ``GCC``.
+   - Thus, you need to use ``module spider`` to see all modules at HPC2N, LUNARC, and PDC, and ``ml avail`` for those available to load given your currently loaded prerequisites.
    - There is no system MATLAB that comes preloaded like Python, but `ml load matlab` with no release date will load the latest release, which is periodically updated. For reproducibility reasons, you should be sure to load the same release throughout a given project.
+   - New sessions on Dardel (PDC) start with 13 modules loaded, but only one of them is sticky (i.e. will remain loaded after a ``ml purge`` command). We highly recommended that you save the preloaded modules as a collection so that you can quickly restore the default modules if you accidentally use ``ml purge`` instead of ``ml unload <module>``.
+
 
 Check for MATLAB versions
 -------------------------
@@ -80,6 +84,23 @@ Check for MATLAB versions
             $ ml spider matlab
 
         Or, if on Desktop On-Demand, select ``Applications`` in the top left corner and hover over ``Applications - Matlab`` (see also GUI section below).
+
+
+      .. tab:: PDC (Dardel)
+    
+        See all available MATLAB versions at the command line with:
+
+        .. code-block:: console
+
+            $ ml spider matlab
+
+        On Dardel, all MATLAB versions have a prerequisite that needs to be loaded (it will called something like PDC/xx.xx or PDCOLD/xx.xx). To view the prerequisites for a specific version of MATLAB, do 
+
+        .. code-block:: console
+   
+            $ module spider matlab/<version>
+
+
 
 .. note::
   
@@ -167,6 +188,15 @@ Check for MATLAB versions
             
               Where:
                D:  Default Module
+
+
+.. admonition:: Output at PDC (Dardel) as of 17 Mar 2025  
+    :class: dropdown
+
+        .. code-block:: console
+
+            $ ml spider matlab
+            
 
 
 Load a MATLAB module
@@ -298,6 +328,26 @@ The GUI is typically the recommended interface where it is offered. The GUI prov
 
 The ``-singleCompThread`` is usually required to prevent MATLAB from spawning as many processes as it thinks it needs, which can cause the user to accidentally take over a full node. Most terminal instances launch MATLAB (either the GUI or command line) on a login node by default, so hogging a node can stall other users' jobs, a violation of the NAISS user agreement. Setting ``-singleCompThread`` does **not** prevent MATLAB from sending parallelized and/or multi-threaded jobs to SLURM or the MATLAB Distributed Computing Server (MDCS).
 
+      .. tab:: Dardel (PDC)
+
+         To start MATLAB in the terminal, you will first need to load the corresponding PDC, PDCOLD, or PDCTEST prerequisite. The current default is PDC/23.12, and that makes available any MATLAB version from 2024. You should also open your internet browser and log into your MathWorks account, because on Dardel, MATLAB will ask you provide the email associated with your MathWorks account and a one-time password (OTP) that will be sent to that account online (which you will then have to copy from your browser).
+
+         If you, for example, wanted to start matlab/r2024b in the terminal, the sequence would look as follows:
+
+         .. code-block:: console
+
+            $ ml PDC/23.12  matlab/r2024b
+            $ matlab -singleCompThread -nodisplay
+            Please enter your MathWorks Account email address and press Enter: <your.email@your.institute.se>
+            You need a one-time password to sign in. To get a one-time password, follow these steps:
+            	1. Go to https://www.mathworks.com/mwa/otp
+            	2. Enter your MathWorks Account email address.
+            	3. Copy the generated one-time password.
+            	4. Return here and enter the password.
+            Enter the one-time password:
+
+         When the MATLAB prompt appears, it may print that it is ``Launching updater executable``. That should not interfere with anything; just press Enter to get a new clean prompt line.
+
 
 Starting the MATLAB GUI
 -----------------------
@@ -316,15 +366,19 @@ Running the MATLAB GUI requires that users be logged into a Thinlinc session. Se
       
          Both ways of starting MATLAB on Rackham.
 
-  .. tab:: LUNARC
+  .. tab:: LUNARC and PDC
 
-      On the LUNARC HPC desktop, if you want to use the MATLAB graphical user interface (GUI), nothing needs to be loaded in a terminal: you can simply go to the Applications menu at the top left and mouse over ``Applications-Matlab`` to see the versions available. There you will see 3 versions per release: regular, (CPU), and (HEP,CPU).
+      The LUNARC HPC Desktop and Interactive HPC at PDC both use Desktop On-Demand and GfxLauncher to run certain interactive apps without going through a terminal interface. Go to the Applications menu at the top left, mouse over ``Applications-Matlab`` (LUNARC) or ``PDC-Matlab`` to see the versions available, and click your preferred version. That will open a GfxLauncher popup where you can set the resources needed to run the MATLAB GUI (note that batch jobs submitted from within the GUI are _not_ bound by the same settings as the GUI).
+
+      At PDC, setting the partition happens entirely within the GfxLauncher. On LUNARC's Cosmos cluster, there are 3 versions per MATLAB release in the Apps menu&mdash;regular, (CPU), and (HEP,CPU)&mdash;and your resource choices partly depend on which of those you select.
       
       .. figure:: ../../img/Cosmos-AppMenu-Matlab.png
          :width: 350
          :align: center
       
-      The (HEP,CPU) nodes are private, so avoid those. The regular versions run on our Intel 32-core nodes because they have built-in GPU partitions. If you don't plan to do any graphical work inside the GUI, you can choose the (CPU) version of your preferred release to get onto an AMD 48-core node, which also allows you to run for up to 7 days (168:00:00) instead of the usual 2-day limit.
+      The (HEP,CPU) nodes are private. The regular versions run on Intel 32-core nodes because they have built-in GPU partitions, but you may choose other nodes. If you don't plan to do any intensive graphical work inside the GUI, you can choose the (CPU) version of your preferred release to access an AMD 48-core node, which also allows you to run for up to 7 days (168:00:00) instead of the usual 2-day limit.
+
+      On Dardel, when the GUI starts, you will have to provide your MathWorks account credentials.
 
 
 Exercises
