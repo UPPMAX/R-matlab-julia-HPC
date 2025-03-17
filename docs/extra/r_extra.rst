@@ -16,4 +16,9 @@ Materials
 - `More about R packages <docs/r/morepackages.rst>`
 - `More about R packages <r/morepackages.rst>`
 - `More about R packages <../r/morepackages.rst>`
+- `More about R packages </docs/r/morepackages.rst>`_
+- `More about R packages <docs/r/morepackages.rst>`_
+- `More about R packages <r/morepackages.rst>`_
+- `More about R packages <../r/morepackages.rst>`_
+
 
