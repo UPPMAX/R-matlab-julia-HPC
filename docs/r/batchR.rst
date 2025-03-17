@@ -674,7 +674,7 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
 .. code-block::
 
    #SBATCH -N 1
-   #SBATCH --ntasks per node=1
+   #SBATCH --ntasks-per-node=1
    #SBATCH -p gpu  
 
 Example batch script
@@ -779,7 +779,7 @@ Example batch script
            #SBATCH --time=HHH:MM:SS
            # Ask for resources, including GPU resources
            #SBATCH -N 1
-           #SBATCH --ntasks per node=1
+           #SBATCH --ntasks-per-node=1
            #SBATCH -p gpu 
            
            module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
