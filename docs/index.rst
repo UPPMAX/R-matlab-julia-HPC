@@ -374,7 +374,6 @@ Content of the course
    matlab/introMatlab.rst
    matlab/load_runMatlab.rst
    matlab/slurmMatlab.rst
-   matlab/jobsMatlab.rst
    matlab/jobsMatlabGui.rst
    common/parallel.rst
    matlab/add_onsMatlab.rst
