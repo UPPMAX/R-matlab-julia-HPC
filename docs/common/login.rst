@@ -15,9 +15,9 @@ Log in session
 
 .. admonition:: Cluster-specific approaches
 
-   - The course is a cooperation between **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise) and **LUNARC** (Cosmos) and will focus on the compute systems at all these centres.
+   - The course is a cooperation between **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on the compute systems at all these centres, as well as select resources at NSC (Tetralith) and PDC (Dardel).
    - Although there are differences we will only have **few seperate sessions**.
-   - Most participants will use UPPMAX's systems for the course, as Kebnekaise and Cosmos are only for local (UmU, IRF, MIUN, SLU, LTU, LU) users.
+   - Most participants will use UPPMAX's, NSC's, or Dardel's systems for the course, as Kebnekaise and Cosmos are only for local (UmU, IRF, MIUN, SLU, LTU, LU) users.
    - The general information given in the course will be true for all/most HPC centres in Sweden. 
 
       - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres. 
@@ -37,6 +37,8 @@ Log in session
    - If you have user account and _research_ project on Kebnekaise, follow the **HPC2N** track below.
    - If you have user account and _research_ project on Cosmos, follow the **LUNARC** track below.
    - If you have user account and course/research project on Rackham, follow the **UPPMAX** track below.
+   - If you have user account and course/research project on Tetralith, follow the **NSC** track below.
+   - If you have user account and course/research project on Dardel, follow the **PDC** track below.
 
 
 Log in!
@@ -61,10 +63,18 @@ Log in!
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | UPPMAX     | Remote desktop website | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`_              | `here <https://youtu.be/HQ2iuKRPabc>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| NSC        | SSH                    | `here <https://www.nsc.liu.se/support/security/>`_                                                     | `here <https://youtu.be/TSVGSKyt2bQ>`_ (TBA)               |
++------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| NSC        | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_                                                     | `here <https://youtu.be/PqEpsn74l0g>`_ (TBA)               |
++------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| PDC        | SSH                    | `here <https://support.pdc.kth.se/doc/support-docs/login/ssh_login/>`_                                 | `here <https://youtu.be/TSVGSKyt2bQ>`_ (TBA)               |
++------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| PDC        | Local ThinLinc client  | `here <https://support.pdc.kth.se/doc/support-docs/login/interactive_hpc/>`_                           | `here <https://youtu.be/PqEpsn74l0g>`_ (TBA)               |
++------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 
 .. type-along::
   
-   - Please log in to Rackham, Kebnekaise or other cluster that you are using.
+   - Please log in to Rackham, Kebnekaise, or other cluster that you are using.
 
    .. admonition:: Use Thinlinc or terminal?
 
@@ -112,13 +122,39 @@ Log in!
          - Cosmos through terminal: ``<user>@cosmos.lunarc.lu.se``     
          - Cosmos through ThinLinc, use: ``<user>@cosmos-dt.lunarc.lu.se``
 
-         - Create a working directory where you can code along.    
+         - Create a working directory in your home space where you can code along.    
       
            - Example. Create this folder: 
 
            .. code-block:: console
          
               $ mkdir $HOME/r-py-jl-m
+
+      .. tab:: NSC
+
+         - Tetralith through terminal or Thinlinc: ``<user>@tetralith.nsc.liu.se``
+
+         - Create a working directory where you can code along.    
+      
+           - Example. If your username is jlpicard and you are at NSC, then we recommend you create this folder: 
+     
+           .. code-block:: console
+         
+              $ mkdir /proj/r-matlab-julia-naiss/jlpicard
+
+      .. tab:: PDC
+
+         - Dardel through terminal: ``<user>@dardel.pdc.kth.se``     
+         - Dardel through ThinLinc: ``<user>@dardel-vnc.pdc.kth.se``
+   
+         - Create a working directory where you can code along.    
+      
+           - Example. If your username is sevenof9 and you are at PDC, then we recommend you create this folder: 
+     
+           .. code-block:: console
+         
+              $ mkdir /cfs/klemming/projects/supr/r-matlab-julia-naiss/sevenof9/
+
 
 Test an editor
 --------------
