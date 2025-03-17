@@ -7,7 +7,8 @@ Courses
 Materials
 =========
 
-- `More about packages <r/morepackages.rst>`_
+:ref:`R_morepackages`.
+
+- `More about R packages <../r/morepackages.html>`_
 
 
-.. _morepackages:

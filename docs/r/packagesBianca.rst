@@ -1,3 +1,5 @@
+.. _R_morepackagesBianca:
+
 Packages at Bianca (parallel session)
 =====================================
 
