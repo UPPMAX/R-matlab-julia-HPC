@@ -401,10 +401,8 @@ Content of the course
    :caption: Extra reading:
 
    extra/r_extra.rst
-   extra/isolated_extra.rst
-   r/morepackages.rst
-   r/packagesBianca.rst
-   extra/matlab.rst
+   extra/matlab_extra.rst
+   extra/julia_extra.rst
 
 .. Indices and tables
 .. ==================
