@@ -144,13 +144,6 @@ the code you are writing (R, Julia, Python, or Matlab) can also have some intern
 
    .. tabs::
 
-      .. tab:: Python
-
-         For some linear algebra operations Numpy supports threads (set with the ``OMP_NUM_THREADS`` variable). 
-         If your code contains calls to these operations in a loop that is already parallelized by *n* processes, 
-         and you allocate *n* cores for this job, this job will exceed the allocated resources unless the 
-         number of threads is explicitly set to 1.
-
       .. tab:: Julia 
 
          For some linear algebra operations Julia supports threads (set with the ``OMP_NUM_THREADS`` variable). 
@@ -179,12 +172,6 @@ different threads write on the same memory address.
    :class: dropdown
 
    .. tabs::
-
-      .. tab:: Python
-
-         Python offers its own threaded mechanism but due to a locking mechanism, `Python threads` 
-         are not efficient for computation. However, Python threads could be useful for I/O files handling. 
-         Code modifications are required to support the threads.
 
       .. tab:: Julia 
 
@@ -224,13 +211,6 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
 
    .. tabs::
 
-      .. tab:: Python
-
-         Python has different modules for achieving distributed programming, for instance ``multiprocessing`` and 
-         ``mpi4py``. The former is part of the Python standard library so you don't need to do further installations,
-         while the latter needs to be installed. Also, one needs to learn the concepts of MPI prior to using the
-         feautures offered by this module.
-
       .. tab:: Julia 
 
          The mechanism here is called `Julia processes` which  can be activated by executing a script as follows 
@@ -265,26 +245,6 @@ available for each language.
    :class: dropdown
 
    .. tabs::
-
-      .. tab:: Python
-
-         **Dask**
- 
-         `Dask <https://www.dask.org/>`_ is a array model extension and task scheduler. By using the new array 
-         classes, you can automatically distribute operations across multiple CPUs.
-
-         Dask is very popular for data analysis and is used by a number of high-level Python libraries:
-
-            - Dask arrays scale NumPy (see also xarray)
-            - Dask dataframes scale Pandas workflows
-            - Dask-ML scales Scikit-Learn
-
-         - Dask divides arrays into many small pieces (chunks), as small as necessary to fit it into memory. 
-         - Operations are delayed (lazy computing) e.g. tasks are queue and no computation is performed until 
-           you actually ask values to be computed (for instance print mean values). 
-         - Then data is loaded into memory and computation proceeds in a streaming fashion, block-by-block.
-         - An example of a Jupyter notebook running Dask can be found 
-           `here <https://github.com/UPPMAX/HPC-python/blob/main/Exercises/examples/Dask-Ini.ipynb>`_. 
 
       .. tab:: Julia
 
@@ -328,64 +288,6 @@ available for each language.
       :align: center
 
    .. tabs::
-
-      .. tab:: Python
-
-         In the following example ``sleep.py`` the `sleep()` function is called `n` times first in 
-         serial mode and then by using `n` processes. To parallelize the serial code we can use 
-         the ``multiprocessing`` module that is shipped with the base library in Python so that 
-         you don't need to install it.  
-
-         .. code-block:: python
-
-            import sys
-            from time import perf_counter,sleep
-            import multiprocessing
-
-            # number of iterations 
-            n = 4
-            # number of processes
-            numprocesses = 4
-
-            def sleep_serial(n):
-                for i in range(n):
-                    sleep(1)
-
-
-            def sleep_threaded(n,numprocesses,processindex):
-                # workload for each process
-                workload = n/numprocesses
-                begin = int(workload*processindex)
-                end = int(workload*(processindex+1))
-                for i in range(begin,end):
-                    sleep(1)
-
-            if __name__ == "__main__":
-
-                starttime = perf_counter()   # Start timing serial code
-                sleep_serial(n)
-                endtime = perf_counter()
-
-                print("Time spent serial: %.2f sec" % (endtime-starttime))
-
-
-                starttime = perf_counter()   # Start timing parallel code
-                processes = []
-                for i in range(numprocesses):
-                    p = multiprocessing.Process(target=sleep_threaded, args=(n,numprocesses,i))
-                    processes.append(p)
-                    p.start()
-
-                # waiting for the processes
-                for p in processes:
-                    p.join()
-
-                endtime = perf_counter()
-
-                print("Time spent parallel: %.2f sec" % (endtime-starttime))
-
-         First load the modules ``ml GCCcore/11.2.0 Python/3.9.6`` and then run the script
-         with the command  ``srun -A "your-project" -n 1 -c 4 -t 00:05:00 python sleep.py`` to use 4 processes.
 
       .. tab:: Julia
 
@@ -544,184 +446,6 @@ Exercises
    More specifically, one divides the integration range in both directions into ``n`` bins.
 
    .. tabs:: 
-
-      .. tab:: Python
-         
-
-            Here is a parallel code using the ``multiprocessing`` module in Python (call it 
-            ``integration2d_multiprocessing.py``):  
-
-            .. admonition:: integration2d_multiprocessing.py
-               :class: dropdown
-
-               .. code-block:: python
-
-                   import multiprocessing
-                   from multiprocessing import Array
-                   import math
-                   import sys
-                   from time import perf_counter
-
-                   # grid size
-                   n = 5000
-                   # number of processes
-                   numprocesses = *FIXME*
-                   # partial sum for each thread
-                   partial_integrals = Array('d',[0]*numprocesses, lock=False)
-
-                   # Implementation of the 2D integration function (non-optimal implementation)
-                   def integration2d_multiprocessing(n,numprocesses,processindex):
-                      global partial_integrals;
-                      # interval size (same for X and Y)
-                      h = math.pi / float(n)
-                      # cummulative variable 
-                      mysum = 0.0
-                      # workload for each process
-                      workload = n/numprocesses
-
-                      begin = int(workload*processindex)
-                      end = int(workload*(processindex+1))
-                      # regular integration in the X axis
-                      for i in range(begin,end):
-                         x = h * (i + 0.5)
-                         # regular integration in the Y axis
-                         for j in range(n):
-                               y = h * (j + 0.5)
-                               mysum += math.sin(x + y)
-                     
-                      partial_integrals[processindex] = h**2 * mysum
-
-
-                   if __name__ == "__main__":
-
-                      starttime = perf_counter()
-                     
-                      processes = []
-                      for i in range(numprocesses):
-                         p = multiprocessing.Process(target=integration2d_multiprocessing, args=(n,numprocesses,i))
-                         processes.append(p)
-                         p.start()
-
-                      # waiting for the processes
-                      for p in processes:
-                         p.join()
-
-                      integral = sum(partial_integrals)
-                      endtime = perf_counter()
-
-                   print("Integral value is %e, Error is %e" % (integral, abs(integral - 0.0)))
-                   print("Time spent: %.2f sec" % (endtime-starttime))
-
-
-            Run the code with the following batch script.             
-
-            .. admonition:: job.sh
-               :class: dropdown
-
-               .. tabs::
-
-                  .. tab:: UPPMAX
-
-                       .. code-block:: sh
-                           
-                          #!/bin/bash -l
-                          #SBATCH -A naiss202t-uv-xyz     # your project_ID
-                          #SBATCH -J job-serial           # name of the job
-                          #SBATCH -n *FIXME*              # nr. tasks/coresw
-                          #SBATCH --time=00:20:00         # requested time
-                          #SBATCH --error=job.%J.err      # error file
-                          #SBATCH --output=job.%J.out     # output file
-
-                          # Load any modules you need, here for Python 3.11.8 and compatible SciPy-bundle
-                          module load python/3.11.8
-                          python integration2d_multiprocessing.py
-
-
-                  .. tab:: HPC2N
-
-                       .. code-block:: sh
-                           
-                           #!/bin/bash            
-                           #SBATCH -A hpc2n202w-xyz     # your project_ID       
-                           #SBATCH -J job-serial        # name of the job         
-                           #SBATCH -n *FIXME*           # nr. tasks  
-                           #SBATCH --time=00:20:00      # requested time
-                           #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file  
-
-                           # Do a purge and load any modules you need, here for Python 
-                           ml purge > /dev/null 2>&1
-                           ml GCCcore/11.2.0 Python/3.9.6
-                           python integration2d_multiprocessing.py
-
-
-                  .. tab:: LUNARC
-
-                       .. code-block:: sh
-                           
-                           #!/bin/bash            
-                           #SBATCH -A lu202u-wx-yz      # your project_ID
-                           #SBATCH -J job-serial        # name of the job         
-                           #SBATCH -n *FIXME*           # nr. tasks  
-                           #SBATCH --time=00:20:00      # requested time
-                           #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file 
-                           # reservation (optional)
-                           #SBATCH --reservation=RPJM-course*FIXME* 
-
-                           # Do a purge and load any modules you need, here for Python 
-                           ml purge > /dev/null 2>&1
-                           ml GCCcore/12.3.0 Python/3.11.3
-                           python integration2d_multiprocessing.py
-
-                  .. tab:: PDC
-
-                       .. code-block:: sh
-                                                                                                                                                                        
-                           #!/bin/bash
-                           #SBATCH -A naiss202t-uv-wxyz # your project_ID       
-                           #SBATCH -J job               # name of the job          
-                           #SBATCH  -p shared           # name of the queue
-                           #SBATCH --ntasks=*FIXME*     # nr. of tasks
-                           #SBATCH --cpus-per-task=1    # nr. of cores per-task
-                           #SBATCH --time=00:03:00      # requested time
-                           #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file 
-
-                           # Load dependencies and Python version
-                           ml ...
-
-                           python integration2d_multiprocessing.py
-
-                  .. tab:: NSC
-
-                       .. code-block:: sh
-
-                           #!/bin/bash
-                           #SBATCH -A naiss202t-uv-xyz  # your project_ID
-                           #SBATCH -J job-serial        # name of the job
-                           #SBATCH -n *FIXME*           # nr. tasks
-                           #SBATCH --time=00:20:00      # requested time
-                           #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file
-
-                           # Load any modules you need, here for Python
-                           ml buildtool-easybuild/4.8.0-hpce082752a2  GCCcore/12.3.0
-                           ml Python/3.11.3
-                           python integration2d_multiprocessing.py
-
-
-   
-            Try different number of cores for this batch script (*FIXME* string) using the sequence:
-            1,2,4,8,12, and 14. Note: this number should match the number of processes 
-            (also a *FIXME* string) in the Python script. Collect the timings that are
-            printed out in the **job.*.out**. According to these execution times what would be
-            the number of cores that gives the optimal (fastest) simulation? 
-
-            Challenge: Increase the grid size (``n``) to 15000 and submit the batch job with 4 workers (in the
-            Python script) and request 5 cores in the batch script. Monitor the usage of resources
-            with tools available at your center, for instance ``top`` (UPPMAX) or
-            ``job-usage`` (HPC2N).
 
 
       .. tab:: Julia
@@ -1178,140 +902,6 @@ Exercises
 
    .. tabs:: 
 
-      .. tab:: Python
-
-            Pandas is available in the following combo ``ml GCC/12.3.0 SciPy-bundle/2023.07`` (HPC2N) and 
-            ``ml python/3.11.8`` (UPPMAX). Call the script ``script-df.py``. 
-
-            .. code-block:: python
-
-                import pandas as pd
-                import multiprocessing
-
-                # Create a DataFrame with two sets of values ID and Value
-                data_df = pd.DataFrame({
-                    'ID': range(1, 10001),
-                    'Value': range(3, 20002, 2)  # Generate 10000 odd numbers starting from 3
-                })
-
-                # Define a function to calculate the sum of a vector
-                def calculate_sum(values):
-                    total_sum = *FIXME*(values)
-                    return *FIXME*
-
-                # Split the 'Value' column into chunks of size 1000
-                chunk_size = *FIXME*
-                value_chunks = [data_df['Value'][*FIXME*:*FIXME*] for i in range(0, len(data_df['*FIXME*']), *FIXME*)]
-
-                # Create a Pool of 4 worker processes, this is required by multiprocessing
-                pool = multiprocessing.Pool(processes=*FIXME*)
-
-                # Map the calculate_sum function to each chunk of data in parallel
-                results = pool.map(*FIXME: function*, *FIXME: chunk size*)
-
-                # Close the pool to free up resources, if the pool won't be used further
-                pool.close()
-
-                # Combine the partial results to get the total sum
-                total_sum = sum(results)
-
-                # Compute the mean by dividing the total sum by the total length of the column 'Value'
-                mean_value = *FIXME* / len(data_df['*FIXME*'])
-
-                # Print the mean value
-                print(mean_value)
-
-            Run the code with the batch script: 
-            
-            .. tabs::
-
-               .. tab:: UPPMAX
-
-                    .. code-block:: sh
-                        
-                       #!/bin/bash -l
-                       #SBATCH -A naiss202t-uv-xyz  # your project_ID
-                       #SBATCH -J job-parallel      # name of the job
-                       #SBATCH -n 4                 # nr. tasks/coresw
-                       #SBATCH --time=00:20:00      # requested time
-                       #SBATCH --error=job.%J.err   # error file
-                       #SBATCH --output=job.%J.out  # output file
-
-                       # Load any modules you need, here for Python 3.11.8 and compatible SciPy-bundle
-                       module load python/3.11.8
-                       python script-df.py
-
-               .. tab:: HPC2N
-
-                    .. code-block:: sh
-                        
-                        #!/bin/bash            
-                        #SBATCH -A hpc2n202w-xyz     # your project_ID       
-                        #SBATCH -J job-parallel      # name of the job         
-                        #SBATCH -n 4                 # nr. tasks  
-                        #SBATCH --time=00:20:00      # requested time
-                        #SBATCH --error=job.%J.err   # error file
-                        #SBATCH --output=job.%J.out  # output file  
-
-                        # Load any modules you need, here for Python 3.11.3 and compatible SciPy-bundle
-                        module load GCC/12.3.0 Python/3.11.3 SciPy-bundle/2023.07
-                        python script-df.py
-
-               .. tab:: LUNARC
-
-                    .. code-block:: sh
-                           
-                        #!/bin/bash            
-                        #SBATCH -A lu202u-wx-yz      # your project_ID
-                        #SBATCH -J job-parallel      # name of the job         
-                        #SBATCH -n 4	             # nr. tasks  
-                        #SBATCH --time=00:20:00      # requested time
-                        #SBATCH --error=job.%J.err   # error file
-                        #SBATCH --output=job.%J.out  # output file 
-			               #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
-
-                        # Purge and load any modules you need, here for Python & SciPy-bundle
-                        ml purge
-                        ml GCCcore/12.3.0  Python/3.11.3  SciPy-bundle/2023.07
-                        python dscript-df.py
-
-               .. tab:: PDC
-
-                  .. code-block:: bash                              
-
-                        #!/bin/bash            
-                        #SBATCH -A naiss202t-uv-xyz  # your project_ID      
-                        #SBATCH -J job-parallel      # name of the job          
-                        #SBATCH  -p shared           # name of the queue
-                        #SBATCH  --ntasks=4          # nr. of tasks
-                        #SBATCH --cpus-per-task=1    # nr. of cores per-task
-                        #SBATCH --time=00:03:00      # requested time
-                        #SBATCH --error=job.%J.err   # error file
-                        #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
-
-                        # Load dependencies and Python version
-                        ml ...
-
-                        python script-df.py
-
-               .. tab:: NSC
-
-                     .. code-block:: sh
-
-                        #!/bin/bash
-                        #SBATCH -A naiss202t-uv-xyz  # your project_ID
-                        #SBATCH -J job-serial        # name of the job
-                        #SBATCH -n *FIXME*           # nr. tasks
-                        #SBATCH --time=00:20:00      # requested time
-                        #SBATCH --error=job.%J.err   # error file
-                        #SBATCH --output=job.%J.out  # output file
-
-                        # Load any modules you need, here for Python
-                        ml buildtool-easybuild/4.8.0-hpce082752a2  GCCcore/12.3.0
-                        ml Python/3.11.3
-
-                        python script-df.py
-      
 
       .. tab:: Julia
 
@@ -1648,46 +1238,7 @@ Exercises
 .. solution:: Solution
 
    .. tabs:: 
-
-      .. tab:: Python
-      
-            .. code-block:: python
-	 
-                import pandas as pd
-                import multiprocessing
-
-                # Create a DataFrame with two sets of values ID and Value
-                data_df = pd.DataFrame({
-                    'ID': range(1, 10001),
-                    'Value': range(3, 20002, 2)  # Generate 10000 odd numbers starting from 3
-                })
-
-                # Define a function to calculate the sum of a vector
-                def calculate_sum(values):
-                    total_sum = sum(values)
-                    return total_sum
-
-                # Split the 'Value' column into chunks
-                chunk_size = 1000
-                value_chunks = [data_df['Value'][i:i+chunk_size] for i in range(0, len(data_df['Value']), chunk_size)]
-
-                # Create a Pool of 4 worker processes, this is required by multiprocessing
-                pool = multiprocessing.Pool(processes=4)
-
-                # Map the calculate_sum function to each chunk of data in parallel
-                results = pool.map(calculate_sum, value_chunks)
-
-                # Close the pool to free up resources, if the pool won't be used further
-                pool.close()
-
-                # Combine the partial results to get the total sum
-                total_sum = sum(results)
-
-                # Compute the mean by dividing the total sum by the total length of the column 'Value'
-                mean_value = total_sum / len(data_df['Value'])
-
-                # Print the mean value
-                print(mean_value)               
+           
 
       .. tab:: Julia
          
@@ -1823,8 +1374,4 @@ Exercises
    - `HPC2N Julia documentation <https://www.hpc2n.umu.se/resources/software/julia>`_.
    - `White paper on Julia parallel computing <https://juliahub.com/assets/pdf/Parallel-Computing-Guide-for-Julia-byJuliaHub.pdf>`_.
    - `HPC2N R documentation <https://www.hpc2n.umu.se/resources/software/r>`_.
-   - `Introduction to Dask by Aalto Scientific Computing and CodeRefinery <https://aaltoscicomp.github.io/python-for-scicomp/parallel/#dask-and-task-queues>`_
-   - `Intermediate level Dask by ENCCS <https://enccs.github.io/hpda-python/dask/>`_.
-   - `Official Python documentation <https://www.python.org/doc/>`_.
-   - `Wikipedias' article on Parallel Computing <https://en.wikipedia.org/wiki/Parallel_computing>`_ 
-   - The book `High Performance Python <https://www.oreilly.com/library/view/high-performance-python/9781492055013/>`_ is a good resource for ways of speeding up Python code.
+   - `Wikipedias' article on Parallel Computing <https://en.wikipedia.org/wiki/Parallel_computing>`_.
