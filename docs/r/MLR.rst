@@ -263,8 +263,7 @@ ML on CPUs
 
          Short serial example for running on Dardel. Loading R/4.4.1-cpeGNU-23.12 and prerequisites  
 
-         NOTE: if you did not install the packages ``caret``, ``kernl
-ab``, and ``randomForest`` above, you have to do so now before running the script.
+         NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
 
          .. code-block:: sh 
 
