@@ -4,7 +4,7 @@ ML with R
 .. questions::
 
    - Is R suitable for Machine Learning (ML)?
-   - How to run R ML jobs on a HPC system (UPPMAX, HPC2N, LUNARC, ...)
+   - How to run R ML jobs on a HPC system (UPPMAX, HPC2N, LUNARC, NSC, PDC...)
    
 .. objectives:: 
 
@@ -73,6 +73,34 @@ Running your code
          .. code-block:: console 
 
             $ module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1 
+            $ Rscript iris_ml.R 
+            
+      .. tab:: NSC
+
+         You need to install ``caret``, ``kernlab``, and ``randomForest`` before running, as shown below. If it asks, agree to install in local directory.  
+
+         .. code-block:: console 
+
+            $ module load R/4.4.0-hpc1-gcc-11.3.0-bare 
+            $ R
+            > install.packages('caret', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+            > install.packages('kernlab', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+            > install.packages('randomForest', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+            > quit()
+            $ Rscript iris_ml.R 
+            
+      .. tab:: PDC 
+
+         You need to install ``caret``, ``kernlab``, and ``randomForest`` before running, as shown below. If it asks, agree to install in local directory.
+
+         .. code-block:: console 
+
+            $ module load PDC/23.12 R/4.4.1-cpeGNU-23.12  
+            $ R
+            > install.packages('caret', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+            > install.packages('kernlab', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+            > install.packages('randomForest', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+            > quit()
             $ Rscript iris_ml.R 
             
       .. tab:: iris_ml.R
@@ -196,7 +224,7 @@ ML on CPUs
 
       .. tab:: LUNARC 
 
-         Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites, alsoa suitable R-bundle-Bioconductor 
+         Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites, also a suitable R-bundle-Bioconductor 
 
          .. code-block:: sh 
 
@@ -217,6 +245,58 @@ ML on CPUs
 
       $ sbatch <batch script>
 
+      .. tab:: NSC 
+
+         Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare 
+
+         NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script. 
+
+         .. code-block:: sh 
+
+            #!/bin/bash
+            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #SBATCH --time=00:10:00 # Asking for 10 minutes
+            #SBATCH -n 1 # Asking for 1 core
+
+            # Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare
+            module load R/4.4.0-hpc1-gcc-11.3.0-bare 
+
+            # Run your R script (here 'iris_ml.R')
+            R --no-save --quiet < iris_ml.R
+
+   Send the script to the batch:
+
+   .. code-block:: console
+
+      $ sbatch <batch script>
+
+      .. tab:: PDC  
+
+         Short serial example for running on Dardel. Loading R/4.4.1-cpeGNU-23.12 and prerequisites  
+
+         NOTE: if you did not install the packages ``caret``, ``kernl
+ab``, and ``randomForest`` above, you have to do so now before running the script.
+
+         .. code-block:: sh 
+
+            #!/bin/bash
+            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #SBATCH --time=00:10:00 # Asking for 10 minutes
+            #SBATCH -n 1 # Asking for 1 core
+
+            # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites 
+            module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
+
+            # Run your R script (here 'iris_ml.R')
+            R --no-save --quiet < iris_ml.R
+
+   Send the script to the batch:
+
+   .. code-block:: console
+
+      $ sbatch <batch script>
+
+      
         
 ML on GPUs 
 ''''''''''
@@ -294,6 +374,49 @@ ML on GPUs
                         
             R --no-save --no-restore -f Rscript.R
    
+      .. tab:: NSC 
+
+         Short ML example for running on Tetralith. 
+
+         .. code-block:: sh
+
+            #!/bin/bash
+            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #Asking for 10 min.
+            #SBATCH -t 00:10:00
+            #SBATCH -n 1
+            #SBATCH -c 32 
+            #SBATCH --gpus-per-task=1
+            #Writing output and error files
+            #SBATCH --output=output%J.out
+            #SBATCH --error=error%J.error
+            
+            ml purge > /dev/null 2>&1
+            module load R/4.4.0-hpc1-gcc-11.3.0-bare 
+                        
+            R --no-save --no-restore -f Rscript.R
+
+      .. tab:: PDC 
+
+         Short ML example for running on Dardel. 
+
+         .. code-block:: sh
+
+            #!/bin/bash
+            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #Asking for 10 min.
+            #SBATCH -t 00:10:00
+            #SBATCH -N 1
+            #SBATCH --ntasks-per-node=1
+            #SBATCH -p gpu 
+            #Writing output and error files
+            #SBATCH --output=output%J.out
+            #SBATCH --error=error%J.error
+            
+            ml purge > /dev/null 2>&1
+            module load PDC/23.12 R/4.4.1-cpeGNU-23.12  
+                        
+            R --no-save --no-restore -f Rscript.R           
 
       .. tab:: Rscript.R
 
