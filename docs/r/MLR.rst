@@ -239,12 +239,6 @@ ML on CPUs
             # Run your R script (here 'iris_ml.R')
             R --no-save --quiet < iris_ml.R
 
-   Send the script to the batch:
-
-   .. code-block:: console
-
-      $ sbatch <batch script>
-
       .. tab:: NSC 
 
          Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare 
@@ -264,11 +258,6 @@ ML on CPUs
             # Run your R script (here 'iris_ml.R')
             R --no-save --quiet < iris_ml.R
 
-   Send the script to the batch:
-
-   .. code-block:: console
-
-      $ sbatch <batch script>
 
       .. tab:: PDC  
 
