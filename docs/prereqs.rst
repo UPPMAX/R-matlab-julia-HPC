@@ -131,3 +131,7 @@ Get familiar with the Linux/Bash command line
 
 - LUNARC
     - Any of the above links would be helpful for you
+
+- PDC
+    - `PDC intro course material <https://pdc-support.github.io/pdc-intro/>`_ 
+

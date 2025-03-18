@@ -19,17 +19,21 @@ Slurm job scheduler and MATLAB in terminal
    - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
- 
+   - Tetralith: ``naiss2025-22-262``
+   - Dardel: ``naiss2025-22-262``
+
 .. admonition:: Storage space for this workshop 
 
-   - Rackham: ``/proj/r-py-jl-m-rackham``
-   - Kebnekaise: ``/proj/nobackup/r-py-jl-m`` 
+   - Rackham: ``/proj/r-matlab-julia-uppmax``
+   - Kebnekaise: ``/proj/nobackup/r-matlab-julia`` 
+   - Tetralith: ``/proj/r-matlab-julia-naiss/users``
+   - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
 
 .. warning::
 
    Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
 
-The batch system used at UPPMAX, HPC2N, and LUNARC is called SLURM. The same is the case at most of the Swedish HPC centres. 
+The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC is called SLURM. The same is the case at most of the Swedish HPC centres. 
 
 SLURM is an Open Source job scheduler, which provides three key functions:
 
@@ -39,9 +43,9 @@ SLURM is an Open Source job scheduler, which provides three key functions:
 
 .. note:: 
 
-   - If you have attended the other days you have learned that you ask for compute resources via the sbatch command.
+   - If you have attended the R part yesterday you have learned that you ask for compute resources via the sbatch command.
        - In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
-       - Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/  
+       - Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/ 
    - MATLAB is well integrated with SLURM and because of that there are several ways to run these jobs:
        - Using the job scheduler (``batch`` command) in MATLAB Desktop/graphical interface (This is the Recommended Use).
        - Starting a ``parpool`` with a predefined cluster (This allows for more interactivity).
@@ -72,6 +76,8 @@ In order to be able to submit jobs to the SLURM queue, you need to configure MAT
    - `HPC2N <https://www.hpc2n.umu.se/resources/software/configure-matlab-2018>`_
    - `UPPMAX <https://docs.uppmax.uu.se/software/matlab/#first-time-since-may-13-2024>`_
    - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line>`_
+   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/matlab/>`_ 
+   - `PDC <https://support.pdc.kth.se/doc/software-docs/matlab/>`_   
 
 - To be able to use MATLAB 2019b, and later, together with the batch system, MATLAB needs to be configured to use a cluster profile.
 - This needs to be done only once for each cluster and each version of MATLAB.
@@ -81,7 +87,9 @@ This will provide a set of default specifications for batch and parallel jobs ca
 
 .. admonition:: configCluster(.sh) from the terminal 
 
-   You do all these ONCE for each cluster, and for each version of MATLAB you use. You do this AFTER loading MATLAB but before starting the MATLAB command line or GUI.
+   You do all these ONCE for each cluster, and for each version of MATLAB you use. You do this AFTER loading MATLAB but before starting the MATLAB command line or GUI (except for on Tetralith and Dardel where it is done within MATLAB, see below).
+
+   NOTE: on Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there! 
 
    .. tabs:: 
 
@@ -105,6 +113,26 @@ This will provide a set of default specifications for batch and parallel jobs ca
             configCluster.sh <project-id> 
         
          Choose "cosmos" when prompted.  
+
+      .. tab:: NSC
+
+         .. code-block:: 
+
+            module load MATLAB/2024a-hpc1-bdist 
+            matlab -nodisplay -nodesktop -nosplash -softwareopengl
+            configCluster 
+
+         Choose "tetralith" when prompted. 
+
+      .. tab:: PDC 
+
+         .. code-block:: 
+
+            module load PDC/23.12 matlab/r2024a-ps 
+            matlab -nodisplay -nodesktop -nosplash
+            configCluster
+
+
 .. note:: 
 
    At LUNARC it is also possible do the cluster profile configuration on the MATLAB command line. In that case you just do 
@@ -169,11 +197,11 @@ Apart from whether or not to include the .sh and the project-id, it should work 
 
 .. exercise::
 
-   Login to either HPC2N, UPPMAX, or LUNARC if you have not already. 
+   Login to either HPC2N, UPPMAX, LUNARC, NSC, or PDC if you have not already. 
    
-   Load the newest version of MATLAB (find with ``ml spider MATLAB``).
+   Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first. 
    
-   On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC.   
+   On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC and PDC.     
 
 MATLAB terminal interface
 -------------------------

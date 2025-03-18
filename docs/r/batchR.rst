@@ -783,7 +783,9 @@ Example batch script
            #SBATCH -p gpu 
            
            module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
-
+           module load rocm/5.7.0
+           #module load craype-accel-amd-gfx90a 
+           #module load cpeGNU/23.12
            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
            
 
