@@ -1116,6 +1116,25 @@ cluster and install the ``AMDGPU`` package in Julia as in the next sequence of c
                 Resolving package versions...
                 Installed CEnum ───────── v0.4.2
 
+   .. tab:: NSC
+
+      - Then either create an interactive session or make a batch job
+        
+
+      .. code-block:: console
+            
+         $ interactive -A <proj> -n 1 -c 32 --gpus-per-task=1 -t 1:00:00
+         
+         $ ml buildenv-gcccuda/11.6.2-gcc9-hpc1  # Load tool chain with CUDA
+         $ ml julia/1.9.4-bdist                  # Julia version
+         $ julia
+         (v1.9) pkg> add LinearAlgebra
+         (v1.9) pkg> add CUDA 
+             Updating registry at `~/.julia/registries/General.toml`
+             Resolving package versions...
+             ...
+     
+
 
 Once this initial setting is completed, you will be able to use the GPUs available on the
 cluster. Here, there is a simple example for computing a matrix-matrix multiplication. As a 
@@ -1137,7 +1156,7 @@ for instance.
             #SBATCH -p node
             #SBATCH --gres=gpu:1
             #SBATCH -N 1
-            #SBATCH --job-name=juliaGPU      # create a short name for your job
+            #SBATCH --job-name=job-gpu       # create a short name for your job
             #SBATCH --time=00:15:00          # total run time limit (HH:MM:SS)
             #SBATCH --qos=short              # if test run t<15 min
             #SBATCH --mail-type=begin        # send email when job begins
@@ -1153,7 +1172,7 @@ for instance.
 
             #!/bin/bash            
             #SBATCH -A hpc2n202w-xyz     # your project_ID       
-            #SBATCH -J job-serial        # name of the job         
+            #SBATCH -J job-gpu           # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
             #SBATCH --error=job.%J.err   # error file
@@ -1172,7 +1191,7 @@ for instance.
 
             #!/bin/bash            
             #SBATCH -A lu202w-x-yz       # your project_ID       
-            #SBATCH -J job-serial        # name of the job         
+            #SBATCH -J job-gpu           # name of the job         
             #SBATCH -n 1                 # nr. tasks  
             #SBATCH --time=00:03:00      # requested time
             #SBATCH --error=job.%J.err   # error file
@@ -1184,6 +1203,25 @@ for instance.
             ml purge  > /dev/null 2>&1
             ml Julia/1.8.5-linux-x86_64
             ml CUDA/11.4.1
+
+            julia script-gpu.jl
+
+   .. tab:: NSC
+
+        .. code-block:: sh
+
+            #!/bin/bash            
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID 
+            #SBATCH -J job-gpu           # name of the job         
+            #SBATCH -n 1                 # nr. tasks  
+            #SBATCH -c 32                # nr. cores
+            #SBATCH --gpus-per-task=1    # nr. GPU cards
+            #SBATCH --time=00:04:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file            
+
+            ml buildenv-gcccuda/11.6.2-gcc9-hpc1 
+            ml julia/1.9.4-bdist
 
             julia script-gpu.jl
 
