@@ -364,7 +364,9 @@ When starting MATLAB from the command line, the ``-singleCompThread`` is usually
 
       .. tab:: Dardel (PDC)
 
-         To start MATLAB in the terminal, you will first need to load the corresponding PDC, PDCOLD, or PDCTEST prerequisite. The current default is PDC/23.12, and that makes available any MATLAB version from 2024. You should also open your internet browser and log into your MathWorks account, because on Dardel, MATLAB will ask you provide the email associated with your MathWorks account and a one-time password (OTP) that will be sent to that account online (which you will then have to copy from your browser).
+         Starting a MATLAB session on Dardel looks difference depending on whether you are a student or staff at KTH or not. If you are, you should have already been given an academic license. If you are an industrial PDC user or a user from another university, you will need to have a MathWorks account and you will need to already be logged into it in your browser because on Dardel, MATLAB will ask you provide the email associated with your MathWorks account and a one-time password (OTP) that will be sent to that account online (which you will then have to copy from your browser).
+
+         Either way, you will first need to load the corresponding PDC, PDCOLD, or PDCTEST prerequisite. The current default is PDC/23.12, and that makes available any MATLAB version from 2024.
 
          If you, for example, wanted to start matlab/r2024b in the terminal, the sequence would look as follows:
 
@@ -372,6 +374,12 @@ When starting MATLAB from the command line, the ``-singleCompThread`` is usually
 
             $ ml PDC/23.12  matlab/r2024b
             $ matlab -singleCompThread -nodisplay
+
+
+         If you are a local academic user who has been vetted by PDC staff, the above should be enough to eventually take you to the MATLAB command prompt. Otherwise, you will see the following:
+
+         .. code-block:: console
+
             Please enter your MathWorks Account email address and press Enter: <your.email@your.institute.se>
             You need a one-time password to sign in. To get a one-time password, follow these steps:
             	1. Go to https://www.mathworks.com/mwa/otp
@@ -380,7 +388,9 @@ When starting MATLAB from the command line, the ``-singleCompThread`` is usually
             	4. Return here and enter the password.
             Enter the one-time password:
 
-         When the MATLAB prompt appears, it may print that it is ``Launching updater executable``. That should not interfere with anything; just press Enter to get a new clean prompt line.
+         If you are a student or staff member at KTH and you see these credential requests, that means PDC support did not receive your request for MATLAB access.
+
+         When the MATLAB prompt appears, it may print that it is ``Launching updater executable``. That should not interfere with anything; just press Enter to get a clean prompt line.
 
 
 Starting the MATLAB GUI
