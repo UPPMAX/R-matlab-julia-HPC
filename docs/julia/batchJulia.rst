@@ -417,6 +417,32 @@ in order to use MPI with Julia you will need to follow the next steps (only the 
             $ export PATH=/cfs/klemming/home/u/username/.julia/bin:$PATH
             # Now the wrapper should be available on the command line 
 
+   .. tab:: NSC
+       
+        .. code-block:: console
+      
+            # Load the tool chain which contains a MPI library
+            $ ml buildtool-easybuild/4.8.0-hpce082752a2 foss/2023b
+            # Load Julia
+            $ ml julia/1.9.4-bdist
+            # Start Julia on the command line
+            $ julia 
+            # Change to ``package mode`` and add the ``MPI`` package 
+            (v1.9) pkg> add MPI 
+
+            # In the ``julian`` mode run these commands:
+            $ julia> using MPI 
+            $ julia> MPI.install_mpiexecjl() 
+                 [ Info: Installing `mpiexecjl` to `/home/username/.julia/bin`...
+                 [ Info: Done!
+
+        .. code-block:: console
+
+            # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+            $ export PATH=/home/username/.julia/bin:$PATH
+            # Now the wrapper should be available on the command line 
+
+
 .. tabs:: 
 
    .. tab:: serial.jl 
@@ -576,7 +602,7 @@ in order to use MPI with Julia you will need to follow the next steps (only the 
             # cummulative variable
             mysum = 0.0                                                                                                                                        
             # workload for each worker
-            workload = convert(Int64, n/numworkers)
+            workload = div(n,numworkers)
             # lower and upper integration limits for each thread
             lower_lim = workload * workerid
             upper_lim = workload * (workerid + 1) -1
@@ -936,6 +962,88 @@ The corresponding batch scripts for these examples are given here:
                export PATH=/cfs/klemming/home/u/username/.julia/bin:$PATH
    
                time mpiexecjl -np 8 julia mpi.jl
+
+
+   .. tab:: NSC 
+   
+      .. tabs::
+
+         .. tab:: serial.sh  
+
+            .. code-block:: bash
+        
+               #!/bin/bash            
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH -n 1                 # nr. of tasks
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml julia/1.9.4-bdist   
+   
+               # "time" command is optional
+               time julia serial.jl
+
+
+         .. tab:: threaded.sh 
+   
+            .. code-block:: bash
+
+               #!/bin/bash            
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH -n 8                 # nr. of tasks
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml julia/1.9.4-bdist   
+
+               # "time" command is optional
+               time julia -t 8 threaded.jl               
+   
+         .. tab:: distributed.sh 
+   
+            .. code-block:: bash
+
+               #!/bin/bash            
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH -n 8                 # nr. of tasks
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml julia/1.9.4-bdist   
+
+               # "time" command is optional
+               time julia -p 8 distributed.jl  
+   
+         .. tab:: mpi.sh 
+   
+            .. code-block:: bash
+
+               #!/bin/bash            
+               #SBATCH -A naiss202t-uv-wxyz # your project_ID       
+               #SBATCH -J job               # name of the job          
+               #SBATCH -n 8                 # nr. of tasks
+               #SBATCH --time=00:03:00      # requested time
+               #SBATCH --error=job.%J.err   # error file
+               #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+
+               # Load dependencies and Julia version
+               ml buildtool-easybuild/4.8.0-hpce082752a2 foss/2023b
+               ml julia/1.9.4-bdist   
+
+               # export the PATH of the Julia MPI wrapper
+               export PATH=/home/username/.julia/bin:$PATH
+   
+               time mpiexecjl -np 8 julia mpi.jl
+
 
 
 GPU code
