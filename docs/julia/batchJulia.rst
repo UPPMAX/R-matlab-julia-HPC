@@ -1460,6 +1460,26 @@ Exercises
 
                 julia serial-sum.jl Arg1 Arg2    # run the serial script
 
+    .. solution:: Solution for NSC
+        :class: dropdown
+        
+            This batch script is for NSC. 
+            
+            .. code-block:: sh
+    
+                #!/bin/bash            
+                #SBATCH -A naiss202t-uv-wxyz # your project_ID 
+                #SBATCH -J job               # name of the job         
+                #SBATCH -n 1                 # nr. tasks  
+                #SBATCH --time=00:04:00      # requested time
+                #SBATCH --error=job.%J.err   # error file
+                #SBATCH --output=job.%J.out  # output file            
+
+                ml julia/1.9.4-bdist
+
+                julia serial-sum.jl Arg1 Arg2    # run the serial script
+
+
 .. challenge:: 2. Run the GPU script
     
     Run the following script ``script-gpu.jl``. Why are we running the simulations
@@ -1637,6 +1657,27 @@ Exercises
                 0.001051 seconds (2 allocations: 512.047 KiB)
                 0.000077 seconds (13 allocations: 352 bytes)
 
+    .. solution:: Solution for NSC
+        :class: dropdown
+        
+            This batch script is for NSC. 
+            
+            .. code-block:: sh
+    
+                #!/bin/bash            
+                #SBATCH -A naiss202t-uv-wxyz # your project_ID 
+                #SBATCH -J job-gpu           # name of the job         
+                #SBATCH -n 1                 # nr. tasks  
+                #SBATCH -c 32                # nr. cores
+                #SBATCH --gpus-per-task=1    # nr. GPU cards
+                #SBATCH --time=00:04:00      # requested time
+                #SBATCH --error=job.%J.err   # error file
+                #SBATCH --output=job.%J.out  # output file            
+
+                ml buildenv-gcccuda/11.6.2-gcc9-hpc1 
+                ml julia/1.9.4-bdist       
+
+                julia script-gpu.jl         
 
 .. challenge:: 3. Machine Learning job on GPUs 
     
