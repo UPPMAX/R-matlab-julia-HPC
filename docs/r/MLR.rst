@@ -4,7 +4,7 @@ ML with R
 .. questions::
 
    - Is R suitable for Machine Learning (ML)?
-   - How to run R ML jobs on a HPC system (UPPMAX, HPC2N, LUNARC, NSC, PDC...)
+   - How to run R ML jobs on a HPC system (UPPMAX, HPC2N, LUNARC, NSC, PDC)
    
 .. objectives:: 
 
@@ -28,7 +28,7 @@ The R community has contributed many powerful packages, both for machine learnin
 - mlbench
 - tidyverse
 
-and many many more. 
+and others depending on the cluster. 
 
 Running your code
 -----------------
@@ -176,8 +176,8 @@ R batch scripts for ML
 
 Since most R codes for Machine Learning would run for a fairly long time, you would usually have to run them in a batch script. 
 
-ML on CPUs
-''''''''''
+Serial jobs
+'''''''''''
 
 .. type-along:: 
 
@@ -192,7 +192,7 @@ ML on CPUs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A uppmax2025-2-272 # Course project id. Change to your own project ID after the course
+            #SBATCH -A uppmax202u-w-xyz # Course project id. Change to your own project ID after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -211,7 +211,7 @@ ML on CPUs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2025-062 # Change to your own project ID
+            #SBATCH -A hpc2n202w-xyz # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
             
@@ -229,7 +229,7 @@ ML on CPUs
          .. code-block:: sh 
 
             #!/bin/bash
-            #SBATCH -A lu2025-7-24 # Change to your own project ID
+            #SBATCH -A lu202w-x-yz # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
 
@@ -248,7 +248,7 @@ ML on CPUs
          .. code-block:: sh 
 
             #!/bin/bash
-            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #SBATCH -A naiss202t-uw-xyz # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
 
@@ -268,7 +268,7 @@ ML on CPUs
          .. code-block:: sh 
 
             #!/bin/bash
-            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #SBATCH -A naiss202t-uw-xyz # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
 
@@ -286,8 +286,8 @@ ML on CPUs
 
       
         
-ML on GPUs 
-''''''''''
+Parallel jobs 
+'''''''''''''
 
 .. type-along:: 
 
@@ -396,7 +396,7 @@ ML on GPUs
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH --ntasks-per-node=1
-            #SBATCH -p gpu 
+            #SBATCH -p shared 
             #Writing output and error files
             #SBATCH --output=output%J.out
             #SBATCH --error=error%J.error
@@ -462,6 +462,8 @@ ML on GPUs
    .. code-block:: console
 
       $ sbatch <batch script>
+
+
 
 
 Exercises
