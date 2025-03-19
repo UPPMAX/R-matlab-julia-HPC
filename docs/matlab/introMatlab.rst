@@ -16,7 +16,7 @@ Introduction to MATLAB
     
 .. admonition:: Your expectations?
    
-    - Find best practices for using MATLAB at UPPMAX, HPC2N, and LUNARC
+    - Find best practices for using MATLAB at UPPMAX, HPC2N, LUNARC, NSC (Tetralith), and PDC (Dardel)
     - Toolboxes and Add-Ons
     - HPC performance with MATLAB
 
@@ -28,10 +28,12 @@ Introduction to MATLAB
 .. admonition:: MATLAB Exercise files
 
     - Link to exercises tarball: https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
-    - Or you can copy them from the computer system you are on (only until 2024-11-01) and unpack them with ``tar -xzvf exercises.tar.gz``
+    - For a limited time, users on clusters other than COSMOS (LUNARC) can copy them from the computer system you are on and unpack them with ``tar -xzvf exercises.tar.gz``
 
       - Rackham: cp /proj/r-py-jl-m-rackham/exercises.tar.gz .
-      - Kebnekaise: cp /proj/nobackup/r-py-jl-m/exercises.tar.gz . 
+      - Kebnekaise: cp /proj/nobackup/r-py-jl-m/exercises.tar.gz .
+      - Tetralith: cp /proj/r-matlab-julia-naiss/exercises.tar.gz .
+      - Dardel: cp /cfs/klemming/projects/supr/r-matlab-julia-naiss/exercises.tar.gz .
 
 
 .. challenge:: Download the exercise files
@@ -71,41 +73,31 @@ Distinguishing pros of MATLAB include:
 Of course MATLAB also has some drawbacks:
    - It is proprietary software, so you need to buy a license and sign up for an account. Many Add-Ons require a separate license.
    - With respect to the 2-language problem (where one can optimize for either performance or ease of prototyping, but not both), MATLAB even moreso than Python is geared toward usability. It can be slow.
-   - The way MATLAB automates multithreading means it will hog a full node unless you explicitly tell it not to by setting `-SingleCompThread` as an option at startup. 
+   - The way MATLAB automates multithreading means it will typically hog a full node unless you explicitly tell it not to by setting `-singleCompThread` as an option at startup, or unless your local cluster is configured to automatically limit the number of processes started on a login node.
    - The built-in plotting functions generate only very low-resolution raster graphics with no anti-aliasing, not suitable for publication.
 
 
 More on MATLAB?
 ---------------
 
-- Documentation at the HPC centres UPPMAX, HPC2N, and LUNARC
+- Documentation at the HPC centres UPPMAX, HPC2N, LUNARC, NSC, and PDC
    - UPPMAX: http://docs.uppmax.uu.se/software/matlab/
    - HPC2N: https://www.hpc2n.umu.se/resources/software/matlab and https://www.hpc2n.umu.se/documentation/guides/parallel-matlab
    - LUNARC: https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/
-- Official MATLAB documentation is found `here: <https://se.mathworks.com/help/matlab/index.html?s_tid=hc_panel>`_
+   - NSC: click `here for general instructions <https://www.nsc.liu.se/software/docs/matlab/>`_ and `here for installations on Tetralith <https://www.nsc.liu.se/software/catalogue/tetralith/modules/matlab.html>`_ specifically
+   - PDC: https://support.pdc.kth.se/doc/applications/?sub=matlab/
+- Official MATLAB documentation is found `here <https://se.mathworks.com/help/matlab/index.html?s_tid=hc_panel>`_
 
 Material for improving your programming skills
 ::::::::::::::::::::::::::::::::::::::::::::::
 
 If you have a Mathworks account that is less than 2 years old, Mathworks offers free `MATLAB self-paced online training courses <https://matlabacademy.mathworks.com/?page=1&fq=all-matlab&sort=featured&s_tid=ln_acad_learn_oc>`_. Students at any academic institution with a campus-wide license can use their university email addresses to create a free account to access these resources.
 
-The Mondays with MATLAB lecture series is offered every September. These and other events are posted `here <https://se.mathworks.com/company/events.html>`_. Mondays with MATLAB consist of 3 introductory lectures:
+The Mondays with MATLAB lecture series is offered every September, and offers introductions to MATLAB, its Parallel Computing Toolbox, and AI/ML toolboxes. These and other events are posted `here <https://se.mathworks.com/company/events.html>`_. If you have an account, you will be automatically signed up for the Mathworks mailing list, which will notify you of upcoming webinars as well as some featured packages. The webinars cover a broad range of topics and disciplines at varying skill levels, although these seminars tend to be more advanced.
 
-- Introduction to MATLAB
-- Low-code AI/deep learning in MATLAB
-- Hands-on exercises on your national HPC resources (varies by country)
-
-If you have an account, you will be automatically signed up for the Mathworks mailing list, which will notify you of upcoming webinars as well as some featured packages. The webinars cover a broad range of topics and disciplines at varying skill levels, although these seminars tend to be more advanced.
-
-
-Other NAISS centres
--------------------
-
-- `MATLAB at NSC <https://www.nsc.liu.se/software/catalogue/tetralith/modules/matlab.html>`_
-- `MATLAB at PDC <https://support.pdc.kth.se/doc/applications/?sub=matlab/>`_
 
 .. keypoints::
 
    - MATLAB is a 4th generation language with an interactive environment that can generate code that handles common problems for you.
-   - Parallelization is easy with the graphic user interface, but be careful to set ``-SingleCompThread`` when starting it at the command line or it may hog the nodes.
+   - Parallelization is easy with the GUI, but be careful to set ``-singleCompThread`` when starting it at the command line or it may hog a full node.
 
