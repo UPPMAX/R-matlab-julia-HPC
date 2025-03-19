@@ -300,7 +300,7 @@ Parallel jobs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A uppmax2025-2-272
+            #SBATCH -A uppmax202t-u-xyz
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH --exclusive
@@ -325,7 +325,7 @@ Parallel jobs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A hpc2n2025-062 # Change to your own project ID
+            #SBATCH -A hpc2n202u-xyz # Change to your own project ID
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 1
@@ -347,7 +347,7 @@ Parallel jobs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A lu2025-7-24 # Change to your own project ID
+            #SBATCH -A lu202u-x-yz # Change to your own project ID
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 1
@@ -369,7 +369,7 @@ Parallel jobs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #SBATCH -A naiss202t-uv-xyz # Change to your own project ID
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 1
@@ -391,7 +391,7 @@ Parallel jobs
          .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2025-22-262 # Change to your own project ID
+            #SBATCH -A naiss202u-vw-xyz # Change to your own project ID
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -N 1
