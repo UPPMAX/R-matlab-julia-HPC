@@ -229,6 +229,7 @@ Serial code
             #SBATCH -A naiss2025-22-262
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
+            #SBATCH -p main
 
             # Load any modules you need, here R/4.4.1
             module load PDC/23.12 R/4.4.1-cpeGNU-23.12
@@ -352,6 +353,7 @@ foreach and doParallel
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
+            #SBATCH -p main
 
             # If you do ml purge you also need to restore the preloaded modules which you should have saved 
             # when you logged in. Otherwise comment out the two following lines. 
@@ -507,7 +509,7 @@ Rmpi
 
          Short parallel example (using packages "Rmpi"). Loading R/4.4.1. 
 
-         Note: for PDC you first need to install "Rmpi" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('Rmpi')``) 
+         Note: for PDC you first need to install "Rmpi". You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/``. Copy it to your own directory under that and then do: ``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, and then ``R CMD INSTALL Rmpi_0.7-3.3.tar.gz --configure-args=" --with-Rmpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-Rmpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-Rmpi-type=MPICH2" --no-test-load``
 
          .. code-block:: sh 
 
@@ -516,8 +518,7 @@ Rmpi
             # Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 8
-
-            export OMPI_MCA_mpi_warn_on_fork=0
+            #SBATCH -p main
 
             # If you do ml purge you also need to restore the preloaded modules which you should have saved 
             # when you logged in. Otherwise comment out the two following lines. 
@@ -526,7 +527,7 @@ Rmpi
             ml PDC/23.12
             ml R/4.4.1-cpeGNU-23.12
 
-            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
+            srun -n 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
   
       .. tab:: Rmpi.R
 
