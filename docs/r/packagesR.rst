@@ -585,19 +585,19 @@ For other ways to install R packages, including from GitHub or manually, look at
 Extra example, NSC
 ****************** 
 
-For NSC you need to install ``doParallel``, ``foreach``, and ``Rmpi`` yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for ``nuggets`` or you do it later today, during the batch session. 
+For NSC you need to install ``doParallel`` and ``foreach``, and ``pbdMPI`` (since ``Rmpi`` does not work) yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for ``nuggets`` or you do it later today, during the batch session. 
 
 - If you have the setup done, and R loaded, then: 
     - Start R
     - Then ``install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')``  
     - and ``install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')``
-    - and ``install.packages('Rmpi', repos='http://ftp.acc.umu.se/mirror/CRAN/')``
+    - and ``install.packages('pbdMPI', repos='http://ftp.acc.umu.se/mirror/CRAN/')``
 
 
 Extra example, PDC
 ******************
 
-For PDC you the package ``Rmpi`` does not work correctly, so we will instead use the package ``pbdMPI``, which you need to install yourself to one of the exercises in the section about batch. You can either do that now, or you do it later today, during the batch session.
+For PDC the package ``Rmpi`` does not work correctly, so we will instead use the package ``pbdMPI``, which you need to install yourself to one of the exercises in the section about batch. You can either do that now, or you do it later today, during the batch session.
 
 - If you have the setup done, and the R module loaded, then (on the command line, not inside R):
     - First copy the tarball: ``cp /cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz .`` while standing in your own directory that you are running R scripts from.  

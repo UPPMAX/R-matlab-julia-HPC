@@ -446,7 +446,7 @@ Rmpi
 
       .. tab:: HPC2N
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.1.1 and its prerequisites. 
+         Short parallel example (using packages "Rmpi"). Loading R/4.1.2 and its prerequisites. 
        
          .. code-block:: sh
 
@@ -459,10 +459,10 @@ Rmpi
             export OMPI_MCA_mpi_warn_on_fork=0
             
             ml purge > /dev/null 2>&1
-            ml GCC/10.2.0  OpenMPI/4.0.5
-            ml R/4.1.1
+            ml GCC/11.2.0  OpenMPI/4.1.1
+            ml R/4.1.2
             
-            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out 
+            mpirun -np 1 Rscript Rmpi.R 
 
       .. tab:: LUNARC 
 
@@ -486,25 +486,24 @@ Rmpi
    
       .. tab:: NSC 
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.2.2. 
+         Short parallel example (using packages "pbdMPI as "Rmpi" does not work correctly on NSC). Loading R/4.2.2. 
 
-         Note: for NSC you first need to install "Rmpi" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('Rmpi')``) 
+         Note: for NSC you first need to install "pdbMPI" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('pbdMPI')``) 
 
          .. code-block:: sh 
 
             #!/bin/bash
             #SBATCH -A naiss2025-22-262 
-            # Asking for 10 min.
-            #SBATCH -t 00:10:00
+            # Asking for 15 min.
+            #SBATCH -t 00:15:00
             #SBATCH -n 8
-
-            export OMPI_MCA_mpi_warn_on_fork=0
+            #SBATCH --exclusive 
 
             ml purge > /dev/null 2>&1
             ml R/4.2.2-hpc1-gcc-11.3.0-bare 
 
-            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
-
+            srun --mpi=pmix Rscript Rmpi.R  
+            
       .. tab:: PDC 
 
          Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
