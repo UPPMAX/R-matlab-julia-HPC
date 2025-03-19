@@ -464,7 +464,15 @@ Parallel jobs
       $ sbatch <batch script>
 
 
+GPU jobs 
+''''''''
 
+Some packages are now able to use GPUs for ML jobs in R. One of them is ``xgboost``. 
+
+.. demo:: 
+   :class: dropdown
+
+   The idea is to 
 
 Exercises
 ---------
