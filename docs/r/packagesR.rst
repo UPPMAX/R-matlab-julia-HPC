@@ -597,11 +597,11 @@ For NSC you need to install ``doParallel``, ``foreach``, and ``Rmpi`` yourself t
 Extra example, PDC
 ******************
 
-For PDC you need to install ``Rmpi`` yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for ``nuggets`` or you do it later today, during the batch session.
+For PDC you the package ``Rmpi`` does not work correctly, so we will instead use the package ``pbdMPI``, which you need to install yourself to one of the exercises in the section about batch. You can either do that now, or you do it later today, during the batch session.
 
-- If you have the setup done, and the R module loaded, then:
-    - Start R
-    - Then ``install.packages('Rmpi', repos='http://ftp.acc.umu.se/mirror/CRAN/')``
+- If you have the setup done, and the R module loaded, then (on the command line, not inside R):
+    - First copy the tarball: ``cp /cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz .`` while standing in your own directory that you are running R scripts from.  
+    - Then do: ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
 
     
 Install own packages on Bianca

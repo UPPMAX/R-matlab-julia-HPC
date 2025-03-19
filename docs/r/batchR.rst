@@ -417,7 +417,7 @@ Rmpi
 
 .. type-along:: 
 
-   Short parallel example using package “Rmpi” 
+   Short parallel example using package “Rmpi” ("pbdMPI on Dardel")  
 
    .. tabs::
 
@@ -507,9 +507,9 @@ Rmpi
 
       .. tab:: PDC 
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.4.1. 
+         Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
 
-         Note: for PDC you first need to install "Rmpi". You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/``. Copy it to your own directory under that and then do: ``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, and then ``R CMD INSTALL Rmpi_0.7-3.3.tar.gz --configure-args=" --with-Rmpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-Rmpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-Rmpi-type=MPICH2" --no-test-load``
+         Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``. Copy it to your own subdirectory under that and then do: ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12``, and then ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
 
          .. code-block:: sh 
 
@@ -517,8 +517,10 @@ Rmpi
             #SBATCH -A naiss2025-22-262 
             # Asking for 10 min.
             #SBATCH -t 00:10:00
-            #SBATCH -n 8
+            #SBATCH --nodes 2
+            #SBATCH --ntasks-per-node=8
             #SBATCH -p main
+            #SBATCH --output=pbdMPI-test_%J.out 
 
             # If you do ml purge you also need to restore the preloaded modules which you should have saved 
             # when you logged in. Otherwise comment out the two following lines. 
@@ -527,7 +529,7 @@ Rmpi
             ml PDC/23.12
             ml R/4.4.1-cpeGNU-23.12
 
-            srun -n 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
+            srun -n 4 Rscript pbdMPI.R
   
       .. tab:: Rmpi.R
 
@@ -569,6 +571,30 @@ Rmpi
            
            mpi.quit()
 
+      .. tab:: pbdMPI.R 
+
+         This R script uses package "pbdMPI". 
+
+         .. code-block:: sh
+
+            library(pbdMPI)
+
+            ns <- comm.size()
+
+            # Tell all R sessions to return a message identifying themselves
+            id <- comm.rank()
+            ns <- comm.size()
+            host <- system("hostname", intern = TRUE)
+            comm.cat("I am", id, "on", host, "of", ns, "\n", all.rank = TRUE)
+
+            # Test computations
+            x <- 5
+            x <- rnorm(x)
+            comm.print(length(x))
+            comm.print(x, all.rank = TRUE)
+
+            finalize()
+   
       Send the script to the batch system: 
 
       .. code-block:: console
@@ -881,6 +907,7 @@ Exercises
              #SBATCH -A naiss2025-22-262 
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
+             #SBATCH -p main 
 
              # Load any modules you need, here for R/4.4.1 
              module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
