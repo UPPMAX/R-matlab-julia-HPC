@@ -103,6 +103,40 @@ Check for Julia versions
 
          $ module spider Julia/1.8.5-linux-x86_64
 
+   .. tab:: Tetralith
+   
+      Check all available version Julia versions with:
+
+      .. code-block:: console
+ 
+         $ module avail Julia
+      
+      Example for Julia 1.8.5
+
+      .. code-block:: console
+
+         $ module spider julia/1.8.5-nsc1-bdist
+
+   .. tab:: Dardel
+   
+      Check all available version Julia versions with:
+
+      .. code-block:: console
+ 
+         $ module spider Julia
+      
+      To see how to load a specific version of Julia, including the prerequisites, do 
+
+      .. code-block:: console
+   
+         $ module spider Julia/<version>
+
+      Example for Julia 1.8.5
+
+      .. code-block:: console
+
+         $ module spider Julia/1.8.5-linux-x86_64
+
 .. admonition:: Output at UPPMAX as of Oct 2024
    :class: dropdown
 
