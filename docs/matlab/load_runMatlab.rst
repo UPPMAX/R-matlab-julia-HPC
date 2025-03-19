@@ -2,8 +2,9 @@ Load and Run MATLAB
 ===================
 
 Different recommended procedures for each HPC center:
-  - **UPPMAX and HPC2N**: use module system to load at command line
+  - **UPPMAX, NSC, and HPC2N**: use module system to load at command line
   - **LUNARC**: recommended to use Desktop On-Demand menu, but interactive and non-interactive command lines available
+  - **PDC**: both command-line and Desktop On-Demand options available
 
 Most HPC centres in Sweden use the same or a similar module system for their software. The difference lies in which modules are installed and their versions/naming. The general examples below will be similar for all HPC centres in Sweden, with some variation in naming and available versions.
    
@@ -306,13 +307,13 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), NSC (2023b
 
 Start MATLAB at the Command Line
 --------------------------------
-Most of the time, you will run either MATLAB live scripts (``.mlx``) or basic script or function files (``.m``). Live scripts can only be opened and worked on in the GUI, while basic function or script files can also be run from a batch script and/or at the command line.
+Most of the time, you will run either MATLAB live scripts (``.mlx``) or basic script or function files (``.m``). Live scripts can only be opened and worked on in the GUI, while basic function or script files can also be run from a batch script and/or at the command line. It is important to note that at the command line, function definition is typically not supported unless the function is short and anonymous; user-defined functions must generally be written up and saved to separate ``.m`` files.
 
-It is important to note that at the command line, function definition is typically not supported unless the function is short and anonymous; user-defined functions must generally be written up and saved to separate ``.m`` files.
+The GUI is often the recommended interface where it is offered. The GUI provides ways to set up SLURM jobs through the ``Parallel Computing Toolbox``, which will be discussed later. The resources required to run the GUI and those required to run a job submitted to SLURM are separate, so do not worry if the maximum allocation time for a MATLAB GUI session is much less than the limit for a SLURM job.
 
-The GUI is typically the recommended interface where it is offered. The GUI provides ways to set up SLURM jobs through the ``Parallel Computing Toolbox``, which will be discussed later. 
+When starting MATLAB from the command line, the ``-singleCompThread`` flag is often required to prevent MATLAB from spawning as many processes as it thinks it needs up to the full capacity of a node. At most HPC centers, terminal instances launch MATLAB (either the GUI or command line) on a login node by default, so hogging a node can disrupt jobs and access for other users. Disrupting other users violates the NAISS user agreement, and HPC center staff reserve the right to kill disruptive tasks without warning.
 
-When starting MATLAB from the command line, the ``-singleCompThread`` is usually required to prevent MATLAB from spawning as many processes as it thinks it needs, which can cause the user to accidentally use up a full node. Most terminal instances launch MATLAB (either the GUI or command line) on a login node by default, so hogging a node can stall other users' jobs, a violation of the NAISS user agreement. Setting ``-singleCompThread`` does **not** prevent MATLAB from sending parallelized and/or multi-threaded jobs to SLURM or the MATLAB Distributed Computing Server (MDCS).
+Some HPC centers detect if you've started on a login node and set ``maxCompThreads`` to 1 automatically, but when in doubt, use ``-singleCompThread`` to be safe. Setting ``-singleCompThread`` does **not** prevent MATLAB from sending parallelized and/or multi-threaded jobs to SLURM or the MATLAB Distributed Computing Server (MDCS).
 
 .. type-along::
     
@@ -323,12 +324,6 @@ When starting MATLAB from the command line, the ``-singleCompThread`` is usually
       .. tab:: UPPMAX and NSC (Tetralith)
    
          Once you've loaded your preferred version of MATLAB, type:
-
-         .. code-block:: console
-
-            $ matlab
-
-         to start the GUI, or
 
          .. code-block:: console
 
@@ -350,7 +345,7 @@ When starting MATLAB from the command line, the ``-singleCompThread`` is usually
 
       .. tab:: LUNARC 
 
-         It is recommended that GUI be started in Thinlinc at the LUNARC HPC Desktop On-Demand by going to ``Applications`` → ``Applications - Matlab`` → ``Matlab <version>`` and clicking the desired version number. A GfxLauncher window will pop up where you can specify your account, requested resources, and walltime for the GUI itself; these settings are distinct from and do not constrain SLURM jobs sent from the GUI to the compute nodes. For more details, see the section on `Desktop On-Demand <../common/ondemand-desktop.html>`_
+         It is recommended that GUI be started in Thinlinc at the LUNARC HPC Desktop On-Demand.
 
          To start MATLAB in the terminal, you must first choose the correct terminal. There are several: three in ``Applications`` → ``Applications - General``, which can safely launch either the MATLAB GUI or MATLAB command line on a compute node, and one in ``Applications`` → ``Favorites`` → ``Terminal``, which runs on a login node and should be avoided. Starting any of the three in ``Applications - General`` will open the GfxLauncher and prompt you for your account and resource selections. Even users who have been awarded GPU time are encouraged to use the CPU-only terminal whenever possible, as they are abundant and less resource intensive.
 
@@ -359,8 +354,6 @@ When starting MATLAB from the command line, the ``-singleCompThread`` is usually
          .. code-block:: console
 
             $ matlab -singleCompThread -nodisplay
-
-
 
       .. tab:: Dardel (PDC)
 
@@ -390,8 +383,6 @@ When starting MATLAB from the command line, the ``-singleCompThread`` is usually
 
          If you are a student or staff member at KTH and you see these credential requests, that means PDC support did not receive your request for MATLAB access.
 
-         When the MATLAB prompt appears, it may print that it is ``Launching updater executable``. That should not interfere with anything; just press Enter to get a clean prompt line.
-
          **Reminder:** PDC users also have the option to go through ThinLinc and open MATLAB from the On-Demand Applications menu (See below).
 
 
@@ -402,7 +393,7 @@ Running the MATLAB GUI requires that users be logged into a Thinlinc session. Se
 
 .. tabs::
 
-  .. tab:: HPC2N, NSC, and UPPMAX
+  .. tab:: HPC2N and UPPMAX
 
       For HPC2N and UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
       
@@ -412,9 +403,27 @@ Running the MATLAB GUI requires that users be logged into a Thinlinc session. Se
       
          Both ways of starting MATLAB on Rackham.
 
-  .. tab:: LUNARC and PDC
+  .. tab:: NSC (Tetralith)
 
-      The LUNARC HPC Desktop and Interactive HPC at PDC both use Desktop On-Demand and GfxLauncher to run certain interactive apps without going through a terminal interface. Go to the Applications menu at the top left, mouse over ``Applications-Matlab`` (LUNARC) or ``PDC-Matlab`` to see the versions available, and click your preferred version. That will open a GfxLauncher popup where you can set the resources needed to run the MATLAB GUI (note that batch jobs submitted from within the GUI are _not_ bound by the same settings as the GUI). **Note:** on Dardel, MATLAB versions 2024x may prompt for MathWorks credentials if you are not affiliated with KTH, so you may want to try 2023b instead.
+      The best way to start the MATLAB GUI on Tetralith depends on how intensively you plan to use the GUI. Most of the time, it is recommended to use the ``interactive`` command first to get an allocation on a compute node. The commands you will need to enter look like the following (change the MATLAB version and interactive job specifications as needed):
+
+         .. code-block:: console
+
+            $ interactive -N1 --exclusive -t 4:00:00
+            $ module load MATLAB/2024a-hpc1-bdist
+            $ matlab -softwareopengl
+
+      For short (<<1 hour) tasks requiring few resources, once you've loaded your preferred version of MATLAB, you can use the following command to start MATLAB on a login node:
+
+         .. code-block:: console
+
+            $ vglrun matlab -nosoftwareopengl
+
+      You do not need to include ``-singleCompThread`` because ``maxNumCompThreads`` will be set to 1 automatically to account for starting on a login node.
+
+  .. tab:: LUNARC and PDC (Dardel)
+
+      The LUNARC HPC Desktop and Interactive HPC at PDC both use Desktop On-Demand and GfxLauncher to run certain interactive apps without going through a terminal interface. Click the ``Applications`` menu at the top left, hover the cursor over ``Applications-Matlab`` (LUNARC) or ``PDC-Matlab`` to see the versions available, and click your preferred version. That will open a GfxLauncher popup where you can set the resources needed to run the MATLAB GUI (note that batch jobs submitted from within the GUI are _not_ bound by the same settings as the GUI). **Note:** on Dardel, MATLAB versions 2024x may prompt for MathWorks credentials if you are not affiliated with KTH, so you may want to try 2023b instead.
 
       At PDC, selecting the partition happens entirely within the GfxLauncher. On LUNARC's Cosmos cluster, there are 3 versions per MATLAB release in the Apps menu---regular, (CPU), and (HEP,CPU)---and your resource choices in the GfxLauncher partly depend on which of those you select.
       
@@ -481,4 +490,5 @@ Try them yourself!
 .. keypoints::
 
    - You can start MATLAB either in a GUI (recommended) or, with the ``-nodisplay`` flag, run it in the terminal.
-   - If you start either interface from the terminal, you must first load the correct module and always include ``-singleCompThread`` to avoid hogging a login node.
+   - If you start either interface from the terminal, you must first load the correct module(s).
+   - Include the ``-singleCompThread`` flag in the starting command to avoid hogging a login node, unless you are sure that your cluster sets that constraint on the login node automatically.
