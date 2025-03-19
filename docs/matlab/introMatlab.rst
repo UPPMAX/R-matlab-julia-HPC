@@ -28,7 +28,7 @@ Introduction to MATLAB
 .. admonition:: MATLAB Exercise files
 
     - Link to exercises tarball: https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
-    - For a limited time, users on clusters other than COSMOS (LUNARC) can copy them from the computer system you are on and unpack them with ``tar -xzvf exercises.tar.gz``
+    - For a limited time, users on clusters other than COSMOS can copy them from the computer system you are on and unpack them with ``tar -xzvf exercises.tar.gz``
 
       - Rackham: cp /proj/r-py-jl-m-rackham/exercises.tar.gz .
       - Kebnekaise: cp /proj/nobackup/r-py-jl-m/exercises.tar.gz .
