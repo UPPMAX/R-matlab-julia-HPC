@@ -494,7 +494,7 @@ In the following demo you will find instructions to install this package and run
 
       R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
 
-   Download a data set like the `HIGGS <https://archive.ics.uci.edu/dataset/280/higgs>`_ data set for detecting bosonic particles 
+   Download a data set like the `HIGGS <https://archive.ics.uci.edu/dataset/280/higgs>`_ data set for detecting Higgs particles 
    that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
 
    .. code-block:: bash
@@ -503,13 +503,15 @@ In the following demo you will find instructions to install this package and run
       unzip higgs.zip
       gunzip HIGGS.csv.gz 
 
-   Copy and paste the following R script for predicting if the detected particles in the data set are bosons or not:
+   Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
 
    .. admonition:: gpu-script-db-higgs.R
       :class: dropdown
 
       .. code-block:: r 
 
+         # Inspired by the benchmarking of Anatoly Tsyplenkov:
+         # https://anatolii.nz/posts/2024/xgboost-gpu-r
          #     step 0: Install these packages if you haven't done it
          #install.packages(c("xgboost", "data.table", "tictoc"))
          library(xgboost)
