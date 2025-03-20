@@ -329,7 +329,7 @@ Prepare your environment now!
 
         - Project ID: ``naiss2025-22-262``
         - Directory name on Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss`` 
-        - Please create a suitably named subdirectory below ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``, for your oen exercises. 
+        - Please create a suitably named subdirectory below ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``, for your own exercises. 
 
  
 Content of the course
@@ -340,6 +340,7 @@ Content of the course
    :caption: Pre-requirements:
 
    prereqs.md
+   preparations.md
 
 .. toctree::
    :maxdepth: 2

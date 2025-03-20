@@ -8,7 +8,7 @@ Pre-requirements
 These are the things you need to follow the course:
 
 - You are not a complete beginner of the Linux environment
-- The technical prepartaions are covered in the next page.
+- The technical preparations are covered in the next page.
 
 These are discussed in detail below
 
@@ -113,7 +113,7 @@ The HPC centers UPPMAX, HPC2N, LUNARC, and NSC
        - Cirrus (weather forecasts, located at SMHI)
        - We will be using Tetralith, which also has GPUs 
 
-    - PSC has Dardel with AMD GPUs 
+    - PDC has Dardel with AMD GPUs 
 
     - Conda is recommended only for UPPMAX/LUNARC/NSC users
     
