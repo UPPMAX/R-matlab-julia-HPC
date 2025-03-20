@@ -94,12 +94,11 @@ At some clusters:
 
    $ module load julia/1.8.5
 
-or at cluster that includes "architecture in module name
+or at cluster that includes "architecture" in module name
 
 .. code-block:: console
 
    $ ml Julia/1.8.5-linux-x86_64
-
 
 
 Run
@@ -135,10 +134,14 @@ Run Julia as a session
 
       julia> 
 
-Julia has different modes, the one mentioned above is the so-called ``Julian`` mode
-where one can execute commands. The description for accessing these modes will be
-given in the following paragraphs. Once you are done with your work in any of the modes,
-you can return to the ``Julian`` mode by pressing the ``backspace`` key.
+Modes: Julian mode
+..................
+
+- Julia has different modes, the one we arrive at is the so-called ``Julian`` mode, where one can execute commands. 
+
+- The description for accessing these modes will be given in the following paragraphs. 
+
+- Once you are done with your work in any of the modes, you can return to the ``Julian`` mode by pressing the ``backspace`` key.
 
 Shell mode
 ..........
@@ -191,20 +194,19 @@ typing ``?``, then you may type some string from which you need more information
 Exiting
 .......
 
--  Exit with 
+Exit with 
 
-   .. code-block:: julia-repl
+.. code-block:: julia-repl
 
-      julia> <Ctrl-D> 
+   julia> <Ctrl-D> 
 
-   or 
+or 
 
-   .. code-block:: julia-repl
+.. code-block:: julia-repl
 
-      julia> exit()
+   julia> exit()
 
 .. admonition:: The Julian modes summary
-   :class: dropdown
 
     - enter the *shell mode* by typing ``;``
     - go back to *Julian* mode by ``<backspace>``
@@ -227,7 +229,7 @@ You can run a Julia script on the Linux shell as follows:
 
 where the script is a text file could contain these lines: 
 
-.. code-block:: julia
+.. code-block:: bash
 
    println("hello world")      
 
@@ -245,7 +247,12 @@ Exercises
       **FIX** List of links
 
 
-.. challenge:: 1b. Find out which versions are on your cluster from commandline
+.. challenge:: 1b. Find out which versions are on your cluster from command line
+
+   - Use the ``spider`` or ``avail`` module commands
+
+   .. solution:: Solution
+      :class: dropdown
 
       .. tabs::
 
@@ -447,7 +454,21 @@ Exercises
       Looking for modules in a session on the cluster is closer to the truth 
 
 
-.. challenge:: 2.  Load and start ``julia`` from the command line
+.. challenge:: 2. Try to start julia without having loaded julia module
+
+   - If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command. 
+   
+       - **Tip:** Type: ``unload julia`` and press ``<tab>`` until the full module name is shown, then presss ``<enter>``. (If the Julia module starts with an uppercase, use that instead!)
+
+   .. solution:: Solution
+      :class: dropdown
+
+      .. code-block:: console
+
+         $ julia
+
+
+.. challenge:: 3.  Load and start ``julia`` from the command line
 
    .. solution:: Solution
       :class: dropdown
@@ -498,9 +519,9 @@ Exercises
 
                $ ml Julia/1.8.5-linux-x86_64
 
-.. challenge:: 3. Getting familiar with Julia REPL
+.. challenge:: 4. Getting familiar with Julia REPL
     
-    - It is important in this course that you know how to navigate on the Julia command line. Here is where you install packages.
+    - It is important that you know how to navigate on the Julia command line. Here is where you work live with data and test aout things and you may install packages.
     - This exercise will help you to become more familiar with the REPL. Do the following steps: 
 
        * Start a Julia session. In the ``Julian`` mode, compute the sum the numbers 
@@ -523,7 +544,7 @@ Exercises
             julia>?
             help?> println
 
-.. challenge:: 4. Load another module and run a script
+.. challenge:: 5. Load another module and run a script
     
     - Load the latest version and run
     - Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input: 
@@ -570,7 +591,7 @@ Exercises
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
 
-.. challenge:: 5. Check your understanding
+.. challenge:: 6. Check your understanding
 
    - Check your understanding and answer in the shared document
    - Can you start Julia without loading a Julia module?
@@ -585,10 +606,9 @@ Exercises
    - How do you toggle to the ``shell`` mode? 
         - Which character?
 
-
 .. keypoints::
 
-   - Before you can run Julia scripts or work in a Julia shell, first load a Julia module
+   - Before you can run Julia scripts or work in a Julia shell, first load a Julia module with ``module load <julia module>``
    - Start a Julia shell session with ``julia``
    - It offers several modes that can make your workflow easier, i.e.
    
