@@ -47,6 +47,8 @@ Log in session
 Step 1: Log in!
 ---------------
 
+For beginners: use the **bold** login method.
+
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | HPC cluster| Login method [*]         | Documentation                                                                                          | Video                                                      |
 +============+==========================+========================================================================================================+============================================================+
@@ -78,8 +80,6 @@ Step 1: Log in!
 
 .. admonition:: What are the differences between these login methods?
     :class: dropdown
-
-    For beginners: use the **bold** login method.
 
     These are the ways to access your HPC cluster and some of their features:
 
