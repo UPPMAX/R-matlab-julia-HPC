@@ -7,68 +7,14 @@ Prepare the environment
 
 These are the things you need to follow the course:
 
-- you can log in to at least one HPC cluster, in at least one way
+- you can log in to at least one HPC cluster, in at least one way.
+  see `login <common/login.rst>`_
 - you can start a text editor
-
-These are discussed in detail below.
 
 .. note::
 
    - There will be an opportunity to get help with log in every morning of the workshop at 9:00.
    - You are also welcome to join the On-boarding at 13:00 the day before the ordinary program starts.
-
-Log in to one of the HPC systems covered in this course
--------------------------------------------------------
-
-Below is an overview of where to find the documentation and a video showing
-the procedure. Some procedures have waiting steps of one or more days,
-so prefer to start early.
-
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC cluster| Login method [*]         | Documentation                                                                                          | Video                                                      |
-+============+==========================+========================================================================================================+============================================================+
-| COSMOS     | SSH                      | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`__          | `here <https://youtu.be/sMsenzWERTg>`__                    |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| COSMOS     |**Local ThinLinc client** | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`__    | `here <https://youtu.be/wn7TgElj_Ng>`__                    |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Dardel     | SSH                      | `here <https://www.nsc.liu.se/support/getting-started/>`__                                             | `here <https://youtu.be/I8cNqiYuA-4?si=MDKS4wEB1nQODvxj>`__|
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Dardel     |**Local ThinLinc client** | `here <https://www.nsc.liu.se/support/graphics/>`__. Scroll down to ThinLinc                           |                                                            |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Kebnekaise | SSH                      | `here <https://docs.hpc2n.umu.se/documentation/access/>`__                                             | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`__|
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Kebnekaise | Local ThinLinc client    | `here <https://docs.hpc2n.umu.se/documentation/access/>`__                                             | `here <https://youtu.be/_jpj0GW9ASc?si=1k0ZnXABbhUm0px6>`__|
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Kebnekaise |**Remote desktop website**| `here <https://docs.hpc2n.umu.se/documentation/access/>`__                                             | `here <https://youtu.be/_O4dQn8zPaw?si=z32av8XY81WmfMAW>`__|
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Rackham    | SSH                      | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_local_thinlinc_client>`__| `here <https://youtu.be/TSVGSKyt2bQ>`__                    |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Rackham    | Local ThinLinc client    | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_console_password/>`__                   | `here <https://youtu.be/PqEpsn74l0g>`__                    |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Rackham    |**Remote desktop website**| `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`__             | `here <https://youtu.be/HQ2iuKRPabc>`__                    |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Tetralith  | SSH                      | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/wtGIzSBiulY?si=ejx1QEcYXI_bMSoM>`_ |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Tetralith  |**Local ThinLinc client** | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           | `here <https://youtu.be/JsHzQSFNGxY?si=gLI0GEiFiUZ-F__T>`_ |
-+------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-
-
-.. admonition:: What are the differences between these login methods?
-    :class: dropdown
-
-    For beginners: use the **bold** login method.
-
-    These are the ways to access your HPC cluster and some of their features:
-
-    +---------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-    | How to access your HPC cluster              | Features                                                                                          |How it looks like                                                  |
-    +=============================================+===================================================================================================+===================================================================+
-    | Remote desktop via a website                | Familiar remote desktop, clumsy, clunky, no need to install software, not available at all centers| .. figure:: img/rackham_remote_desktop_via_website_480_x_270.png  |
-    +---------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-    | Remote desktop via a local ThinLinc client  | Familiar remote desktop, clumsy, need to install ThinLinc                                         | .. figure:: img/thinlinc_local_rackham_zoom.png                   |
-    +---------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-    | Console environment using an SSH client     | A console environment, powerful, need to install an SSH client                                    | .. figure:: img/login_rackham_via_terminal_terminal_409_x_290.png |
-    +---------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 Need help? Contact support:
 
