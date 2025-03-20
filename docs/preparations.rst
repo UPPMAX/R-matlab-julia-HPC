@@ -120,49 +120,48 @@ Here is an overview of where to find the documentation and a video showing the p
 
 
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC Center | Method                 | Documentation                                                                                          | Video                                                      |
+| HPC cluster| Method                 | Documentation                                                                                          | Video                                                      |
 +============+========================+========================================================================================================+============================================================+
-| HPC2N      | SSH                    | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`_ |
+| COSMOS     | SSH                    | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`_           | `here <https://youtu.be/sMsenzWERTg>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC2N      | Local ThinLinc client  | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_jpj0GW9ASc?si=1k0ZnXABbhUm0px6>`_ |
+| COSMOS     | Local ThinLinc client  | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`_     | `here <https://youtu.be/wn7TgElj_Ng>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC2N      | Remote desktop website | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_O4dQn8zPaw?si=z32av8XY81WmfMAW>`_ |
+| Dardel     | SSH                    | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/I8cNqiYuA-4?si=MDKS4wEB1nQODvxj>`_ |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| LUNARC     | SSH                    | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`_           | `here <https://youtu.be/sMsenzWERTg>`_                     |
+| Dardel     | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           |                                                            |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| LUNARC     | Local ThinLinc client  | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`_     | `here <https://youtu.be/wn7TgElj_Ng>`_                     |
+| Kebnekaise | SSH                    | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`_ |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| NSC        | SSH                    | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/wtGIzSBiulY?si=ejx1QEcYXI_bMSoM>`_ |
+| Kebnekaise | Local ThinLinc client  | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_jpj0GW9ASc?si=1k0ZnXABbhUm0px6>`_ |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| NSC        | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           | `here <https://youtu.be/JsHzQSFNGxY?si=gLI0GEiFiUZ-F__T>`_ |
+| Kebnekaise | Remote desktop website | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_O4dQn8zPaw?si=z32av8XY81WmfMAW>`_ |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| PDC        | SSH                    | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/I8cNqiYuA-4?si=MDKS4wEB1nQODvxj>`_ |
+| Rackham    | SSH                    | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_local_thinlinc_client>`_ | `here <https://youtu.be/TSVGSKyt2bQ>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| PDC        | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           |                                                            |
+| Rackham    | Local ThinLinc client  | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_console_password/>`_                    | `here <https://youtu.be/PqEpsn74l0g>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| UPPMAX     | SSH                    | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_local_thinlinc_client>`_ | `here <https://youtu.be/TSVGSKyt2bQ>`_                     |
+| Rackham    | Remote desktop website | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`_              | `here <https://youtu.be/HQ2iuKRPabc>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| UPPMAX     | Local ThinLinc client  | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_console_password/>`_                    | `here <https://youtu.be/PqEpsn74l0g>`_                     |
+| Tetralith  | SSH                    | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/wtGIzSBiulY?si=ejx1QEcYXI_bMSoM>`_ |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| UPPMAX     | Remote desktop website | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`_              | `here <https://youtu.be/HQ2iuKRPabc>`_                     |
+| Tetralith  | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           | `here <https://youtu.be/JsHzQSFNGxY?si=gLI0GEiFiUZ-F__T>`_ |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 
 Need help? Contact support:
 
-+------------+-----------------------------------------------------------------------------------------------+
-| HPC Center | How to contact support                                                                        |
-+============+===============================================================================================+
-| HPC2N      | `Contact HPC2N support <https://docs.hpc2n.umu.se/support/contact/>`_                         |
-+------------+------------------------+----------------------------------------------------------------------+
-| LUNARC     | `Contact LUNARC support <https://www.lunarc.lu.se/getting-help/>`_                            |
-+------------+------------------------+----------------------------------------------------------------------+
-| UPPMAX     | `Contact UPPMAX support <https://docs.uppmax.uu.se/support/>`_                                |
-+------------+------------------------+----------------------------------------------------------------------+
-| NSC        | `Contact NSC support <https://www.nsc.liu.se/support/>`_                                      |
-+------------+------------------------+----------------------------------------------------------------------+
-| PDC        | `Contact PDC support <https://support.pdc.kth.se/doc/support/?sub=contact/contact_support/>`_ |
-+------------+-----------------------------------------------------------------------------------------------+
-
++------------+------------+-----------------------------------------------------------------------------------------------+
+|HPC cluster |HPC Center  | How to contact support                                                                        |
++============+============+===============================================================================================+
+|COSMOS      | LUNARC     | `Contact LUNARC support <https://www.lunarc.lu.se/getting-help/>`_                            |
++------------+------------+-----------+----------------------------------------------------------------------+
+|Dardel      | PDC        | `Contact PDC support <https://support.pdc.kth.se/doc/support/?sub=contact/contact_support/>`_ |
++------------+------------+----------------------------------------------------------------------------------+
+|Kebnekaise  | HPC2N      | `Contact HPC2N support <https://docs.hpc2n.umu.se/support/contact/>`_                         |
++------------+------------+-----------+----------------------------------------------------------------------+
+|Rackham     | UPPMAX     | `Contact UPPMAX support <https://docs.uppmax.uu.se/support/>`_                                |
++------------+------------+-----------+----------------------------------------------------------------------+
+|Tetralith   | NSC        | `Contact NSC support <https://www.nsc.liu.se/support/>`_                                      |
++------------+------------+-----------+----------------------------------------------------------------------+
 
 .. keypoints::
 
