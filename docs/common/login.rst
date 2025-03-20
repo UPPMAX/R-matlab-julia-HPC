@@ -11,7 +11,7 @@ Log in session
     - you can log in
     - you can start a text editor
 
-    We will also download exercise snippets and solutions that you can work with. <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
+    We will also download exercise snippets and solutions that you can work with. `Use the tarball with exercises <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
 
     If you have done all this, see you at 10:00 sharp! Else, see you in this session.
 
