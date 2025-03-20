@@ -433,7 +433,7 @@ If you are running a lot of jobs or if you want to quit MATLAB and restart it at
 
 .. type-along::
 
-   After doing the job settings further up, let us try running an example. We will use the example ``add2.m`` which adds two numbers. I just used 1 and 2, but you can pick any numbers you want. You can find the ``add2.m`` script in the exercises/matlab directory or you can 'download it <https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/matlab/add2.m>'_ from here.  
+   After doing the job settings further up, let us try running an example. We will use the example ``add2.m`` which adds two numbers. I just used 1 and 2, but you can pick any numbers you want. You can find the ``add2.m`` script in the exercises/matlab directory or you can `download it <https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/matlab/add2.m>`_ from here.  
 
    .. code-block::
 
@@ -614,6 +614,29 @@ Here is an example of a serial batch job for UPPMAX/HPC2N/LUNARC.
          # The command 'time' is timing the execution
          time matlab -nojvm -nodisplay -r "monte_carlo_pi(100000)"
 
+   .. tab:: NSC 
+
+      .. code-block:: 
+
+         #!/bin/bash
+         # Change to your actual project number later
+         #SBATCH -A naiss2025-22-262 
+         #SBATCH --ntasks=1 
+         #SBATCH --cpus-per-task=1 
+         #SBATCH --ntasks-per-core=1 
+         # Asking for 15 min (change as you want)
+         #SBATCH -t 00:15:00
+         #SBATCH --error=matlab_%J.err
+         #SBATCH --output=matlab_%J.out
+
+         # Clean the environment
+         module purge > /dev/null 2>&1
+         module load MATLAB/2024a-hpc1-bdist 
+
+         # Executing the matlab program monte_carlo_pi.m for the value n=100000
+         # (n is number of steps - see program).
+         # The command 'time' is timing the execution
+         time matlab -singleCompThread -nojvm -nodisplay -r "monte_carlo_pi(100000)"
 
 You can download `monte_carlo_pi.m <https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/matlab/monte_carlo_pi.m>`_ here or find it under matlab in the exercises directory. 
 
