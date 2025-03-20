@@ -483,8 +483,9 @@ In the following demo you will find instructions to install this package and run
 
    Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version:
 
-   .. code-block:: bash 
+   .. code-block:: bash
 
+      cd /home/u/username/R-packages-4.4.1 
       wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
 
    Then, install the package
