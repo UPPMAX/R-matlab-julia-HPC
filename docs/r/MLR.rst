@@ -580,6 +580,23 @@ In the following demo you will find instructions to install this package and run
 
          R --no-save --no-restore -f gpu-script-db-higgs.R
 
+   .. admonition:: Timings
+      :class: dropdown
+
+      .. code-block:: r 
+
+         > #     step 5: Train on CPU    
+         > tic()
+         > xgb_cpu <- xgb.train( params = param, data = dtrain, watchlist = evals, 
+         + nrounds = 10000, verbose = 0, tree_method = "hist")
+         > toc()
+         10337.386 sec elapsed
+         > 
+         > #     step 6: Train on GPU    
+         > tic()
+         > xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals, 
+         + nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
+         > toc()
 
 
 
