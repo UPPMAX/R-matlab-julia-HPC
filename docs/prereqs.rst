@@ -7,117 +7,26 @@ Pre-requirements
 
 These are the things you need to follow the course:
 
-- you can log in to at least one HPC cluster, in at least one way
-- you can start a text editor
+- You are not a complete beginner of the Linux environment
+- The technical prepartaions are covered in the next page.
 
 These are discussed in detail below
-
-.. note::
-
-   - There will be an opportunity to get help with log in every morning of the workshop at 9:00.
-   - You are also welcome to join the On-boarding at 13:00 the day before the ordinary program starts.
-
-Log in to one of the HPC systems covered in this course
--------------------------------------------------------
-
-These are the ways to access your HPC cluster and how that looks like:
-
-+---------------------------------------------+-------------------------------------------------------------------+
-| How to access your HPC cluster              | How it looks like                                                 |
-+=============================================+===================================================================+
-| Remote desktop via a website                | .. figure:: img/rackham_remote_desktop_via_website_480_x_270.png  |
-+---------------------------------------------+-------------------------------------------------------------------+
-| Remote desktop via a local ThinLinc client  | .. figure:: img/thinlinc_local_rackham_zoom.png                   |
-+---------------------------------------------+-------------------------------------------------------------------+
-| Console environment using an SSH client     | .. figure:: img/login_rackham_via_terminal_terminal_409_x_290.png |
-+---------------------------------------------+-------------------------------------------------------------------+
-
-These are the ways to access your HPC cluster and some of their features:
-
-+---------------------------------------------+-------------------------------------------------------------------+
-| How to access your HPC cluster              | Features                                                          |
-+=============================================+===================================================================+
-| Remote desktop via a website                | Familiar remote desktop                                           |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Clumsy and clunky                                                 |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Slow on UPPMAX                                                    |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | No need to install software                                       |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Works on HPC2N and UPPMAX                                         |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Needs 2FA for UPPMAX                                              |
-+---------------------------------------------+-------------------------------------------------------------------+
-| Remote desktop via a local ThinLinc client  | Familiar remote desktop                                           |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Clumsy                                                            |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Need to install ThinLinc                                          |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Works on all centers                                              |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Needs 2FA for UPPMAX                                              |
-+---------------------------------------------+-------------------------------------------------------------------+
-| Console environment using an SSH client     | A console environment may be unfamiliar                           |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Great to use                                                      |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Need to install an SSH client                                     |
-+---------------------------------------------+-------------------------------------------------------------------+
-|                                             | Works on all centers                                              |
-+---------------------------------------------+-------------------------------------------------------------------+
-
-Here is an overview of where to find the documentation and a video showing the procedure:
-
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC Center | Method                 | Documentation                                                                                          | Video                                                      |
-+============+========================+========================================================================================================+============================================================+
-| HPC2N      | SSH                    | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC2N      | Local ThinLinc client  | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_jpj0GW9ASc?si=1k0ZnXABbhUm0px6>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC2N      | Remote desktop website | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_O4dQn8zPaw?si=z32av8XY81WmfMAW>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| LUNARC     | SSH                    | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`_           | `here <https://youtu.be/sMsenzWERTg>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| LUNARC     | Local ThinLinc client  | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`_     | `here <https://youtu.be/wn7TgElj_Ng>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| UPPMAX     | SSH                    | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_local_thinlinc_client>`_ | `here <https://youtu.be/TSVGSKyt2bQ>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| UPPMAX     | Local ThinLinc client  | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_console_password/>`_                    | `here <https://youtu.be/PqEpsn74l0g>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| UPPMAX     | Remote desktop website | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`_              | `here <https://youtu.be/HQ2iuKRPabc>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-
-Need help? Contact support:
-
-+------------+-----------------------------------------------------------------------+
-| HPC Center | How to contact support                                                |
-+============+=======================================================================+
-| HPC2N      | `Contact HPC2N support <https://docs.hpc2n.umu.se/support/contact/>`_ |
-+------------+------------------------+----------------------------------------------+
-| LUNARC     | `Contact LUNARC support <https://www.lunarc.lu.se/getting-help/>`_    |
-+------------+------------------------+----------------------------------------------+
-| UPPMAX     | `Contact UPPMAX support <https://docs.uppmax.uu.se/support/>`_        |
-+------------+------------------------+----------------------------------------------+
-
-Use a text editor
------------------
-
-All clusters provide the most common command-line text editors.
-We recommend ``nano`` unless you are used to another editor:
-
-- `HPC2N documentation on text editors <https://docs.hpc2n.umu.se/tutorials/linuxguide/#editors>`_ 
-- `UPPMAX documentation on text editors <http://docs.uppmax.uu.se/software/text_editors/>`_ 
-- LUNARC does not have documentation on text editors (yet), but any other
-  center's documentation will work
 
 Get familiar with the Linux/Bash command line
 ---------------------------------------------
 
-- `Short introductions <https://uppsala.instructure.com/courses/67267/pages/using-the-command-line-bash?module_item_id=455632>`_
-- `Linux "cheat sheet" <https://www.hpc2n.umu.se/documentation/guides/linux-cheat-sheet>`_
+- We recommend the NAISS workshop below but you could test the centre specific material as well.
+    - You can use your own computer  for this.
+- Some material is better followed from a session on the mentioned cluster.
+
+NAISS workshop
+..............
+
+- `Introduction to Linux <https://hpc2n.github.io/intro-linux/>`_
+
+Centre material
+.................
+
 - UPPMAX
     
   - `Linux <http://docs.uppmax.uu.se/getting_started/linux/>`_
@@ -128,10 +37,176 @@ Get familiar with the Linux/Bash command line
     
   - `HPC2N's intro course material (including link to recordings) <https://github.com/hpc2n/intro-course>`_
   - `HPC2N's YouTube channel video on Linux <https://www.youtube.com/watch?v=gq4Dvt2LeDg>`_
+  - `Linux "cheat sheet" <https://www.hpc2n.umu.se/documentation/guides/linux-cheat-sheet>`_
 
 - LUNARC
     - Any of the above links would be helpful for you
 
+- NSC
+    - Any of the above links would be helpful for you
+
 - PDC
     - `PDC intro course material <https://pdc-support.github.io/pdc-intro/>`_ 
+
+Material for improving your programming skills
+----------------------------------------------
+
+First level
+:::::::::::
+
+`The Carpentries <https://carpentries.org/>`_ teaches basic lab skills for research computing.
+
+- `Software carpentry courses/material <https://software-carpentry.org/lessons/>`_ 
+
+Second level
+::::::::::::
+
+`Code Refinery <https://coderefinery.org/>`_ develops and maintains training material on software best practices for researchers that already write code. 
+
+- Their material addresses all academic disciplines and tries to be as programming language-independent as possible. 
+- `Code refinery lessons <https://coderefinery.org/lessons/>`_     
+
+Third level
+:::::::::::
+
+`ENCCS (EuroCC National Competence Centre Sweden) <https://enccs.se/>`_ is a national centre that supports industry, public administration and academia accessing and using European supercomputers. They give higher-level training of programming and specific software.
+
+- `ENCCS training material <https://enccs.se/lessons/>`_ 
+
+Understanding clusters
+----------------------
+
+The HPC centers UPPMAX, HPC2N, LUNARC, and NSC 
+##############################################
+
+.. admonition:: Four HPC centers
+
+   - There are many similarities:
+   
+     - Login vs. calculation/compute nodes
+     - Environmental module system with software hidden until loaded with ``module load``
+     - Slurm batch job and scheduling system
+     - ``pip install`` procedure
+     
+   - ... and small differences:
+   
+     - commands to load Python, Python packages
+     - sometimes different versions of Python, etc.   
+     - slightly different flags to Slurm
+     
+   - ... and some bigger differences:
+   
+     - UPPMAX has three different clusters 
+
+       - Rackham for general purpose computing on CPUs only
+       - Snowy available for local projects and suits long jobs (< 1 month) and has GPUs
+       - Bianca for sensitive data and has GPUs
+
+   - HPC2N has Kebnekaise with GPUs  
+   - LUNARC has Cosmos with GPUs (and Cosmos-SENS) 
+   - NSC has several clusters
+       - BerzeLiUs (AI/ML, NAISS)
+       - Tetralith (NAISS)
+       - Sigma (LiU local)
+       - Freja (R&D, located at SMHI)
+       - Nebula (MET Norway R&D)
+       - Stratus (weather forecasts, located at NSC)
+       - Cirrus (weather forecasts, located at SMHI)
+       - We will be using Tetralith, which also has GPUs 
+
+   - Conda is recommended only for UPPMAX/LUNARC/NSC users
+    
+.. warning:: 
+
+   - At HPC2N, UPPMAX, LUNARC, and NSC we call the applications available via the *module system* **modules**. 
+   - https://docs.uppmax.uu.se/cluster_guides/modules/ 
+   - https://docs.hpc2n.umu.se/documentation/modules/
+   - https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/  
+   - https://www.nsc.liu.se/software/modules/
+
+   To distinguish these modules from the **python** *modules* that work as libraries we refer to the later ones as **packages**.
+   
+Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, and NSC 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+**What is a cluster?**
+
+- Login nodes and calculations/computation nodes
+
+- A network of computers, each computer working as a **node**.
+     
+- Each node contains several processor cores and RAM and a local disk called scratch.
+
+.. figure:: ./img/node.png
+   :align: center
+
+- The user logs in to **login nodes**  via Internet through ssh or Thinlinc.
+
+  - Here the file management and lighter data analysis can be performed.
+
+.. figure:: ./img/nodes.png
+   :align: center
+
+- The **calculation nodes** have to be used for intense computing. 
+
+
+Common features
+###############
+
+- Intel (and for HPC2N/LUNARC, also AMD) CPUs
+- Linux kernel
+- Bash shell
+
+.. list-table:: Hardware
+   :widths: 25 25 25 25 25 25 25
+   :header-rows: 1
+
+   * - Technology
+     - Kebnekaise
+     - Rackham
+     - Snowy
+     - Bianca
+     - Cosmos  
+     - Tetralith   
+   * - Cores/compute node
+     - 28 (72 for largemem, 128/256 for AMD Zen3/Zen4)
+     - 20
+     - 16
+     - 16
+     - 48  
+     - 32  
+   * - Memory/compute node
+     - 128-3072 GB 
+     - 128-1024 GB
+     - 128-4096 GB
+     - 128-512 GB
+     - 256-512 GB  
+     - 96-384 GB   
+   * - GPU
+     - NVidia V100, A100, A6000, L40s, H100, A40, AMD MI100 
+     - None
+     - NVidia T4 
+     - NVidia A100
+     - NVidia A100 
+     - NVidia T4   
+
+
+Overview of the UPPMAX systems
+##############################
+
+.. mermaid:: mermaid/uppmax2.mmd
+
+Overview of the HPC2N system
+############################
+
+.. mermaid:: mermaid/kebnekaise.mmd
+
+Overview of the LUNARC system 
+############################# 
+
+.. figure:: ./img/cosmos-resources.png 
+   :align: center
+
+Overview of the NSC systems
+########################### 
 
