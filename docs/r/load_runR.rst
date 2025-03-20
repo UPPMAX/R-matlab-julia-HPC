@@ -55,8 +55,9 @@ Exercises
 ----------------
 
 
-1. Documentation
-~~~~~~~~~~~~~~~~
+
+Exercise 1: Find an R module
+----------------------------
 
 - Find the documentation of your HPC cluster
 
@@ -96,8 +97,10 @@ Exercises
     | Tetralith  | `R <https://www.nsc.liu.se/software/catalogue/tetralith/modules/r.html>`_                                      |
     +------------+----------------------------------------------------------------------------------------------------------------+
 
-1. Find an R module
--------------------
+- Load the module for R
+
+
+
 
 To be able to work with R on an HPC cluster, 
 we will need to find a module that loads a specific version of R.
@@ -621,9 +624,7 @@ Exercises
 Exercise 1: find an R module
 ----------------------------
 
-.. note:: Learning objectives
-
-    - find the module to be able to run R
+HIERO
 
 Use the module system to find which versions of R are provided
 by your cluster's module system.
