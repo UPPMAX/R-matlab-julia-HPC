@@ -458,7 +458,7 @@ Exercises
 
    - If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command. 
    
-       - **Tip:** Type: ``unload julia`` and press ``<tab>`` until the full module name is shown, then presss ``<enter>``. (If the Julia module starts with an uppercase, use that instead!)
+       - **Tip:** Type: ``unload julia`` and press ``<tab>`` until the full module name is shown, then press ``<enter>``. (If the Julia module starts with an uppercase, use that instead!)
 
    .. solution:: Solution
       :class: dropdown
@@ -595,16 +595,16 @@ Exercises
 
    - Check your understanding and answer in the shared document
    - Can you start Julia without loading a Julia module?
-        - Yes?
-        - No?
-   - How do you toggle to the ``package`` mode? 
-        - Which character?
-   - How do you toggle back to the ``Julia`` mode? 
-        - Which character?
-   - How do you toggle to the ``help`` mode? 
-        - Which character?
-   - How do you toggle to the ``shell`` mode? 
-        - Which character?
+
+       - Yes?
+       - No?
+
+   - Which character to use to toggle
+
+       - to the ``package`` mode? 
+       - back to the ``Julia`` mode? 
+       - to the ``help`` mode? 
+       - to the ``shell`` mode? 
 
 .. keypoints::
 
