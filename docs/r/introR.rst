@@ -48,12 +48,12 @@ Introduction R
     - start batch jobs 
     - run RStudio
 
-    on HPC2N, UPPMAX, or LUNARC
+    on any NAISS cluster.
 
 .. admonition:: **Course non-goals**
 
     - improve R coding skills 
-    - use R on other HPC clusters
+    - use R on non-NAISS HPC clusters
 
 First overview of R
 -------------------
@@ -71,7 +71,7 @@ The main general R resources are:
 
 R is used in many NAISS centres:
 
-- `here is an overview of 6 NAISS centres and their R documentation <http://docs.uppmax.uu.se/software/r/#overview-of-naiss-centers-and-their-documentation-about-r>`_
+- `here is an overview of NAISS centres and their R documentation <http://docs.uppmax.uu.se/software/r/#overview-of-naiss-centers-and-their-documentation-about-r>`_
 - `here is an (incomplete) overview of R courses being taught at NAISS <http://docs.uppmax.uu.se/software/r/#learning-r>`_
 
 
@@ -94,4 +94,4 @@ used in this course.
 See `here <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
 how to get and decompress it.
 
-In the 'Load modules and run' session, there is the time to do so.
+In the 'Load and run R' session, there is the time to do so.
