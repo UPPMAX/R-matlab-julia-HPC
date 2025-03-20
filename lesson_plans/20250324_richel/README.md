@@ -55,7 +55,7 @@ Time  | Topic                   | State
 
 - [ ] Next course iteration: make 'Load and run R' point to documentation more
 
-I want to make the course more useful and NIASS wide, mostly pointing
+I want to make the course more useful and NAISS-wide, mostly pointing
 to documentation.
 
 - [ ] In the next course iteration: use more active learning methods in this
