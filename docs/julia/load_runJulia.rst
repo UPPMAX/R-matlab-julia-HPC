@@ -48,6 +48,326 @@ The module activates paths to a specific version of the julia interpreter and it
 Check for Julia versions
 ------------------------
 
+Principle
+#########
+
+.. code-block:: console
+
+   $ module avail julia
+
+or, at clusters that hides the modules until relevant dependencies are loaded.
+
+.. code-block:: console
+
+   $ module spider julia
+
+.. admonition:: Output at UPPMAX as of Oct 2024
+   :class: dropdown
+
+       .. code-block::  console
+    
+          $ module avail julia
+          ----------------------------- /sw/mf/rackham/compilers -----------------------------
+             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
+             julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
+             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
+
+           Where:
+            D:  Default Module
+
+          Use "module spider" to find all possible modules and extensions.
+          Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+
+.. admonition:: Output at HPC2N as of Oct 2024 
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia  # Assuming you are working on the Intel login nodes
+           ------------------------------------------------------------------------------------------------
+             Julia:
+           ------------------------------------------------------------------------------------------------
+             Description:
+               Julia is a high-level, high-performance dynamic programming language for numerical
+               computing
+
+             Versions:
+                Julia/1.5.3-linux-x86_64
+                Julia/1.7.1-linux-x86_64
+                Julia/1.8.5-linux-x86_64
+                Julia/1.9.3-linux-x86_64
+           ------------------------------------------------------------------------------------------------
+             For detailed information about a specific "Julia" package (including how to load the modules) use the module's full name.
+             Note that names that have a trailing (E) are extensions provided by other modules.
+             For example:
+
+                $ module spider Julia/1.8.5-linux-x86_64
+           ------------------------------------------------------------------------------------------------
+
+.. admonition:: Output at LUNARC as of Oct 2024 
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia
+           -----------------------------------------------------------------------------------------------------
+             Julia:
+           -----------------------------------------------------------------------------------------------------
+               Description:
+                 Julia is a high-level, high-performance dynamic programming language for numerical computing
+
+                Versions:
+                   Julia/1.8.5-linux-x86_64
+                   Julia/1.9.0-linux-x86_64
+                   Julia/1.9.2-linux-x86_64
+                   Julia/1.9.3-linux-x86_64
+                   Julia/1.10.4-linux-x86_64
+
+.. admonition:: **FIX** Output at NSC as of Mar 2025
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia
+           -----------------------------------------------------------------------------------------------------
+             Julia:
+           -----------------------------------------------------------------------------------------------------
+               Description:
+                 Julia is a high-level, high-performance dynamic programming language for numerical computing
+
+                Versions:
+                   Julia/1.8.5-linux-x86_64
+                   Julia/1.9.0-linux-x86_64
+                   Julia/1.9.2-linux-x86_64
+                   Julia/1.9.3-linux-x86_64
+                   Julia/1.10.4-linux-x86_64
+
+.. admonition:: **FIX** Output at PDC as of MAr 2025 
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia
+           -----------------------------------------------------------------------------------------------------
+             Julia:
+           -----------------------------------------------------------------------------------------------------
+               Description:
+                 Julia is a high-level, high-performance dynamic programming language for numerical computing
+
+                Versions:
+                   Julia/1.8.5-linux-x86_64
+                   Julia/1.9.0-linux-x86_64
+                   Julia/1.9.2-linux-x86_64
+                   Julia/1.9.3-linux-x86_64
+                   Julia/1.10.4-linux-x86_64
+
+Load a Julia module
+--------------------
+
+For reproducibility, we recommend **ALWAYS** loading a specific module for the Julia version instead of using the 
+default one.
+
+For this course, we recommend using the following Julia versions, because the exercises are developed with them:
+
+Principle
+#########
+
+At some clusters:
+
+.. code-block:: console
+
+   $ module load julia/1.8.5
+
+or at cluster that includes "architecture in module name
+
+.. code-block:: console
+
+   $ ml Julia/1.8.5-linux-x86_64
+
+.. admonition:: **FIX** Output at PDC as of MAr 2025 
+   :class: dropdown
+
+   .. tabs::
+
+      .. tab:: UPPMAX
+   
+         Go back and check which Julia modules were available. To load version 1.8.5, do:
+
+         .. code-block:: console
+
+           $ module load julia/1.8.5
+        
+         Note: Lowercase ``j``.
+
+         For short, you can also use: 
+
+         .. code-block:: console
+
+            $ ml julia/1.8.5
+
+      .. tab:: HPC2N
+
+         .. code-block:: console
+
+            $ module load Julia/1.8.5-linux-x86_64
+
+         Note: Uppercase ``J``.   
+
+         For short, you can also use: 
+
+         .. code-block:: console
+
+            $ ml Julia/1.8.5-linux-x86_64
+
+      .. tab:: LUNARC
+
+         .. code-block:: console
+
+            $ module load Julia/1.8.5-linux-x86_64
+
+         Note: Uppercase ``J``.   
+
+         For short, you can also use: 
+
+         .. code-block:: console
+
+            $ ml Julia/1.8.5-linux-x86_64
+
+Run
+---
+
+Run Julia as a session
+######################
+
+
+Workflow in Julia (DEMO)
+------------------------
+
+- After loading the appropriate modules for Julia, you will have access to the **read-eval-print-loop (REPL)** command line by typing ``julia``: 
+
+.. code-block:: console
+
+   $ julia 
+
+- In julia REPL
+
+.. admonition:: How will it look like? 
+   :class: dropdown
+
+   .. code-block:: julia-repl
+         
+      $ ml julia/1.8.5
+      $ julia 
+
+            _       _ _(_)_     |  Documentation: https://docs.julialang.org
+           (_)     | (_) (_)    |
+            _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+           | | | | | | |/ _` |  |
+           | | |_| | | | (_| |  |  Version 1.8.5 (2023-01-08)
+          _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+         |__/                   |
+
+      julia> 
+
+Julia has different modes, the one mentioned above is the so-called ``Julian`` mode
+where one can execute commands. The description for accessing these modes will be
+given in the following paragraphs. Once you are done with your work in any of the modes,
+you can return to the ``Julian`` mode by pressing the ``backspace`` key.
+
+While being on the Julian mode you can enter the ``shell`` mode by typing ``;``:
+
+.. code-block:: julia
+
+   julia>; 
+   shell>pwd
+   /current-folder-path
+
+this will allow you to use Linux commands. Notice that the availability of these commands
+depend on the OS, for instance, on Windows it will depend on the terminal that you have
+installed and if it is visible to the Julia installation. 
+
+Another mode available in Julia is the ``package manager`` mode, it can be accessed by typing 
+``]`` in the ``Julian`` mode:
+
+.. code-block:: julia-repl
+
+   julia>]
+   (v1.8) pkg>
+
+this will make your interaction with the package manager **Pkg** easier, for instance,
+instead of typing the complete name of **Pkg** commands such as ``Pkg.status()`` in the
+``Julian`` mode, you can just type ``status`` in the ``package`` mode. 
+
+The last mode is the ``help`` mode, you can enter this mode from the ``Julian`` one by
+typing ``?``, then you may type some string from which you need more information:
+
+.. code-block:: julia
+
+   julia>?
+
+   help?> ans
+   search: ans transpose transcode contains expanduser instances MathConstants readlines 
+   LinearIndices leading_ones leading_zeros
+
+   ans
+
+   A variable referring to the last computed value, automatically set at the interactive prompt.
+
+
+More detailed information about the modes in Julia can be found `here <https://docs.julialang.org/en/v1/stdlib/REPL/>`_.
+
+.. admonition:: The Julian modes summary
+   :class: dropdown
+
+    - enter the shell mode by typing ``;``
+    - go back to *Julian* mode by ``<backspace>``
+    - access the package manager mode by typing ``]`` in the *Julian* mode
+    - use the help mode by typing ``?`` in the *Julian mode*
+
+.. type-along::
+
+   .. code-block:: console
+
+      $ julia 
+
+   The Julia prompt (``julian`` mode) looks like this:
+
+   .. code-block:: julia-repl
+   
+      julia> 
+
+   Exit with 
+
+   .. code-block:: julia-repl
+
+      julia> <Ctrl-D> 
+
+   or 
+
+   .. code-block:: julia-repl
+
+      julia> exit()
+
+Run a Julia script
+################
+
+You can run a Julia script on the Linux shell as follows:
+
+.. code-block:: console
+
+   $ julia example.jl
+
+where the script is a text file could contain these lines: 
+
+.. code-block:: julia
+
+   println("hello world")      
+
+
+Exercises
+---------
+
 .. tabs::
 
    .. tab:: UPPMAX
@@ -137,289 +457,26 @@ Check for Julia versions
 
          $ module spider Julia/1.8.5-linux-x86_64
 
-.. admonition:: Output at UPPMAX as of Oct 2024
-   :class: dropdown
 
-       .. code-block::  console
-    
-          $ module avail julia
-          ----------------------------- /sw/mf/rackham/compilers -----------------------------
-             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
-             julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
-             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
 
-           Where:
-            D:  Default Module
 
-          Use "module spider" to find all possible modules and extensions.
-          Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-
-
-.. admonition:: Output at HPC2N as of Oct 2024 
-    :class: dropdown
-
-        .. code-block:: console
-
-           $ module spider julia  # Assuming you are working on the Intel login nodes
-           ------------------------------------------------------------------------------------------------
-             Julia:
-           ------------------------------------------------------------------------------------------------
-             Description:
-               Julia is a high-level, high-performance dynamic programming language for numerical
-               computing
-
-             Versions:
-                Julia/1.5.3-linux-x86_64
-                Julia/1.7.1-linux-x86_64
-                Julia/1.8.5-linux-x86_64
-                Julia/1.9.3-linux-x86_64
-           ------------------------------------------------------------------------------------------------
-             For detailed information about a specific "Julia" package (including how to load the modules) use the module's full name.
-             Note that names that have a trailing (E) are extensions provided by other modules.
-             For example:
-
-                $ module spider Julia/1.8.5-linux-x86_64
-           ------------------------------------------------------------------------------------------------
-
-.. admonition:: Output at LUNARC as of Oct 2024 
-    :class: dropdown
-
-        .. code-block:: console
-
-           $ module spider julia
-           -----------------------------------------------------------------------------------------------------
-             Julia:
-           -----------------------------------------------------------------------------------------------------
-               Description:
-                 Julia is a high-level, high-performance dynamic programming language for numerical computing
-
-                Versions:
-                   Julia/1.8.5-linux-x86_64
-                   Julia/1.9.0-linux-x86_64
-                   Julia/1.9.2-linux-x86_64
-                   Julia/1.9.3-linux-x86_64
-                   Julia/1.10.4-linux-x86_64
-
-           
-Load a Julia module
---------------------
-
-For reproducibility, we recommend **ALWAYS** loading a specific module for the Julia version instead of using the 
-default one.
-
-For this course, we recommend using the following Julia versions, because the exercises are developed with them:
-
-.. type-along::
-
-   .. tabs::
-
-      .. tab:: UPPMAX
-   
-         Go back and check which Julia modules were available. To load version 1.8.5, do:
-
-         .. code-block:: console
-
-           $ module load julia/1.8.5
-        
-         Note: Lowercase ``j``.
-
-         For short, you can also use: 
-
-         .. code-block:: console
-
-            $ ml julia/1.8.5
-
-      .. tab:: HPC2N
-
-         .. code-block:: console
-
-            $ module load Julia/1.8.5-linux-x86_64
-
-         Note: Uppercase ``J``.   
-
-         For short, you can also use: 
-
-         .. code-block:: console
-
-            $ ml Julia/1.8.5-linux-x86_64
-
-      .. tab:: LUNARC
-
-         .. code-block:: console
-
-            $ module load Julia/1.8.5-linux-x86_64
-
-         Note: Uppercase ``J``.   
-
-         For short, you can also use: 
-
-         .. code-block:: console
-
-            $ ml Julia/1.8.5-linux-x86_64
-
-Workflow in Julia (DEMO)
-------------------------
-
-.. demo::
-
-   The teacher will do this as a demo. You will have the opportunity to test soon!
-
-After loading the appropriate modules for Julia, you will have access to the
-read-eval-print-loop (REPL) command line by typing ``julia``: 
-
-.. tabs::
-
-   .. tab:: UPPMAX 
-
-        .. code-block:: julia-repl
-         
-         $ ml julia/1.8.5
-         $ julia 
-
-            _       _ _(_)_     |  Documentation: https://docs.julialang.org
-           (_)     | (_) (_)    |
-            _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
-           | | | | | | |/ _` |  |
-           | | |_| | | | (_| |  |  Version 1.8.5 (2023-01-08)
-          _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
-         |__/                   |
-
-         julia> 
-
-
-   .. tab:: HPC2N
-
-        .. code-block:: julia-repl
-         
-         $ ml Julia/1.8.5-linux-x86_64
-         $ julia 
-
-            _       _ _(_)_     |  Documentation: https://docs.julialang.org
-           (_)     | (_) (_)    |
-            _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
-           | | | | | | |/ _` |  |
-           | | |_| | | | (_| |  |  Version 1.8.5 (2023-01-08)
-          _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
-         |__/                   |
-
-         julia> 
-
-   .. tab:: LUNARC
-
-        .. code-block:: julia-repl
-         
-         $ ml Julia/1.8.5-linux-x86_64
-         $ julia 
-
-            _       _ _(_)_     |  Documentation: https://docs.julialang.org
-           (_)     | (_) (_)    |
-            _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
-           | | | | | | |/ _` |  |
-           | | |_| | | | (_| |  |  Version 1.8.5 (2023-01-08)
-          _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
-         |__/                   |
-
-         julia> 
-
-Julia has different modes, the one mentioned above is the so-called ``Julian`` mode
-where one can execute commands. The description for accessing these modes will be
-given in the following paragraphs. Once you are done with your work in any of the modes,
-you can return to the ``Julian`` mode by pressing the ``backspace`` key.
-
-While being on the Julian mode you can enter the ``shell`` mode by typing ``;``:
-
-.. code-block:: julia
-
-   julia>; 
-   shell>pwd
-   /current-folder-path
-
-this will allow you to use Linux commands. Notice that the availability of these commands
-depend on the OS, for instance, on Windows it will depend on the terminal that you have
-installed and if it is visible to the Julia installation. 
-
-Another mode available in Julia is the ``package manager`` mode, it can be accessed by typing 
-``]`` in the ``Julian`` mode:
-
-.. code-block:: julia-repl
-
-   julia>]
-   (v1.8) pkg>
-
-this will make your interaction with the package manager **Pkg** easier, for instance,
-instead of typing the complete name of **Pkg** commands such as ``Pkg.status()`` in the
-``Julian`` mode, you can just type ``status`` in the ``package`` mode. 
-
-The last mode is the ``help`` mode, you can enter this mode from the ``Julian`` one by
-typing ``?``, then you may type some string from which you need more information:
-
-.. code-block:: julia
-
-   julia>?
-
-   help?> ans
-   search: ans transpose transcode contains expanduser instances MathConstants readlines 
-   LinearIndices leading_ones leading_zeros
-
-   ans
-
-   A variable referring to the last computed value, automatically set at the interactive prompt.
-
-
-More detailed information about the modes in Julia can be found `here <https://docs.julialang.org/en/v1/stdlib/REPL/>`_.
-
-Run
----
-
-Run Julia script
-################
-
-You can run a Julia script on the Linux shell as follows:
-
-.. code-block:: console
-
-   $ julia example.jl
-    
-Run Julia as a session
-######################
-
-.. admonition:: The Julian modes summary
-   :class: dropdown
-
-    - enter the shell mode by typing ``;``
-    - go back to *Julian* mode by ``<backspace>``
-    - access the package manager mode by typing ``]`` in the *Julian* mode
-    - use the help mode by typing ``?`` in the *Julian mode*
-
-.. type-along::
-
-   .. code-block:: console
-
-      $ julia 
-
-   The Julia prompt (``julian`` mode) looks like this:
-
-   .. code-block:: julia-repl
-   
-      julia> 
-
-   Exit with 
-
-   .. code-block:: julia-repl
-
-      julia> <Ctrl-D> 
-
-   or 
-
-   .. code-block:: julia-repl
-
-      julia> exit()
 
 Exercises
 ---------
 
+.. challenge:: 1a. Find out which versions are on your cluster from documentation
 
-.. challenge:: 1. Getting familiar with Julia REPL
+.. challenge:: 1b. Find out which versions are on your cluster from commandline
+
+.. challenge:: 1c. Which one to trust?
+
+.. challenge:: 2. Start ``julia`` form the command line with the command julia
+
+.. challenge:: 3. Load the next to latest module
+
+.. challenge:: 4.  Start ``julia`` form the command line with the command julia
+
+.. challenge:: 5. Getting familiar with Julia REPL
     
     - It is important in this course that you know how to navigate on the Julia command line. Here is where you install packages.
     - This exercise will help you to become more familiar with the REPL. Do the following steps: 
@@ -444,9 +501,11 @@ Exercises
             julia>?
             help?> println
 
-.. challenge:: 2. Loading modules and running scripts
+.. challenge:: 6. Load another module and rung scripts
     
-    Load the Julia version 1.8.5 and run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input: 
+    - Load the latest version and run
+    - 
+    - Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input: 
 
             .. code-block:: julia
 
