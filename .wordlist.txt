@@ -954,3 +954,12 @@ jobsMatlabGui
 morepackagesBianca
 Dardel's
 pbdMPI
+BerzeLiUs
+LiU
+Freja
+SMHI
+bosonic
+bosons
+higgs
+howto
+dt
