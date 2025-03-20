@@ -149,19 +149,19 @@ Here is an overview of where to find the documentation and a video showing the p
 
 Need help? Contact support:
 
-+------------+-----------------------------------------------------------------------+
-| HPC Center | How to contact support                                                |
-+============+=======================================================================+
-| HPC2N      | `Contact HPC2N support <https://docs.hpc2n.umu.se/support/contact/>`_ |
-+------------+------------------------+----------------------------------------------+
-| LUNARC     | `Contact LUNARC support <https://www.lunarc.lu.se/getting-help/>`_    |
-+------------+------------------------+----------------------------------------------+
-| UPPMAX     | `Contact UPPMAX support <https://docs.uppmax.uu.se/support/>`_        |
-+------------+------------------------+----------------------------------------------+
-| NSC        | `Contact NSC support <https://www.nsc.liu.se/support/>`_              |
-+------------+------------------------+----------------------------------------------+
-| PDC        | `Contact PDC support <https://support.pdc.kth.se/doc/support/?sub=contact/contact_support/>`_              |
-+------------+--------------------------------------------------------------------+
++------------+-----------------------------------------------------------------------------------------------+
+| HPC Center | How to contact support                                                                        |
++============+===============================================================================================+
+| HPC2N      | `Contact HPC2N support <https://docs.hpc2n.umu.se/support/contact/>`_                         |
++------------+------------------------+----------------------------------------------------------------------+
+| LUNARC     | `Contact LUNARC support <https://www.lunarc.lu.se/getting-help/>`_                            |
++------------+------------------------+----------------------------------------------------------------------+
+| UPPMAX     | `Contact UPPMAX support <https://docs.uppmax.uu.se/support/>`_                                |
++------------+------------------------+----------------------------------------------------------------------+
+| NSC        | `Contact NSC support <https://www.nsc.liu.se/support/>`_                                      |
++------------+------------------------+----------------------------------------------------------------------+
+| PDC        | `Contact PDC support <https://support.pdc.kth.se/doc/support/?sub=contact/contact_support/>`_ |
++------------+-----------------------------------------------------------------------------------------------+
 
 
 .. keypoints::
