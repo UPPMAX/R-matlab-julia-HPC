@@ -131,6 +131,9 @@ Here is an overview of where to find the documentation and a video showing the p
 +------------+------------------------+-------------------------+-------------------------------------+
 | LUNARC     | Local ThinLinc client  | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`_     | `here <https://youtu.be/wn7TgElj_Ng>`_                     |
 +------------+------------------------+-------------------------------------+------------------------------------------------------------+
+
+
+
 | NSC        | SSH                    | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              |                                                            |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | NSC        | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           |                                                            |
