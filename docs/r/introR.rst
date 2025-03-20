@@ -85,11 +85,6 @@ Schedule
 
 `Schedule <https://uppmax.github.io/R-matlab-julia-HPC/r/scheduleR.html>`_
 
----
-
-- RB: suggest to make 'Batch' 15 minutes longer and remove a session,
-  in the next course iteration
-
 Exercises used in the course
 ----------------------------
 
