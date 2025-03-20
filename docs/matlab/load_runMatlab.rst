@@ -196,7 +196,7 @@ Check for MATLAB versions
 
         .. code-block:: console
 
-            $ ml spider matlab
+            :~> ml spider matlab
               Versions:
                     matlab/r2020b
                     matlab/r2021b
@@ -205,7 +205,7 @@ Check for MATLAB versions
                     matlab/r2024a-ps
                     matlab/r2024a
                     matlab/r2024b
-            $ ml spider matlab/r2024b
+            :~> ml spider matlab/r2024b
             matlab: matlab/r2024b
               You will need to load all module(s) on any one of the lines below before the "matlab/r2024b" module is available to load.
                 PDC/23.12
@@ -293,15 +293,15 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), NSC (2023b
 
          .. code-block:: console
 
-            $ module load PDC/23.12 
-            $ module load matlab/r2024b
+            :~> module load PDC/23.12 
+            :~> module load matlab/r2024b
         
          Note: all lowercase including the ``r`` before the year.
          For short, you can also use: 
 
          .. code-block:: console
 
-            $ ml PDC/23.12 matlab/r2024b
+            :~> ml PDC/23.12 matlab/r2024b
 
 
 
@@ -365,8 +365,8 @@ Some HPC centers detect if you've started on a login node and set ``maxCompThrea
 
          .. code-block:: console
 
-            $ ml PDC/23.12  matlab/r2024a-ps
-            $ matlab -singleCompThread -nodisplay
+            :~> ml PDC/23.12  matlab/r2024a-ps
+            :~> matlab -singleCompThread -nosplash -nodesktop -nodisplay
 
          If you are an academic user who has been vetted by PDC staff, the above should be enough to eventually take you to the MATLAB command prompt. Otherwise, you will see the following:
 
@@ -440,13 +440,13 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Se
 
          .. code-block:: console
 
-            <user>@login1:~> salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main
+            :~> salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main
 
       if you request a full node, or
 
          .. code-block:: console
 
-            <user>@login1:~> salloc -c 16 -t 00:30:00 -A naiss2025-22-262 -p shared
+            :~> salloc -c 16 -t 00:30:00 -A naiss2025-22-262 -p shared
 
       if you request, for example, 16 cores on a shared node. Adjust the time, resources, and account number as needed. ``salloc`` will then print a handful of lines about the progress of allocating and queuing your job. The last line of output, something like ``salloc: Nodes nid00xxxx are ready for job``, will contain the ID of the node you booked. Copy that, and then run the following lines (after the `:~>` prompt; adjust the node ID as needed):
 
