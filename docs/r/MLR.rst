@@ -494,7 +494,7 @@ In the following demo you will find instructions to install this package and run
 
       R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
 
-   Download a data set like the `HIGGS <https://archive.ics.uci.edu/dataset/280/higgs>`_ data set for bosonic particles 
+   Download a data set like the `HIGGS <https://archive.ics.uci.edu/dataset/280/higgs>`_ data set for detecting bosonic particles 
    that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
 
    .. code-block:: bash
@@ -503,7 +503,7 @@ In the following demo you will find instructions to install this package and run
       unzip higgs.zip
       gunzip HIGGS.csv.gz 
 
-   Copy and paste the following R script for the analysis of the bosons data set:
+   Copy and paste the following R script for predicting if the detected particles in the data set are bosons or not:
 
    .. admonition:: gpu-script-db-higgs.R
       :class: dropdown
@@ -564,7 +564,7 @@ In the following demo you will find instructions to install this package and run
       .. code-block:: r 
 
          #!/bin/bash
-         #SBATCH -A hpc2n2025-062 # Change to your own project ID
+         #SBATCH -A hpc2n202w-xyz # Change to your own project ID
          #Asking for 10 min.
          #SBATCH -t 30:50:00
          #SBATCH -n 1
@@ -580,6 +580,23 @@ In the following demo you will find instructions to install this package and run
 
          R --no-save --no-restore -f gpu-script-db-higgs.R
 
+   .. admonition:: Timings
+      :class: dropdown
+
+      .. code-block:: r 
+
+         > #     step 5: Train on CPU    
+         > tic()
+         > xgb_cpu <- xgb.train( params = param, data = dtrain, watchlist = evals, 
+         + nrounds = 10000, verbose = 0, tree_method = "hist")
+         > toc()
+         10337.386 sec elapsed
+         > 
+         > #     step 6: Train on GPU    
+         > tic()
+         > xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals, 
+         + nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
+         > toc()
 
 
 
