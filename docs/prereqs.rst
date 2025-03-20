@@ -86,12 +86,11 @@ The HPC centers UPPMAX, HPC2N, LUNARC, and NSC
      - Login vs. calculation/compute nodes
      - Environmental module system with software hidden until loaded with ``module load``
      - Slurm batch job and scheduling system
-     - ``pip install`` procedure
      
    - ... and small differences:
    
-     - commands to load Python, Python packages
-     - sometimes different versions of Python, etc.   
+     - commands to load R, Matlab and Julia and packages/libraries
+     - sometimes different versions of R, Matlab and Julia, etc.   
      - slightly different flags to Slurm
      
    - ... and some bigger differences:
@@ -114,7 +113,9 @@ The HPC centers UPPMAX, HPC2N, LUNARC, and NSC
        - Cirrus (weather forecasts, located at SMHI)
        - We will be using Tetralith, which also has GPUs 
 
-   - Conda is recommended only for UPPMAX/LUNARC/NSC users
+    - PSC has Dardel with AMD GPUs 
+
+    - Conda is recommended only for UPPMAX/LUNARC/NSC users
     
 .. warning:: 
 
@@ -123,11 +124,11 @@ The HPC centers UPPMAX, HPC2N, LUNARC, and NSC
    - https://docs.hpc2n.umu.se/documentation/modules/
    - https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/  
    - https://www.nsc.liu.se/software/modules/
+   - https://support.pdc.kth.se/doc/support/?sub=software/module/
 
-   To distinguish these modules from the **python** *modules* that work as libraries we refer to the later ones as **packages**.
-   
-Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, and NSC 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, NSC and PDC
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 **What is a cluster?**
 
