@@ -467,12 +467,121 @@ Parallel jobs
 GPU jobs 
 ''''''''
 
-Some packages are now able to use GPUs for ML jobs in R. One of them is ``xgboost``. 
+Some packages are now able to use GPUs for ML jobs in R. One of them is `xgboost <https://xgboost.readthedocs.io/en/latest/install.html>`_. 
+In the following demo you will find instructions to install this package and run a test case with GPUs.
 
 .. demo:: 
    :class: dropdown
 
-   The idea is to 
+   **Prerequisites**
+
+   Choose an R version > 4.1 and a CUDA module:
+
+   .. code-block:: bash 
+
+      ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+
+   Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version:
+
+   .. code-block:: bash
+
+      cd /home/u/username/R-packages-4.4.1 
+      wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
+
+   Then, install the package
+
+   .. code-block:: bash 
+
+      R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
+
+   Download a data set like the `HIGGS <https://archive.ics.uci.edu/dataset/280/higgs>`_ data set for bosonic particles 
+   that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
+
+   .. code-block:: bash
+
+      wget https://archive.ics.uci.edu/static/public/280/higgs.zip 
+      unzip higgs.zip
+      gunzip HIGGS.csv.gz 
+
+   Copy and paste the following R script for the analysis of the bosons data set:
+
+   .. admonition:: gpu-script-db-higgs.R
+      :class: dropdown
+
+      .. code-block:: r 
+
+         #     step 0: Install these packages if you haven't done it
+         #install.packages(c("xgboost", "data.table", "tictoc"))
+         library(xgboost)
+         library(data.table)
+         library(tictoc)
+
+         #     step 1: Extract the ZIP file (if not already extracted)    
+         #unzip("higgs.zip")  # Extracts to the current working directory
+
+         #     step 2: Read the CSV file    
+         higgs_data <- fread("HIGGS.csv")  # Reads large datasets efficiently
+
+         #     step 3: Preprocess Data    
+         # The first column is the target (0 or 1), the rest are features
+         X <- as.matrix(higgs_data[, -1, with = FALSE])  # Remove first column
+         y <- as.integer(higgs_data$V1)  # Target column
+
+         # Train-test split (75% train, 25% test)
+         set.seed(111)
+         N <- nrow(X)
+         train_idx <- sample.int(N, N * 0.75)
+
+         dtrain <- xgb.DMatrix(X[train_idx, ], label = y[train_idx])
+         dtest <- xgb.DMatrix(X[-train_idx, ], label = y[-train_idx])
+         evals <- list(train = dtrain, test = dtest)
+
+         #     step 4: Define XGBoost Parameters    
+         param <- list( objective = "binary:logistic", eval_metric = "error", 
+            eval_metric = "logloss", max_depth = 6, eta = 0.1)
+
+         #     step 5: Train on CPU    
+         tic()
+         xgb_cpu <- xgb.train( params = param, data = dtrain, watchlist = evals, 
+         nrounds = 10000, verbose = 0, tree_method = "hist")
+         toc()
+
+         #     step 6: Train on GPU    
+         tic()
+         xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals, 
+         nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
+         toc()
+
+         # Print models
+         print(xgb_cpu)
+         print(xgb_gpu)
+
+   You can use the following template for your batch script:
+
+   .. admonition:: job-gpu.sh
+      :class: dropdown
+
+      .. code-block:: r 
+
+         #!/bin/bash
+         #SBATCH -A hpc2n2025-062 # Change to your own project ID
+         #Asking for 10 min.
+         #SBATCH -t 30:50:00
+         #SBATCH -n 1
+         #SBATCH --gpus=1
+         #SBATCH -C l40s
+         #Writing output and error files
+         #SBATCH --output=output%J.out
+         #SBATCH --error=error%J.error
+
+         ml purge > /dev/null 2>&1
+         #module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
+         ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+
+         R --no-save --no-restore -f gpu-script-db-higgs.R
+
+
+
 
 Exercises
 ---------
