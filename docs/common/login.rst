@@ -5,15 +5,15 @@ Log in session
 
     The goal of this optional sessions is to make sure that
     you have fulledfilled the 
-    `Prerequisites <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`__& `Preparations of environment <https://uppmax.github.io/R-python-julia-matlab-HPC/preparations.html>`_
+    - `Prerequisites <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`_
+    - `Preparations of environment <https://uppmax.github.io/R-python-julia-matlab-HPC/preparations.html>`_
     to follow this course:
+        - you can log in
+        - you can start a text editor
 
-    - you can log in
-    - you can start a text editor
+    - We will also download exercise snippets and solutions that you can work with. `Use the tarball with exercises <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
 
-    We will also download exercise snippets and solutions that you can work with. `Use the tarball with exercises <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
-
-    If you have done all this, see you at 10:00 sharp! Else, see you in this session.
+    If/when you have done all this, see you at 10:00 sharp! Else, see you in this session.
 
 .. admonition:: Cluster-specific approaches
 
@@ -179,40 +179,11 @@ Log in!
 Test an editor
 --------------
 
-The clusters provide these text editors on the command line:
+`Learn how to use an text editor <https://uppmax.github.io/R-matlab-julia-HPC/common/use_text_editor.html>`_
 
-- nano
-- vi, vim
-- emacs
 
-We recommend ``nano`` unless you are used to another editor:
+Prepare an exercise environment 
+-------------------------------
 
-- `Text editors at HPC2N <https://docs.hpc2n.umu.se/tutorials/linuxguide/#editors>`__
-- `Text editors at UPPMAX <http://docs.uppmax.uu.se/software/text_editors/>`__
-  - Any of the above links would be helpful for you.
-
-.. challenge::
-
-   - Let's make a script with the name ``example.py``  
-
-   .. code-block:: console
-
-      $ nano example.py
-
-   - Insert the following text
-
-   .. code-block:: python
-
-      # This program prints Hello, world!
-      print('Hello, world!')
-
-   - Save and exit. In nano: ``<ctrl>+O``, ``<ctrl>+X``
-
-   You can run a python script in the shell like this:
-
-   .. code-block:: console
-
-      $ python example.py
-      # or 
-      $ python3 example.py
+`Use the tarball with exercises <https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html>`_
 
