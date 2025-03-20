@@ -9,20 +9,21 @@ Load and run R
       - Load an R module
       - Start the R interpreter
       - Run an R script
-      - (optional) See the list of installed R packages
+      - Download and extract the exercise files
       - (optional) Find the different R modules
+      - (optional) See the list of installed R packages
 
    .. tab:: For teachers
 
       Teaching goals are:
 
-      - Learners have practiced using the documentation of your HPC cluster
-      - Learners have found the module to be able to run R
+      - Learners have practiced using the documentation of their HPC clusters
       - Learners have loaded the module to be able to run R
       - Learners have run the R interpreter
-      - Learners have run the R command to get the list of installed R packages
       - Learners have run an R script from the command-line
-      - Learners have been able to use the exercise files
+      - Learners have downloaded and extracted the exercise files
+      - (optional) Learners have found the different R modules
+      - (optional) Learners have seen the list of installed R packages
 
       Prior:
 
@@ -191,7 +192,7 @@ See `here <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball
 how to download and extract the tarbal with exercises.
 
 Exercise X1: find and use installed R packages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - From the R interpreter, check which packages are installed.
 
