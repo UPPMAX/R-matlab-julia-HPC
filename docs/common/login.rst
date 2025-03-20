@@ -5,13 +5,15 @@ Log in session
 
     The goal of this optional sessions is to make sure that
     you have fulledfilled the 
-    `prerequisites <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`_
+    `Prerequisites <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`_ & `Preparations of environment <https://uppmax.github.io/R-python-julia-matlab-HPC/preparations.html>`_
     to follow this course:
 
     - you can log in
     - you can start a text editor
 
-    If you can, see you at 10:00 sharp! Else, see you in this session.
+    We will also download exercise snippets and solutions that you can work with. <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
+
+    If you have done all this, see you at 10:00 sharp! Else, see you in this session.
 
 .. admonition:: Cluster-specific approaches
 
