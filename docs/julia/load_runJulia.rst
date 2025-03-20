@@ -61,106 +61,21 @@ or, at clusters that hides the modules until relevant dependencies are loaded.
 
    $ module spider julia
 
-.. admonition:: Output at UPPMAX as of Oct 2024
-   :class: dropdown
+Example output for UPPMAX
 
-       .. code-block::  console
-    
-          $ module avail julia
-          ----------------------------- /sw/mf/rackham/compilers -----------------------------
-             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
-             julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
-             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
+.. code-block::  console
 
-           Where:
-            D:  Default Module
+   $ module avail julia
+   ----------------------------- /sw/mf/rackham/compilers -----------------------------
+      julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
+      julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
+      julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
 
-          Use "module spider" to find all possible modules and extensions.
-          Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+    Where:
+     D:  Default Module
 
-
-.. admonition:: Output at HPC2N as of Oct 2024 
-    :class: dropdown
-
-        .. code-block:: console
-
-           $ module spider julia  # Assuming you are working on the Intel login nodes
-           ------------------------------------------------------------------------------------------------
-             Julia:
-           ------------------------------------------------------------------------------------------------
-             Description:
-               Julia is a high-level, high-performance dynamic programming language for numerical
-               computing
-
-             Versions:
-                Julia/1.5.3-linux-x86_64
-                Julia/1.7.1-linux-x86_64
-                Julia/1.8.5-linux-x86_64
-                Julia/1.9.3-linux-x86_64
-           ------------------------------------------------------------------------------------------------
-             For detailed information about a specific "Julia" package (including how to load the modules) use the module's full name.
-             Note that names that have a trailing (E) are extensions provided by other modules.
-             For example:
-
-                $ module spider Julia/1.8.5-linux-x86_64
-           ------------------------------------------------------------------------------------------------
-
-.. admonition:: Output at LUNARC as of Oct 2024 
-    :class: dropdown
-
-        .. code-block:: console
-
-           $ module spider julia
-           -----------------------------------------------------------------------------------------------------
-             Julia:
-           -----------------------------------------------------------------------------------------------------
-               Description:
-                 Julia is a high-level, high-performance dynamic programming language for numerical computing
-
-                Versions:
-                   Julia/1.8.5-linux-x86_64
-                   Julia/1.9.0-linux-x86_64
-                   Julia/1.9.2-linux-x86_64
-                   Julia/1.9.3-linux-x86_64
-                   Julia/1.10.4-linux-x86_64
-
-.. admonition:: **FIX** Output at NSC as of Mar 2025
-    :class: dropdown
-
-        .. code-block:: console
-
-           $ module spider julia
-           -----------------------------------------------------------------------------------------------------
-             Julia:
-           -----------------------------------------------------------------------------------------------------
-               Description:
-                 Julia is a high-level, high-performance dynamic programming language for numerical computing
-
-                Versions:
-                   Julia/1.8.5-linux-x86_64
-                   Julia/1.9.0-linux-x86_64
-                   Julia/1.9.2-linux-x86_64
-                   Julia/1.9.3-linux-x86_64
-                   Julia/1.10.4-linux-x86_64
-
-.. admonition:: **FIX** Output at PDC as of Mar 2025 
-    :class: dropdown
-
-        .. code-block:: console
-
-           $ module spider julia
-           -----------------------------------------------------------------------------------------------------
-             Julia:
-           -----------------------------------------------------------------------------------------------------
-               Description:
-                 Julia is a high-level, high-performance dynamic programming language for numerical computing
-
-                Versions:
-                   Julia/1.8.5-linux-x86_64
-                   Julia/1.9.0-linux-x86_64
-                   Julia/1.9.2-linux-x86_64
-                   Julia/1.9.3-linux-x86_64
-                   Julia/1.10.4-linux-x86_64
+   Use "module spider" to find all possible modules and extensions.
+   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 Load a Julia module
 --------------------
@@ -185,54 +100,7 @@ or at cluster that includes "architecture in module name
 
    $ ml Julia/1.8.5-linux-x86_64
 
-.. admonition:: What will it look like?
-   :class: dropdown
 
-   .. tabs::
-
-      .. tab:: UPPMAX
-   
-         Go back and check which Julia modules were available. To load version 1.8.5, do:
-
-         .. code-block:: console
-
-           $ module load julia/1.8.5
-        
-         Note: Lowercase ``j``.
-
-         For short, you can also use: 
-
-         .. code-block:: console
-
-            $ ml julia/1.8.5
-
-      .. tab:: HPC2N
-
-         .. code-block:: console
-
-            $ module load Julia/1.8.5-linux-x86_64
-
-         Note: Uppercase ``J``.   
-
-         For short, you can also use: 
-
-         .. code-block:: console
-
-            $ ml Julia/1.8.5-linux-x86_64
-
-      .. tab:: LUNARC
-
-         .. code-block:: console
-
-            $ module load Julia/1.8.5-linux-x86_64
-
-         Note: Uppercase ``J``.   
-
-         For short, you can also use: 
-
-         .. code-block:: console
-
-            $ ml Julia/1.8.5-linux-x86_64
 
 Run
 ---
@@ -367,115 +235,270 @@ where the script is a text file could contain these lines:
 Exercises
 ---------
 
-.. tabs::
-
-   .. tab:: UPPMAX
-
-     Check all available Julia versions with:
-
-      .. code-block:: console
-
-          $ module avail julia
-
-
-   .. tab:: HPC2N
-   
-      Check all available version Julia versions with:
-
-      .. code-block:: console
- 
-         $ module spider julia
-
-      Notice that the output if you are working on the Intel (*kebnekaise.hpc2n.umu.se*) or AMD 
-      (*kebnekaise-amd.hpc2n.umu.se*) login nodes is different. In the former, you will see more 
-      installed versions of Julia as this hardware is older.
-      
-      To see how to load a specific version of Julia, including the prerequisites, do 
-
-      .. code-block:: console
-   
-         $ module spider Julia/<version>
-
-      Example for Julia 1.8.5
-
-      .. code-block:: console
-
-         $ module spider Julia/1.8.5-linux-x86_64
-
-   .. tab:: LUNARC
-   
-      Check all available version Julia versions with:
-
-      .. code-block:: console
- 
-         $ module spider Julia
-      
-      To see how to load a specific version of Julia, including the prerequisites, do 
-
-      .. code-block:: console
-   
-         $ module spider Julia/<version>
-
-      Example for Julia 1.8.5
-
-      .. code-block:: console
-
-         $ module spider Julia/1.8.5-linux-x86_64
-
-   .. tab:: Tetralith
-   
-      Check all available version Julia versions with:
-
-      .. code-block:: console
- 
-         $ module avail Julia
-      
-      Example for Julia 1.8.5
-
-      .. code-block:: console
-
-         $ module spider julia/1.8.5-nsc1-bdist
-
-   .. tab:: Dardel
-   
-      Check all available version Julia versions with:
-
-      .. code-block:: console
- 
-         $ module spider Julia
-      
-      To see how to load a specific version of Julia, including the prerequisites, do 
-
-      .. code-block:: console
-   
-         $ module spider Julia/<version>
-
-      Example for Julia 1.8.5
-
-      .. code-block:: console
-
-         $ module spider Julia/1.8.5-linux-x86_64
-
-
-
-
-
-Exercises
----------
-
 .. challenge:: 1a. Find out which versions are on your cluster from documentation
+
+   - Find/search for that documentation!
+
+   .. solution:: Solution
+      :class: dropdown
+
+      **FIX** List of links
+
 
 .. challenge:: 1b. Find out which versions are on your cluster from commandline
 
-.. challenge:: 1c. Which one to trust?
+      .. tabs::
 
-.. challenge:: 2. Start ``julia`` form the command line with the command julia
+         .. tab:: UPPMAX
 
-.. challenge:: 3. Load the next to latest module
+           Check all available Julia versions with:
 
-.. challenge:: 4.  Start ``julia`` form the command line with the command julia
+            .. code-block:: console
 
-.. challenge:: 5. Getting familiar with Julia REPL
+                $ module avail julia
+
+
+         .. tab:: HPC2N
+
+            Check all available version Julia versions with:
+
+            .. code-block:: console
+
+               $ module spider julia
+
+            Notice that the output if you are working on the Intel (*kebnekaise.hpc2n.umu.se*) or AMD 
+            (*kebnekaise-amd.hpc2n.umu.se*) login nodes is different. In the former, you will see more 
+            installed versions of Julia as this hardware is older.
+
+            To see how to load a specific version of Julia, including the prerequisites, do 
+
+            .. code-block:: console
+
+               $ module spider Julia/<version>
+
+            Example for Julia 1.8.5
+
+            .. code-block:: console
+
+               $ module spider Julia/1.8.5-linux-x86_64
+
+         .. tab:: LUNARC
+
+            Check all available version Julia versions with:
+
+            .. code-block:: console
+
+               $ module spider Julia
+
+            To see how to load a specific version of Julia, including the prerequisites, do 
+
+            .. code-block:: console
+
+               $ module spider Julia/<version>
+
+            Example for Julia 1.8.5
+
+            .. code-block:: console
+
+               $ module spider Julia/1.8.5-linux-x86_64
+
+         .. tab:: Tetralith
+
+            Check all available version Julia versions with:
+
+            .. code-block:: console
+
+               $ module avail Julia
+
+            Example for Julia 1.8.5
+
+            .. code-block:: console
+
+               $ module spider julia/1.8.5-nsc1-bdist
+
+         .. tab:: Dardel
+
+            Check all available version Julia versions with:
+
+            .. code-block:: console
+
+               $ module spider Julia
+
+            To see how to load a specific version of Julia, including the prerequisites, do 
+
+            .. code-block:: console
+
+               $ module spider Julia/<version>
+
+            Example for Julia 1.8.5
+
+            .. code-block:: console
+
+               $ module spider Julia/1.8.5-linux-x86_64
+
+.. admonition:: Output at UPPMAX as of Oct 2024
+   :class: dropdown
+
+       .. code-block::  console
+    
+          $ module avail julia
+          ----------------------------- /sw/mf/rackham/compilers -----------------------------
+             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
+             julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
+             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
+
+           Where:
+            D:  Default Module
+
+          Use "module spider" to find all possible modules and extensions.
+          Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+
+.. admonition:: Output at HPC2N as of Oct 2024 
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia  # Assuming you are working on the Intel login nodes
+           ------------------------------------------------------------------------------------------------
+             Julia:
+           ------------------------------------------------------------------------------------------------
+             Description:
+               Julia is a high-level, high-performance dynamic programming language for numerical
+               computing
+
+             Versions:
+                Julia/1.5.3-linux-x86_64
+                Julia/1.7.1-linux-x86_64
+                Julia/1.8.5-linux-x86_64
+                Julia/1.9.3-linux-x86_64
+           ------------------------------------------------------------------------------------------------
+             For detailed information about a specific "Julia" package (including how to load the modules) use the module's full name.
+             Note that names that have a trailing (E) are extensions provided by other modules.
+             For example:
+
+                $ module spider Julia/1.8.5-linux-x86_64
+           ------------------------------------------------------------------------------------------------
+
+.. admonition:: Output at LUNARC as of Oct 2024 
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia
+           -----------------------------------------------------------------------------------------------------
+             Julia:
+           -----------------------------------------------------------------------------------------------------
+               Description:
+                 Julia is a high-level, high-performance dynamic programming language for numerical computing
+
+                Versions:
+                   Julia/1.8.5-linux-x86_64
+                   Julia/1.9.0-linux-x86_64
+                   Julia/1.9.2-linux-x86_64
+                   Julia/1.9.3-linux-x86_64
+                   Julia/1.10.4-linux-x86_64
+
+.. admonition:: **FIX** Output at NSC as of Mar 2025
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia
+           -----------------------------------------------------------------------------------------------------
+             Julia:
+           -----------------------------------------------------------------------------------------------------
+               Description:
+                 Julia is a high-level, high-performance dynamic programming language for numerical computing
+
+                Versions:
+                   Julia/1.8.5-linux-x86_64
+                   Julia/1.9.0-linux-x86_64
+                   Julia/1.9.2-linux-x86_64
+                   Julia/1.9.3-linux-x86_64
+                   Julia/1.10.4-linux-x86_64
+
+.. admonition:: **FIX** Output at PDC as of Mar 2025 
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module spider julia
+           -----------------------------------------------------------------------------------------------------
+             Julia:
+           -----------------------------------------------------------------------------------------------------
+               Description:
+                 Julia is a high-level, high-performance dynamic programming language for numerical computing
+
+                Versions:
+                   Julia/1.8.5-linux-x86_64
+                   Julia/1.9.0-linux-x86_64
+                   Julia/1.9.2-linux-x86_64
+                   Julia/1.9.3-linux-x86_64
+                   Julia/1.10.4-linux-x86_64
+
+
+
+.. challenge:: 1c. Which method to trust?
+
+   .. solution:: Solution
+      :class: dropdown
+
+      Looking for modules in a session on the cluster is closer to the truth 
+
+
+.. challenge:: 2.  Load and start ``julia`` from the command line
+
+   .. solution:: Solution
+      :class: dropdown
+
+      .. tabs::
+
+         .. tab:: UPPMAX
+
+            Go back and check which Julia modules were available. To load version 1.8.5, do:
+
+            .. code-block:: console
+
+              $ module load julia/1.8.5
+
+            Note: Lowercase ``j``.
+
+            For short, you can also use: 
+
+            .. code-block:: console
+
+               $ ml julia/1.8.5
+
+         .. tab:: HPC2N
+
+            .. code-block:: console
+
+               $ module load Julia/1.8.5-linux-x86_64
+
+            Note: Uppercase ``J``.   
+
+            For short, you can also use: 
+
+            .. code-block:: console
+
+               $ ml Julia/1.8.5-linux-x86_64
+
+         .. tab:: LUNARC
+
+            .. code-block:: console
+
+               $ module load Julia/1.8.5-linux-x86_64
+
+            Note: Uppercase ``J``.   
+
+            For short, you can also use: 
+
+            .. code-block:: console
+
+               $ ml Julia/1.8.5-linux-x86_64
+
+.. challenge:: 3. Getting familiar with Julia REPL
     
     - It is important in this course that you know how to navigate on the Julia command line. Here is where you install packages.
     - This exercise will help you to become more familiar with the REPL. Do the following steps: 
@@ -486,8 +509,8 @@ Exercises
        * Now, go to the ``package`` mode and list the currently installed packages
        * Finally, display help information of the function ``println`` in ``help`` mode.
 
-.. solution:: Solution for centres
-    :class: dropdown
+   .. solution:: Solution
+      :class: dropdown
 
        .. code-block:: julia
     
@@ -500,10 +523,9 @@ Exercises
             julia>?
             help?> println
 
-.. challenge:: 6. Load another module and rung scripts
+.. challenge:: 4. Load another module and run a script
     
     - Load the latest version and run
-    - 
     - Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input: 
 
             .. code-block:: julia
@@ -513,11 +535,9 @@ Exercises
                 summ = x + y
                 println("The sum of the two numbers is ", summ)
 
-.. solution:: Solution for HPC2N
-   :class: dropdown
+   .. solution:: Solution for HPC2N
+      :class: dropdown
    
-      This batch script is for Kebnekaise. 
-
       
       .. code-block:: console
 
@@ -526,8 +546,8 @@ Exercises
                   
             $ julia serial-sum.jl Arg1 Arg2    # run the serial script
 
-.. solution:: Solution for UPPMAX
-   :class: dropdown
+   .. solution:: Solution for UPPMAX
+      :class: dropdown
    
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
@@ -538,8 +558,8 @@ Exercises
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
 
-.. solution:: Solution for LUNARC
-   :class: dropdown
+   .. solution:: Solution for LUNARC
+      :class: dropdown
    
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
@@ -550,7 +570,7 @@ Exercises
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
 
-.. challenge:: 3. Check your understanding
+.. challenge:: 5. Check your understanding
 
    - Check your understanding and answer in the shared document
    - Can you start Julia without loading a Julia module?
