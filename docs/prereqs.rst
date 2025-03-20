@@ -20,12 +20,12 @@ Get familiar with the Linux/Bash command line
 - Some material is better followed from a session on the mentioned cluster.
 
 NAISS workshop
-..............
+::::::::::::::
 
 - `Introduction to Linux <https://hpc2n.github.io/intro-linux/>`_
 
 Centre material
-.................
+:::::::::::::::
 
 - UPPMAX
     
@@ -76,10 +76,10 @@ Third level
 Understanding clusters
 ----------------------
 
-The HPC centers UPPMAX, HPC2N, LUNARC, and NSC 
-##############################################
+The HPC centers UPPMAX, HPC2N, LUNARC, NSC and Dardel
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-.. admonition:: Four HPC centers
+.. admonition:: Five HPC centers
 
    - There are many similarities:
    
@@ -101,9 +101,9 @@ The HPC centers UPPMAX, HPC2N, LUNARC, and NSC
        - Snowy available for local projects and suits long jobs (< 1 month) and has GPUs
        - Bianca for sensitive data and has GPUs
 
-   - HPC2N has Kebnekaise with GPUs  
-   - LUNARC has Cosmos with GPUs (and Cosmos-SENS) 
-   - NSC has several clusters
+     - HPC2N has Kebnekaise with GPUs  
+     - LUNARC has Cosmos with GPUs (and Cosmos-SENS) 
+     - NSC has several clusters
        - BerzeLiUs (AI/ML, NAISS)
        - Tetralith (NAISS)
        - Sigma (LiU local)
@@ -113,18 +113,16 @@ The HPC centers UPPMAX, HPC2N, LUNARC, and NSC
        - Cirrus (weather forecasts, located at SMHI)
        - We will be using Tetralith, which also has GPUs 
 
-    - PDC has Dardel with AMD GPUs 
-
-    - Conda is recommended only for UPPMAX/LUNARC/NSC users
+     - PDC has Dardel with AMD GPUs 
     
 .. warning:: 
 
-   - At HPC2N, UPPMAX, LUNARC, and NSC we call the applications available via the *module system* **modules**. 
-   - https://docs.uppmax.uu.se/cluster_guides/modules/ 
-   - https://docs.hpc2n.umu.se/documentation/modules/
-   - https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/  
-   - https://www.nsc.liu.se/software/modules/
-   - https://support.pdc.kth.se/doc/support/?sub=software/module/
+   - We call the applications available via the *module system* **modules**. 
+       - `UPPMAX <https://docs.uppmax.uu.se/cluster_guides/modules/>`_
+       - `HPC2N <https://docs.hpc2n.umu.se/documentation/modules/>`_
+       - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/>`_
+       - `NSC <https://www.nsc.liu.se/software/modules/>`_
+       - `PDC <https://support.pdc.kth.se/doc/support/?sub=software/module/>`_
 
  
 Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, NSC and PDC
@@ -154,12 +152,13 @@ Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, NSC and 
 Common features
 ###############
 
-- Intel (and for HPC2N/LUNARC, also AMD) CPUs
 - Linux kernel
 - Bash shell
+- Intel CPUs, except for Dardel with AMD.
+- NVidia GPUs (HPC2N/LUNARC, also AMD) except for Dardel with AMD. 
 
 .. list-table:: Hardware
-   :widths: 25 25 25 25 25 25 25
+   :widths: 25 25 25 25 25 25 25 25
    :header-rows: 1
 
    * - Technology
@@ -168,7 +167,8 @@ Common features
      - Snowy
      - Bianca
      - Cosmos  
-     - Tetralith   
+     - Tetralith 
+     - Dardel
    * - Cores/compute node
      - 28 (72 for largemem, 128/256 for AMD Zen3/Zen4)
      - 20
@@ -176,6 +176,7 @@ Common features
      - 16
      - 48  
      - 32  
+     - 128 
    * - Memory/compute node
      - 128-3072 GB 
      - 128-1024 GB
@@ -183,6 +184,7 @@ Common features
      - 128-512 GB
      - 256-512 GB  
      - 96-384 GB   
+     - 256-2048 GB  
    * - GPU
      - NVidia V100, A100, A6000, L40s, H100, A40, AMD MI100 
      - None
@@ -190,6 +192,7 @@ Common features
      - NVidia A100
      - NVidia A100 
      - NVidia T4   
+     - four AMD Instinct™ MI250X á 2 GCDs
 
 
 Overview of the UPPMAX systems
