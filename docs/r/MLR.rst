@@ -599,6 +599,7 @@ In the following demo you will find instructions to install this package and run
          > xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals, 
          + nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
          > toc()
+         199.416 sec elapsed
 
 
 
