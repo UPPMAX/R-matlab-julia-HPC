@@ -48,12 +48,12 @@ Introduction R
     - start batch jobs 
     - run RStudio
 
-    on any NAISS cluster.
+    on the NAISS clusters COSMOS, Dardel, Kebnekaise, Rackham and Tetralith.
 
 .. admonition:: **Course non-goals**
 
     - improve R coding skills 
-    - use R on non-NAISS HPC clusters
+    - use R on other HPC clusters
 
 First overview of R
 -------------------
