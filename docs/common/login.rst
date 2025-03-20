@@ -5,7 +5,7 @@ Log in session
 
     The goal of this optional sessions is to make sure that
     you have fulledfilled the 
-    `Prerequisites <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`_ & `Preparations of environment <https://uppmax.github.io/R-python-julia-matlab-HPC/preparations.html>`_
+    `Prerequisites <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`__& `Preparations of environment <https://uppmax.github.io/R-python-julia-matlab-HPC/preparations.html>`_
     to follow this course:
 
     - you can log in
@@ -69,9 +69,9 @@ Log in!
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | Rackham    |**Remote desktop website**| `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`__             | `here <https://youtu.be/HQ2iuKRPabc>`__                    |
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Tetralith  | SSH                      | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/wtGIzSBiulY?si=ejx1QEcYXI_bMSoM>`_ |
+| Tetralith  | SSH                      | `here <https://www.nsc.liu.se/support/getting-started/>`__                                             | `here <https://youtu.be/wtGIzSBiulY?si=ejx1QEcYXI_bMSoM>`__|
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Tetralith  |**Local ThinLinc client** | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           | `here <https://youtu.be/JsHzQSFNGxY?si=gLI0GEiFiUZ-F__T>`_ |
+| Tetralith  |**Local ThinLinc client** | `here <https://www.nsc.liu.se/support/graphics/>`__. Scroll down to ThinLinc                           | `here <https://youtu.be/JsHzQSFNGxY?si=gLI0GEiFiUZ-F__T>`__|
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 
 
@@ -187,8 +187,8 @@ The clusters provide these text editors on the command line:
 
 We recommend ``nano`` unless you are used to another editor:
 
-- `Text editors at HPC2N <https://docs.hpc2n.umu.se/tutorials/linuxguide/#editors>`_ 
-- `Text editors at UPPMAX <http://docs.uppmax.uu.se/software/text_editors/>`_ 
+- `Text editors at HPC2N <https://docs.hpc2n.umu.se/tutorials/linuxguide/#editors>`__
+- `Text editors at UPPMAX <http://docs.uppmax.uu.se/software/text_editors/>`__
   - Any of the above links would be helpful for you.
 
 .. challenge::
