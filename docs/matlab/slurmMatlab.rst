@@ -87,9 +87,11 @@ This will provide a set of default specifications for batch and parallel jobs ca
 
 .. admonition:: configCluster(.sh) from the terminal 
 
-   You do all these ONCE for each cluster, and for each version of MATLAB you use. You do this AFTER loading MATLAB but before starting the MATLAB command line or GUI (except for on Tetralith and Dardel where it is done within MATLAB, see below).
+   You do all these ONCE for each cluster, and for each version of MATLAB you use. You do this AFTER loading MATLAB but before starting the MATLAB command line or GUI (except for on Tetralith where it is done within MATLAB, see below).
 
-   NOTE: on Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there! 
+   NOTE: you do NOT do configCluster on Dardel! 
+
+   NOTE: on Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there! We have added access for those participants who had PDC accounts on 19 March. 
 
    .. tabs:: 
 
@@ -123,14 +125,6 @@ This will provide a set of default specifications for batch and parallel jobs ca
             configCluster 
 
          Choose "tetralith" when prompted. 
-
-      .. tab:: PDC 
-
-         .. code-block:: 
-
-            module load PDC/23.12 matlab/r2024a-ps 
-            matlab -nodisplay -nodesktop -nosplash
-            configCluster
 
 
 .. note:: 
@@ -201,7 +195,10 @@ Apart from whether or not to include the .sh and the project-id, it should work 
    
    Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first. 
    
-   On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC and PDC.     
+   On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC. You do not do ``configCluster`` at PDC. 
+
+   On PDC, only the matlab/r2024a-ps (prerequisite PDC/23.12) works correctly and allows access from the shell/terminal without you having to give your own Mathworks credentials. 
+
 
 MATLAB terminal interface
 -------------------------
@@ -297,7 +294,7 @@ In order to list the content of your profile, do ``c.AdditionalProperties``.
 
 .. note::
 
-   On UPPMAX, you should do 
+   On UPPMAX and PDC you should do 
    
    ``c=parcluster;`` 
    
@@ -325,12 +322,16 @@ Asking for 1 hour walltime.
    - HPC2N: CLUSTER=kebnekaise
    - UPPMAX: no CLUSTER, as said above - i.e. just c=parcluster;
    - LUNARC: CLUSTER=cosmos R2023b
+   - NSC: CLUSTER=tetralith
+   - PDC: no CLUSTER, as said above - i.e. just c=parcluster; 
 
    Remember, the project-id is:
 
    - Rackham: uppmax2025-2-272
    - Kebnekaise: hpc2n2025-062
    - Cosmos: lu2025-7-24 
+   - Tetralith: naiss2025-22-262 
+   - Dardel: naiss2025-22-262 
 
    Since we are just doing a short test, you can use 15 min instead of 1 hour as I did. 
 
@@ -383,7 +384,7 @@ Serial
 
 After starting MATLAB, you can use this 
 
-- Get a handle to the cluster (remember, on Rackham, just use ``c=parcluster;`` 
+- Get a handle to the cluster (remember, on Rackham and Dardel, just use ``c=parcluster;`` 
 
 .. code-block::
 
