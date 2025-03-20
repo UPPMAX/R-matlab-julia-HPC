@@ -294,7 +294,7 @@ In order to list the content of your profile, do ``c.AdditionalProperties``.
 
 .. note::
 
-   On UPPMAX, NSC, and PDC you should do 
+   On UPPMAX and PDC you should do 
    
    ``c=parcluster;`` 
    
@@ -322,8 +322,8 @@ Asking for 1 hour walltime.
    - HPC2N: CLUSTER=kebnekaise
    - UPPMAX: no CLUSTER, as said above - i.e. just c=parcluster;
    - LUNARC: CLUSTER=cosmos R2023b
-   - NSC: no CLUSTER, just c=parcluster; 
-   - PDC: no CLUSTER, as said above - i.e. just c=parcluster; 
+   - NSC: CLUSTER=tetralith 
+   - PDC: no CLUSTER, as said above - i.e. just c=parcluster; NO OTHER JOB SETTINGS! Here you instead start an interactive session first! 
 
    Remember, the project-id is:
 
