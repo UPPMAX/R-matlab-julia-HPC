@@ -82,7 +82,7 @@ These are the ways to access your HPC cluster and some of their features:
 Here is an overview of where to find the documentation and a video showing the procedure:
 
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC cluster| Method                 | Documentation                                                                                          | Video                                                      |
+| HPC cluster| Login method           | Documentation                                                                                          | Video                                                      |
 +============+========================+========================================================================================================+============================================================+
 | COSMOS     | SSH                    | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`_           | `here <https://youtu.be/sMsenzWERTg>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
