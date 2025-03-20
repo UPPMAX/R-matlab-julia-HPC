@@ -54,9 +54,30 @@ Time  | Topic                   | State
 16:00 | Summary and evaluation  |.
 
 - [ ] Next course iteration: make 'Load and run R' point to documentation more
+
+I want to make the course more useful and NIASS wide, mostly pointing
+to documentation.
+
 - [ ] In the next course iteration: use more active learning methods in this
   session
+
 - [ ] In the simultaneous session, stay formal
 
 - [For next time] RB: suggest to make ‘Batch’ 15 minutes longer and remove a session, in the next course iteration
 
+These are the learning outcomes for which I have 45 minutes:
+
+- find the module to be able to run R
+- load the module to be able to run R
+- run the R interpreter
+- run the R command to get the list of installed R packages
+- run an R script from the command-line
+
+Clusters used in the course (as taken from 'The important info about
+the course' document):
+
+– COSMOS
+- Dardel 
+- Kebnekaise 
+- Rackham
+- Tetralith 

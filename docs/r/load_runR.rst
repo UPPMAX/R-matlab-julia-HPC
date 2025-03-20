@@ -14,16 +14,18 @@ Load and run R
 
    .. tab:: Learning objectives
 
-      - find the module to be able to run R
-      - load the module to be able to run R
-      - run the R interpreter
-      - run the R command to get the list of installed R packages
-      - run an R script from the command-line
+      - Practice using the documentation of your HPC cluster
+      - Find the module to be able to run R
+      - Load the module to be able to run R
+      - Run the R interpreter
+      - Run the R command to get the list of installed R packages
+      - Run an R script from the command-line
 
    .. tab:: For teachers
 
       Teaching goals are:
 
+      - Learners have practiced using the documentation of your HPC cluster
       - Learners have found the module to be able to run R
       - Learners have loaded the module to be able to run R
       - Learners have run the R interpreter
@@ -31,33 +33,49 @@ Load and run R
       - Learners have run an R script from the command-line
       - Learners have been able to use the exercise files
 
-      Lesson plan (25 minutes in total):
+      Prior:
 
-      - 10:15: 3 mins: Prior
-          - You want to write and run R code on an HPC cluster
-            Which ways do you know?
-          - How to start R on an HPC cluster?
-          - What is a module system?
-          - Why is there a module system?
-      - 10:18: 7 mins: Present: loading and running R
-      - 10:25: 15 mins: Challenge
-      - 10:40: 5 mins: Feedback
+      - You want to write and run R code on an HPC cluster
+        Which ways do you know?
+      - How to start R on an HPC cluster?
+      - What is a module system?
+      - Why is there a module system?
 
 Introduction
 ------------
 
-.. mermaid:: load_run_r_overview.mmd 
+You want to run R on an HPC cluster.
+For this, you'll need to read the documentation
+of your HPC cluster.
 
-To allow us to work with R on an HPC cluster, we will:
+In this session, we will use the documentation of your HPC cluster
+to start R.
 
-- find the module to be able to run R, 
-  so we know which versions of R we can pick from
-- load the module to be able to run R,
-  so we can actually run R
-- run the R interpreter, so we can test/develop R code
-- run an R script from the command-line, so we can run R code
+Exercises
+----------------
 
-In this session, we will follow this typical user journey.
+
+1. Documentation
+~~~~~~~~~~~~~~~~
+
+- Find the documentation of your HPC cluster
+
+.. admonition:: Answer
+    :class: dropdown
+
+    +------------+----------------------------------------------------------------------------+
+    | HPC cluster| Topic                                                                      |
+    +============+============================================================================+
+    | COSMOS     | `Here <https://lunarc-documentation.readthedocs.io/en/latest/>`_           |
+    +------------+----------------------------------------------------------------------------+
+    | Dardel     | `Here <https://support.pdc.kth.se/doc/support/>`_                          |
+    +------------+----------------------------------------------------------------------------+
+    | Kebnekaise | `Here <https://docs.hpc2n.umu.se/>`_                                       |
+    +------------+----------------------------------------------------------------------------+
+    | Rackham    | `Here <http://docs.uppmax.uu.se/>`_                                        |
+    +------------+----------------------------------------------------------------------------+
+    | Tetralith  | `Here <https://www.nsc.liu.se/support/systems/tetralith-getting-started/>`_|
+    +------------+----------------------------------------------------------------------------+
 
 1. Find an R module
 -------------------
