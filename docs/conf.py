@@ -22,7 +22,7 @@ project = 'Introduction to running R, Python, Julia and MATLAB in HPC'
 copyright = '2025, UPPMAX & HPC2N'
 author = 'NAISS'
 github_user = "UPPMAX"
-github_repo_name = "R-python-julia-MATLAB-HPC"  # auto-detected from dirname if blank                                       NEEDED FOR "Edit on GitHub to work"
+github_repo_name = "R-matlab-julia-HPC"  # auto-detected from dirname if blank                                       NEEDED FOR "Edit on GitHub to work"
 github_version = "main"
 conf_py_path = "/docs/" 
 # The full version, including alpha/beta/rc tags
