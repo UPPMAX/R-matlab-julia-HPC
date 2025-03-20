@@ -963,3 +963,5 @@ bosons
 higgs
 howto
 dt
+linuxguide
+Alvis
