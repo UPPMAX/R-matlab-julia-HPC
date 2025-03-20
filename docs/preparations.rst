@@ -9,7 +9,8 @@ These are the things you need to follow the course:
 
 - you can log in to at least one HPC cluster, in at least one way.
   see `login <common/login.rst>`_
-- you can start a text editor
+- you can start a text editor,
+  see `login <common/use_text_editor.rst>`_
 
 .. note::
 
@@ -31,13 +32,3 @@ Need help? Contact support:
 +------------+------------+-----------+-----------------------------------------------------------------------------------+
 |Tetralith   | NSC        | `Contact NSC support <https://www.nsc.liu.se/support/>`_                                      |
 +------------+------------+-----------+-----------------------------------------------------------------------------------+
-
-Start a text editor
--------------------
-
-After logging in to your HPC cluster, start a terminal
-and type :code:`nano` to start a text editor.
-
-- CTRL-O: save
-- CTRL-X: quit
-
