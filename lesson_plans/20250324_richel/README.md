@@ -73,6 +73,8 @@ These are the learning outcomes for which I have 45 minutes:
 - run the R command to get the list of installed R packages
 - run an R script from the command-line
 
+I will have to simplify things :-) .
+
 Clusters used in the course (as taken from 'The important info about
 the course' document):
 
