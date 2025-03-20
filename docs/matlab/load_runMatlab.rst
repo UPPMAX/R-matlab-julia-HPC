@@ -4,7 +4,7 @@ Load and Run MATLAB
 Different recommended procedures for each HPC center:
   - **UPPMAX, NSC, and HPC2N**: use module system to load at command line
   - **LUNARC**: recommended to use Desktop On-Demand menu, but interactive and non-interactive command lines available
-  - **PDC**: both command-line and Desktop On-Demand options available
+  - **PDC**: recommended to load at command line; can run interactively on a compute node with X-forwarding and `salloc`. ThinLinc access is restricted to 30 users for the whole Dardel cluster.
 
 Most HPC centres in Sweden use the same or a similar module system for their software. The difference lies in which modules are installed and their versions/naming. The general examples below will be similar for all HPC centres in Sweden, with some variation in naming and available versions.
    
@@ -333,7 +333,7 @@ Some HPC centers detect if you've started on a login node and set ``maxCompThrea
  
       .. tab:: HPC2N
 
-         The GUI can be started in a Thinlinc session by going to "Application" &rarr; "HPC2N Applications" &rarr; "Applications" &rarr; "Matlab <version>" and clicking the desired version.
+         The GUI can be started in a ThinLinc session by going to "Application" &rarr; "HPC2N Applications" &rarr; "Applications" &rarr; "Matlab <version>" and clicking the desired version.
 
          To start MATLAB in the terminal, load matlab/2023b or your preferred version, and then type:
 
@@ -345,7 +345,7 @@ Some HPC centers detect if you've started on a login node and set ``maxCompThrea
 
       .. tab:: LUNARC 
 
-         It is recommended that GUI be started in Thinlinc at the LUNARC HPC Desktop On-Demand.
+         It is recommended that GUI be started in ThinLinc at the LUNARC HPC Desktop On-Demand.
 
          To start MATLAB in the terminal, you must first choose the correct terminal. There are several: three in ``Applications`` → ``Applications - General``, which can safely launch either the MATLAB GUI or MATLAB command line on a compute node, and one in ``Applications`` → ``Favorites`` → ``Terminal``, which runs on a login node and should be avoided. Starting any of the three in ``Applications - General`` will open the GfxLauncher and prompt you for your account and resource selections. Even users who have been awarded GPU time are encouraged to use the CPU-only terminal whenever possible, as they are abundant and less resource intensive.
 
@@ -359,17 +359,16 @@ Some HPC centers detect if you've started on a login node and set ``maxCompThrea
 
          Starting a MATLAB session on Dardel looks different depending on whether or not you are affiliated KTH or have been added to the MATLAB user group by PDC support (e.g. as part of this course, if you signed up in time). If you are a KTH affiliate or another PDC-approved academic user, you are covered by KTH's university license. Otherwise, you will need to have a MathWorks account and be logged into it in your browser before getting started, because MATLAB on Dardel will ask you provide the email associated with your MathWorks account and a one-time password (OTP) sent to that account online (which you will have to copy from your browser).
 
-         Either way, you will first need to load the corresponding PDC, PDCOLD, or PDCTEST prerequisite. The current default is PDC/23.12, and that makes available any MATLAB version from 2024.
+         Either way, you will first need to load the corresponding PDC, PDCOLD, or PDCTEST prerequisite. The current default is PDC/23.12, and that makes available any MATLAB version from 2024. The only version that reliably works for non-KTH users without asking for credentials is r2024-ps.
 
-         If you, for example, wanted to start matlab/r2024b in the terminal, the sequence would look as follows:
+         If you, for example, wanted to start matlab/r2024a-ps in the terminal, the sequence would look as follows:
 
          .. code-block:: console
 
-            $ ml PDC/23.12  matlab/r2024b
+            $ ml PDC/23.12  matlab/r2024a-ps
             $ matlab -singleCompThread -nodisplay
 
-
-         If you are a local academic user who has been vetted by PDC staff, the above should be enough to eventually take you to the MATLAB command prompt. Otherwise, you will see the following:
+         If you are an academic user who has been vetted by PDC staff, the above should be enough to eventually take you to the MATLAB command prompt. Otherwise, you will see the following:
 
          .. code-block:: console
 
@@ -383,13 +382,13 @@ Some HPC centers detect if you've started on a login node and set ``maxCompThrea
 
          If you are a student or staff member at KTH and you see these credential requests, that means PDC support did not receive your request for MATLAB access.
 
-         **Reminder:** PDC users also have the option to go through ThinLinc and open MATLAB from the On-Demand Applications menu (See below).
+         PDC users also have the option to go through ThinLinc and open MATLAB from the On-Demand Applications menu, but this is not recommended as only 30 users are allowed to interface with Dardel via ThinLinc at any one time.
 
 
 Starting the MATLAB GUI
 -----------------------
 
-Running the MATLAB GUI requires that users be logged into a Thinlinc session. See https://uppmax.github.io/R-python-julia-matlab-HPC/common/login.html#log-in
+Running the MATLAB GUI requires that users be logged into a ThinLinc session. See https://uppmax.github.io/R-python-julia-matlab-HPC/common/login.html#log-in
 
 .. tabs::
 
@@ -421,17 +420,46 @@ Running the MATLAB GUI requires that users be logged into a Thinlinc session. Se
 
       You do not need to include ``-singleCompThread`` because ``maxNumCompThreads`` will be set to 1 automatically to account for starting on a login node.
 
-  .. tab:: LUNARC and PDC (Dardel)
+  .. tab:: LUNARC
 
-      The LUNARC HPC Desktop and Interactive HPC at PDC both use Desktop On-Demand and GfxLauncher to run certain interactive apps without going through a terminal interface. Click the ``Applications`` menu at the top left, hover the cursor over ``Applications-Matlab`` (LUNARC) or ``PDC-Matlab`` to see the versions available, and click your preferred version. That will open a GfxLauncher popup where you can set the resources needed to run the MATLAB GUI (note that batch jobs submitted from within the GUI are _not_ bound by the same settings as the GUI). **Note:** on Dardel, MATLAB versions 2024x may prompt for MathWorks credentials if you are not affiliated with KTH, so you may want to try 2023b instead.
+      The LUNARC HPC Desktop, available via ThinLinc, uses Desktop On-Demand and GfxLauncher to run certain interactive apps without going through a terminal interface. Click the ``Applications`` menu at the top left, hover the cursor over ``Applications-Matlab`` to see the versions available, and click your preferred version. That will open a GfxLauncher popup where you can set the resources needed to run the MATLAB GUI (note that batch jobs submitted from within the GUI are _not_ bound by the same settings as the GUI).
 
-      At PDC, selecting the partition happens entirely within the GfxLauncher. On LUNARC's Cosmos cluster, there are 3 versions per MATLAB release in the Apps menu---regular, (CPU), and (HEP,CPU)---and your resource choices in the GfxLauncher partly depend on which of those you select.
+      There are 3 versions per MATLAB release in the Apps menu---regular, (CPU), and (HEP,CPU)---and your resource choices in the GfxLauncher partly depend on which of those you select.
       
       .. figure:: ../../img/Cosmos-AppMenu-Matlab.png
          :width: 350
          :align: center
       
       The (HEP,CPU) nodes are private. The regular versions run on Intel 32-core nodes because they have built-in GPU partitions, but you may choose other nodes. If you don't plan to do any intensive graphical work inside the GUI, you can choose the (CPU) version of your preferred release to access an AMD 48-core node, which also allows you to run for up to 7 days (168:00:00) instead of the usual 2-day limit.
+
+  .. tab:: PDC (Dardel)
+
+      There are 2 ways to run MATLAB interactively on Dardel: via SSH with X-forwarding (recommended), or via Desktop On-Demand in a ThinLinc window. ThinLinc access to Dardel is limited to 30 users total, and even if you do get through, interactive jobs are likely to be stuck in queues for a long time. 
+
+      **SSH with X-forwarding.** When you first ssh into Dardel, you will need to have added the ``-X`` flag between ``ssh`` and your username. Once you are logged in, you need to book a compute node with ``salloc``, and then SSH (again with the ``-X`` flag) into whichever node you are assigned to by ``salloc``. The ``salloc`` step and its output will look something like this:
+
+         .. code-block:: console
+
+            <user>@login1:~> salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main
+
+      if you request a full node, or
+
+         .. code-block:: console
+
+            <user>@login1:~> salloc -c 16 -t 00:30:00 -A naiss2025-22-262 -p shared
+
+      if you request, for example, 16 cores on a shared node. Adjust the time, resources, and account number as needed. ``salloc`` will then print a handful of lines about the progress of allocating and queuing your job. The last line of output, something like ``salloc: Nodes nid00xxxx are ready for job``, will contain the ID of the node you booked. Copy that, and then run the following lines (after the `:~>` prompt; adjust the node ID as needed):
+
+         .. code-block:: console
+
+            <user>@login1:~> ssh -X nid001756
+            <user>@nid001756:~> ml PDC/23.12
+            <user>@nid001756:~> ml matlab/r2024a-ps
+            <user>@nid001756:~> matlab
+
+      The GUI will take a few minutes to load.
+
+      If you are lucky enough to get into Dardel via ThinLinc, the process looks very similar to LUNARC because Dardel's Desktop On-Demand apps also go through GfxLauncher, except that the MATLAB versions in the app menu are not separated by the types of nodes to run on. You choose the partition in the resources section of the GfxLauncher.   
 
 
 Exercises
@@ -489,6 +517,7 @@ Try them yourself!
 
 .. keypoints::
 
-   - You can start MATLAB either in a GUI (recommended) or, with the ``-nodisplay`` flag, run it in the terminal.
+   - You can start MATLAB either in a GUI or, with the ``-nodisplay`` flag, run it in the terminal.
    - If you start either interface from the terminal, you must first load the correct module(s).
-   - Include the ``-singleCompThread`` flag in the starting command to avoid hogging a login node, unless you are sure that your cluster sets that constraint on the login node automatically.
+   - For interactive work, you will usually have to reserve time on a compute node.
+   - If you take the risk of starting on a login node, use the ``-singleCompThread`` flag in the starting command to avoid hogging the node, unless you are sure that your cluster sets that constraint on the login node automatically.
