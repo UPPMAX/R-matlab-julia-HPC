@@ -62,15 +62,15 @@ Exercises
     +------------+-----------------------------------------------------------------------------------+
     | HPC cluster| Location                                                                          |
     +============+===================================================================================+
-    | COSMOS     | `Here <https://youtu.be/opRmSCYIeGQ>`_                                            |
+    | COSMOS     | `Here <https://youtu.be/opRmSCYIeGQ>`__                                           |
     +------------+-----------------------------------------------------------------------------------+
-    | Dardel     | `Here <https://nu.nl>`_                                                           |
+    | Dardel     | `Here <https://nu.nl>`__                                                          |
     +------------+-----------------------------------------------------------------------------------+
-    | Kebnekaise | `Here <https://youtu.be/3FHvyaPsAXU>`_                                            |
+    | Kebnekaise | `Here <https://youtu.be/3FHvyaPsAXU>`__                                           |
     +------------+-----------------------------------------------------------------------------------+
-    | Rackham    | `Here <https://youtu.be/rkahZzZxfuI>`_                                            |
+    | Rackham    | `Here <https://youtu.be/rkahZzZxfuI>`__                                           |
     +------------+-----------------------------------------------------------------------------------+
-    | Tetralith  | `Here <https://nu.nl/>`_                                                          |
+    | Tetralith  | `Here <https://nu.nl/>`__                                                         |
     +------------+-----------------------------------------------------------------------------------+
 
 Exercise 1: start the R interpreter
@@ -84,15 +84,15 @@ Exercise 1: start the R interpreter
     +------------+-----------------------------------------------------------------------------------+
     | HPC cluster| Location                                                                          |
     +============+===================================================================================+
-    | COSMOS     | `Here <https://lunarc-documentation.readthedocs.io/en/latest/>`_                  |
+    | COSMOS     | `Here <https://lunarc-documentation.readthedocs.io/en/latest/>`__                 |
     +------------+-----------------------------------------------------------------------------------+
-    | Dardel     | `Here <https://support.pdc.kth.se/doc/support/>`_                                 |
+    | Dardel     | `Here <https://support.pdc.kth.se/doc/support/>`__                                |
     +------------+-----------------------------------------------------------------------------------+
-    | Kebnekaise | `Here <https://docs.hpc2n.umu.se/>`_                                              |
+    | Kebnekaise | `Here <https://docs.hpc2n.umu.se/>`__                                             |
     +------------+-----------------------------------------------------------------------------------+
-    | Rackham    | `Here <http://docs.uppmax.uu.se/>`_                                               |
+    | Rackham    | `Here <http://docs.uppmax.uu.se/>`__                                              |
     +------------+-----------------------------------------------------------------------------------+
-    | Tetralith  | `Here <https://www.nsc.liu.se/support/systems/tetralith-getting-started/>`_       |
+    | Tetralith  | `Here <https://www.nsc.liu.se/support/systems/tetralith-getting-started/>`__      |
     +------------+-----------------------------------------------------------------------------------+
 
 - Within the documentation of your HPC cluster, search for the documentation about R
@@ -103,15 +103,15 @@ Exercise 1: start the R interpreter
     +------------+----------------------------------------------------------------------------------------------------------------+
     | HPC cluster| Page name and location                                                                                         |
     +============+================================================================================================================+
-    | COSMOS     | `R Software environment <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Rscript/>`_ |
+    | COSMOS     | `R Software environment <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Rscript/>`__|
     +------------+----------------------------------------------------------------------------------------------------------------+
-    | Dardel     | `R <https://support.pdc.kth.se/doc/applications/?sub=r/>`_                                                     |
+    | Dardel     | `R <https://support.pdc.kth.se/doc/applications/?sub=r/>`__                                                    |
     +------------+----------------------------------------------------------------------------------------------------------------+
-    | Kebnekaise | `R <https://www.hpc2n.umu.se/resources/software/r>`_                                                           |
+    | Kebnekaise | `R <https://www.hpc2n.umu.se/resources/software/r>`__                                                          |
     +------------+----------------------------------------------------------------------------------------------------------------+
-    | Rackham    | `R <https://docs.uppmax.uu.se/software/r/>`_                                                                   |
+    | Rackham    | `R <https://docs.uppmax.uu.se/software/r/>`__                                                                  |
     +------------+----------------------------------------------------------------------------------------------------------------+
-    | Tetralith  | `R <https://www.nsc.liu.se/software/catalogue/tetralith/modules/r.html>`_                                      |
+    | Tetralith  | `R <https://www.nsc.liu.se/software/catalogue/tetralith/modules/r.html>`__                                     |
     +------------+----------------------------------------------------------------------------------------------------------------+
 
 - From the terminal, load the module(s) for R,
@@ -255,5 +255,3 @@ by your cluster's module system.
     +------------+----------------------------------+
     | Tetralith  | :code:`module spider R`          |
     +------------+----------------------------------+
-
-

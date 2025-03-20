@@ -24,36 +24,39 @@ Below is an overview of where to find the documentation and a video showing
 the procedure. Some procedures have waiting steps of one or more days,
 so prefer to start early.
 
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| HPC cluster| Login method [*]       | Documentation                                                                                          | Video                                                      |
-+============+========================+========================================================================================================+============================================================+
-| COSMOS     | SSH                    | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`_           | `here <https://youtu.be/sMsenzWERTg>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| COSMOS     | Local ThinLinc client  | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`_     | `here <https://youtu.be/wn7TgElj_Ng>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Dardel     | SSH                    | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/I8cNqiYuA-4?si=MDKS4wEB1nQODvxj>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Dardel     | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           |                                                            |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Kebnekaise | SSH                    | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Kebnekaise | Local ThinLinc client  | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_jpj0GW9ASc?si=1k0ZnXABbhUm0px6>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Kebnekaise | Remote desktop website | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_O4dQn8zPaw?si=z32av8XY81WmfMAW>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Rackham    | SSH                    | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_local_thinlinc_client>`_ | `here <https://youtu.be/TSVGSKyt2bQ>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Rackham    | Local ThinLinc client  | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_console_password/>`_                    | `here <https://youtu.be/PqEpsn74l0g>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Rackham    | Remote desktop website | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`_              | `here <https://youtu.be/HQ2iuKRPabc>`_                     |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Tetralith  | SSH                    | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/wtGIzSBiulY?si=ejx1QEcYXI_bMSoM>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Tetralith  | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           | `here <https://youtu.be/JsHzQSFNGxY?si=gLI0GEiFiUZ-F__T>`_ |
-+------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| HPC cluster| Login method [*]         | Documentation                                                                                          | Video                                                      |
++============+==========================+========================================================================================================+============================================================+
+| COSMOS     | SSH                      | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`__          | `here <https://youtu.be/sMsenzWERTg>`__                    |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| COSMOS     |**Local ThinLinc client** | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`__    | `here <https://youtu.be/wn7TgElj_Ng>`__                    |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Dardel     | SSH                      | `here <https://www.nsc.liu.se/support/getting-started/>`__                                             | `here <https://youtu.be/I8cNqiYuA-4?si=MDKS4wEB1nQODvxj>`__|
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Dardel     |**Local ThinLinc client** | `here <https://www.nsc.liu.se/support/graphics/>`__. Scroll down to ThinLinc                           |                                                            |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Kebnekaise | SSH                      | `here <https://docs.hpc2n.umu.se/documentation/access/>`__                                             | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`__|
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Kebnekaise | Local ThinLinc client    | `here <https://docs.hpc2n.umu.se/documentation/access/>`__                                             | `here <https://youtu.be/_jpj0GW9ASc?si=1k0ZnXABbhUm0px6>`__|
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Kebnekaise |**Remote desktop website**| `here <https://docs.hpc2n.umu.se/documentation/access/>`__                                             | `here <https://youtu.be/_O4dQn8zPaw?si=z32av8XY81WmfMAW>`__|
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Rackham    | SSH                      | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_local_thinlinc_client>`__| `here <https://youtu.be/TSVGSKyt2bQ>`__                    |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Rackham    | Local ThinLinc client    | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_console_password/>`__                   | `here <https://youtu.be/PqEpsn74l0g>`__                    |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Rackham    |**Remote desktop website**| `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_website/>`__             | `here <https://youtu.be/HQ2iuKRPabc>`__                    |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Tetralith  | SSH                      | `here <https://www.nsc.liu.se/support/getting-started/>`_                                              | `here <https://youtu.be/wtGIzSBiulY?si=ejx1QEcYXI_bMSoM>`_ |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| Tetralith  |**Local ThinLinc client** | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           | `here <https://youtu.be/JsHzQSFNGxY?si=gLI0GEiFiUZ-F__T>`_ |
++------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+
 
 .. admonition:: What are the differences between these login methods?
     :class: dropdown
+
+    For beginners: use the **bold** login method.
 
     These are the ways to access your HPC cluster and some of their features:
 
