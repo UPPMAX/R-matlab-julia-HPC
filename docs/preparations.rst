@@ -10,7 +10,7 @@ These are the things you need to follow the course:
 - you can log in to at least one HPC cluster, in at least one way.
   see `login <common/login.rst>`_
 - you can start a text editor,
-  see `login <common/use_text_editor.rst>`_
+  see `use a text editor <common/use_text_editor.rst>`_
 
 .. note::
 
