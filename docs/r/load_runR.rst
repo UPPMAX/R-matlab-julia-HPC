@@ -123,7 +123,7 @@ Exercise 1: start the R interpreter
 +----------+---------+
 |Dardel    |Latest   |
 +----------+---------+
-|Kabnekaise|4.1.2    |
+|Kebnekaise|4.1.2    |
 +----------+---------+
 |Rackham   |4.1.1    |
 +----------+---------+
