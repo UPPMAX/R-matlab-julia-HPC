@@ -143,7 +143,7 @@ or, at clusters that hides the modules until relevant dependencies are loaded.
                    Julia/1.9.3-linux-x86_64
                    Julia/1.10.4-linux-x86_64
 
-.. admonition:: **FIX** Output at PDC as of MAr 2025 
+.. admonition:: **FIX** Output at PDC as of Mar 2025 
     :class: dropdown
 
         .. code-block:: console
@@ -185,7 +185,7 @@ or at cluster that includes "architecture in module name
 
    $ ml Julia/1.8.5-linux-x86_64
 
-.. admonition:: **FIX** Output at PDC as of MAr 2025 
+.. admonition:: What will it look like?
    :class: dropdown
 
    .. tabs::
@@ -241,9 +241,6 @@ Run Julia as a session
 ######################
 
 
-Workflow in Julia (DEMO)
-------------------------
-
 - After loading the appropriate modules for Julia, you will have access to the **read-eval-print-loop (REPL)** command line by typing ``julia``: 
 
 .. code-block:: console
@@ -275,6 +272,9 @@ where one can execute commands. The description for accessing these modes will b
 given in the following paragraphs. Once you are done with your work in any of the modes,
 you can return to the ``Julian`` mode by pressing the ``backspace`` key.
 
+Shell mode
+..........
+
 While being on the Julian mode you can enter the ``shell`` mode by typing ``;``:
 
 .. code-block:: julia
@@ -287,6 +287,9 @@ this will allow you to use Linux commands. Notice that the availability of these
 depend on the OS, for instance, on Windows it will depend on the terminal that you have
 installed and if it is visible to the Julia installation. 
 
+Package manage mode
+...................
+
 Another mode available in Julia is the ``package manager`` mode, it can be accessed by typing 
 ``]`` in the ``Julian`` mode:
 
@@ -298,6 +301,9 @@ Another mode available in Julia is the ``package manager`` mode, it can be acces
 this will make your interaction with the package manager **Pkg** easier, for instance,
 instead of typing the complete name of **Pkg** commands such as ``Pkg.status()`` in the
 ``Julian`` mode, you can just type ``status`` in the ``package`` mode. 
+
+Help mode
+.........
 
 The last mode is the ``help`` mode, you can enter this mode from the ``Julian`` one by
 typing ``?``, then you may type some string from which you need more information:
@@ -314,30 +320,10 @@ typing ``?``, then you may type some string from which you need more information
 
    A variable referring to the last computed value, automatically set at the interactive prompt.
 
+Exiting
+.......
 
-More detailed information about the modes in Julia can be found `here <https://docs.julialang.org/en/v1/stdlib/REPL/>`_.
-
-.. admonition:: The Julian modes summary
-   :class: dropdown
-
-    - enter the shell mode by typing ``;``
-    - go back to *Julian* mode by ``<backspace>``
-    - access the package manager mode by typing ``]`` in the *Julian* mode
-    - use the help mode by typing ``?`` in the *Julian mode*
-
-.. type-along::
-
-   .. code-block:: console
-
-      $ julia 
-
-   The Julia prompt (``julian`` mode) looks like this:
-
-   .. code-block:: julia-repl
-   
-      julia> 
-
-   Exit with 
+-  Exit with 
 
    .. code-block:: julia-repl
 
@@ -349,8 +335,21 @@ More detailed information about the modes in Julia can be found `here <https://d
 
       julia> exit()
 
+.. admonition:: The Julian modes summary
+   :class: dropdown
+
+    - enter the *shell mode* by typing ``;``
+    - go back to *Julian* mode by ``<backspace>``
+    - access the *package manager* mode by typing ``]`` in the *Julian* mode
+    - use the *help mode* by typing ``?`` in the *Julian mode*
+
+.. seealso::
+
+   `More detailed information about the modes in Julia can be found <https://docs.julialang.org/en/v1/stdlib/REPL/>`_.
+
+
 Run a Julia script
-################
+##################
 
 You can run a Julia script on the Linux shell as follows:
 
