@@ -120,7 +120,7 @@ Here is an overview of where to find the documentation and a video showing the p
 
 +------------+------------------------+---------------------+-------------------+
 | HPC Center | Method                 | Documentation       | Video             |
-+============+========================+=====================+========  =========+
++============+========================+=====================+===================+
 | HPC2N      | SSH                    | `here <https://docs.hpc2n.umu.se/documentation/access/>`_   | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`_ |
 +------------+------------------------+---------------------------------------+------------------------------------------------------------+
 | HPC2N      | Local ThinLinc client  | `here <https://docs.hpc2n.umu.se/documentation/access/>`_                                              | `here <https://youtu.be/_jpj0GW9ASc?si=1k0ZnXABbhUm0px6>`_ |
@@ -130,7 +130,7 @@ Here is an overview of where to find the documentation and a video showing the p
 | LUNARC     | SSH                    | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/>`_           | `here <https://youtu.be/sMsenzWERTg>`_                     |
 +------------+------------------------+-------------------------+-------------------------------------+
 | LUNARC     | Local ThinLinc client  | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`_     | `here <https://youtu.be/wn7TgElj_Ng>`_                     |
-+------------+------------------------+-------------------------------------+------------------------------------------------------------+
++------------+------------------------+-------------------------+------------------------------------------------------------+
 
 
 
