@@ -32,7 +32,7 @@ Log in to one of the HPC systems covered in this course
 
    - When logging in to UPPMAX the first time in ThinLinc, choose XFCE desktop. 
    - On HPC2N, you will use the MATE desktop as default. 
-   - Whe logging in to LUNARC the first time in ThinLinc, choose GNOME Classis Desktop.  
+   - When logging in to LUNARC the first time in ThinLinc, choose GNOME Classics Desktop.  
    - On NSC you will use XFCE desktop as default. 
 
 .. warning::
