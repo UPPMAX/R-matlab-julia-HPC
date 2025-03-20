@@ -17,6 +17,7 @@ These are discussed in detail below
    - There will be an opportunity to get help with log in every morning of the workshop at 9:00.
    - You are also welcome to join the On-boarding at 13:00 the day before the ordinary program starts.
 
+
 Log in to one of the HPC systems covered in this course
 -------------------------------------------------------
 
@@ -47,6 +48,12 @@ Log in to one of the HPC systems covered in this course
 
       - https://www.nsc.liu.se/support/2fa/ 
 
+.. warning::
+
+   - When you login to Dardel...
+
+      - 
+
 .. seealso::
 
    - `Log in to Rackham <http://docs.uppmax.uu.se/getting_started/login_rackham/>`_ 
@@ -57,6 +64,9 @@ Log in to one of the HPC systems covered in this course
    - `Log in to Tetralith <https://www.nsc.liu.se/support/getting-started/>`_ 
 
        - `Log in to Tetralith with graphical applications (scroll down for ThinLinc) <https://www.nsc.liu.se/support/graphics/>`_ 
+
+   - `Log in to Dardel <https://www.nsc.liu.se/support/getting-started/>`_ 
+
 
 These are the ways to access your HPC cluster and how that looks like:
 
@@ -125,6 +135,10 @@ Here is an overview of where to find the documentation and a video showing the p
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | NSC        | Local ThinLinc client  | `here <https://www.nsc.liu.se/support/graphics/>`_ . Scroll down to ThinLinc                           |                                                            |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| PDC        | SSH                    | `here <https://support.pdc.kth.se/doc/support/?sub=login/ssh_login/>`_                                              |                                                            |
++------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+| PDC        | Local ThinLinc client  | `here <https://support.pdc.kth.se/doc/support/?sub=login/interactive_hpc/>`_ .                          |                                                            |
++------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | UPPMAX     | SSH                    | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_remote_desktop_local_thinlinc_client>`_ | `here <https://youtu.be/TSVGSKyt2bQ>`_                     |
 +------------+------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | UPPMAX     | Local ThinLinc client  | `here <https://docs.uppmax.uu.se/getting_started/login_rackham_console_password/>`_                    | `here <https://youtu.be/PqEpsn74l0g>`_                     |
@@ -145,6 +159,28 @@ Need help? Contact support:
 +------------+------------------------+----------------------------------------------+
 | NSC        | `Contact NSC support <https://www.nsc.liu.se/support/>`_              |
 +------------+------------------------+----------------------------------------------+
+| PDC        | `Contact PDC support <https://support.pdc.kth.se/doc/support/?sub=contact/contact_support/>`_              |
++------------+------------------------+----------------------------------------------+
+
+Videos
+
+HPC cluster|Login method         |Video
+-----------|---------------------|---------------------------------------------------------------
+Alvis      |SSH                  |[here](https://youtu.be/PJZ3W907qCU)
+Bianca     |Website              |[here](https://youtu.be/Ni9nyCf7me8)
+Bianca     |SSH                  |[here](https://youtu.be/7mKDxnXqi_M)
+COSMOS     |Local ThinLinc client|[here](https://youtu.be/wn7TgElj_Ng)
+COSMOS     |SSH                  |[here](https://youtu.be/sMsenzWERTg)
+Dardel     |SSH                  |[here](https://youtu.be/I8cNqiYuA-4)
+Kebnekaise |Local ThinLinc client|[here](https://youtu.be/_jpj0GW9ASc)
+Kebnekaise |SSH                  |[here](https://youtu.be/pIiKOKBHIeY)
+Kebnekaise |Website              |[here](https://youtu.be/_O4dQn8zPaw)
+Rackham    |Local ThinLinc client|[here](https://youtu.be/PqEpsn74l0g)
+Rackham    |SSH                  |[here](https://youtu.be/TSVGSKyt2bQ)
+Rackham    |Website              |[here](https://youtu.be/HQ2iuKRPabc)
+Tetralith  |SSH                  |[here](https://youtu.be/wtGIzSBiulY)
+
+
 
 .. keypoints::
 
