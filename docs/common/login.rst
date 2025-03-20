@@ -3,10 +3,12 @@ Log in session
 
 .. admonition:: Goal
 
-    - The goal of this optional sessions is to make sure that
-    you have fulledfilled the 
+    - The goal of this optional sessions is to make sure that you have fulledfilled the 
+
         - `Prerequisites <https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html>`_
+
         - `Preparations of environment <https://uppmax.github.io/R-python-julia-matlab-HPC/preparations.html>`_ to follow this course:
+
             - you can log in
             - you can start a text editor
 
@@ -42,8 +44,8 @@ Log in session
    - If you have user account and course/research project on Dardel, follow the **PDC** track below.
 
 
-Log in!
--------
+Step 1: Log in!
+---------------
 
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | HPC cluster| Login method [*]         | Documentation                                                                                          | Video                                                      |
