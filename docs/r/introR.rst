@@ -15,7 +15,7 @@ Introduction R
 
       - see a first overview of the R programming language
       - see the overview of the course
-      - hear about 'the tarbal with exercises'
+      - hear about 'the tarball with exercises'
 
    .. tab:: For teachers
 
