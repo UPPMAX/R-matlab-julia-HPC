@@ -17,17 +17,21 @@ MATLAB GUI and SLURM
    - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-37``
+   - Tetralith: ``naiss-2025-22-262``
+   - Dardel: ``naiss-2025-22-262``
  
 .. admonition:: Storage space for this workshop 
 
    - Rackham: ``/proj/r-py-jl-m-rackham``
    - Kebnekaise: ``/proj/nobackup/r-py-jl-m`` 
    - Cosmos: your home directory should have plenty of space
+   - Tetralith: ``/proj/r-matlab-julia-naiss/users/``
+   - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``   
 
 .. warning::
 
    - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
-   - On the login-nodes MATLAB MUST be started with the option '-singleCompThread', preventing MATLAB from using more than one thread.
+   - On login nodes, MATLAB should be started with the option ``-singleCompThread`` to stop it from using more than one thread (a couple of the clusters detect if the user is on a login node and restrict MATLAB to 1 thread automatically, but it's better to include it to be safe than forget and have your job killed by angry admins).
 
 .. note:: 
 
