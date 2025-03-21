@@ -63,29 +63,15 @@ Exercises
     +------------+------------------------+----------------------------------------------------------+
     | HPC cluster| Login method           | Location                                                 |
     +============+========================+==========================================================+
-    | COSMOS     | SSH client             | `Here <https://nu.nl>`__                                 |
+    | COSMOS     | Local ThinLinc client  | `Here <https://youtu.be/sSWd54Gunck>`__                  |
     +------------+------------------------+----------------------------------------------------------+
-    | COSMOS     | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
+    | Dardel     | Local ThinLinc client  | `Here <https://youtu.be/xBFH7Ab37FU>`__                  |
     +------------+------------------------+----------------------------------------------------------+
-    | Dardel     | SSH client             | `Here <https://nu.nl>`__                                 |
+    | Kebnekaise | Local ThinLinc client  | `Here <https://youtu.be/miAxHkSePIA>`__                  |
     +------------+------------------------+----------------------------------------------------------+
-    | Dardel     | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
+    | Rackham    | Local ThinLinc client  | `Here <https://youtu.be/fSUYE_Xahe8>`__                  |
     +------------+------------------------+----------------------------------------------------------+
-    | Kebnekaise | SSH client             | `Here <https://nu.nl>`__                                 |
-    +------------+------------------------+----------------------------------------------------------+
-    | Kebnekaise | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
-    +------------+------------------------+----------------------------------------------------------+
-    | Kebnekaise | Remote desktop website | `Here <https://nu.nl>`__                                 |
-    +------------+------------------------+----------------------------------------------------------+
-    | Rackham    | SSH client             | `Here <https://nu.nl>`__                                 |
-    +------------+------------------------+----------------------------------------------------------+
-    | Rackham    | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
-    +------------+------------------------+----------------------------------------------------------+
-    | Rackham    | Remote desktop website | `Here <https://nu.nl>`__                                 |
-    +------------+------------------------+----------------------------------------------------------+
-    | Tetralith  | SSH client             | `Here <https://nu.nl/>`__                                |
-    +------------+------------------------+----------------------------------------------------------+
-    | Tetralith  | Local ThinLinc client  | `Here <https://nu.nl/>`__                                |
+    | Tetralith  | Local ThinLinc client  | `Here <https://youtu.be/HxBtyCB3w0k>`__                  |
     +------------+------------------------+----------------------------------------------------------+
 
 Exercise 1: start the R interpreter
