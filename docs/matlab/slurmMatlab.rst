@@ -713,6 +713,29 @@ Here is an example of a serial batch job for UPPMAX/HPC2N/LUNARC.
          # The command 'time' is timing the execution
          time matlab -singleCompThread -nojvm -nodisplay -r "monte_carlo_pi(100000)"
 
+   .. tab:: PDC
+
+      .. code-block:: 
+
+         #!/bin/bash
+         # Change to your actual project number later
+         #SBATCH -A naiss2025-22-262 
+         #SBATCH -n 1 
+         # Asking for 15 min (change as you want)
+         #SBATCH -t 00:15:00
+         #SBATCH --error=matlab_%J.err
+         #SBATCH --output=matlab_%J.out
+         #SBATCH -p main 
+
+         # Clean the environment
+         module purge > /dev/null 2>&1
+         module load  PDC/23.12 matlab/r2024a-ps
+
+         # Executing the matlab program monte_carlo_pi.m for the value n=100000
+         # (n is number of steps - see program).
+         # The command 'time' is timing the execution
+         time matlab -singleCompThread -nojvm -nodisplay -r "monte_carlo_pi(100000)"         
+
 You can download `monte_carlo_pi.m <https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/monte_carlo_pi.m>`_ here or find it under matlab in the exercises directory. 
 
 You the submit it with 
@@ -876,6 +899,32 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
 
             # Executing a parallel matlab program 
             srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+
+      .. tab:: PDC 
+
+         .. code-block:: 
+
+            #!/bin/bash
+            # Change to your actual project number
+            #SBATCH -A naiss2025-22-262
+            # Remember, there are 4 workers and 1 master! 
+            #SBATCH -p shared 
+            #SBATCH -n 5 
+            # Asking for 30 min (change as you want)
+            #SBATCH -t 00:30:00
+            #SBATCH --error=matlab_%J.err
+            #SBATCH --output=matlab_%J.out
+
+            # Clean the environment
+            module purge > /dev/null 2>&1
+
+            # Change depending on resource and MATLAB version
+            # to find out available versions: module spider matlab
+            module add PDC/23.12 matlab/r2024a-ps  
+
+            # Executing a parallel matlab program 
+            matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+
 
 
 GPU code
