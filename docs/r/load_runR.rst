@@ -63,25 +63,25 @@ Exercises
     +------------+------------------------+----------------------------------------------------------+
     | HPC cluster| Login method           | Location                                                 |
     +============+========================+==========================================================+
-    | COSMOS     | SSH client             |`Here <https://youtu.be/opRmSCYIeGQ>`__                   |
+    | COSMOS     | SSH client             | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | COSMOS     | Local ThinLinc client  |`Here <https://nu.nl>`__                                  |
+    | COSMOS     | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Dardel     | SSH client             |`Here <https://nu.nl>`__                                  |
+    | Dardel     | SSH client             | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Dardel     | Local ThinLinc client  |`Here <https://nu.nl>`__                                  |
+    | Dardel     | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Kebnekaise | SSH client             |`Here <https://youtu.be/3FHvyaPsAXU>`__                   |
+    | Kebnekaise | SSH client             | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Kebnekaise | Local ThinLinc client  |`Here <https://nu.nl>`__                                  |
+    | Kebnekaise | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Kebnekaise | Remote desktop website |`Here <https://youtu.be/3FHvyaPsAXU>`__                   |
+    | Kebnekaise | Remote desktop website | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Rackham    | SSH client             |`Here <https://youtu.be/rkahZzZxfuI>`__                   |
+    | Rackham    | SSH client             | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Rackham    | Local ThinLinc client  |`Here <https://nu.nl>`__                                  |
+    | Rackham    | Local ThinLinc client  | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
-    | Rackham    | Remote desktop website |`Here <https://nu.nl>`__                                  |
+    | Rackham    | Remote desktop website | `Here <https://nu.nl>`__                                 |
     +------------+------------------------+----------------------------------------------------------+
     | Tetralith  | SSH client             | `Here <https://nu.nl/>`__                                |
     +------------+------------------------+----------------------------------------------------------+
