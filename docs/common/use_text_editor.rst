@@ -1,3 +1,5 @@
+.. _common-use-text-editor:
+
 Use a text editor
 =================
 

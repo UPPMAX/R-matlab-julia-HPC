@@ -8,9 +8,9 @@ Prepare the environment
 These are the things you need to follow the course:
 
 - you can log in to at least one HPC cluster, in at least one way.
-  see :ref:`common-login:`
+  see :ref:`common-login`
 - you can start a text editor,
-  see `use a text editor <common/use_text_editor.rst>`_
+  see :ref:`_common-use-text-editor`
 
 .. note::
 
