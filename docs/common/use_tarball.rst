@@ -22,11 +22,11 @@ Procedure
 
 The procedure has these steps:
 
-- Get the tarbal
-- Uncompress the tarbal
+- Get the tarball
+- Uncompress the tarball
 
-Step 1: get the tarbal
-^^^^^^^^^^^^^^^^^^^^^^
+Step 1: get the tarball
+^^^^^^^^^^^^^^^^^^^^^^^
 
 In a terminal, use the following command to download the file
 to your current folder:
@@ -61,8 +61,8 @@ to your current folder:
 
 
 
-Step 2: Uncompress the tarbal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 2: Uncompress the tarball
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In a terminal, use the following command to uncompress the file:
 

@@ -47,7 +47,7 @@ Let's do this.
 
 Also:
 
-- [x] Document how to get and extract the tarbal
+- [x] Document how to get and extract the tarball
 
 Last session:
 
