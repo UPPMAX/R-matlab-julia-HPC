@@ -87,37 +87,3 @@ the course' document):
 
 
 
-## Evaluation questions
-
-- 1. Overall, how would you rate today's training event?
-    - RB: Neutral. I'd prefer to use the average learning outcome
-      of question 12.
-- 2.Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?
-    - RB: Suggest to remove, question 15 is fine for this
-- 3.Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?
-    - RB: Suggest to remove, question 15 is fine for this
-- 4.Training event organisation (e.g. announcement, registration, ...):  –   What did you like best?      – Where should we improve?
-    - RB: Suggest to remove, unless the course coordinator likes this question
-- 5.Length of teaching today was
-    - RB: Suggest to remove, question 15 is fine for this
-- 6.Depth of content was
-    - RB: Suggest to remove: there are too many teachers
-- 7.The pace of teaching was
-    - RB: Suggest to remove: there are too many teachers
-- 8.Teaching aids used (e.g. slides) were well prepared
-    - RB: Suggest to remove: there are too many teachers
-- 9.Hands-on exercises and demonstrations were
-    - RB: Suggest to remove: there are too many teachers
-- 10.Hands-on exercises and demonstrations were well prepared
-    - RB: Suggest to remove: there are too many teachers
-- 11.How would you rate the separate sessions?
-    - RB: Suggest to remove: this is too harsh on a person
-- 12.Give your confidence levels of the following statements
-    - RB: Awesome! Love this!
-- 13.Did today's course meet your expectation?
-    - RB: Suggest to remove: too big overlap with question 1
-- 14.Which future training topics would you like to be provided by the training host(s)?
-    - RB: Suggest to remove
-- 15.Do you have any additional comments?
-    - RB: Awesome! Love this!
-

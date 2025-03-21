@@ -1,3 +1,5 @@
+.. _common-login:
+
 Log in session 
 ==============
 
