@@ -348,9 +348,9 @@ Content of the course
 
    common/login.rst
    common/ondemand-desktop.rst
-   common/use_tarball.rst
    common/naiss_projects_overview.rst
    common/use_text_editor.rst
+   common/use_tarball.rst
    
 .. toctree::
    :maxdepth: 2
