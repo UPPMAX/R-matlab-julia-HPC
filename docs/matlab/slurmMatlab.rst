@@ -304,6 +304,16 @@ In order to list the content of your profile, do ``c.AdditionalProperties``.
 
    You also need to add ``c.AdditionalProperties.ProcsPerNode=20;`` for UPPMAX. 
 
+   At PDC, you do NOT set any ``AdditionalProperties``. You instead work in an interactive session, which you can do with: 
+   - start with 
+       - full node:   ``salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main``
+       - fewer cores, here 24: ``salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`` 
+   - when the job is allocated, start an SSH connection to the compute node. (if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``): 
+       - ssh -X <node-you-got-allocated> 
+   - Then load MATLAB and start it 
+       - ml PDC/23.12 matlab/r2024a-ps 
+       - matlab -nodisplay -nodesktop -nosplash  
+
 **Example, for HPC2N**
 
 Asking for 1 hour walltime. 
@@ -314,6 +324,46 @@ Asking for 1 hour walltime.
    >> c.AdditionalProperties.AccountName = 'hpc2n2025-062';
    >> c.AdditionalProperties.WallTime = '01:00:00';
    >> c.saveProfile
+
+**Example, for PDC** 
+
+Asking for 1 hour. Starting from my own computer. 
+
+.. code-block:: 
+
+   bbrydsoe@enterprise:~$ ssh -X dardel.pdc.kth.se
+   Last login: Thu Mar 20 17:02:49 2025 from enterprise.hpc2n.umu.se
+
+     2025-03-14 at 15:39 [dardel]
+
+   System maintenance done, Dardel is running jobs since a few hours.
+
+     --== Welcome to Dardel! ==--
+
+   bbrydsoe@login1:~> 
+
+   bbrydsoe@login1:~> salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared
+   salloc: Pending job allocation 9050479
+   salloc: job 9050479 queued and waiting for resources
+   salloc: job 9050479 has been allocated resources
+   salloc: Granted job allocation 9050479
+   salloc: Waiting for resource configuration
+   salloc: Nodes nid002585 are ready for job
+   bbrydsoe@login1:~> ssh nid002585
+   bbrydsoe@nid002585:~> ml PDC/23.12 matlab/r2024a-ps
+   bbrydsoe@nid002585:~> matlab -nodisplay -nodesktop -nosplash 
+   
+                                                              < M A T L A B (R) >
+                                                    Copyright 1984-2024 The MathWorks, Inc.
+                                               R2024a Update 3 (24.1.0.2603908) 64-bit (glnxa64)
+                                                                  May 2, 2024
+
+
+   To get started, type doc.
+   For product information, visit www.mathworks.com.
+
+   >> c=parcluster;
+   >> 
 
 .. exercise:: Run job settings
 
@@ -509,6 +559,32 @@ Let us try running this on Kebnekaise, including checking state and then getting
    
    You can download `parallel_example.m <https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m>`_ here.  
 
+.. note:: parpool
+
+   On the clusters where that work, you can start a ``parpool`` and then (for instance) run a parallel code inside MATLAB. 
+
+   Example: PDC 
+
+   As shown earlier, first start an interactive session, login to the compute node you got, then load matlab and start it. Then create a parpool of the size (at most) that you asked for in number of cores. 
+
+   .. code-block:: 
+
+      >> p=parpool(24)
+      Starting parallel pool (parpool) using the 'local' profile ... connected to 24 workers.
+      p =
+      Pool with properties:
+      Connected: true
+      NumWorkers: 24
+      Cluster: local
+      AttachedFiles: {}
+      IdleTimeout: 30 minute(s) (30 minutes remaining)
+      SpmdEnabled: true
+      >> parallel_example
+t =
+2.4711
+ans =
+2.4711   
+
 There is more information about batch jobs here on `Mathworks <https://se.mathworks.com/help/parallel-computing/batch.html>`_ .
    
 MATLAB batch jobs
@@ -696,7 +772,6 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
    .. tabs::
 
       .. tab:: UPPMAX 
-         :class: dropdown
           
          .. code-block:: 
 
@@ -724,7 +799,6 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
             srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
 
       .. tab:: HPC2N 
-         :class: dropdown
 
          .. code-block:: 
 
@@ -752,7 +826,6 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
             srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
 
       .. tab:: LUNARC 
-         :class: dropdown
 
          .. code-block:: 
 
@@ -775,6 +848,32 @@ Inside the MATLAB code, the number of CPU-cores (NumWorkers in MATLAB terminolog
             # Change depending on resource and MATLAB version
             # to find out available versions: module spider matlab
             module add matlab/2023b
+
+            # Executing a parallel matlab program 
+            srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+
+      .. tab:: NSC 
+
+         .. code-block:: 
+
+            #!/bin/bash
+            # Change to your actual project number
+            #SBATCH -A naiss2025-22-262
+            # Remember, there are 4 workers and 1 master! 
+            #SBATCH --ntasks=5
+            #SBATCH --cpus-per-task=1
+            #SBATCH --ntasks-per-core=1
+            # Asking for 30 min (change as you want)
+            #SBATCH -t 00:30:00
+            #SBATCH --error=matlab_%J.err
+            #SBATCH --output=matlab_%J.out
+
+            # Clean the environment
+            module purge > /dev/null 2>&1
+
+            # Change depending on resource and MATLAB version
+            # to find out available versions: module spider matlab
+            module add MATLAB/2024a-hpc1-bdist 
 
             # Executing a parallel matlab program 
             srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
