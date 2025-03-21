@@ -340,10 +340,13 @@ Content of the course
    :caption: COMMON:
 
    common/login.rst
-   common/ondemand-desktop.rst
-   common/naiss_projects_overview.rst
-   common/use_text_editor.rst
    common/use_tarball.rst
+   common/use_text_editor.rst
+   common/naiss_projects_overview.rst
+   common/ondemand-desktop.rst
+   common/hpc_clusters.rst
+   common/parallel.rst
+   common/other_courses.rst
    
 .. toctree::
    :maxdepth: 2
