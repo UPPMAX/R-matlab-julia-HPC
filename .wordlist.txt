@@ -852,7 +852,6 @@ OpenOnDemand
 optimised
 Rebecca
 SubmittingPatches
-tarbal
 ToDos
 tuesday
 webpage
