@@ -83,7 +83,7 @@ the HPC clusters used in this course:
 
 In this session we use ``pip``, because it is a commonly-used package installation system that works on all HPC clusters used in this course.
 The use of ``conda`` (and its differences with ``pip``) can be read at
-`this course's 'Extra Reading' section Conda at UPPMAX <https://uppmax.github.io/R-python-julia-matlab-HPC/python/condaUPPMAX.html>`_.
+`this course's 'Extra Reading' section Conda at UPPMAX <https://uppmax.github.io/R-matlab-julia-HPC/python/condaUPPMAX.html>`_.
 
 In this session, we will install packages to your default user folder.
 Because this one default user folder, installing a different version of one package

@@ -371,7 +371,7 @@ that has ``seaborn`` installed!
 More exercises
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-More exercises can be found at `here <https://uppmax.github.io/R-python-julia-matlab-HPC/extra/isolated_extra.html>`_.
+More exercises can be found at `here <https://uppmax.github.io/R-matlab-julia-HPC/extra/isolated_extra.html>`_.
 
 Conclusion
 ----------

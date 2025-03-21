@@ -36,8 +36,8 @@ Introduction Julia
 
 .. admonition:: Exercises 
 
-    - You can download the exercises from the course GitHub repo, under the "exercises" -> "julia" directory: https://github.com/UPPMAX/R-python-julia-matlab-HPC/tree/main/exercises/julia 
-    - Copy the file and un-tar it in you personal project folder you created a while ago (https://uppmax.github.io/R-python-julia-matlab-HPC/index.html#prepare-your-environment-now). Finally enter the directory and list the content with the ``tree`` command.
+    - You can download the exercises from the course GitHub repo, under the "exercises" -> "julia" directory: https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/exercises/julia 
+    - Copy the file and un-tar it in you personal project folder you created a while ago (https://uppmax.github.io/R-matlab-julia-HPC/index.html#prepare-your-environment-now). Finally enter the directory and list the content with the ``tree`` command.
 
     .. code-block:: bash
 

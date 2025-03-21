@@ -231,7 +231,7 @@ To start an interactive session in the simplest way, is shown here:
 
    .. tab:: LUNARC
 
-      See https://uppmax.github.io/R-python-julia-matlab-HPC/common/ondemand-desktop.html#how-do-i-start
+      See https://uppmax.github.io/R-matlab-julia-HPC/common/ondemand-desktop.html#how-do-i-start
 
 
 Indeed, all you really need is the project name.

@@ -391,7 +391,7 @@ Exercises
 
    - Try out one or two of the scripts from the exercise folder ``batchJulia``.
    - First create an interactive session with the right Slurm commands to the ``interactive``/``salloc`` command.
-       - use the commands from the batch job script belonging to the julia script at `examples of batch scripts for julia <https://uppmax.github.io/R-python-julia-matlab-HPC/julia/batchJulia.html#examples-of-batch-scripts-for-julia>`_
+       - use the commands from the batch job script belonging to the julia script at `examples of batch scripts for julia <https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia.html#examples-of-batch-scripts-for-julia>`_
 
 
 .. keypoints::

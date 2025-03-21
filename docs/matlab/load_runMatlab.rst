@@ -388,7 +388,7 @@ Some HPC centers detect if you've started on a login node and set ``maxCompThrea
 Starting the MATLAB GUI
 -----------------------
 
-Running the MATLAB GUI requires that users be logged into a ThinLinc session. See https://uppmax.github.io/R-python-julia-matlab-HPC/common/login.html#log-in
+Running the MATLAB GUI requires that users be logged into a ThinLinc session. See https://uppmax.github.io/R-matlab-julia-HPC/common/login.html#log-in
 
 .. tabs::
 

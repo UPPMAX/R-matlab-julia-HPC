@@ -343,7 +343,7 @@ NOTE: *only* run jobs that are short and/or do not use a lot of resources from t
     
 .. note::
 
-   Real cases will be tested in the **batch session** (https://uppmax.github.io/R-python-julia-matlab-HPC/python/batchPython.html). 
+   Real cases will be tested in the **batch session** (https://uppmax.github.io/R-matlab-julia-HPC/python/batchPython.html). 
 
 Run an interactive Python shell
 ###############################

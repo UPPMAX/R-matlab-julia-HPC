@@ -270,7 +270,7 @@ Batch mode
 
 .. challenge:: Serial batch script for R
 
-   Run the serial batch script shown in the session "Running R in batch mode", but for the add2.R code (see the `Exercise/R directory on GitHub <https://github.com/UPPMAX/R-python-julia-matlab-HPC/tree/main/exercises/r/add2.R>`_). Remember the arguments.
+   Run the serial batch script shown in the session "Running R in batch mode", but for the add2.R code (see the `Exercise/R directory on GitHub <https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/exercises/r/add2.R>`_). Remember the arguments.
     
 .. solution:: Solution for UPPMAX
     :class: dropdown

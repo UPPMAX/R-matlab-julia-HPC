@@ -1,7 +1,7 @@
 Introduction Python
 ===================
 
-`Welcome page and syllabus <https://uppmax.github.io/R-python-julia-matlab-HPC/index.html>`_
+`Welcome page and syllabus <https://uppmax.github.io/R-matlab-julia-HPC/index.html>`_
    - Also link at House symbol |:house:| at top of page 
 
 .. admonition:: **Learning outcomes**
@@ -13,9 +13,9 @@ Introduction Python
   
 .. admonition:: Exercises 
 
-    - You can download the exercises from the course GitHub repo, under the ``exercises/python`` directory: <https://github.com/UPPMAX/R-python-julia-matlab-HPC/tree/main/exercises/python>
+    - You can download the exercises from the course GitHub repo, under the ``exercises/python`` directory: <https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/exercises/python>
 
-      - Download all exercises at once: ``wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/exercises.tar.gz``
+      - Download all exercises at once: ``wget https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/exercises.tar.gz``
 
     - Or you can copy them from the computer system you are on (only until 2024-11-01): 
 

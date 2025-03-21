@@ -433,7 +433,7 @@ If you are running a lot of jobs or if you want to quit MATLAB and restart it at
 
 .. type-along::
 
-   After doing the job settings further up, let us try running an example. We will use the example ``add2.m`` which adds two numbers. I just used 1 and 2, but you can pick any numbers you want. You can find the ``add2.m`` script in the exercises/matlab directory or you can `download it <https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/matlab/add2.m>`_ from here.  
+   After doing the job settings further up, let us try running an example. We will use the example ``add2.m`` which adds two numbers. I just used 1 and 2, but you can pick any numbers you want. You can find the ``add2.m`` script in the exercises/matlab directory or you can `download it <https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/add2.m>`_ from here.  
 
    .. code-block::
 
@@ -507,7 +507,7 @@ Let us try running this on Kebnekaise, including checking state and then getting
    
    This exercise assumes you did the previous ones on this page; loading MATLAB, doing the configCluster.sh, adding the job settings. 
    
-   You can download `parallel_example.m <https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/matlab/parallel_example.m>`_ here.  
+   You can download `parallel_example.m <https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m>`_ here.  
 
 There is more information about batch jobs here on `Mathworks <https://se.mathworks.com/help/parallel-computing/batch.html>`_ .
    
@@ -638,7 +638,7 @@ Here is an example of a serial batch job for UPPMAX/HPC2N/LUNARC.
          # The command 'time' is timing the execution
          time matlab -singleCompThread -nojvm -nodisplay -r "monte_carlo_pi(100000)"
 
-You can download `monte_carlo_pi.m <https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/matlab/monte_carlo_pi.m>`_ here or find it under matlab in the exercises directory. 
+You can download `monte_carlo_pi.m <https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/monte_carlo_pi.m>`_ here or find it under matlab in the exercises directory. 
 
 You the submit it with 
 
