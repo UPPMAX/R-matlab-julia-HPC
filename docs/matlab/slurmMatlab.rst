@@ -559,31 +559,30 @@ Let us try running this on Kebnekaise, including checking state and then getting
    
    You can download `parallel_example.m <https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m>`_ here.  
 
-.. note:: parpool
+..
+  .. note:: parpool
 
-   On the clusters where that work, you can start a ``parpool`` and then (for instance) run a parallel code inside MATLAB. 
+     On the clusters where that work, you can start a ``parpool`` and then (for instance) run a parallel code inside MATLAB. 
 
-   Example: PDC 
+     Example: PDC 
 
-   As shown earlier, first start an interactive session, login to the compute node you got, then load matlab and start it. Then create a parpool of the size (at most) that you asked for in number of cores. 
+     As shown earlier, first start an interactive session, login to the compute node you got, then load matlab and start it. Then create a parpool of the size (at most) that you asked for in number of cores. 
 
-   .. code-block:: 
+     .. code-block:: 
 
-      >> p=parpool(24)
-      Starting parallel pool (parpool) using the 'local' profile ... connected to 24 workers.
-      p =
-      Pool with properties:
-      Connected: true
-      NumWorkers: 24
-      Cluster: local
-      AttachedFiles: {}
-      IdleTimeout: 30 minute(s) (30 minutes remaining)
-      SpmdEnabled: true
-      >> parallel_example
-t =
-2.4711
-ans =
-2.4711   
+        >> p=parpool(24)
+        Starting parallel pool (parpool) using the 'Processes' profile ... connected to 24 workers.
+        p =
+        Pool with properties:
+        Connected: true
+        NumWorkers: 24
+        Cluster: local
+        AttachedFiles: {}
+        IdleTimeout: 30 minute(s) (30 minutes remaining)
+        SpmdEnabled: true
+        >> parallel_example
+        ans =
+        8.9287  
 
 There is more information about batch jobs here on `Mathworks <https://se.mathworks.com/help/parallel-computing/batch.html>`_ .
    
