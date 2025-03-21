@@ -28,7 +28,7 @@ Storage spaces for this workshop
 +------------+---------------------------------------------------------+
 | Kebnekaise | :code:`/proj/nobackup/r-matlab-julia`                   |
 +------------+---------------------------------------------------------+
-| Rackham    | :code:`/proj/r-matlab-julia-uppmax                      |
+| Rackham    | :code:`/proj/r-matlab-julia-uppmax`                     |
 +------------+---------------------------------------------------------+
 | Tetralith  | :code:`/proj/r-matlab-julia-naiss/users/`               |
 +------------+---------------------------------------------------------+
