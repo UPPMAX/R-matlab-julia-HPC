@@ -4,11 +4,10 @@
 # instead of via en email to all repository Watchers
 name: Check spelling
 
-# Only run this on the main branch, or with Pull Requests
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
 
 jobs:

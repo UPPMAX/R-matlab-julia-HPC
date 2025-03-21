@@ -9,6 +9,10 @@ on:
 #  schedule:
 #  - cron: "0 9-21/3 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - develop
+  pull_request:
   
 jobs:
   check_links:
