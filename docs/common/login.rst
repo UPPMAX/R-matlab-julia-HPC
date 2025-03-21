@@ -58,9 +58,9 @@ For beginners: use the **bold** login method.
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | COSMOS     |**Local ThinLinc client** | `here <https://lunarc-documentation.readthedocs.io/en/latest/getting_started/using_hpc_desktop/>`__    | `here <https://youtu.be/wn7TgElj_Ng>`__                    |
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Dardel     | SSH                      | `here <https://www.nsc.liu.se/support/getting-started/>`__                                             | `here <https://youtu.be/I8cNqiYuA-4?si=MDKS4wEB1nQODvxj>`__|
+| Dardel     | SSH                      | `here <https://support.pdc.kth.se/doc/support/?sub=login/ssh_login/>`__                                | `here <https://youtu.be/I8cNqiYuA-4?si=MDKS4wEB1nQODvxj>`__|
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-| Dardel     |**Local ThinLinc client** | `here <https://www.nsc.liu.se/support/graphics/>`__. Scroll down to ThinLinc                           |                                                            |
+| Dardel     |**Local ThinLinc client** | `here <https://support.pdc.kth.se/doc/support/?sub=login/interactive_hpc/>`__                          |  `here <https://youtu.be/0Rm-HmyzDfs>`__                   |
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 | Kebnekaise | SSH                      | `here <https://docs.hpc2n.umu.se/documentation/access/>`__                                             | `here <https://youtu.be/pIiKOKBHIeY?si=2MVHoFeAI_wQmrtN>`__|
 +------------+--------------------------+--------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
