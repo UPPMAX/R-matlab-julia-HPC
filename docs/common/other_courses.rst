@@ -24,7 +24,10 @@ Linux material by the NAISS HPC centers
   - `Linux "cheat sheet" <https://www.hpc2n.umu.se/documentation/guides/linux-cheat-sheet>`_
 
 - LUNARC
-    - Any of the above links would be helpful for you
+
+    - `Intro to Linux shells and commands <https://lunarc-documentation.readthedocs.io/en/latest/guides/linux/linux_basics_shell_params/>`_
+    - `Useful Linux commands <https://lunarc-documentation.readthedocs.io/en/latest/guides/linux/linux_basics_misc/>`_
+    - See also the rest of the sections under "Linux Basics" in the left-hand menu in the above webpages.
 
 - NSC
     - Any of the above links would be helpful for you
