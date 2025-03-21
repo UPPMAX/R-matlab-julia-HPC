@@ -105,7 +105,6 @@ For beginners: use the **bold** login method.
       - Graphics come easier with ThinLinc
       - For this course, when having many windows open, it may be better to run in terminal, for screen space issues.
 
-
    .. tabs::
 
       .. tab:: UPPMAX
@@ -182,11 +181,10 @@ For beginners: use the **bold** login method.
 Test an editor
 --------------
 
-`Learn how to use an text editor <https://uppmax.github.io/R-matlab-julia-HPC/common/use_text_editor.html>`_
+Learn how to use an text editor at :ref:`common-use-text-editor`.
 
+Download and extract the tarball with exercises 
+-----------------------------------------------
 
-Prepare an exercise environment 
--------------------------------
-
-`Use the tarball with exercises <https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html>`_
-
+Learn how to download and extract the tarball with exercises
+at :ref:`common-use-tarball`.

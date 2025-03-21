@@ -1,3 +1,5 @@
+.. _common-use-tarball:
+
 Use the tarball with exercises
 ==============================
 
