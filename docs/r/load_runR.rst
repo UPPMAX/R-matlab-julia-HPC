@@ -209,7 +209,8 @@ how to download and extract the tarball with exercises.
 Exercise X1: find and use installed R packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- From the R interpreter, check which packages are installed.
+- From the R interpreter, check which packages are installed,
+  using :code:`installed.packages()`
 
 .. admonition:: Answer
     :class: dropdown 
@@ -228,7 +229,8 @@ Exercise X1: find and use installed R packages
     | Tetralith  | :code:`installed.packages()`     |
     +------------+----------------------------------+
 
-- From the R interpreter, load the ``parallel`` package.
+- From the R interpreter, load the ``parallel`` package,
+  using :code:`library(parallel)`
 
 .. admonition:: Answer
     :class: dropdown 
