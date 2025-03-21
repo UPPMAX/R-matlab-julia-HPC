@@ -63,14 +63,14 @@ Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, NSC and 
      
 - Each node contains several processor cores and RAM and a local disk called scratch.
 
-.. figure:: ./img/node.png
+.. figure:: ../img/node.png
    :align: center
 
 - The user logs in to **login nodes**  via Internet through ssh or Thinlinc.
 
   - Here the file management and lighter data analysis can be performed.
 
-.. figure:: ./img/nodes.png
+.. figure:: ../img/nodes.png
    :align: center
 
 - The **calculation nodes** have to be used for intense computing. 
@@ -135,7 +135,7 @@ Overview of the HPC2N system
 Overview of the LUNARC system 
 ############################# 
 
-.. figure:: ./img/cosmos-resources.png 
+.. figure:: ../img/cosmos-resources.png 
    :align: center
 
 Overview of the NSC systems
