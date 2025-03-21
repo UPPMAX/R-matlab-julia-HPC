@@ -33,7 +33,7 @@ to your current folder:
 
 .. code-block::  console
 
-    wget https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
+    wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
 
 .. admonition:: How does that look like?
    :class: dropdown
@@ -42,13 +42,13 @@ to your current folder:
 
     .. code-block::  console
 
-        [sven@rackham3 ~]$ wget https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
-        --2024-10-23 11:49:30--  https://github.com/UPPMAX/R-python-julia-matlab-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
+        [sven@rackham3 ~]$ wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
+        --2024-10-23 11:49:30--  https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
         Resolving github.com (github.com)... 4.225.11.194
         Connecting to github.com (github.com)|4.225.11.194|:443... connected.
         HTTP request sent, awaiting response... 302 Found
-        Location: https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/exercises.tar.gz [following]
-        --2024-10-23 11:49:30--  https://raw.githubusercontent.com/UPPMAX/R-python-julia-matlab-HPC/refs/heads/main/exercises/exercises.tar.gz
+        Location: https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/exercises.tar.gz [following]
+        --2024-10-23 11:49:30--  https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/exercises.tar.gz
         Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
         Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
         HTTP request sent, awaiting response... 200 OK

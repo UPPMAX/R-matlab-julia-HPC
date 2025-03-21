@@ -49,17 +49,17 @@ TODO:
 > 
 > 1) Schedule: 
 > 
->     Python (Tuesday): https://uppmax.github.io/R-python-julia-matlab-HPC/python/intro.html#schedule  
->     Julia (Wednesday): https://uppmax.github.io/R-python-julia-matlab-HPC/julia/introJulia.html#preliminary-schedule  
->     R (Thursday): https://uppmax.github.io/R-python-julia-matlab-HPC/r/introR.html#schedule  
->     Matlab (Friday): https://uppmax.github.io/R-python-julia-matlab-HPC/matlab/introMatlab.html#preliminary-schedule    
+>     Python (Tuesday): https://uppmax.github.io/R-matlab-julia-HPC/python/intro.html#schedule  
+>     Julia (Wednesday): https://uppmax.github.io/R-matlab-julia-HPC/julia/introJulia.html#preliminary-schedule  
+>     R (Thursday): https://uppmax.github.io/R-matlab-julia-HPC/r/introR.html#schedule  
+>     Matlab (Friday): https://uppmax.github.io/R-matlab-julia-HPC/matlab/introMatlab.html#preliminary-schedule    
 >
-> 2) Materials: https://github.com/UPPMAX/R-python-julia-matlab-HPC  
+> 2) Materials: https://github.com/UPPMAX/R-matlab-julia-HPC  
 
 I don't think learners care about the raw course material.
 I suggest to remove point 2.
 
-> 3) Rendered presentations for the course: https://uppmax.github.io/R-python-julia-matlab-HPC/  
+> 3) Rendered presentations for the course: https://uppmax.github.io/R-matlab-julia-HPC/  
 >
 > 4) Important information about the course is gathered here: https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EQNh3Uht3ExCnyqVUm1t_bEB1e7FOp_pqxtFix3x2UPXtQ    
 
@@ -98,7 +98,7 @@ Suggest to use the course website instead and remove this point.
 
 Suggest to use the course website instead and remove this point.
 
-> 8) Pre-requirements: This page contains some info on getting ready to login (including the above info), but also a short summary/list of links for things like Linux, editors, and coding: https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html
+> 8) Pre-requirements: This page contains some info on getting ready to login (including the above info), but also a short summary/list of links for things like Linux, editors, and coding: https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html
 
 > 9) Onboarding: If you need help with logging in, ThinLinc, etc. then we have an optional onboarding session Monday, 21 October 2024, 13:00-14:00. Zoom for onboarding: https://umu.zoom.us/j/62612416748?pwd=FX3dgIDLfyAkYa9drDQiLO6bTxNfAy.1
 

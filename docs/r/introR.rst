@@ -91,7 +91,7 @@ Exercises used in the course
 The course uses a so-called tarball files with exercises as
 used in this course.
 
-See `here <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
+See `here <https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html>`_
 how to get and decompress it.
 
 In the 'Load and run R' session, there is the time to do so.

@@ -188,7 +188,7 @@ To run an R script, we'll download one, after which we'll run it:
 Exercise 3: download and extract the tarball with exercises
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See `here <https://uppmax.github.io/R-python-julia-matlab-HPC/common/use_tarball.html>`_
+See `here <https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html>`_
 how to download and extract the tarball with exercises.
 
 Exercise X1: find and use installed R packages

@@ -8,7 +8,7 @@
 
 | Time  | Topic                                                                                          | Teacher(s)        |
 | ----- | ---------------------------------------------------------------------------------------------- | ----------------- |
-| 9:00  | (optional) [First login](https://uppmax.github.io/R-python-julia-matlab-HPC/common/login.html) | BB + PO + RB + RP |
+| 9:00  | (optional) [First login](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html) | BB + PO + RB + RP |
 | 9:45  | Break                                                                                          | .                 |
 | 10:00 | Syllabus                                                                                       | RP                |
 | 10:10 | Python in general                                                                              | RP                |
@@ -292,11 +292,11 @@ In more general terms:
 
 Suggests for next course:
 
-- The [prerequirements](https://uppmax.github.io/R-python-julia-matlab-HPC/prereqs.html)
+- The [prerequirements](https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html)
   should only be pre-requirements, not things that are 'nice to have'.
   I suggest to remove the whole 'Get familiar with the Linux/Bash command line'
   session
-- The [login sessions](https://uppmax.github.io/R-python-julia-matlab-HPC/common/login.html)
+- The [login sessions](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html)
   should only be about login. 
   Stating what the goal of this optional session is, would be enough.
   I suggest to remove anything but that.

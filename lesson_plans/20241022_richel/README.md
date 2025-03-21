@@ -1,7 +1,7 @@
 # Lesson plan Python by Richel
 
 - Date: Tuesday 2024-10-22
-- Course: Python, part of [R, Python, Julia, and Matlab in HPC](https://github.com/UPPMAX/R-python-julia-matlab-HPC/)
+- Course: Python, part of [R, Python, Julia, and Matlab in HPC](https://github.com/UPPMAX/R-matlab-julia-HPC/)
 
 ## Suggest new schedule
 

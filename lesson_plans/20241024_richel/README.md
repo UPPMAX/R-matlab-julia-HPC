@@ -1,13 +1,13 @@
 # Lesson plan R by Richel
 
 - Date: Tuesday 2024-10-24
-- Course: R, part of [R, Python, Julia, and Matlab in HPC](https://github.com/UPPMAX/R-python-julia-matlab-HPC/)
+- Course: R, part of [R, Python, Julia, and Matlab in HPC](https://github.com/UPPMAX/R-matlab-julia-HPC/)
 
 ## Schedule
 
 | Time  | Topic                                                                                          | Teacher(s)      |
 | ----- | ---------------------------------------------------------------------------------------------- | --------------- |
-| 9:00  | (optional) [First login](https://uppmax.github.io/R-python-julia-matlab-HPC/common/login.html) | BB + PO + RB    |
+| 9:00  | (optional) [First login](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html) | BB + PO + RB    |
 | 9:45  | Break                                                                                          | .               |
 | 10:00 | Introduction                                                                                   | RB              |
 | 10:10 | Syllabus                                                                                       | RB              |
