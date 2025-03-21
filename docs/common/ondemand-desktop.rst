@@ -1,7 +1,6 @@
 Desktop On Demand
 =================
 
-
 .. questions::
 
    - What is Desktop On Demand?
@@ -9,23 +8,25 @@ Desktop On Demand
    - Where and how do I start?
 
    
-   
 .. objectives:: 
 
    - Short introduction to Desktop On Demand
    - Typical setup and usage
 
-    
 
 What is Desktop On Demand?
 --------------------------
-At LUNARC (and coming to other HPC centers in the not-too-distant future), the Desktop On Demand service provides an interactive environment for submitting programs to SLURM without the typical shell script. It uses the graphical application launcher (GfxLauncher) to submit jobs to SLURM, connect to the application running on the Compute node, and monitor the application's progress. It is not itself an option in the Applications menu; rather, it's the engine that lets you run the listed applications interactively.
+At LUNARC and PDC (and coming to other HPC centers in the not-too-distant future), when logged into a remote desktop via ThinLinc, the Desktop On Demand service provides an interactive environment to schedule jobs with SLURM without the typical shell script. It uses the graphical application launcher (GfxLauncher) to submit jobs to SLURM with user-specified resources, connect to the application running on the Compute node, and monitor the application's progress.
 
-Later you will hear us talking more about the GfxLauncher than Desktop On Demand because while the latter is the underlying service provider, the former is what you will see every time you start an interactive application.
+Later you will hear us talking more about the GfxLauncher than Desktop On Demand because while the latter is the underlying service provider, the former is the interface that will pop up every time you start an interactive application.
 
-Of the coding languages in the course, all but Julia has at least one interactive development environment (IDE) that can be run with Desktop On Demand: Both Spyder and Jupyter notebooks are available for Python users, R can be used via one of a couple releases of RStudio, and the standard MATLAB IDE is available for the 3 most recent releases. Other applications not explicitly listed but that can be launched from an Interactive Terminal or Accelerated Terminal session.
+Of the coding languages in this course, all but Julia has at least one interactive development environment (IDE) that can be run with Desktop On Demand: R can be used via one of a couple releases of RStudio, and the standard MATLAB IDE is available for the 3 most recent releases. Other applications not explicitly listed but that can be launched from an Interactive Terminal session.
 
 Desktop On Demand requires the use of the Thinlinc interface. It is not accessible via ssh. 
+
+.. warning:: ThinLinc Access Limited on Dardel (PDC)
+   
+      Here we focus on COSMOS because Dardel has a limited number of ThinLinc licenses. Only 30 users total may have an active ThinLinc session at a time. Other PDC resources not tested in this course may be more flexible, but if you must run a program on Dardel interactively, it is better to use SSH with X-forwarding (that is, log in with ``ssh -X <user>@dardel.pdc.kth.se``) and then `follow the workflow described in this link. <https://support.pdc.kth.se/doc/support-docs/run_jobs/run_interactively/>`_ Keep in mind that if you do not need a full node, you can also select a number of cores on Dardel's ``shared`` partition. See `here for information on Dardel partitions. <https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/#dardel-partitions>`_
 
 
 When should I use it?
@@ -44,6 +45,7 @@ The GfxLauncher will prompt you for resource specification and then Desktop On D
 
 
 Some On Demand applications will let you configure and submit separate batch jobs that are not bound by the parameters set for the graphical user interface (GUI) in GfxLauncher, although the initial configuration process can be rather involved. For example, you could launch the MATLAB GUI with a wall time of 2 hours, but having set the right configurations, you could use a livescript in the GUI to submit a batch job that lasts 3 days. Such a batch job will not be interrupted if the GUI used to submit it closes or times out. Keep in mind that the optimal resources for the computations to be done in your batch job are often very different from the resources needed to run the GUI.
+
 
 Getting Started
 ---------------
@@ -65,7 +67,10 @@ On the LUNARC HPC Desktop, the Applications menu lists all the applications avai
    The CPU terminal allows for a wall time of up to 168 hours (7 days), while the two GPU terminals can only run for 48 hours (2 days) at most. For more on the specifications of the different nodes these terminals can run on, see `LUNARC's webpage on COSMOS <https://www.lunarc.lu.se/systems/cosmos/>`_.
 
 
-**Please be aware that only the applications in the menus prefixed with "Applications -" are set up to run on the Compute nodes.** If you start a terminal session or other application from ``Favorites`` or ``System Tools`` and launch an interactive program from that, it will run on a Login node, with all the risks that that entails for your user privileges.
+.. note::
+
+   Please be aware that on COSMOS, only the applications in the menus prefixed with "Applications -" are set up to run on the Compute nodes. If you start a terminal session or other application from ``Favorites`` or ``System Tools`` and launch an interactive program from that, it will run on a login node, with all the risks that that entails for your user privileges.
+   Dardel is similar---the relevant applications in the Applications menu are those starting with ``PDC-``.
 
 
 How do I start?
@@ -95,3 +100,8 @@ If you want, you can also look at the associated SLURM scripts by clicking the "
 .. figure:: ../../img/Cosmos-OnDemand-Matlab23b-more-script.png
    :width: 550
    :align: center
+
+
+.. note::
+
+   If you are able to get onto Dardel with Thinlinc, the process above is nearly identical. Be aware that your app may be stuck in the queue for a long time between when you click "Start" and when the app actually opens.

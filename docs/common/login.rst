@@ -39,8 +39,8 @@ Log in session
 
 .. tip:: 
 
-   - If you have user account and _research_ project on Kebnekaise, follow the **HPC2N** track below.
-   - If you have user account and _research_ project on Cosmos, follow the **LUNARC** track below.
+   - If you have user account and *research* project on Kebnekaise, follow the **HPC2N** track below.
+   - If you have user account and *research* project on Cosmos, follow the **LUNARC** track below.
    - If you have user account and course/research project on Rackham, follow the **UPPMAX** track below.
    - If you have user account and course/research project on Tetralith, follow the **NSC** track below.
    - If you have user account and course/research project on Dardel, follow the **PDC** track below.
@@ -101,7 +101,7 @@ For beginners: use the **bold** login method.
 
    .. admonition:: Use Thinlinc or terminal?
 
-      - It is up to you!
+      - It is up to you! (Except on Dardel---then just use terminal)
       - Graphics come easier with ThinLinc
       - For this course, when having many windows open, it may be better to run in terminal, for screen space issues.
 
@@ -168,8 +168,10 @@ For beginners: use the **bold** login method.
 
          - Dardel through terminal: ``<user>@dardel.pdc.kth.se``     
          - Dardel through ThinLinc: ``<user>@dardel-vnc.pdc.kth.se``
+
+            - **Warning!** Only 30 Dardel users at a time can use ThinLinc. Do not count on it being available.
    
-         - Create a working directory where you can code along.    
+         - Create a working directory where you can code along.
       
            - Example. If your username is sevenof9 and you are at PDC, then we recommend you create this folder: 
      
