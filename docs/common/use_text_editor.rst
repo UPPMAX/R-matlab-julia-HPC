@@ -45,8 +45,3 @@ We recommend ``nano`` unless you are used to another editor:
       $ python example.py
       # or 
       $ python3 example.py
-
-Prepare an exercise environment 
--------------------------------
-
-`Use the tarball with exercises <https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html>`_
