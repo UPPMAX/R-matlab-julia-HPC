@@ -27,11 +27,12 @@ Load and run R
 
       Prior:
 
-      - You want to write and run R code on an HPC cluster
-        Which ways do you know?
-      - How to start R on an HPC cluster?
-      - What is a module system?
-      - Why is there a module system?
+      - What is 'HPC' in 'HPC cluster'?
+      - What is 'cluster' in 'HPC cluster'?
+      - What is a software module?
+      - What is a script?
+      - What are features of using an HPC cluster?
+      - What problem would arise if users can install their own software?
 
 Introduction
 ------------
