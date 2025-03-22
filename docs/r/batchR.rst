@@ -502,13 +502,17 @@ Rmpi
             ml purge > /dev/null 2>&1
             ml R/4.2.2-hpc1-gcc-11.3.0-bare 
 
-            srun --mpi=pmix Rscript Rmpi.R  
+            srun --mpi=pmix Rscript pbdMPI.R  
             
       .. tab:: PDC 
 
          Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
 
-         Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``. Copy it to your own subdirectory under that and then do: ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12``, and then ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
+         Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). 
+         - You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``. 
+         - Copy it to your own subdirectory under the project directory and then do: 
+           - ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12``
+           - ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
 
          .. code-block:: sh 
 
