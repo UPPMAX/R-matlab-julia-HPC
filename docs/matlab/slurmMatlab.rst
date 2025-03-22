@@ -310,11 +310,13 @@ In order to list the content of your profile, do ``c.AdditionalProperties``.
       - full node:   ``salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main``
       - fewer cores, here 24: ``salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`` 
    - When the job is allocated, start an SSH connection to the compute node. 
-     - if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``: 
-       - ``ssh -X <node-you-got-allocated>`` 
+
+      - if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``: 
+      - ``ssh -X <node-you-got-allocated>`` 
    - Then load MATLAB and start it (on shell) 
-     - ``ml PDC/23.12 matlab/r2024a-ps`` 
-     - ``matlab -nodisplay -nodesktop -nosplash``  
+
+      - ``ml PDC/23.12 matlab/r2024a-ps`` 
+      - ``matlab -nodisplay -nodesktop -nosplash``  
 
 **Example, for HPC2N**
 
@@ -986,7 +988,7 @@ Inside MATLAB
 
             matlab -singleCompThread -nodisplay -nosplash -nodesktop 
 
-         Then, inside MATLAB, you need to add this to your profile 
+         Then, inside MATLAB, you need to add this to your profile (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
 
          .. code-block:: matlab 
 
@@ -1026,6 +1028,29 @@ Inside MATLAB
 
          where #GPUs is 1 or 2. 
 
+      .. tab:: NSC 
+
+         Load and start Matlab, then do
+
+         .. code-block:: matlab 
+
+            c.AdditionalProperties.GPUsPerNode = #GPUs;
+            c.saveProfile
+
+         where #GPUs is 1 or 2. 
+
+      .. tab:: PDC 
+
+         Remember, here you cannot set ``AdditionalProperties``. Instead you do this: 
+         
+         - Start an interactive session where you ask for GPUs: 
+           
+             - salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu 
+             - Load Matlab: ``module load PDC/23.12 matlab/r2024a-ps`` 
+             - Start Matlab: matlab -nodisplay -nodesktop -nosplash
+               
+         - You are now ready to run your GPU Matlab scripts. 
+
 .. exercise:: 
 
    Try and add GPUs to your cluster profile, save it. Run ``c.AdditionalProperties`` to see what was added. Then do ``c.AdditionalProperties.GpusPerNode = '';`` to remove it. See that it was removed. 
@@ -1059,7 +1084,7 @@ In order to use GPUs in a batch job, you do something like this:
          # to find out available versions: module spider matlab
          module add matlab/R2023b
 
-         # Executing a parallel matlab program 
+         # Executing a GPU matlab program 
          matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
 
    .. tab:: HPC2N
@@ -1084,7 +1109,7 @@ In order to use GPUs in a batch job, you do something like this:
          # to find out available versions: module spider matlab
          module load MATLAB/2023a.Update4
 
-         # Executing a parallel matlab program 
+         # Executing a GPU matlab program 
          matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
 
       where ``gpu-type`` is one of: v100, a40, a6000, l40s, a100, h100, mi100 
@@ -1123,9 +1148,65 @@ In order to use GPUs in a batch job, you do something like this:
          # to find out available versions: module spider matlab
          module load matlab/2023b
 
-         # Executing a parallel matlab program 
+         # Executing a GPU matlab program 
          matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
 
+   .. tab:: NSC 
+
+      .. code-block::
+
+         #!/bin/bash
+         # Change to your actual project number
+         #SBATCH -A naiss2025-22-262 
+         #SBATCH --ntasks=1 
+         #SBATCH --cpus-per-task=1
+         #SBATCH --ntasks-per-core=1
+         # The number of GPUs.#gpus, can be 1 or 2 
+         #SBATCH --gpus-per-task=1
+         
+         # Asking for 30 min (change as you want)
+         #SBATCH -t 00:30:00
+         #SBATCH --error=matlab_%J.err
+         #SBATCH --output=matlab_%J.out
+
+         # Clean the environment
+         module purge > /dev/null 2>&1
+
+         # Change depending on resource and MATLAB version
+         # to find out available versions: module spider matlab
+         module load MATLAB/2024a-hpc1-bdist
+
+         # Executing a GPU matlab program 
+         matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
+
+   .. tab:: PDC 
+
+      .. code-block::
+
+         #!/bin/bash
+         # Change to your actual project number
+         #SBATCH -A naiss2025-22-262 
+         #SBATCH --ntasks-per-node=1 
+         #SBATCH -N 1
+         # Ask for GPUs  
+         #SBATCH -p gpu 
+         
+         # Asking for 30 min (change as you want)
+         #SBATCH -t 00:30:00
+         #SBATCH --error=matlab_%J.err
+         #SBATCH --output=matlab_%J.out
+
+         # Clean the environment
+         module purge > /dev/null 2>&1
+
+         # Change depending on resource and MATLAB version
+         # to find out available versions: module spider matlab
+         module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0 
+
+         # Executing a GPU matlab program 
+         matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
+
+         
 
 .. keypoints::
 
@@ -1134,4 +1215,4 @@ In order to use GPUs in a batch job, you do something like this:
    - A batch script consists of a part with SLURM parameters describing the allocation and a second part describing the actual work within the job, for instance one or several Matlab scripts.
    - You can run MATLAB as a batch job through a batch script or from inside MATLAB (shell or GUI)       
    - Remember to include possible input arguments to the MATLAB script in the batch script.
-   - **You need to configure MATLAB before submitting batch jobs.** 
+   - **You need to configure MATLAB before submitting batch jobs** (except on Dardel).  
