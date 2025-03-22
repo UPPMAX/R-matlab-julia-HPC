@@ -64,7 +64,7 @@ to your current folder:
         Connecting to github.com (github.com)|4.225.11.194|:443... connected.
         HTTP request sent, awaiting response... 302 Found
         Location: https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/exercises.tar.gz [following]
-        --2024-10-23 11:49:30--  https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/exercises.tar.gz
+        --2024-10-23 11:49:30--  https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises.tar.gz
         Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
         Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
         HTTP request sent, awaiting response... 200 OK
@@ -114,123 +114,123 @@ In a terminal, use the following command to uncompress the file:
          .. code:: console
            
             [sven@rackham3 ~]$ tar -xvzf exercisesR.tar.gz 
-            exercises/r/iris_ml-rackham.sh
-            exercises/r/Rscript_ML-kebnekaise.sh
-            exercises/r/hello.R
-            exercises/r/script-df.R
-            exercises/r/add2-cosmos.sh
-            exercises/r/Rscript_ML-cosmos.sh
-            exercises/r/script-df-rackham.sh
-            exercises/r/serial-rackham.sh
-            exercises/r/iris.csv
-            exercises/r/Rmpi-cosmos.sh
-            exercises/r/validation-cosmos.sh
-            exercises/r/validation-rackham.sh
-            exercises/r/parallel_foreach.R
-            exercises/r/serial_sum.R
-            exercises/r/iris_ml.R
-            exercises/r/serial.R
-            exercises/r/serial-cosmos.sh
-            exercises/r/parallel_foreach-cosmos.sh
-            exercises/r/clusterapply.R
-            exercises/r/parallel_foreach-kebnekaise.sh
-            exercises/r/add2-kebnekaise.sh
-            exercises/r/validation-kebnekaise.sh
-            exercises/r/README.md
-            exercises/r/Rmpi.R
-            exercises/r/Rmpi-kebnekaise.sh
-            exercises/r/serial-kebnekaise.sh
-            exercises/r/Rscript_ML-rackham.sh
-            exercises/r/parallel_foreach-rackham.sh
-            exercises/r/script-df-kebnekaise.sh
-            exercises/r/add2.R
-            exercises/r/Rscript.R
-            exercises/r/add2-rackham.sh
-            exercises/r/sleep.R
-            exercises/r/script-df-fixme.R
-            exercises/r/Rmpi-rackham.sh
-            exercises/r/iris_ml-kebnekaise.sh
-            exercises/r/iris_ml-cosmos.sh
-            exercises/r/validation.R
-            exercises/r/script-df-cosmos.sh
+            r/iris_ml-rackham.sh
+            r/Rscript_ML-kebnekaise.sh
+            r/hello.R
+            r/script-df.R
+            r/add2-cosmos.sh
+            r/Rscript_ML-cosmos.sh
+            r/script-df-rackham.sh
+            r/serial-rackham.sh
+            r/iris.csv
+            r/Rmpi-cosmos.sh
+            r/validation-cosmos.sh
+            r/validation-rackham.sh
+            r/parallel_foreach.R
+            r/serial_sum.R
+            r/iris_ml.R
+            r/serial.R
+            r/serial-cosmos.sh
+            r/parallel_foreach-cosmos.sh
+            r/clusterapply.R
+            r/parallel_foreach-kebnekaise.sh
+            r/add2-kebnekaise.sh
+            r/validation-kebnekaise.sh
+            r/README.md
+            r/Rmpi.R
+            r/Rmpi-kebnekaise.sh
+            r/serial-kebnekaise.sh
+            r/Rscript_ML-rackham.sh
+            r/parallel_foreach-rackham.sh
+            r/script-df-kebnekaise.sh
+            r/add2.R
+            r/Rscript.R
+            r/add2-rackham.sh
+            r/sleep.R
+            r/script-df-fixme.R
+            r/Rmpi-rackham.sh
+            r/iris_ml-kebnekaise.sh
+            r/iris_ml-cosmos.sh
+            r/validation.R
+            r/script-df-cosmos.sh
 
       .. tab:: Matlab
          
          .. code:: console
             
             [sven@rackham3 ~]$ tar -xvzf exercisesMatlab.tar.gz 
-            exercises/matlab/
-            exercises/matlab/parallel_example.m
-            exercises/matlab/example-parallel-matlab.sh
-            exercises/matlab/serial-monte-rackham.sh
-            exercises/matlab/parallel_example-rackham.sh
-            exercises/matlab/serial-monte-kebnekaise.sh
-            exercises/matlab/parallel_example-kebnekaise.sh
-            exercises/matlab/mmult.m
-            exercises/matlab/parfeval_mean.m
-            exercises/matlab/monte_carlo_pi.m
-            exercises/matlab/parallel_example-cosmos.sh
-            exercises/matlab/parfor-greet.m
-            exercises/matlab/MorePractice.rst
-            exercises/matlab/add2.m
-            exercises/matlab/serial-monte-cosmos.sh
-            exercises/matlab/dice_stats_par.m
+            matlab/
+            matlab/parallel_example.m
+            matlab/example-parallel-matlab.sh
+            matlab/serial-monte-rackham.sh
+            matlab/parallel_example-rackham.sh
+            matlab/serial-monte-kebnekaise.sh
+            matlab/parallel_example-kebnekaise.sh
+            matlab/mmult.m
+            matlab/parfeval_mean.m
+            matlab/monte_carlo_pi.m
+            matlab/parallel_example-cosmos.sh
+            matlab/parfor-greet.m
+            matlab/MorePractice.rst
+            matlab/add2.m
+            matlab/serial-monte-cosmos.sh
+            matlab/dice_stats_par.m
             
       .. tab:: Julia
          
          .. code:: console
 
             [sven@rackham3 ~]$ tar -xvzf exercisesJulia.tar.gz 
-            exercises/julia/
-            exercises/julia/script-df-rackham.sh
-            exercises/julia/parallelJulia/
-            exercises/julia/parallelJulia/solution/
-            exercises/julia/parallelJulia/solution/script-df-sol.jl
-            exercises/julia/parallelJulia/script-df.jl
-            exercises/julia/parallelJulia/runHPC2N.sh
-            exercises/julia/parallelJulia/runUPPMAX.sh
-            exercises/julia/parallelJulia/1.md
-            exercises/julia/script-df.jl
-            exercises/julia/batchJulia/
-            exercises/julia/batchJulia/3.md
-            exercises/julia/batchJulia/2.md
-            exercises/julia/batchJulia/3.uppmax-batch-script.sh
-            exercises/julia/batchJulia/serial-sum.jl
-            exercises/julia/batchJulia/3.kebnekaise-batch-script.sh
-            exercises/julia/batchJulia/script-gpu.jl
-            exercises/julia/batchJulia/Solutions/
-            exercises/julia/batchJulia/Solutions/2/
-            exercises/julia/batchJulia/Solutions/2/Kebnekaise.md
-            exercises/julia/batchJulia/Solutions/2/Rackham.sh
-            exercises/julia/batchJulia/Solutions/3/
-            exercises/julia/batchJulia/Solutions/3/3.kebnekaise-batch-script.sh
-            exercises/julia/batchJulia/Solutions/3/Solution.md
-            exercises/julia/batchJulia/Solutions/1/
-            exercises/julia/batchJulia/Solutions/1/Rackham.md
-            exercises/julia/batchJulia/Solutions/1/Kebnekaise.md
-            exercises/julia/batchJulia/1.md
-            exercises/julia/README.md
-            exercises/julia/sleep-threads.jl
-            exercises/julia/script-df-kebnekaise.sh
-            exercises/julia/script-df-fixme.jl
-            exercises/julia/isolatedJulia/
-            exercises/julia/isolatedJulia/2.md
-            exercises/julia/isolatedJulia/Solutions/
-            exercises/julia/isolatedJulia/Solutions/2/
-            exercises/julia/isolatedJulia/Solutions/2/Solution.md
-            exercises/julia/isolatedJulia/Solutions/1/
-            exercises/julia/isolatedJulia/Solutions/1/Solution.md
-            exercises/julia/isolatedJulia/1.md
-            exercises/julia/loadRun/
-            exercises/julia/loadRun/2.md
-            exercises/julia/loadRun/serial-sum.jl
-            exercises/julia/loadRun/Solutions/
-            exercises/julia/loadRun/Solutions/2/
-            exercises/julia/loadRun/Solutions/2/Rackham.md
-            exercises/julia/loadRun/Solutions/2/Kebnekaise.md
-            exercises/julia/loadRun/Solutions/1/
-            exercises/julia/loadRun/Solutions/1/Solution.md
-            exercises/julia/loadRun/1.md
+            julia/
+            julia/script-df-rackham.sh
+            julia/parallelJulia/
+            julia/parallelJulia/solution/
+            julia/parallelJulia/solution/script-df-sol.jl
+            julia/parallelJulia/script-df.jl
+            julia/parallelJulia/runHPC2N.sh
+            julia/parallelJulia/runUPPMAX.sh
+            julia/parallelJulia/1.md
+            julia/script-df.jl
+            julia/batchJulia/
+            julia/batchJulia/3.md
+            julia/batchJulia/2.md
+            julia/batchJulia/3.uppmax-batch-script.sh
+            julia/batchJulia/serial-sum.jl
+            julia/batchJulia/3.kebnekaise-batch-script.sh
+            julia/batchJulia/script-gpu.jl
+            julia/batchJulia/Solutions/
+            julia/batchJulia/Solutions/2/
+            julia/batchJulia/Solutions/2/Kebnekaise.md
+            julia/batchJulia/Solutions/2/Rackham.sh
+            julia/batchJulia/Solutions/3/
+            julia/batchJulia/Solutions/3/3.kebnekaise-batch-script.sh
+            julia/batchJulia/Solutions/3/Solution.md
+            julia/batchJulia/Solutions/1/
+            julia/batchJulia/Solutions/1/Rackham.md
+            julia/batchJulia/Solutions/1/Kebnekaise.md
+            julia/batchJulia/1.md
+            julia/README.md
+            julia/sleep-threads.jl
+            julia/script-df-kebnekaise.sh
+            julia/script-df-fixme.jl
+            julia/isolatedJulia/
+            julia/isolatedJulia/2.md
+            julia/isolatedJulia/Solutions/
+            julia/isolatedJulia/Solutions/2/
+            julia/isolatedJulia/Solutions/2/Solution.md
+            julia/isolatedJulia/Solutions/1/
+            julia/isolatedJulia/Solutions/1/Solution.md
+            julia/isolatedJulia/1.md
+            julia/loadRun/
+            julia/loadRun/2.md
+            julia/loadRun/serial-sum.jl
+            julia/loadRun/Solutions/
+            julia/loadRun/Solutions/2/
+            julia/loadRun/Solutions/2/Rackham.md
+            julia/loadRun/Solutions/2/Kebnekaise.md
+            julia/loadRun/Solutions/1/
+            julia/loadRun/Solutions/1/Solution.md
+            julia/loadRun/1.md
             
 
 After decompressing, there is a folder called ``exercises``
