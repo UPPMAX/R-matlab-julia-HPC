@@ -997,7 +997,7 @@ Inside MATLAB
 
       .. tab:: HPC2N
 
-         Load and start Matlab, then do 
+         Load and start Matlab, then do (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle) 
 
          .. code-block:: matlab
 
@@ -1019,7 +1019,7 @@ Inside MATLAB
 
       .. tab:: LUNARC
 
-         Load and start Matlab, then do
+         Load and start Matlab, then do (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
 
          .. code-block:: matlab 
 
@@ -1030,7 +1030,7 @@ Inside MATLAB
 
       .. tab:: NSC 
 
-         Load and start Matlab, then do
+         Load and start Matlab, then do (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
 
          .. code-block:: matlab 
 
