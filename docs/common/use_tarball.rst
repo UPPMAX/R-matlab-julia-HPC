@@ -35,14 +35,16 @@ Procedure
 
 The procedure has these steps:
 
+- Go to a suitable directory
 - Get the tarball
 - Uncompress the tarball
 
 Step 1: get the tarball
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In a terminal, use the following command to download the file
-to your current folder:
+- In a terminal, ``cd`` to a good directory to keep the exercises (for instance in your just created folder in the project directory)
+- You may create a new folder (``mkdir``), called ``exercises`` or similar).
+- Use the following command to download the file to your current folder:
 
 .. tabs::
 
@@ -246,5 +248,5 @@ In a terminal, use the following command to uncompress the file:
             julia/loadRun/1.md
             
 
-After decompressing, there is a folder called ``exercises``
+After decompressing, there is a folder called ``r``, or ``matlab`` or `julia``
 that contains the exercises.
