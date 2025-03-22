@@ -306,14 +306,14 @@ In order to list the content of your profile, do ``c.AdditionalProperties``.
 
    - At PDC, you do **NOT** set any ``AdditionalProperties``. You instead work in an interactive session. 
    - To start an interactive session at PDC, do this to get  
-       - full node:   ``salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main``
-       - fewer cores, here 24: ``salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`` 
+     - full node:   ``salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main``
+     - fewer cores, here 24: ``salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`` 
    - When the job is allocated, start an SSH connection to the compute node. 
-       - if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``: 
-           - ``ssh -X <node-you-got-allocated>`` 
+     - if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``: 
+       - ``ssh -X <node-you-got-allocated>`` 
    - Then load MATLAB and start it (on shell) 
-       - ``ml PDC/23.12 matlab/r2024a-ps`` 
-       - ``matlab -nodisplay -nodesktop -nosplash``  
+     - ``ml PDC/23.12 matlab/r2024a-ps`` 
+     - ``matlab -nodisplay -nodesktop -nosplash``  
 
 **Example, for HPC2N**
 
@@ -366,15 +366,15 @@ Asking for 1 hour. Starting from my own computer.
    >> c=parcluster;
    >> 
 
-.. exercise:: Run job settings
+.. exercise:: Set the run job settings
 
    Do the job settings on one of:
    
    - HPC2N: CLUSTER=kebnekaise
-   - UPPMAX: no CLUSTER, as said above - i.e. just c=parcluster;
+   - UPPMAX: no CLUSTER, as said above - i.e. just ``c=parcluster;``
    - LUNARC: CLUSTER=cosmos R2023b
    - NSC: CLUSTER=tetralith 
-   - PDC: no CLUSTER, as said above - i.e. just c=parcluster; NO OTHER JOB SETTINGS! Here you instead start an interactive session first! 
+   - PDC: no CLUSTER, as said above - i.e. just ``c=parcluster;`` NO OTHER JOB SETTINGS! Here you instead start an interactive session first! 
 
    Remember, the project-id is:
 
@@ -388,7 +388,7 @@ Asking for 1 hour. Starting from my own computer.
 
    Also remember the ``c.AdditionalProperties.ProcsPerNode=20`` if you are on UPPMAX. 
 
-   Test that it was added (with ``c.AdditionalProperties``). 
+   Test that the settings were added (with ``c.AdditionalProperties``). 
 
 
 Running a job from within MATLAB terminal interface
