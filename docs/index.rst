@@ -16,11 +16,10 @@ Introduction to running R, Matlab and Julia in HPC
       - use **virtual** environments
       - use the **computation nodes**
         
-         - write and submit batch scripts 
-         - work interactivly
-      - Learn about the batch system
-      - Learn about GPUs
-      - access parallel tools and run parallel codes 
+         - write and submit **batch** scripts 
+         - work **interactivly**
+         - access **parallel** tools and run parallel codes 
+         - access **GPUs** and run such code
 
    - This course will consist of lectures interspersed with hands-on sessions
      where you get to try out what you have just learned.
@@ -29,15 +28,19 @@ Introduction to running R, Matlab and Julia in HPC
 
 .. admonition:: Course approach to deal with multiple HPC centers
 
-   - The course is a cooperation between **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on the compute systems at all three centres.
+   - The course is a NAISS cooperation between **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on the compute systems at all three centres.
    - Although there are differences we will only have **few seperate sessions**.
-   - Most participants will use NSC's Tetralith systems for the course, as Kebnekaise, Rackham/Snowy, and Cosmos are only for local users. Kebnekaise: UmU, IRF, MIUN, SLU, LTU. Cosmos: LU, Rackham/Snowy: UU. 
+   - Most participants will use NSC's Tetralith system or PDC's Dardel system for the course, as Kebnekaise, Rackham/Snowy, and Cosmos are only for local users. 
+   - Local users mean affiliated to
+
+      - Kebnekaise: UmU, IRF, MIUN, SLU, LTU. 
+      - Cosmos: LU. 
+      - Rackham/Snowy: UU. 
+
    - The general information given in the course will be true for all/most HPC centres in Sweden. 
 
       - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres. 
       - When present, links to the Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
-
-
 
 Schedule Spring 2025
 --------------------
