@@ -45,6 +45,11 @@ Log in session
    - If you have user account and course/research project on Tetralith, follow the **NSC** track below.
    - If you have user account and course/research project on Dardel, follow the **PDC** track below.
 
+.. admonition:: Use Thinlinc or terminal?
+
+   - It is up to you!
+   - Graphics come easier with Thinlinc
+   - For this course, when having many windows open, it may sometimes be better to run in terminal, for screen space issues.
 
 Step 1: Log in!
 ---------------
