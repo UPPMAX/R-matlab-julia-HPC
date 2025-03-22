@@ -562,24 +562,52 @@ In the following demo you will find instructions to install this package and run
    .. admonition:: job-gpu.sh
       :class: dropdown
 
-      .. code-block:: r 
+      .. tabs::
 
-         #!/bin/bash
-         #SBATCH -A hpc2n202w-xyz # Change to your own project ID
-         #Asking for 10 min.
-         #SBATCH -t 30:50:00
-         #SBATCH -n 1
-         #SBATCH --gpus=1
-         #SBATCH -C l40s
-         #Writing output and error files
-         #SBATCH --output=output%J.out
-         #SBATCH --error=error%J.error
+         .. tab:: UPPMAX
 
-         ml purge > /dev/null 2>&1
-         #module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
-         ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+            .. code-block:: sh
 
-         R --no-save --no-restore -f gpu-script-db-higgs.R
+               #!/bin/bash
+               #SBATCH -A testappl # Change to your own project ID
+               #Asking for 70 min.
+               #SBATCH -t 12:00:00
+               #SBATCH -p node
+               #SBATCH -N 1
+               ##SBATCH -n 1
+               #SBATCH -M snowy
+               #SBATCH --gres=gpu:1
+               #Writing output and error files
+               #SBATCH --output=output%J.out
+               #SBATCH --error=error%J.error
+
+               ml purge > /dev/null 2>&1
+               #module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
+               ml R_packages
+
+               R --no-save --no-restore -f gpu-script-db-higgs.R
+
+         .. tab:: HPC2N
+
+            .. code-block:: sh 
+
+               #!/bin/bash
+               #SBATCH -A hpc2n202w-xyz # Change to your own project ID
+               #Asking for 10 min.
+               #SBATCH -t 30:50:00
+               #SBATCH -n 1
+               #SBATCH --gpus=1
+               #SBATCH -C l40s
+               #Writing output and error files
+               #SBATCH --output=output%J.out
+               #SBATCH --error=error%J.error
+
+               ml purge > /dev/null 2>&1
+               #module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
+               ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+
+               R --no-save --no-restore -f gpu-script-db-higgs.R
+
 
    .. admonition:: Timings
       :class: dropdown
