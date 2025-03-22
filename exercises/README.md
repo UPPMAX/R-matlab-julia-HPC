@@ -1,5 +1,11 @@
 Directory for exercises. Subdirectories for each language.
 
-- Python: This directory contains the .py files and .sh files that are listed in the Exercises section for Python. 
-- R: same for R 
+- julia: This directory contains (many of) the .jl and .sh files that are mentioned in the Julia part of the presentations for this course.   
+- python: This directory contains the .py files and .sh files that are mentioned in the Python part of the presentations for this course. 
+- matlab: This directory contains most of the .m and .sh files that are mentioned in the MATLAB part of the presentations for this course. 
+- r: This directory contains most of the .R and .sh files that are mentioned in the R part of the presentations for this course.  
 
+- exercisesJulia.tar.gz : the exercises for the Julia part as a tarball 
+- exercisesMatlab.tar.gz : the exercises for the MATLAB part as a tarball 
+- exercisesR.tar.gz : the exercises for R part as a tarball 
+- exercises.tar.gz : all the exercises in a tarball (updated 22 March 2025) 

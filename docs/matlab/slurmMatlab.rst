@@ -1045,9 +1045,9 @@ Inside MATLAB
          
          - Start an interactive session where you ask for GPUs: 
            
-             - salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu 
+             - ``salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu`` 
              - Load Matlab: ``module load PDC/23.12 matlab/r2024a-ps`` 
-             - Start Matlab: matlab -nodisplay -nodesktop -nosplash
+             - Start Matlab: ``matlab -nodisplay -nodesktop -nosplash`` 
                
          - You are now ready to run your GPU Matlab scripts. 
 
