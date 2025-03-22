@@ -305,9 +305,10 @@ In order to list the content of your profile, do ``c.AdditionalProperties``.
    - On UPPMAX you also need to add ``c.AdditionalProperties.ProcsPerNode=20;``. 
 
    - At PDC, you do **NOT** set any ``AdditionalProperties``. You instead work in an interactive session. 
-   - To start an interactive session at PDC, do this to get  
-     - full node:   ``salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main``
-     - fewer cores, here 24: ``salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`` 
+   - To start an interactive session at **PDC**, do this to get  
+
+      - full node:   ``salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main``
+      - fewer cores, here 24: ``salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`` 
    - When the job is allocated, start an SSH connection to the compute node. 
      - if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``: 
        - ``ssh -X <node-you-got-allocated>`` 
