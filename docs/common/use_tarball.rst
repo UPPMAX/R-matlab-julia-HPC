@@ -82,9 +82,25 @@ Step 2: Uncompress the tarball
 
 In a terminal, use the following command to uncompress the file:
 
-.. code-block::  console
+.. tabs::
 
-    tar -xvzf exercises.tar.gz 
+   .. tab:: R
+
+      .. code-block::  console
+
+         tar -xvzf exercisesR.tar.gz 
+
+   .. tab:: Matlab (wait until that day)
+
+      .. code-block::  console
+
+         tar -xvzf exercisesMatlab.tar.gz 
+
+   .. tab:: Julia (wait until that day)
+
+      .. code-block::  console
+
+         tar -xvzf exercisesJulia.tar.gz 
 
 .. admonition:: How does that look like?
    :class: dropdown
