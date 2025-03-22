@@ -69,25 +69,33 @@ Schedule Spring 2025
       
        - Zoom policy:
 
-          - Zoom chat (maintained by co-teachers):
+           - Zoom chat (maintained by co-teachers):
 
-            - technical issues of zoom
-            - technical issues of your settings
-            - direct communication 
-            - each teacher may have somewhat different approach
+                - technical issues of zoom
+                - technical issues of your settings
+                - direct communication 
+                - each teacher may have somewhat different approach
 
-          -  collaboration document (see below):
+            - collaboration document (see below):
 
-             - "explain again"         
-             - elaborating the course content
-             - solutions for your own work
+                - "explain again"         
+                - elaborating the course content
+                - solutions for your own work
 
        - Recording policy:
-          - The lectures and demos will be recorded.
-          - The questions asked per microphone during these sessions will be recorded
-          - If you don't want your voice to appear use: 
+           - **All lectures and demos** will be available on HPC2Ns **Youtube** channel after the course.
 
-             - use the collaboration document (see below)
+           - Due to different teaching styles, the teacher of a session decides if a lesson will be:
+               - recorded without learners
+               - recorded live with learners
+
+           - The teachers will be clear if it is recorded or not and it will be visible in the ZOOM.
+           - For the live-recordings
+
+               - The questions asked per microphone during these sessions will be recorded
+               - If you don't want your voice to appear: 
+
+                   - use the collaboration document (see below)
 
        - The Zoom main room is used for most lectures
        - Some sessions use breakout rooms for exercises, some of which use a silent room
