@@ -112,9 +112,75 @@ In a terminal, use the following command to uncompress the file:
       .. tab:: R
          
          .. code:: console
+           
+            [sven@rackham3 ~]$ tar -xvzf exercisesR.tar.gz 
+            exercises/r/iris_ml-rackham.sh
+            exercises/r/Rscript_ML-kebnekaise.sh
+            exercises/r/hello.R
+            exercises/r/script-df.R
+            exercises/r/add2-cosmos.sh
+            exercises/r/Rscript_ML-cosmos.sh
+            exercises/r/script-df-rackham.sh
+            exercises/r/serial-rackham.sh
+            exercises/r/iris.csv
+            exercises/r/Rmpi-cosmos.sh
+            exercises/r/validation-cosmos.sh
+            exercises/r/validation-rackham.sh
+            exercises/r/parallel_foreach.R
+            exercises/r/serial_sum.R
+            exercises/r/iris_ml.R
+            exercises/r/serial.R
+            exercises/r/serial-cosmos.sh
+            exercises/r/parallel_foreach-cosmos.sh
+            exercises/r/clusterapply.R
+            exercises/r/parallel_foreach-kebnekaise.sh
+            exercises/r/add2-kebnekaise.sh
+            exercises/r/validation-kebnekaise.sh
+            exercises/r/README.md
+            exercises/r/Rmpi.R
+            exercises/r/Rmpi-kebnekaise.sh
+            exercises/r/serial-kebnekaise.sh
+            exercises/r/Rscript_ML-rackham.sh
+            exercises/r/parallel_foreach-rackham.sh
+            exercises/r/script-df-kebnekaise.sh
+            exercises/r/add2.R
+            exercises/r/Rscript.R
+            exercises/r/add2-rackham.sh
+            exercises/r/sleep.R
+            exercises/r/script-df-fixme.R
+            exercises/r/Rmpi-rackham.sh
+            exercises/r/iris_ml-kebnekaise.sh
+            exercises/r/iris_ml-cosmos.sh
+            exercises/r/validation.R
+            exercises/r/script-df-cosmos.sh
 
-            [sven@rackham3 ~]$ tar -xvzf exercises.tar.gz 
-            exercises/
+      .. tab:: Matlab
+         
+         .. code:: console
+            
+            [sven@rackham3 ~]$ tar -xvzf exercisesMatlab.tar.gz 
+            exercises/matlab/
+            exercises/matlab/parallel_example.m
+            exercises/matlab/example-parallel-matlab.sh
+            exercises/matlab/serial-monte-rackham.sh
+            exercises/matlab/parallel_example-rackham.sh
+            exercises/matlab/serial-monte-kebnekaise.sh
+            exercises/matlab/parallel_example-kebnekaise.sh
+            exercises/matlab/mmult.m
+            exercises/matlab/parfeval_mean.m
+            exercises/matlab/monte_carlo_pi.m
+            exercises/matlab/parallel_example-cosmos.sh
+            exercises/matlab/parfor-greet.m
+            exercises/matlab/MorePractice.rst
+            exercises/matlab/add2.m
+            exercises/matlab/serial-monte-cosmos.sh
+            exercises/matlab/dice_stats_par.m
+            
+      .. tab:: Julia
+         
+         .. code:: console
+
+            [sven@rackham3 ~]$ tar -xvzf exercisesJulia.tar.gz 
             exercises/julia/
             exercises/julia/script-df-rackham.sh
             exercises/julia/parallelJulia/
@@ -166,74 +232,6 @@ In a terminal, use the following command to uncompress the file:
             exercises/julia/loadRun/Solutions/1/Solution.md
             exercises/julia/loadRun/1.md
             
-      .. tab:: R
-         
-         .. code:: console
-            
-            exercises/exercises.tar.gz
-            exercises/README.md
-            exercises/matlab/
-            exercises/matlab/parallel_example.m
-            exercises/matlab/example-parallel-matlab.sh
-            exercises/matlab/serial-monte-rackham.sh
-            exercises/matlab/parallel_example-rackham.sh
-            exercises/matlab/serial-monte-kebnekaise.sh
-            exercises/matlab/parallel_example-kebnekaise.sh
-            exercises/matlab/mmult.m
-            exercises/matlab/parfeval_mean.m
-            exercises/matlab/monte_carlo_pi.m
-            exercises/matlab/parallel_example-cosmos.sh
-            exercises/matlab/parfor-greet.m
-            exercises/matlab/MorePractice.rst
-            exercises/matlab/add2.m
-            exercises/matlab/serial-monte-cosmos.sh
-            exercises/matlab/dice_stats_par.m
-            
-      .. tab:: R
-         
-         .. code:: console
-           
-            exercises/r/
-            exercises/r/iris_ml-rackham.sh
-            exercises/r/Rscript_ML-kebnekaise.sh
-            exercises/r/hello.R
-            exercises/r/script-df.R
-            exercises/r/add2-cosmos.sh
-            exercises/r/Rscript_ML-cosmos.sh
-            exercises/r/script-df-rackham.sh
-            exercises/r/serial-rackham.sh
-            exercises/r/iris.csv
-            exercises/r/Rmpi-cosmos.sh
-            exercises/r/validation-cosmos.sh
-            exercises/r/validation-rackham.sh
-            exercises/r/parallel_foreach.R
-            exercises/r/serial_sum.R
-            exercises/r/iris_ml.R
-            exercises/r/serial.R
-            exercises/r/serial-cosmos.sh
-            exercises/r/parallel_foreach-cosmos.sh
-            exercises/r/clusterapply.R
-            exercises/r/parallel_foreach-kebnekaise.sh
-            exercises/r/add2-kebnekaise.sh
-            exercises/r/validation-kebnekaise.sh
-            exercises/r/README.md
-            exercises/r/Rmpi.R
-            exercises/r/Rmpi-kebnekaise.sh
-            exercises/r/serial-kebnekaise.sh
-            exercises/r/Rscript_ML-rackham.sh
-            exercises/r/parallel_foreach-rackham.sh
-            exercises/r/script-df-kebnekaise.sh
-            exercises/r/add2.R
-            exercises/r/Rscript.R
-            exercises/r/add2-rackham.sh
-            exercises/r/sleep.R
-            exercises/r/script-df-fixme.R
-            exercises/r/Rmpi-rackham.sh
-            exercises/r/iris_ml-kebnekaise.sh
-            exercises/r/iris_ml-cosmos.sh
-            exercises/r/validation.R
-            exercises/r/script-df-cosmos.sh
-
 
 After decompressing, there is a folder called ``exercises``
 that contains the exercises.
