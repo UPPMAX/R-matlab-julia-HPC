@@ -227,7 +227,7 @@ This starts MATLAB.
 
 .. warning::
 
-   - On the login-nodes MATLAB MUST be started with the option '-singleCompThread', preventing MATLAB from using more than one thread.
+   - On the login-nodes MATLAB MUST be started with the option ``-singleCompThread``, preventing MATLAB from using more than one thread.
 
 **Working in MATLAB**
 
@@ -294,25 +294,26 @@ In order to list the content of your profile, do ``c.AdditionalProperties``.
 
 .. note::
 
-   On UPPMAX and PDC you should do 
+   - On UPPMAX and PDC you should do 
    
-   ``c=parcluster;`` 
+     ``c=parcluster;`` 
    
-   instead of 
+     instead of 
    
-   ``c=parcluster('CLUSTER')``. 
+     ``c=parcluster('CLUSTER')``. 
 
-   You also need to add ``c.AdditionalProperties.ProcsPerNode=20;`` for UPPMAX. 
+   - On UPPMAX you also need to add ``c.AdditionalProperties.ProcsPerNode=20;``. 
 
-   At PDC, you do NOT set any ``AdditionalProperties``. You instead work in an interactive session, which you can do with: 
-   - start with 
+   - At PDC, you do **NOT** set any ``AdditionalProperties``. You instead work in an interactive session. 
+   - To start an interactive session at PDC, do this to get  
        - full node:   ``salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main``
        - fewer cores, here 24: ``salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`` 
-   - when the job is allocated, start an SSH connection to the compute node. (if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``): 
-       - ssh -X <node-you-got-allocated> 
-   - Then load MATLAB and start it 
-       - ml PDC/23.12 matlab/r2024a-ps 
-       - matlab -nodisplay -nodesktop -nosplash  
+   - When the job is allocated, start an SSH connection to the compute node. 
+       - if you need the GUI you need to start both the SSH connection to the Dardel login node and to the compute node with ``SSH -X``: 
+           - ``ssh -X <node-you-got-allocated>`` 
+   - Then load MATLAB and start it (on shell) 
+       - ``ml PDC/23.12 matlab/r2024a-ps`` 
+       - ``matlab -nodisplay -nodesktop -nosplash``  
 
 **Example, for HPC2N**
 
