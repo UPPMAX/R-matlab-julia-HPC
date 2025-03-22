@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summary &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom_theme.css?v=98a0eeba" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Evaluation" href="evaluationJulia.html" />
+    <link rel="prev" title="Sessions: Interactive work on compute nodes" href="interactiveJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparations.html">Prepare the environment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_text_editor.html">Use a text editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/naiss_projects_overview.html">NAISS projects overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/hpc_clusters.html">HPC clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/other_courses.html">Other courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/scheduleR.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/scheduleMatlab.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlabGui.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Session-UPPMAX: Matlab client on the desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scheduleJulia.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/r_extra.html">R - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab_extra.html">Matlab - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/julia_extra.html">Julia - extra reading and links</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Summary</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/summaryJulia.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li><dl class="simple">
+<dt>Load and run</dt><dd><ul class="simple">
+<li><p>Use Julia from module system</p></li>
+<li><p>Start a Julia shell session either with <code class="docutils literal notranslate"><span class="pre">julia</span></code></p></li>
+<li><p>run scripts with <code class="docutils literal notranslate"><span class="pre">julia</span> <span class="pre">&lt;script.jl&gt;</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Packages</dt><dd><ul>
+<li><p>Check for preinstalled packages</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>from the Julia REPL with the <code class="docutils literal notranslate"><span class="pre">using</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span></code> command</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Isolated environments</p>
+<blockquote>
+<div><ul>
+<li><p>With a virtual environment you can tailor an environment with specific versions
+for Julia and packages, not interfering with other installed Julia versions and
+packages.</p></li>
+<li><p>Make it for each project you have for reproducibility.</p></li>
+<li><p>Julia has its own mechanism to create virtual environments.</p>
+<blockquote>
+<div><ul>
+<li><p>HPC2N &amp; LUNARC</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The Julia installation is lean, no additional package besides the Base and
+and Standard Libraries are installed.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>UPPMAX</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Several packages are already installed</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>Batch mode</dt><dd><ul class="simple">
+<li><p>The SLURM scheduler handles allocations to the calculation nodes</p></li>
+<li><p>Batch jobs runs without interaction with user</p></li>
+<li><p>A batch script consists of a part with <em>SLURM parameters</em> describing
+the allocation and a second part describing the actual work within the job,
+for instance one or several Julia scripts.</p></li>
+<li><p>Remember to include possible input arguments to the Julia script in the batch script.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Interactive work on calculation nodes</dt><dd><ul>
+<li><p>Start an interactive session on a calculation node by a SLURM allocation
+(similar flags)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>At HPC2N: <code class="docutils literal notranslate"><span class="pre">salloc</span></code> …</p></li>
+<li><p>At UPPMAX/LUNARC: <code class="docutils literal notranslate"><span class="pre">interactive</span></code> …</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Follow the same procedure as usual by loading the Julia module and possible prerequisites.</p></li>
+<li><p>Run Julia in Jupyter lab/notebook</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Procedure is to use the IJulia package and start a jupyter notebook from the julia command line.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Parallel</dt><dd><ul class="simple">
+<li><p>You deploy cores and nodes via SLURM, either in interactive mode or batch</p></li>
+<li><p>In Julia, threads, distributed and MPI parallelization can be used.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GPUs</dt><dd><ul class="simple">
+<li><p>You deploy GPU nodes via SLURM, either in interactive mode or batch</p></li>
+<li><p>In Julia the CUDA package is handy</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition-not-really-clear-5-min exercise important admonition" id="exercise-0">
+<p class="admonition-title">Not really clear? (5 min)</p>
+<ul class="simple">
+<li><p>Discuss in breakout rooms</p></li>
+<li><p>Learn from each other</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Evaluation</p>
+<p>You can find the evaluation form for the Julia part of the course here: <a class="reference external" href="https://forms.office.com/e/PzkkX3SvB1">https://forms.office.com/e/PzkkX3SvB1</a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Documentation at the HPC centres UPPMAX and HPC2N</dt><dd><ul>
+<li><p>UPPMAX: <a class="reference external" href="https://docs.uppmax.uu.se/software/julia/">https://docs.uppmax.uu.se/software/julia/</a></p></li>
+<li><p>HPC2N: <a class="reference external" href="https://www.hpc2n.umu.se/resources/software/julia">https://www.hpc2n.umu.se/resources/software/julia</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Official Julia documentation is found here: <a class="reference external" href="https://docs.julialang.org/en/v1/">https://docs.julialang.org/en/v1/</a></p></li>
+<li><p>Slack channel for Julia and instructions for joining it are found here: <a class="reference external" href="https://julialang.org/slack/">https://julialang.org/slack/</a></p></li>
+<li><p>HPC2N YouTube video on Julia in HPC: <a class="reference external" href="https://www.youtube.com/watch?v=bXHe7Kj3Xxg">https://www.youtube.com/watch?v=bXHe7Kj3Xxg</a></p></li>
+<li><p>Julia for High Performance Computing course material from ENCCS: <a class="reference external" href="https://enccs.github.io/julia-for-hpc/">https://enccs.github.io/julia-for-hpc/</a></p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>Julia language becomes increasingly popular.</p></li>
+<li><p>We also have a web pages for Julia:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>UPPMAX <a class="reference external" href="https://docs.uppmax.uu.se/software/julia/">https://docs.uppmax.uu.se/software/julia/</a></p></li>
+<li><p>HPC2N <a class="reference external" href="https://www.hpc2n.umu.se/resources/software/julia">https://www.hpc2n.umu.se/resources/software/julia</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interactiveJulia.html" class="btn btn-neutral float-left" title="Sessions: Interactive work on compute nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="evaluationJulia.html" class="btn btn-neutral float-right" title="Evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
