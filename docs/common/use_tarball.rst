@@ -31,14 +31,30 @@ Step 1: get the tarball
 In a terminal, use the following command to download the file
 to your current folder:
 
-.. code-block::  console
+.. tabs::
 
-    wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
+   .. tab:: R
+
+      .. code-block::  console
+
+          wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercisesR.tar.gz
+
+   .. tab:: Matlab (wait until that day)
+
+      .. code-block::  console
+
+          wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercisesMatlab.tar.gz
+
+   .. tab:: Julia (wait until that day)
+
+      .. code-block::  console
+
+          wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercisesJulia.tar.gz
 
 .. admonition:: How does that look like?
    :class: dropdown
 
-    Your output will look similar to this:
+    Your output will look somewhat like  this:
 
     .. code-block::  console
 
