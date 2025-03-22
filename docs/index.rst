@@ -31,7 +31,10 @@ Introduction to running R, Matlab and Julia in HPC
    - The course is a NAISS cooperation with teachers from **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on systems at the Swedish academic HPC centres with NAISS personnel.
    - Although there are differences we will only have **few seperate sessions**.
    - Most participants will use NSC's **Tetralith** system or PDC's **Dardel** system for the course.
-   - Users with "local" affiliation below, can work at the following clusters
+
+       - Alvis at **C3SE (Chalmers)** may be added in the future.
+
+   - Users with the "local" affiliation below, can work at the following clusters:
 
       - Kebnekaise: UmU, IRF, MIUN, SLU, LTU. 
       - Cosmos: LU. 
