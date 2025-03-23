@@ -1,7 +1,7 @@
 Evaluation
 ==========
 
-The evaluation form can be found `here <https://forms.office.com/e/g1HiqfEaXi>`_.
+The evaluation form can be found `here <https://forms.office.com/e/w6Pm6LHRP9>`_.
 It takes into account that one may need to leave early too.
 
 
