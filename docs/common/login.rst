@@ -21,16 +21,16 @@ Log in session
 .. admonition:: Cluster-specific approaches
 
    - The course is a cooperation between **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on the compute systems at all these centres, as well as select resources at NSC (Tetralith) and PDC (Dardel).
-   - Although there are differences we will only have **few seperate sessions**.
-   - Most participants will use UPPMAX's, NSC's, or Dardel's systems for the course, as Kebnekaise and Cosmos are only for local (UmU, IRF, MIUN, SLU, LTU, LU) users.
+   - Although there are differences we will only have **few separate sessions**.
+   - Most participants will use NSC's or Dardel's systems for the course, as Rackham, Kebnekaise and Cosmos are only for local (UU, UmU, IRF, MIUN, SLU, LTU, LU) users.
    - The general information given in the course will be true for all/most HPC centres in Sweden. 
 
       - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres. 
-      - When present, links to the Python/Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
+      - When present, links to the Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
 
 .. note::
 
-   - You were invited to be part of the course project for Rackham/Snowy (UPPMAX).
+   - You were invited to be part of the course project.
    - If you already have research projects in any of the clusters you can use them. The CPU-hours required during the course will be low!
 
 .. admonition:: **Learning outcomes**
