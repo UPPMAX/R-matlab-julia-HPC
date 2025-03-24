@@ -161,3 +161,38 @@ If you run from the command line, you will need to load R/4.4.1 (check prerequis
           Use "module spider" to find all possible modules and extensions.
           Use "module keyword key1 key2 ..." to search for all possible modules matching
           any of the "keys".
+
+At NSC
+------ 
+
+Rstudio is installed as a module on Tetralith at NSC. You can either use it by logging with ThinLinc or with SSH -X. 
+
+ThinLinc
+'''''''' 
+
+1. Login to ThinLinc desktop application by providing the following
+
+- server: tetralith.hpc2n.umu.se
+- username
+- password
+
+Then provide the verification code when prompted. 
+
+2. Start a terminal: Click the icon at the bottom (#2) or open with "Applications" -> "System" -> "Xfce Terminal" 
+
+3. Find a suitable version of Rstudio with "module spider Rstudio". The options are currently: 
+
+   - RStudio/2023.06.2+561
+   - RStudio/2023.09.1+494
+
+4. The RStudio module can be loaded directly: 
+
+.. code-block:: console 
+
+   module load RStudio/2023.09.1+494 
+
+5. Start RStudio 
+
+[x_birbr@tetralith1 ~]$ rstudio 
+
+
