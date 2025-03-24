@@ -172,7 +172,7 @@ ThinLinc
 
 1. Login to ThinLinc desktop application by providing the following
 
-- server: tetralith.hpc2n.umu.se
+- server: tetralith.nsc.liu.se
 - username
 - password
 
@@ -193,6 +193,81 @@ Then provide the verification code when prompted.
 
 5. Start RStudio 
 
-[x_birbr@tetralith1 ~]$ rstudio 
+   .. code-block:: console 
+
+      [x_birbr@tetralith1 ~]$ rstudio
+
+   or, if there are problems, use 
+
+   .. code-block:: console 
+
+      rstudio --use-gl=angle
+
+SSH -X 
+'''''' 
+
+1. Login to Tetralith with 
+
+.. code-block:: console 
+
+   SSH -X <username>@tetralith.nsc.liu.se 
+
+Then give password and then verification code when prompted. 
+
+2. Find a suitable version of Rstudio with "module spider Rstudio". The options are currently:
+
+   - RStudio/2023.06.2+561
+   - RStudio/2023.09.1+494
+
+3. The RStudio module can be loaded directly:
+
+.. code-block:: console 
+
+   module load RStudio/2023.09.1+494 
+
+4. Start RStudio
+
+   .. code-block:: console 
+
+      [x_birbr@tetralith1 ~]$ rstudio
+
+   or, if there are problems, use 
+
+   .. code-block:: console 
+
+      rstudio --use-gl=angle
+
+On PDC 
+------ 
+
+Rstudio is installed on Dardel at PDC. You can use it by logging in with ThinLinc and start it with the gfxlauncher. RStudio is NOT available through regular SSH -X. 
+
+1. Login to ThinLinc desktop application by providing the following
+
+- server: dardel-vnc.pdc.kth.se 
+- username
+- key (private) 
+
+Then provide the code for the SSH key if/when prompted. 
+
+NOTE: if it instead lists password, change it to SSH keys for authentication ("Options" -> "Security" -> "Authentication method" and change to "Public key") 
+
+2. In the menu, choose "Applications" -> "PDC Data Analysis" -> "RStudio-R4.4.0" 
+
+The gfx-launcher will be shown, and you can choose project id, number of cores, etc. 
+
+.. figure:: ../../img/gfx-launcher-studio-dardel.png
+      :width: 500
+
+3. Click "start" when you have picked the settings. 
+   
+4. After some time the job starts and RStudio is opened. 
+   
+.. figure:: ../../img/rstudio-dardel.png
+      :width: 500
+
+
+
+
 
 
