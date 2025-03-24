@@ -17,7 +17,6 @@ Add-Ons
       - support packages
    - `More information <https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ>`_
    
-
 .. admonition:: Learners should be able to
 
    - navigate to toolboxes and Add-Ons
@@ -25,6 +24,10 @@ Add-Ons
    - install and use Add-Ons    
    
 - Before going into installing Add-Ons let's have a background to the MATLAB environments and ecosystem!
+
+.. admonition:: Want a video?
+
+   - `Matlab add-ons (Oct 2024) <https://www.youtube.com/watch?v=TLXdzEF06xU&list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&index=42`>_
 
 MATLAB Add-Ons manager
 ----------------------
@@ -186,7 +189,11 @@ Exercises
 
 .. challenge:: 1. Find the **kalmanf** and install it and run a test command.
 
+   Use the Demo as instruction!
+
 .. challenge:: 2. (Optional) Browse the add-ons and get inspired for your own work!
+
+   Use the Demo as inspiration!
 
 .. keypoints:: 
 
