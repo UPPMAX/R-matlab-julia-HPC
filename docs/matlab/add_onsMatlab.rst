@@ -68,20 +68,18 @@ Here we will only focus on the first two options.
    
       .. figure:: ./img/my_products.PNG
 
-.. admonition:: Some toolboxes
+.. seealso:: Some toolboxes
 
    - Matlab products
    - Simulink
-   - Some toolboxes provides **GUI** for their tools Apps
-
-   :ref:`Read more <matlab-extra-addons>`
-
+   - Some toolboxes provide **GUI** for their tools Apps
+   - :ref:`Read more <matlab-extra-addons>`
    - We won't cover the usage of the toolboxes here!
 
 Install Add-Ons
 ~~~~~~~~~~~~~~~
 
-- Search in add-ons explorer and install.
+- Search in Add-Ons explorer and install.
 
 .. figure:: ./img/searchforaddons.PNG
 
