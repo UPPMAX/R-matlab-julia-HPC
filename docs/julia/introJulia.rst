@@ -112,15 +112,16 @@ Shortcomings of Julia
   it would most likely increase its complexity (readability) and one would need to spend more time 
   (learning/programming) as in the case of C/C++/Fortran.  
 
-
-
 More on Julia
 -------------
 
 - Documentation at the HPC centres UPPMAX and HPC2N
-   - UPPMAX: http://docs.uppmax.uu.se/software/julia/
-   - HPC2N: https://www.hpc2n.umu.se/resources/software/julia
-   - LUNARC: The user demand on Julia has been low, so there is currently no site-specific documentation.
+   - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
+   - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
+   - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_
+   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
+   - `PDC <https://support.pdc.kth.se/doc/applications/>`_
+
 - Official Julia documentation is found `here <https://docs.julialang.org/en/v1/>`_
 - Slack channel for Julia and instructions for joining it are found here: https://julialang.org/slack/
 - `HPC2N YouTube video on Julia in HPC <https://www.youtube.com/watch?v=bXHe7Kj3Xxg>`_
