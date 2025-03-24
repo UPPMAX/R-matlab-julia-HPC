@@ -27,20 +27,7 @@ Introduction to MATLAB
       
 .. admonition:: MATLAB Exercise files
 
-    - Link to exercises tarball: https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercises.tar.gz
-    - For a limited time, users on clusters other than COSMOS can copy them from the computer system you are on and unpack them with ``tar -xzvf exercises.tar.gz``
-
-      - Rackham: cp /proj/r-py-jl-m-rackham/exercises.tar.gz .
-      - Kebnekaise: cp /proj/nobackup/r-py-jl-m/exercises.tar.gz .
-      - Tetralith: cp /proj/r-matlab-julia-naiss/exercises.tar.gz .
-      - Dardel: cp /cfs/klemming/projects/supr/r-matlab-julia-naiss/exercises.tar.gz .
-
-
-.. challenge:: Download the exercise files
-
-    - Use ``wget`` to download the tarball from the web, if you didn't copy it from your local computer system.
-    - Un-tar it with ``tar -xzvf <filename.tar.gz>`` in your personal project folder, which you should have created a while ago (https://uppmax.github.io/R-matlab-julia-HPC/index.html#prepare-your-environment-now).
-    - Enter the directory and list the content with the ``tree`` command.
+    - :ref:`common-use-tarball`
 
 Schedule
 --------
