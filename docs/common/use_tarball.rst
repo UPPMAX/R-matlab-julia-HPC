@@ -22,7 +22,6 @@ Procedure
 
 The procedure has these steps:
 
-- Go to a suitable directory
 - Get the tarball
 - Uncompress the tarball
 
