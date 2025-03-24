@@ -27,6 +27,64 @@ Materials
 
 :ref:`client_on_desktop`
 
+HELPER FUNCTIONS
+::::::::::::::::
+
+.. list-table:: Title
+   :widths: 25 50 40
+   :header-rows: 1
+
+   * - Function
+     - Description
+     - Applies Only to Desktop
+   * - clusterFeatures
+     - List of cluster features/constraints
+     - ---
+   * - clusterGpuCards
+     - List of cluster GPU cards	
+     - ---
+   * - clusterPartitionNames
+     - List of cluster partition
+     - ---
+   * - disableArchiving
+     - Modify file archiving to resolve file mirroring issue
+     - true
+   * - fixConnection
+     - Reestablish cluster connection (e.g., after reconnection of VPN)
+     - true
+   * - willRun
+     - Explain why job is queued	
+     - ---
+	
+DEBUGGING
+:::::::::
+
+If a serial job produces an error, call the getDebugLog method to view the error log file.  When submitting an independent job, specify the task.
+
+    >> c.getDebugLog(job.Tasks)
+
+For Pool jobs, only specify the job object.
+
+    >> c.getDebugLog(job)
+
+When troubleshooting a job, the cluster admin may request the scheduler ID of the job.  This can be derived by calling getTaskSchedulerIDs (call schedID(job) before R2019b).
+
+    >> job.getTaskSchedulerIDs()
+    ans = 
+    25539
+
+TO LEARN MORE
+:::::::::::::
+
+To learn more about the MATLAB Parallel Computing Toolbox, check out these resources:
+•	`Parallel Computing Coding Examples <https://www.mathworks.com/help/parallel-computing/examples.html>`_
+•	`Parallel Computing Documentation <http://www.mathworks.com/help/distcomp/index.html>`_
+•	`Parallel Computing Overview <http://www.mathworks.com/products/parallel-computing/index.html>`_
+•	`Parallel Computing Tutorials <http://www.mathworks.com/products/parallel-computing/tutorials.html>`_
+•	`Parallel Computing Videos <http://www.mathworks.com/products/parallel-computing/videos.html>`_
+•	`Parallel Computing Webinars <http://www.mathworks.com/products/parallel-computing/webinars.html>`_
+
+
 Interaction with other tools
 ----------------------------
 
