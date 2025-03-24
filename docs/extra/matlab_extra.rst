@@ -30,4 +30,35 @@ Materials
 Interaction with other tools
 ----------------------------
 
-- gurobi...
+Coming?
+
+.. _matlab-extra-addons:
+
+Add-ons
+=======
+
+.. admonition:: Some toolboxes
+
+   - Matlab products
+      - Parallel Computing Toolbox
+      - MATLAB Parallel Server
+      - Deep Learning Toolbox
+      - Statistics and Machine Learning Toolbox
+   - Simulink
+      - Stateflow
+      - SimEvents
+      - Simscape
+
+.. admonition:: Some toolboxes provides **GUI** for their tools Apps
+
+   - Matlab products
+      - Deep Network Designer - Design and visualize deep learning networks Deep Network Designer
+      - Curve Fitter - Fit curves and surfaces to data
+      - Deep Learning Toolbox
+      - Statistics and Machine Learning Toolbox
+   - Simulink
+      - Stateflow
+      - SimEvents
+      - Simscape
+
+    .. figure:: ./img/apps.PNG
