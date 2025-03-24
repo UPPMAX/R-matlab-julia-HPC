@@ -173,7 +173,6 @@ Content of the course
    matlab/jobsMatlabGui.rst
    common/parallel.rst
    matlab/add_onsMatlab.rst
-   matlab/local_desktopMatlab.rst
    matlab/jupyterMatlab.rst
    matlab/summaryMatlab.rst
    matlab/evaluationMatlab.rst
