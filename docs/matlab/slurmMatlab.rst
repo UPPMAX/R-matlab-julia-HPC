@@ -74,7 +74,7 @@ In order to be able to submit jobs to the SLURM queue, you need to configure MAT
 .. admonition:: Follow these instructions to configure MATLAB
 
    - `HPC2N <https://www.hpc2n.umu.se/resources/software/configure-matlab-2018>`_
-   - `UPPMAX <https://docs.uppmax.uu.se/software/matlab/#first-time-since-may-13-2024>`_
+   - `UPPMAX <https://docs.uppmax.uu.se/software/matlab_conf/>`_
    - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line>`_
    - `NSC <https://www.nsc.liu.se/software/installed/tetralith/matlab/>`_ 
    - `PDC <https://support.pdc.kth.se/doc/software-docs/matlab/>`_   
