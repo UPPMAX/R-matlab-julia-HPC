@@ -126,9 +126,10 @@ Install Add-Ons
 
    - OK, it is not there
    - Click "Add", and "Download and Add to path"
-   - Type email address connected to your MathWorks account
+   - Type email address connected to your MathWorks account (not needed for some versions at Dardel)
    - Installation starts
-   - It will end up in: 
+   - It will end up in the ``~/MATLAB\ Add-Ons/`` folder
+   - This is how the file tree looked for me (``tree`` command is available at some centres)
 
    .. code-block:: console
 
