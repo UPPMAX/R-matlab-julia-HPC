@@ -28,7 +28,7 @@ The R community has contributed many powerful packages, both for machine learnin
 - mlbench
 - tidyverse
 
-and others depending on the cluster. 
+and others. 
 
 Running your code
 -----------------
