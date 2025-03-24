@@ -128,7 +128,7 @@ At LUNARC
 There are two ways to run RStudio at LUNARC: ThinLinc with Desktop On Demand and through SSH -X. 
 
 ThinLinc, DesktopOnDemand
-'''''''''''''''''''''''''
+.........................
 
 At LUNARC the recommended way to run RStudio is in Thinlinc with Desktop On Demand. All available versions are in the Applications menu under ``Applications-R``.
 
@@ -168,7 +168,7 @@ If you run from the command line, you will need to load R/4.4.1 (check prerequis
           any of the "keys".
 
 SSH -X 
-''''''
+......
 
 1. Login with SSH -X: 
    
@@ -201,7 +201,7 @@ At NSC
 Rstudio is installed as a module on Tetralith at NSC. You can either use it by logging with ThinLinc or with SSH -X. 
 
 ThinLinc
-'''''''' 
+........ 
 
 1. Login to ThinLinc desktop application by providing the following
 
@@ -237,7 +237,7 @@ Then provide the verification code when prompted.
       rstudio --use-gl=angle
 
 SSH -X 
-'''''' 
+...... 
 
 1. Login to Tetralith with 
 
