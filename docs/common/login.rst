@@ -129,7 +129,7 @@ For beginners: use the **bold** login method.
      
             .. code-block:: console
          
-               $ mkdir /proj/r-py-jl-m-rackham/mrspock/
+               $ mkdir /proj/r-matlab-julia-uppmax/mrspock/
 
       .. tab:: HPC2N
 
@@ -142,7 +142,7 @@ For beginners: use the **bold** login method.
      
            .. code-block:: console
          
-              $ mkdir /proj/nobackup/r-py-jl-m/bbrydsoe/
+              $ mkdir /proj/nobackup/r-matlab-julia/bbrydsoe/
 
       .. tab:: LUNARC
 
@@ -155,7 +155,7 @@ For beginners: use the **bold** login method.
 
            .. code-block:: console
          
-              $ mkdir $HOME/r-py-jl-m
+              $ mkdir $HOME/r-matlab-julia
 
       .. tab:: NSC
 
