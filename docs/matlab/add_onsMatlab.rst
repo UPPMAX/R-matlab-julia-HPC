@@ -23,7 +23,7 @@ Add-Ons
    - view Add-Ons and toolboxes
    - install and use Add-Ons    
    
-- Before going into installing Add-Ons let's have a background to the MATLAB environments and ecosystem!
+- Before going into installing Add-Ons, let's have a background to the MATLAB environments and ecosystem!
 
 .. admonition:: Want a video?
 
