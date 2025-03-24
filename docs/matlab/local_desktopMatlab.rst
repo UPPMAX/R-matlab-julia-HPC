@@ -24,7 +24,7 @@ Session-UPPMAX: Matlab client on the desktop
 
 .. admonition:: Want a video?
 
-   - `Matlab add-ons (Oct 2024) <https://www.youtube.com/watch?v=wwqxy2gVjlk&list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&index=44>`_
+   - `UPPMAX Matlab client on the desktop (Oct 2024) <https://www.youtube.com/watch?v=wwqxy2gVjlk&list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&index=44>`_
 
 
 Let's get started together!
