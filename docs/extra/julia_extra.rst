@@ -43,6 +43,16 @@ training of programming and specific software.
 - `Julia for high-performance Computing <https://enccs.github.io/julia-for-hpc/>`_ 
 - `Julia for High-performance data analytics <https://enccs.github.io/julia-for-hpda/>`_ 
 
+IDEs
+====
 
-Materials
-=========
+- Jupyter: Jupyter notebooks are familiar to many Python and R users.
+- Pluto.jl: Offers a similar notebook experience to Jupyter, but understands global references between cells, and reactively re-evaluates cells affected by a code change.
+- A text editor like nano, emacs, vim, etc., followed by running your code with julia filename.jl. There are also plugins for Julia for major text editors - do an internet search on e.g. “emacs julia” or “vim julia” to find out more.
+
+Packages
+========
+
+- `List ecosystems <https://enccs.github.io/julia-intro/scientific-computing/>`_
+
+
