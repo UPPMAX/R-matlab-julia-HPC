@@ -125,6 +125,11 @@ When in ThinLinc, you can start Rstudio either from the menu (version 4.0.4) or 
 At LUNARC
 ----------
 
+There are two ways to run RStudio at LUNARC: ThinLinc with Desktop On Demand and through SSH -X. 
+
+ThinLinc, DesktopOnDemand
+'''''''''''''''''''''''''
+
 At LUNARC the recommended way to run RStudio is in Thinlinc with Desktop On Demand. All available versions are in the Applications menu under ``Applications-R``.
 
 .. figure:: ../../img/Cosmos-AppMenu-RStudio.png
@@ -161,6 +166,34 @@ If you run from the command line, you will need to load R/4.4.1 (check prerequis
           Use "module spider" to find all possible modules and extensions.
           Use "module keyword key1 key2 ..." to search for all possible modules matching
           any of the "keys".
+
+SSH -X 
+''''''
+
+1. Login with SSH -X: 
+   
+.. code-block:: console 
+
+   $ ssh -X <username>@cosmos.lunarc.lu.se
+   (<username>@cosmos.lunarc.lu.se) Password: 
+   (<username>@cosmos.lunarc.lu.se) Enter your Pocket Pass OTP: 
+
+2. Load the RStudio module. It can be loaded directly (use ``ml spider rstudio`` to find versions):    
+
+.. code-block:: console 
+
+   $ ml rstudio/2024.04.2-764
+
+3. Start RStudio: 
+
+.. code-block:: console 
+
+   $ rstudio 
+
+4. After a little while it starts: 
+
+.. figure:: ../../img/rstudio-cosmos.png
+      :width: 500
 
 At NSC
 ------ 
