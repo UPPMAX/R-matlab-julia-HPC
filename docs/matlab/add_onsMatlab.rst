@@ -116,10 +116,13 @@ Install Add-Ons
 
    You can install some Add-Ons manually using an installation file. This is useful in several situations:
 
-   - The add-on is not available for installation through the Add-On Explorer, for example, if you create a custom add-on yourself or receive one from someone else.
-   - You downloaded the add-on from the Add-On Explorer without installing it.
-   - You downloaded the add-on from the File Exchange at MATLAB Central™.
-   - `MathWorkds page on getting Add-Ons <https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html>`_ 
+   .. admonition:: When?
+      :class: dropdown
+   
+      - The add-on is not available for installation through the Add-On Explorer, for example, if you create a custom add-on yourself or receive one from someone else.
+      - You downloaded the add-on from the Add-On Explorer without installing it.
+      - You downloaded the add-on from the File Exchange at MATLAB Central™.
+      - `MathWorks page on getting Add-Ons <https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html>`_ 
 
 .. demo:: 
 
