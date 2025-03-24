@@ -76,9 +76,8 @@ Of course MATLAB also has some drawbacks:
    - The way MATLAB automates multithreading means it will typically hog a full node unless you explicitly tell it not to by setting `-singleCompThread` as an option at startup, or unless your local cluster is configured to automatically limit the number of processes started on a login node.
    - The built-in plotting functions generate only very low-resolution raster graphics with no anti-aliasing, not suitable for publication.
 
-
-More on MATLAB?
----------------
+MATLAB documentation at the centers
+-----------------------------------
 
 - Documentation at the HPC centres UPPMAX, HPC2N, LUNARC, NSC, and PDC
    - UPPMAX: http://docs.uppmax.uu.se/software/matlab/
@@ -86,15 +85,12 @@ More on MATLAB?
    - LUNARC: https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/
    - NSC: click `here for general instructions <https://www.nsc.liu.se/software/docs/matlab/>`_ and `here for installations on Tetralith <https://www.nsc.liu.se/software/catalogue/tetralith/modules/matlab.html>`_ specifically
    - PDC: https://support.pdc.kth.se/doc/applications/?sub=matlab/
+
 - Official MATLAB documentation is found `here <https://se.mathworks.com/help/matlab/index.html?s_tid=hc_panel>`_
 
-Material for improving your programming skills
-::::::::::::::::::::::::::::::::::::::::::::::
+.. seealso:: Material for improving your programming skills
 
-If you have a Mathworks account that is less than 2 years old, Mathworks offers free `MATLAB self-paced online training courses <https://matlabacademy.mathworks.com/?page=1&fq=all-matlab&sort=featured&s_tid=ln_acad_learn_oc>`_. Students at any academic institution with a campus-wide license can use their university email addresses to create a free account to access these resources.
-
-The Mondays with MATLAB lecture series is offered every September, and offers introductions to MATLAB, its Parallel Computing Toolbox, and AI/ML toolboxes. These and other events are posted `here <https://se.mathworks.com/company/events.html>`_. If you have an account, you will be automatically signed up for the Mathworks mailing list, which will notify you of upcoming webinars as well as some featured packages. The webinars cover a broad range of topics and disciplines at varying skill levels, although these seminars tend to be more advanced.
-
+   - `Extra material <https://uppmax.github.io/R-matlab-julia-HPC/extra/matlab_extra.html>`_
 
 .. keypoints::
 
