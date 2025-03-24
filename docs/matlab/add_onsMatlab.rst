@@ -27,7 +27,7 @@ Add-Ons
 
 .. admonition:: Want a video?
 
-   - `Matlab add-ons (Oct 2024) <https://www.youtube.com/watch?v=TLXdzEF06xU&list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&index=42`>_
+   - `Matlab add-ons (Oct 2024) <https://www.youtube.com/watch?v=TLXdzEF06xU&list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&index=42>`_
 
 MATLAB Add-Ons manager
 ----------------------
