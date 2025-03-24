@@ -36,13 +36,17 @@ In the GUI, the Add-Ons manager can be selected from the menu at the top. The dr
 
    - **Browse a library of Add-Ons to download.** Note that some Add-Ons require a separate license.
 
-     .. figure:: ./img/Add-On_explorer.PNG
+   .. admonition:: How does that look like?
+      :class: dropdown
 
+      .. figure:: ./img/Add-On_explorer.PNG
 
    - **Manage Add-Ons already downloaded.**
 
-   .. figure:: ./img/Add-On_manager.PNG
-
+   .. admonition:: How does that look like?
+      :class: dropdown
+   
+      .. figure:: ./img/Add-On_manager.PNG
 
    - Package user-generated code as a Toolbox or App
 
@@ -54,7 +58,12 @@ Here we will only focus on the first two options.
 
    Note that very many packages are already included in the  Academic installation and license
 
-.. figure:: ./img/my_products.PNG
+   - In Add-On explorer: "View My products"
+
+   .. admonition:: How does that look like?
+      :class: dropdown
+   
+      .. figure:: ./img/my_products.PNG
 
 .. admonition:: Some toolboxes
 
@@ -68,7 +77,7 @@ Here we will only focus on the first two options.
       - SimEvents
       - Simscape
 
-.. admonition:: Some toolboxes provides GUI for their tools Apps
+.. admonition:: Some toolboxes provides **GUI** for their tools Apps
 
    - Matlab products
       - Deep Network Designer - Design and visualize deep learning networks Deep Network Designer
