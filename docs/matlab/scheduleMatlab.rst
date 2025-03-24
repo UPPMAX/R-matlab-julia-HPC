@@ -2,7 +2,7 @@ Preliminary schedule
 --------------------
 
 .. list-table:: Preliminary times
-   :widths: 25 25 50
+   :widths: 25 40 20
    :header-rows: 1
 
    * - Time
@@ -51,14 +51,14 @@ Preliminary schedule
      - **Coffee break**
      - 
    * - 15.05
-     - Simultaneous session — UPPMAX: Client on the local desktop
-     - BC
-   * - .
      - Simultaneous session — MATLAB in Jupyter
      - PO
    * - .
      - Simultaneous session — LUNARC: MATLAB with Desktop On Demand
      - RP
+   * - .
+     - (Simultaneous session — UPPMAX: Client on the local desktop)
+     - BC
    * - 15.35
      - Summary 
      -
