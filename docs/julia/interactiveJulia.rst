@@ -351,7 +351,7 @@ Running a script
                   [~]$ julia serial-sum.jl 3 4 
                   The sum of the two numbers is: 7
 
-**Running Julia REPL (UPPMAX/HPC2N)**
+**Running Julia REPL**
 
 - First start Julia using the 4 cores and check if workers are available
 
@@ -364,6 +364,13 @@ Running a script
    julia> nworkers()
    4
 
+Exit Julia
+
+.. code-block:: julia-repl
+
+   julia> <CTRL-D>
+   4
+
 
 **Exit**
 
@@ -371,6 +378,27 @@ When you have finished using the allocation, either wait for it to end, or close
 
 .. tabs::
 
+   .. tab:: NSC
+   
+      .. code-block:: console 
+
+         [sm_bcarl@n134 ~]$ exit
+         logout
+         srun: error: n134: task 0: Exited with exit code 130
+         srun: Terminating StepId=43071803.interactive
+         salloc: Relinquishing job allocation 43071803
+         salloc: Job allocation 43071803 has been revoked.
+         [sm_bcarl@tetralith3 ~]$
+
+   .. tab:: PDC
+   
+      .. code-block:: console 
+                  
+         claremar@login1:~> exit
+         exit
+         salloc: Relinquishing job allocation 9103056
+         claremar@login1:~>
+     
    .. tab:: UPPMAX
    
       .. code-block:: console 
