@@ -47,49 +47,94 @@ In order to run interactively, you need to have compute nodes allocated to run o
 
 Because you will have to wait until the nodes are allocated, and because you cannot know when this happens, this is not usually a recommended way to run Julia, but it is possible. 
 
-.. warning::
 
-   - (HPC2N) Do note that it is not *real* interactivity as you probably mean it, as you will have to run it as a Julia script instead of by starting Julia and giving commands inside it. 
-   - The reason for this is that you are not actually logged into the compute node and only sees the output of the commands you run. 
+The different way HPC2N, UPPMAX, LUNARC, and NSC provide for an interactive session
+-----------------------------------------------------------------------------------
 
-Julia "interactively" on the compute nodes 
--------------------------------------------
+Here we define an interactive session as a session with direct access to a compute node.
+Or alternatively: an interactive session is a session, in which there is no queue before a command is run on a compute node.
 
-.. note::
+This differs between HPC2N and UPPMAX :
 
-   - On UPPMAX and LUNARC: ``interactive ...``
-      - You get graphics as well!
-   - On HPC2N: ``salloc``
-      - This command works as well on the other clusters but brings no or bad graphics.
+- HPC2N: the user remains on a login node. 
+  All commands can be sent directly to the compute node using ``srun``
+- UPPMAX: the user is actually on a computer node.
+  Whatever command is done, it is run on the compute node
+- LUNARC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node
+- NSC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node  - - PDC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node  
 
-   - When the resources are allocated, you need to preface commands with ``srun`` in order to run on the allocated nodes instead of the login node. 
-      
+Start an interactive session
+----------------------------
+
+To start an interactive session, 
+one needs to allocate resources on the cluster first.
+
+The command to request an interactive node differs per HPC cluster:
+
++---------+-----------------+-------------+-------------+
+| Cluster | ``interactive`` | ``salloc``  | GfxLauncher |
++=========+=================+=============+=============+
+| HPC2N   | Works           | Recommended | N/A         |
++---------+-----------------+-------------+-------------+
+| UPPMAX  | Recommended     | Works       | N/A         |
++---------+-----------------+-------------+-------------+
+| LUNARC  | Works           | N/A         | Recommended | 
++---------+-----------------+-------------+-------------+
+| NSC     | Recommended     | N/A         | N/A         | 
++---------+-----------------+-------------+-------------+ 
+| PDC     | N/A             | Recommended | Possible    | 
++---------+-----------------+-------------+-------------+ 
+
+
+Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC): 
+
+.. mermaid:: ../mermaid/interactive_node_transitions.mmd 
+     
 - First, you make a request for resources with ``interactive``/``salloc``, like this:
 
 .. tabs::
+
+   .. tab:: NSC (interactive)
+
+      .. code-block:: console
+          
+         $ interactive -n <tasks> --time=HHH:MM:SS -A naiss-2025-22-262
+
+   .. tab:: PDC (salloc)
+
+      .. code-block:: console
+          
+         $ salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 -p <partition>
+
+      Where <partition> is main or gpu
 
    .. tab:: UPPMAX (interactive)
 
       .. code-block:: console
           
          $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-272
-      
-   .. tab:: HPC2N (salloc)
-
-      .. code-block:: console
-          
-         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
 
    .. tab:: LUNARC (interactive)
 
       .. code-block:: console
           
          $ interactive -n <tasks> --time=HHH:MM:SS -A lu2025-7-24
-      
 
-      
-where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in  hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project 
+   .. tab:: HPC2N (salloc)
 
+      .. code-block:: console
+          
+         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
+
+      - ssh to the node given and then work there
+
+
+where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project
+
+
+Then, when you get the allocation, do one of:
+
+- ``srun -n <ntasks> ./program``
 
 - Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources. 
 - When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with ``srun``. 
@@ -103,6 +148,8 @@ where <tasks> is the number of tasks (or cores, for default 1 task per core), ti
 
 .. admonition:: Documentation at the centers
 
+   - `Interactive allocation on PDC <https://support.pdc.kth.se/doc/support/?sub=login/interactive_hpc/>`_
+   - `Interactive allocation on NSC <https://www.nsc.liu.se/support/running-applications/#interactive-jobs>`_
    - `Interactive allocation on UPPMAX <https://docs.uppmax.uu.se/cluster_guides/start_interactive_node/>`_
    - `Interactive allocation on HPC2N <https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive>`_
    - `Interactive allocation on LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session>`_
