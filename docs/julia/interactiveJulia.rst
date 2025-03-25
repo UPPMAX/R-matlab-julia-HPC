@@ -163,7 +163,7 @@ Then, when you get the allocation, do one of:
    - `Interactive allocation on HPC2N <https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive>`_
    - `Interactive allocation on LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session>`_
 
-Example **Code along**
+Example **Demo**
 ######################
 
 .. type-along::
@@ -176,7 +176,7 @@ Example **Code along**
 
          .. code-block:: console
       
-            [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 30:0 -A naiss2025-22-262
+            [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 0:30:0 -A naiss2025-22-262
             salloc: Pending job allocation 43071298
             salloc: job 43071298 queued and waiting for resources
             salloc: job 43071298 has been allocated resources
@@ -202,7 +202,7 @@ Example **Code along**
          
          .. code-block:: console
       
-            claremar@login1:~> salloc --ntasks=4 -t 01:00:00 -p shared --qos=normal -A naiss2025-22-262
+            claremar@login1:~> salloc --ntasks=4 -t 0:30:00 -p shared --qos=normal -A naiss2025-22-262
             salloc: Pending job allocation 9102757
             salloc: job 9102757 queued and waiting for resources
             salloc: job 9102757 has been allocated resources
@@ -242,7 +242,7 @@ Example **Code along**
 
          .. code-block:: console
       
-            [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 10:00
+            [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 0:30:00
             You receive the high interactive priority.
             There are free cores, so your job is expected to start at once.
       
@@ -295,7 +295,7 @@ Example **Code along**
    
          .. code-block:: console
       
-            [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 10:00
+            [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 30:00
             Cluster name: COSMOS   
             Waiting for JOBID 930844 to start
           
