@@ -4,6 +4,9 @@
 - Date: 2025-03-24
 - Language: R
 
+- Registrations: 33
+- Participants: 12 (36% of registrations shows up)
+
 With the 1 hour optional login session, we
 give 1 hour of teaching to the unprepared,
 while sacrificing 1 hour of teaching for the
