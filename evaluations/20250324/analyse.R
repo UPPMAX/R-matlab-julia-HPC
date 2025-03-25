@@ -1,5 +1,6 @@
 #!/bin/env Rscript
 
+
 t <- readr::read_delim("learning_outcomes.csv", delim = "|")
 names(t)
 names(t) <- c(
@@ -26,6 +27,7 @@ testthat::expect_equal(
 )
 
 t$sum <- (1 * t$n_one) + (2 * t$n_two) + (3 * t$n_three) + (4 * t$n_four)
+
 t$success_score <- round(100 * t$sum / max_total_score)
 
 ggplot2::ggplot(

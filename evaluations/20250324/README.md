@@ -22,3 +22,4 @@ Column text|Description
 `3`        |I have good confidence I can do this
 `4`        |I can absolutely do this!
 
+![Average learning outcomes per session](average_learning_outcome_per_question.png)
