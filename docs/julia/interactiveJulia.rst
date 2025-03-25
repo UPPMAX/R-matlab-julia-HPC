@@ -98,7 +98,7 @@ Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):
 
       .. code-block:: console
           
-         $ interactive -n <tasks> --time=HHH:MM:SS -A naiss-2025-22-262
+         $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2025-22-262
 
    .. tab:: PDC (salloc)
 
@@ -106,7 +106,16 @@ Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):
           
          $ salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 -p <partition>
 
-      Where <partition> is main or gpu
+      Where <partition> is ``shared``, ``main`` or ``gpu``
+
+      - We recommend ``shared`` 
+      - Wait until you get the node
+      - ``ssh´´  to the node given and then work there
+          - Example: 
+      
+              .. code-block:: console
+          
+                 $ ssh nid001057
 
    .. tab:: UPPMAX (interactive)
 
@@ -162,6 +171,72 @@ Example **Code along**
    **Requesting 4 cores for 10 minutes, then running Julia**
 
    .. tabs::
+
+      .. tab:: NSC
+
+         .. code-block:: console
+      
+            [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 30:0 -A naiss2025-22-262
+            salloc: Pending job allocation 43071298
+            salloc: job 43071298 queued and waiting for resources
+            salloc: job 43071298 has been allocated resources
+            salloc: Granted job allocation 43071298
+            salloc: Waiting for resource configuration
+            salloc: Nodes n760 are ready for job
+          
+            [bjornc@r483 ~]$ module load julia/1.10.2-bdist
+
+         Let us check that we actually run on the compute node: 
+
+         .. code-block:: console
+      
+            [sm_bcarl@n760 ~]$ srun hostname
+            n760
+            n760
+            n760
+            n760
+
+         We are. Notice that we got a response from all four cores we have allocated.   
+
+      .. tab:: PDC
+         
+         .. code-block:: console
+      
+            claremar@login1:~> salloc --ntasks=4 -t 01:00:00 -p shared --qos=normal -A naiss2025-22-262
+            salloc: Pending job allocation 9102757
+            salloc: job 9102757 queued and waiting for resources
+            salloc: job 9102757 has been allocated resources
+            salloc: Granted job allocation 9102757
+            salloc: Waiting for resource configuration
+            salloc: Nodes nid001057 are ready for job
+
+            claremar@login1:~> module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+                  
+         Let us check that we actually run on the compute node. This has to be done differently
+      
+         .. code-block:: console
+                  
+            claremar@login1:~> srun hostname
+            nid001064
+            nid001063
+            nid001064
+            nid001063
+
+         Now, it seems that Dardel allows for "hyperthreading", that is 2 threads per core.
+
+         .. code-block:: console
+
+            claremar@login1:~> srun -n 8 hostname
+            nid001064
+            nid001064
+            nid001063
+            nid001063
+            nid001064
+            nid001064
+            nid001063
+            nid001063
+
+         We are. Notice that we got a response from all four cores we have allocated.   
 
       .. tab:: UPPMAX
 
