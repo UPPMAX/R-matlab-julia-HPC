@@ -1,0 +1,34 @@
+flowchart TD
+  subgraph uppmax[UPPMAX]
+  subgraph login_node[Login nodes]
+    user_on_login_node[User on login node]
+  end
+
+  subgraph compute_node[Compute nodes]
+    user_on_computer_node[User on compute node]
+    job_on_compute_node[Job on compute node]
+  end
+  end
+
+  subgraph hpc2n[HPC2N]
+  subgraph hpc2n_login_node[Login nodes]
+    hpc2n_user_on_login_node[User on login node]
+    hpc2n_user_in_interactive_mode[User on login node in interactive session]
+  end
+
+  subgraph hpc2n_compute_node[Compute nodes]
+    hpcn2_job_on_compute_node[Job on compute node]
+  end
+  end
+
+  user_on_login_node --> |interactive| user_on_computer_node
+  user_on_login_node --> |sbatch| job_on_compute_node
+
+  user_on_computer_node --> |exit| user_on_login_node
+  user_on_computer_node --> |srun| user_on_computer_node
+
+
+  hpc2n_user_on_login_node --> |salloc| hpc2n_user_in_interactive_mode
+  hpc2n_user_in_interactive_mode --> |exit| hpc2n_user_on_login_node
+  hpc2n_user_on_login_node --> |sbatch| hpcn2_job_on_compute_node
+  hpc2n_user_in_interactive_mode --> |srun| hpcn2_job_on_compute_node
