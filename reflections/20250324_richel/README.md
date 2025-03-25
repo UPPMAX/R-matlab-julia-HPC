@@ -3,6 +3,8 @@
 - Author: Richel
 - Date: 2025-03-24
 - Language: R
+- [Lesson plans](../../lesson_plans/20250324_richel/README.md)
+- [Evaluation](../../evaluations/20250324/README.md)
 
 - Registrations: 33
 - Participants: 12 (36% of registrations shows up)
@@ -137,3 +139,32 @@ Feedback phase.
 I was a helper during the other sessions. I was not a very good helper:
 I find it hard to stay focused during monologues.
 
+![Average learning outcomes per session](../../evaluations/20250325/average_learning_outcome_per_question.png)
+
+My grades:
+
+learning_outcome                                                                 |success_score|Comment
+---------------------------------------------------------------------------------|-------------|-------
+I can find the module to be able to run R                                        |94           |Mine, great
+I can load the module to be able to run R                                        |94           |Mine, great
+I can run the R interpreter                                                      |94           |Mine, great
+I can run the R command to get the list of installed R packages                  |88           |Mine, great
+I can run an R script from the command-line                                      |88           |Mine, great
+I can find out if an R package is already installed                              |81           |Mine, was extra
+I can load the pre-installed R packages                                          |88           |Mine, great
+I can install an R package from CRAN                                             |81           |Not mine
+I can use renv to create, activate, use and deactivate a virtual environment     |62           |Not mine
+I can submit a job to the scheduler to run an R script with regular code         |78           |Not mine
+I can submit a job to the scheduler to run an R script that uses parallel code   |69           |Not mine
+I can submit a job to the scheduler to run an R script that uses a GPU           |56           |Not mine
+I can find and load the R machine learning modules                               |50           |Not mine
+I can submit a job to the scheduler to run an R script that uses machine learning|50           |Not mine
+I can start an interactive session                                               |81           |Simultaneous session
+I can verify I am on the login node yes/no                                       |78           |Mine, not taught explicitly
+I can start an interactive session with multiple cores                           |78           |Mine, not taught explicitly
+I can start RStudio                                                              |84           |Simultaneous session
+
+My worst sessions were those that were optional and/or in the
+simultaneous sessions. I find it hard to convince myself to take a
+second look at my material, as the learning outcomes are achieved too
+well.
