@@ -3,12 +3,11 @@ MATLAB GUI and SLURM
 
 .. questions::
 
-   - What is a batch job?
-   - How to make a batch for MATLAB?
+   - How does MATLAB interact with SLURM?
    
 .. objectives:: 
 
-   - Understand and use the Slurm scheduler
+   - Understand and use the Slurm scheduler in MATLAB
    - Start batch jobs from MATLAB Graphical User Interface (GUI)
    - Try example
 
