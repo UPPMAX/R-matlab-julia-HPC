@@ -605,7 +605,7 @@ The difference here is that when the batch script has been submitted, you cannot
 
 .. warning::
 
-   - ``parpool`` can only be used on UPPMAX and Cosmos.
+   - ``parpool`` can only be used on UPPMAX, Cosmos, and Kebnekaise.
   
 
 Serial batch jobs 

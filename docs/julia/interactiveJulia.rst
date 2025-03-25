@@ -8,17 +8,21 @@ Sessions: Interactive work on compute nodes
    
 .. objectives:: 
 
-   - be able to start interactive sessions
+   - Be able to start interactive sessions
    - Be able to run Julia in Jupyter notebook
 
 .. admonition:: Compute allocations in this workshop 
 
+   - Dardel: ``naiss-2025-22-262``
+   - Tetralith: ``naiss-2025-22-262``
    - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 
 
+   - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
+   - Tetralith: ``/proj/r-matlab-julia-naiss/users/``
    - Rackham: ``/proj/r-py-jl-m-rackham``
    - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
    - Cosmos: ``<your own good place>``
@@ -43,49 +47,103 @@ In order to run interactively, you need to have compute nodes allocated to run o
 
 Because you will have to wait until the nodes are allocated, and because you cannot know when this happens, this is not usually a recommended way to run Julia, but it is possible. 
 
-.. warning::
 
-   - (HPC2N) Do note that it is not *real* interactivity as you probably mean it, as you will have to run it as a Julia script instead of by starting Julia and giving commands inside it. 
-   - The reason for this is that you are not actually logged into the compute node and only sees the output of the commands you run. 
+The different way HPC2N, UPPMAX, LUNARC, and NSC provide for an interactive session
+-----------------------------------------------------------------------------------
 
-Julia "interactively" on the compute nodes 
--------------------------------------------
+Here we define an interactive session as a session with direct access to a compute node.
+Or alternatively: an interactive session is a session, in which there is no queue before a command is run on a compute node.
 
-.. note::
+This differs between HPC2N and UPPMAX :
 
-   - On UPPMAX and LUNARC: ``interactive ...``
-      - You get graphics as well!
-   - On HPC2N: ``salloc``
-      - This command works as well on the other clusters but brings no or bad graphics.
+- HPC2N: the user remains on a login node. 
+  All commands can be sent directly to the compute node using ``srun``
+- UPPMAX: the user is actually on a computer node.
+  Whatever command is done, it is run on the compute node
+- LUNARC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node
+- NSC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node  - - PDC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node  
 
-   - When the resources are allocated, you need to preface commands with ``srun`` in order to run on the allocated nodes instead of the login node. 
-      
+Start an interactive session
+----------------------------
+
+To start an interactive session, 
+one needs to allocate resources on the cluster first.
+
+The command to request an interactive node differs per HPC cluster:
+
++---------+-----------------+-------------+-------------+
+| Cluster | ``interactive`` | ``salloc``  | GfxLauncher |
++=========+=================+=============+=============+
+| HPC2N   | Works           | Recommended | N/A         |
++---------+-----------------+-------------+-------------+
+| UPPMAX  | Recommended     | Works       | N/A         |
++---------+-----------------+-------------+-------------+
+| LUNARC  | Works           | N/A         | Recommended | 
++---------+-----------------+-------------+-------------+
+| NSC     | Recommended     | N/A         | N/A         | 
++---------+-----------------+-------------+-------------+ 
+| PDC     | N/A             | Recommended | Possible    | 
++---------+-----------------+-------------+-------------+ 
+
+
+Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC): 
+
+.. mermaid:: ../mermaid/interactive_node_transitions.mmd 
+     
 - First, you make a request for resources with ``interactive``/``salloc``, like this:
 
 .. tabs::
+
+   .. tab:: NSC (interactive)
+
+      .. code-block:: console
+          
+         $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2025-22-262
+
+   .. tab:: PDC (salloc)
+
+      .. code-block:: console
+          
+         $ salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 -p <partition>
+
+      Where <partition> is ``shared``, ``main`` or ``gpu``
+
+      - We recommend ``shared`` 
+      - Wait until you get the node
+      - ``ssh´´  to the node given and then work there
+          - Example: 
+      
+              .. code-block:: console
+          
+                 $ ssh nid001057
 
    .. tab:: UPPMAX (interactive)
 
       .. code-block:: console
           
          $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-272
-      
-   .. tab:: HPC2N (salloc)
-
-      .. code-block:: console
-          
-         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
 
    .. tab:: LUNARC (interactive)
 
       .. code-block:: console
           
          $ interactive -n <tasks> --time=HHH:MM:SS -A lu2025-7-24
-      
 
-      
-where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in  hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project 
+   .. tab:: HPC2N (salloc)
 
+      .. code-block:: console
+          
+         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
+
+      - ssh to the node given and then work there
+
+
+where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project
+
+
+Then, when you get the allocation, do one of:
+
+- ``srun -n <ntasks> ./program``
 
 - Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources. 
 - When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with ``srun``. 
@@ -99,11 +157,13 @@ where <tasks> is the number of tasks (or cores, for default 1 task per core), ti
 
 .. admonition:: Documentation at the centers
 
+   - `Interactive allocation on PDC <https://support.pdc.kth.se/doc/support/?sub=login/interactive_hpc/>`_
+   - `Interactive allocation on NSC <https://www.nsc.liu.se/support/running-applications/#interactive-jobs>`_
    - `Interactive allocation on UPPMAX <https://docs.uppmax.uu.se/cluster_guides/start_interactive_node/>`_
    - `Interactive allocation on HPC2N <https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive>`_
    - `Interactive allocation on LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session>`_
 
-Example **Code along**
+Example **Demo**
 ######################
 
 .. type-along::
@@ -112,11 +172,77 @@ Example **Code along**
 
    .. tabs::
 
+      .. tab:: NSC
+
+         .. code-block:: console
+      
+            [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 0:30:0 -A naiss2025-22-262
+            salloc: Pending job allocation 43071298
+            salloc: job 43071298 queued and waiting for resources
+            salloc: job 43071298 has been allocated resources
+            salloc: Granted job allocation 43071298
+            salloc: Waiting for resource configuration
+            salloc: Nodes n760 are ready for job
+          
+            [bjornc@r483 ~]$ module load julia/1.10.2-bdist
+
+         Let us check that we actually run on the compute node: 
+
+         .. code-block:: console
+      
+            [sm_bcarl@n760 ~]$ srun hostname
+            n760
+            n760
+            n760
+            n760
+
+         We are. Notice that we got a response from all four cores we have allocated.   
+
+      .. tab:: PDC
+         
+         .. code-block:: console
+      
+            claremar@login1:~> salloc --ntasks=4 -t 0:30:00 -p shared --qos=normal -A naiss2025-22-262
+            salloc: Pending job allocation 9102757
+            salloc: job 9102757 queued and waiting for resources
+            salloc: job 9102757 has been allocated resources
+            salloc: Granted job allocation 9102757
+            salloc: Waiting for resource configuration
+            salloc: Nodes nid001057 are ready for job
+
+            claremar@login1:~> module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+                  
+         Let us check that we actually run on the compute node. This has to be done differently
+      
+         .. code-block:: console
+                  
+            claremar@login1:~> srun hostname
+            nid001064
+            nid001063
+            nid001064
+            nid001063
+
+         Now, it seems that Dardel allows for "hyperthreading", that is 2 threads per core.
+
+         .. code-block:: console
+
+            claremar@login1:~> srun -n 8 hostname
+            nid001064
+            nid001064
+            nid001063
+            nid001063
+            nid001064
+            nid001064
+            nid001063
+            nid001063
+
+         We are. Notice that we got a response from all four cores we have allocated.   
+
       .. tab:: UPPMAX
 
          .. code-block:: console
       
-            [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 10:00
+            [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 0:30:00
             You receive the high interactive priority.
             There are free cores, so your job is expected to start at once.
       
@@ -169,7 +295,7 @@ Example **Code along**
    
          .. code-block:: console
       
-            [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 10:00
+            [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 30:00
             Cluster name: COSMOS   
             Waiting for JOBID 930844 to start
           
@@ -225,7 +351,7 @@ Running a script
                   [~]$ julia serial-sum.jl 3 4 
                   The sum of the two numbers is: 7
 
-**Running Julia REPL (UPPMAX/HPC2N)**
+**Running Julia REPL**
 
 - First start Julia using the 4 cores and check if workers are available
 
@@ -238,6 +364,13 @@ Running a script
    julia> nworkers()
    4
 
+Exit Julia
+
+.. code-block:: julia-repl
+
+   julia> <CTRL-D>
+   4
+
 
 **Exit**
 
@@ -245,6 +378,27 @@ When you have finished using the allocation, either wait for it to end, or close
 
 .. tabs::
 
+   .. tab:: NSC
+   
+      .. code-block:: console 
+
+         [sm_bcarl@n134 ~]$ exit
+         logout
+         srun: error: n134: task 0: Exited with exit code 130
+         srun: Terminating StepId=43071803.interactive
+         salloc: Relinquishing job allocation 43071803
+         salloc: Job allocation 43071803 has been revoked.
+         [sm_bcarl@tetralith3 ~]$
+
+   .. tab:: PDC
+   
+      .. code-block:: console 
+                  
+         claremar@login1:~> exit
+         exit
+         salloc: Relinquishing job allocation 9103056
+         claremar@login1:~>
+     
    .. tab:: UPPMAX
    
       .. code-block:: console 
