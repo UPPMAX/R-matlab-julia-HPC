@@ -702,8 +702,7 @@ Exercises
          
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
-
- .. solution:: Solution for NSC
+   .. solution:: Solution for NSC
       :class: dropdown
    
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
@@ -714,8 +713,7 @@ Exercises
          
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
-
- .. solution:: Solution for PDC
+   .. solution:: Solution for PDC
       :class: dropdown
    
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
