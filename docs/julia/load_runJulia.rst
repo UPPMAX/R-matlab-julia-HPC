@@ -55,7 +55,7 @@ Principle
 
    $ module avail julia
 
-or, at clusters that hides the modules until relevant dependencies are loaded.
+or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N & PDC)
 
 .. code-block:: console
 
@@ -80,13 +80,15 @@ Example output for UPPMAX
 Load a Julia module
 --------------------
 
-For reproducibility, we recommend **ALWAYS** loading a specific module for the Julia version instead of using the 
+For reproducibility, we recommend ALWAYS loading a specific module for the Julia version instead of using the 
 default one.
-
-For this course, we recommend using the following Julia versions, because the exercises are developed with them:
 
 Principle
 #########
+
+- Use the overview of existing module above!
+
+- Load the module!
 
 At some clusters:
 
@@ -100,6 +102,24 @@ or at cluster that includes "architecture" in module name
 
    $ ml Julia/1.8.5-linux-x86_64
 
+Some clusters will require other modules to be loaded (Kebnekaise and Dardel)
+
+- First check how to load 
+
+.. code-block:: console
+
+   $ module spider julia/1.10.2-cpeGNU-23.12
+
+   ...
+       You will need to load all module(s) on any one of the lines below before the "julia/1.10.2-cpeGNU-23.12" module is available to load.
+
+      PDC/23.12
+
+- Load PDC/23.12 first and then the julia module
+
+.. code-block:: console
+
+   $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
 Run
 ---
@@ -539,7 +559,7 @@ Exercises
 
                $ module load julia/1.10.2-bdist
 
-            Note: lowercase ``J``.   
+            Note: lowercase ``j``.   
 
             For short, you can also use: 
 
@@ -553,7 +573,7 @@ Exercises
 
                $ module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
-            Note: Uppercase ``J``.   
+            Note: lowercase ``j``.   
 
             For short, you can also use: 
 
