@@ -1,4 +1,4 @@
-#!/bin/env/Rscript
+#!/bin/env Rscript
 
 t <- readr::read_delim("learning_outcomes.csv", delim = "|")
 names(t)
@@ -15,6 +15,7 @@ t$n_four <- as.numeric(t$n_four)
 t$n_not_attend <- as.numeric(t$n_not_attend)
 
 n_learners <- (t$n_zero + t$n_one + t$n_two + t$n_three + t$n_four + t$n_not_attend)[1]
+testthat::expect_equal(8, n_learners)
 max_score <- 4
 max_total_score <- n_learners * max_score
 
@@ -26,7 +27,6 @@ testthat::expect_equal(
 
 t$sum <- (1 * t$n_one) + (2 * t$n_two) + (3 * t$n_three) + (4 * t$n_four)
 t$success_score <- round(100 * t$sum / max_total_score)
-mean(t$success_score)
 
 ggplot2::ggplot(
   t, ggplot2::aes(y = learning_outcome, x = success_score)
@@ -39,3 +39,8 @@ ggplot2::ggplot(
       "average success score: ", round(mean(t$success_score))
     )
   )
+
+ggplot2::ggsave(
+  "average_learning_outcome_per_question.png",
+  width = 7, height = 7
+)
