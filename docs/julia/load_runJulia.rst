@@ -51,31 +51,81 @@ Check for Julia versions
 Principle
 #########
 
+- For some clusters
+
 .. code-block:: console
 
    $ module avail julia
 
-or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N & PDC)
+.. admonition:: How will it look like? 
+   :class: dropdown
+
+   Example output for Tetralith
+
+   .. code-block::  console
+
+      $ module avail julia
+      ---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------
+         julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist
+         julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
+         julia/1.4.1                          julia/1.8.5-nsc1-bdist
+
+
+       Where:
+        D:  Default Module
+
+      Use "module spider" to find all possible modules and extensions.
+      Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+
+- Or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N & PDC)
 
 .. code-block:: console
 
    $ module spider julia
 
-Example output for UPPMAX
+.. admonition:: How will it look like? 
+   :class: dropdown
 
-.. code-block::  console
+   Example output for Dardel
 
-   $ module avail julia
-   ----------------------------- /sw/mf/rackham/compilers -----------------------------
-      julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
-      julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
-      julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
+   .. code-block::  console
 
-    Where:
-     D:  Default Module
+      $ module spider julia
+      -------------------------------------------------------------------------------------------------------
+        julia:
+      -------------------------------------------------------------------------------------------------------
+          Description:
+            Julia is a high-level general-purpose dynamic programming language that was originally designed
+            to address the needs of high-performance numerical analysis and computational science, without
+            the typical need of separate compilation to be fast, also usable for client and server web use,
+            low-level systems programming or as a specification language (wikipedia.org). Julia provides
+            ease and expressiveness for high-level numerical computing, in the same way as languages such as
+            R, MATLAB, and Python, but also supports general programming. To achieve this, Julia builds upon
+            the lineage of mathematical programming languages, but also borrows much from popular dynamic
+            languages, including Lisp, Perl, Python, Lua, and Ruby (julialang.org).
 
-   Use "module spider" to find all possible modules and extensions.
-   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+           Versions:
+              julia/1.8.2-cpeGNU-22.06
+              julia/1.9.3-cpeGNU-22.06
+              julia/1.9.3-cpeGNU-23.03
+              julia/1.10.2-cpeGNU-23.03
+              julia/1.10.2-cpeGNU-23.12
+           Other possible modules matches:
+              Julia  libuv-julia
+
+      -------------------------------------------------------------------------------------------------------
+        To find other possible module matches execute:
+
+            $ module -r spider '.*julia.*'
+
+      -------------------------------------------------------------------------------------------------------
+        For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
+        Note that names that have a trailing (E) are extensions provided by other modules.
+        For example:
+
+           $ module spider julia/1.10.2-cpeGNU-23.12
+      -------------------------------------------------------------------------------------------------------
 
 Load a Julia module
 --------------------
@@ -96,11 +146,11 @@ At some clusters:
 
    $ module load julia/1.8.5
 
-or at cluster that includes "architecture" in module name
+or at cluster that includes "architecture" or "build name" in module name:
 
 .. code-block:: console
 
-   $ ml Julia/1.8.5-linux-x86_64
+   $ ml julia/1.10.2-bdist
 
 Some clusters will require other modules to be loaded (Kebnekaise and Dardel)
 
@@ -110,10 +160,10 @@ Some clusters will require other modules to be loaded (Kebnekaise and Dardel)
 
    $ module spider julia/1.10.2-cpeGNU-23.12
 
-   ...
-       You will need to load all module(s) on any one of the lines below before the "julia/1.10.2-cpeGNU-23.12" module is available to load.
+     ...
+     You will need to load all module(s) on any one of the lines below before the "julia/1.10.2-cpeGNU-23.12" module is available to load.
 
-      PDC/23.12
+     PDC/23.12
 
 - Load PDC/23.12 first and then the julia module
 
