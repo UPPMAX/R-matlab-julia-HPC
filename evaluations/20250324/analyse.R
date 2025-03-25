@@ -30,6 +30,11 @@ t$sum <- (1 * t$n_one) + (2 * t$n_two) + (3 * t$n_three) + (4 * t$n_four)
 
 t$success_score <- round(100 * t$sum / max_total_score)
 
+readr::write_csv(
+  t |> dplyr::select(learning_outcome, success_score),
+  file = "average_learning_outcome_per_question.csv"
+)
+
 ggplot2::ggplot(
   t, ggplot2::aes(y = learning_outcome, x = success_score)
 ) + ggplot2::geom_col() +

@@ -1,0 +1,19 @@
+learning_outcome,success_score
+I can find the module to be able to run R                                        ,94
+I can load the module to be able to run R                                        ,94
+I can run the R interpreter                                                      ,94
+I can run the R command to get the list of installed R packages                  ,88
+I can run an R script from the command-line                                      ,88
+I can find out if an R package is already installed                              ,81
+I can load the pre-installed R packages                                          ,88
+I can install an R package from CRAN                                             ,81
+"I can use renv to create, activate, use and deactivate a virtual environment     ",62
+I can submit a job to the scheduler to run an R script with regular code         ,78
+I can submit a job to the scheduler to run an R script that uses parallel code   ,69
+I can submit a job to the scheduler to run an R script that uses a GPU           ,56
+I can find and load the R machine learning modules                               ,50
+I can submit a job to the scheduler to run an R script that uses machine learning,50
+I can start an interactive session                                               ,81
+I can verify I am on the login node yes/no                                       ,78
+I can start an interactive session with multiple cores                           ,78
+I can start RStudio                                                              ,84
