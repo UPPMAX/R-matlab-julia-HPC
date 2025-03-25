@@ -154,7 +154,7 @@ or at cluster that includes "architecture" or "build name" in module name:
 
 Some clusters will require other modules to be loaded (Kebnekaise and Dardel)
 
-- First check how to load 
+- First check how to load (see Check for Julia versions above)
 
 .. code-block:: console
 
