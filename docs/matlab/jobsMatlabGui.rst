@@ -31,6 +31,7 @@ MATLAB GUI and SLURM
 
    - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
    - On login nodes, MATLAB should be started with the option ``-singleCompThread`` to stop it from using more than one thread (a couple of the clusters detect if the user is on a login node and restrict MATLAB to 1 thread automatically, but it's better to include it to be safe than forget and have your job killed by angry admins).
+   - On some clusters (e.g. COSMOS, Dardel, Kebnekaise), it is possible, and therefore recommended, to start the MATLAB GUI itself on a compute node. 
 
 .. note:: 
 
