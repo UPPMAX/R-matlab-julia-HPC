@@ -8,17 +8,21 @@ Sessions: Interactive work on compute nodes
    
 .. objectives:: 
 
-   - be able to start interactive sessions
+   - Be able to start interactive sessions
    - Be able to run Julia in Jupyter notebook
 
 .. admonition:: Compute allocations in this workshop 
 
+   - Dardel: ``naiss-2025-22-262``
+   - Tetralith: ``naiss-2025-22-262``
    - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
 
 .. admonition:: Storage space for this workshop 
 
+   - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
+   - Tetralith: ``/proj/r-matlab-julia-naiss/users/``
    - Rackham: ``/proj/r-py-jl-m-rackham``
    - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
    - Cosmos: ``<your own good place>``
