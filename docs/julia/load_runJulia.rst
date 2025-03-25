@@ -633,6 +633,30 @@ Exercises
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
 
+ .. solution:: Solution for NSC
+      :class: dropdown
+   
+      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
+
+      .. code-block:: console
+
+            $ ml julia/1.10.2-bdist           # Julia module
+         
+            julia serial-sum.jl Arg1 Arg2      # run the serial script
+
+
+ .. solution:: Solution for PDC
+      :class: dropdown
+   
+      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
+
+      .. code-block:: console
+
+            $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12           # Julia module
+         
+            julia serial-sum.jl Arg1 Arg2      # run the serial script
+
+
 .. challenge:: 6. Check your understanding
 
    - Check your understanding and answer in the shared document
