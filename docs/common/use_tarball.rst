@@ -234,7 +234,7 @@ In a terminal, use the following command to uncompress the file:
             julia/loadRun/1.md
             
 
-After decompressing, there is a folder called ``r``, or ``matlab`` or `julia``
+After decompressing, there is a folder called ``r``, or ``matlab`` or ``julia``
 that contains the exercises.
 
 .. warning:: Do you want the whole repo?
