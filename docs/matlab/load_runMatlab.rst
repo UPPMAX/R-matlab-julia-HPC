@@ -392,23 +392,45 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Se
 
 .. tabs::
 
-  .. tab:: HPC2N and UPPMAX
+  .. tab:: HPC2N
 
-      For HPC2N and UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
+      For HPC2N, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
+
+      It is possible to start the MATLAB GUI on a compute node on Kebnekaise (HPC2N). The procedure uses ``salloc`` and ``srun`` to achieve what other facilities often do with the ``interactive`` command (edit time, resources, project ID, and MATLAB version as needed): 
+
+         .. code-block:: console
+
+            $ salloc -N 1 -t 00:30:00 -A hpc2n20YY-XXX
+            $ module load MATLAB/2023b
+            $ srun matlab
+
+
+  .. tab:: UPPMAX
+
+      For UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
       
       .. figure:: ../../img/Rackham-Matlab.png
          :width: 450
          :align: center
-      
-         Both ways of starting MATLAB on Rackham.
 
+      It is also possible to start the MATLAB GUI on the login node, but even if you are already logged into Rackham, you must use Snowy for any interactive work. Fortunately, the ``interactive`` command takes care of this for you without requiring SSH, as long as you specify ``-M snowy``. A MATLAB GUI session can be run with the following commands (again, edit time, resources, project ID, and MATLAB version as needed):
+
+         .. code-block:: console
+
+            $ interactive -M snowy -n 4 -t 00:30:00 -A uppmax20YY-X-XXX
+            $ module load matlab/R2023b
+            $ matlab
+
+      In the above example, ``-n 4`` means the job will run on 4 cores. Snowy nodes have 16 cores. The default partition, ``core``, is for jobs requiring up to 15 cores, and they cannot be exclusive. If you need a full node, or more cores than one node contains, you should change the partition with ``-p node``. Please refer to `this link <https://docs.uppmax.uu.se/cluster_guides/snowy/#using-the-batch-system>`_ for allowed combinations of ``interactive`` parameters.
+
+    
   .. tab:: NSC (Tetralith)
 
       The best way to start the MATLAB GUI on Tetralith depends on how intensively you plan to use the GUI. Most of the time, it is recommended to use the ``interactive`` command first to get an allocation on a compute node. The commands you will need to enter look like the following (change the MATLAB version and interactive job specifications as needed):
 
          .. code-block:: console
 
-            $ interactive -N1 --exclusive -t 4:00:00
+            $ interactive -N 1 --exclusive -t 4:00:00
             $ module load MATLAB/2024a-hpc1-bdist
             $ matlab -softwareopengl
 
