@@ -26,6 +26,22 @@ Introduction to running R, Matlab and Julia in HPC
 
    - We aim to give this course in **spring and fall every year**.
 
+Schedule Spring 2025
+--------------------
+
+.. list-table:: 
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Day
+     - Language
+   * - Monday 24 March
+     - R 
+   * - Tuesday 25 March
+     - Matlab
+   * - Wednesday 26 March
+     - Julia
+
 .. admonition:: Course approach to deal with multiple HPC centers
 
    - The course is a NAISS cooperation with teachers from **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on systems at the Swedish academic HPC centres with NAISS personnel.
@@ -44,23 +60,17 @@ Introduction to running R, Matlab and Julia in HPC
 
       - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres. 
       - When present, links to the Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
-
-Schedule Spring 2025
---------------------
-
-.. list-table:: 
-   :widths: 25 25
-   :header-rows: 1
-
-   * - Day
-     - Language
-   * - Monday 24 March
-     - R 
-   * - Tuesday 25 March
-     - Matlab
-   * - Wednesday 26 March
-     - Julia
    
+
+.. admonition:: Collaboration document
+
+   - .. raw:: html
+
+        <a target='_blank' href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EVIK4UtoAEBLoZaTgEH72-gBrsuVAhf7thq7iXKMzQCa2A?e=Rg3xCS">Q/A collaboration document</a>
+
+   - Use this page for the workshop with your questions
+   - It helps us identify content that is missing in the course material
+   - We answer those questions as soon as possible
 
 .. admonition:: Some practicals
 
@@ -102,18 +112,7 @@ Schedule Spring 2025
 
        - The Zoom main room is used for most lectures
        - Some sessions use breakout rooms for exercises, some of which use a silent room
-    
-.. admonition:: Collaboration document
-
-   - .. raw:: html
-
-        <a target='_blank' href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EVIK4UtoAEBLoZaTgEH72-gBrsuVAhf7thq7iXKMzQCa2A?e=Rg3xCS">Q/A collaboration document</a>
-
-   - Use this page for the workshop with your questions
-   - It helps us identify content that is missing in the course material
-   - We answer those questions as soon as possible
-
-        
+            
 .. warning::
 
    - **Please be sure that you have gone through the** `pre-requirements <https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html>`_
