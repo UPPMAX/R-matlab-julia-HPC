@@ -28,7 +28,7 @@ The R community has contributed many powerful packages, both for machine learnin
 - mlbench
 - tidyverse
 
-and others depending on the cluster. 
+and others. 
 
 Running your code
 -----------------
@@ -306,8 +306,6 @@ Parallel jobs
             #SBATCH --exclusive
             #SBATCH -p node
             #SBATCH -n 1
-            #SBATCH -M snowy
-            #SBATCH --gres=gpu:1
             #Writing output and error files
             #SBATCH --output=output%J.out
             #SBATCH --error=error%J.error
@@ -328,8 +326,6 @@ Parallel jobs
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 1
-            #SBATCH --gpus:1
-            #SBATCH -C l40s
             #Writing output and error files
             #SBATCH --output=output%J.out
             #SBATCH --error=error%J.error
@@ -350,8 +346,6 @@ Parallel jobs
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 1
-            #SBATCH --gres=gpus:1
-            #SBATCH -p gpua100
             #Writing output and error files
             #SBATCH --output=output%J.out
             #SBATCH --error=error%J.error
@@ -372,8 +366,6 @@ Parallel jobs
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 1
-            #SBATCH -c 32 
-            #SBATCH --gpus-per-task=1
             #Writing output and error files
             #SBATCH --output=output%J.out
             #SBATCH --error=error%J.error

@@ -19,8 +19,8 @@ Running R in batch mode
    - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
-   - Tetralith: ``naiss-2025-22-262``
-   - Dardel: ``naiss-2025-22-262`` 
+   - Tetralith: ``naiss2025-22-262``
+   - Dardel: ``naiss2025-22-262`` 
 
 .. admonition:: Storage space for this workshop 
 

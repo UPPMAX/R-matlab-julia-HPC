@@ -125,12 +125,12 @@ Common features
 Overview of the UPPMAX systems
 ##############################
 
-.. mermaid:: mermaid/uppmax2.mmd
+.. mermaid:: ../mermaid/uppmax2.mmd
 
 Overview of the HPC2N system
 ############################
 
-.. mermaid:: mermaid/kebnekaise.mmd
+.. mermaid:: ../mermaid/kebnekaise.mmd
 
 Overview of the LUNARC system 
 ############################# 
@@ -140,4 +140,7 @@ Overview of the LUNARC system
 
 Overview of the NSC systems
 ########################### 
+
+.. figure:: ../img/mermaid-tetralith.png
+   :align: center 
 

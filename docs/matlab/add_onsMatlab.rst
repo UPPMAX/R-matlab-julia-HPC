@@ -17,14 +17,17 @@ Add-Ons
       - support packages
    - `More information <https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ>`_
    
-
 .. admonition:: Learners should be able to
 
    - navigate to toolboxes and Add-Ons
    - view Add-Ons and toolboxes
    - install and use Add-Ons    
    
-- Before going into installing Add-Ons let's have a background to the MATLAB environments and ecosystem!
+- Before going into installing Add-Ons, let's have a background to the MATLAB environments and ecosystem!
+
+.. admonition:: Want a video?
+
+   - `Matlab add-ons (Oct 2024) <https://www.youtube.com/watch?v=TLXdzEF06xU&list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&index=42>`_
 
 MATLAB Add-Ons manager
 ----------------------
@@ -36,13 +39,17 @@ In the GUI, the Add-Ons manager can be selected from the menu at the top. The dr
 
    - **Browse a library of Add-Ons to download.** Note that some Add-Ons require a separate license.
 
-     .. figure:: ./img/Add-On_explorer.PNG
+   .. admonition:: How does that look like?
+      :class: dropdown
 
+      .. figure:: ./img/Add-On_explorer.PNG
 
    - **Manage Add-Ons already downloaded.**
 
-   .. figure:: ./img/Add-On_manager.PNG
-
+   .. admonition:: How does that look like?
+      :class: dropdown
+   
+      .. figure:: ./img/Add-On_manager.PNG
 
    - Package user-generated code as a Toolbox or App
 
@@ -54,40 +61,25 @@ Here we will only focus on the first two options.
 
    Note that very many packages are already included in the  Academic installation and license
 
-.. figure:: ./img/my_products.PNG
+   - In Add-On explorer: "View My products"
 
-.. admonition:: Some toolboxes
+   .. admonition:: How does that look like?
+      :class: dropdown
+   
+      .. figure:: ./img/my_products.PNG
 
-   - Matlab products
-      - Parallel Computing Toolbox
-      - MATLAB Parallel Server
-      - Deep Learning Toolbox
-      - Statistics and Machine Learning Toolbox
-   - Simulink
-      - Stateflow
-      - SimEvents
-      - Simscape
-
-.. admonition:: Some toolboxes provides GUI for their tools Apps
+.. seealso:: Some toolboxes
 
    - Matlab products
-      - Deep Network Designer - Design and visualize deep learning networks Deep Network Designer
-      - Curve Fitter - Fit curves and surfaces to data
-      - Deep Learning Toolbox
-      - Statistics and Machine Learning Toolbox
    - Simulink
-      - Stateflow
-      - SimEvents
-      - Simscape
-
-    .. figure:: ./img/apps.PNG
-
-    - We won't cover the usage of the toolboxes here!
+   - Some toolboxes provide **GUI** for their tools Apps
+   - :ref:`Read more <matlab-extra-addons>`
+   - We won't cover the usage of the toolboxes here!
 
 Install Add-Ons
 ~~~~~~~~~~~~~~~
 
-- Search in add-ons explorer and install.
+- Search in Add-Ons explorer and install.
 
 .. figure:: ./img/searchforaddons.PNG
 
@@ -107,10 +99,13 @@ Install Add-Ons
 
    You can install some Add-Ons manually using an installation file. This is useful in several situations:
 
-   - The add-on is not available for installation through the Add-On Explorer, for example, if you create a custom add-on yourself or receive one from someone else.
-   - You downloaded the add-on from the Add-On Explorer without installing it.
-   - You downloaded the add-on from the File Exchange at MATLAB Central™.
-   - `MathWorkds page on getting Add-Ons <https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html>`_ 
+   .. admonition:: When?
+      :class: dropdown
+   
+      - The add-on is not available for installation through the Add-On Explorer, for example, if you create a custom add-on yourself or receive one from someone else.
+      - You downloaded the add-on from the Add-On Explorer without installing it.
+      - You downloaded the add-on from the File Exchange at MATLAB Central™.
+      - `MathWorks page on getting Add-Ons <https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html>`_ 
 
 .. demo:: 
 
@@ -126,9 +121,10 @@ Install Add-Ons
 
    - OK, it is not there
    - Click "Add", and "Download and Add to path"
-   - Type email address connected to your MathWorks account
+   - Type email address connected to your MathWorks account (not needed for some versions at Dardel)
    - Installation starts
-   - It will end up in: 
+   - It will end up in the ``~/MATLAB\ Add-Ons/`` folder
+   - This is how the file tree looked for me (``tree`` command is available at some centres)
 
    .. code-block:: console
 
@@ -173,7 +169,11 @@ Exercises
 
 .. challenge:: 1. Find the **kalmanf** and install it and run a test command.
 
+   Use the Demo as instruction!
+
 .. challenge:: 2. (Optional) Browse the add-ons and get inspired for your own work!
+
+   Use the Demo as inspiration!
 
 .. keypoints:: 
 

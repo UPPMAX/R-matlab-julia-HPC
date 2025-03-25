@@ -1,5 +1,7 @@
+.. _client_on_desktop:
+
 Session-UPPMAX: Matlab client on the desktop
-=====================================
+============================================
 
 .. admonition:: Use own computer's matlab
 
@@ -21,6 +23,10 @@ Session-UPPMAX: Matlab client on the desktop
             - R2022b
             - R2023a
             - R2023b
+
+.. admonition:: Want a video?
+
+   - `UPPMAX Matlab client on the desktop (Oct 2024) <https://www.youtube.com/watch?v=wwqxy2gVjlk&list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&index=44>`_
 
 
 Let's get started together!
@@ -248,5 +254,33 @@ Exercises
 
    - Send a support ticket to UPPMAX via `supr.naiss.se/support <javascript:void(window.open('https://supr.naiss.se/support/?centre_resource=c4','_blank','toolbar=1,location=1,status=1,menubar=1,scrollbars=1,resizable=1'));>`_
 
+Extra
+-----
+
+.. list-table:: Helper functions
+   :widths: 25 50 40
+   :header-rows: 1
+
+   * - Function
+     - Description
+     - Applies Only to Desktop
+   * - clusterFeatures
+     - List of cluster features/constraints
+     - ---
+   * - clusterGpuCards
+     - List of cluster GPU cards	
+     - ---
+   * - clusterPartitionNames
+     - List of cluster partition
+     - ---
+   * - disableArchiving
+     - Modify file archiving to resolve file mirroring issue
+     - true
+   * - fixConnection
+     - Reestablish cluster connection (e.g., after reconnection of VPN)
+     - true
+   * - willRun
+     - Explain why job is queued	
+     - ---
 
 

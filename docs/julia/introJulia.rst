@@ -28,25 +28,7 @@ Introduction Julia
       
 .. admonition:: Julia Exercise files
 
-    - On HPC2N, you can copy the Julia exercises in a tarball 
-      from ``/proj/nobackup/r-py-jl-m/exercises.tar.gz``
-    - On UPPMAX you can copy the exercises in a tarball 
-      from ``/proj/r-py-jl-m-rackham/exercises.tar.gz``
-    - On LUNARC you can copy the exercises in a tarball from ``~bbrydsoe/exercises.tar.gz`` 
-
-.. admonition:: Exercises 
-
-    - You can download the exercises from the course GitHub repo, under the "exercises" -> "julia" directory: https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/exercises/julia 
-    - Copy the file and un-tar it in you personal project folder you created a while ago (https://uppmax.github.io/R-matlab-julia-HPC/index.html#prepare-your-environment-now). Finally enter the directory and list the content with the ``tree`` command.
-
-    .. code-block:: bash
-
-       cd /proj/r-py-jl-m-rackham/<your-name>        # on Rackham
-       cd /proj/nobackup/r-py-jl-m/<your-name>       # on Kebnekaise
-       cp ../exercises.tar.gz .
-       tar zxvf exercises.tar.gz
-       tree exercises/julia
-
+    - `:ref:`common-use-tarball`
 
 .. instructor-note::
 
@@ -112,50 +94,26 @@ Shortcomings of Julia
   it would most likely increase its complexity (readability) and one would need to spend more time 
   (learning/programming) as in the case of C/C++/Fortran.  
 
-
-
 More on Julia
 -------------
 
-- Documentation at the HPC centres UPPMAX and HPC2N
-   - UPPMAX: http://docs.uppmax.uu.se/software/julia/
-   - HPC2N: https://www.hpc2n.umu.se/resources/software/julia
-   - LUNARC: The user demand on Julia has been low, so there is currently no site-specific documentation.
 - Official Julia documentation is found `here <https://docs.julialang.org/en/v1/>`_
 - Slack channel for Julia and instructions for joining it are found here: https://julialang.org/slack/
 - `HPC2N YouTube video on Julia in HPC <https://www.youtube.com/watch?v=bXHe7Kj3Xxg>`_
 
-Material for improving your programming skills
-::::::::::::::::::::::::::::::::::::::::::::::
+Julia documentation at the centers
+-----------------------------------
 
-First level
-...........
+- Documentation at the HPC centres 
+   - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
+   - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
+   - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_
+   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
+   - `PDC <https://support.pdc.kth.se/doc/applications/>`_
 
-`The Carpentries <https://carpentries.org/>`_  teaches basic lab skills for research computing.
+.. seealso:: Material for improving your programming skills
 
-- `Programming with Julia  <https://carpentries-incubator.github.io/julia-novice/>`_ (alpha)
-
-Second level
-::::::::::::
-
-CodeRefinery develops and maintains training material on software best practices for researchers that already 
-write code. Their material addresses all academic disciplines and tries to be as **programming language-independent as possible**. 
-
-- Not yet anything Julia specific
-
-`ENCCS (EuroCC National Competence Centre Sweden) <https://enccs.se/>`_ is a national centre that supports 
-industry, public administration and academia accessing and using European supercomputers. They give higher-level 
-training of programming and specific software.
-
-- `Julia for high-performance Computing <https://enccs.github.io/julia-for-hpc/>`_ 
-- `Julia for High-performance data analytics <https://enccs.github.io/julia-for-hpda/>`_ 
-
-
-Other NAISS centres
--------------------
-
-- `Julia at NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
-- `Julia at PDC <https://support.pdc.kth.se/doc/applications/>`_
+   - `Extra material <https://uppmax.github.io/R-matlab-julia-HPC/extra/julia_extra.html>`_
 
 .. keypoints::
 

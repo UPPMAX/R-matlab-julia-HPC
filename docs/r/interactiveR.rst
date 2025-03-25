@@ -22,8 +22,11 @@ Interactive work on the compute nodes
 
 .. admonition:: Compute allocations in this workshop 
 
-   - Rackham: ``naiss2024-22-107``
-   - Kebnekaise: ``hpc2n2024-025``
+   - Rackham: ``uppmax2025-2-272``
+   - Kebnekaise: ``hpc2n2025-062``
+   - Cosmos: ``lu2025-7-24``
+   - Tetralith: ``naiss2025-22-262``
+   - Dardel: ``naiss2025-22-262``
 
 Overview of the UPPMAX systems
 ------------------------------
@@ -35,28 +38,36 @@ Overview of the HPC2N system
 
 .. mermaid:: ../mermaid/kebnekaise.mmd
 
+Overview of the LUNARC system
+-----------------------------
+.. figure:: ../../img/cosmos-resources.png
+      :width: 500
+
+Overview of the NSC system
+--------------------------
+
+.. figure:: img/mermaid-tetralith.png 
+      :width: 500 
+
+Overview of the PDC system
+--------------------------
+
+
+
 General
 -------
 
-In order to run interactively, you need to have compute nodes allocated to run
-on, and this is done through the batch system.  
+In order to run interactively, you need to have compute nodes allocated to run on, and this is done through the batch system.  
 
 .. warning::
 
-    (HPC2N) Do note that it is not *real* interactivity as you probably mean
-    it, as you will have to run it as a R script instead of by starting
-    R and giving commands inside it. The reason for this is that you are
-    not actually logged into the compute node and only sees the output of the
-    commands you run. 
+    (HPC2N) Do note that it is not *real* interactivity as you probably mean it, as you will have to run it as a R script instead of by starting R and giving commands inside it. The reason for this is that you are not actually logged into the compute node and only sees the output of the commands you run. 
 
 
 R "interactively" on the compute nodes 
 --------------------------------------
 
-To run interactively, you need to allocate resources on the cluster first. You
-can use the command ``salloc``/``intereactive`` to allow interactive use of resources allocated to
-your job. When the resources are allocated, you need to preface commands with
-``srun`` in order to run on the allocated nodes instead of the login node. 
+To run interactively, you need to allocate resources on the cluster first. You can use the command ``salloc``/``intereactive`` to allow interactive use of resources allocated to your job. When the resources are allocated, you need to preface commands with ``srun`` in order to run on the allocated nodes instead of the login node. 
       
 - First, you make a request for resources with ``interactive``/``salloc``, like this:
 
@@ -66,29 +77,48 @@ your job. When the resources are allocated, you need to preface commands with
 
       .. code-block:: console
           
-         $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2024-22-107 
+         $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-272 
       
    .. tab:: HPC2N (salloc)
 
       .. code-block:: console
           
-         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2024-025 
+         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2025-062
          
-      
-where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in 
-      hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project 
-      (**naiss2023-22-44** for this course)
+   .. tab:: LUNARC 
 
-Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is
-      waiting for the requested resources. When salloc tells you that your job has been allocated 
-      resources, you can interactively run programs on those resources with ``srun``. The commands 
-      you run with ``srun`` will then be executed on the resources your job has been allocated. 
-      If you do not preface with ``srun`` the command is run on the login node! 
+      .. code-block:: console 
+
+         interactive -n <tasks> --time=HHH:MM:SS -A lu2025-7-24 
+
+      or the GfxLauncher and OnDemandDesktop: https://uppmax.github.io/R-python-julia-matlab-HPC/common/ondemand-desktop.html#how-do-i-start 
+
+   .. tab:: NSC 
+
+      .. code-block:: console 
+
+         interactive -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 
+
+   .. tab:: PDC 
+
+      .. code-block:: console 
+
+         salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 -p <partition>
+
+      Where <partition> is main or gpu    
+
+      Then, when you get the allocation, do one of: 
+      
+      - srun -n <ntasks> ./program 
+      - ssh to the node and then work there 
+      
+   where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project 
+
+Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources. When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with ``srun``. The commands you run with ``srun`` will then be executed on the resources your job has been allocated. 
+      If you do not preface with ``srun`` on HPC2N and PDC, the command is run on the login node! 
       
 
-You can now run R scripts on the allocated resources directly instead of waiting for 
-      your batch job to return a result. This is an advantage if you want to test your R 
-      script or perhaps figure out which parameters are best.
+You can now run R scripts on the allocated resources directly instead of waiting for your batch job to return a result. This is an advantage if you want to test your R script or perhaps figure out which parameters are best.
                   
 
 .. warning::
@@ -119,9 +149,11 @@ Example **Type along**
 
    **Requesting 4 cores for 10 minutes, then running R**
 
+   Examples are here shown for UPPMAX and HPC2N, but as you could see above, the others use the same commands. 
+
    .. tabs::
 
-      .. tab:: UPPMAX
+      .. tab:: UPPMAX (similar to NSC and LUNARC)
 
          .. code-block:: console
       
@@ -147,7 +179,7 @@ Example **Type along**
 
          We are! Notice that we got a response from all four cores we have allocated.   
 
-      .. tab:: HPC2N
+      .. tab:: HPC2N (similar to PDC) 
          
          .. code-block:: console
       
@@ -268,7 +300,7 @@ When you have finished using the allocation, either wait for it to end, or close
 
    - Start an interactive session on a calculation node by a SLURM allocation
    
-      - At HPC2N: ``salloc`` ...
-      - At UPPMAX: ``interactive`` ...
+      - At HPC2N, PDC: ``salloc`` ...
+      - At UPPMAX, LUNARC, NSC: ``interactive`` ...
    - Follow the same procedure as usual by loading the R module and possible prerequisites.
     
