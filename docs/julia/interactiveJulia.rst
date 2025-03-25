@@ -435,8 +435,63 @@ When you have finished using the allocation, either wait for it to end, or close
 Running IJulia and Jupyter 
 --------------------------
 
+- For more interactiveness you can run IJulia.
+- You benefit a lot if you are using ThinLinc
+- Like for Python it is possible to run Julia in Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the python module as well. In shell:
+
 
 .. tabs::
+
+   .. tab:: NSC
+
+
+         .. code-block:: console
+
+            $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
+            $ ml julia/1.10.2-bdist
+            $ julia -p 4
+
+      In Julia:
+
+         .. code-block:: julia-repl
+            
+            julia> using Pkg
+            julia> Pkg.add("IJulia")
+            julia> Pkg.build("IJulia")
+            julia> using IJulia
+            julia> notebook(dir=".",detached=true)
+
+      A Firefox session should start with the Jupyter notebook interface.
+
+      .. figure:: ../../img/Jupyter_julia.png
+
+      .. note:: 
+
+         - You only have to add and build IJulia the first time for each julia version and each jupyter, provided with a python version at UPPMAX
+
+      .. tip::
+
+         With ``notebook(dir="</path/to/work/dir/>", detached=true)`` the notebook will not be killed when you exit your REPL Julia session in the terminal.
+
+      .. admonition:: Running IJulia in Jupyter on compute nodes
+
+         - Jupyter is rather slow on the compute nodes. 
+         - This can be fixed by opening jupyter in a web browsers on your local computer or in ThinLinc
+         - Remember to load python as well and to go via the ``julia -p <number of cores>`` and ``notebook(<options>)`` inside the Julia session instead of starting ``jupiter-notebook`` in the bash shell.
+         - https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
+
+      **Jupyter from terminal**
+      
+      If IJulia is precompiled once then you can run Julia from Jupyter directly from the terminal
+
+         .. code-block: console
+
+            $ ml julia/1.8.5 python/3.10.8
+            $ jupyter-notebook --no-browser
+
+      - Start the browser from the ThinLinc menu.
+      - Copy-paste one of the address lines from the jupyter output
+      - You can start the Julia kernel in the upper right corner!
 
    .. tab:: UPPMAX
 
