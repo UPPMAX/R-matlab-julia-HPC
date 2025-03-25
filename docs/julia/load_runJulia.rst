@@ -244,7 +244,12 @@ Exercises
    .. solution:: Solution
       :class: dropdown
 
-      **FIX** List of links
+      - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
+      - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
+      - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_
+      - `NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
+      - `PDC <https://support.pdc.kth.se/doc/applications/>`_
+
 
 
 .. challenge:: 1b. Find out which versions are on your cluster from command line
@@ -406,44 +411,53 @@ Exercises
                    Julia/1.9.3-linux-x86_64
                    Julia/1.10.4-linux-x86_64
 
-.. admonition:: **FIX** Output at NSC as of Mar 2025
+.. admonition:: Output at NSC as of Mar 2025
+    :class: dropdown
+
+        .. code-block:: console
+
+           $ module avail julia
+ 
+           ---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------
+              julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist
+              julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
+              julia/1.4.1                          julia/1.8.5-nsc1-bdist
+
+.. admonition:: Output at PDC as of Mar 2025 
     :class: dropdown
 
         .. code-block:: console
 
            $ module spider julia
-           -----------------------------------------------------------------------------------------------------
-             Julia:
-           -----------------------------------------------------------------------------------------------------
+           -------------------------------------------------------------------------------------------------------
+             julia:
+           -------------------------------------------------------------------------------------------------------
                Description:
-                 Julia is a high-level, high-performance dynamic programming language for numerical computing
-
+                 Julia is a high-level general-purpose dynamic programming language that was originally designed
+                 to address the needs of high-performance numerical analysis and computational science, without
+                 the typical need of separate compilation to be fast, also usable for client and server web use,
+                 low-level systems programming or as a specification language (wikipedia.org). Julia provides
+                 ease and expressiveness for high-level numerical computing, in the same way as languages such as
+                 R, MATLAB, and Python, but also supports general programming. To achieve this, Julia builds upon
+                 the lineage of mathematical programming languages, but also borrows much from popular dynamic
+                 languages, including Lisp, Perl, Python, Lua, and Ruby (julialang.org).
+           
                 Versions:
-                   Julia/1.8.5-linux-x86_64
-                   Julia/1.9.0-linux-x86_64
-                   Julia/1.9.2-linux-x86_64
-                   Julia/1.9.3-linux-x86_64
-                   Julia/1.10.4-linux-x86_64
+                   julia/1.8.2-cpeGNU-22.06
+                   julia/1.9.3-cpeGNU-22.06
+                   julia/1.9.3-cpeGNU-23.03
+                   julia/1.10.2-cpeGNU-23.03
+                   julia/1.10.2-cpeGNU-23.12
+                Other possible modules matches:
+                   Julia  libuv-julia
 
-.. admonition:: **FIX** Output at PDC as of Mar 2025 
-    :class: dropdown
+           -------------------------------------------------------------------------------------------------------
+             To find other possible module matches execute:
 
-        .. code-block:: console
+                 $ module -r spider '.*julia.*'
 
-           $ module spider julia
-           -----------------------------------------------------------------------------------------------------
-             Julia:
-           -----------------------------------------------------------------------------------------------------
-               Description:
-                 Julia is a high-level, high-performance dynamic programming language for numerical computing
-
-                Versions:
-                   Julia/1.8.5-linux-x86_64
-                   Julia/1.9.0-linux-x86_64
-                   Julia/1.9.2-linux-x86_64
-                   Julia/1.9.3-linux-x86_64
-                   Julia/1.10.4-linux-x86_64
-
+           -------------------------------------------------------------------------------------------------------
+             For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
 
 
 .. challenge:: 1c. Which method to trust?
@@ -518,6 +532,34 @@ Exercises
             .. code-block:: console
 
                $ ml Julia/1.8.5-linux-x86_64
+
+         .. tab:: NSC
+
+            .. code-block:: console
+
+               $ module load julia/1.10.2-bdist
+
+            Note: lowercase ``J``.   
+
+            For short, you can also use: 
+
+            .. code-block:: console
+
+               $ ml julia/1.10.2-bdist
+
+         .. tab:: PDC
+
+            .. code-block:: console
+
+               $ module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+
+            Note: Uppercase ``J``.   
+
+            For short, you can also use: 
+
+            .. code-block:: console
+
+               $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
 .. challenge:: 4. Getting familiar with Julia REPL
     
