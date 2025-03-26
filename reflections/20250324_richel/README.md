@@ -243,7 +243,7 @@ Useless information to me.
 
 ### Q3
 
-![Average learning outcomes per session](../../evaluations/20250325/average_learning_outcome_per_question.png)
+![Average learning outcomes per session](../../evaluations/20250324/average_learning_outcome_per_question.png)
 
 My grades:
 
