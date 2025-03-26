@@ -2,6 +2,8 @@
 
 - Date: 2025-03-24
 - language: R
+- Registrations: 33
+- Participants: 12 (36% of registrations shows up)
 
 ## Question 1
 
