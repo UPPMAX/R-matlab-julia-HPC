@@ -577,8 +577,15 @@ Jupyter session from terminal
          $ ml julia/1.10.2-bdist
          $ jupyter-lab --ip=$HOSTNAME
 
+      - Start the browser from the ThinLinc menu.
+      - Copy-paste the address line containing the node name from the jupyter output
+      - You can start the Julia kernel in the upper right corner!
 
-   .. tab:: PDC (unsure if it works)
+
+   .. tab:: PDC (missing Jupyter from terminal)
+
+      - Since Jupyter is missing from a compute node, we need to find another solution here
+      - Below are the steps that would be nice if we got working!
 
       First start an interactive session
 
@@ -587,7 +594,11 @@ Jupyter session from terminal
          $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 cray-python/3.11.5
          $ jupyter-lab --ip=$HOSTNAME
 
-    .. tab:: UPPMAX
+      - Start the browser from the ThinLinc menu.
+      - Copy-paste the address line containing the node name from the jupyter output
+      - You can start the Julia kernel in the upper right corner!
+
+.. tab:: UPPMAX
 
        .. code-block:: console
 
@@ -595,7 +606,11 @@ Jupyter session from terminal
           $ module load python/3.9.5
           $ jupyter-lab --ip=$HOSTNAME
 
-   .. tab:: LUNARC
+      - Start the browser from the ThinLinc menu.
+      - Copy-paste the address line containing the node name from the jupyter output
+      - You can start the Julia kernel in the upper right corner!
+
+.. tab:: LUNARC
 
       .. code-block:: console
 
@@ -603,7 +618,11 @@ Jupyter session from terminal
          $ module load Julia/1.8.5-linux-x86_64
          $ jupyter-lab --ip=$HOSTNAME
 
-   .. tab:: HPC2N
+      - Start the browser from the ThinLinc menu.
+      - Copy-paste the address line containing the node name from the jupyter output
+      - You can start the Julia kernel in the upper right corner!
+
+.. tab:: HPC2N
 
       Write a bash script similar  to this (call it `job_jupyter.sh`, for instance):
 
@@ -634,9 +653,6 @@ Jupyter session from terminal
          - On Kebnekaise, you can run Jupyter notebooks with Julia kernels by using batch scripts    
          - https://docs.hpc2n.umu.se/tutorials/jupyter/#jupyterlab__with__julia
 
-- Start the browser from the ThinLinc menu.
-- Copy-paste the address line containing the node name from the jupyter output
-- You can start the Julia kernel in the upper right corner!
 
 Exercises
 ---------
