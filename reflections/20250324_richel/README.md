@@ -78,10 +78,6 @@ break there were around 12 learners.
 
 Recording has a clear effect on the number of learners with camera on/off.
 
-
-
-
-
 Online instruction in higher education: Promising, research-based, and evidence-based practices
 
 From:
@@ -174,7 +170,7 @@ I will suggest this in a meeting:
 
 - [ ] Suggest to remove 'Machine learning'
 - [ ] Suggest to remove 'Parallel'
-- [ ] Suggest to remove 'Machine Isolated'
+- [ ] Suggest to remove 'Isolated environments'
 
 My favorite schedule
 
@@ -341,7 +337,7 @@ Well done course coordinator!
 
 Consider:
 
-- [ ] Suggest to make clearer that getting an account takes days
+- [ ] Suggest to make even clearer that getting an account takes days
 
 >  - I really appreciate the amount of hands-on demonstrations:
 >    they were great. 
@@ -384,3 +380,56 @@ Nice.
 > - the machine learning part was difficult for me to follow.
 
 I agree. Not my session.
+
+
+## To do
+
+- [ ] Suggest to remove 'Machine learning'
+- [ ] Suggest to remove 'Parallel'
+- [ ] Suggest to remove 'Isolated environments'
+- [ ] Suggest the my favorite schedule
+
+```bash
++-------+------------------------------+--------------+
+| Time  | Topic                        | Teacher(s)   |
++=======+==============================+==============+
+| 9:00  | (optional) First login       | BB + PO + RB |
++-------+------------------------------+--------------+
+| 9:45  | Break                        | .            |
++-------+------------------------------+--------------+
+| 10:00 | Introduction                 | RB           |
++-------+------------------------------+--------------+
+| 10:10 | Syllabus                     | RB           |
++-------+------------------------------+--------------+
+| 10:20 | Load modules and run         | RB           |
++-------+------------------------------+--------------+
+| 11:00 | Break                        | .            |
++-------+------------------------------+--------------+
+| 11:15 | Packages                     | BB           |
++-------+------------------------------+--------------+
+| 12:00 | Lunch                        | .            |
++-------+------------------------------+--------------+
+| 13:00 | Batch                        | BB           |
++-------+------------------------------+--------------+
+| 14:00 | Break                        | .            |
++-------+------------------------------+--------------+
+| 14:15 | Simultaneous session         | .            |
++-------+------------------------------+--------------+
+| .     | HPC2N: ThinLinc, RStudio     | PO           |
++-------+------------------------------+--------------+
+| .     | LUNARC: On-Demand, RStudio   | RP           |
++-------+------------------------------+--------------+
+| .     | UPPMAX: Interactive, RStudio | RB           |
++-------+------------------------------+--------------+
+| 15:00 | Break                        | .            |
++-------+------------------------------+--------------+
+| 15:15 | To be decided by vote        | ?            |
++-------+------------------------------+--------------+
+| 15:45 | Summary and evaluation       | RB           |
++-------+------------------------------+--------------+
+| 16:00 | Done                         | .            |
++-------+------------------------------+--------------+
+```
+
+- [ ] Link to the NAISS file transfer course in the course material
+- [ ] Suggest to make even clearer that getting an account takes days
