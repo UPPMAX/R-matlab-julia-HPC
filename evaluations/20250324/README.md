@@ -76,10 +76,6 @@ Not sure|0
 
 ![Question 6 results](question_6_results.png)
 
-- For some portions of the course it was a bit unclear when/what
-  to do hands-on. The course documentation is very good and will
-  help me the most in the future.
-
 - For some portions of this course it was a bit unclear when/what to do
   hands-on. The course documentation is very good
   and will help me the most in the future.
