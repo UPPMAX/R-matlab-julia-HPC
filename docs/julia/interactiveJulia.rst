@@ -157,7 +157,7 @@ Then, when you get the allocation, do one of:
 
 .. admonition:: Documentation at the centers
 
-   - `Interactive allocation on PDC <https://support.pdc.kth.se/doc/support/?sub=login/interactive_hpc/>`_
+   - `Interactive allocation on PDC <https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/>`_
    - `Interactive allocation on NSC <https://www.nsc.liu.se/support/running-applications/#interactive-jobs>`_
    - `Interactive allocation on UPPMAX <https://docs.uppmax.uu.se/cluster_guides/start_interactive_node/>`_
    - `Interactive allocation on HPC2N <https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive>`_

@@ -102,7 +102,7 @@ Exercise 1: start the R interpreter
     +============+===================================================================================+
     | COSMOS     | `Here <https://lunarc-documentation.readthedocs.io/en/latest/>`__                 |
     +------------+-----------------------------------------------------------------------------------+
-    | Dardel     | `Here <https://support.pdc.kth.se/doc/support/>`__                                |
+    | Dardel     | `Here <https://support.pdc.kth.se/doc/contact/contact_support/>`__                                |
     +------------+-----------------------------------------------------------------------------------+
     | Kebnekaise | `Here <https://docs.hpc2n.umu.se/>`__                                             |
     +------------+-----------------------------------------------------------------------------------+

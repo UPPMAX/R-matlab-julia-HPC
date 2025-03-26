@@ -49,7 +49,7 @@ The HPC centers UPPMAX, HPC2N, LUNARC, NSC and Dardel
        - `HPC2N <https://docs.hpc2n.umu.se/documentation/modules/>`_
        - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/>`_
        - `NSC <https://www.nsc.liu.se/software/modules/>`_
-       - `PDC <https://support.pdc.kth.se/doc/support/?sub=software/module/>`_
+       - `PDC <https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/>`_
 
  
 Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, NSC and PDC
