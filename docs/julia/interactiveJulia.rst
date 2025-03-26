@@ -603,7 +603,7 @@ Principle
       - Copy-paste the address line containing the node name from the jupyter output
       - You can start the Julia kernel in the upper right corner!
 
-.. tab:: UPPMAX
+   .. tab:: UPPMAX
 
        .. code-block:: console
 
@@ -615,7 +615,7 @@ Principle
       - Copy-paste the address line containing the node name from the jupyter output
       - You can start the Julia kernel in the upper right corner!
 
-.. tab:: LUNARC
+   .. tab:: LUNARC
 
       .. code-block:: console
 
@@ -627,7 +627,7 @@ Principle
       - Copy-paste the address line containing the node name from the jupyter output
       - You can start the Julia kernel in the upper right corner!
 
-.. tab:: HPC2N
+   .. tab:: HPC2N
 
       Write a bash script similar  to this (call it `job_jupyter.sh`, for instance):
 
