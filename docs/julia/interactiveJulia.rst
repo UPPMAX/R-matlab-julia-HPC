@@ -523,7 +523,7 @@ Installation step
          (v1.8) pkg>add IJulia
          (v1.8) pkg>build IJulia         
 
-In many centres this will start a Firefox session with the Jupyter notebook interface.
+In some centres (UPPMAX and NSC) this will start a Firefox session with the Jupyter notebook interface.
 
       .. figure:: ../../img/Jupyter_julia.png
 
@@ -589,7 +589,7 @@ Principle
 
    .. tab:: PDC (missing Jupyter from terminal)
 
-      - Since Jupyter is missing from a compute node, we need to find another solution here
+      - Since Jupyter and a web browser is missing on the compute nodes, we need to find another solution here
       - Below are the steps that would be nice if we got working!
 
       First start an interactive session
