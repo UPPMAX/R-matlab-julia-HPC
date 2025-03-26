@@ -4,6 +4,7 @@
 - language: R
 - Registrations: 33
 - Participants: 12 (36% of registrations shows up)
+- Number of evaluations filled in: 8 (67% response rate)
 
 ## Question 1
 
