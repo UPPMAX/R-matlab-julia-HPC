@@ -468,7 +468,7 @@ Installation step
             julia> using IJulia
             julia> notebook(dir=".",detached=true)
 
-   .. tab:: PDC
+   .. tab:: PDC (not fully tested successfully, but this step works)
 
          .. code-block:: console
 
@@ -587,9 +587,9 @@ Principle
       - You can start the Julia kernel in the upper right corner!
 
 
-   .. tab:: PDC (missing Jupyter from terminal)
+   .. tab:: PDC (not fully tested successfully)
 
-      - Since Jupyter and a web browser is missing on the compute nodes, we need to find another solution here
+      - Since Jupyter and a web browser are missing on the compute nodes, we need to find another solution here.
       - Below are the steps that would be nice if we got working!
 
       First start an interactive session
