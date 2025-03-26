@@ -468,11 +468,27 @@ Installation step
             julia> using IJulia
             julia> notebook(dir=".",detached=true)
 
-   .. tab:: UPPMAX
+   .. tab:: PDC
 
-      - For more interactiveness you can run IJulia.
-      - You benefit a lot if you are using ThinLinc
-      - Like for Python it is possible to run Julia in Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the python module as well. In shell:
+         .. code-block:: console
+
+            $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+            $ ml cray-python/3.11.5
+            $ julia 
+
+      In Julia:
+
+         .. code-block:: julia-repl
+            
+            julia> using Pkg
+            julia> Pkg.add("IJulia")
+            julia> Pkg.build("IJulia")
+            julia> using IJulia
+            julia> notebook(dir=".",detached=true)
+
+         - The last command may not be able to start notebook, see further down how to do.
+
+   .. tab:: UPPMAX
 
          .. code-block:: console
 
@@ -513,9 +529,7 @@ In many centres this will start a Firefox session with the Jupyter notebook inte
 
 If not, see below.
 
-
-
-
+In any case, IJulia is now installed!
 
 Starting a Jupyter session with Julia Kernel
 ############################################
