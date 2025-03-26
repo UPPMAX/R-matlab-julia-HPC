@@ -556,14 +556,19 @@ From Julia REPL
 Jupyter session from terminal
 '''''''''''''''''''''''''''''
 
+Principle
+~~~~~~~~~
+
+1. Load julia module (and prerequisites)
+2. Load Python or Jupyter module (and prerequisites) that is compatible with the python version used when building IJulia in the previous step
+
 .. admonition:: Running IJulia in Jupyter on compute nodes
 
-   - Jupyter is rather slow on the compute nodes. 
-   - This can be fixed by opening jupyter in a web browsers on your local computer or in ThinLinc
-   - Remember to load python as well and to go via the ``julia -p <number of cores>`` and ``notebook(<options>)`` inside the Julia session instead of starting ``jupiter-notebook`` in the bash shell.
-   - https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
-
-
+   - Jupyter is rather slow graphically on the compute nodes. 
+   - This can be fixed by 
+        - starting the jupyter server on the compute node, copying the URL containing the.
+        - then starting a web browser in ThinLinc and open the URL copied in previous step
+   - One can even use the hoome computer, see https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
 
 .. tabs::
 
