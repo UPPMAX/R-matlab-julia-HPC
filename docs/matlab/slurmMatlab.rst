@@ -45,7 +45,7 @@ SLURM is an Open Source job scheduler, which provides three key functions:
 
    - If you have attended the R part yesterday you have learned that you ask for compute resources via the sbatch command.
        - In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
-       - Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/ 
+       - Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/run_jobs/job_scheduling/ 
    - MATLAB is well integrated with SLURM and because of that there are several ways to run these jobs:
        - Using the job scheduler (``batch`` command) in MATLAB Desktop/graphical interface (This is the Recommended Use).
        - Starting a ``parpool`` with a predefined cluster (This allows for more interactivity).
@@ -77,7 +77,7 @@ In order to be able to submit jobs to the SLURM queue, you need to configure MAT
    - `UPPMAX <https://docs.uppmax.uu.se/software/matlab_conf/>`_
    - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line>`_
    - `NSC <https://www.nsc.liu.se/software/installed/tetralith/matlab/>`_ 
-   - `PDC <https://support.pdc.kth.se/doc/software-docs/matlab/>`_   
+   - `PDC <https://support.pdc.kth.se/doc/applications/matlab/>`_   
 
 - To be able to use MATLAB 2019b, and later, together with the batch system, MATLAB needs to be configured to use a cluster profile.
 - This needs to be done only once for each cluster and each version of MATLAB.

@@ -26,7 +26,7 @@ Desktop On Demand requires the use of the Thinlinc interface. It is not accessib
 
 .. warning:: ThinLinc Access Limited on Dardel (PDC)
    
-      Here we focus on COSMOS because Dardel has a limited number of ThinLinc licenses. Only 30 users total may have an active ThinLinc session at a time. Other PDC resources not tested in this course may be more flexible, but if you must run a program on Dardel interactively, it is better to use SSH with X-forwarding (that is, log in with ``ssh -X <user>@dardel.pdc.kth.se``) and then `follow the workflow described in this link. <https://support.pdc.kth.se/doc/support-docs/run_jobs/run_interactively/>`_ Keep in mind that if you do not need a full node, you can also select a number of cores on Dardel's ``shared`` partition. See `here for information on Dardel partitions. <https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/#dardel-partitions>`_
+      Here we focus on COSMOS because Dardel has a limited number of ThinLinc licenses. Only 30 users total may have an active ThinLinc session at a time. Other PDC resources not tested in this course may be more flexible, but if you must run a program on Dardel interactively, it is better to use SSH with X-forwarding (that is, log in with ``ssh -X <user>@dardel.pdc.kth.se``) and then `follow the workflow described in this link. <https://support.pdc.kth.se/doc/run_jobs/run_interactively/>`_ Keep in mind that if you do not need a full node, you can also select a number of cores on Dardel's ``shared`` partition. See `here for information on Dardel partitions. <https://support.pdc.kth.se/doc/run_jobs/job_scheduling/#dardel-partitions>`_
 
 
 When should I use it?
