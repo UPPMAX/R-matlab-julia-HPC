@@ -116,7 +116,7 @@ I quote:
   to an instructor talk [8 references] 
 - [...] long lectures and presentations will fail because students stop
   viewing and listening after about six minutes.
-  This phenomenon parallels McKeachie’s earlier classroom findings about
+  This phenomenon parallels McKeachie's earlier classroom findings about
   inattention after five to ten minutes [reference].
   In online classes, such student inattention becomes explicitly visible
   through electronic monitoring of activities and questions
