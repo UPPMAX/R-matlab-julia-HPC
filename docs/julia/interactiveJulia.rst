@@ -568,7 +568,7 @@ Principle
    - This can be fixed by 
         - starting the jupyter server on the compute node, copying the URL containing the.
         - then starting a web browser in ThinLinc and open the URL copied in previous step
-   - One can even use the hoome computer, see https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
+   - One can even use the home computer, see https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
 
 .. tabs::
 

@@ -69,7 +69,7 @@ of our students.
 
 ![Number of learners in time](n_learners_in_time.png)
 
-I overestimaged the number or learners leaving:
+I overestimated the number or learners leaving:
 from [my data](https://richelbilderbeek.github.io/teaching/data/counts/)
 is estimated 25% of all learners to leave. Instead, before and after the
 break there were around 12 learners.
