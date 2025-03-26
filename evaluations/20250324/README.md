@@ -5,6 +5,8 @@
 - Registrations: 33
 - Participants: 12 (36% of registrations shows up)
 - Number of evaluations filled in: 8 (67% response rate)
+- Average course satisfaction: 8.25/10.0
+- Success score: 77%
 
 ## Question 1
 
