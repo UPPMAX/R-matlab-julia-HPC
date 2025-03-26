@@ -24,7 +24,7 @@ Need help? Contact support:
 +============+============+===============================================================================================+
 |COSMOS      | LUNARC     | `Contact LUNARC support <https://www.lunarc.lu.se/getting-help/>`_                            |
 +------------+------------+-----------+-----------------------------------------------------------------------------------+
-|Dardel      | PDC        | `Contact PDC support <https://support.pdc.kth.se/doc/support/?sub=contact/contact_support/>`_ |
+|Dardel      | PDC        | `Contact PDC support <https://support.pdc.kth.se/doc/contact/contact_support/>`_              |
 +------------+------------+-----------------------------------------------------------------------------------------------+
 |Kebnekaise  | HPC2N      | `Contact HPC2N support <https://docs.hpc2n.umu.se/support/contact/>`_                         |
 +------------+------------+-----------+-----------------------------------------------------------------------------------+

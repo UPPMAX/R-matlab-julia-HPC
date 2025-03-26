@@ -65,7 +65,7 @@ Step 1: get the tarball
         Connecting to github.com (github.com)|4.225.11.194|:443... connected.
         HTTP request sent, awaiting response... 302 Found
         Location: https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/exercisesR.tar.gz [following]
-        --2024-10-23 11:49:30--  https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercisesR.tar.gz
+        --2024-10-23 11:49:30--  [URL]
         Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
         Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
         HTTP request sent, awaiting response... 200 OK
