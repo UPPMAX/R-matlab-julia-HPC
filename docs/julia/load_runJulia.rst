@@ -19,6 +19,7 @@ Load and run Julia
    - Learn to run Julia scripts
 
 .. instructor-note::
+   :class: dropdown
 
    - Lecture and demo 15 min
    - Exercise 15 min
@@ -40,11 +41,10 @@ The module activates paths to a specific version of the julia interpreter and it
     
 .. warning::
     Note that the module systems at UPPMAX and HPC2N are slightly different.
-    All modules at UPPMAX not directly related to bio-informatics are shown
-    by ``ml avail``. 
+    All modules at UPPMAX, for instance, not directly related to bio-informatics are shown by ``ml avail``. 
 
-    Modules at HPC2N are only available when one has loaded all prerequisites,
-    for instance the compilers (``GNU``, ``Intel``, etc.).
+    Modules at many other centres are only available when one has loaded all prerequisites,
+for instance the compilers (``GNU``, ``Intel``, etc.).
 
 
 Check for Julia versions
