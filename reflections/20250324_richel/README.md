@@ -431,5 +431,7 @@ I agree. Not my session.
 +-------+------------------------------+--------------+
 ```
 
-- [ ] Link to the NAISS file transfer course in the course material
+- [x] Link to the NAISS file transfer course in the course material
 - [ ] Suggest to make even clearer that getting an account takes days
+
+

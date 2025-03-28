@@ -50,6 +50,7 @@ Introduction R
 
     - improve R coding skills 
     - use R on other HPC clusters
+    - transfer files (tip: see [the NAISS 'File transfer' course](https://uppmax.github.io/naiss_file_transfer_course/))
 
 First overview of R
 -------------------
