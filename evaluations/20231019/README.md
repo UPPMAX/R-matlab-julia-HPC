@@ -1,5 +1,7 @@
 # R evaluation 2023-10-19
 
+- Reflections: [Richel](../../reflections/20231019/README.md)
+
 ## Spoken evaluation
 
  * Number of learners: 12

@@ -1,5 +1,7 @@
 # Python evaluation 2023-10-17
 
+- Reflections: [Richel](../../reflections/20231017/README.md)
+
 Results can be found [here](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=gYUW4FOr3fmmsYmBv20YfsRGEQUDXKUw&id=-aZLWjH1Mk-UZzmPGead5I9DA_EX6qtGpq8zJf2ohI1URVZPSUFDRlpCV1BUNzIyQzY1V0pPSFVKUi4u) too.
 
 ### Overall, how would you rate today's training event?
