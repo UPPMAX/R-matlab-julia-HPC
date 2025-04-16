@@ -1,0 +1,1784 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running Julia in batch mode &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom_theme.css?v=98a0eeba" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sessions: Interactive work on compute nodes" href="interactiveJulia.html" />
+    <link rel="prev" title="Packages and isolated environments" href="isolatedJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparations.html">Prepare the environment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_text_editor.html">Use a text editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/naiss_projects_overview.html">NAISS projects overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/hpc_clusters.html">HPC clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/other_courses.html">Other courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/scheduleR.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/scheduleMatlab.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlabGui.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scheduleJulia.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Julia in batch mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#useful-commands-to-the-batch-system">Useful commands to the batch system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples-of-batch-scripts-for-julia">Examples of batch scripts for Julia</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-code">Serial code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial-code-self-installed-package-in-virt-env">Serial code + self-installed package in virt. env.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-code">Parallel code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-code">GPU code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-managers">Cluster Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/r_extra.html">R - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab_extra.html">Matlab - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/julia_extra.html">Julia - extra reading and links</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Running Julia in batch mode</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/batchJulia.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-julia-in-batch-mode">
+<h1>Running Julia in batch mode<a class="headerlink" href="#running-julia-in-batch-mode" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What is a batch job?</p></li>
+<li><p>How to make a batch job?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Short introduction to SLURM scheduler</p></li>
+<li><p>Show structure of a batch script</p></li>
+<li><p>Try example</p></li>
+</ul>
+</div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">uppmax2025-2-272</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2025-062</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2025-7-24</span></code></p></li>
+<li><p>Dardel: <code class="docutils literal notranslate"><span class="pre">naiss2025-22-262</span></code></p></li>
+</ul>
+<p>Please, change the project IDs in the templates accordingly.</p>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-matlab-julia</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">own</span> <span class="pre">good</span> <span class="pre">place&gt;</span></code></p></li>
+<li><p>Dardel: <code class="docutils literal notranslate"><span class="pre">/cfs/klemming/projects/supr/r-matlab-julia-naiss</span></code></p></li>
+</ul>
+<p>Please, change the paths to the project storage in the templates accordingly.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Any longer, resource-intensive, or parallel jobs must be run through a <strong>batch script</strong>.</p></li>
+</ul>
+</div>
+<p>The batch system used at HPC clusters in Sweden is called SLURM.</p>
+<p>SLURM is an Open Source job scheduler, which provides three key functions</p>
+<ul class="simple">
+<li><p>Keeps track of available system resources</p></li>
+<li><p>Enforces local system resource usage and job scheduling policies</p></li>
+<li><p>Manages a job queue, distributing work across resources according to policies</p></li>
+</ul>
+<p>In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
+Guides and documentation at: <a class="reference external" href="http://www.hpc2n.umu.se/support">HPC2N</a>, <a class="reference external" href="https://docs.uppmax.uu.se/cluster_guides/slurm/">UPPMAX</a>,
+<a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/">LUNARC</a>, and
+<a class="reference external" href="https://support.pdc.kth.se/doc/contact/contact_support/">PDC</a>.</p>
+<p><strong>Workflow</strong></p>
+<ul class="simple">
+<li><p>Write a batch script</p>
+<ul>
+<li><p>Inside the batch script you need to load the modules you need, for instance Julia</p></li>
+<li><p>Possibly activate an isolated/virtual environment to access own-installed packages</p></li>
+<li><p>Ask for resources depending on if it is a parallel job or a serial job, if you need GPUs or not, etc.</p></li>
+<li><p>Give the command(s) to your Julia script</p></li>
+</ul>
+</li>
+<li><p>Submit batch script with <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">&lt;my-julia-script.sh&gt;</span></code></p></li>
+</ul>
+<p>Common file extensions for batch scripts are <code class="docutils literal notranslate"><span class="pre">.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">.batch</span></code>, but they are not necessary. You can choose any name that makes sense to you.</p>
+<section id="useful-commands-to-the-batch-system">
+<h2>Useful commands to the batch system<a class="headerlink" href="#useful-commands-to-the-batch-system" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Submit job: <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">&lt;jobscript.sh&gt;</span></code></p></li>
+<li><p>Get list of your jobs: <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">&lt;username&gt;</span></code></p></li>
+<li><p>Check on a specific job: <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">job</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+<li><p>Delete a specific job: <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+<li><p>Useful info about a job: <code class="docutils literal notranslate"><span class="pre">sacct</span> <span class="pre">-l</span> <span class="pre">-j</span> <span class="pre">&lt;job-id&gt;</span> <span class="pre">|</span> <span class="pre">less</span> <span class="pre">-S</span></code></p></li>
+<li><p>Url to a page with info about the job (Kebnekaise only): <code class="docutils literal notranslate"><span class="pre">job-usage</span> <span class="pre">&lt;job-id&gt;</span></code></p></li>
+</ul>
+</section>
+<section id="examples-of-batch-scripts-for-julia">
+<h2>Examples of batch scripts for Julia<a class="headerlink" href="#examples-of-batch-scripts-for-julia" title="Link to this heading"></a></h2>
+<section id="serial-code">
+<h3>Serial code<a class="headerlink" href="#serial-code" title="Link to this heading"></a></h3>
+<p>Short serial example for running on different clusters.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-0-0-5" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-5" name="0-5" role="tab" tabindex="-1">script.jl</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l                 # -l cleans the environment in the batch job, recommended at UPPMAX</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz    # your project_ID</span>
+<span class="c1">#SBATCH --time=00:10:00        # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1                   # Asking for 1 core</span>
+<span class="c1">#SBATCH --error=job.%J.err     # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out    # output file</span>
+ml<span class="w"> </span>julia/1.8.5<span class="w"> </span><span class="c1"># Julia module</span>
+
+julia<span class="w"> </span>script.jl<span class="w">              </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># recommended purge</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+
+julia<span class="w"> </span>script.jl<span class="w">              </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz       # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># recommended purge</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+
+julia<span class="w"> </span>script.jl<span class="w">              </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH  -p shared           # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=1    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+
+julia<span class="w"> </span>script.jl<span class="w">              </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-xyz  # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n *FIXME*           # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load any modules you need, here for Julia</span>
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+julia<span class="w"> </span>script.jl<span class="w">              </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-5" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-5" name="0-5" role="tabpanel" tabindex="0"><p>Julia example code.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span>
+<span class="n">println</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="serial-code-self-installed-package-in-virt-env">
+<h3>Serial code + self-installed package in virt. env.<a class="headerlink" href="#serial-code-self-installed-package-in-virt-env" title="Link to this heading"></a></h3>
+<p>Short serial example for running on Julia with a virtual environment. Create an environment <code class="docutils literal notranslate"><span class="pre">my-third-env</span></code>
+and install the package <code class="docutils literal notranslate"><span class="pre">DFTK</span></code>. Here, there are batch scripts for using this environment (it is assumed that
+the batch scripts are in the <code class="docutils literal notranslate"><span class="pre">my-third-env</span></code> folder):</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-1-1-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-4" name="1-4" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-1-1-5" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-5" name="1-5" role="tab" tabindex="-1">serial-env.jl</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l                # -l cleans the environment in the batch job, recommended at UPPMAX</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz  # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00       # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1                  # Asking for 1 core</span>
+<span class="c1">#SBATCH --error=job.%J.err    # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out   # output file</span>
+
+ml<span class="w"> </span>julia/1.8.5<span class="w">                </span><span class="c1"># Julia module</span>
+
+<span class="c1"># Move to the directory where the &quot;.toml&quot; files for the environment are located</span>
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>serial-env.jl<span class="w">  </span><span class="c1"># run the script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># recommended purge</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+
+<span class="c1"># Move to the directory where the &quot;.toml&quot; files</span>
+<span class="c1"># for the environment are located</span>
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>serial-env.jl<span class="w">  </span><span class="c1"># run the script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz       # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># recommended purge</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+
+<span class="c1"># Move to the directory where the &quot;.toml&quot; files</span>
+<span class="c1"># for the environment are located</span>
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>serial-env.jl<span class="w">  </span><span class="c1"># run the script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH  -p shared           # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=1    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+
+<span class="c1"># Move to the directory where the &quot;.toml&quot; files</span>
+<span class="c1"># for the environment are located</span>
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>serial-env.jl<span class="w">  </span><span class="c1"># run the script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-4" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-4" name="1-4" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-xyz  # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n *FIXME*           # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load any modules you need, here for Julia</span>
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+<span class="c1"># Move to the directory where the &quot;.toml&quot; files</span>
+<span class="c1"># for the environment are located</span>
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>serial-env.jl<span class="w">  </span><span class="c1"># run the script</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-5" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-5" name="1-5" role="tabpanel" tabindex="0"><p>Julia example code where an environment is used.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></div>
+<p>You should see the installed packages in the output file. In the present case
+because I installed the <code class="docutils literal notranslate"><span class="pre">DFTK</span></code> package only in <code class="docutils literal notranslate"><span class="pre">my-third-env</span></code> environment, I can
+see the following output:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Status<span class="w"> </span><span class="sb">`</span>/path-to-project-storage/my-third-env/Project.toml<span class="sb">`</span>
+<span class="o">[</span>acf6eb54<span class="o">]</span><span class="w"> </span>DFTK<span class="w"> </span>v0.6.2
+</pre></div>
+</div>
+</section>
+<section id="parallel-code">
+<h3>Parallel code<a class="headerlink" href="#parallel-code" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Threaded</span></code> and <code class="docutils literal notranslate"><span class="pre">Distributed</span></code> packages are included in the Base installation. However,
+in order to use MPI with Julia you will need to follow the next steps (only the first time):</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-2-2-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-3" name="2-3" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-2-2-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-4" name="2-4" role="tab" tabindex="-1">NSC</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Load<span class="w"> </span>the<span class="w"> </span>tool<span class="w"> </span>chain<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>a<span class="w"> </span>MPI<span class="w"> </span>library
+<span class="gp">$ </span>ml<span class="w"> </span>gcc/11.3.0<span class="w"> </span>openmpi/4.1.3
+<span class="gp"># </span>Load<span class="w"> </span>Julia
+<span class="gp">$ </span>ml<span class="w"> </span>Julia/1.8.5
+<span class="gp"># </span>Start<span class="w"> </span>Julia<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span>julia
+<span class="gp"># </span>Change<span class="w"> </span>to<span class="w"> </span><span class="sb">``</span>package<span class="w"> </span>mode<span class="sb">``</span><span class="w"> </span>and<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>MPI<span class="sb">``</span><span class="w"> </span>package
+<span class="gp gp-VirtualEnv">(v1.8)</span> <span class="go">pkg&gt; add MPI</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">julian</span></code> mode run these commands:</p></li>
+</ul>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">MPI</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MPI</span><span class="o">.</span><span class="n">install_mpiexecjl</span><span class="p">()</span>
+<span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">Info</span><span class="o">:</span><span class="w"> </span><span class="n">Installing</span><span class="w"> </span><span class="sb">`mpiexecjl`</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="sb">`/home/u/username/.julia/bin`</span><span class="o">...</span>
+<span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">Info</span><span class="o">:</span><span class="w"> </span><span class="n">Done!</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Add<span class="w"> </span>the<span class="w"> </span>installed<span class="w"> </span><span class="sb">``</span>mpiexecjl<span class="sb">``</span><span class="w"> </span>wrapper<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>path<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>Linux<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>~/.julia/bin:<span class="nv">$PATH</span>
+<span class="gp"># </span>Now<span class="w"> </span>the<span class="w"> </span>wrapper<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>available<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Load<span class="w"> </span>the<span class="w"> </span>tool<span class="w"> </span>chain<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>a<span class="w"> </span>MPI<span class="w"> </span>library
+<span class="gp">$ </span>ml<span class="w"> </span>foss/2021b
+<span class="gp"># </span>Load<span class="w"> </span>Julia
+<span class="gp">$ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+<span class="gp"># </span>Start<span class="w"> </span>Julia<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span>julia
+<span class="gp"># </span>Change<span class="w"> </span>to<span class="w"> </span><span class="sb">``</span>package<span class="w"> </span>mode<span class="sb">``</span><span class="w"> </span>and<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>MPI<span class="sb">``</span><span class="w"> </span>package
+<span class="gp gp-VirtualEnv">(v1.8)</span> <span class="go">pkg&gt; add MPI</span>
+
+<span class="gp"># </span>In<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>julian<span class="sb">``</span><span class="w"> </span>mode<span class="w"> </span>run<span class="w"> </span>these<span class="w"> </span>commands:
+<span class="gp">$ </span>julia&gt;<span class="w"> </span>using<span class="w"> </span>MPI
+<span class="gp">$ </span>julia&gt;<span class="w"> </span>MPI.install_mpiexecjl<span class="o">()</span>
+<span class="go">     [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...</span>
+<span class="go">     [ Info: Done!</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Add<span class="w"> </span>the<span class="w"> </span>installed<span class="w"> </span><span class="sb">``</span>mpiexecjl<span class="sb">``</span><span class="w"> </span>wrapper<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>path<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>Linux<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/home/u/username/.julia/bin:<span class="nv">$PATH</span>
+<span class="gp"># </span>Now<span class="w"> </span>the<span class="w"> </span>wrapper<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>available<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Load<span class="w"> </span>the<span class="w"> </span>tool<span class="w"> </span>chain<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>a<span class="w"> </span>MPI<span class="w"> </span>library
+<span class="gp">$ </span>ml<span class="w"> </span>foss/2021b
+<span class="gp"># </span>Load<span class="w"> </span>Julia
+<span class="gp">$ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+<span class="gp"># </span>Start<span class="w"> </span>Julia<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span>julia
+<span class="gp"># </span>Change<span class="w"> </span>to<span class="w"> </span><span class="sb">``</span>package<span class="w"> </span>mode<span class="sb">``</span><span class="w"> </span>and<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>MPI<span class="sb">``</span><span class="w"> </span>package
+<span class="gp gp-VirtualEnv">(v1.8)</span> <span class="go">pkg&gt; add MPI</span>
+<span class="gp"># </span>In<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>julian<span class="sb">``</span><span class="w"> </span>mode<span class="w"> </span>run<span class="w"> </span>these<span class="w"> </span>commands:
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">MPI</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MPI</span><span class="o">.</span><span class="n">install_mpiexecjl</span><span class="p">()</span>
+<span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">Info</span><span class="o">:</span><span class="w"> </span><span class="n">Installing</span><span class="w"> </span><span class="sb">`mpiexecjl`</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="sb">`/home/u/username/.julia/bin`</span><span class="o">...</span>
+<span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">Info</span><span class="o">:</span><span class="w"> </span><span class="n">Done!</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Add<span class="w"> </span>the<span class="w"> </span>installed<span class="w"> </span><span class="sb">``</span>mpiexecjl<span class="sb">``</span><span class="w"> </span>wrapper<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>path<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>Linux<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/home/u/username/.julia/bin:<span class="nv">$PATH</span>
+<span class="gp"># </span>Now<span class="w"> </span>the<span class="w"> </span>wrapper<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>available<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-3" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-3" name="2-3" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Load<span class="w"> </span>the<span class="w"> </span>tool<span class="w"> </span>chain<span class="w"> </span><span class="k">for</span><span class="w"> </span>Julia<span class="w"> </span>which<span class="w"> </span>already<span class="w"> </span>contains<span class="w"> </span>a<span class="w"> </span>MPI<span class="w"> </span>library
+<span class="gp">$ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+<span class="gp"># </span>Start<span class="w"> </span>Julia<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span>julia
+<span class="gp"># </span>Change<span class="w"> </span>to<span class="w"> </span><span class="sb">``</span>package<span class="w"> </span>mode<span class="sb">``</span><span class="w"> </span>and<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>MPI<span class="sb">``</span><span class="w"> </span>package
+<span class="gp gp-VirtualEnv">(v1.10)</span> <span class="go">pkg&gt; add MPI</span>
+
+<span class="gp"># </span>In<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>julian<span class="sb">``</span><span class="w"> </span>mode<span class="w"> </span>run<span class="w"> </span>these<span class="w"> </span>commands:
+<span class="gp">$ </span>julia&gt;<span class="w"> </span>using<span class="w"> </span>MPI
+<span class="gp">$ </span>julia&gt;<span class="w"> </span>MPI.install_mpiexecjl<span class="o">()</span>
+<span class="go">     [ Info: Installing `mpiexecjl` to `/cfs/klemming/home/u/username/.julia/bin`...</span>
+<span class="go">     [ Info: Done!</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Add<span class="w"> </span>the<span class="w"> </span>installed<span class="w"> </span><span class="sb">``</span>mpiexecjl<span class="sb">``</span><span class="w"> </span>wrapper<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>path<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>Linux<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/cfs/klemming/home/u/username/.julia/bin:<span class="nv">$PATH</span>
+<span class="gp"># </span>Now<span class="w"> </span>the<span class="w"> </span>wrapper<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>available<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-4" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-4" name="2-4" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Load<span class="w"> </span>the<span class="w"> </span>tool<span class="w"> </span>chain<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>a<span class="w"> </span>MPI<span class="w"> </span>library
+<span class="gp">$ </span>ml<span class="w"> </span>buildtool-easybuild/4.8.0-hpce082752a2<span class="w"> </span>foss/2023b
+<span class="gp"># </span>Load<span class="w"> </span>Julia
+<span class="gp">$ </span>ml<span class="w"> </span>julia/1.9.4-bdist
+<span class="gp"># </span>Start<span class="w"> </span>Julia<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span>julia
+<span class="gp"># </span>Change<span class="w"> </span>to<span class="w"> </span><span class="sb">``</span>package<span class="w"> </span>mode<span class="sb">``</span><span class="w"> </span>and<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>MPI<span class="sb">``</span><span class="w"> </span>package
+<span class="gp gp-VirtualEnv">(v1.9)</span> <span class="go">pkg&gt; add MPI</span>
+
+<span class="gp"># </span>In<span class="w"> </span>the<span class="w"> </span><span class="sb">``</span>julian<span class="sb">``</span><span class="w"> </span>mode<span class="w"> </span>run<span class="w"> </span>these<span class="w"> </span>commands:
+<span class="gp">$ </span>julia&gt;<span class="w"> </span>using<span class="w"> </span>MPI
+<span class="gp">$ </span>julia&gt;<span class="w"> </span>MPI.install_mpiexecjl<span class="o">()</span>
+<span class="go">     [ Info: Installing `mpiexecjl` to `/home/username/.julia/bin`...</span>
+<span class="go">     [ Info: Done!</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Add<span class="w"> </span>the<span class="w"> </span>installed<span class="w"> </span><span class="sb">``</span>mpiexecjl<span class="sb">``</span><span class="w"> </span>wrapper<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>path<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>Linux<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/home/username/.julia/bin:<span class="nv">$PATH</span>
+<span class="gp"># </span>Now<span class="w"> </span>the<span class="w"> </span>wrapper<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>available<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+</pre></div>
+</div>
+</div></div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">serial.jl</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">threaded.jl</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">distributed.jl</button><button aria-controls="panel-3-3-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-3" name="3-3" role="tab" tabindex="-1">mpi.jl</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># nr. of grid points</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">integration2d_julia</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="c"># interval size</span>
+<span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="n">n</span>
+<span class="c"># cummulative variable</span>
+<span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="c"># regular integration in the X axis</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c">#   regular integration in the Y axis</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">    </span><span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="k">return</span><span class="w"> </span><span class="n">mysum</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">h</span>
+<span class="k">end</span>
+
+<span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integration2d_julia</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="o">.</span><span class="n">Threads</span>
+
+<span class="c"># nr. of grid points</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span>
+
+<span class="c"># nr. of threads</span>
+<span class="n">numthreads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nthreads</span><span class="p">()</span>
+
+<span class="c"># array for storing partial sums from threads</span>
+<span class="n">partial_integrals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeros</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">numthreads</span><span class="p">)</span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">integration2d_julia_threaded</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numthreads</span><span class="p">,</span><span class="n">threadindex</span><span class="p">)</span>
+<span class="c"># interval size</span>
+<span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="n">convert</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="c"># cummulative variable</span>
+<span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="c"># workload for each thread</span>
+<span class="n">workload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert</span><span class="p">(</span><span class="kt">Int64</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="n">numthreads</span><span class="p">)</span>
+<span class="c"># lower and upper integration limits for each thread</span>
+<span class="n">lower_lim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">threadindex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="n">upper_lim</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">threadindex</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c">## regular integration in the X axis</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">lower_lim</span><span class="o">:</span><span class="n">upper_lim</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c">#   regular integration in the Y axis</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">    </span><span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="n">partial_integrals</span><span class="p">[</span><span class="n">threadindex</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysum</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">h</span>
+<span class="k">return</span>
+<span class="k">end</span>
+
+<span class="c"># The threads can compute now the partial summations</span>
+<span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">numthreads</span>
+<span class="w">    </span><span class="n">integration2d_julia_threaded</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numthreads</span><span class="p">,</span><span class="n">threadid</span><span class="p">())</span>
+<span class="k">end</span>
+
+<span class="c"># The main thread now reduces the array</span>
+<span class="n">total_sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">partial_integrals</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The integral value is </span><span class="si">$total_sum</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@everywhere</span><span class="w"> </span><span class="k">begin</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Distributed</span>
+<span class="k">using</span><span class="w"> </span><span class="n">SharedArrays</span>
+<span class="k">end</span>
+
+<span class="c"># nr. of grid points</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span>
+
+<span class="c"># nr. of workers</span>
+<span class="n">numworkers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nworkers</span><span class="p">()</span>
+
+<span class="c"># array for storing partial sums from workers</span>
+<span class="n">partial_integrals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SharedArray</span><span class="p">(</span><span class="w"> </span><span class="n">zeros</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">numworkers</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+
+<span class="nd">@everywhere</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">integration2d_julia_distributed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numworkers</span><span class="p">,</span><span class="n">workerid</span><span class="p">,</span><span class="n">A</span><span class="o">::</span><span class="kt">SharedArray</span><span class="p">)</span>
+<span class="c"># interval size</span>
+<span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="n">convert</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="c"># cummulative variable</span>
+<span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="c"># workload for each worker</span>
+<span class="n">workload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert</span><span class="p">(</span><span class="kt">Int64</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="n">numworkers</span><span class="p">)</span>
+<span class="c"># lower and upper integration limits for each thread</span>
+<span class="n">lower_lim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">workerid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">upper_lim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">workerid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c"># regular integration in the X axis</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">lower_lim</span><span class="o">:</span><span class="n">upper_lim</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c">#   regular integration in the Y axis</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">    </span><span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="n">A</span><span class="p">[</span><span class="n">workerid</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysum</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">h</span>
+<span class="k">return</span>
+<span class="k">end</span>
+
+<span class="c"># The workers can compute now the partial summations</span>
+<span class="nd">@sync</span><span class="w"> </span><span class="nd">@distributed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">numworkers</span>
+<span class="w">    </span><span class="n">integration2d_julia_distributed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numworkers</span><span class="p">,</span><span class="n">myid</span><span class="p">(),</span><span class="n">partial_integrals</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c"># The main process now reduces the array</span>
+<span class="n">total_sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">partial_integrals</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The integral value is </span><span class="si">$total_sum</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-3" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-3" name="3-3" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">MPI</span>
+<span class="n">MPI</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>
+
+<span class="c"># Initialize the communicator</span>
+<span class="n">comm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
+<span class="c"># Get the ranks of the processes</span>
+<span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI</span><span class="o">.</span><span class="n">Comm_rank</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span>
+<span class="c"># Get the size of the communicator</span>
+<span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI</span><span class="o">.</span><span class="n">Comm_size</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span>
+
+<span class="c"># root process</span>
+<span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="c"># nr. of grid points</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">integration2d_julia_mpi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numworkers</span><span class="p">,</span><span class="n">workerid</span><span class="p">)</span>
+
+<span class="c"># interval size</span>
+<span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="n">convert</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="c"># cummulative variable</span>
+<span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="c"># workload for each worker</span>
+<span class="n">workload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">div</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numworkers</span><span class="p">)</span>
+<span class="c"># lower and upper integration limits for each thread</span>
+<span class="n">lower_lim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">workerid</span>
+<span class="n">upper_lim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">workerid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c"># regular integration in the X axis</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">lower_lim</span><span class="o">:</span><span class="n">upper_lim</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c">#   regular integration in the Y axis</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">    </span><span class="n">mysum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="n">partial_integrals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysum</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">h</span>
+<span class="k">return</span><span class="w"> </span><span class="n">partial_integrals</span>
+<span class="k">end</span>
+
+<span class="c"># The workers can compute now the partial summations</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integration2d_julia_mpi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">rank</span><span class="p">)</span>
+
+<span class="c"># The root process now reduces the array</span>
+<span class="n">integral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI</span><span class="o">.</span><span class="n">Reduce</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="o">+</span><span class="p">,</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="n">rank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">root</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The integral value is </span><span class="si">$integral</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">MPI</span><span class="o">.</span><span class="n">Finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></div>
+<p>The corresponding batch scripts for these examples are given here:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-4-4-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-3" name="4-3" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-4-4-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-4" name="4-4" role="tab" tabindex="-1">NSC</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">serial.sh</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">threaded.sh</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">distributed.sh</button><button aria-controls="panel-5-5-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-3" name="5-3" role="tab" tabindex="-1">mpi.sh</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>julia/1.8.5
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>serial.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>julia/1.8.5
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>threaded.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-2" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-2" name="5-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>julia/1.8.5
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">8</span><span class="w"> </span>distributed.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-3" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-3" name="5-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>julia/1.8.5
+ml<span class="w"> </span>gcc/11.3.0<span class="w"> </span>openmpi/4.1.3
+<span class="c1"># &quot;time&quot; command is optional</span>
+
+<span class="c1"># export the PATH of the Julia MPI wrapper</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>~/.julia/bin:<span class="nv">$PATH</span>
+
+<span class="nb">time</span><span class="w"> </span>mpiexecjl<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>julia<span class="w"> </span>mpi.jl
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">serial.sh</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">threaded.sh</button><button aria-controls="panel-6-6-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-2" name="6-2" role="tab" tabindex="-1">distributed.sh</button><button aria-controls="panel-6-6-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-3" name="6-3" role="tab" tabindex="-1">mpi.sh</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>serial.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>threaded.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-2" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-2" name="6-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">8</span><span class="w"> </span>distributed.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-3" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-3" name="6-3" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>foss/2021b
+
+<span class="c1"># export the PATH of the Julia MPI wrapper</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/home/u/username/.julia/bin:<span class="nv">$PATH</span>
+
+<span class="nb">time</span><span class="w"> </span>mpiexecjl<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>julia<span class="w"> </span>mpi.jl
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">serial.sh</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">threaded.sh</button><button aria-controls="panel-7-7-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-2" name="7-2" role="tab" tabindex="-1">distributed.sh</button><button aria-controls="panel-7-7-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-3" name="7-3" role="tab" tabindex="-1">mpi.sh</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>serial.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>threaded.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-2" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-2" name="7-2" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">8</span><span class="w"> </span>distributed.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-3" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-3" name="7-3" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz</span>
+<span class="c1">#SBATCH -J job</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --error=job.%J.err</span>
+<span class="c1">#SBATCH --output=job.%J.out</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>foss/2021b
+
+<span class="c1"># export the PATH of the Julia MPI wrapper</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/home/u/username/.julia/bin:<span class="nv">$PATH</span>
+
+<span class="nb">time</span><span class="w"> </span>mpiexecjl<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>julia<span class="w"> </span>mpi.jl
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-4-4-3" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-3" name="4-3" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">serial.sh</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">threaded.sh</button><button aria-controls="panel-8-8-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-2" name="8-2" role="tab" tabindex="-1">distributed.sh</button><button aria-controls="panel-8-8-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-3" name="8-3" role="tab" tabindex="-1">mpi.sh</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH  -p shared           # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=1    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>serial.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH  -p shared           # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=8    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>threaded.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-8-2" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-2" name="8-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH  -p shared           # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=8    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">8</span><span class="w"> </span>distributed.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-8-3" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-3" name="8-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH  -p shared           # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=8          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=1    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+
+<span class="c1"># export the PATH of the Julia MPI wrapper</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/cfs/klemming/home/u/username/.julia/bin:<span class="nv">$PATH</span>
+
+<span class="nb">time</span><span class="w"> </span>mpiexecjl<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>julia<span class="w"> </span>mpi.jl
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-4-4-4" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-4" name="4-4" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">serial.sh</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">threaded.sh</button><button aria-controls="panel-9-9-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-2" name="9-2" role="tab" tabindex="-1">distributed.sh</button><button aria-controls="panel-9-9-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-3" name="9-3" role="tab" tabindex="-1">mpi.sh</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. of tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>serial.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH -n 8                 # nr. of tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>threaded.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-2" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-2" name="9-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH -n 8                 # nr. of tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+<span class="c1"># &quot;time&quot; command is optional</span>
+<span class="nb">time</span><span class="w"> </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">8</span><span class="w"> </span>distributed.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-3" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-3" name="9-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH -n 8                 # nr. of tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>buildtool-easybuild/4.8.0-hpce082752a2<span class="w"> </span>foss/2023b
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+<span class="c1"># export the PATH of the Julia MPI wrapper</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/home/username/.julia/bin:<span class="nv">$PATH</span>
+
+<span class="nb">time</span><span class="w"> </span>mpiexecjl<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>julia<span class="w"> </span>mpi.jl
+</pre></div>
+</div>
+</div></div>
+</div></div>
+</section>
+<section id="gpu-code">
+<h3>GPU code<a class="headerlink" href="#gpu-code" title="Link to this heading"></a></h3>
+<p>In order to use the NVIDIA GPUs with Julia (UPPMAX, HPC2N, and LUNARC), you will need to load a CUDA toolkit module on the
+cluster and install the <code class="docutils literal notranslate"><span class="pre">CUDA</span></code> package in Julia.</p>
+<p>In the case of AMD GPUs for Julia (PDC and HPC2N), you will need to load a ROCM toolkit module on the
+cluster and install the <code class="docutils literal notranslate"><span class="pre">AMDGPU</span></code> package in Julia as in the next sequence of commands.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-10-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-10-10-0" name="10-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-10-10-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-1" name="10-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-10-10-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-2" name="10-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-10-10-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-3" name="10-3" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-10-10-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-4" name="10-4" role="tab" tabindex="-1">NSC</button></div><div aria-labelledby="tab-10-10-0" class="sphinx-tabs-panel" id="panel-10-10-0" name="10-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>This can only be done on Snowy or Bianca.</p></li>
+<li><p>Then either create an interactive session or make a batch job</p></li>
+<li><p>CUDA is installed at system level so they do not need to be loaded.</p></li>
+<li><p>On snowy</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>interactive<span class="w"> </span>-A<span class="w"> </span>&lt;proj&gt;<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-M<span class="w"> </span>snowy<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w">  </span>-t<span class="w"> </span><span class="m">3</span>:00:00
+
+<span class="gp">$ </span>ml<span class="w"> </span>Julia/1.8.5<span class="w">   </span><span class="c1"># Julia version</span>
+<span class="gp">$ </span>julia
+<span class="gp gp-VirtualEnv">(v1.8)</span> <span class="go">pkg&gt; add CUDA</span>
+<span class="go">    Updating registry at `~/.julia/registries/General.toml`</span>
+<span class="go">    Resolving package versions...</span>
+<span class="go">    Installed CEnum ───────── v0.4.2</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">   </span><span class="c1"># Julia version</span>
+<span class="gp">$ </span>ml<span class="w"> </span>CUDA/11.4.1<span class="w">                </span><span class="c1"># CUDA toolkit module</span>
+<span class="gp">$ </span>julia
+<span class="gp gp-VirtualEnv">(v1.8)</span> <span class="go">pkg&gt; add CUDA</span>
+<span class="go">    Updating registry at `~/.julia/registries/General.toml`</span>
+<span class="go">    Resolving package versions...</span>
+<span class="go">    Installed CEnum ───────── v0.4.2</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-10-2" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-2" name="10-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">   </span><span class="c1"># Julia version</span>
+<span class="gp">$ </span>ml<span class="w"> </span>CUDA/11.4.1<span class="w">                </span><span class="c1"># CUDA toolkit module</span>
+<span class="gp">$ </span>julia
+<span class="gp gp-VirtualEnv">(v1.8)</span> <span class="go">pkg&gt; add CUDA</span>
+<span class="go">    Updating registry at `~/.julia/registries/General.toml`</span>
+<span class="go">    Resolving package versions...</span>
+<span class="go">    Installed CEnum ───────── v0.4.2</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-10-3" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-3" name="10-3" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12<span class="w">   </span><span class="c1"># Julia version</span>
+<span class="gp">$ </span>ml<span class="w"> </span>rocm/5.7.0<span class="w">  </span>craype-accel-amd-gfx90a<span class="w">   </span><span class="c1"># ROCM toolkit module</span>
+<span class="gp">$ </span>julia
+<span class="gp gp-VirtualEnv">(v1.10)</span> <span class="go">pkg&gt; add AMDGPU</span>
+<span class="go">    Updating registry at `~/.julia/registries/General.toml`</span>
+<span class="go">    Resolving package versions...</span>
+<span class="go">    Installed CEnum ───────── v0.4.2</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-10-4" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-4" name="10-4" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Then either create an interactive session or make a batch job</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>interactive<span class="w"> </span>-A<span class="w"> </span>&lt;proj&gt;<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span><span class="m">32</span><span class="w"> </span>--gpus-per-task<span class="o">=</span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:00:00
+
+<span class="gp">$ </span>ml<span class="w"> </span>buildenv-gcccuda/11.6.2-gcc9-hpc1<span class="w">  </span><span class="c1"># Load tool chain with CUDA</span>
+<span class="gp">$ </span>ml<span class="w"> </span>julia/1.9.4-bdist<span class="w">                  </span><span class="c1"># Julia version</span>
+<span class="gp">$ </span>julia
+<span class="gp gp-VirtualEnv">(v1.9)</span> <span class="go">pkg&gt; add LinearAlgebra</span>
+<span class="gp gp-VirtualEnv">(v1.9)</span> <span class="go">pkg&gt; add CUDA</span>
+<span class="go">    Updating registry at `~/.julia/registries/General.toml`</span>
+<span class="go">    Resolving package versions...</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+</div></div>
+<p>Once this initial setting is completed, you will be able to use the GPUs available on the
+cluster. Here, there is a simple example for computing a matrix-matrix multiplication. As a
+reference point, we show the simulation on CPUs as well. You can call the batch script <code class="docutils literal notranslate"><span class="pre">job-gpu.sh</span></code>,
+for instance.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-11-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-11-11-0" name="11-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-11-11-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-1" name="11-1" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-11-11-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-2" name="11-2" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-11-11-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-3" name="11-3" role="tab" tabindex="-1">NSC</button><button aria-controls="panel-11-11-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-4" name="11-4" role="tab" tabindex="-1">script-gpu.jl</button></div><div aria-labelledby="tab-11-11-0" class="sphinx-tabs-panel" id="panel-11-11-0" name="11-0" role="tabpanel" tabindex="0"><p>Short GPU example for running on Snowy.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz     # your project_ID</span>
+<span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH -p node</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --job-name=job-gpu       # create a short name for your job</span>
+<span class="c1">#SBATCH --time=00:15:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --qos=short              # if test run t&lt;15 min</span>
+<span class="c1">#SBATCH --mail-type=begin        # send email when job begins</span>
+<span class="c1">#SBATCH --mail-type=end          # send email when job ends</span>
+
+module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5<span class="w">      </span><span class="c1"># system CUDA works as of today</span>
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-11-1" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-1" name="11-1" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz     # your project_ID</span>
+<span class="c1">#SBATCH -J job-gpu           # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-11-2" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-2" name="11-2" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz       # your project_ID</span>
+<span class="c1">#SBATCH -J job-gpu           # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#Asking for one A100 GPU</span>
+<span class="c1">#SBATCH -p gpua100</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-11-3" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-3" name="11-3" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job-gpu           # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH -c 32                # nr. cores</span>
+<span class="c1">#SBATCH --gpus-per-task=1    # nr. GPU cards</span>
+<span class="c1">#SBATCH --time=00:04:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>buildenv-gcccuda/11.6.2-gcc9-hpc1
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-11-4" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-4" name="11-4" role="tabpanel" tabindex="0"><p>Julia GPU example code.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">CUDA</span>
+
+<span class="n">CUDA</span><span class="o">.</span><span class="n">versioninfo</span><span class="p">()</span>
+
+<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">8</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CuArray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CuArray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c"># Calculation on CPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="c"># Calculation on GPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="n">B</span>
+
+<span class="c"># Calculation on CPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="c"># Calculation on GPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="n">B</span>
+</pre></div>
+</div>
+</div></div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-12-12-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-12-12-0" name="12-0" role="tab" tabindex="0">PDC</button><button aria-controls="panel-12-12-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-12-12-1" name="12-1" role="tab" tabindex="-1">script-gpu.jl</button></div><div aria-labelledby="tab-12-12-0" class="sphinx-tabs-panel" id="panel-12-12-0" name="12-0" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH  -p gpu              # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=1    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+<span class="c1"># ROCM toolkit module</span>
+ml<span class="w"> </span>rocm/5.7.0<span class="w">  </span>craype-accel-amd-gfx90a
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-12-12-1" class="sphinx-tabs-panel" hidden="true" id="panel-12-12-1" name="12-1" role="tabpanel" tabindex="0"><p>Julia AMD GPU example code.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">AMDGPU</span>
+
+<span class="n">AMDGPU</span><span class="o">.</span><span class="n">versioninfo</span><span class="p">()</span><span class="w">  </span><span class="c"># Display AMD GPU information</span>
+
+<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">8</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROCArray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">  </span><span class="c"># Transfer data to AMD GPU</span>
+<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROCArray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c"># Calculation on CPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span>
+
+<span class="c"># Calculation on AMD GPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span>
+
+<span class="c"># Calculation on CPU (again)</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span>
+
+<span class="c"># Calculation on AMD GPU (again)</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="cluster-managers">
+<h3>Cluster Managers<a class="headerlink" href="#cluster-managers" title="Link to this heading"></a></h3>
+<p>The package <em>ClusterManagers.jl</em> allows you to submit expensive parts of your simulation
+to the batch queue in a more <em>interactive</em> manner than by using batch scripts. <em>ClusterManagers.jl</em>
+needs to be installed through <strong>Pkg</strong>. This can useful, for instance if you are developing some
+code where just specific parts are computationally heavy while the rest is related to data analysis
+or visualization. In order to use this package, you should add it in a Julia session.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Distributed</span><span class="p">,</span><span class="w"> </span><span class="n">ClusterManagers</span>
+<span class="c"># Adapted from: https://github.com/JuliaParallel/ClusterManagers.jl</span>
+<span class="c"># Arguments to the Slurm srun(1) command can be given as keyword</span>
+<span class="c"># arguments to addprocs.  The argument name and value is translated to</span>
+<span class="c"># a srun(1) command line argument as follows:</span>
+<span class="c"># 1) If the length of the argument is 1 =&gt; &quot;-arg value&quot;,</span>
+<span class="c">#    e.g. t=&quot;0:1:0&quot; =&gt; &quot;-t 0:1:0&quot;</span>
+<span class="c"># 2) If the length of the argument is &gt; 1 =&gt; &quot;--arg=value&quot;</span>
+<span class="c">#    e.g. time=&quot;0:1:0&quot; =&gt; &quot;--time=0:1:0&quot;</span>
+<span class="c"># 3) If the value is the empty string, it becomes a flag value,</span>
+<span class="c">#    e.g. exclusive=&quot;&quot; =&gt; &quot;--exclusive&quot;</span>
+<span class="c"># 4) If the argument contains &quot;_&quot;, they are replaced with &quot;-&quot;,</span>
+<span class="c">#    e.g. mem_per_cpu=100 =&gt; &quot;--mem-per-cpu=100&quot;</span>
+<span class="c"># Example: add 2 processes, with your project ID, allocated 5 min, and 2 cores</span>
+<span class="n">addprocs</span><span class="p">(</span><span class="n">SlurmManager</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="s">&quot;project_ID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">partition</span><span class="o">=</span><span class="s">&quot;name-of-partition&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="s">&quot;00:05:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">)</span>
+
+<span class="c"># Define a function that computes the square of a number</span>
+<span class="nd">@everywhere</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">^</span><span class="mi">2</span>
+<span class="k">end</span>
+
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">workers</span><span class="p">()</span>
+<span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fetch</span><span class="p">(</span><span class="nd">@spawnat</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">gethostname</span><span class="p">())</span>
+<span class="w">    </span><span class="n">push!</span><span class="p">(</span><span class="n">hosts</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">)</span>
+<span class="w">    </span><span class="n">result_partial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fetch</span><span class="p">(</span><span class="nd">@spawnat</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="w">    </span><span class="n">push!</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">result_partial</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">println</span><span class="p">(</span><span class="n">hosts</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c"># The Slurm resource allocation is released when all the workers have</span>
+<span class="c"># exited</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">workers</span><span class="p">()</span>
+<span class="w">    </span><span class="n">rmprocs</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-run-a-serial-script exercise important admonition" id="exercise-0">
+<p class="admonition-title">1. Run a serial script</p>
+<p>Run the serial script <code class="docutils literal notranslate"><span class="pre">serial-sum.jl</span></code>:</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">summ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The sum of the two numbers is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">summ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This scripts accepts two integers as command line arguments.</p>
+<div class="dropdown solution important admonition" id="solution-0">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>This batch script is for Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># recommended purge</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-1">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>This batch script is for UPPMAX.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # Change to your own after the course</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:05:00 # Asking for 5 minutes</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-2">
+<p class="admonition-title">Solution for LUNARC</p>
+<blockquote>
+<div><p>This batch script is for LUNARC.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz       # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># recommended purge</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-3">
+<p class="admonition-title">Solution for PDC</p>
+<blockquote>
+<div><p>This batch script is for PDC.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH  -p shared           # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=1    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-4">
+<p class="admonition-title">Solution for NSC</p>
+<blockquote>
+<div><p>This batch script is for NSC.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:04:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-run-the-gpu-script exercise important admonition" id="exercise-1">
+<p class="admonition-title">2. Run the GPU script</p>
+<p>Run the following script <code class="docutils literal notranslate"><span class="pre">script-gpu.jl</span></code>. Why are we running the simulations
+twice?
+Note that at UPPMAX you will need a project will access to Snowy. Remember that at PDC
+we will use AMD GPUs.</p>
+<div class="dropdown solution important admonition" id="solution-5">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>This batch script is for Kebnekaise. We run the simulation twice because
+in this way, the reported time is more reliable for the computing time as
+in the first simulation, data transfer and other settings could be added to
+the reported time.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+<dl>
+<dt>Output:</dt><dd><p>0.689096 seconds (2.72 M allocations: 132.617 MiB, 6.27% gc time, 99.62% compilation time)</p>
+<p>1.194153 seconds (1.24 M allocations: 62.487 MiB, 3.41% gc time, 55.13% compilation time)</p>
+<p>0.000933 seconds (2 allocations: 512.047 KiB)</p>
+<p>0.000311 seconds (5 allocations: 192 bytes)</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-6">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>This batch script is for UPPMAX. Adding the numbers 2 and 3.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz   # your project_ID</span>
+<span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH -p node</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --job-name=juliaGPU         # create a short name for your job</span>
+<span class="c1">#SBATCH --time=00:15:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --qos=short              # if test run t&lt;15 min</span>
+
+ml<span class="w"> </span>julia/1.8.5
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+<p>Output:</p>
+<blockquote>
+<div><p>Downloading artifact: CUDNN
+Downloading artifact: CUTENSOR
+CUDA toolkit 11.7, artifact installation
+NVIDIA driver 525.85.12, for CUDA 12.0
+CUDA driver 12.0</p>
+<p>Libraries:
+- CUBLAS: 11.10.1
+- CURAND: 10.2.10
+- CUFFT: 10.7.2
+- CUSOLVER: 11.3.5
+- CUSPARSE: 11.7.3
+- CUPTI: 17.0.0
+- NVML: 12.0.0+525.85.12
+- CUDNN: 8.30.2 (for CUDA 11.5.0)
+- CUTENSOR: 1.4.0 (for CUDA 11.5.0)</p>
+<p>Toolchain:
+- Julia: 1.8.5
+- LLVM: 13.0.1
+- PTX ISA support: 3.2, 4.0, 4.1, 4.2, 4.3, 5.0, 6.0, 6.1, 6.3, 6.4, 6.5, 7.0, 7.1, 7.2
+- Device capability support: sm_35, sm_37, sm_50, sm_52, sm_53, sm_60, sm_61, sm_62, sm_70, sm_72, sm_75, sm_80, sm_86</p>
+<dl class="simple">
+<dt>1 device:</dt><dd><p>0: Tesla T4 (sm_75, 14.605 GiB / 15.000 GiB available)
+0.988437 seconds (2.72 M allocations: 132.556 MiB, 4.72% gc time, 99.10% compilation time)
+5.707402 seconds (1.30 M allocations: 65.564 MiB, 0.72% gc time, 19.70% compilation time)
+0.000813 seconds (2 allocations: 512.047 KiB)
+0.000176 seconds (16 allocations: 384 bytes)</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-7">
+<p class="admonition-title">Solution for LUNARC</p>
+<blockquote>
+<div><p>This batch script is for Cosmos.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A lu202w-x-yz       # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#Asking for one A100 GPU</span>
+<span class="c1">#SBATCH -p gpua100</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-8">
+<p class="admonition-title">Solution for PDC</p>
+<blockquote>
+<div><p>This batch script is for Dardel.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job               # name of the job</span>
+<span class="c1">#SBATCH  -p gpu              # name of the queue</span>
+<span class="c1">#SBATCH  --ntasks=1          # nr. of tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=1    # nr. of cores per-task</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load dependencies and Julia version</span>
+ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+<span class="c1"># ROCM toolkit module</span>
+ml<span class="w"> </span>rocm/5.7.0<span class="w">  </span>craype-accel-amd-gfx90a
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<blockquote>
+<div><p>┌───────────┬──────────────────┬─…
+│ Available │ Name             │ …
+├───────────┼──────────────────┼─…
+│     +     │ LLD              │ …
+│     +     │ Device Libraries │ …
+│     +     │ HIP              │ …
+│     +     │ rocBLAS          │ …
+│     +     │ rocSOLVER        │ …
+│     +     │ rocSPARSE        │ …
+│     +     │ rocRAND          │ …
+│     +     │ rocFFT           │ …
+│     +     │ MIOpen           │ …
+└───────────┴──────────────────┴─…</p>
+<p>┌────┬─────────────────────┬─────…
+│ Id │                Name │     …
+├────┼─────────────────────┼─────…
+│  1 │ AMD Instinct MI250X │ gfx9…
+│  2 │ AMD Instinct MI250X │ gfx9…
+│  3 │ AMD Instinct MI250X │ gfx9…
+│  4 │ AMD Instinct MI250X │ gfx9…
+│  5 │ AMD Instinct MI250X │ gfx9…
+│  6 │ AMD Instinct MI250X │ gfx9…
+│  7 │ AMD Instinct MI250X │ gfx9…
+│  8 │ AMD Instinct MI250X │ gfx9…
+└────┴─────────────────────┴─────…</p>
+<p>1.241600 seconds (2.27 M allocations: 152.229 MiB, 8.28% gc time, 91.71% compilation time)
+0.604009 seconds (624.95 k allocations: 38.360 MiB, 68.01% compilation time)
+0.001051 seconds (2 allocations: 512.047 KiB)
+0.000077 seconds (13 allocations: 352 bytes)</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-9">
+<p class="admonition-title">Solution for NSC</p>
+<blockquote>
+<div><p>This batch script is for NSC.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz # your project_ID</span>
+<span class="c1">#SBATCH -J job-gpu           # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH -c 32                # nr. cores</span>
+<span class="c1">#SBATCH --gpus-per-task=1    # nr. GPU cards</span>
+<span class="c1">#SBATCH --time=00:04:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>buildenv-gcccuda/11.6.2-gcc9-hpc1
+ml<span class="w"> </span>julia/1.9.4-bdist
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-machine-learning-job-on-gpus exercise important admonition" id="exercise-2">
+<p class="admonition-title">3. Machine Learning job on GPUs</p>
+<p>Julia has already several packages for ML, one of them is <code class="docutils literal notranslate"><span class="pre">Flux</span></code> (<a class="reference external" href="https://fluxml.ai/">https://fluxml.ai/</a>). We will work with one of
+the test cases provided by <code class="docutils literal notranslate"><span class="pre">Flux</span></code> which deals with a data set of tiny images (CIFAR10). Follow this steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Create an environment called <code class="docutils literal notranslate"><span class="pre">ML</span></code>, move to that environment directory and activate it</p></li>
+<li><p>Fetch the <code class="docutils literal notranslate"><span class="pre">vgg_cifar10.jl</span></code> test case from <code class="docutils literal notranslate"><span class="pre">Flux</span></code> repo (wget <a class="reference external" href="https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl">https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl</a>)</p></li>
+<li><p>Load CUDA toolkit 11.4.1</p></li>
+<li><p>Install (add) the following packages: CUDA, MLDatasets, MLUtils</p></li>
+<li><p>The first time you use the data set CIFAR10, it will ask you to download it and accept. Do this in <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode:</p></li>
+</ul>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">MLDatasets</span><span class="o">:</span><span class="w"> </span><span class="n">CIFAR10</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CIFAR10</span><span class="p">(</span><span class="ss">:train</span><span class="p">)[</span><span class="o">:</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change the number of epochs in the <code class="docutils literal notranslate"><span class="pre">vgg_cifar10.jl</span></code> script from 50 to something shorter like 5.</p></li>
+<li><p>Submit the job with the script:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz        # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks        #remove this line for UPPMAX</span>
+<span class="c1">#SBATCH --time=00:15:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card   #remove this line for UPPMAX</span>
+<span class="c1"># On Rackham use the follwing lines instead (rm one #) by subsituting the related HPC2N lines, se above</span>
+<span class="c1">##SBATCH -M snowy</span>
+<span class="c1">##SBATCH -p node</span>
+<span class="c1">##SBATCH --gres=gpu:1</span>
+<span class="c1">##SBATCH -N 1</span>
+<span class="c1">##SBATCH --qos=short</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>&lt;fix-activate-environment&gt;<span class="w"> </span>&lt;fix-name-script&gt;.jl
+</pre></div>
+</div>
+</div></blockquote>
+<div class="dropdown solution important admonition" id="solution-10">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>julia/1.8.5
+mkdir<span class="w"> </span>ML
+<span class="nb">cd</span><span class="w"> </span>ML
+wget<span class="w"> </span>https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl
+
+julia
+<span class="o">(</span>v1.8<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>activate<span class="w"> </span>.
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>CUDA
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>Flux
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>MLDatasets
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>MLUtils
+julia&gt;<span class="w"> </span>using<span class="w"> </span>MLDatasets:<span class="w"> </span>CIFAR10
+julia&gt;<span class="w"> </span>x,<span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CIFAR10<span class="o">(</span>:train<span class="o">)[</span>:<span class="o">]</span>
+</pre></div>
+</div>
+<p>The batch script looks like:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss202t-uv-wxyz        # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH -p node</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --time=00:15:00      # requested time</span>
+<span class="c1">#SBATCH --qos=short</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>julia/1.8.5
+
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>vgg_cifar10.jl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-11">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+mkdir<span class="w"> </span>ML
+<span class="nb">cd</span><span class="w"> </span>ML
+wget<span class="w"> </span>https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl
+
+julia
+<span class="o">(</span>v1.8<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>activate<span class="w"> </span>.
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>CUDA
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>Flux
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>MLDatasets
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>MLUtils
+julia&gt;<span class="w"> </span>using<span class="w"> </span>MLDatasets:<span class="w"> </span>CIFAR10
+julia&gt;<span class="w"> </span>x,<span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CIFAR10<span class="o">(</span>:train<span class="o">)[</span>:<span class="o">]</span>
+</pre></div>
+</div>
+<p>The batch script looks like:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n202w-xyz     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>vgg_cifar10.jl
+</pre></div>
+</div>
+<p>At HPC2N you can use the tool <code class="docutils literal notranslate"><span class="pre">job-usage</span></code> on the command line:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>job-usage<span class="w"> </span>job_ID<span class="w">   </span><span class="c1"># job_ID number you get upon using sbatch</span>
+</pre></div>
+</div>
+<p>This will give you a URL that you can paste on your local browser. It would display
+statistics after a couple of minutes the job started.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>The SLURM scheduler handles allocations to the calculation nodes</p></li>
+<li><p>Batch jobs runs without interaction with user</p></li>
+<li><p>A batch script consists of a part with SLURM parameters describing the allocation and a second part describing
+the actual work within the job, for instance one or several Julia scripts.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="isolatedJulia.html" class="btn btn-neutral float-left" title="Packages and isolated environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="interactiveJulia.html" class="btn btn-neutral float-right" title="Sessions: Interactive work on compute nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

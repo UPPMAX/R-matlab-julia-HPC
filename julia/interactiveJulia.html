@@ -1,0 +1,903 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sessions: Interactive work on compute nodes &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom_theme.css?v=98a0eeba" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="summaryJulia.html" />
+    <link rel="prev" title="Running Julia in batch mode" href="batchJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparations.html">Prepare the environment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_text_editor.html">Use a text editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/naiss_projects_overview.html">NAISS projects overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/hpc_clusters.html">HPC clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/other_courses.html">Other courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/scheduleR.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/scheduleMatlab.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlabGui.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scheduleJulia.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sessions: Interactive work on compute nodes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-different-way-hpc2n-uppmax-lunarc-and-nsc-provide-for-an-interactive-session">The different way HPC2N, UPPMAX, LUNARC, and NSC provide for an interactive session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-an-interactive-session">Start an interactive session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-demo">Example <strong>Demo</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#running-a-script">Running a script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-julia-in-jupyter">Running Julia in Jupyter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-step">Installation step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-a-jupyter-session-with-julia-kernel">Starting a Jupyter session with Julia Kernel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#from-julia-repl">From Julia REPL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jupyter-session-from-terminal">Jupyter session from terminal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/r_extra.html">R - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab_extra.html">Matlab - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/julia_extra.html">Julia - extra reading and links</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sessions: Interactive work on compute nodes</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/interactiveJulia.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sessions-interactive-work-on-compute-nodes">
+<h1>Sessions: Interactive work on compute nodes<a class="headerlink" href="#sessions-interactive-work-on-compute-nodes" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How to reach the calculation nodes</p></li>
+<li><p>How do I proceed to work interactively?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Be able to start interactive sessions</p></li>
+<li><p>Be able to run Julia in Jupyter notebook</p></li>
+</ul>
+</div>
+<div class="admonition-compute-allocations-in-this-workshop admonition">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul class="simple">
+<li><p>Dardel: <code class="docutils literal notranslate"><span class="pre">naiss-2025-22-262</span></code></p></li>
+<li><p>Tetralith: <code class="docutils literal notranslate"><span class="pre">naiss-2025-22-262</span></code></p></li>
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">uppmax2025-2-272</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">hpc2n2025-062</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">lu2025-7-24</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-storage-space-for-this-workshop admonition">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul class="simple">
+<li><p>Dardel: <code class="docutils literal notranslate"><span class="pre">/cfs/klemming/projects/snic/r-matlab-julia-naiss</span></code></p></li>
+<li><p>Tetralith: <code class="docutils literal notranslate"><span class="pre">/proj/r-matlab-julia-naiss/users/</span></code></p></li>
+<li><p>Rackham: <code class="docutils literal notranslate"><span class="pre">/proj/r-py-jl-m-rackham</span></code></p></li>
+<li><p>Kebnekaise: <code class="docutils literal notranslate"><span class="pre">/proj/nobackup/r-py-jl-m</span></code></p></li>
+<li><p>Cosmos: <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">own</span> <span class="pre">good</span> <span class="pre">place&gt;</span></code></p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>It is possible to run Julia directly on the login (including ThinLinc) nodes.</p></li>
+<li><p>But this should <em>only</em> be done for shorter jobs or jobs that do not use a lot of resources, as the login nodes can otherwise become slow for all users.</p></li>
+<li><p>If you want to work interactively with your code or data, you should start an interactive session.</p></li>
+<li><p>If you rather will run a script which won’t use any interactive user input while running, you can instead start a batch job, see next session.</p></li>
+</ul>
+</div>
+<p>There are several ways to run Julia interactively</p>
+<ul class="simple">
+<li><p>Directly on the login nodes: <strong>only</strong> do this for short jobs that do not take a lot of resources</p></li>
+<li><p>As an interactive job on the computer nodes, launched via the batch system</p></li>
+<li><p>Jupyter notebooks on compute node.</p></li>
+</ul>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
+<p>In order to run interactively, you need to have compute nodes allocated to run on, and this is done through the Slurm system.</p>
+<p>Because you will have to wait until the nodes are allocated, and because you cannot know when this happens, this is not usually a recommended way to run Julia, but it is possible.</p>
+</section>
+<section id="the-different-way-hpc2n-uppmax-lunarc-and-nsc-provide-for-an-interactive-session">
+<h2>The different way HPC2N, UPPMAX, LUNARC, and NSC provide for an interactive session<a class="headerlink" href="#the-different-way-hpc2n-uppmax-lunarc-and-nsc-provide-for-an-interactive-session" title="Link to this heading"></a></h2>
+<p>Here we define an interactive session as a session with direct access to a compute node.
+Or alternatively: an interactive session is a session, in which there is no queue before a command is run on a compute node.</p>
+<p>This differs between HPC2N and UPPMAX :</p>
+<ul class="simple">
+<li><p>HPC2N: the user remains on a login node.
+All commands can be sent directly to the compute node using <code class="docutils literal notranslate"><span class="pre">srun</span></code></p></li>
+<li><p>UPPMAX: the user is actually on a computer node.
+Whatever command is done, it is run on the compute node</p></li>
+<li><p>LUNARC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node</p></li>
+<li><p>NSC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node  - - PDC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node</p></li>
+</ul>
+</section>
+<section id="start-an-interactive-session">
+<h2>Start an interactive session<a class="headerlink" href="#start-an-interactive-session" title="Link to this heading"></a></h2>
+<p>To start an interactive session,
+one needs to allocate resources on the cluster first.</p>
+<p>The command to request an interactive node differs per HPC cluster:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Cluster</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">interactive</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">salloc</span></code></p></th>
+<th class="head"><p>GfxLauncher</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HPC2N</p></td>
+<td><p>Works</p></td>
+<td><p>Recommended</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>UPPMAX</p></td>
+<td><p>Recommended</p></td>
+<td><p>Works</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>LUNARC</p></td>
+<td><p>Works</p></td>
+<td><p>N/A</p></td>
+<td><p>Recommended</p></td>
+</tr>
+<tr class="row-odd"><td><p>NSC</p></td>
+<td><p>Recommended</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PDC</p></td>
+<td><p>N/A</p></td>
+<td><p>Recommended</p></td>
+<td><p>Possible</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):</p>
+<img src="../_images/mermaid-b4cb46316fa24eacf67bdf4e88c0b0dd2085bec7.png" alt="flowchart TD
+  subgraph uppmax[UPPMAX]
+  subgraph login_node[Login nodes]
+    user_on_login_node[User on login node]
+  end
+
+  subgraph compute_node[Compute nodes]
+    user_on_computer_node[User on compute node]
+    job_on_compute_node[Job on compute node]
+  end
+  end
+
+  subgraph hpc2n[HPC2N]
+  subgraph hpc2n_login_node[Login nodes]
+    hpc2n_user_on_login_node[User on login node]
+    hpc2n_user_in_interactive_mode[User on login node in interactive session]
+  end
+
+  subgraph hpc2n_compute_node[Compute nodes]
+    hpcn2_job_on_compute_node[Job on compute node]
+  end
+  end
+
+  user_on_login_node --&gt; |interactive| user_on_computer_node
+  user_on_login_node --&gt; |sbatch| job_on_compute_node
+
+  user_on_computer_node --&gt; |exit| user_on_login_node
+  user_on_computer_node --&gt; |srun| user_on_computer_node
+
+
+  hpc2n_user_on_login_node --&gt; |salloc| hpc2n_user_in_interactive_mode
+  hpc2n_user_in_interactive_mode --&gt; |exit| hpc2n_user_on_login_node
+  hpc2n_user_on_login_node --&gt; |sbatch| hpcn2_job_on_compute_node
+  hpc2n_user_in_interactive_mode --&gt; |srun| hpcn2_job_on_compute_node" />
+<ul class="simple">
+<li><p>First, you make a request for resources with <code class="docutils literal notranslate"><span class="pre">interactive</span></code>/<code class="docutils literal notranslate"><span class="pre">salloc</span></code>, like this:</p></li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">NSC (interactive)</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">PDC (salloc)</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">UPPMAX (interactive)</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">LUNARC (interactive)</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">HPC2N (salloc)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>interactive<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-262
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>salloc<span class="w"> </span>-n<span class="w"> </span>&lt;ntasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-262<span class="w"> </span>-p<span class="w"> </span>&lt;partition&gt;
+</pre></div>
+</div>
+<p>Where &lt;partition&gt; is <code class="docutils literal notranslate"><span class="pre">shared</span></code>, <code class="docutils literal notranslate"><span class="pre">main</span></code> or <code class="docutils literal notranslate"><span class="pre">gpu</span></code></p>
+<ul>
+<li><p>We recommend <code class="docutils literal notranslate"><span class="pre">shared</span></code></p></li>
+<li><p>Wait until you get the node</p></li>
+<li><dl>
+<dt><a href="#id1"><span class="problematic" id="id2">``</span></a>ssh´´  to the node given and then work there</dt><dd><ul>
+<li><p>Example:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>nid001057
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>interactive<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>uppmax2025-2-272
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>interactive<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>lu2025-7-24
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>salloc<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>hpc2n2023-114
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ssh to the node given and then work there</p></li>
+</ul>
+</div></div>
+<p>where &lt;tasks&gt; is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project</p>
+<p>Then, when you get the allocation, do one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-n</span> <span class="pre">&lt;ntasks&gt;</span> <span class="pre">./program</span></code></p></li>
+<li><p>Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources.</p></li>
+<li><p>When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with <code class="docutils literal notranslate"><span class="pre">srun</span></code>.</p></li>
+<li><p>The commands you run with <code class="docutils literal notranslate"><span class="pre">srun</span></code> will then be executed on the resources your job has been allocated.</p></li>
+</ul>
+<div class="admonition-on-hpc2n admonition">
+<p class="admonition-title">On HPC2N</p>
+<ul class="simple">
+<li><p>If you do not preface with <code class="docutils literal notranslate"><span class="pre">srun</span></code> the command is run on the login node!</p></li>
+<li><p>You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.</p></li>
+<li><p>This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.</p></li>
+</ul>
+</div>
+<div class="admonition-documentation-at-the-centers admonition">
+<p class="admonition-title">Documentation at the centers</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/">Interactive allocation on PDC</a></p></li>
+<li><p><a class="reference external" href="https://www.nsc.liu.se/support/running-applications/#interactive-jobs">Interactive allocation on NSC</a></p></li>
+<li><p><a class="reference external" href="https://docs.uppmax.uu.se/cluster_guides/start_interactive_node/">Interactive allocation on UPPMAX</a></p></li>
+<li><p><a class="reference external" href="https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive">Interactive allocation on HPC2N</a></p></li>
+<li><p><a class="reference external" href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session">Interactive allocation on LUNARC</a></p></li>
+</ul>
+</div>
+<section id="example-demo">
+<h3>Example <strong>Demo</strong><a class="headerlink" href="#example-demo" title="Link to this heading"></a></h3>
+<div class="admonition-type-along type-along important admonition" id="type-along-0">
+<p class="admonition-title">Type-Along</p>
+<p><strong>Requesting 4 cores for 10 minutes, then running Julia</strong></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NSC</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-1-1-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-4" name="1-4" role="tab" tabindex="-1">LUNARC</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[sm_bcarl@tetralith3 ~]$ </span>interactive<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:30:0<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-262
+<span class="go">salloc: Pending job allocation 43071298</span>
+<span class="go">salloc: job 43071298 queued and waiting for resources</span>
+<span class="go">salloc: job 43071298 has been allocated resources</span>
+<span class="go">salloc: Granted job allocation 43071298</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes n760 are ready for job</span>
+
+<span class="gp">[bjornc@r483 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.10.2-bdist
+</pre></div>
+</div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[sm_bcarl@n760 ~]$ </span>srun<span class="w"> </span>hostname
+<span class="go">n760</span>
+<span class="go">n760</span>
+<span class="go">n760</span>
+<span class="go">n760</span>
+</pre></div>
+</div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">claremar@login1:~&gt; salloc --ntasks=4 -t 0:30:00 -p shared --qos=normal -A naiss2025-22-262</span>
+<span class="go">salloc: Pending job allocation 9102757</span>
+<span class="go">salloc: job 9102757 queued and waiting for resources</span>
+<span class="go">salloc: job 9102757 has been allocated resources</span>
+<span class="go">salloc: Granted job allocation 9102757</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes nid001057 are ready for job</span>
+
+<span class="go">claremar@login1:~&gt; module load PDC/23.12 julia/1.10.2-cpeGNU-23.12</span>
+</pre></div>
+</div>
+<p>Let us check that we actually run on the compute node. This has to be done differently</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">claremar@login1:~&gt; srun hostname</span>
+<span class="go">nid001064</span>
+<span class="go">nid001063</span>
+<span class="go">nid001064</span>
+<span class="go">nid001063</span>
+</pre></div>
+</div>
+<p>Now, it seems that Dardel allows for “hyperthreading”, that is 2 threads per core.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">claremar@login1:~&gt; srun -n 8 hostname</span>
+<span class="go">nid001064</span>
+<span class="go">nid001064</span>
+<span class="go">nid001063</span>
+<span class="go">nid001063</span>
+<span class="go">nid001064</span>
+<span class="go">nid001064</span>
+<span class="go">nid001063</span>
+<span class="go">nid001063</span>
+</pre></div>
+</div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@rackham2 ~]$ </span>interactive<span class="w"> </span>-A<span class="w"> </span>uppmax2025-2-272<span class="w"> </span>-p<span class="w"> </span>core<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:30:00
+<span class="go">You receive the high interactive priority.</span>
+<span class="go">There are free cores, so your job is expected to start at once.</span>
+
+<span class="go">Please, use no more than 6.4 GB of RAM.</span>
+
+<span class="go">Waiting for job 29556505 to start...</span>
+<span class="go">Starting job now -- you waited for 1 second.</span>
+
+<span class="gp">[bjornc@r483 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+</pre></div>
+</div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@r483 ~]$ </span>srun<span class="w"> </span>hostname
+<span class="go">r483.uppmax.uu.se</span>
+<span class="go">r483.uppmax.uu.se</span>
+<span class="go">r483.uppmax.uu.se</span>
+<span class="go">r483.uppmax.uu.se</span>
+</pre></div>
+</div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[~]$ </span>salloc<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--time<span class="o">=</span><span class="m">00</span>:30:00<span class="w"> </span>-A<span class="w"> </span>hpc2n2025-062
+<span class="go">salloc: Pending job allocation 20174806</span>
+<span class="go">salloc: job 20174806 queued and waiting for resources</span>
+<span class="go">salloc: job 20174806 has been allocated resources</span>
+<span class="go">salloc: Granted job allocation 20174806</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes b-cn0241 are ready for job</span>
+<span class="gp">[~]$ </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span>julia/1.8.5
+<span class="gp">[~]$</span>
+</pre></div>
+</div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[~]$ </span>srun<span class="w"> </span>hostname
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+<span class="go">b-cn0241.hpc2n.umu.se</span>
+</pre></div>
+</div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div><div aria-labelledby="tab-1-1-4" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-4" name="1-4" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@cosmos1 ~]$ </span>interactive<span class="w"> </span>-A<span class="w"> </span>lu2025-7-24<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span>:00
+<span class="go">Cluster name: COSMOS</span>
+<span class="go">Waiting for JOBID 930844 to start</span>
+
+<span class="gp">[bjornc@cn050 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</pre></div>
+</div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@cn050 ~]$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SLURM_CPUS_ON_NODE</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>We are, because the $SLURM* environment variable gves an output. Notice that we got 4, whihc is nt the size of the physcial node bt the allocation size.</p>
+</div></div>
+</div>
+<section id="running-a-script">
+<h4>Running a script<a class="headerlink" href="#running-a-script" title="Link to this heading"></a></h4>
+<dl>
+<dt><strong>The script</strong></dt><dd><p>Adding two numbers from user input (serial-sum.jl)</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># This program will add two numbers that are provided by the user</span>
+
+<span class="c"># Get the numbers</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="c"># Add the two numbers together</span>
+<span class="n">summ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The sum of the two numbers is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">summ</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p><strong>Running the script</strong></p>
+<ul>
+<li><p>Note that the commands are the same for both HPC2N and UPPMAX!</p>
+<blockquote>
+<div><p>Running a Julia script in the allocation we made further up. Notice that since we asked for 4 cores, the script is run 4 times, since it is a serial script</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[~]$ </span>srun<span class="w"> </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="go">The sum of the two numbers is: 7</span>
+<span class="gp">[~]$</span>
+</pre></div>
+</div>
+<p>Without the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command, Julia won’t understand that it can use several cores. Therefore the program is run only once.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+The<span class="w"> </span>sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>two<span class="w"> </span>numbers<span class="w"> </span>is:<span class="w"> </span><span class="m">7</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Running Julia REPL</strong></p>
+<ul class="simple">
+<li><p>First start Julia using the 4 cores and check if workers are available</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">4</span>
+</pre></div>
+</div>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">nworkers</span><span class="p">()</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Exit Julia</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">CTRL</span><span class="o">-</span><span class="n">D</span><span class="o">&gt;</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p><strong>Exit</strong></p>
+<p>When you have finished using the allocation, either wait for it to end, or close it with <code class="docutils literal notranslate"><span class="pre">exit</span></code></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NSC</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">PDC</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-2-2-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-3" name="2-3" role="tab" tabindex="-1">HPC2N</button><button aria-controls="panel-2-2-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-4" name="2-4" role="tab" tabindex="-1">LUNARC</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[sm_bcarl@n134 ~]$ </span><span class="nb">exit</span>
+<span class="go">logout</span>
+<span class="go">srun: error: n134: task 0: Exited with exit code 130</span>
+<span class="go">srun: Terminating StepId=43071803.interactive</span>
+<span class="go">salloc: Relinquishing job allocation 43071803</span>
+<span class="go">salloc: Job allocation 43071803 has been revoked.</span>
+<span class="gp">[sm_bcarl@tetralith3 ~]$</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">claremar@login1:~&gt; exit</span>
+<span class="go">exit</span>
+<span class="go">salloc: Relinquishing job allocation 9103056</span>
+<span class="go">claremar@login1:~&gt;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[bjornc@r483 ~]$ </span><span class="nb">exit</span>
+
+<span class="go">exit</span>
+<span class="go">[screen is terminating]</span>
+<span class="go">Connection to r483 closed.</span>
+
+<span class="gp">[bjornc@rackham2 ~]$</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-3" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-3" name="2-3" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+<span class="nb">exit</span>
+salloc:<span class="w"> </span>Relinquishing<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">20174806</span>
+salloc:<span class="w"> </span>Job<span class="w"> </span>allocation<span class="w"> </span><span class="m">20174806</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>revoked.
+<span class="o">[</span>~<span class="o">]</span>$
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-4" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-4" name="2-4" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+<span class="nb">exit</span>
+<span class="o">[</span>screen<span class="w"> </span>is<span class="w"> </span>terminating<span class="o">]</span>
+Connection<span class="w"> </span>to<span class="w"> </span>cn050<span class="w"> </span>closed.
+
+<span class="o">[</span>~<span class="o">]</span>$
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+</section>
+<section id="running-julia-in-jupyter">
+<h2>Running Julia in Jupyter<a class="headerlink" href="#running-julia-in-jupyter" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Like for Python it is possible to run Julia in Jupyter, i.e. in a web interface with possibility of inline figures and debugging.</p></li>
+<li><p>For this you need the <code class="docutils literal notranslate"><span class="pre">IJulia</span> <span class="pre">package</span></code> that you may have to install yourself.</p></li>
+<li><p>An easy way to do this is to load a python or Jupyter  module as well.</p></li>
+<li><p>For more interactiveness you can run IJulia which is Julia in Jupyter.</p></li>
+<li><p>You benefit a lot if you are using ThinLinc</p></li>
+</ul>
+<section id="installation-step">
+<h3>Installation step<a class="headerlink" href="#installation-step" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>This is done only once, but for each combination of Julia you would like to use.</p></li>
+<li><p>It may take 5-10 minutes or so.</p></li>
+<li><p>This you can do in an ordinary terminal (book an interactive session, for safety)</p></li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">NSC</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">PDC (not fully tested successfully, but this step works)</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-3-3-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-3" name="3-3" role="tab" tabindex="-1">HPC2N &amp; LUNARC</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>Python/3.11.5-env-hpc1-gcc-2023b-eb
+<span class="gp">$ </span>ml<span class="w"> </span>julia/1.10.2-bdist
+<span class="gp">$ </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">4</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In Julia:</p>
+<blockquote>
+<div><div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;IJulia&quot;</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&quot;IJulia&quot;</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">IJulia</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">notebook</span><span class="p">(</span><span class="n">dir</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="n">detached</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+<span class="gp">$ </span>ml<span class="w"> </span>cray-python/3.11.5
+<span class="gp">$ </span>julia
+</pre></div>
+</div>
+</div></blockquote>
+<p>In Julia:</p>
+<blockquote>
+<div><div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;IJulia&quot;</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&quot;IJulia&quot;</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">IJulia</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">notebook</span><span class="p">(</span><span class="n">dir</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="n">detached</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The last command may not be able to start notebook, see further down how to do.</p></li>
+</ul>
+</div></blockquote>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>python/3.9.5
+<span class="gp">$ </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">4</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In Julia:</p>
+<blockquote>
+<div><div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;IJulia&quot;</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&quot;IJulia&quot;</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">IJulia</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">notebook</span><span class="p">(</span><span class="n">dir</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="n">detached</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div><div aria-labelledby="tab-3-3-3" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-3" name="3-3" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Like for Python it is possible to run a Julia in a Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the <em>JupyterLab</em> and <em>Julia</em> modules. In shell:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>GCCcore/13.2.0<span class="w">  </span>JupyterLab/4.2.0
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+<span class="gp">$ </span>julia
+</pre></div>
+</div>
+<p>In Julia <cite>package</cite> mode:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="go">(v1.8) pkg&gt;add IJulia</span>
+<span class="go">(v1.8) pkg&gt;build IJulia</span>
+</pre></div>
+</div>
+</div></div>
+<p>In some centres (UPPMAX and NSC) this will start a Firefox session with the Jupyter notebook interface.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../_images/Jupyter_julia.png" src="../_images/Jupyter_julia.png" />
+</figure>
+</div></blockquote>
+<p>If not, see below.</p>
+<p>In any case, IJulia is now installed!</p>
+</section>
+<section id="starting-a-jupyter-session-with-julia-kernel">
+<h3>Starting a Jupyter session with Julia Kernel<a class="headerlink" href="#starting-a-jupyter-session-with-julia-kernel" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>You can start up Julia in Jupyter quickly, once <code class="docutils literal notranslate"><span class="pre">IJulia</span></code> is installed for the combinations of Julia and Python/Jupyter you want to use.</p></li>
+<li><dl class="simple">
+<dt>There are two ways</dt><dd><ul>
+<li><p>starting from within julia REPL (not for HPC2n or PDC)</p></li>
+<li><p>starting jupyter session from terminal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="from-julia-repl">
+<h4>From Julia REPL<a class="headerlink" href="#from-julia-repl" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>This may not always work</p></li>
+</ul>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">IJulia</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">notebook</span><span class="p">(</span><span class="n">dir</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="n">detached</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">notebook(dir=&quot;&lt;/path/to/work/dir/&gt;&quot;,</span> <span class="pre">detached=true)</span></code> the notebook will not be killed when you exit your REPL Julia session in the terminal.</p>
+</div>
+</section>
+<section id="jupyter-session-from-terminal">
+<h4>Jupyter session from terminal<a class="headerlink" href="#jupyter-session-from-terminal" title="Link to this heading"></a></h4>
+<section id="principle">
+<h5>Principle<a class="headerlink" href="#principle" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p>Load julia module (and prerequisites)</p></li>
+<li><p>Load Python or Jupyter module (and prerequisites) that is compatible with the python version used when building IJulia in the previous step</p></li>
+</ol>
+<div class="admonition-running-ijulia-in-jupyter-on-compute-nodes admonition">
+<p class="admonition-title">Running IJulia in Jupyter on compute nodes</p>
+<ul class="simple">
+<li><p>Jupyter is rather slow graphically on the compute nodes.</p></li>
+<li><dl class="simple">
+<dt>This can be fixed by</dt><dd><ul>
+<li><p>starting the jupyter server on the compute node, copying the URL containing the.</p></li>
+<li><p>then starting a web browser in ThinLinc and open the URL copied in previous step</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>One can even use the home computer, see <a class="reference external" href="https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter">https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter</a></p></li>
+</ul>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">NSC</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">PDC (not fully tested successfully)</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">UPPMAX</button><button aria-controls="panel-4-4-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-3" name="4-3" role="tab" tabindex="-1">LUNARC</button><button aria-controls="panel-4-4-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-4" name="4-4" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p>First start an interactive session</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>Python/3.11.5-env-hpc1-gcc-2023b-eb
+<span class="gp">$ </span>ml<span class="w"> </span>julia/1.10.2-bdist
+<span class="gp">$ </span>jupyter-lab<span class="w"> </span>--ip<span class="o">=</span><span class="nv">$HOSTNAME</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Start the browser from the ThinLinc menu.</p></li>
+<li><p>Copy-paste the address line containing the node name from the jupyter output</p></li>
+<li><p>You can start the Julia kernel in the upper right corner!</p></li>
+</ul>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Since Jupyter and a web browser are missing on the compute nodes, we need to find another solution here.</p></li>
+<li><p>Below are the steps that would be nice if we got working!</p></li>
+</ul>
+<p>First start an interactive session</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12<span class="w"> </span>cray-python/3.11.5
+<span class="gp">$ </span>jupyter-lab<span class="w"> </span>--ip<span class="o">=</span><span class="nv">$HOSTNAME</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Start the browser from the ThinLinc menu.</p></li>
+<li><p>Copy-paste the address line containing the node name from the jupyter output</p></li>
+<li><p>You can start the Julia kernel in the upper right corner!</p></li>
+</ul>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>python/3.9.5
+<span class="gp">$ </span>jupyter-lab<span class="w"> </span>--ip<span class="o">=</span><span class="nv">$HOSTNAME</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>Start the browser from the ThinLinc menu.</p></li>
+<li><p>Copy-paste the address line containing the node name from the jupyter output</p></li>
+<li><p>You can start the Julia kernel in the upper right corner!</p></li>
+</ul>
+</div><div aria-labelledby="tab-4-4-3" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-3" name="4-3" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>GCCcore/13.2.0<span class="w">  </span>JupyterLab/4.2.0
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+<span class="gp">$ </span>jupyter-lab<span class="w"> </span>--ip<span class="o">=</span><span class="nv">$HOSTNAME</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Start the browser from the ThinLinc menu.</p></li>
+<li><p>Copy-paste the address line containing the node name from the jupyter output</p></li>
+<li><p>You can start the Julia kernel in the upper right corner!</p></li>
+</ul>
+</div><div aria-labelledby="tab-4-4-4" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-4" name="4-4" role="tabpanel" tabindex="0"><p>Write a bash script similar  to this (call it <cite>job_jupyter.sh</cite>, for instance):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Here you should put your own project id</span>
+<span class="c1">#SBATCH -A hpc2n2025-062</span>
+<span class="c1"># This example asks for 1 core</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1"># Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1"># Clear the environment from any previously loaded modules</span>
+module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="c1"># Load the module environment suitable for the job</span>
+module<span class="w"> </span>load<span class="w"> </span>GCCcore/13.2.0<span class="w">  </span>JupyterLab/4.2.0
+<span class="c1"># Load the Julia module</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+<span class="c1"># Start JupyterLab</span>
+jupyter<span class="w"> </span>lab<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="w"> </span><span class="k">$(</span>hostname<span class="k">)</span>
+</pre></div>
+</div>
+<p>Then, in the output file <em>slurm-&lt;jobID&gt;.out</em> file, copy the url that starts with <em>http://b-cn1403.hpc2n.umu.se:8888/lab</em> and
+paste it in a Firefox browser on Kebnekaise. When the Jupyter notebook interface starts, you can choose the Julia
+version from the module you loaded (in this case 1.8.5).</p>
+<div class="admonition-running-julia-in-jupyter-on-compute-nodes-at-hpc2n admonition">
+<p class="admonition-title">Running Julia in Jupyter on compute nodes at HPC2N</p>
+<ul class="simple">
+<li><p>On Kebnekaise, you can run Jupyter notebooks with Julia kernels by using batch scripts</p></li>
+<li><p><a class="reference external" href="https://docs.hpc2n.umu.se/tutorials/jupyter/#jupyterlab__with__julia">https://docs.hpc2n.umu.se/tutorials/jupyter/#jupyterlab__with__julia</a></p></li>
+</ul>
+</div>
+</div></div>
+</section>
+</section>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-try-to-run-scripts-from-an-interactive-session exercise important admonition" id="exercise-0">
+<p class="admonition-title">1. Try to run scripts from an interactive session</p>
+<ul class="simple">
+<li><p>Try out one or two of the scripts from the exercise folder <code class="docutils literal notranslate"><span class="pre">batchJulia</span></code>.</p></li>
+<li><dl class="simple">
+<dt>First create an interactive session with the right Slurm commands to the <code class="docutils literal notranslate"><span class="pre">interactive</span></code>/<code class="docutils literal notranslate"><span class="pre">salloc</span></code> command.</dt><dd><ul>
+<li><p>use the commands from the batch job script belonging to the julia script at <a class="reference external" href="https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia.html#examples-of-batch-scripts-for-julia">examples of batch scripts for julia</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li><p>Start an interactive session on a calculation node by a SLURM allocation</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>At HPC2N: <code class="docutils literal notranslate"><span class="pre">salloc</span></code> …</p></li>
+<li><p>At UPPMAX/LUNARC: <code class="docutils literal notranslate"><span class="pre">interactive</span></code> …</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Follow the same procedure as usual by loading the Julia module and possible prerequisites.</p></li>
+<li><p>Run Julia in Jupyter lab/notebook</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Procedure is to use the IJulia package and start a jupyter notebook from the julia command line.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="batchJulia.html" class="btn btn-neutral float-left" title="Running Julia in batch mode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="summaryJulia.html" class="btn btn-neutral float-right" title="Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
