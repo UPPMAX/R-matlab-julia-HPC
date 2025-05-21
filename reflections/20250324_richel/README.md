@@ -4,7 +4,7 @@
 - Date: 2025-03-24
 - Language: R
 - [Lesson plans](../../lesson_plans/20250324_richel/README.md)
-- [Evaluation](../../evaluations/20250324/README.md)
+- [Evaluation](../../evaluations/20250324_r/README.md)
 - Registrations: 33
 - Participants: 12 (36% of registrations shows up)
 
