@@ -1,17 +1,14 @@
 #!/bin/env Rscript
 
 read_r_confidences <- function() {
-  readr::read_csv("../20250324/average_confidence_per_question.csv", show_col_types = FALSE)
+  readr::read_csv("../20250324_r/average_confidence_per_question.csv", show_col_types = FALSE)
 }
 read_matlab_confidences <- function() {
-  readr::read_csv("../20250325/average_confidences.csv", show_col_types = FALSE)
+  readr::read_csv("../20250325_matlab/average_confidences.csv", show_col_types = FALSE)
 }
 read_julia_confidences <- function() {
-  readr::read_csv("../20250326/average_confidences.csv", show_col_types = FALSE)
+  readr::read_csv("../20250326_julia/average_confidences.csv", show_col_types = FALSE)
 }
-read_matlab_confidences()
-read_julia_confidences()
-
 get_r_condidences <- function() {
   t <- read_r_confidences()
   names(t) <- c("learning_outcomes", "average_confidence")
@@ -39,14 +36,17 @@ get_condidences <- function() {
 }
 
 t <- get_condidences()
+average_average_confidence <- mean(t$average_confidence)
+t$average_confidence <- round(t$average_confidence, digits = 2)
+t <- t |> dplyr::arrange(average_confidence)
 t$learning_outcomes <- as.factor(t$learning_outcomes)
 t$learning_outcomes <- reorder(
   x = t$learning_outcomes, 
   X = order(t$average_confidence),
   decreasing = TRUE
 )
+readr::write_csv(t, "confidences_course.csv")
 
-average_average_confidence <- mean(t$average_confidence)
 
 ggplot2::ggplot(t, 
   ggplot2::aes(
