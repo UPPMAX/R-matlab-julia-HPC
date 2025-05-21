@@ -168,9 +168,9 @@ Remove, in order of my preference:
 
 I will suggest this in a meeting:
 
-- [ ] Suggest to remove 'Machine learning'
-- [ ] Suggest to remove 'Parallel'
-- [ ] Suggest to remove 'Isolated environments'
+- [x] Suggest to remove 'Machine learning'
+- [x] Suggest to remove 'Parallel'
+- [x] Suggest to remove 'Isolated environments'
 
 My favorite schedule
 
@@ -381,13 +381,12 @@ Nice.
 
 I agree. Not my session.
 
-
 ## To do
 
-- [ ] Suggest to remove 'Machine learning'
-- [ ] Suggest to remove 'Parallel'
-- [ ] Suggest to remove 'Isolated environments'
-- [ ] Suggest the my favorite schedule
+- [x] Suggest to remove 'Machine learning'
+- [x] Suggest to remove 'Parallel'
+- [x] Suggest to remove 'Isolated environments'
+- [x] Suggest my favorite schedule
 
 ```bash
 +-------+------------------------------+--------------+
@@ -432,6 +431,6 @@ I agree. Not my session.
 ```
 
 - [x] Link to the NAISS file transfer course in the course material
-- [ ] Suggest to make even clearer that getting an account takes days
+- [x] Suggest to make even clearer that getting an account takes days
 
 
