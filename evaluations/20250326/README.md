@@ -6,23 +6,29 @@
 - Participants: 4
 - Number of evaluations filled in: 3 (75% response rate)
 - Average course satisfaction: 8.3/10.0
+- [success_score.txt](success_score.txt): 82%
+- Analysis script: [analyse.R](analyse.R)
+- Average confidence per question as a table: [average_confidences.csv](average_confidences.csv)
 
-![Results 1](1.png)
+![Course rating](course_rating.png)
+![Would recommend course](recommend.png)
 
-## Question 2: What do you think about the pace of teaching overall?
+![All confidences](all_confidences.png)
+![Average confidence per question](average_confidences_per_question.png)
+![Confidences per question](confidences_per_question.png)
+
+## [Question 2: What do you think about the pace of teaching overall?](pace.txt)
 
 - teaching was excellent
 - It was good. However, some parts were redundant if you hade attended another day.
 - ok
 
-![Results 2](2.png)
-
-## Question 5: Which future training topics would you like to be provided by the training host(s)?
+## [Question 5: Which future training topics would you like to be provided by the training host(s)?](future_topics.txt)
 
 - machine learning/deep learning/ai-releated training
 - A more detailed overview of how to setup everything to work with the gpus.
 
-## Question 6: Do you have any additional comments?
+## [Question 6: Do you have any additional comments?](comments.txt)
 
 Suggestions/ideas:
 
@@ -35,4 +41,4 @@ Suggestions/ideas:
 - Hands-ons and demonstrations: too few, too many, adequate amount?
 - Comments about specific sessions? Good/bad?
 
-- **NO ANSWERS**
+[None]
