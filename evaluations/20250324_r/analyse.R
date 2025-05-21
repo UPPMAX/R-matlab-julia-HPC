@@ -32,22 +32,34 @@ testthat::expect_equal(
 t$sum <- (1 * t$n_one) + (2 * t$n_two) + (3 * t$n_three) + (4 * t$n_four)
 
 t$success_score <- round(100 * t$sum / max_total_score)
-t$average_confidence <- t$success_score / 20
+t$average_confidence <- round(5 * t$sum / max_total_score, digits = 2)
 
 readr::write_csv(
   t |> dplyr::select(learning_outcome, average_confidence),
   file = "average_confidence_per_question.csv"
 )
 
+t <- t |> dplyr::arrange(average_confidence)
+t$learning_outcome <- as.factor(t$learning_outcome)
+t$learning_outcome <- reorder(
+  x = t$learning_outcome, 
+  X = order(t$average_confidence),
+  decreasing = TRUE
+)
+
+average_average_confidence <- round(mean(t$average_confidence), digits = 2)
+
 ggplot2::ggplot(
   t, ggplot2::aes(y = learning_outcome, x = average_confidence)
 ) + ggplot2::geom_col() +
+  ggplot2::geom_vline(xintercept = average_average_confidence, lty = "dashed") +
   ggplot2::scale_x_continuous(limits = c(0, 5)) +
   ggplot2::labs(
     title = "Learning outcomes for R day at 2025-03-24",
     caption = paste0(
       "Number of learners: ", n_learners, ", ",
-      "Success score: ", round(mean(t$success_score))
+      "Success score: ", round(mean(t$success_score)), " ",
+      "Dashed line: average (", average_average_confidence, ")"
     )
   )
 
