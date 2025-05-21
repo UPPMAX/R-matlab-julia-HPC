@@ -1,12 +1,15 @@
 #!/bin/env Rscript
 
-t <- readr::read_csv("20250325_matlab.xlsx")
+read_data <- function() {
+  readr::read_csv("20250325_matlab.csv", show_col_types = FALSE)
+}
+
+t <- read_data()
 
 #####################################################
 # Course rating
 #####################################################
-
-ratings <- t |> dplyr::select("Overall, how would you rate this training event?")
+ratings <- t |> dplyr::select("Overall, how would you rate today's training event?")
 names(ratings) <- "rating"
 ggplot2::ggplot(
   ratings, 
@@ -41,7 +44,7 @@ readr::write_lines(pace$pace, "pace.txt")
 # Recommend
 #####################################################
 
-recommend <- t |> dplyr::select(starts_with("Would you recommend this course to your colleagues"))
+recommend <- t |> dplyr::select(starts_with("Would you recommend this course to someone else?"))
 names(recommend) <- "recommend"
 recommend$recommend <- as.factor(recommend$recommend)
 
@@ -84,14 +87,13 @@ readr::write_lines(comments$comment, "comments.txt")
 #####################################################
 # Confidences
 #####################################################
-
-t <- readr::read_csv("evaluation_20250425_day_2.csv")
+t <- read_data()
 
 # Select confidence questions
 t <- t |> dplyr::select(dplyr::starts_with("I "))
 
 t <- t |> 
-  dplyr::mutate_all(~ replace(., . == "I can absolutely do this!", 5)) |>
+  dplyr::mutate_all(~ replace(., . == "I absolutely can do this!", 5)) |>
   dplyr::mutate_all(~ replace(., . == "I have good confidence I can do this", 4)) |>
   dplyr::mutate_all(~ replace(., . == "I have some confidence I can do this", 3)) |>
   dplyr::mutate_all(~ replace(., . == "I have low confidence I can do this", 2)) |>
