@@ -5,6 +5,11 @@ Pre-requirements
 
     The goal of this page to make sure you can follow the course.
 
+.. warning:: Start preparing early
+
+    The process of getting an account can take several days,
+    due to some waiting steps.
+
 These are the things you need to follow the course:
 
 - You have a basic understanding of what an HPC cluster is.

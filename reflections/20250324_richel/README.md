@@ -337,7 +337,7 @@ Well done course coordinator!
 
 Consider:
 
-- [ ] Suggest to make even clearer that getting an account takes days
+- [x] Suggest to make even clearer that getting an account takes days
 
 >  - I really appreciate the amount of hands-on demonstrations:
 >    they were great. 
