@@ -1,10 +1,10 @@
-#!/bin/bash            
-#SBATCH -A hpc2n2023-110     # your project_ID       
-#SBATCH -J job-serial        # name of the job         
-#SBATCH -n 1                 # nr. tasks  
+#!/bin/bash
+#SBATCH -A hpc2n2023-110     # your project_ID
+#SBATCH -J job-serial        # name of the job
+#SBATCH -n 1                 # nr. tasks
 #SBATCH --time=00:03:00      # requested time
 #SBATCH --error=job.%J.err   # error file
-#SBATCH --output=job.%J.out  # output file  
+#SBATCH --output=job.%J.out  # output file
 #SBATCH --gres=gpu:k80:1     # 1 GPU K80 card
 
 ml purge  > /dev/null 2>&1

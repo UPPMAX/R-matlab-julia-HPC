@@ -50,7 +50,7 @@ Time  | Topic                   | State
 10:00 | Introduction            |.
 10:10 | Syllabus                |.
 10:20 | Load modules and run    |.
-14:30 | Simultaneous session    |. 
+14:30 | Simultaneous session    |.
 16:00 | Summary and evaluation  |.
 
 - [ ] Next course iteration: make 'Load and run R' point to documentation more
@@ -79,10 +79,10 @@ Clusters used in the course (as taken from 'The important info about
 the course' document):
 
 – COSMOS
-- Dardel 
-- Kebnekaise 
+- Dardel
+- Kebnekaise
 - Rackham
-- Tetralith 
+- Tetralith
 
 
 

@@ -18,13 +18,13 @@ flowchart TD
       rstudio_module[5.RStudio module]
     end
 
-  
+
     r_language --> |has| r_dev
-    r_language --> |is| interpreted_language 
+    r_language --> |is| interpreted_language
     r_language --> |uses| r_packages
     interpreted_language --> |done by| r_interpreter
     r_packages --> |maintained by| cran
-    r_packages --> |isolated by|r_virtual_environments 
+    r_packages --> |isolated by|r_virtual_environments
     r_language --> |allows| parallel_and_multithreaded_functions
     r_language --> |provides for| ml
     r_dev --> |commonly done in| rstudio

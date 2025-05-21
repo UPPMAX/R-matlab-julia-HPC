@@ -33,30 +33,30 @@ in with the others. This iteration, my material was 100% part of the
 course website and I removed the presentation slides from the
 previous iteration.
 
-Although I did invest 10 + 2 + 16 + 2 = 30 hours, 
+Although I did invest 10 + 2 + 16 + 2 = 30 hours,
 with little sleep, the day of teaching went fine.
 
-The most obvious problem during teaching 
+The most obvious problem during teaching
 was that Zoom did not allow me to speak
-or show video, in the main room, 
+or show video, in the main room,
 when breakout rooms are active.
 
-I think we dealt with this technical problem 
+I think we dealt with this technical problem
 as good as we reasonably could.
 
 However, due to it, I cannot properly evaluate my own lessons.
 I was annoyed with being this blind as a teacher:
-how can I know if the learners understood, 
+how can I know if the learners understood,
 if I cannot see their exercises?
 Also, I did not do a half-way-during-the-exercise feedback,
 nor a nearly-the-end-of-the-hour feedback.
-And I was unable to see if the exercise lengths 
+And I was unable to see if the exercise lengths
 matched the time allocated.
 
 There were some mistakes:
 
 - [Fixed] The exercises on venv failed due to the install of a package
-  in the session before. Next time, ruthlessly 
+  in the session before. Next time, ruthlessly
   delete the `/home/richel/.local/lib/python3.11` folder.
   I've added this to the course material
 - I could not demo going into the remote desktop website of Rackham.
@@ -77,7 +77,7 @@ how to determine you fulfilled all pre-requirements.
 ### Interactive
 
 The session on starting an interactive session feels too fancy twice:
-- create an interactive session 
+- create an interactive session
   - with 1 node
   - with more nodes <--- feels beyond the teaching goals
 - run 2 Python scripts, 1 of which is unsuitable for an interactive session
@@ -126,7 +126,7 @@ There was no time for an exercise.
 
 ### Parallel programming
 
-I feel that making a script suitable (with `**FIX**` in it) 
+I feel that making a script suitable (with `**FIX**` in it)
 for a parallel run is at the 'Synthesis' level of Blooms taxonomy.
 I feel that some levels lower, e.g. 'Apply' with a step-by-step
 guide would be more suitable.
@@ -213,9 +213,9 @@ Misc:
 
 The learners again like the structure of the course and the course material.
 
-Maybe they do like the 
+Maybe they do like the
 my teaching ('The part before lunch')
-and my exercises even 
+and my exercises even
 better ('basic exercises', 'hands on exercises').
 
 I am happy one learner mentioned 'positive supportive and friendly environment'!
@@ -234,14 +234,14 @@ As all sentences are unique, such duplicates can be spotted.
 
 - a bit more time dedicated to Jupyter
 - The time dedicated for the interactive session/jupyter was not sufficient to try ourselves.
-- The last part on Parallel and multi-threaded functions was a bit fast due to time which happens of course but it would be good to learn more on that. 
-materials 
+- The last part on Parallel and multi-threaded functions was a bit fast due to time which happens of course but it would be good to learn more on that.
+materials
 - The after lunch section was really difficult for me to follow, I feel like the lecturers didn't stop long enough on each topic to explain it properly and I only got a partial understanding
 - Maybe a better distribution of time between exercises would benefit. Spend less time on the beginning and give more time to run examples on the interactive and parallel parts. Because I think this is the part were we need more help.
 - the 14:00 to 15:00 session was a bit hard to keep up with.
 - Time per exercise can be optimised. More time for python jupyter and GPU exercises will be good for us.
 - Time organization: morning pace was slow compared to the afternoon one. Maybe more time of coding together with the lecturer, especially for the second part of the program (more complex concepts of batch work and interactive work)
-- The first part was a good pace for me, but the second part was more complicated and I did not have time to follow and do the exercises. Maybe the second part could be done in another session, because it is the most important part to take use the resources and take advantage of that. However, I got many tools to start my own projects. 
+- The first part was a good pace for me, but the second part was more complicated and I did not have time to follow and do the exercises. Maybe the second part could be done in another session, because it is the most important part to take use the resources and take advantage of that. However, I got many tools to start my own projects.
 
 'The first part' was partially my part :-)
 
@@ -264,7 +264,7 @@ recommended by the literature. I would correct this two days later,
 let's see if that made it into the feedback.
 
 - more and slower code-alongs
-- The pace was relatively slow, which was great. as then also those how have very limited knowledge can also keep up the pace. However, in the afternoon it clearly went more faster. Maybe speed up in the morning a bit to have more time practicing actually submitting the jobs? As that was my main motivation for this, I basically skipped the very last lecture about parallelization and instead coded to make submitting batch jobs work. 
+- The pace was relatively slow, which was great. as then also those how have very limited knowledge can also keep up the pace. However, in the afternoon it clearly went more faster. Maybe speed up in the morning a bit to have more time practicing actually submitting the jobs? As that was my main motivation for this, I basically skipped the very last lecture about parallelization and instead coded to make submitting batch jobs work.
 
 ### Materials
 
@@ -275,12 +275,12 @@ should get accustomed to the documentation of his/her HPC center.
 
 ### Other
 
-- If prerequisite is well informed, such as little knowledge on Linus? it would have been better. 
+- If prerequisite is well informed, such as little knowledge on Linus? it would have been better.
 
 ### Reflection
 
 Most of the negative feedback was about the high pace
-in general, yet mostly in the afternoon. 
+in general, yet mostly in the afternoon.
 I feel I was not the reason for that feedback.
 
 I did get negative feedback on:
@@ -291,14 +291,14 @@ I did get negative feedback on:
 Although I agree with the feedback, I will not change this,
 as there are good reasons to do so.
 
-## Length of teaching today was 
+## Length of teaching today was
 
 - Too short: 8x
 - Adequate: 16x
 - Too long: 1x
 
 I think learner-centered teaching would solve this,
-i.e. by only teaching that amount of concepts 
+i.e. by only teaching that amount of concepts
 that are confirmed to be understood by an exercise.
 
 
@@ -327,12 +327,12 @@ as -by definition- one follows the pace of the learners.
 - Adequate: 17x
 - Too few: 7x
 
-I think this is a nonsense questions: either we do 
+I think this is a nonsense questions: either we do
 exercises (i.e. active teaching) or we do demonstrations (i.e. passive teaching).
 Only from this question, one would have idea what was too few off:
 only the written texts earlier indicates that there should be more exercises.
 
-## Hands-on exercises and demonstrations were well prepared 
+## Hands-on exercises and demonstrations were well prepared
 
 - Agree completely: 7x
 - Agree: 13x
@@ -361,17 +361,17 @@ Average: `((4 * 10) + (5 * 9) + (4 * 8) + (8 * 7) + (3 * 6)) / 24` = 8.0
 - Yes: 18x
 - Not sure: 7x
 
-## Do you have any additional comments? 
+## Do you have any additional comments?
 
 ### Thanks
 
 - Thanks for the course, it was very useful and I feel encouraged to start my project.
-- Overall a great introductory course to get grasp of the basics in a positive and supportive environment with knowledgeable instructors. 
+- Overall a great introductory course to get grasp of the basics in a positive and supportive environment with knowledgeable instructors.
 - Thanks for your lecture and your time.
 
 ### Misc
 
-- Can we have something like BYOC and you can show us how to use it to asses time and core used using library multiprocess, please? 
+- Can we have something like BYOC and you can show us how to use it to asses time and core used using library multiprocess, please?
 - A bit too uneven speed with too low in the morning and too high in the afternoon or at least too little time in the afternoon to go through everything
 
 Agreed, I think learning-centered teaching would solve this.
@@ -389,7 +389,7 @@ Agreed.
 
 ### Zoom room
 
-- More time to exercises. and the zoom problems made it confusing. I know it's not your fault. Maybe don't use breakout rooms so  much , especially when you know there are problems? I have never been in a course where it works well to go back and forth between breakout rooms. Just use them as backup if anyone need to get private help. 
+- More time to exercises. and the zoom problems made it confusing. I know it's not your fault. Maybe don't use breakout rooms so  much , especially when you know there are problems? I have never been in a course where it works well to go back and forth between breakout rooms. Just use them as backup if anyone need to get private help.
 
 I agree that the technical problems are annoying. The Zoom room use,
 i.e. of having a silent room, I now think it is a bad idea.
@@ -397,7 +397,7 @@ Instead, doing Pair-Share-Pound in little groups would make it work.
 
 ### Exercises
 
-- More time to exercises. and the zoom problems made it confusing. I know it's not your fault. Maybe don't use breakout rooms so  much , especially when you know there are problems? I have never been in a course where it works well to go back and forth between breakout rooms. Just use them as backup if anyone need to get private help. 
+- More time to exercises. and the zoom problems made it confusing. I know it's not your fault. Maybe don't use breakout rooms so  much , especially when you know there are problems? I have never been in a course where it works well to go back and forth between breakout rooms. Just use them as backup if anyone need to get private help.
 - i really need more time for exercises
 
 ### Reflection
@@ -405,7 +405,7 @@ Instead, doing Pair-Share-Pound in little groups would make it work.
 I agree that the Zoom setup could be improved, next to the technical problems.
 
 I think the evaluation questions are mostly useless for me,
-as judged by me thinking about them. 
+as judged by me thinking about them.
 
 My dream evaluation would be:
 
@@ -416,7 +416,7 @@ My dream evaluation would be:
 
 ### Course-wide interpretation
 
-I think the general course advice would be: talk/demonstrate less, 
+I think the general course advice would be: talk/demonstrate less,
 do more exercises instead.
 
 

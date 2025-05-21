@@ -8,25 +8,25 @@
 
 This is the schedule of that day:
 
- Time  | Topic                  | Teacher(s)      
+ Time  | Topic                  | Teacher(s)
 -------|------------------------|------------------
- 9:00  | (optional) First login | BB + PO + RB    
- 9:45  | Break                  | .               
- 10:00 | Introduction           | RB              
- 10:10 | Syllabus               | RB              
- 10:20 | Load modules and run   | RB              
- 10:45 | Break                  | .               
- 11:00 | Packages               | BB              
- 11:30 | Isolated environments  | BB              
- 12:00 | Lunch                  | .               
- 13:00 | Batch                  | BB              
- 13:30 | Parallel               | PO              
- 14:15 | Break                  | .               
- 14:30 | Simultaneous session   | PO \* RB \* RP  
- 15:15 | Break                  | .               
- 15:30 | Machine learning       | BB or PO        
- 16:00 | Summary and evaluation | RB              
- 16:15 | Done                   | .               
+ 9:00  | (optional) First login | BB + PO + RB
+ 9:45  | Break                  | .
+ 10:00 | Introduction           | RB
+ 10:10 | Syllabus               | RB
+ 10:20 | Load modules and run   | RB
+ 10:45 | Break                  | .
+ 11:00 | Packages               | BB
+ 11:30 | Isolated environments  | BB
+ 12:00 | Lunch                  | .
+ 13:00 | Batch                  | BB
+ 13:30 | Parallel               | PO
+ 14:15 | Break                  | .
+ 14:30 | Simultaneous session   | PO \* RB \* RP
+ 15:15 | Break                  | .
+ 15:30 | Machine learning       | BB or PO
+ 16:00 | Summary and evaluation | RB
+ 16:15 | Done                   | .
 
 ## Login session
 

@@ -1,8 +1,8 @@
-                $ julia 
+                $ julia
                 julia> 5 + 6
                 julia>;
-                shell> pwd 
+                shell> pwd
                 julia>]
-                pkg> status 
+                pkg> status
                 julia>?
                 help?> println

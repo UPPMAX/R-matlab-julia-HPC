@@ -11,9 +11,9 @@ Feedback:
  * 2x The course is well organized!
  * Teachers do not distinguish enough between the different UPPMAX
    clusters on the first day, however, this was fixed on day 3 :-)
- * Day 3 was slightly better than Day 1 (both were good!), 
+ * Day 3 was slightly better than Day 1 (both were good!),
    with the advice: on Day 1, take more for ThinLinc and interactive
- * Everything was quite good, especially SLURM, 
+ * Everything was quite good, especially SLURM,
    better than some other UPPMAX course.
    This was mostly due to, today, doing exercises step by step and having
    enough time to follow

@@ -10,13 +10,13 @@ This repository contains the source code for the UPPMAX/HPC2N [R, Julia, and Mat
 
 You can clone the repository: ``git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git``
 
-After doing that, you can convert the .rst files to .pdf files with this online tool: https://cloudconvert.com/rst-to-pdf 
+After doing that, you can convert the .rst files to .pdf files with this online tool: https://cloudconvert.com/rst-to-pdf
 
 The documentation files you see on the rendered pages (https://uppmax.github.io/R-matlab-julia-HPC/) are found under ``R-matlab-julia-HPC/docs/<language>``.
 
 ## Credits
 
-Built with Sphinx using a theme provided by Read the Docs. 
+Built with Sphinx using a theme provided by Read the Docs.
 
 ## Files used by continuous integration scripts
 

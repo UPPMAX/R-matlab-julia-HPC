@@ -68,7 +68,7 @@ Not sure|0
   with STAN, and because MCMC is such a slow process, I can
   imagine that this could be helpful.
 
-## Question 6: Do you have any additional comments? 
+## Question 6: Do you have any additional comments?
 
 Suggestions/ideas:
 

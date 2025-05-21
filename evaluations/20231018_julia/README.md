@@ -4,7 +4,7 @@
 
 Feedback:
 
- * Today was faster than yesterday. 
+ * Today was faster than yesterday.
  * For example, teach fewer things more in-depth
  * Remove the standard things, such as package management, etc, as
    it feels like a waste of time.

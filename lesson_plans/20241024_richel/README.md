@@ -43,7 +43,7 @@ In general:
 - Do the exercises for all centers
 - Check the exercise by creating a video per center
 
-Let's do this. 
+Let's do this.
 
 Also:
 

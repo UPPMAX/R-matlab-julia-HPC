@@ -82,9 +82,9 @@ Online instruction in higher education: Promising, research-based, and evidence-
 
 From:
 
-> Boettcher, Judith V., and Rita-Marie Conrad. The Online Teaching Survival Guide : Simple and Practical Pedagogical Tips, John Wiley & Sons, 
+> Boettcher, Judith V., and Rita-Marie Conrad. The Online Teaching Survival Guide : Simple and Practical Pedagogical Tips, John Wiley & Sons,
 
-Table 3.1: 
+Table 3.1:
 
 - Be present at the course site
 - Create a supportive online course community
@@ -113,7 +113,7 @@ I quote:
 
 - Students learn new material better and can remember it longer when they learn
   it by engaging in an activity than when they passively watch or listen
-  to an instructor talk [8 references] 
+  to an instructor talk [8 references]
 - [...] long lectures and presentations will fail because students stop
   viewing and listening after about six minutes.
   This phenomenon parallels McKeachie's earlier classroom findings about
@@ -134,7 +134,7 @@ Fear of insufficient internet data                  |54%
 Poor internet connection                            |50%
 Physical condition of students’ background/location |46%
 Physical appearance on camera (not looking good)    |46%
-Uncomfortable to be looked at all the time          |42% 
+Uncomfortable to be looked at all the time          |42%
 
 Or, from
 
@@ -150,7 +150,7 @@ psychological reasons                         |11%
 devices overheating                           |4%
 following others                              |4%
 
-'Unready to learn' means, I quote: 
+'Unready to learn' means, I quote:
 'the environment did not support camera activation, they had not taken a bath,
 were sick, wanted to sleep, were still doing something else,
 were fatigued or needed to go to the toilet.'.
@@ -222,7 +222,7 @@ but I had no time to discuss this with them. Sure,
 one could argue that the LOs have been achieved,
 yet, on the other hand, there was no proper
 Feedback phase.
- 
+
 I was a helper during the other sessions. I was not a very good helper:
 I find it hard to stay focused during monologues.
 
@@ -282,7 +282,7 @@ Even more?
 > - It would be nice to perhaps have a little module on transferring
 >   files to and from the server: while I feel pretty confident about
 >   using R, I'm not completelt sure how to get files to and from
->   he server. 
+>   he server.
 
 Maybe link to the NAISS file transfer course
 
@@ -300,7 +300,7 @@ This feels quite niche to me.
 ### Q6: other feedback
 
 > - For some portions of this course it was a bit unclear when/what to do
->   hands-on. 
+>   hands-on.
 
 Agree: it was unclear to me too sometimes.
 I am unsure if this applies to my session.
@@ -316,7 +316,7 @@ Nice.
 
 Nice.
 
-> - The exercises were well-prepared, 
+> - The exercises were well-prepared,
 
 Nice
 
@@ -340,7 +340,7 @@ Consider:
 - [x] Suggest to make even clearer that getting an account takes days
 
 >  - I really appreciate the amount of hands-on demonstrations:
->    they were great. 
+>    they were great.
 
 Unsure if this applies to me.
 

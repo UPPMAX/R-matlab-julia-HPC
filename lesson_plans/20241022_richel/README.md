@@ -16,7 +16,7 @@ Time     |Topic                                      |Teacher
 **10:00**|Packages                                   |Richel
 **10.30**|Break                                      |.
 **10.45**|Isolated environments (ML, venv, **conda**)|Richel
-**11:45**|Break or informal chat                     |Richel 
+**11:45**|Break or informal chat                     |Richel
 **12.00**|Lunch                                      |.
 **13.00**|Batch                                      |Birgitte
 **13:20**|GPU                                        |Birgitte
@@ -26,7 +26,7 @@ Time     |Topic                                      |Teacher
 **14.00**|Parallel and multithreaded functions       |Pedro
 **14.25**|Conclusion & Q/A                           |Birgitte
 **14.45**|.                                          |.
-**15.00**|END 
+**15.00**|END
 
 Notes:
 
@@ -122,7 +122,7 @@ Discussion points:
   cut by a break. Is that acceptable?
   - If yes: no problemo
   - No: where should the breaks be instead? Who makes a new schedule?
-- I picked to discuss batch (by BB) from 13:35-14:05, 
+- I picked to discuss batch (by BB) from 13:35-14:05,
   over having a break at 14:00 and having a 5 minute session
   with a schedule like below. Agreed?
 
@@ -139,7 +139,7 @@ Time       |Topic                                                 |Teacher
   - Vote:
     - Yes:
     - No:
-- If evaluation, suggest questions on confidence, 
+- If evaluation, suggest questions on confidence,
   see [here](https://github.com/UPPMAX/uppmax_intro_day_1/tree/main/evaluations/20240827)
   - Pro: useful to asses stronger/weaker sessions of the course
   - Con: maybe must use a standard evaluation form, needs teachers to formulate

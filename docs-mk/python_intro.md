@@ -2,10 +2,10 @@
 
 
 `Welcome page and syllabus <https://uppmax.github.io/HPC-python/index.html>`_
-   - Also link at House symbol |:house:| at top of page 
+   - Also link at House symbol |:house:| at top of page
 
 **Learning outcomes**
-   
+
    - Load Python modules and site-installed Python packages
    - Create a virtual environment
    - Install Python packages with pip (Kebnekaise, Rackham, Snowy)
@@ -36,7 +36,7 @@
 <div id="Tokyo" class="tabcontent">
   <h3>Tokyo</h3>
   <p>Tokyo is the capital of Japan.</p>
-</div> 
+</div>
 
 ````` tabs
 ```` tab "Mac"
@@ -60,14 +60,14 @@ $ ssh <username>@rackham.uppmax.uu.se
 
     - You can save hosts for later.
     - No graphics.
-    - 
-    
+    -
+
 - Windows Powershell terminal can also work
 
     - Cannot save hosts
     - no graphics
     - [PowerShell](https://learn.microsoft.com/en-us/powershell/)
-    
+
 - Windows command prompt can also work
 
     - Cannot save hosts
@@ -81,7 +81,7 @@ $ ssh <username>@rackham.uppmax.uu.se
 ````
 `````
 
-## Tabs 
+## Tabs
 
 ```curl
 $ curl -O wget http://example.com/pk.zip

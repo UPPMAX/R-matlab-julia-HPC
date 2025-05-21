@@ -39,11 +39,11 @@ Technical problem was solved after updating Zoom.
 
 There was a copy-paste mistakes in the R versions used,
 as there is a difference between the one on HPC2N and the one on UPPMAX.
-During the exercises, the learners found out, 
+During the exercises, the learners found out,
 contacted me and I fixed it immediately.
 
 There were mistakes in the HPC2N answers.
-During the exercises, the HPC2N users found out 
+During the exercises, the HPC2N users found out
 that it did not work. This is probably because the course
 switched to using R 4.1.2 and it was forgotten to update
 the version of the prerequisite modules.
@@ -56,7 +56,7 @@ Although there were mistakes found in my exercises,
 I gave the learners the most time on doing exercises,
 monitored their progress during this and
 interacted with them. Or: mistakes were found in my
-exercises, because the exercises were actually done 
+exercises, because the exercises were actually done
 with a level of interaction that allows the learners
 to actually share the mistakes.
 
@@ -71,7 +71,7 @@ back to the main room to say bye or ask questions.
 
 ## Things beyond my teaching
 
-There was a mismatch between the schedule we as teachers had 
+There was a mismatch between the schedule we as teachers had
 in a shared HackMD document and the one on the course website.
 Already in a meeting, I suggested to remove the shared HackMD document
 one, to prevent the possibility of a mismatch, but there was resistance there.
@@ -81,12 +81,12 @@ I have a hard time to summarize the learning objectives of other lessons:
 there is too much stuff that is 'nice to have' in it;
 it feels more like if randomly content gets added or deleted.
 What is the decision rule to decide what should be in and what should not
-for those lessons? 
+for those lessons?
 
 Examples of content I remove, as it would not fit my teaching goals:
 
 - describing an R package in details: this is not an R course
-- when learning how to run an R script, running it on multiple nodes: 
+- when learning how to run an R script, running it on multiple nodes:
   do that in the session on parallel programs
 - on R virtual environments: use a virtual environment, not describe
   what it is in detail
@@ -95,7 +95,7 @@ Examples of content I remove, as it would not fit my teaching goals:
   let them run code that can do calculations in parallel, on the CPU/GPU
 
 I feel that when someone is teaching, he/she should prioritize interacting
-with the learners over answering questions in a shared document. 
+with the learners over answering questions in a shared document.
 I feel the other team members should answer the questions in a shared
 document, so that the main teacher can focus on interacting with the learners.
 
@@ -123,7 +123,7 @@ For the other session, I wonder how many learners:
 - materials and structure
 - materials are great
 - materials
-- introduction and packages 
+- introduction and packages
 - The explanation on how R in hpc environment can be used for machine learning and how to run RStudio interface on cluster
 - materials are well structured
 - exercises
@@ -142,8 +142,8 @@ Hey, someone likes our YouTube videos!
 
 I agree that this was advertised too late.
 
-- exercises could be improved in tandem speed with students. 
-- Parallel and multithreaded functions was short and fast and would have liked to get info on background, how, why instead of just Learning how to sbatch. Would have been good to learn more about the topics. 
+- exercises could be improved in tandem speed with students.
+- Parallel and multithreaded functions was short and fast and would have liked to get info on background, how, why instead of just Learning how to sbatch. Would have been good to learn more about the topics.
 - Overall organization, speaking turns, given time and supervision for exercices
 - I would have liked to learn how the parellel code works rather than just knowing it can be sbatched
 
@@ -152,11 +152,11 @@ I think Pedro has no time for that, we teach at the Apply level.
 - it felt rushy at some points
 - exercises
 - Two things, maybe more time for parallel computing and Machine Learning
-- I would also have enjoyed Matlab but I think knowing R and Python in HPC is enough for applying this knowledge to Matlab. 
+- I would also have enjoyed Matlab but I think knowing R and Python in HPC is enough for applying this knowledge to Matlab.
 - more time for the code-along and training exercises, maybe separating the code-along for the different centers on the presenter´s screen that was a bit confusing from time to time. Also when giving lecture do one center at on time and then move on
 - I would have needed a bit more time for the exercises, and maybe a bit more? I'll finish it later =) But otherwise very good.
 
-The usual: learners had too little time for exercises. 
+The usual: learners had too little time for exercises.
 As the one teaching only the first hour with most time spend
 on an exercise, I assume this address me.
 
@@ -186,7 +186,7 @@ on an exercise, I assume this address me.
 - Adequate: 7x
 - Too few: 6x
 
-### Hands-on exercises and demonstrations were well prepared 
+### Hands-on exercises and demonstrations were well prepared
 
 - Agree completely: 4x
 - Agree: 6x
@@ -211,19 +211,19 @@ on an exercise, I assume this address me.
 - Not sure: 1x
 - No: 2x
 
-### Do you have any additional comments? 
+### Do you have any additional comments?
 
 - Thanks
-- More time for hands on exercises would be appreciated. 
-  The teaching felt unidirectional as it was too fast that 
+- More time for hands on exercises would be appreciated.
+  The teaching felt unidirectional as it was too fast that
   there was no space to ask questions and interact
-- Can we have a specific ML course on R and python online please? 
+- Can we have a specific ML course on R and python online please?
   It will be great to build models with you guys.
 
 ## Reflection after evaluation
 
 I think the evaluation questions are mostly useless for me,
-as judged by me thinking about them. 
+as judged by me thinking about them.
 
 My dream evaluation would be:
 

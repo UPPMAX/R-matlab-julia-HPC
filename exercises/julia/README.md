@@ -2,4 +2,4 @@
 
 Batch scripts can be recognized from the ending .sh
 
-There may be batch scripts for both Kebnekaise and Rackham (or Snowy). 
+There may be batch scripts for both Kebnekaise and Rackham (or Snowy).

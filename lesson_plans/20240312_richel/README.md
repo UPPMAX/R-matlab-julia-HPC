@@ -13,7 +13,7 @@ Compute allocations:
 
 - Rackham: `naiss2024-22-107`
 - Kebnekaise: `hpc2n2024-025`
-- Mine: `uppmax2023-2-25` 
+- Mine: `uppmax2023-2-25`
 
 Storage space:
 
@@ -54,9 +54,9 @@ Use Python 3.11.8 on UPPMAX
 
 ## Lesson plan notes
 
-- 10:00-10:45: Packages: 
+- 10:00-10:45: Packages:
   - Exercise 2 for HPC2N has untested TensorFlow things
-  - Put learners 
+  - Put learners
 - 11:00-11:15: Break
 - 11:15-12:00: Isolated environments
   - Exercise 2 is UPPMAX only
@@ -105,7 +105,7 @@ how to determine you fulfilled all pre-requirements.
 ## Interactive
 
 The session on starting an interactive session feels too fancy twice:
-- create an interactive session 
+- create an interactive session
   - with 1 node
   - with more nodes <--- feels beyond the teaching goals
 - run 2 Python scripts, 1 of which is unsuitable for an interactive session
@@ -139,7 +139,7 @@ Not every user understands one needs to use 2FA now, and how
 
 ## Technical problems
 
-This was quite annoying. Due to this, I cannot see how much the 
+This was quite annoying. Due to this, I cannot see how much the
 learners have understood and progressed through the exercises.
 
 ## More time for sbatch
@@ -159,7 +159,7 @@ There was no time for an exercise.
 
 ## Parallel programming
 
-I feel that making a script suitable (with `**FIX**` in it) 
+I feel that making a script suitable (with `**FIX**` in it)
 for a parallel run is at the 'Synthesis' level of Blooms taxonomy.
 I feel that some levels lower, e.g. 'Apply' with a step-by-step
 guide would be more suitable.

@@ -58,7 +58,7 @@ log in sessions at 8:00, so this will not affect the teaching.
 
 Before teaching, I saw the evaluation. Beyond the 'rate your confidence'
 questions I prepared, more questions were added. Maybe because HPC2N
-requires that. 
+requires that.
 
 These are the questions in the evaluation now:
 
@@ -297,7 +297,7 @@ Suggests for next course:
   I suggest to remove the whole 'Get familiar with the Linux/Bash command line'
   session
 - The [login sessions](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html)
-  should only be about login. 
+  should only be about login.
   Stating what the goal of this optional session is, would be enough.
   I suggest to remove anything but that.
 - Remove IPython from session on running Python
@@ -460,7 +460,7 @@ The sessions that I do care about ..
 - I can work (create, activate, work, deactivate) with a venv virtual environment
 
 ... did reasonably well, with 1 learner
-stating 'I have some confidence in this'. 
+stating 'I have some confidence in this'.
 I wish I knew what was the problem with that one learner.
 
 A weird response is 'I can export and import a virtual environment',

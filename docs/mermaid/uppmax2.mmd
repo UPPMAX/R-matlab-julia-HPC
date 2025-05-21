@@ -3,14 +3,14 @@
   Node1 -- interactive --> SubGraph2Flow
   Node1 -- sbatch --> SubGraph2Flow
   subgraph "Snowy"
-  SubGraph2Flow(calculation nodes) 
+  SubGraph2Flow(calculation nodes)
         end
 
         ThinLinc -- usr-sensXXX + 2FA + VPN ----> SubGraph1Flow
         Terminal/ThinLinc -- usr --> Node1
         Terminal -- usr-sensXXX + 2FA + VPN ----> SubGraph1Flow
         Node1 -- usr-sensXXX + 2FA + no VPN ----> SubGraph1Flow
-        
+
         subgraph "Bianca"
         SubGraph1Flow(Bianca login) -- usr+passwd --> private(private cluster)
         private -- interactive --> calcB(calculation nodes)

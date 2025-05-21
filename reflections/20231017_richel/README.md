@@ -15,7 +15,7 @@ Time     |Topic                      |Teacher
 **10:00**|Packages                   |Richel
 **10.45**|Break                      |.
 **11.00**|Isolated environments      |Richel
-**11:45**|Break or informal chat     |Richel 
+**11:45**|Break or informal chat     |Richel
 **12.00**|Lunch                      |.
 **13.00**|Batch                      |Birgitte
 **13:20**|GPU                        |Birgitte
@@ -54,7 +54,7 @@ To discuss:
 ## [W1] Working as a team
 
 I was very happy to be part of this team of Birgitte, Björn and Pedro,
-as its members seems quite diverse: 
+as its members seems quite diverse:
 
  * Birgitte: most knowledge of general things
  * Björn: the most all-around-nice-guy
@@ -67,7 +67,7 @@ Both Birgitte and Björn impressed me by answering complex questions
 during lectures!
 
 Also, already after the lecture, me and Björn discussed how to improve
-the course next time. We especially discussed learners that could not 
+the course next time. We especially discussed learners that could not
 log in. Björn stated there are good reasons to allow these learners
 to participate in the course, so we chose not to disallow these.
 Instead, we think it would be a good idea to have a moment scheduled
@@ -75,10 +75,10 @@ for the learners before the course, for those that could not log in yet.
 
 ## [W2] All students (that could log in) completed their exercises within time
 
-Between 10:00-10:45, all students (that could log in) 
+Between 10:00-10:45, all students (that could log in)
 had completed their exercises at 10:15.
 
-Between 11:00-11:45, all students (that could log in) 
+Between 11:00-11:45, all students (that could log in)
 had completed their exercises at 11:30. Due to a request by Birgitte,
 they had to create another venv, which they then all did within a
 couple of minutes too.
@@ -132,7 +132,7 @@ Although they behaved well,
 it took away time of other students.
 Björn stated there are good reasons to allow these learners
 to participate in the course.
-However, we forgot to schedule a moment for the learners 
+However, we forgot to schedule a moment for the learners
 to log in before the course.
 
 ## [I3] Evaluation before Q&A
@@ -152,15 +152,15 @@ Make a new video where something is actually installed
 
 I was doing so much teaching, that I only had a third of the time needed
 to prepare. I decided to prepare ruthlessly, ignoring email and other comms
-for some weeks. I knew this would be annoying to the team, 
+for some weeks. I knew this would be annoying to the team,
 yet I trusted the team would make the right decisions without me.
 
 ## [I6] Tell students clearly what to do: observe or type along or do an exercise
 
 There was this feedback given during the lesson: a student asked
-to another instructor: 'Should we watch or type along?'. 
-I agree with her that this always should be clear. 
-I thanked her in a breakout room for this. 
+to another instructor: 'Should we watch or type along?'.
+I agree with her that this always should be clear.
+I thanked her in a breakout room for this.
 I know I am imperfect on this too.
 
 ## [I7] No questions in Zoom chat, use shared doc only
@@ -180,9 +180,9 @@ Feedback:
  * 2x The course is well organized!
  * Teachers do not distinguish enough between the different UPPMAX
    clusters on the first day, however, this was fixed on day 3 :-)
- * Day 3 was slightly better than Day 1 (both were good!), 
+ * Day 3 was slightly better than Day 1 (both were good!),
    with the advice: on Day 1, take more for ThinLinc and interactive
- * Everything was quite good, especially SLURM, 
+ * Everything was quite good, especially SLURM,
    better than some other UPPMAX course.
    This was mostly due to, today, doing exercises step by step and having
    enough time to follow
@@ -192,7 +192,7 @@ Feedback:
 
 ## Google Form evaluations
 
-These are the results of the Google Forms evaluation. 
+These are the results of the Google Forms evaluation.
 The responses are sorted alphabetically or in other ways that make sense.
 
 Note that the anonymous evaluation overlaps quite well with the anonymous
@@ -217,12 +217,12 @@ Hmmm that is quite some variation there...
 
 This is nice to hear!
 
- * I liked the 'code along' parts, when it worked and was an appropriate pace one could actually follow. 
+ * I liked the 'code along' parts, when it worked and was an appropriate pace one could actually follow.
 
 Unsure if this about mine or Birgittes parts :-|
 
  * Materials
- * That materials were extensive and provided (both in advance and during the day). 
+ * That materials were extensive and provided (both in advance and during the day).
 The break-out session was good to let me ask the stupid questions to fellows that could help out or make me catch up.
 
 The goal of the break-out sessions has been achieved :-)
@@ -255,15 +255,15 @@ I feel this gives rest and clarity to the course.
 After each exercise, the instructors always checked if the learners understood
 what to do. Most students usually knew what to do.
 
- * It will be good if you give a small introduction about different uppmax servers and what are the differences at the beginning of the course. 
+ * It will be good if you give a small introduction about different uppmax servers and what are the differences at the beginning of the course.
 
 Maybe.
 
- * Lectures should be given more time (or the contents reduced). 
-   Unfortunately it was at times a hard to follow. 
-   Perhaps, also, make it a bit more clear what is expected from the exercises. 
+ * Lectures should be given more time (or the contents reduced).
+   Unfortunately it was at times a hard to follow.
+   Perhaps, also, make it a bit more clear what is expected from the exercises.
 
- * Maybe actually follow the material that is there. It's hard for us to do exercises and go back and check later when one of the presenters just had his own material. Also, maybe make actual parallel sessions instead of going break rooms. Too much time in break rooms in general, and then other sections got rushed. 
+ * Maybe actually follow the material that is there. It's hard for us to do exercises and go back and check later when one of the presenters just had his own material. Also, maybe make actual parallel sessions instead of going break rooms. Too much time in break rooms in general, and then other sections got rushed.
 
 I agree, I should harmonize the materials.
 
@@ -272,7 +272,7 @@ I agree, I should harmonize the materials.
 We cannot. There are plans to teach other courses at two different levels,
 so that we split absolute beginners from the more advanced students.
 
- * Much more time spent on code along and instructions, this would improve the course a lot I think! I understand and respect that for you this is very clear and it flows really easily. But for us who is watching over zoom: scrolling up and down fast while screen sharing makes it impossible to follow; as it is over zoom the instructions for the exercise part needs to be much clearer in my view, also do this - BEFORE - entering breakout rooms; additional thought about exercises is what really are the exercises, the ones stated at the end of each lecture part or the text/instructions embedded in the ‘slides’ in the instruction pages; the ‘messages’ that can be sent out to the breakout rooms are hard to notice sometimes while working on exercise, perhaps paste this in chat and/or document so one can re-read; please specify clearly how long a task 'should' take approx. (is the whole time in breakout rooms dedicated to the assigned task, or is the time also there for break); specify in start of each part/‘lecture’ what the plan is maybe?; ‘slides’ can be a bit clearer I would say. Thank you, though! I understand that this is no easy feat to lecture and teach HPC over zoom. You didi a great job, but these are things I wish for at least. 
+ * Much more time spent on code along and instructions, this would improve the course a lot I think! I understand and respect that for you this is very clear and it flows really easily. But for us who is watching over zoom: scrolling up and down fast while screen sharing makes it impossible to follow; as it is over zoom the instructions for the exercise part needs to be much clearer in my view, also do this - BEFORE - entering breakout rooms; additional thought about exercises is what really are the exercises, the ones stated at the end of each lecture part or the text/instructions embedded in the ‘slides’ in the instruction pages; the ‘messages’ that can be sent out to the breakout rooms are hard to notice sometimes while working on exercise, perhaps paste this in chat and/or document so one can re-read; please specify clearly how long a task 'should' take approx. (is the whole time in breakout rooms dedicated to the assigned task, or is the time also there for break); specify in start of each part/‘lecture’ what the plan is maybe?; ‘slides’ can be a bit clearer I would say. Thank you, though! I understand that this is no easy feat to lecture and teach HPC over zoom. You didi a great job, but these are things I wish for at least.
 
 I like this extensive feedback! To compensate for unclear instructions (to some)
 for a breakout-room exercise, we teachers always visited the break-out rooms
@@ -294,7 +294,7 @@ I like this suggestion!
 
 
 
-### Length of teaching today was 
+### Length of teaching today was
 
  * Too short: 2x
  * Adequate: 9x
@@ -323,7 +323,7 @@ I like this suggestion!
  * Too few: 6x
  * Adequate: 6x
 
-### Hands-on exercises and demonstrations were well prepared 
+### Hands-on exercises and demonstrations were well prepared
 
  * Disagree: 1x
  * No strong feelings: 2x
@@ -354,15 +354,15 @@ instructor performance 10% higher.
  * Yes: 8x
  * Not sure: 4x
 
-### Do you have any additional comments? 
+### Do you have any additional comments?
 
  * Confusing with different setups for Umeå and Uppsala
 
-I agree. This is unavoidable. 
+I agree. This is unavoidable.
 
  * Drop the break out rooms and having people go there for exercises. Or just make a silent room for those that don't want to discuss and rest can stay in main room. Wastes time.
 
-Assuming this was about me putting people in breakout rooms: 
+Assuming this was about me putting people in breakout rooms:
 I will not do this. I think it is very important to put people in different
 smaller groups, so that people can discuss and a teacher can check.
 

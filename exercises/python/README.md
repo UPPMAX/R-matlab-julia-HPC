@@ -1,21 +1,21 @@
-# All/most of the Python .py and batch scripts for the Python session 
+# All/most of the Python .py and batch scripts for the Python session
 
 Batch scripts can be recognized from the ending .sh
 
-In many cases there are batch scripts for both Kebnekaise and Rackham (or Snowy). In some cases there are 
-also separate .py files for the clusters. 
+In many cases there are batch scripts for both Kebnekaise and Rackham (or Snowy). In some cases there are
+also separate .py files for the clusters.
 
 The batch scripts that do not have "kebnekaise-", "-rackham", or "-snowy" in their name should have a description
-inside that tells what they are for. 
+inside that tells what they are for.
 
-You could try creating a batch job for Rackham if only one for Kebnekaise exist! Or try running different Python codes. 
+You could try creating a batch job for Rackham if only one for Kebnekaise exist! Or try running different Python codes.
 
 
 ## add.py example
 
 - ``add2.py``  :  python code, example for running interactively or from command line
 
-## example.py example 
+## example.py example
 
 - ``example.py``  : python code, adds two numbers given in the file. For interactive/command line testing
 
@@ -32,11 +32,11 @@ You could try creating a batch job for Rackham if only one for Kebnekaise exist!
 
 ## PyTorch example
 
-- ``pytorch_fitting_gpu.py``  : python code, fitting ``y=sin(x)`` with a third order polynomial using PyTorch 
+- ``pytorch_fitting_gpu.py``  : python code, fitting ``y=sin(x)`` with a third order polynomial using PyTorch
 - ``pytorch_fitting_gpu-kebnekaise.sh``
 - ``pytorch_fitting_gpu-snowy.sh``
 
-## mmult.py example 
+## mmult.py example
 
 - ``mmmult.py``  : python code, does matrix-matrix multiplication using numpy
 - ``mmmult-kebnekaise.sh``
@@ -44,7 +44,7 @@ You could try creating a batch job for Rackham if only one for Kebnekaise exist!
 
 ## numba example
 
-- ``integration2d_gpu.py``  : python code, 2D integration problem with the CUDA support for Numba 
+- ``integration2d_gpu.py``  : python code, 2D integration problem with the CUDA support for Numba
 - ``integration2d_gpu_shared.py``
 - ``integration2d_gpu.sh``
 
@@ -56,7 +56,7 @@ You could try creating a batch job for Rackham if only one for Kebnekaise exist!
 
 ## sum-2args.py example
 
-- ``sum-2args.py``  : python code, sums to numbers given as arguments 
+- ``sum-2args.py``  : python code, sums to numbers given as arguments
 - ``sum-2args-kebnekaise.sh``
 - ``sum-2args-rackham.sh``
 
@@ -69,12 +69,12 @@ You could try creating a batch job for Rackham if only one for Kebnekaise exist!
 
 ## scikit example
 
-- ``scikit-learn-kebnekaise.py``  : python code example for Kebnekaise, using scikit-learn 
+- ``scikit-learn-kebnekaise.py``  : python code example for Kebnekaise, using scikit-learn
 - ``scikit-learn-kebnekaise.sh``
 
-## some example batch scripts 
+## some example batch scripts
 
 - ``sequential-python.sh``
 
 - ``serial-python-scipybundle-kebnekaise.sh``
-    
+
