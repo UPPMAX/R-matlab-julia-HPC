@@ -9,13 +9,11 @@
 - Success score: 77%
 - Reflections: [Richel](../../reflections/20250324/README.md)
 
-## Question 1
-
-![Question 1 results](question_1_results.png)
+## Question 1: Overall, how would you rate today's training event?
 
 - 8.25
 
-## Question 2
+## Question 2: What do you think about the pace of teaching overall?
 
 ![Question 2 results](question_2_results.png)
 
@@ -32,10 +30,7 @@
 - The pace is very appropriate, although I couldn't really
   follow the ML part as it was out of my area of expertise
 
-## Question 3
-
-![Question 3 results](question_3_results_1.png)
-![Question 3 results](question_3_results_2.png)
+## Question 3: Confidences
 
 Column text|Description
 -----------|----------------------------
@@ -48,9 +43,7 @@ Column text|Description
 
 ![Average learning outcomes per session](average_learning_outcome_per_question.png)
 
-## Question 4
-
-![Question 4 results](question_4_results.png)
+## Question 4: Would you recommend this course to someone else?
 
 Answer  |Amount
 --------|--------
@@ -58,9 +51,7 @@ Yes     |8
 No      |0
 Not sure|0
 
-## Question 5
-
-![Question 5 results](question_5_results.png)
+## Question 5: Which future training topics would you like to be provided by the training host(s)?
 
 - More on parallelizing in R
 - It would be nice to perhaps have a little module on transferring
@@ -73,9 +64,9 @@ Not sure|0
   with STAN, and because MCMC is such a slow process, I can
   imagine that this could be helpful.
 
-## Question 6
+## Question 6: Do you have any additional comments? 
 
-![Question 6 results](question_6_results.png)
+Suggestions/ideas:
 
 - For some portions of this course it was a bit unclear when/what to do
   hands-on. The course documentation is very good
