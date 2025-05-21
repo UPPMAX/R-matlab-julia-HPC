@@ -15,7 +15,6 @@
 
 ## Question 2: What do you think about the pace of teaching overall?
 
-![Question 2 results](question_2_results.png)
 
 - The pace was different for the different for the different modules
 - Extremely helpful day, and the exercises were generally
@@ -40,8 +39,6 @@ Column text|Description
 `2`        |I have some confidence I can do this
 `3`        |I have good confidence I can do this
 `4`        |I can absolutely do this!
-
-![Average learning outcomes per session](average_learning_outcome_per_question.png)
 
 ## Question 4: Would you recommend this course to someone else?
 
