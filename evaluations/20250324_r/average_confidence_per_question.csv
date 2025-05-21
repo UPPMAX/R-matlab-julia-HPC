@@ -1,19 +1,19 @@
 learning_outcome,average_confidence
-I can find the module to be able to run R                                        ,4.69
-I can load the module to be able to run R                                        ,4.69
-I can run the R interpreter                                                      ,4.69
-I can run the R command to get the list of installed R packages                  ,4.38
-I can run an R script from the command-line                                      ,4.38
-I can find out if an R package is already installed                              ,4.06
-I can load the pre-installed R packages                                          ,4.38
-I can install an R package from CRAN                                             ,4.06
-"I can use renv to create, activate, use and deactivate a virtual environment     ",3.12
-I can submit a job to the scheduler to run an R script with regular code         ,3.91
-I can submit a job to the scheduler to run an R script that uses parallel code   ,3.44
-I can submit a job to the scheduler to run an R script that uses a GPU           ,2.81
-I can find and load the R machine learning modules                               ,2.5
-I can submit a job to the scheduler to run an R script that uses machine learning,2.5
-I can start an interactive session                                               ,4.06
-I can verify I am on the login node yes/no                                       ,3.91
-I can start an interactive session with multiple cores                           ,3.91
-I can start RStudio                                                              ,4.22
+I can find the module to be able to run R                                        ,3.75
+I can load the module to be able to run R                                        ,3.75
+I can run the R interpreter                                                      ,3.75
+I can run the R command to get the list of installed R packages                  ,3.5
+I can run an R script from the command-line                                      ,3.5
+I can find out if an R package is already installed                              ,3.25
+I can load the pre-installed R packages                                          ,3.5
+I can install an R package from CRAN                                             ,3.25
+"I can use renv to create, activate, use and deactivate a virtual environment     ",2.5
+I can submit a job to the scheduler to run an R script with regular code         ,3.12
+I can submit a job to the scheduler to run an R script that uses parallel code   ,2.75
+I can submit a job to the scheduler to run an R script that uses a GPU           ,2.25
+I can find and load the R machine learning modules                               ,2
+I can submit a job to the scheduler to run an R script that uses machine learning,2
+I can start an interactive session                                               ,3.25
+I can verify I am on the login node yes/no                                       ,3.12
+I can start an interactive session with multiple cores                           ,3.12
+I can start RStudio                                                              ,3.38
