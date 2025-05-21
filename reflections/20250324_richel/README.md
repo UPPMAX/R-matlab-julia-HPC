@@ -241,7 +241,7 @@ Useless information to me.
 
 ![Average learning outcomes per session](../../evaluations/20250324/average_learning_outcome_per_question.png)
 
-My grades:
+My grades (average is 77):
 
 learning_outcome                                                                 |success_score|Comment
 ---------------------------------------------------------------------------------|-------------|-------
@@ -286,7 +286,7 @@ Even more?
 
 Maybe link to the NAISS file transfer course
 
-- [ ] Link to the NAISS file transfer course in the course material
+- [x] Link to the NAISS file transfer course in the course material
 
 > - And secondly, I'm 99% sure it should be reasonably
 >   straightforward, but it might be nice for there to be a little

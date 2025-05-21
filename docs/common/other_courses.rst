@@ -59,3 +59,8 @@ Third level
 `ENCCS (EuroCC National Competence Centre Sweden) <https://enccs.se/>`_ is a national centre that supports industry, public administration and academia accessing and using European supercomputers. They give higher-level training of programming and specific software.
 
 - `ENCCS training material <https://enccs.se/lessons/>`_ 
+
+NAISS file transfer course
+--------------------------
+
+`NAISS file transfer course website <https://uppmax.github.io/naiss_file_transfer_course/>`__
