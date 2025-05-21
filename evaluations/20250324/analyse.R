@@ -1,6 +1,9 @@
 #!/bin/env Rscript
 
 
+###############################################################
+# Confidences
+###############################################################
 t <- readr::read_delim("learning_outcomes.csv", delim = "|")
 names(t)
 names(t) <- c(
@@ -29,25 +32,26 @@ testthat::expect_equal(
 t$sum <- (1 * t$n_one) + (2 * t$n_two) + (3 * t$n_three) + (4 * t$n_four)
 
 t$success_score <- round(100 * t$sum / max_total_score)
+t$average_confidence <- t$success_score / 20
 
 readr::write_csv(
-  t |> dplyr::select(learning_outcome, success_score),
-  file = "average_learning_outcome_per_question.csv"
+  t |> dplyr::select(learning_outcome, average_confidence),
+  file = "average_confidence_per_question.csv"
 )
 
 ggplot2::ggplot(
-  t, ggplot2::aes(y = learning_outcome, x = success_score)
+  t, ggplot2::aes(y = learning_outcome, x = average_confidence)
 ) + ggplot2::geom_col() +
-  ggplot2::scale_x_continuous(limits = c(0, 100)) +
+  ggplot2::scale_x_continuous(limits = c(0, 5)) +
   ggplot2::labs(
     title = "Learning outcomes for R day at 2025-03-24",
     caption = paste0(
       "Number of learners: ", n_learners, ", ",
-      "average success score: ", round(mean(t$success_score))
+      "Success score: ", round(mean(t$success_score))
     )
   )
 
 ggplot2::ggsave(
-  "average_learning_outcome_per_question.png",
+  "average_confidence_per_question.png",
   width = 7, height = 7
 )

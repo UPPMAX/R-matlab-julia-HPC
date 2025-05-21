@@ -31,8 +31,12 @@
 
 ## Question 3: Confidences
 
+- As table: [average_confidence_per_question.csv](average_confidence_per_question.csv)
+
+Coding scheme:
+
 Column text|Description
------------|----------------------------
+-----------|---------------------------------
 `NA`       |I did not attend that session
 `0`        |I have no confidence I can do this
 `1`        |I have low confidence I can do this
@@ -40,7 +44,8 @@ Column text|Description
 `3`        |I have good confidence I can do this
 `4`        |I can absolutely do this!
 
-![Average learning outcome per question](average_learning_outcome_per_question.png)
+![Average confidence per question](average_confidence_per_question.png)
+
 
 ## Question 4: Would you recommend this course to someone else?
 
