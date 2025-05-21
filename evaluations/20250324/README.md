@@ -40,6 +40,8 @@ Column text|Description
 `3`        |I have good confidence I can do this
 `4`        |I can absolutely do this!
 
+![Average learning outcome per question](average_learning_outcome_per_question.png)
+
 ## Question 4: Would you recommend this course to someone else?
 
 Answer  |Amount
