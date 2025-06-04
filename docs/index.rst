@@ -26,7 +26,7 @@ Introduction to running R, Matlab and Julia in HPC
 
    - We aim to give this course in **spring and fall every year**.
 
-Schedule Spring 2025
+Schedule autumn 2025
 --------------------
 
 .. list-table:: 
@@ -35,12 +35,14 @@ Schedule Spring 2025
 
    * - Day
      - Language
-   * - Monday 24 March
+   * - Monday 6 October
      - R 
-   * - Tuesday 25 March
-     - Matlab
-   * - Wednesday 26 March
+   * - Tuesday 7 October
+     - MATLAB
+   * - Wednesday 8 October
      - Julia
+   * - Friday 10 October
+     - Advanced
 
 .. admonition:: Course approach to deal with multiple HPC centers
 

@@ -1,7 +1,7 @@
 Schedule
 --------
 
-Current schedule:
+Current schedule (as of before 2025-06-04):
 
 +-------+------------------------------+--------------+
 | Time  | Topic                        | Teacher(s)   |
