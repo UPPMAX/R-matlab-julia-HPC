@@ -7,8 +7,8 @@ Desktop On Demand
    - When should I useit?
    - Where and how do I start?
 
-   
-.. objectives:: 
+
+.. objectives::
 
    - Short introduction to Desktop On Demand
    - Typical setup and usage
@@ -22,10 +22,10 @@ Later you will hear us talking more about the GfxLauncher than Desktop On Demand
 
 Of the coding languages in this course, all but Julia has at least one interactive development environment (IDE) that can be run with Desktop On Demand: R can be used via one of a couple releases of RStudio, and the standard MATLAB IDE is available for the 3 most recent releases. Other applications not explicitly listed but that can be launched from an Interactive Terminal session.
 
-Desktop On Demand requires the use of the Thinlinc interface. It is not accessible via ssh. 
+Desktop On Demand requires the use of the Thinlinc interface. It is not accessible via ssh.
 
 .. warning:: ThinLinc Access Limited on Dardel (PDC)
-   
+
       Here we focus on COSMOS because Dardel has a limited number of ThinLinc licenses. Only 30 users total may have an active ThinLinc session at a time. Other PDC resources not tested in this course may be more flexible, but if you must run a program on Dardel interactively, it is better to use SSH with X-forwarding (that is, log in with ``ssh -X <user>@dardel.pdc.kth.se``) and then `follow the workflow described in this link. <https://support.pdc.kth.se/doc/run_jobs/run_interactively/>`_ Keep in mind that if you do not need a full node, you can also select a number of cores on Dardel's ``shared`` partition. See `here for information on Dardel partitions. <https://support.pdc.kth.se/doc/run_jobs/job_scheduling/#dardel-partitions>`_
 
 
@@ -36,11 +36,11 @@ Desktop On Demand is most appropriate for *interactive* work requiring small-to-
 The GfxLauncher will prompt you for resource specification and then Desktop On Demand will put your resource requests into the same SLURM queue as every other job. Depending on the time and resources you request, you may have to wait a while for your session to start. For information about the capabilities of the available nodes, you can explore the `LUNARC homepage's Systems tab <https://www.lunarc.lu.se/systems/>`_ and follow the links to your desired resource. (Note: COSMOS-SENS is past the installation phase and is available as a resource; hopefully I can delete this comment before the workshop.)
 
 .. admonition:: **Wall Time Limits**
-   
+
       Wall time for interactive work with Desktop On Demand is restricted to 48 consecutive
       not business) hours. In practice, there can be significant startup delays for wall times
       as short as 4 hours. Users should save their work frequently and be conservative in their
-      wall time estimates. To save GPU resources, we also encourage users who are able to submit 
+      wall time estimates. To save GPU resources, we also encourage users who are able to submit
       jobs requiring minimal supervision as ordinary batch scripts to do that whenever feasible.
 
 
@@ -57,13 +57,13 @@ On the LUNARC HPC Desktop, the Applications menu lists all the applications avai
 
 .. admonition:: Terminals on the Compute nodes
 
-   If you don't see the program you want to run interactively listed under any other ``Applications`` sub-menus, you may still be able to launch it via one of the terminals under ``Applications - General``, or the **GPU Accelerated Terminal** (GPU support) under ``Applications - Visualization``.  
-   
-   
+   If you don't see the program you want to run interactively listed under any other ``Applications`` sub-menus, you may still be able to launch it via one of the terminals under ``Applications - General``, or the **GPU Accelerated Terminal** (GPU support) under ``Applications - Visualization``.
+
+
    .. figure:: ../../img/Cosmos-AppMenu.png
       :width: 400
       :align: center
-   
+
    The CPU terminal allows for a wall time of up to 168 hours (7 days), while the two GPU terminals can only run for 48 hours (2 days) at most. For more on the specifications of the different nodes these terminals can run on, see `LUNARC's webpage on COSMOS <https://www.lunarc.lu.se/systems/cosmos/>`_.
 
 

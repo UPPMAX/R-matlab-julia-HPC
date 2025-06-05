@@ -19,9 +19,9 @@ UPPMAX packages
 ---------------
 
 .. Note ::
-    
+
     What about the packages you suggested/requested in your registration?
-    
+
 
 Packages included in the python/3.9.5 module
 ############################################
@@ -50,7 +50,7 @@ Packages that can be loaded with 'module load'
 - module load python_ML_packages
 
   - sklearn/scikit-learn
-  - TensorFlow 
+  - TensorFlow
   - torch
   - mpi
   - mpi4py
@@ -71,7 +71,7 @@ Packages not centrally installed at the moment UPDATE
 
 - adjustText
 
-- DeepLabCut 
+- DeepLabCut
 
 - ete3
 
@@ -81,11 +81,11 @@ Packages not centrally installed at the moment UPDATE
 
 - rpack
 
-- Rdkit 
+- Rdkit
 
 - plink
 
-- puma 
+- puma
 
 - Pygraphviz/1.9
 

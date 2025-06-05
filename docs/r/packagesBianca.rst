@@ -13,8 +13,8 @@ Packages at Bianca (parallel session)
 
    - How to check for and use the UPPMAX pre-installed packages?
    - How to install packages on Bianca?
-   
-.. objectives:: 
+
+.. objectives::
 
    - Show how to check for R packages
    - Show how to install own packages on Bianca
@@ -27,7 +27,7 @@ On UPPMAX the module ``R_packages`` is a package library containing almost all p
 
    - A total of 23476 R packages are installed
    - A total of 23535 packages are available in CRAN and BioConductor
-   
+
       - 19809 CRAN packages are installed, out of 19976 available
       - 3544 BioConductor-specific packages are installed, out of 3559 available
    - 121 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere

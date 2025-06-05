@@ -15,10 +15,10 @@ Introduction to running R, Matlab and Julia in HPC
       - **install packages/libraries** yourself
       - use **virtual** environments
       - use the **computation nodes**
-        
-         - write and submit **batch** scripts 
+
+         - write and submit **batch** scripts
          - work **interactivly**
-         - access **parallel** tools and run parallel codes 
+         - access **parallel** tools and run parallel codes
          - access **GPUs** and run such code
 
    - This course will consist of lectures interspersed with hands-on sessions
@@ -29,14 +29,14 @@ Introduction to running R, Matlab and Julia in HPC
 Schedule autumn 2025
 --------------------
 
-.. list-table:: 
+.. list-table::
    :widths: 25 25
    :header-rows: 1
 
    * - Day
      - Language
    * - Monday 6 October
-     - R 
+     - R
    * - Tuesday 7 October
      - MATLAB
    * - Wednesday 8 October
@@ -54,15 +54,15 @@ Schedule autumn 2025
 
    - Users with the "local" affiliation below, can work at the following clusters:
 
-      - Kebnekaise: UmU, IRF, MIUN, SLU, LTU. 
-      - Cosmos: LU. 
-      - Rackham/Snowy: UU. 
+      - Kebnekaise: UmU, IRF, MIUN, SLU, LTU.
+      - Cosmos: LU.
+      - Rackham/Snowy: UU.
 
-   - The general information given in the course will be true for all/most HPC centres in Sweden. 
+   - The general information given in the course will be true for all/most HPC centres in Sweden.
 
-      - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres. 
+      - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres.
       - When present, links to the Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
-   
+
 
 .. admonition:: Collaboration document
 
@@ -78,22 +78,22 @@ Schedule autumn 2025
 
    - `Code of Conduct <https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/CODE_OF_CONDUCT.md>`_
       - Be nice to each other!
- 
+
    - Zoom
        - You should have gotten an email with the links
-      
+
        - Zoom policy:
 
            - Zoom chat (maintained by co-teachers):
 
                 - technical issues of zoom
                 - technical issues of your settings
-                - direct communication 
+                - direct communication
                 - each teacher may have somewhat different approach
 
             - collaboration document (see below):
 
-                - "explain again"         
+                - "explain again"
                 - elaborating the course content
                 - solutions for your own work
 
@@ -108,21 +108,21 @@ Schedule autumn 2025
            - For the live-recordings
 
                - The questions asked per microphone during these sessions will be recorded
-               - If you don't want your voice to appear: 
+               - If you don't want your voice to appear:
 
                    - use the collaboration document (see below)
 
        - The Zoom main room is used for most lectures
        - Some sessions use breakout rooms for exercises, some of which use a silent room
-            
+
 .. warning::
 
    - **Please be sure that you have gone through the** `pre-requirements <https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html>`_
       - It mentions the familiarity with the LINUX command line.
       - The applications to connect to the clusters: terminals and ThinLinc (remote graphical desktop)
    - This course does not aim to improve your coding skills. Rather you will learn to understand the ecosystems and navigations for the the different languages on a HPC cluster.
-     
- 
+
+
 Content of the course
 ---------------------
 
@@ -145,7 +145,7 @@ Content of the course
    common/hpc_clusters.rst
    common/parallel.rst
    common/other_courses.rst
-   
+
 .. toctree::
    :maxdepth: 2
    :caption: R Lessons:
@@ -191,7 +191,7 @@ Content of the course
    julia/interactiveJulia.rst
    julia/summaryJulia.rst
    julia/evaluationJulia.rst
-   
+
 .. toctree::
    :maxdepth: 2
    :caption: Extra reading:

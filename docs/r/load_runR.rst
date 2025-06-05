@@ -214,7 +214,7 @@ Exercise X1: find and use installed R packages
   using :code:`installed.packages()`
 
 .. admonition:: Answer
-    :class: dropdown 
+    :class: dropdown
 
     +------------+----------------------------------+
     | HPC cluster| Answe                            |
@@ -234,7 +234,7 @@ Exercise X1: find and use installed R packages
   using :code:`library(parallel)`
 
 .. admonition:: Answer
-    :class: dropdown 
+    :class: dropdown
 
     +------------+----------------------------------+
     | HPC cluster| Answe                            |

@@ -5,7 +5,7 @@ Use the tarball with exercises
 
 .. admonition:: Goal
 
-    You can run the example files needed for the exercises 
+    You can run the example files needed for the exercises
 
 A tarball is a file that contains multiple files,
 similar to a zip file.
@@ -72,7 +72,7 @@ Step 1: get the tarball
         Length: 56007 (55K) [application/octet-stream]
         Saving to: ‘exercisesR.tar.gz’
 
-        100%[======================================>] 56,007      --.-K/s   in 0.002s  
+        100%[======================================>] 56,007      --.-K/s   in 0.002s
 
         2024-10-23 11:49:30 (31.4 MB/s) - ‘exercisesR.tar.gz’ saved [56007/56007]
 
@@ -89,19 +89,19 @@ In a terminal, use the following command to uncompress the file:
 
       .. code-block::  console
 
-         tar -xvzf exercisesR.tar.gz 
+         tar -xvzf exercisesR.tar.gz
 
    .. tab:: Matlab (wait until that day)
 
       .. code-block::  console
 
-         tar -xvzf exercisesMatlab.tar.gz 
+         tar -xvzf exercisesMatlab.tar.gz
 
    .. tab:: Julia (wait until that day)
 
       .. code-block::  console
 
-         tar -xvzf exercisesJulia.tar.gz 
+         tar -xvzf exercisesJulia.tar.gz
 
 .. admonition:: How does that look like?
    :class: dropdown
@@ -109,12 +109,12 @@ In a terminal, use the following command to uncompress the file:
    Your output will look similar to this:
 
    .. tabs::
-      
+
       .. tab:: R
-         
+
          .. code:: console
-           
-            [sven@rackham3 ~]$ tar -xvzf exercisesR.tar.gz 
+
+            [sven@rackham3 ~]$ tar -xvzf exercisesR.tar.gz
             r/iris_ml-rackham.sh
             r/Rscript_ML-kebnekaise.sh
             r/hello.R
@@ -156,10 +156,10 @@ In a terminal, use the following command to uncompress the file:
             r/script-df-cosmos.sh
 
       .. tab:: Matlab
-         
+
          .. code:: console
-            
-            [sven@rackham3 ~]$ tar -xvzf exercisesMatlab.tar.gz 
+
+            [sven@rackham3 ~]$ tar -xvzf exercisesMatlab.tar.gz
             matlab/
             matlab/parallel_example.m
             matlab/example-parallel-matlab.sh
@@ -176,12 +176,12 @@ In a terminal, use the following command to uncompress the file:
             matlab/add2.m
             matlab/serial-monte-cosmos.sh
             matlab/dice_stats_par.m
-            
+
       .. tab:: Julia
-         
+
          .. code:: console
 
-            [sven@rackham3 ~]$ tar -xvzf exercisesJulia.tar.gz 
+            [sven@rackham3 ~]$ tar -xvzf exercisesJulia.tar.gz
             julia/
             julia/script-df-rackham.sh
             julia/parallelJulia/
@@ -232,7 +232,7 @@ In a terminal, use the following command to uncompress the file:
             julia/loadRun/Solutions/1/
             julia/loadRun/Solutions/1/Solution.md
             julia/loadRun/1.md
-            
+
 
 After decompressing, there is a folder called ``r``, or ``matlab`` or ``julia``
 that contains the exercises.

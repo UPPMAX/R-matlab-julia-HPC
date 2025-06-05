@@ -2,37 +2,37 @@ Introduction Python
 ===================
 
 `Welcome page and syllabus <https://uppmax.github.io/R-matlab-julia-HPC/index.html>`_
-   - Also link at House symbol |:house:| at top of page 
+   - Also link at House symbol |:house:| at top of page
 
 .. admonition:: **Learning outcomes**
-   
+
    - Load Python modules and site-installed Python packages
    - Create a virtual environment
    - Install Python packages with pip (Kebnekaise, Rackham, Snowy, Cosmos)
    - Write a batch script for running Python
-  
-.. admonition:: Exercises 
+
+.. admonition:: Exercises
 
     - You can download the exercises from the course GitHub repo, under the ``exercises/python`` directory: <https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/exercises/python>
 
       - Download all exercises at once: ``wget https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/exercises.tar.gz``
 
-    - Or you can copy them from the computer system you are on (only until 2024-11-01): 
+    - Or you can copy them from the computer system you are on (only until 2024-11-01):
 
       - Rackham: ``cp /proj/r-py-jl-m-rackham/exercises.tar.gz`` .
-      - Kebnekaise: ``cp /proj/nobackup/r-py-jl-m/exercises.tar.gz`` . 
+      - Kebnekaise: ``cp /proj/nobackup/r-py-jl-m/exercises.tar.gz`` .
 
     - Then afterwards you unpack it with ``tar -xzvf exercises.tar.gz``
-    
+
 .. admonition:: **Your expectations?**
-   
+
     - Learn best practices for using Python at UPPMAX, HPC2N, and LUNARC
     - Packages
     - Get HPC performance with Python
 
  **Not covered**
-    
-    - Improving Python *coding* skills 
+
+    - Improving Python *coding* skills
     - Other clusters (though they mostly work in a very similar way)
 
 Schedule
@@ -90,9 +90,9 @@ What is python?
 ---------------
 
 As you probably already know…
-    
+
     - “Python combines remarkable power with very clear syntax.
-    - It has modules, classes, exceptions, very high level dynamic data types, and dynamic typing. 
+    - It has modules, classes, exceptions, very high level dynamic data types, and dynamic typing.
     - There are interfaces to many system calls and libraries, as well as to various windowing systems. …“
 
 In particular, what sets Python apart from other languages is its fantastic
@@ -115,16 +115,16 @@ First level
 
 `The Carpentries <https://carpentries.org/>`_  teaches basic lab skills for research computing.
 
-- `"Programming with Python" <https://swcarpentry.github.io/python-novice-inflammation/>`_ 
+- `"Programming with Python" <https://swcarpentry.github.io/python-novice-inflammation/>`_
 
-- `"Plotting and Programming in Python" <http://swcarpentry.github.io/python-novice-gapminder/>`_ 
+- `"Plotting and Programming in Python" <http://swcarpentry.github.io/python-novice-gapminder/>`_
 
 Second level
 ::::::::::::
 
-CodeRefinery develops and maintains training material on software best practices for researchers that already write code. Their material addresses all academic disciplines and tries to be as programming language-independent as possible. 
+CodeRefinery develops and maintains training material on software best practices for researchers that already write code. Their material addresses all academic disciplines and tries to be as programming language-independent as possible.
 
-- `Lessons <https://coderefinery.org/lessons/>`_ 
+- `Lessons <https://coderefinery.org/lessons/>`_
 - `Data visualization using Python <https://coderefinery.github.io/data-visualization-python/>`_
 - `Jupyter <https://coderefinery.github.io/jupyter/>`__
 
@@ -132,9 +132,9 @@ Aalto Scientific Computing
 
 - `Data analysis workflows with R and Python <https://aaltoscicomp.github.io/data-analysis-workflows-course/>`_
 
-- `Python for Scientific Computing <https://aaltoscicomp.github.io/python-for-scicomp/>`_ 
+- `Python for Scientific Computing <https://aaltoscicomp.github.io/python-for-scicomp/>`_
 
-   - `Introduction to packages <https://aaltoscicomp.github.io/python-for-scicomp/dependencies/>`_ 
+   - `Introduction to packages <https://aaltoscicomp.github.io/python-for-scicomp/dependencies/>`_
 
 
 Third level
@@ -144,10 +144,10 @@ Third level
 
 - `High Performance Data Analytics in Python <https://enccs.github.io/hpda-python/>`_
 
-- The youtube video `Thinking about Concurrency <https://www.youtube.com/watch?v=Bv25Dwe84g0>`_ is a good introduction to writing concurrent programs in Python 
+- The youtube video `Thinking about Concurrency <https://www.youtube.com/watch?v=Bv25Dwe84g0>`_ is a good introduction to writing concurrent programs in Python
 
 - The book `High Performance Python <https://www.oreilly.com/library/view/high-performance-python/9781492055013/>`_ is a good resource for ways of speeding up Python code.
-    
+
 Other NAISS centres
 -------------------
 
@@ -159,17 +159,17 @@ Other NAISS centres
 - PDC
    - `Python <https://www.pdc.kth.se/software/software/python/index_general.html>`__
 
-.. objectives:: 
+.. objectives::
 
     We will:
-    
+
     - Teach you how to navigate the module system
     - Show you how to find out which versions of Python and packages are installed
     - Use the package handler **pip**
     - Explain briefly how to create and use virtual environments
-    - Show you how to run batch jobs 
+    - Show you how to run batch jobs
     - Show some examples with parallel computing and using GPUs
 
-    Most of this will be the same or very similar to how it is done at other HPC centres in Sweden  
- 
+    Most of this will be the same or very similar to how it is done at other HPC centres in Sweden
+
 

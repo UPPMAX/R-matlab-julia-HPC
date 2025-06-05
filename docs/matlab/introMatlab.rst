@@ -2,29 +2,29 @@ Introduction to MATLAB
 ======================
 
 `Welcome page and syllabus <https://uppmax.github.io/R-matlab-julia-HPC/>`_
-   - Also link at House symbol |:house:| at top of page 
+   - Also link at House symbol |:house:| at top of page
 
 .. admonition:: Learning outcomes
-   
+
    - Load MATLAB modules and site-installed MATLAB packages
    - Create a MATLAB environment
    - Install MATLAB packages with **Add-Ons** manager
    - Write a batch script for running MATLAB
    - Use MATLAB in parallel mode
    - Use GPUs with MATLAB
-   - Use MATLAB for ML 
-    
+   - Use MATLAB for ML
+
 .. admonition:: Your expectations?
-   
+
     - Find best practices for using MATLAB at UPPMAX, HPC2N, LUNARC, NSC (Tetralith), and PDC (Dardel)
     - Toolboxes and Add-Ons
     - HPC performance with MATLAB
 
     **Not covered**
-    
-    - Improve MATLAB *coding* skills 
+
+    - Improve MATLAB *coding* skills
     - Other clusters
-      
+
 .. admonition:: MATLAB Exercise files
 
     - :ref:`common-use-tarball`
@@ -36,7 +36,7 @@ Schedule
 
 .. instructor-note::
 
-   - Intro 10 min 
+   - Intro 10 min
    - Lecture and demo 10 min
    - Exercise 0 min
 

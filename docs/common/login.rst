@@ -1,11 +1,11 @@
 .. _common-login:
 
-Log in session 
+Log in session
 ==============
 
 .. admonition:: Goal
 
-    - The goal of this optional sessions is to make sure that you have fulledfilled the 
+    - The goal of this optional sessions is to make sure that you have fulledfilled the
 
         - `Prerequisites <https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html>`_
 
@@ -23,9 +23,9 @@ Log in session
    - The course is a cooperation between **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on the compute systems at all these centres, as well as select resources at NSC (Tetralith) and PDC (Dardel).
    - Although there are differences we will only have **few separate sessions**.
    - Most participants will use NSC's or Dardel's systems for the course, as Rackham, Kebnekaise and Cosmos are only for local (UU, UmU, IRF, MIUN, SLU, LTU, LU) users.
-   - The general information given in the course will be true for all/most HPC centres in Sweden. 
+   - The general information given in the course will be true for all/most HPC centres in Sweden.
 
-      - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres. 
+      - The examples will often have specific information, like module names and versions, which may vary. What you learn here should help you to make any changes needed for the other centres.
       - When present, links to the Julia/R/Matlab documentation at other NAISS centres are given in the corresponding session.
 
 .. note::
@@ -34,10 +34,10 @@ Log in session
    - If you already have research projects in any of the clusters you can use them. The CPU-hours required during the course will be low!
 
 .. admonition:: **Learning outcomes**
-   
+
    - Be able to login, where you are
 
-.. tip:: 
+.. tip::
 
    - If you have user account and *research* project on Kebnekaise, follow the **HPC2N** track below.
    - If you have user account and *research* project on Cosmos, follow the **LUNARC** track below.
@@ -101,7 +101,7 @@ For beginners: use the **bold** login method.
     +---------------------------------------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
 
 .. type-along::
-  
+
    - Please log in to Rackham, Kebnekaise, or other cluster that you are using.
 
    .. admonition:: Use Thinlinc or terminal?
@@ -116,72 +116,72 @@ For beginners: use the **bold** login method.
 
          1. Log in to Rackham!
 
-           - Terminal: ``ssh -X <user>@rackham.uppmax.uu.se`` 
-      
+           - Terminal: ``ssh -X <user>@rackham.uppmax.uu.se``
+
            - ThinLinc app: ``<user>@rackham-gui.uppmax.uu.se``
            - ThinLinc in web browser: ``https://rackham-gui.uppmax.uu.se``
-      
+
          2. If not already: **create a working directory** where you can code along.
 
            - We recommend creating it under the course project storage directory
-   
-         3. Example. If your username is "mrspock" and you are at UPPMAX, then we recommend you create this folder: 
-     
+
+         3. Example. If your username is "mrspock" and you are at UPPMAX, then we recommend you create this folder:
+
             .. code-block:: console
-         
+
                $ mkdir /proj/r-matlab-julia-uppmax/mrspock/
 
       .. tab:: HPC2N
 
-         - Kebnekaise through terminal: ``<user>@kebnekaise.hpc2n.umu.se``     
+         - Kebnekaise through terminal: ``<user>@kebnekaise.hpc2n.umu.se``
          - Kebnekaise through ThinLinc, use: ``<user>@kebnekaise-tl.hpc2n.umu.se``
-   
-         - Create a working directory where you can code along.    
-      
-           - Example. If your username is bbrydsoe and you are at HPC2N, then we recommend you create this folder: 
-     
+
+         - Create a working directory where you can code along.
+
+           - Example. If your username is bbrydsoe and you are at HPC2N, then we recommend you create this folder:
+
            .. code-block:: console
-         
+
               $ mkdir /proj/nobackup/r-matlab-julia/bbrydsoe/
 
       .. tab:: LUNARC
 
-         - Cosmos through terminal: ``<user>@cosmos.lunarc.lu.se``     
+         - Cosmos through terminal: ``<user>@cosmos.lunarc.lu.se``
          - Cosmos through ThinLinc, use: ``<user>@cosmos-dt.lunarc.lu.se``
 
-         - Create a working directory in your home space where you can code along.    
-      
-           - Example. Create this folder: 
+         - Create a working directory in your home space where you can code along.
+
+           - Example. Create this folder:
 
            .. code-block:: console
-         
+
               $ mkdir $HOME/r-matlab-julia
 
       .. tab:: NSC
 
          - Tetralith through terminal or Thinlinc: ``<user>@tetralith.nsc.liu.se``
 
-         - Create a working directory where you can code along.    
-      
-           - Example. If your username is jlpicard and you are at NSC, then we recommend you create this folder: 
-     
+         - Create a working directory where you can code along.
+
+           - Example. If your username is jlpicard and you are at NSC, then we recommend you create this folder:
+
            .. code-block:: console
-         
+
               $ mkdir /proj/r-matlab-julia-naiss/jlpicard
 
       .. tab:: PDC
 
-         - Dardel through terminal: ``<user>@dardel.pdc.kth.se``     
+         - Dardel through terminal: ``<user>@dardel.pdc.kth.se``
          - Dardel through ThinLinc: ``<user>@dardel-vnc.pdc.kth.se``
 
             - **Warning!** Only 30 Dardel users at a time can use ThinLinc. Do not count on it being available.
-   
+
          - Create a working directory where you can code along.
-      
-           - Example. If your username is sevenof9 and you are at PDC, then we recommend you create this folder: 
-     
+
+           - Example. If your username is sevenof9 and you are at PDC, then we recommend you create this folder:
+
            .. code-block:: console
-         
+
               $ mkdir /cfs/klemming/projects/supr/r-matlab-julia-naiss/sevenof9/
 
 
@@ -190,7 +190,7 @@ Test an editor
 
 Learn how to use an text editor at :ref:`common-use-text-editor`.
 
-Download and extract the tarball with exercises 
+Download and extract the tarball with exercises
 -----------------------------------------------
 
 Learn how to download and extract the tarball with exercises

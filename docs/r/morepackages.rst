@@ -3,7 +3,7 @@
 More about R packages
 =====================
 
-This page contains some more advanced information about R packages. 
+This page contains some more advanced information about R packages.
 
 R packages: A short Primer
 --------------------------
@@ -119,7 +119,7 @@ An R packages can exist in five possible states
 | https://r-pkgs.org/structure.html and
 | https://nbisweden.github.io/RaukR-2021/rpackages_Sebastian/presentation/rpackages_Sebastian.html
 
-Finding out if an R package is installed 
+Finding out if an R package is installed
 ----------------------------------------
 
 There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within R
@@ -311,10 +311,10 @@ install the devtools package. Note that you only need to install this **once**.
 This is how you install a package from GitHub, inside R:
 
  .. code-block:: R
- 
+
     install.packages("devtools")   # ONLY ONCE
     devtools::install_github("DeveloperName/package")
-    
+
 
 Example
 *******
@@ -322,21 +322,21 @@ Example
 .. type-along::
 
    In this example we want to install the package ``quantstrat``. It is not on CRAN, so let's get it from the GitHub page for the project:
-   https://github.com/braverock/quantstrat 
+   https://github.com/braverock/quantstrat
 
    We also need to install devtools so we can install packages from GitHub. In
    addition, ``quantstrat`` has some prerequisites, some on CRAN, some on GitHub,
-   so we need to install those as well. 
+   so we need to install those as well.
 
-   .. code-block:: R 
+   .. code-block:: R
 
       install.packages("devtools") # ONLY ONCE
-      install.packages("FinancialInstrument") 
-      install.packages("PerformanceAnalytics") 
-   
+      install.packages("FinancialInstrument")
+      install.packages("PerformanceAnalytics")
+
       devtools::install_github("braverock/blotter")
       devtools::install_github("braverock/quantstrat")
-    
+
 Manual download and install
 ###########################
 
@@ -344,29 +344,29 @@ If the package is not on CRAN or you want the development version, or you for
 other reason want to install a package you downloaded, then this is how to
 install from the command line:
 
-.. code-block:: console 
+.. code-block:: console
 
    $ R CMD INSTALL -l <path-to-R-package>/R-package.tar.gz
-    
+
 
 **NOTE** that if you install a package this way, you need to handle any
 dependencies yourself.
 
-.. note:: 
+.. note::
 
    Places to look for R packages
-   
+
    - CRAN (https://cran.r-project.org/)
    - R-Forge (https://r-forge.r-project.org/)
    - Project's own GitHub page
    - etc.
-   
+
 
 .. keypoints::
 
-   - You can check for installed packages 
+   - You can check for installed packages
         - from inside R with ``installed.packages()``
-        - from BASH shell with the 
+        - from BASH shell with the
                 - ``ml help R/<version>`` at UPPMAX
                 - ``ml spider R/<version>`` at HPC2N
    - Installation of R packages can be done either from within R or from the
@@ -375,7 +375,7 @@ dependencies yourself.
      can be found on GitHub and if you want the development version of a
      package you likely need to get it from GitHub or other place outside CRAN.
      You would then either download and install manually or install with
-     something like devtools, from within R. 
+     something like devtools, from within R.
 
 Install own packages on Bianca
 ------------------------------
@@ -391,4 +391,4 @@ Install own packages on Bianca
    - `Installing R packages on Bianca <https://uppmax.github.io/bianca_workshops/extra/rpackages/>`_
 
 
-          
+

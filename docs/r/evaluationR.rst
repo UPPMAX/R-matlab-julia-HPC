@@ -48,7 +48,7 @@ It takes into account that one may need to leave early too.
         - I can start an interactive session
         - I can verify I am on the login node yes/no
         - I can start an interactive session with multiple cores
-        - I can verify my interactive session uses multiple cores 
+        - I can verify my interactive session uses multiple cores
         - I can start RStudio
 
         An other feedback?

@@ -6,13 +6,13 @@ Using GPUs with Python
    - What is GPU acceleration?
    - How to enable GPUs (for instance with CUDA) in Python code?
    - How to deploy GPUs at HPC2N, UPPMAX, and LUNARC?
-   
-   
+
+
 
 .. objectives::
 
    - Learn common schemes for GPU code acceleration
-   - Learn about the GPU nodes at HPC2N, UPPMAX, and LUNARC 
+   - Learn about the GPU nodes at HPC2N, UPPMAX, and LUNARC
 
 GPU-accelerated computing is when you use a graphics processing unit (GPU) along with a computer processing unit (CPU) to facilitate processing-intensive operations such as deep learning, analytics and engineering applications.
 
@@ -47,22 +47,22 @@ One possible layout (Kebnekaise - the K80s are now retired) is as follows:
 
 
 .. figure:: ../../img/cpu-gpu.png
-   :width: 450  
+   :width: 450
    :align: center
 
    Schematics of a hybrid CPU-GPU architecture. A GPU K80 card consisting of two engines is attached to a NUMA island which in turn contains 14 cores. The NUMA island and the GPUs are connected through a PCI-E interconnect which makes the data transfer between both components rather slow.
 
-Not every Python program is suitable for GPU acceleration. GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks. GPUs were originally designed to render high-resolution images and video concurrently and fast, but since they can perform parallel operations on multiple sets of data, they are also often used for other, non-graphical tasks. Common uses are machine learning and scientific computation were the GPUs can take advantage of massive parallelism. 
+Not every Python program is suitable for GPU acceleration. GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks. GPUs were originally designed to render high-resolution images and video concurrently and fast, but since they can perform parallel operations on multiple sets of data, they are also often used for other, non-graphical tasks. Common uses are machine learning and scientific computation were the GPUs can take advantage of massive parallelism.
 
-Many Python packages are not CUDA aware, but some have been written specifically with GPUs in mind. 
-If you are usually working with for instance NumPy and SciPy, you could optimize your code for GPU computing by using CuPy which mimics most of the NumPy functions. Another option is using Numba, which has bindings to CUDA and lets you write CUDA kernels in Python yourself. This means you can use custom algorithms. 
+Many Python packages are not CUDA aware, but some have been written specifically with GPUs in mind.
+If you are usually working with for instance NumPy and SciPy, you could optimize your code for GPU computing by using CuPy which mimics most of the NumPy functions. Another option is using Numba, which has bindings to CUDA and lets you write CUDA kernels in Python yourself. This means you can use custom algorithms.
 
-One of the most common use of GPUs with Python is for machine learning or deep learning. For these cases you would use something like Tensorflow or PyTorch libraries which can handle CPU and GPU processing internally without the programmer needing to do so. 
+One of the most common use of GPUs with Python is for machine learning or deep learning. For these cases you would use something like Tensorflow or PyTorch libraries which can handle CPU and GPU processing internally without the programmer needing to do so.
 
 GPUs on UPPMAX, HPC2N, and LUNARC systems
 -----------------------------------------
 
-There are generally either not GPUs on the login nodes or they cannot be accessed for computations. 
+There are generally either not GPUs on the login nodes or they cannot be accessed for computations.
 To use them you need to either launch an interactive job or submit a batch job.
 
 **UPPMAX only**
@@ -84,23 +84,23 @@ Kebnekaise has a great many different types of GPUs:
 
 - V100 (2 cards/node)
 - A40 (8 cards/node)
-- A6000 (2 cards/node) 
+- A6000 (2 cards/node)
 - L40s (2 or 6 cards/node)
 - A100 (2 cards/node)
 - H100 (4 cards/node)
-- MI100 (2 cards/node) 
+- MI100 (2 cards/node)
 
-To access them, you need to use this to the batch system: 
+To access them, you need to use this to the batch system:
 
 ``#SBATCH --gpus=x``
 
-where x is the number of GPU cards you want. Above are given how many are on each type, so you can ask for up to that number. 
+where x is the number of GPU cards you want. Above are given how many are on each type, so you can ask for up to that number.
 
-In addition, you need to add this to the batch system: 
+In addition, you need to add this to the batch system:
 
 ``#SBATCH -C <type>``
 
-where type is 
+where type is
 
 - v100
 - a40
@@ -108,104 +108,104 @@ where type is
 - l40s
 - a100
 - h100
-- mi100 
+- mi100
 
 For more information, see HPC2N's guide to the different parts of the batch system: https://docs.hpc2n.umu.se/documentation/batchsystem/resources/
-   
-**LUNARC** 
 
-LUNARC has Nvidia A100 GPUs and Nvidia A40 GPUs, but the latter ones are reserved for interactive graphics work on the on-demand system, and Slurm jobs should not be submitted to them. 
+**LUNARC**
 
-Thus in order to use the A100 GPUs on Cosmos, add this to your batch script: 
+LUNARC has Nvidia A100 GPUs and Nvidia A40 GPUs, but the latter ones are reserved for interactive graphics work on the on-demand system, and Slurm jobs should not be submitted to them.
 
-A100 GPUs on AMD nodes: 
+Thus in order to use the A100 GPUs on Cosmos, add this to your batch script:
+
+A100 GPUs on AMD nodes:
 
 .. code-block::
-  
+
    #SBATCH -p gpua100
    #SBATCH --gres=gpu:1
 
 These nodes are configured as exclusive access and will not be shared between users. User projects will be charged for the entire node (48 cores). A job on a node will also have access to all memory on the node.
 
-A100 GPUs on Intel nodes: 
+A100 GPUs on Intel nodes:
 
 .. code-block::
 
    #SBATCH -p gpua100i
    #SBATCH --gres=gpu:<number>
 
-where ``<number>`` is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs). 
+where ``<number>`` is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).
 
 
 Numba example
 -------------
 
-Numba is installed on HPC2N and LUNARC as a module. We also need numpy, so we are loading SciPy-bundle as we have done before. 
-On UPPMAX numba is part of python_ML_packages, so we use that. 
+Numba is installed on HPC2N and LUNARC as a module. We also need numpy, so we are loading SciPy-bundle as we have done before.
+On UPPMAX numba is part of python_ML_packages, so we use that.
 
-We are going to use the following program for testing (it was taken from 
-a (now absent) linuxhint.com exercise but there are also many great examples at 
-https://numba.readthedocs.io/en/stable/cuda/examples.html): 
+We are going to use the following program for testing (it was taken from
+a (now absent) linuxhint.com exercise but there are also many great examples at
+https://numba.readthedocs.io/en/stable/cuda/examples.html):
 
-.. admonition:: Python example ``add-list.py`` using Numba 
+.. admonition:: Python example ``add-list.py`` using Numba
     :class: dropdown
-   
+
         .. code-block:: python
-        
+
              import numpy as np
              from timeit import default_timer as timer
              from numba import vectorize
-             
+
              # This should be a substantially high value.
              NUM_ELEMENTS = 100000000
-             
+
              # This is the CPU version.
              def vector_add_cpu(a, b):
                c = np.zeros(NUM_ELEMENTS, dtype=np.float32)
                for i in range(NUM_ELEMENTS):
                    c[i] = a[i] + b[i]
                return c
-               
+
              # This is the GPU version. Note the @vectorize decorator. This tells
              # numba to turn this into a GPU vectorized function.
              @vectorize(["float32(float32, float32)"], target='cuda')
              def vector_add_gpu(a, b):
                return a + b;
- 
+
              def main():
                a_source = np.ones(NUM_ELEMENTS, dtype=np.float32)
                b_source = np.ones(NUM_ELEMENTS, dtype=np.float32)
-               
+
                # Time the CPU function
                start = timer()
                vector_add_cpu(a_source, b_source)
                vector_add_cpu_time = timer() - start
- 
+
                # Time the GPU function
                start = timer()
                vector_add_gpu(a_source, b_source)
                vector_add_gpu_time = timer() - start
- 
+
                # Report times
                print("CPU function took %f seconds." % vector_add_cpu_time)
                print("GPU function took %f seconds." % vector_add_gpu_time)
-              
+
                return 0
- 
+
              if __name__ == "__main__":
                main()
-                 
-As before, we need the batch system to run the code. There are no GPUs on the login nodes. 
+
+As before, we need the batch system to run the code. There are no GPUs on the login nodes.
 
 .. type-along::
 
    .. tabs::
 
       .. tab:: UPPMAX
-      
+
          .. code-block:: console
-      
-            $ interactive -A uppmax2025-2-272 -n 1 -M snowy --gres=gpu:1  -t 1:00:01 --gres=gpu:1  -t 1:00:01 
+
+            $ interactive -A uppmax2025-2-272 -n 1 -M snowy --gres=gpu:1  -t 1:00:01 --gres=gpu:1  -t 1:00:01
             You receive the high interactive priority.
 
             Please, use no more than 8 GB of RAM.
@@ -219,8 +219,8 @@ As before, we need the batch system to run the code. There are no GPUs on the lo
              _   _ ____  ____  __  __    _    __  __
             | | | |  _ \|  _ \|  \/  |  / \   \ \/ /   | System:    s195
             | | | | |_) | |_) | |\/| | / _ \   \  /    | User:      bbrydsoe
-            | |_| |  __/|  __/| |  | |/ ___ \  /  \    | 
-             \___/|_|   |_|   |_|  |_/_/   \_\/_/\_\   | 
+            | |_| |  __/|  __/| |  | |/ ___ \  /  \    |
+             \___/|_|   |_|   |_|  |_/_/   \_\/_/\_\   |
 
             ###############################################################################
 
@@ -229,17 +229,17 @@ As before, we need the batch system to run the code. There are no GPUs on the lo
                     Write to support@uppmax.uu.se, if you have questions or comments.
 
             [bbrydsoe@s195 python]$ ml uppmax python/3.11.8 python_ML_packages/3.11.8-gpu
-            [bbrydsoe@s195 python]$ python add-list.py 
+            [bbrydsoe@s195 python]$ python add-list.py
             CPU function took 35.272032 seconds.
             GPU function took 1.324215 seconds.
 
       .. tab:: HPC2N
-   
-         Running a GPU Python code interactively.  
+
+         Running a GPU Python code interactively.
 
          .. code-block:: console
 
-            $ salloc -A hpc2n2025-062 --time=00:30:00 -n 1 --gpus=1 -C a100  
+            $ salloc -A hpc2n2025-062 --time=00:30:00 -n 1 --gpus=1 -C a100
             salloc: Pending job allocation 29039771
             salloc: job 29039771 queued and waiting for resources
             salloc: job 29039771 has been allocated resources
@@ -254,22 +254,22 @@ As before, we need the batch system to run the code. There are no GPUs on the lo
 
       .. tab:: Batch script for HPC2N
 
-         Batch script, "add-list-kebnekaise.sh", to run the same GPU Python script (the numba code, "add-list.py") at Kebnekaise. As before, submit with "sbatch add-list-kebnekaise.sh" (assuming you called the batch script thus - change to fit your own naming style). 
-      
+         Batch script, "add-list-kebnekaise.sh", to run the same GPU Python script (the numba code, "add-list.py") at Kebnekaise. As before, submit with "sbatch add-list-kebnekaise.sh" (assuming you called the batch script thus - change to fit your own naming style).
+
          .. code-block:: console
 
             #!/bin/bash
             # Remember to change this to your own project ID after the course!
-            #SBATCH -A hpc2n2025-062     
+            #SBATCH -A hpc2n2025-062
             # We are asking for 5 minutes
             #SBATCH --time=00:05:00
             # Asking for one A100 GPU
             #SBATCH --gpus=1
-            #SBATCH -C a100    
+            #SBATCH -C a100
 
             # Remove any loaded modules and load the ones we need
             module purge  > /dev/null 2>&1
-            module load GCC/12.3.0 OpenMPI/4.1.5 numba/0.58.1 SciPy-bundle/2023.07 CUDA/12.0.0 
+            module load GCC/12.3.0 OpenMPI/4.1.5 numba/0.58.1 SciPy-bundle/2023.07 CUDA/12.0.0
 
             # Run your Python script
             python add-list.py
@@ -288,22 +288,22 @@ As before, we need the batch system to run the code. There are no GPUs on the lo
             #SBATCH --ntasks-per-node=1
             # Asking for one A100 GPU
             #SBATCH -p gpua100
-            #SBATCH --gres=gpu:1    
+            #SBATCH --gres=gpu:1
 
             # Remove any loaded modules and load the ones we need
             module purge  > /dev/null 2>&1
-            module load GCC/12.2.0  OpenMPI/4.1.4 numba/0.58.0 SciPy-bundle/2023.02 
+            module load GCC/12.2.0  OpenMPI/4.1.4 numba/0.58.0 SciPy-bundle/2023.02
 
             # Run your Python script
             python add-list.py
 
-            
+
 Exercises
 ---------
 
 .. challenge:: Integration 2D with Numba
 
-   An initial implementation of the 2D integration problem with the CUDA support for 
+   An initial implementation of the 2D integration problem with the CUDA support for
    Numba could be as follows:
 
    .. admonition:: ``integration2d_gpu.py``
@@ -316,22 +316,22 @@ Exercises
          import numpy
          import math
          from time import perf_counter
-         
+
          # grid size
          n = 100*1024
          threadsPerBlock = 16
          blocksPerGrid = int((n+threadsPerBlock-1)/threadsPerBlock)
-         
+
          # interval size (same for X and Y)
          h = math.pi / float(n)
-         
+
          @cuda.jit
          def dotprod(C):
-             tid = cuda.threadIdx.x + cuda.blockIdx.x * cuda.blockDim.x 
-         
+             tid = cuda.threadIdx.x + cuda.blockIdx.x * cuda.blockDim.x
+
              if tid >= n:
                  return
-         
+
              #cummulative variable
              mysum = 0.0
              # fine-grain integration in the X axis
@@ -340,32 +340,32 @@ Exercises
              for j in range(n):
                  y = h * (j + 0.5)
                  mysum += math.sin(x + y)
-         
+
              C[tid] = mysum
-         
-         
+
+
          # array for collecting partial sums on the device
          C_global_mem = cuda.device_array((n),dtype=numpy.float32)
-         
+
          starttime = perf_counter()
          dotprod[blocksPerGrid,threadsPerBlock](C_global_mem)
          res = C_global_mem.copy_to_host()
          integral = h**2 * sum(res)
          endtime = perf_counter()
-         
+
          print("Integral value is %e, Error is %e" % (integral, abs(integral - 0.0)))
          print("Time spent: %.2f sec" % (endtime-starttime))
 
 
 
    Notice the larger size of the grid in the present case (100*1024) compared
-   to the serial case's size we used previously (10000). Large computations are 
-   necessary on the GPUs to get the benefits of this architecture. 
+   to the serial case's size we used previously (10000). Large computations are
+   necessary on the GPUs to get the benefits of this architecture.
 
-   One can take advantage of the shared memory in a thread block to write faster 
-   code. Here, we wrote the 2D integration example from the previous section where 
-   threads in a block write on a `shared[]` array. Then, this array is reduced 
-   (values added) and the output is collected in the array ``C``. The entire code 
+   One can take advantage of the shared memory in a thread block to write faster
+   code. Here, we wrote the 2D integration example from the previous section where
+   threads in a block write on a `shared[]` array. Then, this array is reduced
+   (values added) and the output is collected in the array ``C``. The entire code
    is here:
 
 
@@ -379,26 +379,26 @@ Exercises
          import numpy
          import math
          from time import perf_counter
-         
+
          # grid size
          n = 100*1024
          threadsPerBlock = 16
          blocksPerGrid = int((n+threadsPerBlock-1)/threadsPerBlock)
-         
+
          # interval size (same for X and Y)
          h = math.pi / float(n)
-         
+
          @cuda.jit
          def dotprod(C):
              # using the shared memory in the thread block
-             shared = cuda.shared.array(shape=(threadsPerBlock), dtype=float32) 
-         
-             tid = cuda.threadIdx.x + cuda.blockIdx.x * cuda.blockDim.x 
+             shared = cuda.shared.array(shape=(threadsPerBlock), dtype=float32)
+
+             tid = cuda.threadIdx.x + cuda.blockIdx.x * cuda.blockDim.x
              shrIndx = cuda.threadIdx.x
-         
+
              if tid >= n:
                  return
-         
+
              #cummulative variable
              mysum = 0.0
              # fine-grain integration in the X axis
@@ -407,11 +407,11 @@ Exercises
              for j in range(n):
                  y = h * (j + 0.5)
                  mysum += math.sin(x + y)
-         
+
              shared[shrIndx] = mysum
-         
+
              cuda.syncthreads()
-         
+
              # reduction for the whole thread block
              s = 1
              while s < cuda.blockDim.x:
@@ -422,24 +422,24 @@ Exercises
              # collecting the reduced value in the C array
              if shrIndx == 0:
                  C[cuda.blockIdx.x] = shared[0]
-         
+
          # array for collecting partial sums on the device
          C_global_mem = cuda.device_array((blocksPerGrid),dtype=numpy.float32)
-         
+
          starttime = perf_counter()
          dotprod[blocksPerGrid,threadsPerBlock](C_global_mem)
          res = C_global_mem.copy_to_host()
          integral = h**2 * sum(res)
          endtime = perf_counter()
-         
+
          print("Integral value is %e, Error is %e" % (integral, abs(integral - 0.0)))
          print("Time spent: %.2f sec" % (endtime-starttime))
 
    Prepare a batch script to run these two versions of the integration 2D with Numba support
    and monitor the timings for both cases.
 
-Here follows a solution for HPC2N. Try and make it run on Snowy, using the python_ML_packages for Python 3.11.8 and the changes suggested by the UPPMAX solution for add-list.py above. 
-   
+Here follows a solution for HPC2N. Try and make it run on Snowy, using the python_ML_packages for Python 3.11.8 and the changes suggested by the UPPMAX solution for add-list.py above.
+
 .. solution:: Solution for HPC2N
     :class: dropdown
 
@@ -447,8 +447,8 @@ Here follows a solution for HPC2N. Try and make it run on Snowy, using the pytho
 
      .. admonition:: ``integration2d_gpu.sh``
         :class: dropdown
-      
-         .. code-block:: console 
+
+         .. code-block:: console
 
             #!/bin/bash
             # Remember to change this to your own project ID after the course!
@@ -460,17 +460,17 @@ Here follows a solution for HPC2N. Try and make it run on Snowy, using the pytho
             #SBATCH -e error_%j.err    # error messages
             #SBATCH --gpus=1
             #SBATCH -C a100
-     
+
             ml purge > /dev/null 2>&1
             module load GCC/12.3.0 OpenMPI/4.1.5 numba/0.58.1 SciPy-bundle/2023.07 CUDA/12.0.0
-    
+
             python integration2d_gpu.py
             python integration2d_gpu_shared.py
 
-     For the ``integration2d_gpu.py`` implementation, the time for executing the kernel 
-     and doing some postprocessing to the outputs (copying the C array and doing a reduction) was 4.35 sec. which is a much smaller value than the time for the serial numba code of 152 sec obtained previously. 
+     For the ``integration2d_gpu.py`` implementation, the time for executing the kernel
+     and doing some postprocessing to the outputs (copying the C array and doing a reduction) was 4.35 sec. which is a much smaller value than the time for the serial numba code of 152 sec obtained previously.
 
-     The simulation time for the ``integration2d_shared.py`` implementation was 1.87 sec. by using the shared memory trick. 
+     The simulation time for the ``integration2d_shared.py`` implementation was 1.87 sec. by using the shared memory trick.
 
 .. keypoints::
 
@@ -480,7 +480,7 @@ Here follows a solution for HPC2N. Try and make it run on Snowy, using the pytho
 
 Additional information
 ----------------------
-         
+
 * `Numba documentation examples <https://numba.readthedocs.io/en/stable/cuda/examples.html>`_
 * `New York University CUDA/Numba lesson  <https://nyu-cds.github.io/python-numba/05-cuda/>`_
 * Hands-On GPU Programming with Python and CUDA : Explore High-Performance Parallel Computing with CUDA, Brian Tuomanen. Packt publishing.

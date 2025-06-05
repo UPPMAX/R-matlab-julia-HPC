@@ -11,7 +11,7 @@ On UPPMAX
 ----------
 
 There is a system installed version, available via the "rstudio" command (you
-will get RStudio/1.1.423). 
+will get RStudio/1.1.423).
 
 However, we recommend you to use a RStudio module.
 
@@ -46,14 +46,14 @@ Check for RStudio versions
 Check all available  versions with:
 
 .. code-block:: console
- 
+
    $ module avail RStudio
 
 .. admonition:: Output at UPPMAX as of March 10 2024
    :class: dropdown
-    
+
        .. code-block::  console
-    
+
           [bjornc@rackham5 ~]$ ml av RStudio
 
           ------------------------------------- /sw/mf/rackham/applications -------------------------------------
@@ -65,12 +65,12 @@ Check all available  versions with:
              D:  Default Module
 
           Use "module spider" to find all possible modules and extensions.
-          Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".       
+          Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 - load R_packages
 - module load RStudio
 - run ``rstudio &`` from the command line, and wait
-  
+
    - it might take 5-10 minutes for RStudio to start, especially if you loaded R_packages as well, but once it starts, there should be no further delays
    - do *not* start RStudio through the graphical menu system in ThinLinc, this will not have access to loaded modules.
    - if it takes a long time and might be due to that you have saved a lot of workspace
@@ -79,7 +79,7 @@ Example:
 
 .. demo::
 
-   .. code:: console 
+   .. code:: console
 
       $ module load R/4.1.1
       $ module load RStudio/2023.12.1-402
@@ -108,10 +108,10 @@ The desktop client version of ThinLinc does not work for Bianca. Instead you run
 On HPC2N
 --------
 
-Rstudio also exists on Kebnekaise but is only installed on the ThinLinc login nodes and not on the compute nodes (and also not on the regular login nodes accessible with SSH). 
+Rstudio also exists on Kebnekaise but is only installed on the ThinLinc login nodes and not on the compute nodes (and also not on the regular login nodes accessible with SSH).
 Thus, Rstudio should only be used for development and very light analysis, since there is no way to submit a job to the compute nodes.
 
-Login to ThinLinc desktop application by providing the following 
+Login to ThinLinc desktop application by providing the following
 
 - server: kebnekaise-tl.hpc2n.umu.se
 - username
@@ -119,13 +119,13 @@ Login to ThinLinc desktop application by providing the following
 
 Alternatively, you can use ThinLinc in the browser: https://kebnekaise-tl.hpc2n.umu.se:300/
 
-When in ThinLinc, you can start Rstudio either from the menu (version 4.0.4) or from the command line. If you start it from the command line you first need to load R and its prerequisites, but you can pick between several versions this way. 
+When in ThinLinc, you can start Rstudio either from the menu (version 4.0.4) or from the command line. If you start it from the command line you first need to load R and its prerequisites, but you can pick between several versions this way.
 
 
 At LUNARC
 ----------
 
-There are two ways to run RStudio at LUNARC: ThinLinc with Desktop On Demand and through SSH -X. 
+There are two ways to run RStudio at LUNARC: ThinLinc with Desktop On Demand and through SSH -X.
 
 ThinLinc, DesktopOnDemand
 .........................
@@ -147,61 +147,61 @@ If you run from the command line, you will need to load R/4.4.1 (check prerequis
 
 .. admonition:: ``ml avail`` output at LUNARC as of October 21 2024
    :class: dropdown
-    
+
        .. code-block::  console
-    
+
           [<user>@cosmos2 /]$ ml avail RStudio
-            
+
           --------------------- /sw/easybuild_milan/modules/all/Core ---------------------
                rstudio/2024.04.0-735    rstudio/2024.04.2-764 (D)
-         
+
            Where:
             D:  Default Module
-         
+
           If the avail list is too long consider trying:
-         
+
           "module --default avail" or "ml -d av" to just list the default modules.
           "module overview" or "ml ov" to display the number of modules for each name.
-         
+
           Use "module spider" to find all possible modules and extensions.
           Use "module keyword key1 key2 ..." to search for all possible modules matching
           any of the "keys".
 
-SSH -X 
+SSH -X
 ......
 
-1. Login with SSH -X: 
-   
-.. code-block:: console 
+1. Login with SSH -X:
+
+.. code-block:: console
 
    $ ssh -X <username>@cosmos.lunarc.lu.se
-   (<username>@cosmos.lunarc.lu.se) Password: 
-   (<username>@cosmos.lunarc.lu.se) Enter your Pocket Pass OTP: 
+   (<username>@cosmos.lunarc.lu.se) Password:
+   (<username>@cosmos.lunarc.lu.se) Enter your Pocket Pass OTP:
 
-2. Load the RStudio module. It can be loaded directly (use ``ml spider rstudio`` to find versions):    
+2. Load the RStudio module. It can be loaded directly (use ``ml spider rstudio`` to find versions):
 
-.. code-block:: console 
+.. code-block:: console
 
    $ ml rstudio/2024.04.2-764
 
-3. Start RStudio: 
+3. Start RStudio:
 
-.. code-block:: console 
+.. code-block:: console
 
-   $ rstudio 
+   $ rstudio
 
-4. After a little while it starts: 
+4. After a little while it starts:
 
 .. figure:: ../../img/rstudio-cosmos.png
       :width: 500
 
 At NSC
------- 
+------
 
-Rstudio is installed as a module on Tetralith at NSC. You can either use it by logging with ThinLinc or with SSH -X. 
+Rstudio is installed as a module on Tetralith at NSC. You can either use it by logging with ThinLinc or with SSH -X.
 
 ThinLinc
-........ 
+........
 
 1. Login to ThinLinc desktop application by providing the following
 
@@ -209,43 +209,43 @@ ThinLinc
 - username
 - password
 
-Then provide the verification code when prompted. 
+Then provide the verification code when prompted.
 
-2. Start a terminal: Click the icon at the bottom (#2) or open with "Applications" -> "System" -> "Xfce Terminal" 
+2. Start a terminal: Click the icon at the bottom (#2) or open with "Applications" -> "System" -> "Xfce Terminal"
 
-3. Find a suitable version of Rstudio with "module spider Rstudio". The options are currently: 
+3. Find a suitable version of Rstudio with "module spider Rstudio". The options are currently:
 
    - RStudio/2023.06.2+561
    - RStudio/2023.09.1+494
 
-4. The RStudio module can be loaded directly: 
+4. The RStudio module can be loaded directly:
 
-.. code-block:: console 
+.. code-block:: console
 
-   module load RStudio/2023.09.1+494 
+   module load RStudio/2023.09.1+494
 
-5. Start RStudio 
+5. Start RStudio
 
-   .. code-block:: console 
+   .. code-block:: console
 
       [x_birbr@tetralith1 ~]$ rstudio
 
-   or, if there are problems, use 
+   or, if there are problems, use
 
-   .. code-block:: console 
+   .. code-block:: console
 
       rstudio --use-gl=angle
 
-SSH -X 
-...... 
+SSH -X
+......
 
-1. Login to Tetralith with 
+1. Login to Tetralith with
 
-.. code-block:: console 
+.. code-block:: console
 
-   SSH -X <username>@tetralith.nsc.liu.se 
+   SSH -X <username>@tetralith.nsc.liu.se
 
-Then give password and then verification code when prompted. 
+Then give password and then verification code when prompted.
 
 2. Find a suitable version of Rstudio with "module spider Rstudio". The options are currently:
 
@@ -254,48 +254,48 @@ Then give password and then verification code when prompted.
 
 3. The RStudio module can be loaded directly:
 
-.. code-block:: console 
+.. code-block:: console
 
-   module load RStudio/2023.09.1+494 
+   module load RStudio/2023.09.1+494
 
 4. Start RStudio
 
-   .. code-block:: console 
+   .. code-block:: console
 
       [x_birbr@tetralith1 ~]$ rstudio
 
-   or, if there are problems, use 
+   or, if there are problems, use
 
-   .. code-block:: console 
+   .. code-block:: console
 
       rstudio --use-gl=angle
 
-On PDC 
------- 
+On PDC
+------
 
-Rstudio is installed on Dardel at PDC. You can use it by logging in with ThinLinc and start it with the gfxlauncher. RStudio is NOT available through regular SSH -X. 
+Rstudio is installed on Dardel at PDC. You can use it by logging in with ThinLinc and start it with the gfxlauncher. RStudio is NOT available through regular SSH -X.
 
 1. Login to ThinLinc desktop application by providing the following
 
-- server: dardel-vnc.pdc.kth.se 
+- server: dardel-vnc.pdc.kth.se
 - username
-- key (private) 
+- key (private)
 
-Then provide the code for the SSH key if/when prompted. 
+Then provide the code for the SSH key if/when prompted.
 
-NOTE: if it instead lists password, change it to SSH keys for authentication ("Options" -> "Security" -> "Authentication method" and change to "Public key") 
+NOTE: if it instead lists password, change it to SSH keys for authentication ("Options" -> "Security" -> "Authentication method" and change to "Public key")
 
-2. In the menu, choose "Applications" -> "PDC Data Analysis" -> "RStudio-R4.4.0" 
+2. In the menu, choose "Applications" -> "PDC Data Analysis" -> "RStudio-R4.4.0"
 
-The gfx-launcher will be shown, and you can choose project id, number of cores, etc. 
+The gfx-launcher will be shown, and you can choose project id, number of cores, etc.
 
 .. figure:: ../../img/gfx-launcher-studio-dardel.png
       :width: 500
 
-3. Click "start" when you have picked the settings. 
-   
-4. After some time the job starts and RStudio is opened. 
-   
+3. Click "start" when you have picked the settings.
+
+4. After some time the job starts and RStudio is opened.
+
 .. figure:: ../../img/rstudio-dardel.png
       :width: 500
 

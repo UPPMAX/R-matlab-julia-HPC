@@ -33,13 +33,13 @@ Isolated environments
         - 15 mins: challenge
         - 5 mins: feedback
 
-.. admonition:: Compute allocations in this workshop 
+.. admonition:: Compute allocations in this workshop
 
     - Rackham: ``uppmax2025-2-272``
     - Kebnekaise: ``hpc2n2025-062``
     - Cosmos: ``lu2025-7-24``
 
-.. admonition:: Storage space for this workshop 
+.. admonition:: Storage space for this workshop
 
     - Rackham: ``/proj/r-py-jl-m-rackham``
     - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
@@ -89,9 +89,9 @@ Whatever environment manager you use, this is the workflow:
 
 - You create the isolated environment
 - You activate the environment
-- You work in the isolated environment. 
+- You work in the isolated environment.
   Here you install (or update) the environment with the packages you need
-- You deactivate the environment after use 
+- You deactivate the environment after use
 
 A virtual environment can be created in multiple ways, for example, from scratch.
 However, there are more efficient ways, which we will use.
@@ -190,7 +190,7 @@ Exercise 1.2: create the virtual environment
 
     .. tab:: HPC2N
 
-        Create the virtual environment called ``vpyenv`` as such:      
+        Create the virtual environment called ``vpyenv`` as such:
 
         .. code-block:: console
 
@@ -201,7 +201,7 @@ Exercise 1.2: create the virtual environment
 
     .. tab:: LUNARC
 
-        Create the virtual environment called ``vpyenv`` as such:      
+        Create the virtual environment called ``vpyenv`` as such:
 
         .. code-block:: console
 
@@ -209,7 +209,7 @@ Exercise 1.2: create the virtual environment
 
     .. tab:: UPPMAX
 
-        Create the virtual environment called ``vpyenv`` as such:      
+        Create the virtual environment called ``vpyenv`` as such:
 
         .. code-block:: console
 
@@ -226,7 +226,7 @@ Exercise 1.3: activate the virtual environment
 
     .. tab:: HPC2N
 
-        Activate the virtual environment called ``vpyenv`` as such:      
+        Activate the virtual environment called ``vpyenv`` as such:
 
         .. code-block:: console
 
@@ -234,21 +234,21 @@ Exercise 1.3: activate the virtual environment
 
         where ``[username]`` is your HPC2N username, for example ``python -m venv --system-site-packages /proj/nobackup/r-py-jl-m/sven/python/vpyenv``.
 
-        This virtual environment will be used in later sessions too.    
+        This virtual environment will be used in later sessions too.
 
     .. tab:: LUNARC
 
-        Activate the virtual environment called ``vpyenv`` as such:      
+        Activate the virtual environment called ``vpyenv`` as such:
 
         .. code-block:: console
 
             source ~/my_venvs/vpyenv/bin/activate
 
-        This virtual environment will be used in later sessions too.    
+        This virtual environment will be used in later sessions too.
 
     .. tab:: UPPMAX
 
-        Activate the virtual environment called ``vpyenv`` as such:      
+        Activate the virtual environment called ``vpyenv`` as such:
 
         .. code-block:: console
 
@@ -256,7 +256,7 @@ Exercise 1.3: activate the virtual environment
 
         where ``[username]`` is your UPPMAX username, for example ``python -m venv --system-site-packages /proj/r-py-jl-m-rackham/sven/python/vpyenv``.
 
-        This virtual environment will be used in later sessions too.    
+        This virtual environment will be used in later sessions too.
 
 
 
@@ -273,7 +273,7 @@ Exercise 1.4: install Python packages
 
         .. code-block:: console
 
-            pip install --no-cache-dir --no-build-isolation seaborn 
+            pip install --no-cache-dir --no-build-isolation seaborn
 
     .. tab:: LUNARC
 
@@ -309,7 +309,7 @@ Exercise 1.5: check if the Python packages are installed
 
             pip list
 
-      To see which Python packages you have installed yourself 
+      To see which Python packages you have installed yourself
       (i.e. not loaded from a module), use:
 
       .. code-block:: console
@@ -332,7 +332,7 @@ Exercise 1.5: check if the Python packages are installed
 
             pip list
 
-      To see which Python packages you have installed yourself 
+      To see which Python packages you have installed yourself
       (i.e. not loaded from a module), use:
 
       .. code-block:: console
@@ -380,7 +380,7 @@ Conclusion
 
     You have:
 
-    - heard that virtual environments allows one for independent and isolated 
+    - heard that virtual environments allows one for independent and isolated
       set of Python packages
     - heard that there are multiple virtual environments managers:
         - UPPMAX: Conda and ``venv``
@@ -389,7 +389,7 @@ Conclusion
 
     You may:
 
-    - consider to create a virtual environment per project, 
+    - consider to create a virtual environment per project,
       to provide for better reproducibility
 
 Links

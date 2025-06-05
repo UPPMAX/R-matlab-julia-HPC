@@ -33,22 +33,22 @@ Debugging
 
 If a serial job produces an error, call the getDebugLog method to view the error log file.  When submitting an independent job, specify the task.
 
-.. code-block:: 
+.. code-block::
 
    >> c.getDebugLog(job.Tasks)
 
 For Pool jobs, only specify the job object.
 
-.. code-block:: 
+.. code-block::
 
    >> c.getDebugLog(job)
 
 When troubleshooting a job, the cluster admin may request the scheduler ID of the job.  This can be derived by calling getTaskSchedulerIDs (call schedID(job) before R2019b).
 
-.. code-block:: 
+.. code-block::
 
    >> job.getTaskSchedulerIDs()
-   ans = 
+   ans =
     25539
 
 TO LEARN MORE

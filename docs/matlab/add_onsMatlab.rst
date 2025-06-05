@@ -2,13 +2,13 @@ Add-Ons
 =======
 
 .. admonition:: MATLAB Add-Ons
-   
+
    - Add-ons extend the capabilities of MATLAB® by providing additional functionality for specific tasks and applications, such as:
       - connecting to hardware devices
       - additional algorithms
       - interactive apps
    - Available from:
-      - MathWorks® 
+      - MathWorks®
       - the global MATLAB user community
    - Encompass a wide variety of resources
       - products
@@ -16,13 +16,13 @@ Add-Ons
       - toolboxes
       - support packages
    - `More information <https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ>`_
-   
+
 .. admonition:: Learners should be able to
 
    - navigate to toolboxes and Add-Ons
    - view Add-Ons and toolboxes
-   - install and use Add-Ons    
-   
+   - install and use Add-Ons
+
 - Before going into installing Add-Ons, let's have a background to the MATLAB environments and ecosystem!
 
 .. admonition:: Want a video?
@@ -48,7 +48,7 @@ In the GUI, the Add-Ons manager can be selected from the menu at the top. The dr
 
    .. admonition:: How does that look like?
       :class: dropdown
-   
+
       .. figure:: ./img/Add-On_manager.PNG
 
    - Package user-generated code as a Toolbox or App
@@ -65,7 +65,7 @@ Here we will only focus on the first two options.
 
    .. admonition:: How does that look like?
       :class: dropdown
-   
+
       .. figure:: ./img/my_products.PNG
 
 .. seealso:: Some toolboxes
@@ -101,13 +101,13 @@ Install Add-Ons
 
    .. admonition:: When?
       :class: dropdown
-   
+
       - The add-on is not available for installation through the Add-On Explorer, for example, if you create a custom add-on yourself or receive one from someone else.
       - You downloaded the add-on from the Add-On Explorer without installing it.
       - You downloaded the add-on from the File Exchange at MATLAB Central™.
-      - `MathWorks page on getting Add-Ons <https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html>`_ 
+      - `MathWorks page on getting Add-Ons <https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html>`_
 
-.. demo:: 
+.. demo::
 
    - Search for ``kalmanf``
    - Click "Learning the Kalman Filter"
@@ -161,7 +161,7 @@ Install Add-Ons
 
       >> kalmanf()
       'kalmanf' requires Learning the Kalman Filter version 1.0.0.0 to be enabled.
-   
+
    - OK. It is installed but may need some other things. Just an example!!
 
 Exercises
@@ -175,7 +175,7 @@ Exercises
 
    Use the Demo as inspiration!
 
-.. keypoints:: 
+.. keypoints::
 
    - Many Add-Ons, like toolboxes and packages are available at the Clusters
    - You can view Add-Ons and toolboxes

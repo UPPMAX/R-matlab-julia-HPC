@@ -10,38 +10,38 @@ Summary
       - run scripts with ``julia <script.jl>``
    - Packages
       - Check for preinstalled packages
-  
-         - from the Julia REPL with the ``using`` or ``import`` command
-     
-   - Isolated environments 
 
-      - With a virtual environment you can tailor an environment with specific versions 
-        for Julia and packages, not interfering with other installed Julia versions and 
+         - from the Julia REPL with the ``using`` or ``import`` command
+
+   - Isolated environments
+
+      - With a virtual environment you can tailor an environment with specific versions
+        for Julia and packages, not interfering with other installed Julia versions and
         packages.
       - Make it for each project you have for reproducibility.
-      - Julia has its own mechanism to create virtual environments. 
-  
+      - Julia has its own mechanism to create virtual environments.
+
          - HPC2N & LUNARC
-  
+
             - The Julia installation is lean, no additional package besides the Base and
               and Standard Libraries are installed.
-         
-         - UPPMAX 
-  
+
+         - UPPMAX
+
             - Several packages are already installed
 
    - Batch mode
       - The SLURM scheduler handles allocations to the calculation nodes
       - Batch jobs runs without interaction with user
-      - A batch script consists of a part with *SLURM parameters* describing 
-        the allocation and a second part describing the actual work within the job, 
+      - A batch script consists of a part with *SLURM parameters* describing
+        the allocation and a second part describing the actual work within the job,
         for instance one or several Julia scripts.
       - Remember to include possible input arguments to the Julia script in the batch script.
-   
+
    - Interactive work on calculation nodes
-      - Start an interactive session on a calculation node by a SLURM allocation 
+      - Start an interactive session on a calculation node by a SLURM allocation
         (similar flags)
-      
+
          - At HPC2N: ``salloc`` ...
          - At UPPMAX/LUNARC: ``interactive`` ...
 
@@ -66,10 +66,10 @@ Summary
     - Discuss in breakout rooms
     - Learn from each other
 
-.. note:: Evaluation 
+.. note:: Evaluation
 
    You can find the evaluation form for the Julia part of the course here: https://forms.office.com/e/PzkkX3SvB1
-    
+
 .. seealso::
 
 
@@ -83,11 +83,11 @@ Summary
 
 
 .. note::
-    
+
     - Julia language becomes increasingly popular.
-    - We also have a web pages for Julia: 
-  
+    - We also have a web pages for Julia:
+
        - UPPMAX https://docs.uppmax.uu.se/software/julia/
        - HPC2N https://www.hpc2n.umu.se/resources/software/julia
-    
-    
+
+

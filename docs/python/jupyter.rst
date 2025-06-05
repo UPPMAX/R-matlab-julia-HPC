@@ -23,13 +23,13 @@ Jupyter on compute nodes
       - 7 mins: challenge
       - 1 mins: recap
 
-.. admonition:: Compute allocations in this workshop 
+.. admonition:: Compute allocations in this workshop
 
    - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
 
-.. admonition:: Storage space for this workshop 
+.. admonition:: Storage space for this workshop
 
    - Rackham: ``/proj/r-py-jl-m-rackham``
    - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
@@ -46,7 +46,7 @@ Jupyter is:
 - started and run on a server, for example, an interactive node
 - displayed in a **web browser**, such as ``firefox``.
 
-Jupyter can be slow when using a remote desktop website 
+Jupyter can be slow when using a remote desktop website
 (e.g. ``rackham-gui.uppmax.uu.se`` or ``kebnekaise-tl.hpc2n.umu.se``).
 
 - For HPC2N, as ``JupyterLab`` it is only accessible from within HPC2N's, and there is no way to improve any slowness
@@ -68,10 +68,10 @@ Login to a remote desktop:
 UPPMAX procedure step 2: start an interactive session
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Start a terminal. Within that terminal, 
-start an interactive session from the login node 
-(change to the correct NAISS project ID) 
-  
+Start a terminal. Within that terminal,
+start an interactive session from the login node
+(change to the correct NAISS project ID)
+
 **For Rackham**
 
 .. code-block:: sh
@@ -83,12 +83,12 @@ start an interactive session from the login node
 .. code-block:: sh
 
    $ interactive -M snowy -A <naiss-project-id>  -t 4:00:00
-   
+
 
 UPPMAX procedure step 3: start Jupyter in the interactive session
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Within your terminal with the interactive session, 
+Within your terminal with the interactive session,
 load a modern Python module:
 
 .. code-block:: sh
@@ -103,7 +103,7 @@ Then, start ``jupyter-notebook`` (or ``jupyter-lab``):
 
 Leave this terminal open.
 
-UPPMAX procedure step 4: connect to the running notebook 
+UPPMAX procedure step 4: connect to the running notebook
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The terminal will display multiple URLs.
@@ -116,7 +116,7 @@ If you use the remote desktop website:
 In both cases, you can access Jupyter from your local computer
 
 - start ``firefox`` on your local computer
-- browse to the second URL, which will be similar to 
+- browse to the second URL, which will be similar to
   ``http://r486:8888/?token=5c3aeee9fbfc75f7a11c4a64b2b5b7ec49622231388241c2``
 
 On own computer
@@ -137,17 +137,17 @@ On own computer
    :align: center
 
 [SSH port forwarding](https://uplogix.com/docs/local-manager-user-guide/advanced-features/ssh-port-forwarding)
-    
+
 On your computer open  the address you got but replace r486 with localhost i.e.
 
 ``http://localhost:8888/?token=5c3aeee9fbfc75f7a11c4a64b2b5b7ec49622231388241c2``
-or 
+or
 ``http://127.0.0.0:8888/?token=5c3aeee9fbfc75f7a11c4a64b2b5b7ec49622231388241c2``
 
     This should bring the jupyter interface on your computer and all calculations and files will be on Rackham.
 
 
-.. warning:: 
+.. warning::
 
    **Running Jupyter in a virtual environment**
 
@@ -165,7 +165,7 @@ or
    .. code-block:: console
 
       $ jupyter-notebook
-   
+
    Be sure to start the **kernel with the virtual environment name**, like "Example", and not "Python 3 (ipykernel)".
 
 
@@ -204,10 +204,10 @@ Something like the file below will work. Remember to change the project id after
    #SBATCH -n 1
    # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.
    #SBATCH --time=05:00:00
- 
+
    # Clear the environment from any previously loaded modules
    module purge > /dev/null 2>&1
- 
+
    # Load the module environment suitable for the job
    module load GCC/12.3.0 JupyterLab/4.0.5
 
@@ -270,7 +270,7 @@ The file will look similar to this:
         http://127.0.0.1:8888/lab?token=c45b36c6f22322c4cb1e037e046ec33da94506004aa137c1
    [I 2024-03-09 15:35:31.078 ServerApp] Skipped non-installed server(s): bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
 
- 
+
 To access the server, go to
 
 ``file:///.local/share/jupyter/runtime/jpserver-<newest>-open.html``
@@ -342,7 +342,7 @@ pyDOE and torch has some prerequisites, some of which are already installed at H
 
    module load GCC/10.3.0 JupyterLab/3.2.8 OpenMPI/4.1.1 SciPy-bundle/2021.05 matplotlib/3.4.2
 
-2. We now need to create a virtual environment (venv) to install our own packages in. I am placing it in the Public directory under my home directory ($HOME), but you could instead place it in your project storage. I am calling the venv "jupvenv", but you can call it what you want: 
+2. We now need to create a virtual environment (venv) to install our own packages in. I am placing it in the Public directory under my home directory ($HOME), but you could instead place it in your project storage. I am calling the venv "jupvenv", but you can call it what you want:
 
 .. code-block:: sh
 
@@ -400,10 +400,10 @@ Later you can remove the kernel if you feel like, using this:
    #SBATCH -n 1
    # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available!
    #SBATCH --time=01:00:00
- 
+
    # Clear the environment from any previously loaded modules
    module purge > /dev/null 2>&1
- 
+
    # Load the module environment suitable for the job
    module load GCC/10.3.0 JupyterLab/3.2.8 OpenMPI/4.1.1 SciPy-bundle/2021.05 matplotlib/3.4.2
 
@@ -438,6 +438,6 @@ Links
 ---------
 
 - `The Jupyter project <https://jupyter.org/>`_ contains a lot of information and inspiration
-- `The Jupyter Notebook documentation <https://jupyter-notebook.readthedocs.io/en/stable/>`_  
+- `The Jupyter Notebook documentation <https://jupyter-notebook.readthedocs.io/en/stable/>`_
 - `Video: Starting a Jupyter notebook on the Rackham UPPMAX HPC cluster using a ThinLinc remote desktop (YouTube) <https://youtu.be/72rYjwGvWEc>`_
 

@@ -126,8 +126,8 @@ You can find and load the R machine learning modules
 .. code-block:: console
 
     module load R/4.1.1 R_packages/4.1.1
-    module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2 R-bundle-Bioconductor/3.14-R-4.1.2 
-    module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1 
+    module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2 R-bundle-Bioconductor/3.14-R-4.1.2
+    module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
     module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
 
 You can submit a job to the scheduler to run an R script that uses machine learning
@@ -156,7 +156,7 @@ You can start an interactive session with multiple cores
     interactive -n 4 -A my_project_code
     salloc -n 4 -A my_project_code
 
-You can verify my interactive session uses multiple cores 
+You can verify my interactive session uses multiple cores
 
 .. code-block:: console
 

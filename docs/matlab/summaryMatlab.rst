@@ -61,16 +61,16 @@ Summary
       matlab -nojvm -nodisplay -r "monte_carlo_pi(100000)"
 
    .. code-block:: console
-   
+
       sbatch batchscript.sh``
 
 - You can use GPUs with Matlab
- 
+
    .. code-block:: matlab
 
       c.AdditionalProperties.GpusPerNode = 1;
 
-**Matlab GUI and Slurm** 
+**Matlab GUI and Slurm**
 
 - You can submit jobs from inside the Matlab GUI
 
@@ -82,7 +82,7 @@ Summary
       j.wait;                               % wait for the results
       j.fetchOutputs{:};                % fetch the results
 
-   - Note that batch also accepts script names in place of function names, but these must be given in single quotes, with no @ or .m. 
+   - Note that batch also accepts script names in place of function names, but these must be given in single quotes, with no @ or .m.
 
 - You can work with Matlab in parallel
 
@@ -107,7 +107,7 @@ Summary
     - Search in add-ons explorer and install.
     - Ends up in local folder and is in the path so it should be reached wherever you are in the file tree.
 
-**Session-UPPMAX: Matlab client on the desktop** 
+**Session-UPPMAX: Matlab client on the desktop**
 
 - You can use the Matlab client on the desktop
 
@@ -121,5 +121,5 @@ Summary
 - You can start run Matlab in Jupyter
 
    - You need to configure and install some python packages the first time
-   - After that starting jupyter will find the Matlab kernel 
+   - After that starting jupyter will find the Matlab kernel
 

@@ -3,7 +3,7 @@ Evaluation
 
 The evaluation form can be found `here <https://forms.office.com/e/G4U0gKL76w>`_.
 It takes into account that one may need to leave early too.
-  
+
 
 .. dropdown:: What is in the form?
 

@@ -12,11 +12,11 @@ Session-UPPMAX: Matlab client on the desktop
 .. warning::
 
    - This solution is possible only if
-      - you have an UPPMAX compute project 
+      - you have an UPPMAX compute project
       - a working matlab on your computer with one of the version available on the cluster:
 
          - check with ``module avail matlab``
-         - Examples of the newest ones: 
+         - Examples of the newest ones:
 
             - R2020b
             - R2022a
@@ -53,17 +53,17 @@ The Rackham MATLAB support package can be found at `uppsala.Desktop.zip <https:/
 .. code-block:: matlab
 
    >> configCluster
-   Username on RACKHAM (e.g. jdoe):  
+   Username on RACKHAM (e.g. jdoe):
 
 - Type your rackham user name.
 - As a result:
 
-.. code-block:: matlab 
-   
+.. code-block:: matlab
+
    Complete.  Default cluster profile set to "Rackham R2022b".
 
 
-.. note:: 
+.. note::
 
    - To submit jobs to the local machine instead of the cluster, run the following:
 
@@ -83,11 +83,11 @@ Prior to submitting the job, various parameters can be assigned, such as queue, 
    >> % Get a handle to the cluster
    >> c = parcluster;
 
-   c = 
+   c =
 
     Generic Cluster
 
-       Properties: 
+       Properties:
 
                       Profile: Rackham R2022b
                      Modified: false
@@ -151,7 +151,7 @@ Start job
 
 - Copy this script and paste in a new file ``parallel_example_local.m`` that you save in the working directory where you are (check with ``pwd`` in the Matlab Command Window).
 
-    - The script is supposed to loop over ``sleepTime`` seconds of work ``nLoopIters`` times. 
+    - The script is supposed to loop over ``sleepTime`` seconds of work ``nLoopIters`` times.
     - We will define the number of processes in the batch submit line.
 
 .. code-block:: matlab
@@ -169,8 +169,8 @@ Start job
 
    job = c.batch(@parallel_example_local, 1, {16,1}, 'Pool',8,'CurrentFolder','.');
 
-- Submission to the cluster requires SSH credentials. 
-- You will be prompted for username and password or identity file (private key). 
+- Submission to the cluster requires SSH credentials.
+- You will be prompted for username and password or identity file (private key).
     - It will not ask again until you define a new cluster handle ``c`` or in next session.
 
 .. figure:: ./img/matlab_usercred.PNG
@@ -187,7 +187,7 @@ Start job
 
        'running'
 
-- You can run this several times until it gives 
+- You can run this several times until it gives
 
 .. code-block:: matlab
 
@@ -241,9 +241,9 @@ Exercises
    - Try to run a script from the `MATLAB GUI and SLURM session <./jobsMatlab.html>`_
    - Check in a rackham terminal: ``squeue -M snowy --me``
 
-.. keypoints:: 
+.. keypoints::
 
-   - Steps to configure  first time 
+   - Steps to configure  first time
        - download and decompress UPPMAX configure file.
        - run configCluster on local MATLAB and set user name
    - Steps to run

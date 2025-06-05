@@ -8,11 +8,11 @@ Parallel and multithreaded functions
    - Why do we need it?
    - When can I use it?
 
-.. objectives:: 
+.. objectives::
 
    - Learn basic concepts in parallel programming
    - Gain knowledge on the tools for parallel programming in different languages
-   - Get familiar with the tools to monitor the usage of resources 
+   - Get familiar with the tools to monitor the usage of resources
 
 
 What is parallel programming?
@@ -33,8 +33,8 @@ network interconnect.
    :align: center
 
    Shared Memory and Distributed Memory architectures.
- 
-A more realistic picture of a computer architecture can be seen in the following 
+
+A more realistic picture of a computer architecture can be seen in the following
 picture where we have 14 cores that shared a common memory of 64 GB. These cores
 form the socket and the two sockets shown in this picture constitute a node.
 
@@ -42,7 +42,7 @@ form the socket and the two sockets shown in this picture constitute a node.
    :width: 550
    :align: center
 
-   1 standard node on Kebnekaise @HPC2N 
+   1 standard node on Kebnekaise @HPC2N
 
 It is interesting to notice that there are different types of memory
 available for the cores, ranging from the L1 cache to the node's memory for a single
@@ -52,7 +52,7 @@ Now you can see that on a single node you already have several computing units
 (cores) and also a hierarchy of memory resources which is denoted as Non Uniform
 Memory Access (NUMA).
 
-Besides the standard CPUs, nowadays one finds Graphic Processing Units (GPUs) 
+Besides the standard CPUs, nowadays one finds Graphic Processing Units (GPUs)
 architectures in HPC clusters.
 
 
@@ -65,7 +65,7 @@ modern architectures. If you want your code to be aware of those features, you w
 need to either add them explicitly (by coding them yourself) or implicitly (by using
 libraries that were coded by others).
 
-In your local machine, you may have some number of cores available and some memory 
+In your local machine, you may have some number of cores available and some memory
 attached to them which can be exploited by using a parallel program. There can be
 some limited resources for running your data-production simulations as you may use
 your local machine for other purposes such as writing a manuscript, making a presentation,
@@ -81,7 +81,7 @@ HPC cluster is a shown in the figure below.
 
 Although a serial application can run in such a cluster, it would not gain much of the
 HPC resources. If fact, one can underuse the cluster if one allocates more resources than
-what the simulation requires. 
+what the simulation requires.
 
 .. figure:: ../../img/laundry-machines.svg
    :width: 200
@@ -90,24 +90,24 @@ what the simulation requires.
    Under-using a cluster.
 
 .. warning::
-   
-   - Check if the resources that you allocated are being used properly.  
+
+   - Check if the resources that you allocated are being used properly.
    - Monitor the usage of hardware resources with tools offered at your HPC center, for instance
-     `job-usage at HPC2N <https://hpc2n.github.io/intro-course/software/#best__practices>`_.   
-   - Here there are some examples (of many) of what you will need to pay attention when porting 
+     `job-usage at HPC2N <https://hpc2n.github.io/intro-course/software/#best__practices>`_.
+   - Here there are some examples (of many) of what you will need to pay attention when porting
      a parallel code from your laptop (or another HPC center) to our clusters:
 
    .. tabs::
 
       .. tab:: HPC2N
 
-         We have a tool to monitor the usage of resources called: 
+         We have a tool to monitor the usage of resources called:
          `job-usage at HPC2N <https://hpc2n.github.io/intro-course/software/#best__practices>`_.
 
-      .. tab:: UPPMAX 
+      .. tab:: UPPMAX
 
          If you are in a interactive node session the ``top`` command will give you information
-         of the resources usage. 
+         of the resources usage.
 
 
 Common parallel programming paradigms
@@ -124,7 +124,7 @@ Threaded programming
 To take advantage of the shared memory of the cores, **threaded** mechanisms can be used.
 Low-level programming languages, such as Fortran/C/C++, use OpenMP as the standard
 application programming interface (API) to parallelize programs by using a threaded mechanism.
-Here, all threads have access to the same data and can do computations simultaneously. 
+Here, all threads have access to the same data and can do computations simultaneously.
 From this  we infer that without doing any modification to our code
 we can get the benefits from parallel computing by turning-on/off external libraries,
 by setting environment variables such as ``OMP_NUM_THREADS``.
@@ -135,75 +135,75 @@ confusing especially if the code is using external libraries, linear algebra for
 the code you are writing (R, Julia, Python, or Matlab) can also have some internal threded mechanism.
 
 .. warning::
-   
-   - Check if the libraries/packages that you are using have a threaded mechanism. 
+
+   - Check if the libraries/packages that you are using have a threaded mechanism.
    - Monitor the usage of hardware resources with tools offered at your HPC center, for instance
-     `job-usage at HPC2N <https://hpc2n.github.io/intro-course/software/#best__practices>`_.   
-   - Here there are some examples (of many) of what you will need to pay attention when porting 
+     `job-usage at HPC2N <https://hpc2n.github.io/intro-course/software/#best__practices>`_.
+   - Here there are some examples (of many) of what you will need to pay attention when porting
      a parallel code from your laptop (or another HPC center) to our clusters:
 
    .. tabs::
 
-      .. tab:: Julia 
+      .. tab:: Julia
 
-         For some linear algebra operations Julia supports threads (set with the ``OMP_NUM_THREADS`` variable). 
-         If your code contains calls to these operations in a loop that is already parallelized by *n* processes, 
-         and you allocate *n* cores for this job, this job will exceed the allocated resources unless the 
+         For some linear algebra operations Julia supports threads (set with the ``OMP_NUM_THREADS`` variable).
+         If your code contains calls to these operations in a loop that is already parallelized by *n* processes,
+         and you allocate *n* cores for this job, this job will exceed the allocated resources unless the
          number of threads is explicitly set to 1. Notice that Julia also has its own threaded mechanism.
 
-      .. tab:: R  
+      .. tab:: R
 
-         Creating a cluster with *n* cores (makeCluster) and start traing a ML model with flags such as 
+         Creating a cluster with *n* cores (makeCluster) and start traing a ML model with flags such as
          ``allowParallel`` set to ``TRUE`` or ``num.threads`` set to a value such as the total number of requested
          cores is exceeded.
 
-      .. tab:: Matlab 
+      .. tab:: Matlab
 
          Using a **CPLEX** solver inside a ``parfor`` loop: These solvers work in a *opportunistic* manner meaning that
-         they will try to use all the resources available in the machine. If you request *n* cores for ``parfor`` in 
-         your batch job, these cores will be used by the solver. Theoretically, you will be using *nxn* cores although 
-         only *n* were requested. One way to solve this issue is by setting the number of threads 
-         ``cplex.Param.threads.Cur`` to 1. 
+         they will try to use all the resources available in the machine. If you request *n* cores for ``parfor`` in
+         your batch job, these cores will be used by the solver. Theoretically, you will be using *nxn* cores although
+         only *n* were requested. One way to solve this issue is by setting the number of threads
+         ``cplex.Param.threads.Cur`` to 1.
 
-A common issue with shared memory programming is *data racing* which happens when 
-different threads write on the same memory address. 
+A common issue with shared memory programming is *data racing* which happens when
+different threads write on the same memory address.
 
 .. admonition:: Language-specific nuances for threaded programming
    :class: dropdown
 
    .. tabs::
 
-      .. tab:: Julia 
+      .. tab:: Julia
 
-         The mechanism here is called `Julia threads` which is performant and can be activated by 
+         The mechanism here is called `Julia threads` which is performant and can be activated by
          executing a script as follows ``julia --threads X script.jl``, where *X* is the number of
          threads. Code modifications are required to support the threads.
 
-      .. tab:: R 
+      .. tab:: R
 
-         R doesn't have a threaded mechanism as the other languages discussed in this course. Some 
-         functions provided by certain packages (parallel, doParallel, etc.), for instance, *foreach*, 
-         offer parallel features but memory is not shared across the workers. This could lead to 
+         R doesn't have a threaded mechanism as the other languages discussed in this course. Some
+         functions provided by certain packages (parallel, doParallel, etc.), for instance, *foreach*,
+         offer parallel features but memory is not shared across the workers. This could lead to
          `data replication <https://hpc2n.github.io/intro-course/software/#recommendations>`_.
 
-      .. tab:: Matlab 
+      .. tab:: Matlab
 
-         Starting from version 2020a, Matlab offers the `ThreadPool <https://se.mathworks.com/help/parallel-computing/parallel.threadpool.html>`_ 
-         functionality that can leverage the power of threads sharing a common memory. This could 
+         Starting from version 2020a, Matlab offers the `ThreadPool <https://se.mathworks.com/help/parallel-computing/parallel.threadpool.html>`_
+         functionality that can leverage the power of threads sharing a common memory. This could
          potentially lead to a faster code compared to other schemes (Distributed discussed below)
-         but notice that the code is not expected to support multi-node simulations. 
+         but notice that the code is not expected to support multi-node simulations.
 
 
 Distributed programming
 '''''''''''''''''''''''
 
 Although threaded programming is convenient because one can achieve considerable initial speedups
-with little code modifications, this approach does not scale for more than hundreds of 
+with little code modifications, this approach does not scale for more than hundreds of
 cores. Scalability can be achieved with distributed programming. Here, there is not
 a common shared memory but the individual `processes` (notice the different terminology
 with `threads` in shared memory) have their own memory space. Then, if a process requires
 data from or should transfer data to another process, it can do that by using `send` and
-`receive` to transfer messages. A standard API for distributed computing is the Message 
+`receive` to transfer messages. A standard API for distributed computing is the Message
 Passing Interface (MPI). In general, MPI requires refactoring of your code.
 
 .. admonition:: Language-specific nuances for distributed programming
@@ -211,26 +211,26 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
 
    .. tabs::
 
-      .. tab:: Julia 
+      .. tab:: Julia
 
-         The mechanism here is called `Julia processes` which  can be activated by executing a script as follows 
-         ``julia -p X script.jl``, where *X* is the number of processes. Code modifications are required to support the 
+         The mechanism here is called `Julia processes` which  can be activated by executing a script as follows
+         ``julia -p X script.jl``, where *X* is the number of processes. Code modifications are required to support the
          workers. Julia also supports MPI through the package ``MPI.jl``.
 
-      .. tab:: R 
+      .. tab:: R
 
-         R doesn't have a multiprocessing mechanism as the other languages discussed in this course. Some 
-         functions provided by certain packages (parallel, doParallel, etc.), for instance, *foreach*, 
-         offer parallel features. The processes generated by these functions have their own workspace which 
+         R doesn't have a multiprocessing mechanism as the other languages discussed in this course. Some
+         functions provided by certain packages (parallel, doParallel, etc.), for instance, *foreach*,
+         offer parallel features. The processes generated by these functions have their own workspace which
          could lead to `data replication <https://hpc2n.github.io/intro-course/software/#recommendations>`_.
          MPI is supported in R through the ``Rmpi`` package.
 
-      .. tab:: Matlab 
+      .. tab:: Matlab
 
-         In Matlab one can use the ``parpool('my-cluster',X)`` where *X* is the number of workers.  The total number of processes spawned will always be *X+1* where the extra process handles the overhead for the rest. See the 
+         In Matlab one can use the ``parpool('my-cluster',X)`` where *X* is the number of workers.  The total number of processes spawned will always be *X+1* where the extra process handles the overhead for the rest. See the
          `documentation for parpool <https://se.mathworks.com/help/parallel-computing/parpool.html>`_ from MatWorks.
-         Matlab doesn't support MPI function calls in Matlab code, it could be used indirectly through 
-         `mex <https://se.mathworks.com/help/matlab/ref/mex.html>`_ functions though. 
+         Matlab doesn't support MPI function calls in Matlab code, it could be used indirectly through
+         `mex <https://se.mathworks.com/help/matlab/ref/mex.html>`_ functions though.
 
 Big data
 ''''''''
@@ -238,8 +238,8 @@ Big data
 Sometimes the workflow you are targeting doesn't require extensive computations but mainly dealing with
 big pieces of data. An example can be, reading a column-structured file and doing some transformation per-column.
 Fortunately, all languages covered in this course have already several tools to deal with big data.
-We list some of these tools in what follows but notice that other tools doing similar jobs can be 
-available for each language. 
+We list some of these tools in what follows but notice that other tools doing similar jobs can be
+available for each language.
 
 .. admonition:: Language-specific tools for big data
    :class: dropdown
@@ -248,20 +248,20 @@ available for each language.
 
       .. tab:: Julia
 
-         **Dagger** 
+         **Dagger**
 
-         According to the developers of this framework, `Dagger <https://juliaparallel.org/Dagger.jl/dev/>`_ 
+         According to the developers of this framework, `Dagger <https://juliaparallel.org/Dagger.jl/dev/>`_
          is heavily inspired on Dask. It support distributed arrays so that they could fit the memory and
-         also the possibility of parallelizing the computations on these arrays. 
+         also the possibility of parallelizing the computations on these arrays.
 
-      .. tab:: R 
-   
-         `Arrow <https://arrow.apache.org/docs/r/index.html>`_ (previously *disk.frame*) can deal with 
+      .. tab:: R
+
+         `Arrow <https://arrow.apache.org/docs/r/index.html>`_ (previously *disk.frame*) can deal with
          big arrays. Other tools include `data.table <https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html>`_
-         and `bigmemory <https://cran.r-project.org/web/packages/bigmemory/index.html>`_. 
+         and `bigmemory <https://cran.r-project.org/web/packages/bigmemory/index.html>`_.
 
-      .. tab:: Matlab 
-   
+      .. tab:: Matlab
+
          In Matlab `Tall Arrays <https://se.mathworks.com/help/matlab/tall-arrays.html>`_ and
          `Distributed Arrays <https://se.mathworks.com/help/parallel-computing/distributed-arrays.html>`_
          will assist you when dealing with large arrays.
@@ -269,15 +269,15 @@ available for each language.
 
 -------------------
 
-.. demo:: 
+.. demo::
    :class: dropdown
 
-   The idea is to parallelize a simple *for loop* (language-agnostic): 
+   The idea is to parallelize a simple *for loop* (language-agnostic):
 
-   .. code-block:: sh 
+   .. code-block:: sh
 
-      for i start at 1 end at 4 
-         wait 1 second 
+      for i start at 1 end at 4
+         wait 1 second
       end the for loop
 
    The waiting step is used to simulate a task without writing too much code. In this way,
@@ -300,36 +300,36 @@ available for each language.
 
             using BenchmarkTools
             using .Threads
-            
+
             n = 4   # number of iterations
-             
+
             function sleep_serial(n)   #Serial version
                 for i in 1:n
                     sleep(1)
                 end
             end
-            
+
             @btime sleep_serial(n) evals=1 samples=1
-            
+
             function sleep_threaded(n) #Parallel version
                 @threads for i = 1:n
                     sleep(1)
                 end
             end
-            
+
             @btime sleep_threaded(n) evals=1 samples=1
-            
+
          First load the Julia module ``ml Julia/1.8.5-linux-x86_64`` and then run the script
-         with the command  ``srun -A "your-project" -n 1 -c 4 -t 00:05:00 julia --threads 4 sleep-threads.jl`` 
+         with the command  ``srun -A "your-project" -n 1 -c 4 -t 00:05:00 julia --threads 4 sleep-threads.jl``
          to use 4 Julia threads.
 
          We can also use the *Distributed* package that allows the scaling of simulations beyond
-         a single node (call the script ``sleep-distributed.jl``): 
+         a single node (call the script ``sleep-distributed.jl``):
 
          .. code-block:: julia
 
             using BenchmarkTools
-            using Distributed 
+            using Distributed
 
             n = 4   # number of iterations
 
@@ -337,21 +337,21 @@ available for each language.
                @sync @distributed for i in 1:n
                     sleep(1)
                 end
-            end         
+            end
 
             @btime sleep_parallel(n) evals=1 samples=1
 
-         Run the script with the command  ``srun -A "your-project" -n 1 -c 4 -t 00:05:00 julia -p 4 sleep-distributed.jl`` 
+         Run the script with the command  ``srun -A "your-project" -n 1 -c 4 -t 00:05:00 julia -p 4 sleep-distributed.jl``
          to use 4 Julia processes.
 
-      .. tab:: R 
-   
+      .. tab:: R
+
          In the following example ``sleep.R`` the `Sys.sleep()` function is called `n` times
-         first in serial mode and then by using `n` processes. Start by loading the 
+         first in serial mode and then by using `n` processes. Start by loading the
          modules ``ml GCC/12.2.0  OpenMPI/4.1.4 R/4.2.2``
 
          .. code-block:: r
-        
+
             library(doParallel)
 
             # number of iterations = number of processes
@@ -369,7 +369,7 @@ available for each language.
             sleep_parallel <- function(n) {
               r <- foreach(i=1:n) %dopar% Sys.sleep(1)
             }
-              
+
             cl <- makeCluster(n)
             registerDoParallel(cl)
             parallel_time <- system.time(    sleep_parallel(n)   )[3]
@@ -378,13 +378,13 @@ available for each language.
 
          Run the script with the command  ``srun -A "your-project" -n 1 -c 4 -t 00:05:00 Rscript --no-save --no-restore sleep.R``.
 
-      .. tab:: Matlab 
-   
+      .. tab:: Matlab
+
          In Matlab one can use the function `pause()` to wait for some number of secods.
-         The Matlab module we tested can be loaded as ``ml MATLAB/2023a.Update4``.  
+         The Matlab module we tested can be loaded as ``ml MATLAB/2023a.Update4``.
 
          .. code-block:: matlab
-        
+
             % Get a handler for the cluster
             c=parcluster('kebnekaise');
 
@@ -439,20 +439,20 @@ Exercises
 
    In this exercise we will run a parallelized code that performs a 2D integration:
 
-      .. math:: 
+      .. math::
           \int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
 
    One way to perform the integration is by creating a grid in the ``x`` and ``y`` directions.
    More specifically, one divides the integration range in both directions into ``n`` bins.
 
-   .. tabs:: 
+   .. tabs::
 
 
       .. tab:: Julia
-         
 
-            Here is a parallel code using the ``Distributed`` package in Julia (call it 
-            ``integration2d_distributed.jl``):  
+
+            Here is a parallel code using the ``Distributed`` package in Julia (call it
+            ``integration2d_distributed.jl``):
 
             .. admonition:: integration2d_distributed.jl
                :class: dropdown
@@ -464,18 +464,18 @@ Exercises
                    using LinearAlgebra
                    using Printf
                    using Dates
-                   
+
                    # Add worker processes (replace with actual number of cores you want to use)
                    nworkers = *FIXME*
                    addprocs(nworkers)
-                   
+
                    # Grid size
                    n = 20000
                    # Number of processes
                    numprocesses = nworkers
                    # Shared array to store partial sums for each process
                    partial_integrals = SharedVector{Float64}(numprocesses)
-                   
+
                    # Function for 2D integration using multiprocessing
                    # the decorator @everywher instruct Julia to transfer this function to all workers
                    @everywhere function integration2d_multiprocessing(n, numprocesses, processindex, partial_integrals)
@@ -485,11 +485,11 @@ Exercises
                        mysum = 0.0
                        # Workload for each process
                        workload = div(n, numprocesses)
-                   
+
                        # Define the range of work for each process according to index
                        begin_index = workload * (processindex - 1) + 1
                        end_index = workload * processindex
-                   
+
                        # Regular integration in the X axis
                        for i in begin_index:end_index
                            x = h * (i - 0.5)
@@ -499,46 +499,46 @@ Exercises
                                mysum += sin(x + y)
                            end
                        end
-                   
+
                        # Store the result in the shared array
                        partial_integrals[processindex] = h^2 * mysum
                    end
-                   
+
                    # function for main
                    function main()
                        # Start the timer
                        starttime = now()
-                   
+
                        # Distribute tasks to processes
                        @sync for i in 1:numprocesses
                            @spawnat i integration2d_multiprocessing(n, numprocesses, i, partial_integrals)
                        end
-                   
+
                        # Calculate the total integral by summing over partial integrals
                        integral = sum(partial_integrals)
 
                        # end timing
                        endtime = now()
-                   
+
                        # Output results
                        println("Integral value is $(integral), Error is $(abs(integral - 0.0))")
                        println("Time spent: $(Dates.value(endtime - starttime) / 1000) sec")
                    end
-                   
+
                    # Run the main function
                    main()
 
-            Run the code with the following batch script.             
+            Run the code with the following batch script.
 
             .. admonition:: job.sh
                :class: dropdown
 
                .. tabs::
-      
+
                   .. tab:: UPPMAX
-      
+
                      .. code-block:: bash
-      
+
                              #!/bin/bash -l
                              #SBATCH -A naiss202X-XY-XYZ  # your project_ID
                              #SBATCH -J job-serial        # name of the job
@@ -546,72 +546,72 @@ Exercises
                              #SBATCH --time=00:20:00      # requested time
                              #SBATCH --error=job.%J.err   # error file
                              #SBATCH --output=job.%J.out  # output file
-      
+
                              ml julia/1.8.5
-      
-                             julia integration2d_distributed.jl 
-         
+
+                             julia integration2d_distributed.jl
+
                   .. tab:: HPC2N
-      
+
                      .. code-block:: bash
-                              
-                             #!/bin/bash            
-                             #SBATCH -A hpc2n202x-xyz     # your project_ID       
-                             #SBATCH -J job-serial        # name of the job         
-                             #SBATCH -n *FIXME*           # nr. tasks  
+
+                             #!/bin/bash
+                             #SBATCH -A hpc2n202x-xyz     # your project_ID
+                             #SBATCH -J job-serial        # name of the job
+                             #SBATCH -n *FIXME*           # nr. tasks
                              #SBATCH --time=00:20:00      # requested time
                              #SBATCH --error=job.%J.err   # error file
-                             #SBATCH --output=job.%J.out  # output file  
-      
+                             #SBATCH --output=job.%J.out  # output file
+
                              ml purge  > /dev/null 2>&1
                              ml Julia/1.9.3-linux-x86_64
-      
-                             julia integration2d_distributed.jl 
+
+                             julia integration2d_distributed.jl
 
 
                   .. tab:: LUNARC
 
                        .. code-block:: sh
-                           
-                           #!/bin/bash            
+
+                           #!/bin/bash
                            #SBATCH -A lu202X-XX-XX      # your project_ID
-                           #SBATCH -J job-serial        # name of the job         
-                           #SBATCH -n *FIXME*           # nr. tasks  
+                           #SBATCH -J job-serial        # name of the job
+                           #SBATCH -n *FIXME*           # nr. tasks
                            #SBATCH --time=00:20:00      # requested time
                            #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file 
+                           #SBATCH --output=job.%J.out  # output file
                            # reservation (optional)
-                           #SBATCH --reservation=RPJM-course*FIXME* 
+                           #SBATCH --reservation=RPJM-course*FIXME*
 
                            ml purge  > /dev/null 2>&1
                            ml Julia/1.9.3-linux-x86_64
-      
-                           julia integration2d_distributed.jl 
+
+                           julia integration2d_distributed.jl
 
                   .. tab:: PDC
-      
-                     .. code-block:: bash                              
+
+                     .. code-block:: bash
 
 
                            #!/bin/bash
-                           #SBATCH -A naiss202t-uv-wxyz # your project_ID       
-                           #SBATCH -J job               # name of the job          
+                           #SBATCH -A naiss202t-uv-wxyz # your project_ID
+                           #SBATCH -J job               # name of the job
                            #SBATCH  -p shared           # name of the queue
                            #SBATCH --ntasks=*FIXME*     # nr. of tasks
                            #SBATCH --cpus-per-task=1    # nr. of cores per-task
                            #SBATCH --time=00:03:00      # requested time
                            #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+                           #SBATCH --output=job.%J.out  # output file
 
                            # Load dependencies and Julia version
-                           ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+                           ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
                            julia integration2d_distributed.jl
 
                   .. tab:: NSC
-      
-                     .. code-block:: bash     
- 
+
+                     .. code-block:: bash
+
                            #!/bin/bash
                            #SBATCH -A naiss202t-uv-xyz  # your project_ID
                            #SBATCH -J job-serial        # name of the job
@@ -621,16 +621,16 @@ Exercises
                            #SBATCH --output=job.%J.out  # output file
 
                            # Load any modules you need, here for Julia
-                           ml julia/1.9.4-bdist 
+                           ml julia/1.9.4-bdist
 
                            julia integration2d_distributed.jl
 
 
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
-            1,2,4,8,12, and 14. Note: this number should match the number of processes 
+            1,2,4,8,12, and 14. Note: this number should match the number of processes
             (also a *FIXME* string) in the Julia script. Collect the timings that are
             printed out in the **job.*.out**. According to these execution times what would be
-            the number of cores that gives the optimal (fastest) simulation? 
+            the number of cores that gives the optimal (fastest) simulation?
 
             Challenge: Increase the grid size (``n``) to 100000 and submit the batch job with 4 workers (in the
             Julia script) and request 5 cores in the batch script. Monitor the usage of resources
@@ -638,9 +638,9 @@ Exercises
             ``job-usage`` (HPC2N).
 
       .. tab:: R
-         
 
-            Here is a parallel code using the ``parallel`` and ``doParallel`` packages in R (call it 
+
+            Here is a parallel code using the ``parallel`` and ``doParallel`` packages in R (call it
             ``integration2d.R``). Note: check if those packages are already installed for the required
             R version, otherwise install them with ``install.packages()``. The recommended R version
             for this exercise is ``ml GCC/12.2.0 OpenMPI/4.1.4 R/4.2.2`` (HPC2N).
@@ -652,13 +652,13 @@ Exercises
 
                    library(parallel)
                    library(doParallel)
-                   
+
                    # nr. of workers/cores that will solve the tasks
                    nworkers <- *FIXME*
-                   
+
                    # grid size
                    n <- 840
-                   
+
                    # Function for 2D integration (non-optimal implementation)
                    integration2d <- function(n, numprocesses, processindex) {
                      # Interval size (same for X and Y)
@@ -667,11 +667,11 @@ Exercises
                      mysum <- 0.0
                      # Workload for each process
                      workload <- floor(n / numprocesses)
-                     
+
                      # Define the range of work for each process according to index
                      begin_index <- workload * (processindex - 1) + 1
                      end_index <- workload * processindex
-                     
+
                      # Regular integration in the X axis
                      for (i in begin_index:end_index) {
                        x <- h * (i - 0.5)
@@ -684,43 +684,43 @@ Exercises
                      # Return the result
                      return(h^2 * mysum)
                    }
-                   
-                   
+
+
                    # Set up the cluster for doParallel
                    cl <- makeCluster(nworkers)
                    registerDoParallel(cl)
-                   
+
                        # Start the timer
                        starttime <- Sys.time()
-                       
+
                        # Distribute tasks to processes and combine the outputs into the results list
                        results <- foreach(i = 1:nworkers, .combine = c) %dopar% { integration2d(n, nworkers, i) }
-                       
+
                        # Calculate the total integral by summing over partial integrals
                        integral <- sum(results)
 
                        # End the timing
                        endtime <- Sys.time()
-                       
+
                        # Print out the result
                        print(paste("Integral value is", integral, "Error is", abs(integral - 0.0)))
                        print(paste("Time spent:", difftime(endtime, starttime, units = "secs"), "seconds"))
-                   
+
                    # Stop the cluster after computation
                    stopCluster(cl)
 
 
-            Run the code with the following batch script.             
+            Run the code with the following batch script.
 
             .. admonition:: job.sh
                :class: dropdown
 
                .. tabs::
-      
+
                   .. tab:: UPPMAX
-      
+
                      .. code-block:: bash
-      
+
                              #!/bin/bash -l
                              #SBATCH -A naiss202u-wv-xyz  # your project_ID
                              #SBATCH -J job-serial        # name of the job
@@ -728,23 +728,23 @@ Exercises
                              #SBATCH --time=00:20:00      # requested time
                              #SBATCH --error=job.%J.err   # error file
                              #SBATCH --output=job.%J.out  # output file
-      
+
                              ml R_packages/4.1.1
-      
+
                              Rscript --no-save --no-restore integration2d.R
-      
+
                   .. tab:: HPC2N
-      
+
                      .. code-block:: bash
-      
-                             #!/bin/bash            
-                             #SBATCH -A hpc2n202w-xyz     # your project_ID       
-                             #SBATCH -J job-serial        # name of the job         
-                             #SBATCH -n *FIXME*           # nr. tasks  
+
+                             #!/bin/bash
+                             #SBATCH -A hpc2n202w-xyz     # your project_ID
+                             #SBATCH -J job-serial        # name of the job
+                             #SBATCH -n *FIXME*           # nr. tasks
                              #SBATCH --time=00:20:00      # requested time
                              #SBATCH --error=job.%J.err   # error file
-                             #SBATCH --output=job.%J.out  # output file  
-      
+                             #SBATCH --output=job.%J.out  # output file
+
                              ml purge > /dev/null 2>&1
                              ml GCC/12.2.0  OpenMPI/4.1.4 R/4.2.2
                              Rscript --no-save --no-restore integration2d.R
@@ -752,14 +752,14 @@ Exercises
                   .. tab:: LUNARC
 
                        .. code-block:: sh
-                           
-                            #!/bin/bash            
+
+                            #!/bin/bash
                             #SBATCH -A lu202u-wy-yz      # your project_ID
-                            #SBATCH -J job-serial        # name of the job         
-                            #SBATCH -n *FIXME*           # nr. tasks  
+                            #SBATCH -J job-serial        # name of the job
+                            #SBATCH -n *FIXME*           # nr. tasks
                             #SBATCH --time=00:20:00      # requested time
                             #SBATCH --error=job.%J.err   # error file
-                            #SBATCH --output=job.%J.out  # output file 
+                            #SBATCH --output=job.%J.out  # output file
 			                   #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
 
                             ml purge > /dev/null 2>&1
@@ -767,18 +767,18 @@ Exercises
                             Rscript --no-save --no-restore integration2d.R
 
                   .. tab:: PDC
-      
-                     .. code-block:: bash                              
-                                                                                                                                                                       
+
+                     .. code-block:: bash
+
                            #!/bin/bash
-                           #SBATCH -A naiss202t-uv-wxyz # your project_ID       
-                           #SBATCH -J job               # name of the job          
+                           #SBATCH -A naiss202t-uv-wxyz # your project_ID
+                           #SBATCH -J job               # name of the job
                            #SBATCH  -p shared           # name of the queue
                            #SBATCH --ntasks=*FIXME*     # nr. of tasks
                            #SBATCH --cpus-per-task=1    # nr. of cores per-task
                            #SBATCH --time=00:03:00      # requested time
                            #SBATCH --error=job.%J.err   # error file
-                           #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+                           #SBATCH --output=job.%J.out  # output file
 
 
                            # Load dependencies and R version
@@ -787,9 +787,9 @@ Exercises
                            Rscript --no-save --no-restore integration2d.R
 
                   .. tab:: NSC
-      
-                     .. code-block:: bash     
- 
+
+                     .. code-block:: bash
+
                            #!/bin/bash
                            #SBATCH -A naiss202t-uv-xyz  # your project_ID
                            #SBATCH -J job-serial        # name of the job
@@ -798,16 +798,16 @@ Exercises
                            #SBATCH --error=job.%J.err   # error file
                            #SBATCH --output=job.%J.out  # output file
 
-                           # Load any modules you need, here for R 
+                           # Load any modules you need, here for R
                            ml R/4.4.0-hpc1-gcc-11.3.0-bare
 
                            Rscript --no-save --no-restore integration2d.R
 
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
-            1,2,4,8,12, and 14. Note: this number should match the number of processes 
+            1,2,4,8,12, and 14. Note: this number should match the number of processes
             (also a *FIXME* string) in the R script. Collect the timings that are
             printed out in the **job.*.out**. According to these execution times what would be
-            the number of cores that gives the optimal (fastest) simulation? 
+            the number of cores that gives the optimal (fastest) simulation?
 
             Challenge: Increase the grid size (``n``) to 10000 and submit the batch job with 4 workers (in the
             R script) and request 5 cores in the batch script. Monitor the usage of resources
@@ -816,10 +816,10 @@ Exercises
 
 
       .. tab:: Matlab
-         
 
-            Here is a parallel code using the ``parfor`` tool from Matlab (call it 
-            ``integration2d.m``). 
+
+            Here is a parallel code using the ``parfor`` tool from Matlab (call it
+            ``integration2d.m``).
 
             .. admonition:: integration2d.m
                :class: dropdown
@@ -828,44 +828,44 @@ Exercises
 
                    % Number of workers/processes
                    num_workers = *FIXME*;
-                   
+
                    % Use parallel pool with 'parfor'
                    parpool('profile-name',num_workers);  % Start parallel pool with num_workers workers
-                   
+
                    % Grid size
                    n = 6720;
-                   
+
                    % bin size
                    h = pi / n;
-                   
+
                    tic;  % Start timer
                    % Shared variable to collect partial sums
                    partial_integrals = 0.0;
-                   
+
                    % In Matlab one can use parfor to parallelize loops
                    parfor i = 1:n
                        partial_integrals = partial_integrals + integration2d_partial(n,i);
                    end
-                   
+
                    % Compute the integrals by multilpying by the bin size
                    integral = partial_integrals * h^2;
                    elapsedTime = toc;  % Stop timer
-                   
+
                    fprintf("Integral value is %e\n", integral);
                    fprintf("Error is %e\n", abs(integral - 0.0));
                    fprintf("Time spent: %.2f sec\n", elapsedTime);
-                   
+
                    % Clean up the parallel pool
                    delete(gcp('nocreate'));
-                   
-                   
+
+
                    % Function for the 2D integration only computes a single bin
                    function mysum = integration2d_partial(n,i)
                        % bin size
                        h = pi / n;
                        % Partial summation
                        mysum = 0.0;
-                           % A single bin is computed 
+                           % A single bin is computed
                            x = h * (i - 0.5);
                            % Regular integration in the Y axis
                            for j = 1:n
@@ -876,13 +876,13 @@ Exercises
 
             You can run directly this script from the Matlab GUI.
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
-            1,2,4,8,12, and 14. Collect the timings that are printed out in the Matlab command window. 
+            1,2,4,8,12, and 14. Collect the timings that are printed out in the Matlab command window.
             According to these execution times what would be
-            the number of cores that gives the optimal (fastest) simulation? 
+            the number of cores that gives the optimal (fastest) simulation?
 
-            Challenge: Increase the grid size (``n``) to 100000 and submit the batch job with 4 workers. 
+            Challenge: Increase the grid size (``n``) to 100000 and submit the batch job with 4 workers.
             Monitor the usage of resources with tools available at your center, for instance ``top`` (UPPMAX),
-            ``job-usage`` (HPC2N), or if you're working in the GUI (e.g. on LUNARC), you can click ``Parallel`` 
+            ``job-usage`` (HPC2N), or if you're working in the GUI (e.g. on LUNARC), you can click ``Parallel``
             and then ``Monitor Jobs``. For ``job-usage``, you can see the job ID if you type ``squeue --me`` on a terminal on Kebnekaise.
 
 
@@ -890,17 +890,17 @@ Exercises
 .. challenge:: Parallelizing a *for loop* workflow (Advanced)
    :class: dropdown
 
-   Create a Data Frame containing two features, one called **ID** which has integer values 
+   Create a Data Frame containing two features, one called **ID** which has integer values
    from 1 to 10000, and the other called **Value** that contains 10000 integers starting from 3
    and goes in steps of 2 (3, 5, 7, ...). The following codes contain parallelized workflows
-   whose goal is to compute the average of the whole feature **Value** using some number of 
+   whose goal is to compute the average of the whole feature **Value** using some number of
    workers. Substitute the **FIXME** strings in the following codes to perform the tasks given
-   in the comments. 
+   in the comments.
 
    *The main idea for all languages is to divide the workload across all workers*.
-   You can run the codes as suggested for each language. 
+   You can run the codes as suggested for each language.
 
-   .. tabs:: 
+   .. tabs::
 
 
       .. tab:: Julia
@@ -919,8 +919,8 @@ Exercises
 
          - Here is an exercise to fix some code snippets. Call the script ``script-df.jl``.
          - Watch out for ``*FIXME*`` and replace with suitable functions
-         - The functions ``nthreads()`` (number of available threads), and ``threadid()`` 
-           (the thread identification number) will be useful in this task. 
+         - The functions ``nthreads()`` (number of available threads), and ``threadid()``
+           (the thread identification number) will be useful in this task.
 
          .. code-block:: julia
 
@@ -951,7 +951,7 @@ Exercises
                 mean_value_parallel = *FIXME* / length(data_df.Value)
 
                 # Print the mean value
-                println(mean_value_parallel)    
+                println(mean_value_parallel)
 
          Run this job with the following batch script, defining that we want to use 4 threads:
 
@@ -972,18 +972,18 @@ Exercises
                        ml julia/1.8.5
 
                        julia --threads 4 script-df.jl  # X number of threads
-   
+
             .. tab:: HPC2N
 
                .. code-block:: bash
-                        
-                        #!/bin/bash            
-                        #SBATCH -A hpc2n202w-xyz     # your project_ID       
-                        #SBATCH -J job-parallel      # name of the job         
-                        #SBATCH -n 4                 # nr. tasks  
+
+                        #!/bin/bash
+                        #SBATCH -A hpc2n202w-xyz     # your project_ID
+                        #SBATCH -J job-parallel      # name of the job
+                        #SBATCH -n 4                 # nr. tasks
                         #SBATCH --time=00:20:00      # requested time
                         #SBATCH --error=job.%J.err   # error file
-                        #SBATCH --output=job.%J.out  # output file  
+                        #SBATCH --output=job.%J.out  # output file
 
                         ml purge  > /dev/null 2>&1
                         ml Julia/1.8.5-linux-x86_64
@@ -994,14 +994,14 @@ Exercises
             .. tab:: LUNARC
 
                  .. code-block:: sh
-                           
-                       #!/bin/bash            
+
+                       #!/bin/bash
                        #SBATCH -A lu202u-w-yz      # your project_ID
-                       #SBATCH -J job-parallel      # name of the job         
-                       #SBATCH -n 4	            # nr. tasks  
+                       #SBATCH -J job-parallel      # name of the job
+                       #SBATCH -n 4	            # nr. tasks
                        #SBATCH --time=00:20:00      # requested time
                        #SBATCH --error=job.%J.err   # error file
-                       #SBATCH --output=job.%J.out  # output file 
+                       #SBATCH --output=job.%J.out  # output file
 		                 #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
 
                        ml purge
@@ -1011,26 +1011,26 @@ Exercises
 
             .. tab:: PDC
 
-               .. code-block:: bash                              
+               .. code-block:: bash
 
-                     #!/bin/bash            
-                     #SBATCH -A naiss202t-uw-xyz  # your project_ID  
-                     #SBATCH -J job-parallel      # name of the job          
+                     #!/bin/bash
+                     #SBATCH -A naiss202t-uw-xyz  # your project_ID
+                     #SBATCH -J job-parallel      # name of the job
                      #SBATCH  -p shared           # name of the queue
                      #SBATCH  --ntasks=4          # nr. of tasks
                      #SBATCH --cpus-per-task=1    # nr. of cores per-task
                      #SBATCH --time=00:03:00      # requested time
                      #SBATCH --error=job.%J.err   # error file
-                     #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+                     #SBATCH --output=job.%J.out  # output file
 
                      # Load dependencies and Julia version
-                     ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
+                     ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
                      julia --threads 4 script-df.jl  # X number of threads
 
             .. tab:: NSC
 
-               .. code-block:: bash     
+               .. code-block:: bash
 
                      #!/bin/bash
                      #SBATCH -A naiss202t-uv-xyz  # your project_ID
@@ -1041,7 +1041,7 @@ Exercises
                      #SBATCH --output=job.%J.out  # output file
 
                      # Load any modules you need, here for Julia
-                     ml julia/1.9.4-bdist 
+                     ml julia/1.9.4-bdist
 
                      julia --threads 4 script-df.jl  # X number of threads
 
@@ -1049,7 +1049,7 @@ Exercises
 
          - Call the script ``script-df.R``.
 
-         .. code-block:: r 
+         .. code-block:: r
 
                 library(doParallel)
                 library(foreach)
@@ -1080,13 +1080,13 @@ Exercises
                 # Determine the indices for the subset
                 subset_indices <- seq(from = *FIXME*,
                                         to = *FIXME*)
-                
+
                 # Create the subset
                 subset_data <- data_df[*FIXME*, , drop = FALSE]
-                
+
                 # Process the subset
                 subset_result <- process_subset(*FIXME*)
-                
+
                 return(subset_result)
                 }
 
@@ -1095,7 +1095,7 @@ Exercises
 
                 # Print the results
                 print(sum(*FIXME*)/*FIXME*)
-            
+
          Run the code with the following batch script:
 
          .. tabs::
@@ -1103,7 +1103,7 @@ Exercises
             .. tab:: UPPMAX
 
                .. code-block:: bash
-                        
+
                        #!/bin/bash -l
                        #SBATCH -A naiss202t-uw-xyz  # your project_ID
                        #SBATCH -J job-parallel      # name of the job
@@ -1120,13 +1120,13 @@ Exercises
 
                .. code-block:: bash
 
-                        #!/bin/bash            
-                        #SBATCH -A hpc2n202w-xyz     # your project_ID       
-                        #SBATCH -J job-parallel      # name of the job         
-                        #SBATCH -n 4                 # nr. tasks  
+                        #!/bin/bash
+                        #SBATCH -A hpc2n202w-xyz     # your project_ID
+                        #SBATCH -J job-parallel      # name of the job
+                        #SBATCH -n 4                 # nr. tasks
                         #SBATCH --time=00:20:00      # requested time
                         #SBATCH --error=job.%J.err   # error file
-                        #SBATCH --output=job.%J.out  # output file  
+                        #SBATCH --output=job.%J.out  # output file
 
                         ml purge > /dev/null 2>&1
                         ml GCC/12.2.0  OpenMPI/4.1.4 R/4.2.2
@@ -1136,14 +1136,14 @@ Exercises
             .. tab:: LUNARC
 
                  .. code-block:: sh
-                           
-                       #!/bin/bash            
+
+                       #!/bin/bash
                        #SBATCH -A lu202u-wx-yz      # your project_ID
-                       #SBATCH -J job-parallel      # name of the job         
-                       #SBATCH -n 4                 # nr. tasks  
+                       #SBATCH -J job-parallel      # name of the job
+                       #SBATCH -n 4                 # nr. tasks
                        #SBATCH --time=00:20:00      # requested time
                        #SBATCH --error=job.%J.err   # error file
-                       #SBATCH --output=job.%J.out  # output file 
+                       #SBATCH --output=job.%J.out  # output file
 		                 #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
 
                        ml purge > /dev/null 2>&1
@@ -1152,29 +1152,29 @@ Exercises
 
             .. tab:: PDC
 
-               .. code-block:: bash                              
-         
+               .. code-block:: bash
+
                      #!/bin/bash
-                     #SBATCH -A naiss202t-uv-wxyz # your project_ID       
-                     #SBATCH -J job               # name of the job          
+                     #SBATCH -A naiss202t-uv-wxyz # your project_ID
+                     #SBATCH -J job               # name of the job
                      #SBATCH  -p shared           # name of the queue
                      #SBATCH  --ntasks=1          # nr. of tasks
                      #SBATCH --cpus-per-task=1    # nr. of cores per-task
                      #SBATCH --time=00:03:00      # requested time
                      #SBATCH --error=job.%J.err   # error file
-                     #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+                     #SBATCH --output=job.%J.out  # output file
 
                      # Load dependencies and Julia version
-                     ml PDC/23.12 julia/1.10.2-cpeGNU-23.12                                                                                                                                                                       
+                     ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
                      # Load dependencies and R version
-                     ml ... 
+                     ml ...
 
                      Rscript --no-save --no-restore script-df.R
 
             .. tab:: NSC
 
-               .. code-block:: bash     
+               .. code-block:: bash
 
                      #!/bin/bash
                      #SBATCH -A naiss202t-uv-xyz  # your project_ID
@@ -1184,15 +1184,15 @@ Exercises
                      #SBATCH --error=job.%J.err   # error file
                      #SBATCH --output=job.%J.out  # output file
 
-                     # Load any modules you need, here for R 
+                     # Load any modules you need, here for R
                      ml R/4.4.0-hpc1-gcc-11.3.0-bare
 
                      Rscript --no-save --no-restore script-df.R
 
       .. tab:: Matlab
-      
+
             .. code-block:: matlab
-	 
+	
                 % Create a table with two columns: ID and Value
                 ID = (1:10000)';  % Column for IDs
                 Value = (3:2:20001)'; % Column for values
@@ -1223,7 +1223,7 @@ Exercises
                 % Function to compute the sum in parallel
                 function total_sum_parallel = parallel_sum(values)
                 n = length(*FIXME*);
-               
+
                 local_sums = 0.0;
                 parfor i = 1:*FIXME*        % run the loop over the number of elements
                    local_sums = local_sums + *FIXME*(i);    % add the values to the partial sum
@@ -1233,15 +1233,15 @@ Exercises
                 total_sum_parallel = local_sums;
                 end
 
-         You can run this code directly from the Matlab GUI.   
-      
+         You can run this code directly from the Matlab GUI.
+
 .. solution:: Solution
 
-   .. tabs:: 
-           
+   .. tabs::
+
 
       .. tab:: Julia
-         
+
             .. code-block:: julia
 
                 using DataFrames
@@ -1271,11 +1271,11 @@ Exercises
                 mean_value_parallel = total_sum_parallel / length(data_df.Value)
 
                 # Print the mean value
-                println(mean_value_parallel)   
-	 
+                println(mean_value_parallel)
+	
       .. tab:: R
 
-            .. code-block:: r 
+            .. code-block:: r
 
                 library(doParallel)
                 library(foreach)
@@ -1306,13 +1306,13 @@ Exercises
                 # Determine the indices for the subset
                 subset_indices <- seq(from = 1 + (i - 1) * nrow(data_df) / num_subsets,
                                         to = i * nrow(data_df) / num_subsets)
-                
+
                 # Create the subset
                 subset_data <- data_df[subset_indices, , drop = FALSE]
-                
+
                 # Process the subset
                 subset_result <- process_subset(subset_data)
-                
+
                 return(subset_result)
                 }
 
@@ -1320,12 +1320,12 @@ Exercises
                 stopCluster(cl)
 
                 # Print the results
-                print(sum(result)/10000)	     
+                print(sum(result)/10000)	
 
       .. tab:: Matlab
-      
+
             .. code-block:: matlab
-	 
+	
                 % Create a table with two columns: ID and Value
                 ID = (1:10000)';  % Column for IDs
                 Value = (3:2:20001)'; % Column for values
@@ -1356,7 +1356,7 @@ Exercises
                 % Function to compute the sum in parallel
                 function total_sum_parallel = parallel_sum(values)
                 n = length(values);
-               
+
                 local_sums = 0.0;
                 parfor i = 1:n
                    local_sums = local_sums + values(i);

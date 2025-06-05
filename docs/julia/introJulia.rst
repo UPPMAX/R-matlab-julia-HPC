@@ -2,37 +2,37 @@ Introduction Julia
 ==================
 
 `Welcome page and syllabus <https://uppmax.github.io/HPC-python/index.html>`_
-   - Also link at House symbol |:house:| at top of page 
+   - Also link at House symbol |:house:| at top of page
 
 .. admonition:: Learning outcomes
-   
+
    - Learn how to load Julia modules and access site-installed Julia packages
    - Grasp the concept of Julia environments
    - Familiarize with Julia packages installation with **Pkg**
    - Acquire the knowledge of writing batch scripts for running Julia
    - Discover and explore the different Julia parallelization tools
    - Learn how Julia supports GPU computing
-   - Gain knowledge on how to run ML jobs in Julia 
-    
+   - Gain knowledge on how to run ML jobs in Julia
+
 .. admonition:: Your expectations?
-   
+
     - Find best practices for using Julia at UPPMAX and HPC2N
     - Get the hang of packages functioning
     - Use the HPC performance with Julia
 
-    
+
     **Not covered**
-    
-    - Improve Julia *coding* skills 
+
+    - Improve Julia *coding* skills
     - Other clusters
-      
+
 .. admonition:: Julia Exercise files
 
     - `:ref:`common-use-tarball`
 
 .. instructor-note::
 
-   - Intro 5 min 
+   - Intro 5 min
    - Lecture and 10 min
 
 Schedule
@@ -44,21 +44,21 @@ Schedule
 What is Julia?
 --------------
 
-Julia is a relatively new Programming language (pre-released 1.0 announced in 2018), compared to well-known 
-and standard languages such as Fortran, C, C++, R, and Python (some of them date back to the 70's). 
+Julia is a relatively new Programming language (pre-released 1.0 announced in 2018), compared to well-known
+and standard languages such as Fortran, C, C++, R, and Python (some of them date back to the 70's).
 A common pattern in those well-established languages (traditional paradigm) is that they look after either:
 
   - productivity (fast deployment, fast prototyping) or,
-  - performance (fast numerical computations). 
+  - performance (fast numerical computations).
 
-This pattern created the so called **two-language problem** where programmers had to choose between **productivity** 
-(R, Python) or **performance** (Fortran, C/C++) and when both were needed programmers had to learn the language that 
-offered the desired capability and use some interface between different languages. 
+This pattern created the so called **two-language problem** where programmers had to choose between **productivity**
+(R, Python) or **performance** (Fortran, C/C++) and when both were needed programmers had to learn the language that
+offered the desired capability and use some interface between different languages.
 Performant languages traditionally need to be compiled while languages focusing on productivity are interpreted.
 
-Among the different features of Julia, is its capability of integrating both aspects **productivity and performance 
-into a single language**. In this way, Julia programmers can in principle write software without changing their focus 
-to learn a new language. 
+Among the different features of Julia, is its capability of integrating both aspects **productivity and performance
+into a single language**. In this way, Julia programmers can in principle write software without changing their focus
+to learn a new language.
 
 
 .. figure:: ../../img/two-language.png
@@ -66,7 +66,7 @@ to learn a new language.
    :align: center
 
    Two-language problem where Julia is shown as a bridge between the languages
-   in the traditional paradigms, productivity vs. performance. 
+   in the traditional paradigms, productivity vs. performance.
 
 
 
@@ -90,9 +90,9 @@ Shortcomings of Julia
   efficient as using Linux tools (AWK, GREP) or compiled languages (Fortran, C/C++, Rust)
 - Previous situation is more noticeable upon running simple tasks in parallel mode (MPI, Threads)
 - An initial code version can be fast (compared to base Python) with a code that is clear to
-  novices and without spending a long time writing. However, if one needs to get a more optimized code, 
-  it would most likely increase its complexity (readability) and one would need to spend more time 
-  (learning/programming) as in the case of C/C++/Fortran.  
+  novices and without spending a long time writing. However, if one needs to get a more optimized code,
+  it would most likely increase its complexity (readability) and one would need to spend more time
+  (learning/programming) as in the case of C/C++/Fortran.
 
 More on Julia
 -------------
@@ -104,7 +104,7 @@ More on Julia
 Julia documentation at the centers
 -----------------------------------
 
-- Documentation at the HPC centres 
+- Documentation at the HPC centres
    - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
    - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
    - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_

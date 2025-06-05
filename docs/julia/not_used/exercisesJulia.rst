@@ -5,12 +5,12 @@ Introduction
 ------------
 
 .. challenge:: Getting familiar with Julia REPL
-    
-    Is is important in this course that you know how to navigate on the 
-    Julia command line. This exercise will help you to become more familiar
-    with the REPL. Do the following steps: 
 
-       * Start a Julia session. In the ``Julian`` mode, compute the sum the numbers 
+    Is is important in this course that you know how to navigate on the
+    Julia command line. This exercise will help you to become more familiar
+    with the REPL. Do the following steps:
+
+       * Start a Julia session. In the ``Julian`` mode, compute the sum the numbers
          5 and 6
        * Change to the ``shell`` mode and display the current directory
        * Now, go to the ``package`` mode and list the currently installed packages
@@ -20,25 +20,25 @@ Introduction
 
     .. solution:: Solution for the centres
         :class: dropdown
-            
+
             .. code-block:: julia
-    
-                $ julia 
+
+                $ julia
                 julia> 5 + 6
                 julia>;
-                shell> pwd 
+                shell> pwd
                 julia>]
-                pkg> status 
+                pkg> status
                 julia>?
-                help?> println 
+                help?> println
 
 
 Load and run
 ------------
 
 .. challenge:: Loading modules and running scripts
-    
-    Load the Julia version 1.8.5 and run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input: 
+
+    Load the Julia version 1.8.5 and run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input:
 
             .. code-block:: julia
 
@@ -49,25 +49,25 @@ Load and run
 
     .. solution:: Solution for HPC2N
         :class: dropdown
-        
-            This batch script is for Kebnekaise. 
-            
+
+            This batch script is for Kebnekaise.
+
             .. code-block:: sh
-    
+
                 $ ml purge  > /dev/null 2>&1       # recommended purge
                 $ ml Julia/1.8.5-linux-x86_64      # Julia module
-                        
+
                 $ julia serial-sum.jl Arg1 Arg2    # run the serial script
 
     .. solution:: Solution for UPPMAX
         :class: dropdown
-        
-            This batch script is for UPPMAX. Adding the numbers 2 and 3. 
-            
+
+            This batch script is for UPPMAX. Adding the numbers 2 and 3.
+
             .. code-block:: sh
-    
+
                 $ ml julia/1.8.5      # Julia module
-               
+
                 $ julia serial-sum.jl Arg1 Arg2    # run the serial script
 
 
@@ -76,7 +76,7 @@ Packages and isolated environments
 ----------------------------------
 
 .. challenge:: Project environment
-    
+
     Create a project environment called ``new-env`` and activate it. Then, install the
     package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
     offers tools for dealing with ``.csv`` files. After this, check that this package
@@ -84,9 +84,9 @@ Packages and isolated environments
 
     .. solution:: Solution for both centres
         :class: dropdown
-            
+
             .. code-block:: julia
-    
+
                 shell> mkdir new-env
                 shell> cd new-env
                 (@v1.8) pkg> activate .
@@ -95,11 +95,11 @@ Packages and isolated environments
                 (new-env) pkg> status
                       Status `path-to-folder\new-env\Project.toml`
                       [336ed68f] CSV v0.10.9
-                (new-env) pkg> activate 
+                (new-env) pkg> activate
 
 
 .. challenge:: Package environment
-    
+
     Create a package environment called ``new_pack`` and activate it. Then, install the
     package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
     offers tools for dealing with ``.csv`` files. After this, check that this package
@@ -107,9 +107,9 @@ Packages and isolated environments
 
     .. solution:: Solution for both centres
         :class: dropdown
-            
+
             .. code-block:: julia
-    
+
                 shell> pwd            #Check were you are currently located
                 (@v1.8) pkg> generate new_pack
                      Generating  project new_pack:
@@ -119,7 +119,7 @@ Packages and isolated environments
                      `path-to-folder\new_pack`
                 (@v1.8) pkg> activate .
                        Activating project at `path-to-folder\new_pack`
-                (new_pack) pkg> add CSV 
+                (new_pack) pkg> add CSV
                 (new_pack) pkg> status
                        Project new_pack v0.1.0
                        Status `path-to-folder\new_pack\Project.toml`
@@ -134,8 +134,8 @@ Serial code
 '''''''''''
 
 .. challenge:: Run a serial script
-    
-    Run the serial script ``serial-sum.jl``: 
+
+    Run the serial script ``serial-sum.jl``:
 
             .. code-block:: julia
 
@@ -148,54 +148,54 @@ Serial code
 
     .. solution:: Solution for HPC2N
         :class: dropdown
-        
-            This batch script is for Kebnekaise. 
-            
+
+            This batch script is for Kebnekaise.
+
             .. code-block:: sh
-    
-                #!/bin/bash            
-                #SBATCH -A hpc2n2023-110     # your project_ID       
-                #SBATCH -J job-serial        # name of the job         
-                #SBATCH -n 1                 # nr. tasks  
+
+                #!/bin/bash
+                #SBATCH -A hpc2n2023-110     # your project_ID
+                #SBATCH -J job-serial        # name of the job
+                #SBATCH -n 1                 # nr. tasks
                 #SBATCH --time=00:03:00      # requested time
                 #SBATCH --error=job.%J.err   # error file
-                #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+                #SBATCH --output=job.%J.out  # output file
 
                 ml purge  > /dev/null 2>&1   # recommended purge
                 ml Julia/1.8.5-linux-x86_64  # Julia module
-                        
+
                 julia serial-sum.jl Arg1 Arg2    # run the serial script
 
     .. solution:: Solution for UPPMAX
         :class: dropdown
-        
+
             This batch script is for UPPMAX. Adding the numbers 2 and 3.
-            
+
             .. code-block:: sh
-    
+
                 #!/bin/bash -l
                 #SBATCH -A naiss2023-22-914  # Change to your own after the course
-                #SBATCH -J job-serial        # name of the job         
-                #SBATCH -n 1                 # nr. tasks  
+                #SBATCH -J job-serial        # name of the job
+                #SBATCH -n 1                 # nr. tasks
                 #SBATCH --time=00:05:00 # Asking for 5 minutes
                 #SBATCH --error=job.%J.err   # error file
-                #SBATCH --output=job.%J.out  # output file                                                                                    
+                #SBATCH --output=job.%J.out  # output file
                 module load julia/1.8.5
-                
+
                 julia serial-sum.jl Arg1 Arg2    # run the serial script
 
 GPU code
-'''''''' 
+''''''''
 
 .. challenge:: Run the GPU script
-    
+
     Run the following script ``script-gpu.jl``. Why are we running the simulations
     twice?
     Note that at UPPMAX you will need a project will access to Snowy (or Bianca)
 
         .. code-block:: julia
-         
-            using CUDA 
+
+            using CUDA
 
             CUDA.versioninfo()
 
@@ -218,21 +218,21 @@ GPU code
 
     .. solution:: Solution for HPC2N
         :class: dropdown
-        
+
             This batch script is for Kebnekaise. We run the simulation twice because
             in this way, the reported time is more reliable for the computing time as
             in the first simulation, data transfer and other settings could be added to
             the reported time.
-            
+
             .. code-block:: sh
-                
-                #!/bin/bash            
-                #SBATCH -A hpc2n2024-025     # your project_ID       
-                #SBATCH -J job-serial        # name of the job         
-                #SBATCH -n 1                 # nr. tasks  
+
+                #!/bin/bash
+                #SBATCH -A hpc2n2024-025     # your project_ID
+                #SBATCH -J job-serial        # name of the job
+                #SBATCH -n 1                 # nr. tasks
                 #SBATCH --time=00:03:00      # requested time
                 #SBATCH --error=job.%J.err   # error file
-                #SBATCH --output=job.%J.out  # output file  
+                #SBATCH --output=job.%J.out  # output file
                 #SBATCH --gres=gpu:v100:1     # 1 GPU v100 card
 
                 ml purge  > /dev/null 2>&1
@@ -252,12 +252,12 @@ GPU code
 
     .. solution:: Solution for UPPMAX
         :class: dropdown
-        
-            This batch script is for UPPMAX. Adding the numbers 2 and 3. 
-            
+
+            This batch script is for UPPMAX. Adding the numbers 2 and 3.
+
             .. code-block:: sh
-    
-                #SBATCH -A <project with Snowy/Bianca access    # your project_ID  
+
+                #SBATCH -A <project with Snowy/Bianca access    # your project_ID
                 #SBATCH -M snowy
                 #SBATCH -p node
                 ##SBATCH -C gpu   #NB: Only for Bianca
@@ -266,7 +266,7 @@ GPU code
                 #SBATCH --gpus-per-node=1             # number of gpus per node (Bianca 2, Snowy 1)
                 #SBATCH --time=00:15:00          # total run time limit (HH:MM:SS)
                 #SBATCH --qos=short              # if test run t<15 min
-                
+
                 ml Julia/1.8.5-linux-x86_64
 
                 julia script-gpu.jl
@@ -278,7 +278,7 @@ GPU code
                 CUDA toolkit 11.7, artifact installation
                 NVIDIA driver 525.85.12, for CUDA 12.0
                 CUDA driver 12.0
-                
+
                 Libraries:
                 - CUBLAS: 11.10.1
                 - CURAND: 10.2.10
@@ -289,7 +289,7 @@ GPU code
                 - NVML: 12.0.0+525.85.12
                 - CUDNN: 8.30.2 (for CUDA 11.5.0)
                 - CUTENSOR: 1.4.0 (for CUDA 11.5.0)
-                
+
                 Toolchain:
                 - Julia: 1.8.5
                 - LLVM: 13.0.1
@@ -302,50 +302,50 @@ GPU code
                   5.707402 seconds (1.30 M allocations: 65.564 MiB, 0.72% gc time, 19.70% compilation time)
                   0.000813 seconds (2 allocations: 512.047 KiB)
                   0.000176 seconds (16 allocations: 384 bytes)
-                
+
 .. challenge:: Machine Learning job on GPUs (HPC2N)
-    
+
     Julia has already several packages for ML, one of them is ``Flux`` (https://fluxml.ai/). We will work with one of
     the test cases provided by ``Flux`` which deals with a data set of tiny images (CIFAR10). Follow this steps:
 
-        - Create an environment called ``ML``, move to that environment directory and activate it 
+        - Create an environment called ``ML``, move to that environment directory and activate it
         - Fetch the ``vgg_cifar10.jl`` test case from ``Flux`` repo (wget https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl)
         - Load CUDA toolkit 11.4.1
         - Install (add) the following packages: CUDA, MLDatasets, MLUtils
         - The first time you use the data set CIFAR10, it will ask you to download it and accept. Do this in ``Julian`` mode:
 
         .. code-block:: julia
-         
+
             julia> using MLDatasets: CIFAR10
             julia> x, y = CIFAR10(:train)[:]
 
         - Change the number of epochs in the ``vgg_cifar10.jl`` script from 50 to something shorter like 5.
-        - Submit the job with the script: 
+        - Submit the job with the script:
 
         .. code-block:: sh
-        
-            #!/bin/bash            
-            #SBATCH -A Project-ID        # your project_ID       
-            #SBATCH -J job-serial        # name of the job         
-            #SBATCH -n 1                 # nr. tasks  
+
+            #!/bin/bash
+            #SBATCH -A Project-ID        # your project_ID
+            #SBATCH -J job-serial        # name of the job
+            #SBATCH -n 1                 # nr. tasks
             #SBATCH --time=00:20:00      # requested time
             #SBATCH --error=job.%J.err   # error file
-            #SBATCH --output=job.%J.out  # output file  
+            #SBATCH --output=job.%J.out  # output file
             #SBATCH --gres=gpu:v100:1     # 1 GPU v100 card
 
             ml purge  > /dev/null 2>&1
             ml Julia/1.8.5-linux-x86_64
             ml CUDA/11.4.1
 
-            julia <fix-activate-environment> <fix-name-script>.jl 
+            julia <fix-activate-environment> <fix-name-script>.jl
 
     .. solution:: Solution for HPC2N
         :class: dropdown
-        
+
             .. code-block:: sh
 
                ml Julia/1.8.5-linux-x86_64
-               ml CUDA/11.4.1 
+               ml CUDA/11.4.1
                mkdir ML
                cd ML
                wget https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl
@@ -353,23 +353,23 @@ GPU code
                julia
                (v1.8) pkg> activate .
                (ML) pkg> add CUDA
-               (ML) pkg> add Flux 
+               (ML) pkg> add Flux
                (ML) pkg> add MLDatasets
                (ML) pkg> add MLUtils
                julia> using MLDatasets: CIFAR10
-               julia> x, y = CIFAR10(:train)[:] 
- 
+               julia> x, y = CIFAR10(:train)[:]
+
             The batch script looks like:
-            
+
             .. code-block:: sh
-                
-                #!/bin/bash            
-                #SBATCH -A hpc2n20xx-xyz     # your project_ID       
-                #SBATCH -J job-serial        # name of the job         
-                #SBATCH -n 1                 # nr. tasks  
+
+                #!/bin/bash
+                #SBATCH -A hpc2n20xx-xyz     # your project_ID
+                #SBATCH -J job-serial        # name of the job
+                #SBATCH -n 1                 # nr. tasks
                 #SBATCH --time=00:20:00      # requested time
                 #SBATCH --error=job.%J.err   # error file
-                #SBATCH --output=job.%J.out  # output file  
+                #SBATCH --output=job.%J.out  # output file
                 #SBATCH --gres=gpu:v100:1     # 1 GPU v100 card
 
                 ml purge  > /dev/null 2>&1
@@ -378,13 +378,13 @@ GPU code
 
                 julia --project=. vgg_cifar10.jl
 
-            At HPC2N you can use the tool ``job-usage`` on the command line: 
+            At HPC2N you can use the tool ``job-usage`` on the command line:
 
             .. code-block:: sh
-                
-                job-usage job_ID   # job_ID number you get upon using sbatch      
+
+                job-usage job_ID   # job_ID number you get upon using sbatch
 
             This will give you a URL that you can paste on your local browser. It would display
             statistics after a couple of minutes the job started.
 
-    
+

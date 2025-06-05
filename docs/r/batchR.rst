@@ -6,23 +6,23 @@ Running R in batch mode
    - What is a batch job?
    - How to write a batch script and submit a batch job?
 
-   
-   
-.. objectives:: 
+
+
+.. objectives::
 
    - Short introduction to SLURM scheduler
    - Show structure of a batch script
    - Examples to try
 
-.. admonition:: Compute allocations in this workshop 
+.. admonition:: Compute allocations in this workshop
 
    - Rackham: ``uppmax2025-2-272``
    - Kebnekaise: ``hpc2n2025-062``
    - Cosmos: ``lu2025-7-24``
    - Tetralith: ``naiss2025-22-262``
-   - Dardel: ``naiss2025-22-262`` 
+   - Dardel: ``naiss2025-22-262``
 
-.. admonition:: Storage space for this workshop 
+.. admonition:: Storage space for this workshop
 
    - Rackham: ``/proj/r-matlab-julia-uppmax``
    - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
@@ -37,7 +37,7 @@ Overview of the UPPMAX systems
 Overview of the HPC2N system
 ############################
 
-.. mermaid:: ../mermaid/kebnekaise.mmd   
+.. mermaid:: ../mermaid/kebnekaise.mmd
 
 Overview of the LUNARC system
 #############################
@@ -48,12 +48,12 @@ Overview of the LUNARC system
 Overview of the NSC system
 ##########################
 
-.. figure:: img/mermaid-tetralith.png 
-      :width: 500 
+.. figure:: img/mermaid-tetralith.png
+      :width: 500
 
 Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
 
-The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC (and most other HPC centres in Sweden) is called Slurm.  
+The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC (and most other HPC centres in Sweden) is called Slurm.
 
 Slurm is an Open Source job scheduler, which provides three key functions
 
@@ -63,21 +63,21 @@ Slurm is an Open Source job scheduler, which provides three key functions
 
 In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
 
-Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/run_jobs/job_scheduling/ 
+Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/run_jobs/job_scheduling/
 
 Workflow
 ########
 
 - Write a batch script
 
-  - Inside the batch script you need to load the modules you need (R and any prerequisites) 
-  - If you are using any own-installed packages, make sure R_LIBS_USER is set (export R_LIBS_USER=/path/to/my/R-packages) 
+  - Inside the batch script you need to load the modules you need (R and any prerequisites)
+  - If you are using any own-installed packages, make sure R_LIBS_USER is set (export R_LIBS_USER=/path/to/my/R-packages)
   - Ask for resources depending on if it is a parallel job or a serial job, if you need GPUs or not, etc.
   - Give the command(s) to your R script
 
-- Submit batch script with ``sbatch <my-batch-script-for-R.sh>`` 
+- Submit batch script with ``sbatch <my-batch-script-for-R.sh>``
 
-Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are not necessary. You can choose any name that makes sense to you. 
+Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are not necessary. You can choose any name that makes sense to you.
 
 Useful commands to the batch system
 ###################################
@@ -97,7 +97,7 @@ Useful commands to the batch system
    - Batch jobs runs without interaction with the user
    - A batch script consists of a part with Slurm parameters describing the allocation and a second part describing the actual work within the job, for instance one or several R scripts.
       - Remember to include possible input arguments to the R script in the batch script.
-    
+
 
 .. warning::  "Modules on Dardel"
 
@@ -130,10 +130,10 @@ Useful commands to the batch system
 
    .. code-block:: console
 
-      module restore preload 
+      module restore preload
 
    That will restore the preloaded modules.
-      
+
 
 
 Example R batch scripts
@@ -142,7 +142,7 @@ Example R batch scripts
 Serial code
 -----------
 
-.. type-along:: 
+.. type-along::
 
    Short serial batch example for running the code ``hello.R``
 
@@ -158,72 +158,72 @@ Serial code
             #SBATCH -A uppmax2025-2-272 # Course project id. Change to your own project ID after the course
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
-            
+
             # Load any modules you need, here R/4.1.1
             module load R/4.1.1
-            
+
             # Run your R script (here 'hello.R')
             R --no-save --quiet < hello.R
-  
-            
+
+
 
       .. tab:: HPC2N
 
-         Short serial example for running on Kebnekaise. Loading R/4.1.2 and prerequisites   
-       
+         Short serial example for running on Kebnekaise. Loading R/4.1.2 and prerequisites
+
          .. code-block:: sh
 
             #!/bin/bash
             #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
-            
-            # Load any modules you need, here R/4.1.2 and prerequisites 
+
+            # Load any modules you need, here R/4.1.2 and prerequisites
             module load GCC/11.2.0  OpenMPI/4.1.1  R/4.1.2
-            
+
             # Run your R script (here 'hello.R')
             R --no-save --quiet < hello.R
-            
-            
-      .. tab:: LUNARC 
+
+
+      .. tab:: LUNARC
 
          Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites
 
-         .. code-block:: sh 
+         .. code-block:: sh
 
             #!/bin/bash
             #SBATCH -A lu2025-7-24 # Change to your own project ID
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
-            
-            # Load any modules you need, here R/4.1.2 and prerequisites 
+
+            # Load any modules you need, here R/4.1.2 and prerequisites
             module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1
-            
+
             # Run your R script (here 'hello.R')
             R --no-save --quiet < hello.R
 
-      .. tab:: NSC 
+      .. tab:: NSC
 
-         Short serial example for running on Tetralith. Loading R/4.2.2 
+         Short serial example for running on Tetralith. Loading R/4.2.2
 
-         .. code-block:: sh 
+         .. code-block:: sh
 
             #!/bin/bash
             #SBATCH -A naiss2025-22-262
             #SBATCH --time=00:10:00 # Asking for 10 minutes
             #SBATCH -n 1 # Asking for 1 core
 
-            # Load any modules you need, here R/4.2.2 
-            module load R/4.2.2-hpc1-gcc-11.3.0-bare 
+            # Load any modules you need, here R/4.2.2
+            module load R/4.2.2-hpc1-gcc-11.3.0-bare
 
             # Run your R script (here 'hello.R')
-            R --no-save --quiet < hello.R 
+            R --no-save --quiet < hello.R
 
-      .. tab:: PDC 
+      .. tab:: PDC
 
-         Short serial example for running on Dardel. Loading R/4.4.1  
+         Short serial example for running on Dardel. Loading R/4.4.1
 
-         .. code-block:: sh 
+         .. code-block:: sh
 
             #!/bin/bash -l
             #SBATCH -A naiss2025-22-262
@@ -235,16 +235,16 @@ Serial code
             module load PDC/23.12 R/4.4.1-cpeGNU-23.12
 
             # Run your R script (here 'hello.R')
-            R --no-save --quiet < hello.R             
+            R --no-save --quiet < hello.R
 
       .. tab:: hello.R
-   
+
          R example code
-   
+
          .. code-block:: R
-        
+
             message <-"Hello World!"
-            print(message)  
+            print(message)
 
    Send the script to the batch:
 
@@ -252,42 +252,42 @@ Serial code
 
       $ sbatch <batch script>
 
-        
-Parallel code 
+
+Parallel code
 -------------
 
 foreach and doParallel
 ''''''''''''''''''''''
 
-.. type-along:: 
+.. type-along::
 
    Short parallel example, using foreach and doParallel
-   
+
    .. tabs::
 
       .. tab:: UPPMAX
 
-         Short parallel example (Since we are using packages "foreach" and "doParallel", you need to use module R_packages/4.1.1 instead of R/4.1.1. 
+         Short parallel example (Since we are using packages "foreach" and "doParallel", you need to use module R_packages/4.1.1 instead of R/4.1.1.
 
          .. code-block:: sh
-        
+
             #!/bin/bash -l
             #SBATCH -A uppmax2025-2-272
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
-            
+
             ml purge > /dev/null 2>&1
             ml R_packages/4.1.1
-            
-            # Batch script to submit the R program parallel_foreach.R 
+
+            # Batch script to submit the R program parallel_foreach.R
             R -q --slave -f parallel_foreach.R
 
 
       .. tab:: HPC2N
 
-         Short parallel example (using packages "foreach" and "doParallel" which are included in the R module) for running on Kebnekaise. Loading R/4.0.4 and its prerequisites. 
-       
+         Short parallel example (using packages "foreach" and "doParallel" which are included in the R module) for running on Kebnekaise. Loading R/4.0.4 and its prerequisites.
+
          .. code-block:: sh
 
             #!/bin/bash
@@ -295,11 +295,11 @@ foreach and doParallel
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
-            
+
             ml purge > /dev/null 2>&1
             ml GCC/10.2.0  OpenMPI/4.0.5  R/4.0.4
-            
-            # Batch script to submit the R program parallel_foreach.R 
+
+            # Batch script to submit the R program parallel_foreach.R
             R -q --slave -f parallel_foreach.R
 
       .. tab:: LUNARC
@@ -321,54 +321,54 @@ foreach and doParallel
             # Batch script to submit the R program parallel_foreach.R
             R -q --slave -f parallel_foreach.R
 
-      .. tab:: NSC 
+      .. tab:: NSC
 
-         Short parallel example (using packages "foreach" and "doParallel" which you at Tetralith need to install first) for running on Tetralith. Loading R/4.2.2.   
-         Installing ``foreach`` and ``doParallel`` (with R module ``R/4.4.0-hpc1-gcc-11.3.0-bare`` loaded but not inside R): ``R --quiet --no-save --no-restore -e "install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` and ``R --quiet --no-save --no-restore -e "install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` 
+         Short parallel example (using packages "foreach" and "doParallel" which you at Tetralith need to install first) for running on Tetralith. Loading R/4.2.2.
+         Installing ``foreach`` and ``doParallel`` (with R module ``R/4.4.0-hpc1-gcc-11.3.0-bare`` loaded but not inside R): ``R --quiet --no-save --no-restore -e "install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` and ``R --quiet --no-save --no-restore -e "install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')"``
 
-         .. code-block:: sh 
+         .. code-block:: sh
 
             #!/bin/bash
-            # A batch script for running the R program parallel_foreach.R 
-            #SBATCH -A naiss2025-22-262 
+            # A batch script for running the R program parallel_foreach.R
+            #SBATCH -A naiss2025-22-262
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
 
             ml purge > /dev/null 2>&1
-            ml R/4.2.2-hpc1-gcc-11.3.0-bare 
+            ml R/4.2.2-hpc1-gcc-11.3.0-bare
 
             # Batch script to submit the R program parallel_foreach.R
-            R -q --slave -f parallel_foreach.R 
+            R -q --slave -f parallel_foreach.R
 
-      .. tab:: PDC 
-          
-         Short parallel example (using packages "foreach" and "doParallel" which are included in the R module) for running on Dardel. Loading R/4.4.1. 
+      .. tab:: PDC
+
+         Short parallel example (using packages "foreach" and "doParallel" which are included in the R module) for running on Dardel. Loading R/4.4.1.
 
          .. code-block:: sh
 
             #!/bin/bash -l
             # A batch script for running the R program parallel_foreach.R
-            #SBATCH -A naiss2025-22-262 
+            #SBATCH -A naiss2025-22-262
             #SBATCH -t 00:10:00
             #SBATCH -N 1
             #SBATCH -c 4
             #SBATCH -p main
 
-            # If you do ml purge you also need to restore the preloaded modules which you should have saved 
-            # when you logged in. Otherwise comment out the two following lines. 
+            # If you do ml purge you also need to restore the preloaded modules which you should have saved
+            # when you logged in. Otherwise comment out the two following lines.
             ml purge > /dev/null 2>&1
             ml restore preload
-            module load PDC/23.12 
-            module load R/4.4.1-cpeGNU-23.12 
+            module load PDC/23.12
+            module load R/4.4.1-cpeGNU-23.12
 
             # Batch script to submit the R program parallel_foreach.R
             R -q --slave -f parallel_foreach.R
-            
+
       .. tab:: parallel_foreach.R
- 
-         This R script uses packages "foreach" and "doParallel". 
-       
+
+         This R script uses packages "foreach" and "doParallel".
+
          .. code-block:: R
 
             library(parallel)
@@ -415,9 +415,9 @@ foreach and doParallel
 Rmpi
 ''''
 
-.. type-along:: 
+.. type-along::
 
-   Short parallel example using package “Rmpi” ("pbdMPI on Dardel")  
+   Short parallel example using package “Rmpi” ("pbdMPI on Dardel")
 
    .. tabs::
 
@@ -426,28 +426,28 @@ Rmpi
          Short parallel example (using package "Rmpi", so we need to load the module R_packages/4.1.1 instead of R/4.1.1 and we need to load a suitable openmpi module, openmpi/4.0.3)
 
          .. code-block:: sh
-        
+
             #!/bin/bash -l
             #SBATCH -A uppmax2025-2-272
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 8
-            
+
             export OMPI_MCA_mpi_warn_on_fork=0
             export OMPI_MCA_btl_openib_allow_ib=1
-            
+
             ml purge > /dev/null 2>&1
             ml R_packages/4.1.1
             ml openmpi/4.0.3
-            
-            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out 
-           
+
+            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
+
 
 
       .. tab:: HPC2N
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.1.2 and its prerequisites. 
-       
+         Short parallel example (using packages "Rmpi"). Loading R/4.1.2 and its prerequisites.
+
          .. code-block:: sh
 
             #!/bin/bash
@@ -455,19 +455,19 @@ Rmpi
             #Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH -n 8
-            
+
             export OMPI_MCA_mpi_warn_on_fork=0
-            
+
             ml purge > /dev/null 2>&1
             ml GCC/11.2.0  OpenMPI/4.1.1
             ml R/4.1.2
-            
-            mpirun -np 1 Rscript Rmpi.R 
 
-      .. tab:: LUNARC 
+            mpirun -np 1 Rscript Rmpi.R
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.2.1 and its prerequisites. 
-       
+      .. tab:: LUNARC
+
+         Short parallel example (using packages "Rmpi"). Loading R/4.2.1 and its prerequisites.
+
          .. code-block:: sh
 
             #!/bin/bash
@@ -483,63 +483,63 @@ Rmpi
             ml R/4.2.1
 
             mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
-   
-      .. tab:: NSC 
 
-         Short parallel example (using packages "pbdMPI as "Rmpi" does not work correctly on NSC). Loading R/4.2.2. 
+      .. tab:: NSC
 
-         Note: for NSC you first need to install "pdbMPI" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('pbdMPI')``) 
+         Short parallel example (using packages "pbdMPI as "Rmpi" does not work correctly on NSC). Loading R/4.2.2.
 
-         .. code-block:: sh 
+         Note: for NSC you first need to install "pdbMPI" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('pbdMPI')``)
+
+         .. code-block:: sh
 
             #!/bin/bash
-            #SBATCH -A naiss2025-22-262 
+            #SBATCH -A naiss2025-22-262
             # Asking for 15 min.
             #SBATCH -t 00:15:00
             #SBATCH -n 8
-            #SBATCH --exclusive 
+            #SBATCH --exclusive
 
             ml purge > /dev/null 2>&1
-            ml R/4.2.2-hpc1-gcc-11.3.0-bare 
+            ml R/4.2.2-hpc1-gcc-11.3.0-bare
 
-            srun --mpi=pmix Rscript pbdMPI.R  
-            
-      .. tab:: PDC 
+            srun --mpi=pmix Rscript pbdMPI.R
 
-         Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
+      .. tab:: PDC
 
-         Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). 
-         - You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``. 
-         - Copy it to your own subdirectory under the project directory and then do: 
+         Short parallel example (using packages "pbdMPI"). Loading R/4.4.1.
+
+         Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work).
+         - You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``.
+         - Copy it to your own subdirectory under the project directory and then do:
            - ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12``
            - ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
 
-         .. code-block:: sh 
+         .. code-block:: sh
 
-            #!/bin/bash -l 
-            #SBATCH -A naiss2025-22-262 
+            #!/bin/bash -l
+            #SBATCH -A naiss2025-22-262
             # Asking for 10 min.
             #SBATCH -t 00:10:00
             #SBATCH --nodes 2
             #SBATCH --ntasks-per-node=8
             #SBATCH -p main
-            #SBATCH --output=pbdMPI-test_%J.out 
+            #SBATCH --output=pbdMPI-test_%J.out
 
-            # If you do ml purge you also need to restore the preloaded modules which you should have saved 
-            # when you logged in. Otherwise comment out the two following lines. 
+            # If you do ml purge you also need to restore the preloaded modules which you should have saved
+            # when you logged in. Otherwise comment out the two following lines.
             ml purge > /dev/null 2>&1
             ml restore preload
             ml PDC/23.12
             ml R/4.4.1-cpeGNU-23.12
 
             srun -n 4 Rscript pbdMPI.R
-  
+
       .. tab:: Rmpi.R
 
-         This R script uses package "Rmpi". 
-       
+         This R script uses package "Rmpi".
+
          .. code-block:: sh
-        
+
            # Load the R MPI package if it is not already loaded.
            if (!is.loaded("mpi_initialize")) {
            library("Rmpi")
@@ -562,21 +562,21 @@ Rmpi
            }
            # Tell all slaves to return a message identifying themselves
            mpi.remote.exec(paste("I am",mpi.comm.rank(),"of",mpi.comm.size(),system("hostname",intern=T)))
-           
+
            # Test computations
            x <- 5
            x <- mpi.remote.exec(rnorm, x)
            length(x)
            x
-           
+
            # Tell all slaves to close down, and exit the program
            mpi.close.Rslaves()
-           
+
            mpi.quit()
 
-      .. tab:: pbdMPI.R 
+      .. tab:: pbdMPI.R
 
-         This R script uses package "pbdMPI". 
+         This R script uses package "pbdMPI".
 
          .. code-block:: sh
 
@@ -597,8 +597,8 @@ Rmpi
             comm.print(x, all.rank = TRUE)
 
             finalize()
-   
-      Send the script to the batch system: 
+
+      Send the script to the batch system:
 
       .. code-block:: console
 
@@ -613,7 +613,7 @@ There are generally either not GPUs on the login nodes or they cannot be accesse
 UPPMAX only
 '''''''''''
 
-Rackham’s compute nodes do not have GPUs. You need to use Snowy for that. 
+Rackham’s compute nodes do not have GPUs. You need to use Snowy for that.
 
 You need to use this batch command (for x being the number of cards, 1 or 2):
 
@@ -625,7 +625,7 @@ You need to use this batch command (for x being the number of cards, 1 or 2):
 HPC2N
 '''''
 
-Kebnekaise’s GPU nodes are considered a separate resource, and the regular compute nodes do not have GPUs.  
+Kebnekaise’s GPU nodes are considered a separate resource, and the regular compute nodes do not have GPUs.
 
 Kebnekaise has a great many different types of GPUs:
 
@@ -686,26 +686,26 @@ These nodes are configured as exclusive access and will not be shared between us
 where <number> is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).
 
 NSC
-''' 
+'''
 
 Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch script or interactive job:
 
-.. code-block:: 
+.. code-block::
 
    #SBATCH -n 1
    #SBATCH -c 32
    #SBATCH --gpus-per-task=1
 
 PDC
-''' 
+'''
 
-Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job: 
+Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job:
 
 .. code-block::
 
    #SBATCH -N 1
    #SBATCH --ntasks-per-node=1
-   #SBATCH -p gpu  
+   #SBATCH -p gpu
 
 Example batch script
 ''''''''''''''''''''
@@ -716,7 +716,7 @@ Example batch script
 
         .. code-block:: sh
 
-            #!/bin/bash -l 
+            #!/bin/bash -l
             #SBATCH -A uppmax2025-2-272
             #Asking for runtime: hours, minutes, seconds. At most 1 week
             #SBATCH -t HHH:MM:SS
@@ -729,12 +729,12 @@ Example batch script
             #Writing output and error files
             #SBATCH --output=output%J.out
             #SBATCH --error=error%J.error
-            
+
             ml purge > /dev/null 2>&1
             ml R/4.1.1 R_packages/4.1.1
-            
+
             R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
-           
+
 
    .. tab:: HPC2N
 
@@ -744,41 +744,41 @@ Example batch script
             #SBATCH -A hpc2n2025-062 # Change to your own project ID
             #Asking for runtime: hours, minutes, seconds. At most 1 week
             #SBATCH -t HHH:MM:SS
-            #Ask for GPU resources. You pick type as one of the ones shown above 
-            #x is how many cards you want, at most as many as shown above 
+            #Ask for GPU resources. You pick type as one of the ones shown above
+            #x is how many cards you want, at most as many as shown above
             #SBATCH --gpus:x
             #SBATCH -C type
             #Writing output and error files
             #SBATCH --output=output%J.out
             #SBATCH --error=error%J.error
-            
+
             ml purge > /dev/null 2>&1
-            #R version 4.0.4 is the only one compiled for CUDA 
+            #R version 4.0.4 is the only one compiled for CUDA
             ml GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5
             ml R/4.0.4
-            
+
             R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
 
    .. tab:: LUNARC
 
-        .. code-block:: sh 
+        .. code-block:: sh
 
            #!/bin/bash
            # Remember to change this to your own project ID after the course!
            #SBATCH -A lu2025-7-24
            # Asking for runtime: hours, minutes, seconds. At most 1 week
            #SBATCH --time=HHH:MM:SS
-           # Ask for GPU resources - x is how many cards, 1 or 2 
+           # Ask for GPU resources - x is how many cards, 1 or 2
            #SBATCH -p gpua100
            #SBATCH --gres=gpu:x
 
            # Remove any loaded modules and load the ones we need
            module purge  > /dev/null 2>&1
-           module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1 
+           module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
 
            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
 
-   .. tab:: NSC 
+   .. tab:: NSC
 
         .. code-block:: sh
 
@@ -791,18 +791,18 @@ Example batch script
            #SBATCH -n 1
            #SBATCH -c 32
            #SBATCH --gpus-per-task=1
-           
+
            # Remove any loaded modules and load the ones we need
            module purge  > /dev/null 2>&1
-           module load R/4.4.0-hpc1-gcc-11.3.0-bare 
+           module load R/4.4.0-hpc1-gcc-11.3.0-bare
 
            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
 
-   .. tab:: PDC 
+   .. tab:: PDC
 
         .. code-block:: sh
 
-           #!/bin/bash -l 
+           #!/bin/bash -l
            # Remember to change this to your own project ID after the course!
            #SBATCH -A naiss2025-22-262
            # Asking for runtime: hours, minutes, seconds. At most 1 week
@@ -810,14 +810,14 @@ Example batch script
            # Ask for resources, including GPU resources
            #SBATCH -N 1
            #SBATCH --ntasks-per-node=1
-           #SBATCH -p gpu 
-           
-           module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
+           #SBATCH -p gpu
+
+           module load PDC/23.12 R/4.4.1-cpeGNU-23.12
            module load rocm/5.7.0
-           #module load craype-accel-amd-gfx90a 
+           #module load craype-accel-amd-gfx90a
            #module load cpeGNU/23.12
            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
-           
+
 
 Exercises
 #########
@@ -825,46 +825,46 @@ Exercises
 .. challenge:: Serial batch script for R
 
    Run the serial batch script from further up on the page, but for the add2.R code. Remember the arguments.
-    
+
 .. solution:: Solution for UPPMAX
     :class: dropdown
-    
-          Serial script on Rackham  
-          
+
+          Serial script on Rackham
+
           .. code-block:: sh
- 
+
              #!/bin/bash -l
              #SBATCH -A uppmax2025-2-272 # Change to your own after the course
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
-             
+
              # Load any modules you need, here for R/4.1.1
              module load R/4.1.1
-             
-             # Run your R script 
-             Rscript add2.R 2 3 
+
+             # Run your R script
+             Rscript add2.R 2 3
 
 
 .. solution:: Solution for HPC2N
     :class: dropdown
-    
-          Serial script on Kebnekaise 
-          
+
+          Serial script on Kebnekaise
+
           .. code-block:: sh
- 
+
              #!/bin/bash
              #SBATCH -A hpc2n2025-062 # Change to your own project ID
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
-             
+
              # Load any modules you need, here for R/4.1.2
              module load GCC/11.2.0  OpenMPI/4.1.1 R/4.1.2
-             
-             # Run your R script 
-             Rscript add2.R 2 3 
 
-.. solution:: Solution for LUNARC 
-    :class: dropdown 
+             # Run your R script
+             Rscript add2.R 2 3
+
+.. solution:: Solution for LUNARC
+    :class: dropdown
 
           Serial script on R
 
@@ -874,54 +874,54 @@ Exercises
              #SBATCH -A lu2025-7-24 # Change to your own project ID
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
-             
+
              # Load any modules you need, here for R/4.2.1
              module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1
-             
-             # Run your R script 
-             Rscript add2.R 2 3 
+
+             # Run your R script
+             Rscript add2.R 2 3
 
 .. solution:: Solution for NSC
-    :class: dropdown 
+    :class: dropdown
 
           Serial script on R
-           
-          .. code-block:: sh 
+
+          .. code-block:: sh
 
              #!/bin/bash
-             #SBATCH -A naiss2025-22-262 
+             #SBATCH -A naiss2025-22-262
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
 
-             # Load any modules you need, here for R/4.2.2 
-             module load R/4.2.2-hpc1-gcc-11.3.0-bare 
+             # Load any modules you need, here for R/4.2.2
+             module load R/4.2.2-hpc1-gcc-11.3.0-bare
 
-             # Run your R script 
-             Rscript add2.R 2 3 
+             # Run your R script
+             Rscript add2.R 2 3
 
 .. solution:: Solution for PDC
-    :class: dropdown 
+    :class: dropdown
 
           Serial script on R
-           
-          .. code-block:: sh 
+
+          .. code-block:: sh
 
              #!/bin/bash
-             #SBATCH -A naiss2025-22-262 
+             #SBATCH -A naiss2025-22-262
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
-             #SBATCH -p main 
+             #SBATCH -p main
 
-             # Load any modules you need, here for R/4.4.1 
-             module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
+             # Load any modules you need, here for R/4.4.1
+             module load PDC/23.12 R/4.4.1-cpeGNU-23.12
 
-             # Run your R script 
-             Rscript add2.R 2 3 
+             # Run your R script
+             Rscript add2.R 2 3
 
-   
+
 
 .. challenge:: Parallel job run
 
-   Try making a batch script for running the parallel example with "foreach" from further up on the page. 
+   Try making a batch script for running the parallel example with "foreach" from further up on the page.
 
 

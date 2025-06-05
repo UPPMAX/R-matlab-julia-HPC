@@ -3,7 +3,7 @@ Evaluation
 
 The evaluation form for the Julia part can be found `here <https://forms.office.com/e/yT7PCqVant>`_.
 It takes into account that one may need to leave early too.
-  
+
 
 .. dropdown:: What is in the form?
 

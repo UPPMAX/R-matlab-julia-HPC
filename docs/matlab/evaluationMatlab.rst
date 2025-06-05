@@ -3,7 +3,7 @@ Evaluation
 
 The evaluation form for the Matlab part can be found `here <https://forms.office.com/e/9Jj8hFAEHt>`_.
 It takes into account that one may need to leave early too.
-  
+
 
 .. dropdown:: What is in the form?
 
@@ -107,15 +107,15 @@ It takes into account that one may need to leave early too.
         - I can submit jobs from inside the Matlab terminal interface
         - I can submit jobs from inside the Matlab GUI
         - I can write and submit a Matlab batch script
-        - I can use the Matlab client on the desktop 
+        - I can use the Matlab client on the desktop
         - I can check that I am in an interactive session
-        - I can work with Matlab in parallel 
+        - I can work with Matlab in parallel
         - I can start run Matlab in Jupyter
         - I can view add-ons and toolboxes
         - I can install add-ons
         - I can use GPUs with Matlab
 
- 
+
         13.Did today's course meet your expectation?
 
         - Yes

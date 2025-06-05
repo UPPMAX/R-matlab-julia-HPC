@@ -4,7 +4,7 @@ Extra MATLAB Exercises
 .. challenge:: Run the following function serially, then parallelize the loop and rerun it with ``parpool`` using 6 workers. Compare the runtimes and output orders.
 
   .. code-block:: matlab
-  
+
     function t_out = greetings()
       % Planets (incl. dwarf) in ascending order of distance from Sun
       planets = ["Mercury" "Venus" "Earth" "Mars" "Ceres" ...
@@ -24,13 +24,13 @@ Extra MATLAB Exercises
   1. Run the following code with the MATLAB batch command with ``iter=10000`` and set the number of workers equal to 6.
 
    .. code-block:: matlab
-    
+
       function [dstats, t] = dice_stats_par(iter)
-      % All numbers N for which there exist fair "dice" with N faces 
+      % All numbers N for which there exist fair "dice" with N faces
       nsides = [2:22 24:2:32 36 38 48 50 60 62 92 100 120];
       % pre-allocate array for stats
       dstats = zeros(numel(nsides),4);
-      
+
       tic
       % parallelize or serialize as desired
       parfor nf = 1:numel(nsides)
@@ -42,7 +42,7 @@ Extra MATLAB Exercises
           %   The parfor-loop variable 'dstats' is indexed using the loop variable,
           %   but it is not a valid sliced output variable.
       end
-      
+
       % make dstats results readable
       dstats = array2table(dstats, 'VariableNames',{'D','Mean','Median','Mode'});
       writetable(dstats,'dice_stats_out.txt','Delimiter','\t')

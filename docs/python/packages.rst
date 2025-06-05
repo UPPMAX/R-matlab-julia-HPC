@@ -35,13 +35,13 @@ Python packages
             - How to find out if a package is already installed?
             - How to install a Python package?
 
-.. admonition:: Compute allocations in this workshop 
+.. admonition:: Compute allocations in this workshop
 
     - Rackham: ``uppmax2025-2-272``
     - Kebnekaise: ``hpc2n2025-062``
     - Cosmos: ``lu2025-7-24``
 
-.. admonition:: Storage space for this workshop 
+.. admonition:: Storage space for this workshop
 
     - Rackham: ``/proj/r-py-jl-m-rackham``
     - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
@@ -103,7 +103,7 @@ Exercises
     - `UPPMAX <https://youtu.be/nIkjk8R8rx0>`_
 
 
-These exercises follow a common user journey, 
+These exercises follow a common user journey,
 for a user that needs to use a certain Python packages:
 
 - In exercise 1, we use a Python package that comes with the Python module
@@ -290,7 +290,7 @@ package with.
 .. admonition:: Answer UPPMAX
     :class: dropdown
 
-    Searching for ``TensorFlow`` at 
+    Searching for ``TensorFlow`` at
     `the UPPMAX documentation <https://docs.uppmax.uu.se>`_
     takes you to
     `the TensorFlow page <https://docs.uppmax.uu.se/software/tensorflow>`_.
@@ -353,7 +353,7 @@ Load the module for the Python package and verify if it is loaded.
     Instead, use the
     `LUNARC documentation on modules <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept>`_
     to find the module yourself.
-    
+
     To search for it:
 
     .. code-block:: bash
@@ -433,7 +433,7 @@ using ``pip``.
 .. admonition:: Answer UPPMAX
     :class: dropdown
 
-    UPPMAX: searching for ``pip install`` at 
+    UPPMAX: searching for ``pip install`` at
     `the UPPMAX documentation <https://docs.uppmax.uu.se>`_
     takes you to
     `Installing Python packages <https://docs.uppmax.uu.se/software/python_install_packages/>`_.
@@ -472,7 +472,7 @@ Install a Python package called ``mhcnuggets``. Which version gets installed?
 
     Do ``pip install mhcnuggets``, then ``pip list`` to see that ``mhcnuggets`` version 2.4.1
     gets installed
-                
+
 Conclusion
 ----------
 

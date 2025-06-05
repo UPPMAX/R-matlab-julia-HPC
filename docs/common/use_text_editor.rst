@@ -25,7 +25,7 @@ We recommend ``nano`` unless you are used to another editor:
 
 .. challenge::
 
-   - Let's make a script with the name ``example.py``  
+   - Let's make a script with the name ``example.py``
 
    .. code-block:: console
 
@@ -45,5 +45,5 @@ We recommend ``nano`` unless you are used to another editor:
    .. code-block:: console
 
       $ python example.py
-      # or 
+      # or
       $ python3 example.py

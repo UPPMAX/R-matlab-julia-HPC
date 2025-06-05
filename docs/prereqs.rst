@@ -5,7 +5,7 @@ Pre-requirements
 
     The goal of this page to make sure you can follow the course.
 
-.. warning:: 
+.. warning::
 
     Start preparing early!
 

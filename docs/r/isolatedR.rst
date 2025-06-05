@@ -3,43 +3,43 @@ Isolated environments with ``renv``
 
 .. note::
    Isolated environments solve a couple of problems:
-   
+
    - You can install specific, also older, versions into them.
    - You can create one for each project and no problem if the two projects
      require different versions.
    - You can remove the environment and create a new one, if not needed or with
      errors.
-   
+
 R is not very well known for virtual environments like Python and Julia. However:
 
-The ``renv`` package is a new effort to bring project-local R dependency management to your projects. 
+The ``renv`` package is a new effort to bring project-local R dependency management to your projects.
 The goal is for ``renv`` to be a robust, stable replacement for the Packrat package, with fewer surprises and better default behaviors.
 
 
 .. questions::
 
    - How to work with isolated R environments at HPC2N, UPPMAX, LUNARC, NSC, and PDC?
- 
-.. objectives:: 
+
+.. objectives::
 
    - Give a general introduction to isolated environments in R.
-   - Show an example with installing an R package to an isolated renv environment. 
+   - Show an example with installing an R package to an isolated renv environment.
 
 .. admonition:: Goal
 
-   - You will learn how to create a renv and install a package to it. 
+   - You will learn how to create a renv and install a package to it.
 
-General procedures   
+General procedures
 ------------------
 
 You will now and then have the situation that your project(s) use different versions of R and different versions of packages. This is great if you need different versions of a package for different tasks, for instance. This is easily solved with isolated environments.
 
 Isolated environments lets you create separate workspaces for different versions of R and/or different versions of packages. You can activate and deactivate them one at a time, and work as if the other workspace does not exist.
 
-Underlying the philosophy of ``renv`` is that any of your existing workflows should just work as they did before. 
+Underlying the philosophy of ``renv`` is that any of your existing workflows should just work as they did before.
 
 - ``renv`` helps manage library paths (and other project-specific state) to help isolate your project’s R dependencies
-- the existing tools you’ve used for managing R packages (e.g. ``install.packages()``, ``remove.packages()``) should work as they did before. 
+- the existing tools you’ve used for managing R packages (e.g. ``install.packages()``, ``remove.packages()``) should work as they did before.
 - [Introduction to renv](https://rstudio.github.io/renv/articles/renv.html)
 
 Workflow
@@ -75,34 +75,34 @@ Example - Creating a renv and installing ``knitr``
       .. tab:: UPPMAX
 
          .. code-block:: console
-   
-            $ mkdir -v /proj/r-matlab-julia-uppmax/<your-dir>/r_proj && cd $_    
+
+            $ mkdir -v /proj/r-matlab-julia-uppmax/<your-dir>/r_proj && cd $_
 
       .. tab:: HPC2N
- 
+
          .. code-block:: console
-   
+
             $ mkdir -v /proj/nobackup/r-matlab-julia/<your-dir>/r_proj && cd $_
 
-      .. tab:: LUNARC 
+      .. tab:: LUNARC
 
          .. code-block:: console
 
-            $ mkdir -v $HOME/r_proj && cd $_ 
+            $ mkdir -v $HOME/r_proj && cd $_
 
-      .. tab:: NSC 
+      .. tab:: NSC
 
-         .. code-block:: console 
+         .. code-block:: console
 
-            $ mkdir -v /proj/r-matlab-julia-naiss/users/<your-dir>/r_proj && cd $_ 
+            $ mkdir -v /proj/r-matlab-julia-naiss/users/<your-dir>/r_proj && cd $_
 
-      .. tab:: PDC 
+      .. tab:: PDC
 
-         .. code-block:: console 
+         .. code-block:: console
 
-            $ mkdir -v /cfs/klemming/projects/snic/r-matlab-julia-naiss/<your-dir>/r_proj && cd $_ 
-            
-   - Make sure you have loaded ``R`` and ``R_packages`` on UPPMAX or ``R`` and ``R-bundle-Bioconductor (and possibly R-bundle-CRAN if you use one of the newest versions of R)`` on HPC2N and ``R`` on LUNARC and R on NSC and R on PDC. 
+            $ mkdir -v /cfs/klemming/projects/snic/r-matlab-julia-naiss/<your-dir>/r_proj && cd $_
+
+   - Make sure you have loaded ``R`` and ``R_packages`` on UPPMAX or ``R`` and ``R-bundle-Bioconductor (and possibly R-bundle-CRAN if you use one of the newest versions of R)`` on HPC2N and ``R`` on LUNARC and R on NSC and R on PDC.
 
    .. tabs::
 
@@ -116,35 +116,35 @@ Example - Creating a renv and installing ``knitr``
 
          .. code-block:: console
 
-            $ ml GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1 
+            $ ml GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
 
-      .. tab:: LUNARC 
+      .. tab:: LUNARC
 
-         .. code-block:: console 
+         .. code-block:: console
 
-            $ ml GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 
+            $ ml GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1
 
-      .. tab:: NSC 
+      .. tab:: NSC
 
-         .. code-block:: console 
+         .. code-block:: console
 
             $ ml R/4.2.2-hpc1-gcc-11.3.0-bare
 
-      .. tab:: PDC 
+      .. tab:: PDC
 
-         .. code-block:: console 
+         .. code-block:: console
 
-            $ ml PDC/23.12 R/4.4.1-cpeGNU-23.12   
+            $ ml PDC/23.12 R/4.4.1-cpeGNU-23.12
 
    - Next, launch the ``R`` interpreter and initialize a ``renv`` environment.
-     **NOTE** if you are at NSC and PDC you need to install ``renv`` with ``install.packages('renv', repos='http://ftp.acc.umu.se/mirror/CRAN/')`` before you can initialize the ``renv`` environment. 
+     **NOTE** if you are at NSC and PDC you need to install ``renv`` with ``install.packages('renv', repos='http://ftp.acc.umu.se/mirror/CRAN/')`` before you can initialize the ``renv`` environment.
 
      .. code-block:: R
-   
+
         > renv::init()
-      
+
    - Exit the session
-   
+
      .. code-block:: R
 
         > quit()
@@ -165,15 +165,15 @@ Example - Creating a renv and installing ``knitr``
         [1] "/crex/proj/py-r-jl/matpiq/r_proj/renv/library/R-4.1/x86_64-pc-linux-gnu"
         [2] "/scratch/RtmpMgprgX/renv-system-library"
 
-   **Question**: What happens if you leave the project directory? 
+   **Question**: What happens if you leave the project directory?
 
-   As a last step we can try installing some package into the environment. Let's re-enter the project directory (if you left it) and try installing  ``knitr``. Start R again if you had exited it. 
+   As a last step we can try installing some package into the environment. Let's re-enter the project directory (if you left it) and try installing  ``knitr``. Start R again if you had exited it.
 
    .. code-block:: rconsole
 
       > install.packages("knitr")
 
-   You could exit R and check what was installed 
+   You could exit R and check what was installed
 
    .. code-block:: console
 
@@ -192,92 +192,92 @@ Example - Creating a renv and installing ``knitr``
 
 .. note::
 
-   To access the packages installed in the renv, you either need to activate it or be in that directory. Load the R module and prerequisites (and possibly R_packages on UPPMAX and R-bundle-Bioconductor / R-bundle-CRAN on HPC2N) and do: 
+   To access the packages installed in the renv, you either need to activate it or be in that directory. Load the R module and prerequisites (and possibly R_packages on UPPMAX and R-bundle-Bioconductor / R-bundle-CRAN on HPC2N) and do:
 
-   - ``renv::load("<path-to-your-renv>")`` inside your R script to access the packages installed in it. Or run from inside your renv directory. 
+   - ``renv::load("<path-to-your-renv>")`` inside your R script to access the packages installed in it. Or run from inside your renv directory.
 
 .. exercise:: Installing "datarium"
 
-   We will need this for an exercise in the "ML with R" section (only on Tetralith, Cosmos and Kebnekaise - Rackham has the library included already). 
+   We will need this for an exercise in the "ML with R" section (only on Tetralith, Cosmos and Kebnekaise - Rackham has the library included already).
 
-   - First create a new project under the course project directory (Kebnekaise, Rackham, Tetralith) or in your home directory (Cosmos) and cd to it. 
+   - First create a new project under the course project directory (Kebnekaise, Rackham, Tetralith) or in your home directory (Cosmos) and cd to it.
 
-   - Then make sure you have loaded the modules: 
-    
-      - Kebnekaise/Cosmos: R/4.2.1 and prerequsites + R-bundle-Bioconductor/3.15-R-4.2.1 
-      - Rackham: R/4.1.1 R_packages/4.1.1 
-      - Tetralith: R/4.2.2-hpc1-gcc-11.3.0-bare   
-      - Dardel: PDC/23.12 R/4.4.1-cpeGNU-23.12 
+   - Then make sure you have loaded the modules:
+
+      - Kebnekaise/Cosmos: R/4.2.1 and prerequsites + R-bundle-Bioconductor/3.15-R-4.2.1
+      - Rackham: R/4.1.1 R_packages/4.1.1
+      - Tetralith: R/4.2.2-hpc1-gcc-11.3.0-bare
+      - Dardel: PDC/23.12 R/4.4.1-cpeGNU-23.12
 
    - Launch the R interpreter and initialize a renv environment.
 
-   - Install the package "datarium" 
+   - Install the package "datarium"
 
-.. solution:: 
-   :class: dropdown 
+.. solution::
+   :class: dropdown
 
-       1. Create a project directory and change to it: 
+       1. Create a project directory and change to it:
 
        .. code-block::
 
-          $ mkdir -v <path-to-your-dir>/r_proj_dat && cd $_      
-   
-       2. Load R, prerequisites, and other needed modules 
+          $ mkdir -v <path-to-your-dir>/r_proj_dat && cd $_
 
-       .. tabs:: 
+       2. Load R, prerequisites, and other needed modules
 
-          .. tab:: Rackham 
-             
+       .. tabs::
+
+          .. tab:: Rackham
+
              .. code-block::
 
-                ml R/4.1.1 R_packages/4.1.1             
-         
-          .. tab:: Kebnekaise 
+                ml R/4.1.1 R_packages/4.1.1
 
-             .. code-block:: 
+          .. tab:: Kebnekaise
+
+             .. code-block::
 
                 ml GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
 
           .. tab:: Cosmos
 
-             .. code-block:: 
+             .. code-block::
 
                 ml GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
 
-          .. tab:: Tetralith 
+          .. tab:: Tetralith
 
-             .. code-block:: 
+             .. code-block::
 
-                ml R/4.2.2-hpc1-gcc-11.3.0-bare 
+                ml R/4.2.2-hpc1-gcc-11.3.0-bare
 
        3. Launch the R interpreter and initialize a renv environment.
 
-       .. code-block:: 
+       .. code-block::
 
           $ R
 
-       .. tabs:: 
+       .. tabs::
 
-           .. tab:: Tetralith, Dardel  
+           .. tab:: Tetralith, Dardel
 
               .. code-block::
 
                  > install.packages('renv', repos='http://ftp.acc.umu.se/mirror/CRAN/')
                  > renv::init()
 
-           .. tab:: others 
+           .. tab:: others
 
-              .. code-block:: 
+              .. code-block::
 
-                 > renv::init()          
+                 > renv::init()
 
-       4. Exit R and restart it 
-                 
-       5. Install "datarium" - Pick repo Umeå 
+       4. Exit R and restart it
 
-       .. code-block:: 
+       5. Install "datarium" - Pick repo Umeå
 
-          > install.packages("datarium") 
+       .. code-block::
+
+          > install.packages("datarium")
 
        5. Save it
 
@@ -285,15 +285,15 @@ Example - Creating a renv and installing ``knitr``
 
           renv::snapshot()
 
-       6. Try loading it with 
+       6. Try loading it with
 
-       .. code-block:: 
+       .. code-block::
 
-          > library(datarium) 
+          > library(datarium)
 
-       NOTE: Later, when you need it, for instance in a batch script, you can either  
+       NOTE: Later, when you need it, for instance in a batch script, you can either
 
-       - work from inside the r_proj directory 
+       - work from inside the r_proj directory
        - Load the renv with: ``renv::load("<path-to-your-renv>")``
 
 
