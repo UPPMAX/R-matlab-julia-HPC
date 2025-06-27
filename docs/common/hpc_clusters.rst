@@ -3,24 +3,24 @@
 HPC clusters
 ============
 
-The HPC centers UPPMAX, HPC2N, LUNARC, NSC and Dardel
-:::::::::::::::::::::::::::::::::::::::::::::::::::::
+The HPC centers UPPMAX, HPC2N, LUNARC, NSC and PDC
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 .. admonition:: Five HPC centers
 
-   - There are many similarities:
+   There are many similarities:
 
      - Login vs. calculation/compute nodes
      - Environmental module system with software hidden until loaded with ``module load``
      - Slurm batch job and scheduling system
 
-   - ... and small differences:
+   ... many small differences:
 
      - commands to load R, Matlab and Julia and packages/libraries
      - sometimes different versions of R, Matlab and Julia, etc.
      - slightly different flags to Slurm
 
-   - ... and some bigger differences:
+   ... and some bigger differences:
 
      - UPPMAX has three different clusters
 
@@ -31,6 +31,7 @@ The HPC centers UPPMAX, HPC2N, LUNARC, NSC and Dardel
      - HPC2N has Kebnekaise with GPUs
      - LUNARC has Cosmos with GPUs (and Cosmos-SENS)
      - NSC has several clusters
+
        - BerzeLiUs (AI/ML, NAISS)
        - Tetralith (NAISS)
        - Sigma (LiU local)
