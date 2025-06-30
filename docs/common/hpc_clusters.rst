@@ -82,7 +82,7 @@ Common features
 
 - Linux kernel
 - Bash shell
-- Intel CPUs, except for Dardel with AMD.
+- x86-64 CPUs, some clusters with Intel processors and some with AMD.
 - NVidia GPUs (HPC2N/LUNARC, also AMD) except for Dardel with AMD.
 
 .. list-table:: Hardware
