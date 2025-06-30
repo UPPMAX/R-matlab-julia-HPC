@@ -8,7 +8,7 @@ Load and run Julia
     - `NSC <https://www.nsc.liu.se/software/modules/>`_
     - `PDC <https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/>`_
     - `UPPMAX <https://docs.uppmax.uu.se/cluster_guides/modules/>`_
-    - `HPC2N <https://docs.hpc2n.umu.se/documentation/modules/#the__modules__system>`_
+    - `HPC2N <https://docs.hpc2n.umu.se/software/modules/>`_
     - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept>`_
 
 
