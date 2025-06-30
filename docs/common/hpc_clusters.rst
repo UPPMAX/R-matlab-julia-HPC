@@ -47,7 +47,7 @@ The HPC centers UPPMAX, HPC2N, LUNARC, NSC and PDC
 
    - We call the applications available via the *module system* **modules**.
        - `UPPMAX <https://docs.uppmax.uu.se/cluster_guides/modules/>`_
-       - `HPC2N <https://docs.hpc2n.umu.se/documentation/modules/>`_
+       - `HPC2N <https://docs.hpc2n.umu.se/software/modules/>`_
        - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/>`_
        - `NSC <https://www.nsc.liu.se/software/modules/>`_
        - `PDC <https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/>`_
