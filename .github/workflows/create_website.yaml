@@ -27,12 +27,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
 
-      - name: Install sphinx-design, from https://sphinx-design.readthedocs.io/en/latest/get_started.html
-        run: pip install sphinx-design 
-
-      - name: Install sphinx-prompt, from https://blog.finxter.com/fixed-modulenotfounderror-no-module-named-sphinx-prompt/
-        run: pip install sphinx-prompt
-
       - name: remove unused folders
         run: |
           rm -rf docs/julia/not_used
