@@ -2,7 +2,7 @@
 
 ![The R logo](r_logo_50.png)
 
-???- question "Prefer this session as video?"
+???- note "Prefer this session as video?"
     See [this YouTube video](https://youtu.be/N-TRzv9LdF4)
     to see this session as a video.
 
@@ -12,7 +12,7 @@
     - see the overview of the course
     - hear about 'the tarball with exercises'
 
-???- question "For teachers"
+???- note "For teachers"
 
     Learning outomes are:
 
