@@ -1,11 +1,6 @@
-Introduction Julia
-==================
+# Introduction Julia
 
-`Welcome page and syllabus <https://uppmax.github.io/HPC-python/index.html>`_
-   - Also link at House symbol |:house:| at top of page
-
-.. admonition:: Learning outcomes
-
+!!! info "Learning outcomes for today"
    - Learn how to load Julia modules and access site-installed Julia packages
    - Grasp the concept of Julia environments
    - Familiarize with Julia packages installation with **Pkg**
@@ -14,31 +9,27 @@ Introduction Julia
    - Learn how Julia supports GPU computing
    - Gain knowledge on how to run ML jobs in Julia
 
-.. admonition:: Your expectations?
+
+!!! info "Your expectations?"
 
     - Find best practices for using Julia at UPPMAX and HPC2N
     - Get the hang of packages functioning
     - Use the HPC performance with Julia
-
 
     **Not covered**
 
     - Improve Julia *coding* skills
     - Other clusters
 
-.. admonition:: Julia Exercise files
+!!! info "Julia Exercise files"
 
     - `:ref:`common-use-tarball`
 
-.. instructor-note::
+!!! info "instructor-note"
 
    - Intro 5 min
    - Lecture and 10 min
 
-Schedule
---------
-
-`Schedule <https://uppmax.github.io/R-matlab-julia-HPC/julia/scheduleJulia.html>`_
 
 
 What is Julia?
