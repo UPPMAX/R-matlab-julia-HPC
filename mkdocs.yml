@@ -13,7 +13,7 @@ nav:
       - Load and run: julia_load_run.md
     - R: 
       - Schedule: r/schedule.md
-      - Intro: r/intro.md
+      - Intro: r/intro/README.md
       - Load and run: r/load_run.md
       - Summary: r/summary.md
 
