@@ -1,0 +1,19 @@
+flowchart TD
+
+    subgraph r[R]
+      r_interpreter[the R interpreter]
+      r_packages[R packages]
+      r_language[the R programming language]
+      r_dev[R software development]
+      rstudio[RStudio]
+
+      interpreted_language[Interpreted]
+      cran[CRAN]
+    end
+
+    r_language --> |has| r_dev
+    r_language --> |is| interpreted_language
+    r_language --> |uses| r_packages
+    interpreted_language --> |done by| r_interpreter
+    r_packages --> |maintained by| cran
+    r_dev --> |commonly done in| rstudio

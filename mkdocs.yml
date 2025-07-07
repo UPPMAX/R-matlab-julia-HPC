@@ -12,8 +12,10 @@ nav:
       - Intro: julia_intro.md
       - Load and run: julia_load_run.md
     - R: 
-      - Intro: r_intro.md
-      - Load and run: r_load_run.md
+      - Schedule: r/schedule.md
+      - Intro: r/intro.md
+      - Load and run: r/load_run.md
+      - Summary: r/summary.md
 
 theme: 
     name: readthedocs

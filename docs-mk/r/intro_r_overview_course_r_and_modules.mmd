@@ -1,0 +1,37 @@
+flowchart TD
+
+    subgraph r[R]
+      r_interpreter[1.the R interpreter]
+      r_packages[2.R packages]
+      r_virtual_environments[2.R virtual environments]
+      r_language[1.the R programming language]
+      parallel_and_multithreaded_functions[3.Parallel and multithreaded functions]
+      r_dev[5.R software development]
+      rstudio[5.RStudio]
+      ml[4.Machine learning]
+      interpreted_language[1.Interpreted]
+      cran[1.CRAN]
+    end
+    subgraph modules[modules]
+      r_module[1.R module]
+      r_packages_module[2.R_packages module]
+      rstudio_module[5.RStudio module]
+    end
+
+
+    r_language --> |has| r_dev
+    r_language --> |is| interpreted_language
+    r_language --> |uses| r_packages
+    interpreted_language --> |done by| r_interpreter
+    r_packages --> |maintained by| cran
+    r_packages --> |isolated by|r_virtual_environments
+    r_language --> |allows| parallel_and_multithreaded_functions
+    r_language --> |provides for| ml
+    r_dev --> |commonly done in| rstudio
+
+    r_interpreter --> |loaded by|r_module
+    r_packages --> |loaded by|r_packages_module
+    rstudio --> |loaded by|rstudio_module
+
+    rstudio_module --> |automatically loads latest| r_packages_module
+    r_packages_module --> |automatically loads corresponding version of| r_module
