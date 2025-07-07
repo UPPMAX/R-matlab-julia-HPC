@@ -1,5 +1,6 @@
 site_name: Introduction to running R, Matlab, and Julia in HPC
 repo_url: https://github.com/UPPMAX/R-matlab-julia-HPC
+docs_dir: docs-mk/
 edit_uri: blob/main/docs-mk/
 
 nav:
