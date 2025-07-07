@@ -14,6 +14,7 @@ nav:
       - Intro: julia/intro.md
       - Load and run: julia/load_run.md
       - Environments and packages: julia/environments_packages.md
+      - The notebook Pluto: julia/notebook_pluto.md
 
 theme: 
     name: readthedocs
