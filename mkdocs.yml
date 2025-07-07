@@ -13,6 +13,7 @@ nav:
     - Julia:
       - Intro: julia/intro.md
       - Load and run: julia/load_run.md
+      - Environments and packages: julia/environments_packages.md
 
 theme: 
     name: readthedocs
