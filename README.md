@@ -1,10 +1,10 @@
-# R, Julia, and MATLAB in HPC
+# R, MATLAB, and Julia in HPC
 
 [![Check links](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_links.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_links.yaml)
 [![Check spelling](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_spelling.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_spelling.yaml)
 [![Create website](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/create_website.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/create_website.yaml)
 
-This repository contains the source code for the UPPMAX/HPC2N [R, Julia, and Matlab in HPC course](https://uppmax.github.io/R-matlab-julia-HPC/)
+This repository contains the source code for the UPPMAX/HPC2N [R, MATLAB, and Julia in HPC course](https://uppmax.github.io/R-matlab-julia-HPC/)
 
 ## Getting PDFs of the material
 
