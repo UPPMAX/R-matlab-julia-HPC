@@ -1,41 +1,37 @@
-Load and run R
-==============
+# Load and run R
 
-.. tabs::
+!!! info "Learning outcomes"
 
-   .. tab:: Learning objectives
+    - Practice using the documentation of your HPC cluster
+    - Load an R module
+    - Start the R interpreter
+    - Run an R script
+    - Download and extract the exercise files
+    - (optional) Find the different R modules
+    - (optional) See the list of installed R packages
 
-      - Practice using the documentation of your HPC cluster
-      - Load an R module
-      - Start the R interpreter
-      - Run an R script
-      - Download and extract the exercise files
-      - (optional) Find the different R modules
-      - (optional) See the list of installed R packages
+???- info "Learning outcomes"
 
-   .. tab:: For teachers
+    Teaching goals are:
 
-      Teaching goals are:
+    - Learners have practiced using the documentation of their HPC clusters
+    - Learners have loaded the module to be able to run R
+    - Learners have run the R interpreter
+    - Learners have run an R script from the command-line
+    - Learners have downloaded and extracted the exercise files
+    - (optional) Learners have found the different R modules
+    - (optional) Learners have seen the list of installed R packages
 
-      - Learners have practiced using the documentation of their HPC clusters
-      - Learners have loaded the module to be able to run R
-      - Learners have run the R interpreter
-      - Learners have run an R script from the command-line
-      - Learners have downloaded and extracted the exercise files
-      - (optional) Learners have found the different R modules
-      - (optional) Learners have seen the list of installed R packages
+    Prior:
 
-      Prior:
+    - What is 'HPC' in 'HPC cluster'?
+    - What is 'cluster' in 'HPC cluster'?
+    - What is a software module?
+    - What is a script?
+    - What are features of using an HPC cluster?
+    - What problem would arise if users can install their own software?
 
-      - What is 'HPC' in 'HPC cluster'?
-      - What is 'cluster' in 'HPC cluster'?
-      - What is a software module?
-      - What is a script?
-      - What are features of using an HPC cluster?
-      - What problem would arise if users can install their own software?
-
-Introduction
-------------
+## Introduction
 
 You want to run R on an HPC cluster.
 For this, you'll need to read the documentation
@@ -44,7 +40,7 @@ of your HPC cluster.
 In this session, we will use the documentation of your HPC cluster
 to start R.
 
-.. warning::
+!!! warning "Only do lightweight things!"
 
     Only do lightweight things!
 
@@ -54,25 +50,17 @@ to start R.
 
     How to do heavy calculations will be shown in this course later.
 
-Exercises
----------
+## Exercises
 
-.. admonition:: Prefer this session as video?
-    :class: dropdown
+???- note "Prefer this session as video?"
 
-    +------------+------------------------+----------------------------------------------------------+
-    | HPC cluster| Login method           | Location                                                 |
-    +============+========================+==========================================================+
-    | COSMOS     | Local ThinLinc client  | `Here <https://youtu.be/sSWd54Gunck>`__                  |
-    +------------+------------------------+----------------------------------------------------------+
-    | Dardel     | Local ThinLinc client  | `Here <https://youtu.be/xBFH7Ab37FU>`__                  |
-    +------------+------------------------+----------------------------------------------------------+
-    | Kebnekaise | Local ThinLinc client  | `Here <https://youtu.be/miAxHkSePIA>`__                  |
-    +------------+------------------------+----------------------------------------------------------+
-    | Rackham    | Local ThinLinc client  | `Here <https://youtu.be/fSUYE_Xahe8>`__                  |
-    +------------+------------------------+----------------------------------------------------------+
-    | Tetralith  | Local ThinLinc client  | `Here <https://youtu.be/HxBtyCB3w0k>`__                  |
-    +------------+------------------------+----------------------------------------------------------+
+    HPC cluster| Login method           | Location                                                 |
+    -----------+------------------------+-------------------------------------
+    COSMOS     | Local ThinLinc client  | [Here](https://youtu.be/sSWd54Gunck)
+    Dardel     | Local ThinLinc client  | [Here](https://youtu.be/xBFH7Ab37FU)
+    Kebnekaise | Local ThinLinc client  | [Here](https://youtu.be/miAxHkSePIA)
+    Rackham    | Local ThinLinc client  | [Here](https://youtu.be/fSUYE_Xahe8)
+    Tetralith  | Local ThinLinc client  | [Here](https://youtu.be/HxBtyCB3w0k)
 
 
 +------------------+-------------------+
