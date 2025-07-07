@@ -14,6 +14,20 @@ After doing that, you can convert the .rst files to .pdf files with this online 
 
 The documentation files you see on the rendered pages (https://uppmax.github.io/R-matlab-julia-HPC/) are found under ``R-matlab-julia-HPC/docs/<language>``.
 
+## Build locally
+
+Install MkDocs:
+
+```
+sudo apt install mkdocs
+```
+
+Build and deploy the website:
+
+``` bash
+mkdocs serve
+```
+
 ## Credits
 
 Built with Sphinx using a theme provided by Read the Docs.

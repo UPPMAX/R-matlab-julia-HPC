@@ -34,18 +34,18 @@ markdown_extensions:
   - tables
   - attr_list
   - footnotes
-  - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - pymdownx.keys
   - md_in_html
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+  #- pymdownx.details
+  #- pymdownx.tabbed:
+  #    alternate_style: true
+  #- pymdownx.highlight:
+  #    anchor_linenums: true
+  #- pymdownx.inlinehilite
+  #- pymdownx.snippets
+  #- pymdownx.superfences
+  #- pymdownx.keys
+  #- pymdownx.emoji:
+  #    emoji_index: !!python/name:materialx.emoji.twemoji
+  #    emoji_generator: !!python/name:materialx.emoji.to_svg
       
 
