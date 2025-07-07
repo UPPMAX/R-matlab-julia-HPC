@@ -18,19 +18,32 @@ The documentation files you see on the rendered pages (https://uppmax.github.io/
 
 Install MkDocs:
 
-```
+```bash
 sudo apt install mkdocs
 ```
 
-Build and deploy the website:
+Clone the repository:
 
-``` bash
+```bash
+git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git
+```
+
+Navigate to the root of this git repository:
+
+```bash
+cd R-matlab-julia-HPC
+```
+ 
+Build and deploy the website, from this project's root folder:
+
+```bash
 mkdocs serve
 ```
 
 ## Credits
 
-Built with Sphinx using a theme provided by Read the Docs.
+- The old and online version is built with Sphinx using a theme provided by Read the Docs
+- The newer version is built with MkDocs using the ReadTheDocs theme
 
 ## Files used by continuous integration scripts
 
