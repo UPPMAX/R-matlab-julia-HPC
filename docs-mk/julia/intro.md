@@ -1,13 +1,14 @@
 # Introduction Julia
 
 !!! info "Learning outcomes for today"
-   - Learn how to load Julia modules and access site-installed Julia packages
-   - Grasp the concept of Julia environments
-   - Familiarize with Julia packages installation with **Pkg**
-   - Acquire the knowledge of writing batch scripts for running Julia
-   - Discover and explore the different Julia parallelization tools
-   - Learn how Julia supports GPU computing
-   - Gain knowledge on how to run ML jobs in Julia
+
+    - Learn how to load Julia modules and access site-installed Julia packages
+    - Grasp the concept of Julia environments
+    - Familiarize with Julia packages installation with `Pkg`
+    - Acquire the knowledge of writing batch scripts for running Julia
+    - Discover and explore the different Julia parallelization tools
+    - Learn how Julia supports GPU computing
+    - Gain knowledge on how to run ML jobs in Julia
 
 
 !!! info "Your expectations?"
@@ -25,10 +26,10 @@
 
     - `:ref:`common-use-tarball`
 
-!!! info "instructor-note"
+??? note "instructor-note"
 
-   - Intro 5 min
-   - Lecture and 10 min
+    - Intro 5 min
+    - Lecture and 10 min
 
 
 
