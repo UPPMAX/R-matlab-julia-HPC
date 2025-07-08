@@ -19,31 +19,37 @@ The documentation files you see on the rendered pages (https://uppmax.github.io/
 Clone the repository and navigate to the root of it:
 
 ```console
-$ git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git
-$ cd R-matlab-julia-HPC
+git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git
+cd R-matlab-julia-HPC
 ```
 
 Create a python venv and activate it:
 
 ```console
-$ mkdir env
-$ python -m venv env
-$ source env/bin/activate
+mkdir env
+python -m venv env
+source env/bin/activate
 ```
 
-Update pip in the venv and install the requirements:
+> [!TIP]
+> Add `env/` to your `~/.gitignore`, environments are meant to be reproduced from
+> specifications and not meant to be checked in to version control.
+
+In your new venv (your console prompt should assure you it has been properly activated),
+update pip and install the requirements:
+
 ```console
-(env) $ pip install --upgrade pip
-(env) $ pip install -r mkdocs-requirements.txt
+pip install --upgrade pip
+pip install -r mkdocs-requirements.txt
 ```
 
-You may have to deactivate and reactivate the venv at this point to make bash find `mkdocs`,
-even if `which` does find `mkdocs`.
+You may have to deactivate and reactivate the venv at this point to make bash find
+`mkdocs`, even if `which` does find `mkdocs`.
 
 Build and deploy the website, from this project's root folder:
 
 ```console
-(env) $ mkdocs serve
+mkdocs serve
 ```
 
 ## Credits
