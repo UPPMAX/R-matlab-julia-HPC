@@ -16,28 +16,34 @@ The documentation files you see on the rendered pages (https://uppmax.github.io/
 
 ## Build locally
 
-Install MkDocs:
+Clone the repository and navigate to the root of it:
 
 ```bash
-sudo apt install mkdocs
+$ git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git
+$ cd R-matlab-julia-HPC
 ```
 
-Clone the repository:
+Create a python venv and activate it:
 
 ```bash
-git clone https://github.com/UPPMAX/R-matlab-julia-HPC.git
+$ mkdir env
+$ python -m venv env
+$ source env/bin/activate
 ```
 
-Navigate to the root of this git repository:
-
+Update pip in the venv and install the requirements:
 ```bash
-cd R-matlab-julia-HPC
+(env) $ pip install --upgrade pip
+(env) $ pip install -r mkdocs-requirements.txt
 ```
- 
+
+You may have to deactivate and reactivate the venv at this point to make bash find `mkdocs`,
+even if `which` does find `mkdocs`.
+
 Build and deploy the website, from this project's root folder:
 
 ```bash
-mkdocs serve
+(env) $ mkdocs serve
 ```
 
 ## Credits
