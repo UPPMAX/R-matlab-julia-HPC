@@ -1,35 +1,32 @@
-Load and run Julia
-===================
+# Load and run Julia
 
-.. note::
+!!! note
 
     At the Swedish HPC centers we call the applications available via the *module system* **modules**:
 
-    - `NSC <https://www.nsc.liu.se/software/modules/>`_
-    - `PDC <https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/>`_
-    - `UPPMAX <https://docs.uppmax.uu.se/cluster_guides/modules/>`_
-    - `HPC2N <https://docs.hpc2n.umu.se/software/modules/>`_
-    - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept>`_
+    - [NSC](<https://www.nsc.liu.se/software/modules/>)
+    - [PDC](<https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/>)
+    - [UPPMAX](<https://docs.uppmax.uu.se/cluster_guides/modules/>)
+    - [HPC2N](<https://docs.hpc2n.umu.se/software/modules/>)
+    - [LUNARC](<https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept>)
 
 
-.. objectives::
+!!! info "Objectives"
 
-   - Learn to load Julia
-   - Get started with the Julia command line
-   - Learn to run Julia scripts
+    - Learn to load Julia
+    - Get started with the Julia command line
+    - Learn to run Julia scripts
 
-.. instructor-note::
-   :class: dropdown
+??? note "Instructor note"
 
-   - Lecture and demo 15 min
-   - Exercise 15 min
-   - Total time 30 min
+    - Lecture and demo 15 min
+    - Exercise 15 min
+    - Total time 30 min
 
 Julia can be started after a Julia module is loaded.
 The module activates paths to a specific version of the julia interpreter and its libraries and packages.
 
-.. admonition:: Short cheat sheet
-    :class: dropdown
+??? note "Short cheat sheet"
 
     - See which modules exists: ``module spider`` or ``ml spider``.
     - Find module versions for a particular software: ``module spider <software>``
@@ -39,7 +36,7 @@ The module activates paths to a specific version of the julia interpreter and it
     - Unload a module: ``module unload <module>/<version>`` or ``ml -<module>/<version>``
     - Unload all modules except the 'sticky' modules: ``module purge`` or ``ml purge``
 
-.. warning::
+!!! warning
     Note that the module systems at UPPMAX and HPC2N are slightly different.
     All modules at UPPMAX, for instance, not directly related to bio-informatics are shown by ``ml avail``.
 
@@ -47,87 +44,82 @@ The module activates paths to a specific version of the julia interpreter and it
 for instance the compilers (``GNU``, ``Intel``, etc.).
 
 
-Check for Julia versions
-------------------------
+## Check for Julia versions
 
-Principle
-#########
+### Principle
 
 - For some clusters
 
-.. code-block:: console
+``` { .console data-copy="module avail julia" }
+$ module avail julia
+```
 
-   $ module avail julia
+??? note "Example output"
 
-.. admonition:: How will it look like?
-   :class: dropdown
+    From Tetralith:
 
-   Example output for Tetralith
-
-   .. code-block::  console
-
-      $ module avail julia
-      ---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------
-         julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist
-         julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
-         julia/1.4.1                          julia/1.8.5-nsc1-bdist
+    ``` { .console data-copy="module avail julia" }
+    $ module avail julia
+    ---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------
+       julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist
+       julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
+       julia/1.4.1                          julia/1.8.5-nsc1-bdist
 
 
-       Where:
-        D:  Default Module
+     Where:
+      D:  Default Module
 
-      Use "module spider" to find all possible modules and extensions.
-      Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+    Use "module spider" to find all possible modules and extensions.
+    Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+    ```
 
 
 - Or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N & PDC)
 
-.. code-block:: console
+``` { .console data-copy="module spider julia" }
+$ module spider julia
+```
 
-   $ module spider julia
+??? note "Example output"
 
-.. admonition:: How will it look like?
-   :class: dropdown
+    From Dardel:
+    ``` { .console data-copy="module spider julia" }
+    $ module spider julia
+    -------------------------------------------------------------------------------------------------------
+      julia:
+    -------------------------------------------------------------------------------------------------------
+        Description:
+          Julia is a high-level general-purpose dynamic programming language that was originally designed
+          to address the needs of high-performance numerical analysis and computational science, without
+          the typical need of separate compilation to be fast, also usable for client and server web use,
+          low-level systems programming or as a specification language (wikipedia.org). Julia provides
+          ease and expressiveness for high-level numerical computing, in the same way as languages such as
+          R, MATLAB, and Python, but also supports general programming. To achieve this, Julia builds upon
+          the lineage of mathematical programming languages, but also borrows much from popular dynamic
+          languages, including Lisp, Perl, Python, Lua, and Ruby (julialang.org).
 
-   Example output for Dardel
+         Versions:
+            julia/1.8.2-cpeGNU-22.06
+            julia/1.9.3-cpeGNU-22.06
+            julia/1.9.3-cpeGNU-23.03
+            julia/1.10.2-cpeGNU-23.03
+            julia/1.10.2-cpeGNU-23.12
+         Other possible modules matches:
+            Julia  libuv-julia
 
-   .. code-block::  console
+    -------------------------------------------------------------------------------------------------------
+      To find other possible module matches execute:
 
-      $ module spider julia
-      -------------------------------------------------------------------------------------------------------
-        julia:
-      -------------------------------------------------------------------------------------------------------
-          Description:
-            Julia is a high-level general-purpose dynamic programming language that was originally designed
-            to address the needs of high-performance numerical analysis and computational science, without
-            the typical need of separate compilation to be fast, also usable for client and server web use,
-            low-level systems programming or as a specification language (wikipedia.org). Julia provides
-            ease and expressiveness for high-level numerical computing, in the same way as languages such as
-            R, MATLAB, and Python, but also supports general programming. To achieve this, Julia builds upon
-            the lineage of mathematical programming languages, but also borrows much from popular dynamic
-            languages, including Lisp, Perl, Python, Lua, and Ruby (julialang.org).
+          $ module -r spider '.*julia.*'
 
-           Versions:
-              julia/1.8.2-cpeGNU-22.06
-              julia/1.9.3-cpeGNU-22.06
-              julia/1.9.3-cpeGNU-23.03
-              julia/1.10.2-cpeGNU-23.03
-              julia/1.10.2-cpeGNU-23.12
-           Other possible modules matches:
-              Julia  libuv-julia
+    -------------------------------------------------------------------------------------------------------
+      For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
+      Note that names that have a trailing (E) are extensions provided by other modules.
+      For example:
 
-      -------------------------------------------------------------------------------------------------------
-        To find other possible module matches execute:
-
-            $ module -r spider '.*julia.*'
-
-      -------------------------------------------------------------------------------------------------------
-        For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
-        Note that names that have a trailing (E) are extensions provided by other modules.
-        For example:
-
-           $ module spider julia/1.10.2-cpeGNU-23.12
-      -------------------------------------------------------------------------------------------------------
+         $ module spider julia/1.10.2-cpeGNU-23.12
+    -------------------------------------------------------------------------------------------------------
+    ```
 
 Load a Julia module
 --------------------

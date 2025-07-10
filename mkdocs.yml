@@ -18,12 +18,13 @@ nav:
 
 theme: 
     name: readthedocs
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - rust
+    #highlightjs: true   # with pygments the theme provides the palette
+    #hljs_languages:
+    #    - yaml
+    #    - rust
     features: 
         - content.tabs.link
+        - content.code.copy
         
 extra:
     feature:
@@ -41,13 +42,13 @@ markdown_extensions:
   - smarty
   - tables
   - pymdownx.details
-  #- pymdownx.tabbed:
-  #    alternate_style: true
-  #- pymdownx.highlight:
-  #    anchor_linenums: true
-  #- pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
   #- pymdownx.snippets
-  #- pymdownx.superfences
+  - pymdownx.superfences
   #- pymdownx.keys
   #- pymdownx.emoji:
   #    emoji_index: !!python/name:materialx.emoji.twemoji
