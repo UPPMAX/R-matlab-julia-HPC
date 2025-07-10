@@ -35,10 +35,11 @@ markdown_extensions:
       permalink: true
       permalink_title: Anchor link to this section for reference
   - admonition
-  - tables
   - attr_list
   - footnotes
   - md_in_html
+  - smarty
+  - tables
   - pymdownx.details
   #- pymdownx.tabbed:
   #    alternate_style: true

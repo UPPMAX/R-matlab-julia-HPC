@@ -22,19 +22,14 @@
     - Improve Julia *coding* skills
     - Other clusters
 
-!!! info "Julia Exercise files"
-
-    - `:ref:`common-use-tarball`
-
-??? note "instructor-note"
+??? note "Instructor note"
 
     - Intro 5 min
     - Lecture and 10 min
 
 
 
-What is Julia?
---------------
+## What is Julia?
 
 Julia is a relatively new Programming language (pre-released 1.0 announced in 2018), compared to well-known
 and standard languages such as Fortran, C, C++, R, and Python (some of them date back to the 70's).
@@ -53,19 +48,16 @@ into a single language**. In this way, Julia programmers can in principle write 
 to learn a new language.
 
 
-.. figure:: ../../img/two-language.png
-   :width: 450
-   :align: center
+   ![On orthogonal axis of productivity and performance,](../img/two-language.png)
 
-   Two-language problem where Julia is shown as a bridge between the languages
-   in the traditional paradigms, productivity vs. performance.
+   > *Two-language problem where Julia is shown as a bridge between the languages
+   in the traditional paradigms, productivity vs. performance.*
 
 
 
-Features of Julia
------------------
+## Features of Julia
 
-According to the `Julia documentation <https://docs.julialang.org/en/v1/>`_ some of
+According to the [Julia documentation](https://docs.julialang.org/en/v1/) some of
 the features of this language are:
 
 - Good Base library with efficiently implemented operations written in Julia itself
@@ -74,8 +66,7 @@ the features of this language are:
 - "A rich language of types for constructing and describing objects"
 - A fast growing community of users and developers
 
-Shortcomings of Julia
----------------------
+## Shortcomings of Julia
 
 - As this is a new language, the libraries ecosystem is not as rich as in Python or R, for instance
 - Currently, using Julia for simple tasks (for instance, opening a file and writing text, plotting) is not as
@@ -86,30 +77,31 @@ Shortcomings of Julia
   it would most likely increase its complexity (readability) and one would need to spend more time
   (learning/programming) as in the case of C/C++/Fortran.
 
-More on Julia
--------------
+## More on Julia
 
-- Official Julia documentation is found `here <https://docs.julialang.org/en/v1/>`_
-- Slack channel for Julia and instructions for joining it are found here: https://julialang.org/slack/
-- `HPC2N YouTube video on Julia in HPC <https://www.youtube.com/watch?v=bXHe7Kj3Xxg>`_
+- Official Julia documentation is found [here](https://docs.julialang.org/en/v1/)
+- Slack channel for Julia and instructions for joining it are found here: <https://julialang.org/slack/>
+- [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
 
-Julia documentation at the centers
------------------------------------
+## Julia documentation at the centers
 
 - Documentation at the HPC centres
-   - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
-   - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
-   - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_
-   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
-   - `PDC <https://support.pdc.kth.se/doc/applications/>`_
+   - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
+   - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
+   - LUNARC has no specific Julia documentation, but you can find installed versions
+     [here](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/)
+   - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
+   - [PDC](https://support.pdc.kth.se/doc/applications/)
 
-.. seealso:: Material for improving your programming skills
+!!! info "See also"
 
-   - `Extra material <https://uppmax.github.io/R-matlab-julia-HPC/extra/julia_extra.html>`_
+    Material for improving your programming skills
 
-.. keypoints::
+    - [Extra material](https://uppmax.github.io/R-matlab-julia-HPC/extra/julia_extra.html)
 
-   - Julia is a relatively new language with several attractive features.
-   - Julia purpose is to avoid changing between high performance and high productivity languages
-     in the different phases of code development.
+!!! info "Key points:"
+
+    - Julia is a relatively new language with several attractive features.
+    - Julia purpose is to avoid changing between high performance and high productivity languages
+      in the different phases of code development.
 
