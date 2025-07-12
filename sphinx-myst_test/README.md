@@ -48,25 +48,15 @@ pip install -r requirements.txt
 You may have to deactivate and reactivate the venv at this point to make bash find
 `mkdocs`, even if `which` does find `mkdocs`.
 
-Build and deploy the website, from this project's root folder:
+Build and deploy the website, specifying source and build directories:
 
 ```console
-mkdocs serve
+sphinx-autobuild docs/ build/
 ```
 
-## Credits
+If running multiple versions at the same time, `sphinx-autobuild` can automatically run on
+a free port:
 
-- The old and online version is built with Sphinx using a theme provided by Read the Docs
-- The newer version is built with MkDocs using the ReadTheDocs theme
-
-## Files used by continuous integration scripts
-
-Filename                           |Descriptions
------------------------------------|------------------------------------------------------------------------------------------------------
-[.lycheeignore](.lycheeignore)     |URLs ignored by the link checker
-[.spellcheck.yml](.spellcheck.yml) |Configuration of the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
-[.wordlist.txt](.wordlist.txt)     |Whitelisted words for the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
-
-## Links
-
- * [online ReStructedText table editor and generator](https://tableconvert.com/restructuredtext-generator)
+```console
+sphinx-autobuild --port 0 docs/ build/
+```
