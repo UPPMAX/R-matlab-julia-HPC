@@ -62,8 +62,8 @@ mkdocs serve
 Filename                           |Descriptions
 -----------------------------------|------------------------------------------------------------------------------------------------------
 [.lycheeignore](.lycheeignore)     |URLs ignored by the link checker
-[.spellcheck.yml](.spellcheck.yml) |Configuration of the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
-[.wordlist.txt](.wordlist.txt)     |Whitelisted words for the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
+[`.spellcheck.yml`](.spellcheck.yml) |Configuration of the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
+[`.wordlist.txt`](.wordlist.txt)     |Whitelisted words for the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
 
 ## Links
 
