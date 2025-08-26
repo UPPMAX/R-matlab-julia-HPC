@@ -239,7 +239,7 @@ Useless information to me.
 
 ### Q3
 
-![Average learning outcomes per session](../../evaluations/20250324/average_learning_outcome_per_question.png)
+![Average learning outcomes per session](../../evaluations/20250324_r/average_confidence_per_question.png)
 
 My grades (average is 77):
 
@@ -263,6 +263,8 @@ I can start an interactive session                                              
 I can verify I am on the login node yes/no                                       |78           |Mine, not taught explicitly
 I can start an interactive session with multiple cores                           |78           |Mine, not taught explicitly
 I can start RStudio                                                              |84           |Simultaneous session
+
+![Average confidence per setting](average_confidence_per_setting.png)
 
 My worst sessions were those that were optional and/or in the
 simultaneous sessions. I find it hard to convince myself to take a
