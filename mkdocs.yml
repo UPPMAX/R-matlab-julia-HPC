@@ -17,7 +17,11 @@ nav:
       - The notebook Pluto: julia/notebook_pluto.md
 
 theme: 
-    name: readthedocs
+    # It was decided to use material with the ReadTheDocs theme added on top of it,
+    # https://github.com/UPPMAX/R-matlab-julia-HPC/blame/main/meeting_notes/20250829.md#L61
+    #
+    # No idea how to put the ReadTheDocs on top of this ...
+    name: material
     #highlightjs: true   # with pygments the theme provides the palette
     #hljs_languages:
     #    - yaml
