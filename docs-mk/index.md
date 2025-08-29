@@ -34,4 +34,6 @@
 # Schedule
 
 - [R schedule](r/schedule.md)
+- [MATLAB schedule](matlab/schedule.md)
+- [Julia schedule](julia/schedule.md)
 - [Advanced schedule](advanced/schedule.md)

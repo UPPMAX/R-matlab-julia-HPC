@@ -10,6 +10,8 @@ nav:
       - Intro: r/intro/README.md
       - Load and run: r/load_run.md
       - Summary: r/summary.md
+    - MATLAB: 
+      - Schedule: matlab/schedule.md
     - Julia:
       - Intro: julia/intro.md
       - Load and run: julia/load_run.md
