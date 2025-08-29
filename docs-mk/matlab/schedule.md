@@ -1,3 +1,9 @@
+---
+tags:
+  - MATLAB
+  - schedule
+---
+
 # MATLAB schedule
 
 !!! warning "Ruthlessly converted"

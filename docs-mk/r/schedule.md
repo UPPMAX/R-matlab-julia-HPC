@@ -1,4 +1,10 @@
-# Schedule
+---
+tags:
+  - R
+  - schedule
+---
+
+# R schedule
 
 | Time  | Topic                        | Teacher(s) |
 |-------|------------------------------|------------|

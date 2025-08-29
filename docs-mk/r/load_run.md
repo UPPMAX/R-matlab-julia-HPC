@@ -1,3 +1,10 @@
+---
+tags:
+  - R
+  - run
+  - load
+---
+
 # Load and run R
 
 !!! info "Learning outcomes"

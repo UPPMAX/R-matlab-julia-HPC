@@ -13,6 +13,7 @@ nav:
     - MATLAB: 
       - Schedule: matlab/schedule.md
     - Julia:
+      - Schedule: julia/schedule.md
       - Intro: julia/intro.md
       - Load and run: julia/load_run.md
       - Environments and packages: julia/environments_packages.md
