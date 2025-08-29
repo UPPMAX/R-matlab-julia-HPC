@@ -174,7 +174,7 @@ Let's now create a **project environment**, this can be done as follows (if typi
 
    This can be confirmed if we try to load the ``DFTK`` package that we installed previously as the command ``using DFTK`` will execute without any complaints. If we install the ``DFTK`` package we will notice some differences w.r.t. the previous installation:
 
-   .. code-block:: julia
+   .. code-block:: julia-repl
 
       (my-first-env) pkg> add DFTK
       Resolving package versions...
