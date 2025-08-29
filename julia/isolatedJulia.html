@@ -1,0 +1,629 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packages and isolated environments &mdash; Introduction to running R, Python, Julia and MATLAB in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom_theme.css?v=98a0eeba" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running Julia in batch mode" href="batchJulia.html" />
+    <link rel="prev" title="Load and run Julia" href="load_runJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, Julia and MATLAB in HPC
+              <img src="../_static/hpc2n-lunarc-uppmax-hpc-course.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparations.html">Prepare the environment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_tarball.html">Use the tarball with exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/use_text_editor.html">Use a text editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/naiss_projects_overview.html">NAISS projects overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/hpc_clusters.html">HPC clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/other_courses.html">Other courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/scheduleR.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/evaluationR.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/scheduleMatlab.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/slurmMatlab.html">Slurm job scheduler and MATLAB in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jobsMatlabGui.html">MATLAB GUI and SLURM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/jupyterMatlab.html">Session: Matlab in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/summaryMatlab.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/evaluationMatlab.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scheduleJulia.html">Preliminary schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Packages and isolated environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-project-environment">Create a project environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-package-environment">Create a package environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-set-of-visible-environments">Customizing the set of visible environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-stacks">Environment stacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uppmax-central-library">UPPMAX Central library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveJulia.html">Sessions: Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryJulia.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluationJulia.html">Evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra reading:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extra/r_extra.html">R - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/matlab_extra.html">Matlab - extra reading and links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/julia_extra.html">Julia - extra reading and links</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, Julia and MATLAB in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Packages and isolated environments</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/isolatedJulia.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packages-and-isolated-environments">
+<h1>Packages and isolated environments<a class="headerlink" href="#packages-and-isolated-environments" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How to install packages?</p></li>
+<li><p>How to work with isolated environments?</p></li>
+<li><p>How to check for and use the pre-installed packages?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Give a general <em>theoretical</em> introduction to isolated environments</p></li>
+<li><p>Show how to install own packages</p></li>
+<li><p>Show how to check for site-installed Julia packages</p></li>
+</ul>
+</div>
+<div class="admonition-julia-packages-and-environments admonition">
+<p class="admonition-title">Julia packages and environments</p>
+<ul>
+<li><p>Julia <strong>packages</strong> significantly expand Julia’s usability!</p></li>
+<li><p>Instead of writing code yourself there may be others that have done the same!</p></li>
+<li><p>Isolated environments solve a couple of problems:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>You can install specific, also older, versions into them.</p></li>
+<li><p>You can create one for each project and no problem if the two projects require different versions.</p></li>
+<li><p>You can remove the environment and create a new one, if not needed or with errors.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<p>Before going into installing packages let’s have a background to the Julia environments and ecosystem!</p>
+<p>In the Python’s lesson on environments, we saw that there are different ways to deal with isolated
+environments in this language, for instance, <code class="docutils literal notranslate"><span class="pre">conda</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code>. This situation is simplified
+in Julia (if you are working with Julia code only) because environments are managed by Julia
+itself. Julia distinguishes between <strong>project environments</strong> and <strong>package directories</strong>
+(<a class="reference external" href="https://docs.julialang.org/en/v1/manual/code-loading/#Environments">Julia environments</a>). In the former, only the
+Tom’s Obvious Minimal Language (TOML) files (Project.toml, Manifest.toml) are present while in the
+latter also source files are included with some specific layout.</p>
+<p>Packages are imported or loaded by the commands <code class="docutils literal notranslate"><span class="pre">import</span></code> and <code class="docutils literal notranslate"><span class="pre">using</span></code>, respectively. The difference is (briefly):</p>
+<blockquote>
+<div><p>To use “module” functions, use <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">&lt;module&gt;</span></code> to import the “module”, and <code class="docutils literal notranslate"><span class="pre">Module.fn(x)</span></code> to use the functions.
+Alternatively, <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">&lt;Module</span></code> will import <em>all</em> exported Module functions into the <em>current namespace</em>, i.e. <code class="docutils literal notranslate"><span class="pre">Module.fn(x)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">fn(x)</span></code>.</p>
+</div></blockquote>
+<p>If you have started Julia previously, you will get the folders like this in the ~/.julia folder.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tree<span class="w"> </span>.julia/<span class="w"> </span>-d<span class="w"> </span>-L<span class="w"> </span><span class="m">1</span>
+.
+├──<span class="w"> </span>artifacts
+├──<span class="w"> </span>bin
+├──<span class="w"> </span>compiled
+├──<span class="w"> </span>conda
+├──<span class="w"> </span>environments
+├──<span class="w"> </span>logs
+├──<span class="w"> </span>packages
+├──<span class="w"> </span>prefs
+├──<span class="w"> </span>registries
+└──<span class="w"> </span>scratchspaces
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Alternative to <strong>tree</strong> command</p>
+<p>In case you don’t have the <strong>tree</strong> command on your system you can use the <strong>find</strong> command
+which is more common on Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>find<span class="w"> </span>.julia<span class="w"> </span>-mindepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-type<span class="w"> </span>d
+.julia/registries
+.julia/logs
+.julia/packages
+.julia/artifacts
+.julia/conda
+.julia/compiled
+.julia/environments
+.julia/prefs
+.julia/scratchspaces
+</pre></div>
+</div>
+</div>
+<p>Packages in Julia work as decentralized units which can be connected through their
+universally unique identifiers (UUIDs) in the so-called federated package management.
+The active environments can be seen with the command:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="nb">LOAD_PATH</span>
+<span class="go">3-element Vector{String}:</span>
+<span class="go">&quot;@&quot;</span>
+<span class="go">&quot;@v#.#&quot;</span>
+<span class="go">&quot;@stdlib&quot;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is the current environment, <code class="docutils literal notranslate"><span class="pre">&#64;v#.#</span></code> is the default environment for the
+Julia version that is being in use, and <code class="docutils literal notranslate"><span class="pre">&#64;stdlib</span></code> is the standard library.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Site-installed packages in environments</p>
+<p>At UPPMAX the central environment adds to the list with the element:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Thus, by default in addition to the current environment other environments are present
+which can potentially create conflicts for reproducibility if you are not aware of what
+Julia is doing under the hood. Later on, we will see possible strategies to avoid this
+situation.</p>
+<p>In a fresh Julia installation, we can see the following project information:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">project</span><span class="p">()</span>
+<span class="go">Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}(), &quot;/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml&quot;)</span>
+</pre></div>
+</div>
+<p>Here, we can see among other things that nothing (any package) has been added to project,
+the UUID of the project, and the location of the <em>.toml</em> file.
+Let’s install a package <code class="docutils literal notranslate"><span class="pre">DFTK</span></code>, for instance, that performs Density Functional Theory
+routines (<a class="reference external" href="https://docs.dftk.org/stable/">DFTK</a>):</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;DFTK&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Info</span><span class="w"> </span><span class="n">Packages</span><span class="w"> </span><span class="n">marked</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">⌅</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">compatibility</span><span class="w"> </span><span class="n">constraints</span><span class="w"> </span><span class="n">restrict</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">upgrading</span><span class="o">.</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">why</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="sb">`status --outdated -m`</span>
+<span class="go">Precompiling project...</span>
+<span class="go">104 dependencies successfully precompiled in 43 seconds</span>
+</pre></div>
+</div>
+<p>Now, the project information tells us about the recently installed package:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">project</span><span class="p">()</span>
+<span class="go">Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}(&quot;DFTK&quot; =&gt; UUID(&quot;acf6eb54-70d9-11e9-0013-234b7a5f5337&quot;)), &quot;/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml&quot;)</span>
+</pre></div>
+</div>
+<section id="create-a-project-environment">
+<h2>Create a project environment<a class="headerlink" href="#create-a-project-environment" title="Link to this heading"></a></h2>
+<p>Let’s now create a <strong>project environment</strong>, this can be done as follows (if typing along, you have to change the path to your environment, like <code class="docutils literal notranslate"><span class="pre">/path-to-my-project/$USER/julia</span></code>):</p>
+<div class="admonition-type-along type-along important admonition" id="type-along-0">
+<p class="admonition-title">Type-Along</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">shell&gt;</span> mkdir my-first-env
+<span class="gp">shell&gt;</span> cd my-first-env
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="p">;</span>
+<span class="go">   /path-to-my-project/$USER/julia/my-first-env</span>
+<span class="gp">shell&gt;</span> #type backspace#
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="p">]</span>
+<span class="go">(v1.8) pkg&gt; activate .</span>
+<span class="go">   Activating new project at `/path-to-my-project/$USER/julia/my-first-env`</span>
+<span class="go">(my-first-env) pkg&gt; #type backspace</span>
+<span class="gp">shell&gt;</span> ls
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="p">;</span>
+</pre></div>
+</div>
+<p>We can see that our environment in parenthesis has been activated. At this stage nothing has been added in the folder <em>my-first-env</em> as you can see from the empty output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.
+Notice that now that we are in this new environment, the default and standard library environments are also present as before:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="nb">LOAD_PATH</span>
+<span class="go">3-element Vector{String}:</span>
+<span class="go">&quot;@&quot;</span>
+<span class="go">&quot;@v#.#&quot;</span>
+<span class="go">&quot;@stdlib&quot;</span>
+</pre></div>
+</div>
+<p>This can be confirmed if we try to load the <code class="docutils literal notranslate"><span class="pre">DFTK</span></code> package that we installed previously as the command <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">DFTK</span></code> will execute without any complaints. If we install the <code class="docutils literal notranslate"><span class="pre">DFTK</span></code> package we will notice some differences w.r.t. the previous installation:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="go">(my-first-env) pkg&gt; add DFTK</span>
+<span class="go">Resolving package versions...</span>
+<span class="go">Updating `/path-to-my-project/$USER/julia/my-first-env/Project.toml`</span>
+<span class="go">[acf6eb54] + DFTK v0.6.2</span>
+<span class="go"> Updating `/path-to-my-project/$USER/julia/my-first-env/Manifest.toml`</span>
+</pre></div>
+</div>
+<p>First, we notice that installation was much faster than before. This is because <strong>Pkg</strong> did not do a new installation but it just updated our environment with information of the available <code class="docutils literal notranslate"><span class="pre">DFTK</span></code> package. Specifically, if you take a look at the content of the current directory you will see the new files <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code> and <code class="docutils literal notranslate"><span class="pre">Manifest.toml</span></code>, the <code class="docutils literal notranslate"><span class="pre">more</span></code> command can display the content of these files:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">shell&gt;</span> ls
+<span class="go">Manifest.toml  Project.toml</span>
+
+<span class="gp">shell&gt;</span> more Project.toml
+<span class="go">[deps]</span>
+<span class="go">DFTK = &quot;acf6eb54-70d9-11e9-0013-234b7a5f5337&quot;</span>
+
+<span class="gp">shell&gt;</span> more Manifest.toml
+<span class="go"># This file is machine-generated - editing it directly is not advised</span>
+
+<span class="go">julia_version = &quot;1.8.5&quot;</span>
+<span class="go">manifest_format = &quot;2.0&quot;</span>
+<span class="go">project_hash = &quot;48bbaa26b07ee1ca85ad746dc9b2f772ba10b675&quot;</span>
+
+<span class="go">[[deps.AbstractFFTs]]</span>
+<span class="go">deps = [&quot;ChainRulesCore&quot;, &quot;LinearAlgebra&quot;]</span>
+<span class="go">git-tree-sha1 = &quot;69f7020bd72f069c219b5e8c236c1fa90d2cb409&quot;</span>
+<span class="go">uuid = &quot;621f4979-c628-5d54-868e-fcf4e3e8185c&quot;</span>
+<span class="go">version = &quot;1.2.1&quot;</span>
+
+<span class="go">[[deps.Adapt]]</span>
+<span class="go">deps = [&quot;LinearAlgebra&quot;]</span>
+<span class="go">git-tree-sha1 = &quot;195c5505521008abea5aee4f96930717958eac6f&quot;</span>
+<span class="go">uuid = &quot;79e6a3ab-5dfb-504d-930d-738a2a938a0e&quot;</span>
+<span class="go">version = &quot;3.4.0&quot;</span>
+
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Here, we notice that the <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code> only gives us the UUID of the project while the <code class="docutils literal notranslate"><span class="pre">Manifest.toml</span></code> file contains the full information about the dependencies versions and organization layout. Notice the message regarding editing for the latter. Let’s leave this environment:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span>
+<span class="w">    </span><span class="n">Activating</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`~/.julia/environments/v1.8`</span>
+
+<span class="p">(</span><span class="n">v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Once you have created an environment, it can be activated in several manners. The one we saw before is by activating it in <code class="docutils literal notranslate"><span class="pre">package</span></code> mode with the command <code class="docutils literal notranslate"><span class="pre">activate</span> <span class="pre">.</span></code>. You may also be able to activate the environment inside the Julia script by calling these lines in your <code class="docutils literal notranslate"><span class="pre">.jl</span></code> file:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Besides the previous two options for activating an environment, you can also activate it on the Linux command line (assuming that you are located in the environment directory):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>julia<span class="w"> </span>--project<span class="o">=</span>.
+</pre></div>
+</div>
+</div>
+</section>
+<section id="create-a-package-environment">
+<h2>Create a package environment<a class="headerlink" href="#create-a-package-environment" title="Link to this heading"></a></h2>
+<p>A package environment can be created by using the <code class="docutils literal notranslate"><span class="pre">generate</span></code> function in <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">mode</span></code>
+or <code class="docutils literal notranslate"><span class="pre">Pkg.generate()</span></code> in <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">myfirstpackage</span>
+<span class="w">  </span><span class="n">Generating</span><span class="w">  </span><span class="n">project</span><span class="w"> </span><span class="n">myfirstpackage</span><span class="o">:</span>
+<span class="w">  </span><span class="n">myfirstpackage</span><span class="o">/</span><span class="n">Project</span><span class="o">.</span><span class="n">toml</span>
+<span class="w">  </span><span class="n">myfirstpackage</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">myfirstpackage</span><span class="o">.</span><span class="n">jl</span>
+</pre></div>
+</div>
+<p>In contrast to the <code class="docutils literal notranslate"><span class="pre">project</span> <span class="pre">environment</span></code>, the <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">environment</span></code> has a default file
+structure, see for instance the <strong>src</strong> directory that is created.
+One can activate this environment in the following way:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">myfirstpackage</span>
+<span class="p">(</span><span class="n">v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+<span class="n">Activating</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`/path-to-my-project/</span><span class="si">$USER</span><span class="sb">/julia/my-first-env/myfirstpackage`</span>
+<span class="p">(</span><span class="n">myfirstpackage</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">project</span></code> function tells us that the current project has an UUID assigned to it:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">project</span><span class="p">()</span>
+<span class="go">Pkg.API.ProjectInfo(&quot;myfirstpackage&quot;, UUID(&quot;ca799254-944c-4043-b9e3-b70b93409f34&quot;), v&quot;0.1.0&quot;, true, Dict{String, Base.UUID}(), &quot;/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml&quot;)</span>
+</pre></div>
+</div>
+<p>As in the <code class="docutils literal notranslate"><span class="pre">project</span> <span class="pre">environment</span></code>, the <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">environment</span></code> can see the default and
+the standard library environments.</p>
+<p>Let’s add the package <code class="docutils literal notranslate"><span class="pre">Flux</span></code> for Machine Learning routines:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">myfirstpackage</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">Flux</span>
+<span class="w">  </span><span class="n">Precompiling</span><span class="w"> </span><span class="n">project</span><span class="o">...</span>
+<span class="w">  </span><span class="mi">49</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="n">successfully</span><span class="w"> </span><span class="n">precompiled</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">92</span><span class="w"> </span><span class="n">seconds</span><span class="o">.</span><span class="w"> </span><span class="mi">43</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">precompiled</span><span class="o">.</span>
+<span class="p">(</span><span class="n">myfirstpackage</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+<span class="w">  </span><span class="n">Project</span><span class="w"> </span><span class="n">myfirstpackage</span><span class="w"> </span><span class="n">v0</span><span class="mf">.1.0</span>
+<span class="w">  </span><span class="n">Status</span><span class="w"> </span><span class="sb">`/path-to-my-project/</span><span class="si">$USER</span><span class="sb">/julia/my-first-env/myfirstpackage/Project.toml`</span>
+<span class="w">  </span><span class="p">[</span><span class="mi">587475</span><span class="n">ba</span><span class="p">]</span><span class="w"> </span><span class="n">Flux</span><span class="w"> </span><span class="n">v0</span><span class="mf">.13.11</span>
+</pre></div>
+</div>
+<p>where the status function tells us information about the packages that are installed
+in the current environment, for instance the <code class="docutils literal notranslate"><span class="pre">Flux</span></code> version that we just installed.</p>
+</section>
+<section id="customizing-the-set-of-visible-environments">
+<h2>Customizing the set of visible environments<a class="headerlink" href="#customizing-the-set-of-visible-environments" title="Link to this heading"></a></h2>
+<p>We saw previously that by default some environments are visible to new environments.
+One can customize this setting with the variable <code class="docutils literal notranslate"><span class="pre">JULIA_LOAD_PATH</span></code>, this can be
+done on the Linux command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">JULIA_LOAD_PATH</span><span class="o">=</span><span class="s2">&quot;path1:path2:...&quot;</span>
+</pre></div>
+</div>
+<p>For instance, for including just the current environment we can set the value of
+this variable as:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">JULIA_LOAD_PATH</span><span class="o">=</span><span class="s2">&quot;@&quot;</span>
+</pre></div>
+</div>
+<p>Then, when we start a Julia session the default option will be the current
+environment:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="nb">LOAD_PATH</span>
+<span class="go">1-element Vector{String}:</span>
+<span class="go">&quot;@&quot;</span>
+</pre></div>
+</div>
+<p>One can also modify the <code class="docutils literal notranslate"><span class="pre">LOAD_PATH</span></code> directly on the julian prompt with the following
+functions:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">empty!</span><span class="p">(</span><span class="nb">LOAD_PATH</span><span class="p">)</span><span class="w">        </span><span class="c"># this will clean out the path</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">push!</span><span class="p">(</span><span class="nb">LOAD_PATH</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;@&quot;</span><span class="p">)</span><span class="w">    </span><span class="c"># it will add the current environment</span>
+</pre></div>
+</div>
+</section>
+<section id="environment-stacks">
+<h2>Environment stacks<a class="headerlink" href="#environment-stacks" title="Link to this heading"></a></h2>
+<p>As we saw before, <code class="docutils literal notranslate"><span class="pre">LOAD_PATH</span></code> shows that environments can be stacked and we can place
+the environments we want in the path so that they are visible in our current environment.
+To illustrate this concept, let’s create a second environment and first we can remove the
+content of <code class="docutils literal notranslate"><span class="pre">LOAD_PATH</span></code> (which path will be different for you):</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">shell&gt;</span> pwd
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">empty!</span><span class="p">(</span><span class="nb">LOAD_PATH</span><span class="p">)</span>
+<span class="go">   /path-to-my-project/$USER/julia</span>
+
+<span class="gp">shell&gt;</span> mkdir my-second-env
+
+<span class="gp">shell&gt;</span> cd my-second-env
+<span class="go">pkg&gt; activate .</span>
+</pre></div>
+</div>
+<p>If we try to use the <code class="docutils literal notranslate"><span class="pre">DFTK</span></code> package we will see the error message:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">DFTK</span>
+<span class="go">   │ Package DFTK not found, but a package named DFTK is available from a registry.</span>
+<span class="go">   │ Install package?</span>
+<span class="go">   │   (my-second-env) pkg&gt; add DFTK</span>
+<span class="go">   └ (y/n/o) [y]: n</span>
+<span class="go">    ERROR: ArgumentError: Package DFTK not found in current path.</span>
+</pre></div>
+</div>
+<p>If you remember this package was installed in the first environment (<code class="docutils literal notranslate"><span class="pre">my-first-env</span></code>). In order
+to make this package available in our second environment we can push the corresponding folder’s
+path to <code class="docutils literal notranslate"><span class="pre">LOAD_PATH</span></code>:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">push!</span><span class="p">(</span><span class="nb">LOAD_PATH</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/path-to-my-project/</span><span class="si">$USER</span><span class="s">/julia/my-first-env/&quot;</span><span class="p">)</span>
+<span class="go">   1-element Vector{String}:</span>
+<span class="go">   &quot;/path-to-my-project/$USER/julia/my-first-env/&quot;</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">DFTK</span>
+</pre></div>
+</div>
+<p>and now the package can be loaded from the first environment without errors.</p>
+<section id="uppmax-central-library">
+<h3>UPPMAX Central library<a class="headerlink" href="#uppmax-central-library" title="Link to this heading"></a></h3>
+<div class="admonition-please-notice admonition">
+<p class="admonition-title">Please notice</p>
+<ul class="simple">
+<li><p>At UPPMAX there is a central library with installed packages.</p></li>
+<li><p>This is good, especially when working on Bianca, since you don’t need to install via the Wharf.</p></li>
+<li><p>If you work on Rackham you can actually ignore it and do all installations by yourself. The reason is that you need some more steps.</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>You may control the present “central library” by typing <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">help</span> <span class="pre">julia/&lt;version&gt;</span></code> in the BASH shell.</p></li>
+<li><p>A possibly more up-to-date status can be found from the Julia shell:</p></li>
+</ul>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.8&quot;</span><span class="p">);</span><span class="w">     </span><span class="c">#change version (1.8) accordingly if you have another main version of Julia</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.8&quot;</span><span class="p">);</span><span class="w">     </span><span class="c">#to return to user library</span>
+</pre></div>
+</div>
+<p>A selection of the Julia packages and libraries installed on UPPMAX and HPC2N are:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N/LUNARC/PDC</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>The Julia application at UPPMAX comes with several preinstalled packages.
+A selection of the Julia packages and libraries installed on UPPMAX are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>BenchmarkTools</p></li>
+<li><p>CSV</p></li>
+<li><p>CUDA</p></li>
+<li><p>MPI</p></li>
+<li><p>Distributed</p></li>
+<li><p>IJulia</p></li>
+<li><p>Plots</p></li>
+<li><p>PyPlot</p></li>
+<li><p>Gadfly</p></li>
+<li><p>DataFrames</p></li>
+<li><p>DistributedArrays</p></li>
+<li><p>PlotlyJS</p></li>
+</ul>
+</div></blockquote>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>The Julia versions installed at these centers include only the Base and Standard library
+modules.</p>
+</div></div>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-project-environment exercise important admonition" id="exercise-0">
+<p class="admonition-title">1. Project environment</p>
+<p>Create a project environment called <code class="docutils literal notranslate"><span class="pre">new-env</span></code> and activate it. Then, install the
+package <code class="docutils literal notranslate"><span class="pre">CSV</span></code> in this environment. For your knowledge, <code class="docutils literal notranslate"><span class="pre">CSV</span></code> is a package that
+offers tools for dealing with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files. After this, check that this package
+was installed. Finally, deactivate the environment.</p>
+<div class="dropdown solution important admonition" id="solution-0">
+<p class="admonition-title">Solution for all centres</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="n">env</span>
+<span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="n">env</span>
+<span class="p">(</span><span class="nd">@v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+<span class="w">      </span><span class="n">Activating</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`path-to-folder\new-env`</span>
+<span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">CSV</span>
+<span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+<span class="w">      </span><span class="n">Status</span><span class="w"> </span><span class="sb">`path-to-folder\new-env\Project.toml`</span>
+<span class="w">      </span><span class="p">[</span><span class="mi">336</span><span class="n">ed68f</span><span class="p">]</span><span class="w"> </span><span class="n">CSV</span><span class="w"> </span><span class="n">v0</span><span class="mf">.10.9</span>
+<span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-package-environment exercise important admonition" id="exercise-1">
+<p class="admonition-title">2. Package environment</p>
+<p>Create a package environment called <code class="docutils literal notranslate"><span class="pre">new_pack</span></code> and activate it. Then, install the
+package <code class="docutils literal notranslate"><span class="pre">CSV</span></code> in this environment. For your knowledge, <code class="docutils literal notranslate"><span class="pre">CSV</span></code> is a package that
+offers tools for dealing with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files. After this, check that this package
+was installed. Finally, deactivate the environment.</p>
+<div class="dropdown solution important admonition" id="solution-1">
+<p class="admonition-title">Solution for all centres</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pwd</span><span class="w">            </span><span class="c">#Check were you are currently located</span>
+<span class="p">(</span><span class="nd">@v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">new_pack</span>
+<span class="w">     </span><span class="n">Generating</span><span class="w">  </span><span class="n">project</span><span class="w"> </span><span class="n">new_pack</span><span class="o">:</span>
+<span class="w">     </span><span class="n">new_pack</span><span class="o">\</span><span class="n">Project</span><span class="o">.</span><span class="n">toml</span>
+<span class="w">     </span><span class="n">new_pack</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">new_pack</span><span class="o">.</span><span class="n">jl</span>
+<span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">new_pack</span>
+<span class="w">     </span><span class="sb">`path-to-folder\new_pack`</span>
+<span class="p">(</span><span class="nd">@v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+<span class="w">       </span><span class="n">Activating</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`path-to-folder\new_pack`</span>
+<span class="p">(</span><span class="n">new_pack</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">CSV</span>
+<span class="p">(</span><span class="n">new_pack</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+<span class="w">       </span><span class="n">Project</span><span class="w"> </span><span class="n">new_pack</span><span class="w"> </span><span class="n">v0</span><span class="mf">.1.0</span>
+<span class="w">       </span><span class="n">Status</span><span class="w"> </span><span class="sb">`path-to-folder\new_pack\Project.toml`</span>
+<span class="w">       </span><span class="p">[</span><span class="mi">336</span><span class="n">ed68f</span><span class="p">]</span><span class="w"> </span><span class="n">CSV</span><span class="w"> </span><span class="n">v0</span><span class="mf">.10.9</span>
+<span class="p">(</span><span class="n">new_pack</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Installation of Julia packages can be done with Julia package manager.</p></li>
+<li><p>You install packages with the <code class="docutils literal notranslate"><span class="pre">add</span></code> command</p></li>
+<li><p>With a virtual environment you can tailor an environment with specific versions for Julia
+and packages, not interfering with other installed Julia versions and packages.</p></li>
+<li><p>Make it for each project you have for reproducibility.</p></li>
+<li><p>The environments in Julia are lightweight so it is recommended to start a new environment
+for each project that you are developing.</p></li>
+<li><p>Environments in Julia created by Julia itself so third party software are not required.</p></li>
+<li><dl class="simple">
+<dt>You can check for centrally installed packages at UPPMAX</dt><dd><ul>
+<li><p>from the Julia shell</p></li>
+<li><p>from BASH shell with <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">help</span> <span class="pre">julia/&lt;version&gt;</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="load_runJulia.html" class="btn btn-neutral float-left" title="Load and run Julia" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batchJulia.html" class="btn btn-neutral float-right" title="Running Julia in batch mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
