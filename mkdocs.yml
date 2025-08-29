@@ -15,6 +15,9 @@ nav:
       - Load and run: julia/load_run.md
       - Environments and packages: julia/environments_packages.md
       - The notebook Pluto: julia/notebook_pluto.md
+    - Advanced: 
+      - Schedule: advanced/schedule.md
+      - Parallel: advanced/parallel.md
 
 theme: 
     # It was decided to use material with the ReadTheDocs theme added on top of it,

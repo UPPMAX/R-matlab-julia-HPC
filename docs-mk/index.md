@@ -34,3 +34,4 @@
 # Schedule
 
 - [R schedule](r/schedule.md)
+- [Advanced schedule](advanced/schedule.md)
