@@ -7,4 +7,3 @@ The course lasted from 2024-03-12 to and including 2024-03-14.
 
 ![Confidences per question](confidences_per_question.png)
 
-

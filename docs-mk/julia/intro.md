@@ -28,15 +28,14 @@
     - Lecture and 10 min
 
 
-
 ## What is Julia?
 
 Julia is a relatively new Programming language (pre-released 1.0 announced in 2018), compared to well-known
 and standard languages such as Fortran, C, C++, R, and Python (some of them date back to the 70's).
 A common pattern in those well-established languages (traditional paradigm) is that they look after either:
 
-  - productivity (fast deployment, fast prototyping) or,
-  - performance (fast numerical computations).
+- productivity (fast deployment, fast prototyping) or,
+- performance (fast numerical computations).
 
 This pattern created the so called **two-language problem** where programmers had to choose between **productivity**
 (R, Python) or **performance** (Fortran, C/C++) and when both were needed programmers had to learn the language that
@@ -52,7 +51,6 @@ to learn a new language.
 
    > *Two-language problem where Julia is shown as a bridge between the languages
    in the traditional paradigms, productivity vs. performance.*
-
 
 
 ## Features of Julia
@@ -86,12 +84,12 @@ the features of this language are:
 ## Julia documentation at the centers
 
 - Documentation at the HPC centres
-   - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
-   - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
-   - LUNARC has no specific Julia documentation, but you can find installed versions
+    - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
+    - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
+    - LUNARC has no specific Julia documentation, but you can find installed versions
      [here](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/)
-   - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
-   - [PDC](https://support.pdc.kth.se/doc/applications/)
+    - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
+    - [PDC](https://support.pdc.kth.se/doc/applications/)
 
 !!! info "See also"
 

@@ -21,38 +21,38 @@
 - "I liked the general organization, felt like any questions one might have where answered in the introductory email."
 
 5. Length of teaching today was
-Adequate	4	
-Too short	0	
-Too long	1	
+Adequate 4 
+Too short 0 
+Too long 1 
 
 6. Depth of content was
-Adequate	4	
-Too superficial	1	
-Too profound	0	
+Adequate 4 
+Too superficial 1 
+Too profound 0 
 
 7. The pace of teaching was
-Adequate	3	
-Too slow	0	
-Too fast	2	
+Adequate 3 
+Too slow 0 
+Too fast 2 
 
 8. Teaching aids used (e.g. slides) were well prepared
-Agree completely	2	
-Agree	3	
-No strong feelings	0	
-Disagree	0	
-Disagree completely	0	
+Agree completely 2 
+Agree 3 
+No strong feelings 0 
+Disagree 0 
+Disagree completely 0 
 
 9. Hands-on exercises and demonstrations were
-Adequate	3	
-Too few	2	
-Too many	0	
+Adequate 3 
+Too few 2 
+Too many 0 
 
 10. Hands-on exercises and demonstrations were well prepared
-Agree completely	2	
-Agree	3	
-No strong feelings	0	
-Disagree	0	
-Disagree completely	0	
+Agree completely 2 
+Agree 3 
+No strong feelings 0 
+Disagree 0 
+Disagree completely 0 
 
 11. How would you rate the separate sessions?
 ```
@@ -68,12 +68,14 @@ Disagree completely	0
 
 
 13.Did today's course meet your expectation?
-Yes	3	
-No	0	
-Not sure	2	
+Yes 3 
+No 0 
+Not sure 2 
 
 14. Which future training topics would you like to be provided by the training host(s)?
+
 - 2 responses
 
 15. Do you have any additional comments?
+
 - 1 response

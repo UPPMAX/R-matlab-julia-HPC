@@ -1,8 +1,8 @@
 # Reflection
 
- * Teaching day: 2024-10-24
- * Topic: R
- * Written on 2024-10-24
+* Teaching day: 2024-10-24
+* Topic: R
+* Written on 2024-10-24
 
 ## Schedule
 
@@ -32,8 +32,8 @@ This is the schedule of that day:
 
 4 learners showed up for this optional session:
 
-- 3x could already login
-- 1x a LUNARC user that needed help, I put him in a Zoom room with the LUNARC
+* 3x could already login
+* 1x a LUNARC user that needed help, I put him in a Zoom room with the LUNARC
   teacher
 
 ## Session: 10:00-10:45: intro and syllabus and load and run R
@@ -55,7 +55,7 @@ for the Prior and Repeat. I can imagine learners like it (we know
 learners like passive teaching), but they could actually have learned
 more.
 
-- [ ] In the next course iteration: use more active learning methods in this
+* [ ] In the next course iteration: use more active learning methods in this
   session
 
 ## Session 14:30-15:15: interactive and RStudio
@@ -157,58 +157,58 @@ Nice for Birgitte!
 
 ```
 5. Length of teaching today was
-Adequate	4	
-Too short	0	
-Too long	1	
+Adequate 4 
+Too short 0 
+Too long 1 
 ```
 
 Useless to me: which sessions?
 
 ```
 6. Depth of content was
-Adequate	4	
-Too superficial	1	
-Too profound	0	
+Adequate 4 
+Too superficial 1 
+Too profound 0 
 ```
 
 Useless to me: which sessions?
 
 ```
 7. The pace of teaching was
-Adequate	3	
-Too slow	0	
-Too fast	2	
+Adequate 3 
+Too slow 0 
+Too fast 2 
 ```
 
 Useless to me: which sessions?
 
 ```
 8. Teaching aids used (e.g. slides) were well prepared
-Agree completely	2	
-Agree	3	
-No strong feelings	0	
-Disagree	0	
-Disagree completely	0	
+Agree completely 2 
+Agree 3 
+No strong feelings 0 
+Disagree 0 
+Disagree completely 0 
 ```
 
 Useless to me: which sessions?
 
 ```
 9. Hands-on exercises and demonstrations were
-Adequate	3	
-Too few	2	
-Too many	0	
+Adequate 3 
+Too few 2 
+Too many 0 
 ```
 
 Useless to me: which sessions?
 
 ```
 10. Hands-on exercises and demonstrations were well prepared
-Agree completely	2	
-Agree	3	
-No strong feelings	0	
-Disagree	0	
-Disagree completely	0	
+Agree completely 2 
+Agree 3 
+No strong feelings 0 
+Disagree 0 
+Disagree completely 0 
 ```
 
 Useless to me: which sessions?
@@ -221,10 +221,10 @@ Useless to me: which sessions?
 
 Only my sessions:
 
-- Introduction: 2x very good, 2x excellent
-- Load and run: 4x excellent
-- Interactive work on the compute node: 1x very good, 4x excellent
-- Using RStudio: 2x very good, 2x excellent
+* Introduction: 2x very good, 2x excellent
+* Load and run: 4x excellent
+* Interactive work on the compute node: 1x very good, 4x excellent
+* Using RStudio: 2x very good, 2x excellent
 
 So, although I dislike my 'Load and run' session, it has been
 appreciated by the learners.
@@ -238,16 +238,16 @@ appreciated by the learners.
 
 My learning objectives:
 
-- I can find the module to be able to run R: 1x some, 1x good, 3x absolutely
-- I can load the module to be able to run R: 1 some, 1 good, 3 absolutely
-- I can run the R interpreter: 1 some, 1 good, 3 absolutely
-- I can run the R command to get the list of installed R packages: 1 some, 1 good, 3 absolutely
-- I can run an R script from the command-line: 1 some, 2 good, 2 absolutely
-- I can find out if an R package is already installed: 1 some, 1 good, 3 absolutely
-- I can start an interactive session: 1 low, 1 some, 1 good, 2 absolutely
-- I can verify I am on the login node yes/no: 2 some, 2 good, 1 absolutely
-- I can start an interactive session with multiple cores: 2 some, 1 good, 2 absolutely
-- I can start RStudio: 1 some, 1 good, 3 absolutely
+* I can find the module to be able to run R: 1x some, 1x good, 3x absolutely
+* I can load the module to be able to run R: 1 some, 1 good, 3 absolutely
+* I can run the R interpreter: 1 some, 1 good, 3 absolutely
+* I can run the R command to get the list of installed R packages: 1 some, 1 good, 3 absolutely
+* I can run an R script from the command-line: 1 some, 2 good, 2 absolutely
+* I can find out if an R package is already installed: 1 some, 1 good, 3 absolutely
+* I can start an interactive session: 1 low, 1 some, 1 good, 2 absolutely
+* I can verify I am on the login node yes/no: 2 some, 2 good, 1 absolutely
+* I can start an interactive session with multiple cores: 2 some, 1 good, 2 absolutely
+* I can start RStudio: 1 some, 1 good, 3 absolutely
 
 It seems my simultaneous session was weakest: they did feel confident to
 start RStudio, but starting an interactive node and verify on which node(s)
@@ -257,13 +257,13 @@ when it is multiple cores...?
 
 To do next time:
 
-- [ ] In the simultaneous session, stay formal
+* [ ] In the simultaneous session, stay formal
 
 ```
 13.Did today's course meet your expectation?
-Yes	3	
-No	0	
-Not sure	2	
+Yes 3 
+No 0 
+Not sure 2 
 ```
 
 Useless info.

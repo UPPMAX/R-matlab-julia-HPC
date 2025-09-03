@@ -85,6 +85,7 @@ to start R.
 +------------------+-------------------+
 
 Exercise 1: start the R interpreter
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Find the documentation of your HPC cluster
@@ -203,6 +204,7 @@ See `here <https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html>`
 how to download and extract the tarball with exercises.
 
 Exercise X1: find and use installed R packages
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - From the R interpreter, check which packages are installed,

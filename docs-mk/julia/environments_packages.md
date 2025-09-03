@@ -4,26 +4,26 @@ Packages and isolated environments
 
 .. questions::
 
-   - How to install packages?
-   - How to work with isolated environments?
-   - How to check for and use the pre-installed packages?
+- How to install packages?
+- How to work with isolated environments?
+- How to check for and use the pre-installed packages?
 
 
 .. objectives::
 
-   - Give a general *theoretical* introduction to isolated environments
-   - Show how to install own packages
-   - Show how to check for site-installed Julia packages
+- Give a general *theoretical* introduction to isolated environments
+- Show how to install own packages
+- Show how to check for site-installed Julia packages
 
 .. admonition:: Julia packages and environments
 
-   - Julia **packages** significantly expand Julia's usability!
-   - Instead of writing code yourself there may be others that have done the same!
-   - Isolated environments solve a couple of problems:
+- Julia **packages** significantly expand Julia's usability!
+- Instead of writing code yourself there may be others that have done the same!
+- Isolated environments solve a couple of problems:
 
-      - You can install specific, also older, versions into them.
-      - You can create one for each project and no problem if the two projects require different versions.
-      - You can remove the environment and create a new one, if not needed or with errors.
+    - You can install specific, also older, versions into them.
+    - You can create one for each project and no problem if the two projects require different versions.
+    - You can remove the environment and create a new one, if not needed or with errors.
 
 
 Before going into installing packages let's have a background to the Julia environments and ecosystem!
@@ -235,7 +235,7 @@ Let's now create a **project environment**, this can be done as follows (if typi
 
    .. code-block:: console
 
-      $ julia --project=.
+      julia --project=.
 
 Create a package environment
 ----------------------------
@@ -375,9 +375,9 @@ UPPMAX Central library
 
 .. admonition:: Please notice
 
-   - At UPPMAX there is a central library with installed packages.
-   - This is good, especially when working on Bianca, since you don't need to install via the Wharf.
-   - If you work on Rackham you can actually ignore it and do all installations by yourself. The reason is that you need some more steps.
+- At UPPMAX there is a central library with installed packages.
+- This is good, especially when working on Bianca, since you don't need to install via the Wharf.
+- If you work on Rackham you can actually ignore it and do all installations by yourself. The reason is that you need some more steps.
 
 - You may control the present "central library" by typing ``ml help julia/<version>`` in the BASH shell.
 - A possibly more up-to-date status can be found from the Julia shell:
@@ -395,8 +395,8 @@ A selection of the Julia packages and libraries installed on UPPMAX and HPC2N ar
 
    .. tab:: UPPMAX
 
-	The Julia application at UPPMAX comes with several preinstalled packages.
-	A selection of the Julia packages and libraries installed on UPPMAX are:
+ The Julia application at UPPMAX comes with several preinstalled packages.
+ A selection of the Julia packages and libraries installed on UPPMAX are:
 
           - BenchmarkTools
           - CSV
@@ -473,18 +473,15 @@ Exercises
 
 .. keypoints::
 
-   - Installation of Julia packages can be done with Julia package manager.
-   - You install packages with the ``add`` command
-   - With a virtual environment you can tailor an environment with specific versions for Julia
+- Installation of Julia packages can be done with Julia package manager.
+- You install packages with the ``add`` command
+- With a virtual environment you can tailor an environment with specific versions for Julia
      and packages, not interfering with other installed Julia versions and packages.
-   - Make it for each project you have for reproducibility.
-   - The environments in Julia are lightweight so it is recommended to start a new environment
+- Make it for each project you have for reproducibility.
+- The environments in Julia are lightweight so it is recommended to start a new environment
      for each project that you are developing.
-   - Environments in Julia created by Julia itself so third party software are not required.
-   - You can check for centrally installed packages at UPPMAX
-      - from the Julia shell
-      - from BASH shell with ``ml help julia/<version>``
-
-
-
+- Environments in Julia created by Julia itself so third party software are not required.
+- You can check for centrally installed packages at UPPMAX
+    - from the Julia shell
+    - from BASH shell with ``ml help julia/<version>``
 

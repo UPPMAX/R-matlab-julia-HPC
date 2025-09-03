@@ -51,7 +51,7 @@ for instance the compilers (``GNU``, ``Intel``, etc.).
 - For some clusters
 
 ``` { .console data-copy="module avail julia" }
-$ module avail julia
+module avail julia
 ```
 
 ??? note "Example output"
@@ -77,7 +77,7 @@ $ module avail julia
 - Or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N & PDC)
 
 ``` { .console data-copy="module spider julia" }
-$ module spider julia
+module spider julia
 ```
 
 ??? note "Example output"
@@ -303,7 +303,7 @@ Exercises
 
 .. challenge:: 1a. Find out which versions are on your cluster from documentation
 
-   - Find/search for that documentation!
+- Find/search for that documentation!
 
    .. solution:: Solution
       :class: dropdown
@@ -315,10 +315,9 @@ Exercises
       - `PDC <https://support.pdc.kth.se/doc/applications/>`_
 
 
-
 .. challenge:: 1b. Find out which versions are on your cluster from command line
 
-   - Use the ``spider`` or ``avail`` module commands
+- Use the ``spider`` or ``avail`` module commands
 
    .. solution:: Solution
       :class: dropdown
@@ -534,9 +533,9 @@ Exercises
 
 .. challenge:: 2. Try to start julia without having loaded julia module
 
-   - If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command.
+- If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command.
 
-       - **Tip:** Type: ``unload julia`` and press ``<tab>`` until the full module name is shown, then press ``<enter>``. (If the Julia module starts with an uppercase, use that instead!)
+    - **Tip:** Type: ``unload julia`` and press ``<tab>`` until the full module name is shown, then press ``<enter>``. (If the Julia module starts with an uppercase, use that instead!)
 
    .. solution:: Solution
       :class: dropdown
@@ -721,29 +720,29 @@ Exercises
 
 .. challenge:: 6. Check your understanding
 
-   - Check your understanding and answer in the shared document
-   - Can you start Julia without loading a Julia module?
+- Check your understanding and answer in the shared document
+- Can you start Julia without loading a Julia module?
 
-       - Yes?
-       - No?
+    - Yes?
+    - No?
 
-   - Which character to use to toggle
+- Which character to use to toggle
 
-       - to the ``package`` mode?
-       - back to the ``Julia`` mode?
-       - to the ``help`` mode?
-       - to the ``shell`` mode?
+    - to the ``package`` mode?
+    - back to the ``Julia`` mode?
+    - to the ``help`` mode?
+    - to the ``shell`` mode?
 
 .. keypoints::
 
-   - Before you can run Julia scripts or work in a Julia shell, first load a Julia module with ``module load <julia module>``
-   - Start a Julia shell session with ``julia``
-   - It offers several modes that can make your workflow easier, i.e.
+- Before you can run Julia scripts or work in a Julia shell, first load a Julia module with ``module load <julia module>``
+- Start a Julia shell session with ``julia``
+- It offers several modes that can make your workflow easier, i.e.
 
-       - ``Julian``
-       - ``shell``
-       - ``package manager``
-       - ``help``
+    - ``Julian``
+    - ``shell``
+    - ``package manager``
+    - ``help``
 
-   - Run scripts with ``julia <script.jl>``
+- Run scripts with ``julia <script.jl>``
 

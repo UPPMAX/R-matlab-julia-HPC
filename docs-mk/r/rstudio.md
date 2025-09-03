@@ -95,26 +95,13 @@ Use the documentation of your HPC cluster for help.
 - Follow that procedure to start RStudio
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <! --
 
 .. warning::
 
    Using RStudio differs between different HPC clusters.
 
-   - We also recommend ThinLinc!
+- We also recommend ThinLinc!
 
 On UPPMAX
 ----------
@@ -130,23 +117,23 @@ However, we recommend you to use a RStudio module.
 
    **Using ThinLinc**
 
-   - ThinLinc app: ``<user>@rackham-gui.uppmax.uu.se``
-   - ThinLinc in web browser: ``https://rackham-gui.uppmax.uu.se``   This requires 2FA!
+- ThinLinc app: ``<user>@rackham-gui.uppmax.uu.se``
+- ThinLinc in web browser: ``https://rackham-gui.uppmax.uu.se``   This requires 2FA!
 
-   - Choose Xfce as the desktop environment (faster)
-   - start a command line window
+- Choose Xfce as the desktop environment (faster)
+- start a command line window
 
 
    **Using terminal**
 
-   - Remember to have X11 installed!
-   - On Mac
+- Remember to have X11 installed!
+- On Mac
 
-      - install XQuartz
+    - install XQuartz
 
-   - On Windows
+- On Windows
 
-      - Use MobaXterm or
+    - Use MobaXterm or
 
 
 Check for RStudio versions
@@ -180,9 +167,9 @@ Check all available  versions with:
 - module load RStudio
 - run ``rstudio &`` from the command line, and wait
 
-   - it might take 5-10 minutes for RStudio to start, especially if you loaded R_packages as well, but once it starts, there should be no further delays
-   - do *not* start RStudio through the graphical menu system in ThinLinc, this will not have access to loaded modules.
-   - if it takes a long time and might be due to that you have saved a lot of workspace
+    - it might take 5-10 minutes for RStudio to start, especially if you loaded R_packages as well, but once it starts, there should be no further delays
+    - do *not* start RStudio through the graphical menu system in ThinLinc, this will not have access to loaded modules.
+    - if it takes a long time and might be due to that you have saved a lot of workspace
 
 Example:
 
@@ -190,9 +177,9 @@ Example:
 
    .. code:: console
 
-      $ module load R/4.1.1
-      $ module load RStudio/2023.12.1-402
-      $ rstudio &
+      module load R/4.1.1
+      module load RStudio/2023.12.1-402
+      rstudio &
 
 
    If you're going to run heavier computations within RStudio then you have to remember that you need to do it inside an interactive session on one of the computation nodes, and not on a login node. But if you mostly want to use it as a pretty code editor then you can run it on the login node as well.
@@ -202,7 +189,7 @@ Example:
 
    .. code:: console
 
-      $ interactive -A naiss2023-22-44 -p devcore -n 4 -t 10:00
+      interactive -A naiss2023-22-44 -p devcore -n 4 -t 10:00
 
 
 On Bianca
@@ -212,7 +199,7 @@ When logging onto Bianca, you are placed on a login node, which nowadays has 2 C
 
 The desktop client version of ThinLinc does not work for Bianca. Instead you run and login to ThinLinc in the browser:
 
-- https://bianca.uppmax.uu.se
+- <https://bianca.uppmax.uu.se>
 
 On HPC2N
 --------
@@ -226,7 +213,7 @@ Login to ThinLinc desktop application by providing the following
 - username
 - password
 
-Alternatively, you can use ThinLinc in the browser: https://kebnekaise-tl.hpc2n.umu.se:300/
+Alternatively, you can use ThinLinc in the browser: <https://kebnekaise-tl.hpc2n.umu.se:300/>
 
 When in ThinLinc, you can start Rstudio either from the menu (version 4.0.4) or from the command line. If you start it from the command line you first need to load R and its prerequisites, but you can pick between several versions this way.
 
@@ -247,6 +234,7 @@ At LUNARC the recommended way to run RStudio is in Thinlinc with Desktop On Dema
 
 
 There is a regular version and a "(CPU)" version for each release.
+
 - Regular versions run an Intel 32-core node with a GPU partition, but the wall time limit is 48 hours.
 - CPU versions run on an AMD 48-core CPU-only node, and allows users to set a wall time of up to 168 hours (7 days), at the cost of reduced graphical support.
 

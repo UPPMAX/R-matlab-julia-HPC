@@ -75,6 +75,7 @@ You can find the evaluation form for the Julia part of the course here: <https:/
 :::
 
 :::{seealso}
+
 - Documentation at the HPC centres UPPMAX and HPC2N
   : - UPPMAX: <https://docs.uppmax.uu.se/software/julia/>
     - HPC2N: <https://www.hpc2n.umu.se/resources/software/julia>
@@ -85,6 +86,7 @@ You can find the evaluation form for the Julia part of the course here: <https:/
 :::
 
 :::{note}
+
 - Julia language becomes increasingly popular.
 
 - We also have a web pages for Julia:

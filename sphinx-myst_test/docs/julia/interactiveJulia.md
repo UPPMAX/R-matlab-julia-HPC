@@ -15,6 +15,7 @@
 ```
 
 :::{admonition} Compute allocations in this workshop
+
 - Dardel: `naiss-2025-22-262`
 - Tetralith: `naiss-2025-22-262`
 - Rackham: `uppmax2025-2-272`
@@ -23,6 +24,7 @@
 :::
 
 :::{admonition} Storage space for this workshop
+
 - Dardel: `/cfs/klemming/projects/snic/r-matlab-julia-naiss`
 - Tetralith: `/proj/r-matlab-julia-naiss/users/`
 - Rackham: `/proj/r-py-jl-m-rackham`
@@ -31,6 +33,7 @@
 :::
 
 :::{note}
+
 - It is possible to run Julia directly on the login (including ThinLinc) nodes.
 - But this should *only* be done for shorter jobs or jobs that do not use a lot of resources, as the login nodes can otherwise become slow for all users.
 - If you want to work interactively with your code or data, you should start an interactive session.
@@ -144,12 +147,14 @@ Then, when you get the allocation, do one of:
 - The commands you run with `srun` will then be executed on the resources your job has been allocated.
 
 :::{admonition} On HPC2N
+
 - If you do not preface with `srun` the command is run on the login node!
 - You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.
 - This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.
 :::
 
 :::{admonition} Documentation at the centers
+
 - [Interactive allocation on PDC](https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/)
 - [Interactive allocation on NSC](https://www.nsc.liu.se/support/running-applications/#interactive-jobs)
 - [Interactive allocation on UPPMAX](https://docs.uppmax.uu.se/cluster_guides/start_interactive_node/)
@@ -350,7 +355,7 @@ Then, when you get the allocation, do one of:
 - First start Julia using the 4 cores and check if workers are available
 
 ```console
-$ julia -p 4
+julia -p 4
 ```
 
 ```julia-repl
@@ -555,6 +560,7 @@ With `notebook(dir="</path/to/work/dir/>", detached=true)` the notebook will not
 2. Load Python or Jupyter module (and prerequisites) that is compatible with the python version used when building IJulia in the previous step
 
 :::{admonition} Running IJulia in Jupyter on compute nodes
+
 - Jupyter is rather slow graphically on the compute nodes.
 - This can be fixed by
   : - starting the jupyter server on the compute node, copying the URL containing the.

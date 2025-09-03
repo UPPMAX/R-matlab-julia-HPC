@@ -28,6 +28,7 @@ Time |Topic                                                       |Teacher(s)
 14:30|Add-Ons                                                     |BC
 14:50|Coffee break                                                |
 15:05|Simultaneous session — MATLAB in Jupyter                    |PO
+
     .|Simultaneous session — LUNARC: MATLAB with Desktop On Demand|RP
     .|(Simultaneous session — UPPMAX: Client on the local desktop)|BC
 15:35|Summary                                                     |

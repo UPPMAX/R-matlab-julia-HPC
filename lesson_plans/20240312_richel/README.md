@@ -1,25 +1,25 @@
 # Lesson plan
 
- * Teaching date: 2024-04-12
- * Course: Python
- * Teacher: Richel
+* Teaching date: 2024-04-12
+* Course: Python
+* Teacher: Richel
 
 Remote desktop websites:
 
-- HPC2N: kebnekaise-tl.hpc2n.umu.se
-- UPPMAX: rackham-gui.uppmax.uu.se
+* HPC2N: kebnekaise-tl.hpc2n.umu.se
+* UPPMAX: rackham-gui.uppmax.uu.se
 
 Compute allocations:
 
-- Rackham: `naiss2024-22-107`
-- Kebnekaise: `hpc2n2024-025`
-- Mine: `uppmax2023-2-25`
+* Rackham: `naiss2024-22-107`
+* Kebnekaise: `hpc2n2024-025`
+* Mine: `uppmax2023-2-25`
 
 Storage space:
 
-- Rackham: `/proj/r-py-jl`
-- Kebnekaise: `/proj/nobackup/hpc2n2024-025`
-- Mine: `/proj/staff`
+* Rackham: `/proj/r-py-jl`
+* Kebnekaise: `/proj/nobackup/hpc2n2024-025`
+* Mine: `/proj/staff`
 
 ### Python (Tuesday 2024-03-12)
 
@@ -46,69 +46,42 @@ Time     |Topic                      |Teacher
 
 Use Python 3.11.8 on UPPMAX
 
- * [Done] Packages
- * [Done] Virtual environments
- * [Done] Rackham:  Interactive session
- * [Good enough] Jupyter
+* [Done] Packages
+* [Done] Virtual environments
+* [Done] Rackham:  Interactive session
+* [Good enough] Jupyter
 
 
 ## Lesson plan notes
 
-- 10:00-10:45: Packages:
-  - Exercise 2 for HPC2N has untested TensorFlow things
-  - Put learners
-- 11:00-11:15: Break
-- 11:15-12:00: Isolated environments
-  - Exercise 2 is UPPMAX only
-  - Exercises 2.4 and 3.4 take 6 and 13 minutes
-- 12:00-13:00: Lunch break
-- 13:30-13:45: UPPMAX-only
-  - Interactive: only 1.1, 1.2, 1.3 and 1.5
-  - Jupyter: only show and run
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* 10:00-10:45: Packages:
+    * Exercise 2 for HPC2N has untested TensorFlow things
+    * Put learners
+* 11:00-11:15: Break
+* 11:15-12:00: Isolated environments
+    * Exercise 2 is UPPMAX only
+    * Exercises 2.4 and 3.4 take 6 and 13 minutes
+* 12:00-13:00: Lunch break
+* 13:30-13:45: UPPMAX-only
+    * Interactive: only 1.1, 1.2, 1.3 and 1.5
+    * Jupyter: only show and run
 
 
 ## Discussion
 
 ### Pre-requirements
 
-I feel the pre-requirements page, https://uppmax.github.io/R-python-julia-HPC/prereqs.html, is too extensive.
+I feel the pre-requirements page, <https://uppmax.github.io/R-python-julia-HPC/prereqs.html>, is too extensive.
 I feel it should link to regular documentation and mostly show
 how to determine you fulfilled all pre-requirements.
 
 ## Interactive
 
 The session on starting an interactive session feels too fancy twice:
-- create an interactive session
-  - with 1 node
-  - with more nodes <--- feels beyond the teaching goals
-- run 2 Python scripts, 1 of which is unsuitable for an interactive session
+* create an interactive session
+    * with 1 node
+    * with more nodes <--- feels beyond the teaching goals
+* run 2 Python scripts, 1 of which is unsuitable for an interactive session
   with more nodes.
 
 I think, for 15 minutes, one can only do 1 node and no Python script,

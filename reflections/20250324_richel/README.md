@@ -328,7 +328,7 @@ Nice
 
 Not my session
 
->   The organization was great
+> The organization was great
 
 Well done course coordinator!
 
@@ -341,7 +341,7 @@ Consider:
 
 - [x] Suggest to make even clearer that getting an account takes days
 
->  - I really appreciate the amount of hands-on demonstrations:
+> - I really appreciate the amount of hands-on demonstrations:
 >    they were great.
 
 Unsure if this applies to me.
@@ -434,5 +434,4 @@ I agree. Not my session.
 
 - [x] Link to the NAISS file transfer course in the course material
 - [x] Suggest to make even clearer that getting an account takes days
-
 

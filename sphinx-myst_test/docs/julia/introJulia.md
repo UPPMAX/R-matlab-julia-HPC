@@ -4,6 +4,7 @@
 : - Also link at House symbol {{ :house: }} at top of page
 
 :::{admonition} Learning outcomes
+
 - Learn how to load Julia modules and access site-installed Julia packages
 - Grasp the concept of Julia environments
 - Familiarize with Julia packages installation with **Pkg**
@@ -14,6 +15,7 @@
 :::
 
 :::{admonition} Your expectations?
+
 - Find best practices for using Julia at UPPMAX and HPC2N
 - Get the hang of packages functioning
 - Use the HPC performance with Julia
@@ -25,6 +27,7 @@
 :::
 
 :::{admonition} Julia Exercise files
+
 - `` :ref:`common-use-tarball ``
 :::
 

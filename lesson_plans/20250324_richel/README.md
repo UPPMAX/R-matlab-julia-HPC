@@ -79,11 +79,9 @@ Clusters used in the course (as taken from 'The important info about
 the course' document):
 
 – COSMOS
+
 - Dardel
 - Kebnekaise
 - Rackham
 - Tetralith
-
-
-
 

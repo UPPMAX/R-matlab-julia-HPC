@@ -1,8 +1,8 @@
 # Lesson plan
 
- * Teaching date: 2024-04-14
- * Course: R
- * Teacher: Richel
+* Teaching date: 2024-04-14
+* Course: R
+* Teacher: Richel
 
 This is the current schedule. I will teach until 9:45
 

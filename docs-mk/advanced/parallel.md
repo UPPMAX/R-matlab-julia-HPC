@@ -30,7 +30,7 @@
 === "R"
 
     R stuff here
- 
+
 
 <!-- old stuff below 
 
@@ -86,7 +86,6 @@ Memory Access (NUMA).
 
 Besides the standard CPUs, nowadays one finds Graphic Processing Units (GPUs)
 architectures in HPC clusters.
-
 
 
 Why is parallel programming needed?
@@ -918,7 +917,6 @@ Exercises
             and then ``Monitor Jobs``. For ``job-usage``, you can see the job ID if you type ``squeue --me`` on a terminal on Kebnekaise.
 
 
-
 .. challenge:: Parallelizing a *for loop* workflow (Advanced)
    :class: dropdown
 
@@ -1397,8 +1395,6 @@ Exercises
                 % Set the total sum
                 total_sum_parallel = local_sums;
                 end
-
-
 
 
 .. admonition:: More info

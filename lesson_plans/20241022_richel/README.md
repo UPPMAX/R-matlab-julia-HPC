@@ -104,12 +104,13 @@ Time       |Topic                                                 |Teacher
 13:35-14:05|Batch 30/30 mins                                      |BB
 14:05-14:20|Break                                                 |.
 14:20-14:40|GPU                                                   |BB
-14:40-15:10|Simultaneous session 30/30 mins                       |BB * RB * RP
+14:40-15:10|Simultaneous session 30/30 mins                       |BB *RB* RP
 15:10-15:25|Break                                                 |.
 15:25-16:00|Parallel and multithreaded functions                  |PO
 16:00-16:15|Summary and evaluation                                |RB
 
 Simultaneous session:
+
 - Kebnekaise: Jupyter, by BB
 - Rackham:  Interactive session and Jupyter, by RB
 - LUNARC, by RP
@@ -120,8 +121,8 @@ Discussion points:
   (1) schedule is simple, and (2) all session lengths are 45 or 60 mins.
   However, assuming all durations are correct (!), some sessions will be
   cut by a break. Is that acceptable?
-  - If yes: no problemo
-  - No: where should the breaks be instead? Who makes a new schedule?
+    - If yes: no problemo
+    - No: where should the breaks be instead? Who makes a new schedule?
 - I picked to discuss batch (by BB) from 13:35-14:05,
   over having a break at 14:00 and having a 5 minute session
   with a schedule like below. Agreed?
@@ -134,16 +135,16 @@ Time       |Topic                                                 |Teacher
 
 - R: There is no time for evaluation at the end. I feel 10 minutes
   is enough and the time is worth it. I suggest to add it.
-  - Pro: helps us improve the course, shows we care about our learners' opinion
-  - Con: takes time away
-  - Vote:
-    - Yes:
-    - No:
+    - Pro: helps us improve the course, shows we care about our learners' opinion
+    - Con: takes time away
+    - Vote:
+        - Yes:
+        - No:
 - If evaluation, suggest questions on confidence,
   see [here](https://github.com/UPPMAX/uppmax_intro_day_1/tree/main/evaluations/20240827)
-  - Pro: useful to asses stronger/weaker sessions of the course
-  - Con: maybe must use a standard evaluation form, needs teachers to formulate
+    - Pro: useful to asses stronger/weaker sessions of the course
+    - Con: maybe must use a standard evaluation form, needs teachers to formulate
     their lesson goals
-  - Vote:
-    - Yes:
-    - No:
+    - Vote:
+        - Yes:
+        - No:

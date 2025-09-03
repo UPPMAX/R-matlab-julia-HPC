@@ -18,6 +18,7 @@
 ```
 
 :::{admonition} Julia packages and environments
+
 - Julia **packages** significantly expand Julia's usability!
 
 - Instead of writing code yourself there may be others that have done the same!
@@ -79,6 +80,7 @@ $ find .julia -mindepth 1 -maxdepth 1 -type d
 .julia/prefs
 .julia/scratchspaces
 ```
+
 :::
 
 Packages in Julia work as decentralized units which can be connected through their
@@ -104,6 +106,7 @@ At UPPMAX the central environment adds to the list with the element:
 ```bash
 "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
 ```
+
 :::
 
 Thus, by default in addition to the current environment other environments are present
@@ -294,14 +297,14 @@ One can customize this setting with the variable `JULIA_LOAD_PATH`, this can be
 done on the Linux command line:
 
 ```console
-$ export JULIA_LOAD_PATH="path1:path2:..."
+export JULIA_LOAD_PATH="path1:path2:..."
 ```
 
 For instance, for including just the current environment we can set the value of
 this variable as:
 
 ```console
-$ export JULIA_LOAD_PATH="@"
+export JULIA_LOAD_PATH="@"
 ```
 
 Then, when we start a Julia session the default option will be the current
@@ -367,6 +370,7 @@ and now the package can be loaded from the first environment without errors.
 ### UPPMAX Central library
 
 :::{admonition} Please notice
+
 - At UPPMAX there is a central library with installed packages.
 - This is good, especially when working on Bianca, since you don't need to install via the Wharf.
 - If you work on Rackham you can actually ignore it and do all installations by yourself. The reason is that you need some more steps.

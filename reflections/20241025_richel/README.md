@@ -1,8 +1,8 @@
 # Reflection
 
- * Teaching day: -
- * Topic: entire course
- * Written on 2024-10-25
+* Teaching day: -
+* Topic: entire course
+* Written on 2024-10-25
 
 ![Registrations over the centers](centers_venn.png)
 
@@ -31,8 +31,8 @@ I think it is too long
 
 TODO:
 
-- [ ] Make shorter, suggest at meeting
-- [ ] Decide upon first hour with the team, put the optional hour -if needed- in there.
+* [ ] Make shorter, suggest at meeting
+* [ ] Decide upon first hour with the team, put the optional hour -if needed- in there.
 
 ```
 > Hello!

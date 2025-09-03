@@ -6,6 +6,7 @@
 # Introduction to running R, Matlab and Julia in HPC
 
 :::{admonition} Content
+
 - This course aims to give a brief, but comprehensive introduction to using R, Matlab, and Julia in an HPC environment.
 - You will learn how to
   : - start the **interpreters** of Julia, R, and Matlab by the HPC module system
@@ -47,6 +48,7 @@
 ```
 
 :::{admonition} Course approach to deal with multiple HPC centers
+
 - The course is a NAISS cooperation with teachers from **UPPMAX** (Rackham, Snowy, Bianca), **HPC2N** (Kebnekaise), and **LUNARC** (Cosmos) and will focus on systems at the Swedish academic HPC centres with NAISS personnel.
 
 - Although there are differences we will only have **few seperate sessions**.
@@ -68,15 +70,18 @@
 :::
 
 :::{admonition} Collaboration document
+
 - ```{raw} html
   <a target='_blank' href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EVIK4UtoAEBLoZaTgEH72-gBrsuVAhf7thq7iXKMzQCa2A?e=Rg3xCS">Q/A collaboration document</a>
   ```
+
 - Use this page for the workshop with your questions
 - It helps us identify content that is missing in the course material
 - We answer those questions as soon as possible
 :::
 
 :::{admonition} Some practicals
+
 - [Code of Conduct](https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/CODE_OF_CONDUCT.md)
   : - Be nice to each other!
 - Zoom
@@ -120,6 +125,7 @@
 :::
 
 :::{warning}
+
 - **Please be sure that you have gone through the** [pre-requirements](https://uppmax.github.io/R-matlab-julia-HPC/prereqs.html)
   : - It mentions the familiarity with the LINUX command line.
     - The applications to connect to the clusters: terminals and ThinLinc (remote graphical desktop)

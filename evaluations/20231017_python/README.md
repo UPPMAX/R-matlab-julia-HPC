@@ -45,27 +45,27 @@ Results can be found [here](https://forms.office.com/Pages/AnalysisPage.aspx?Ana
 
 ### Length of teaching today was
 
-Adequate: 75%	Too short: 17%	Too long: 8%
+Adequate: 75% Too short: 17% Too long: 8%
 
 ### Depth of content was
 
-Adequate: 83%	Superficial: 17%
+Adequate: 83% Superficial: 17%
 
 ### The pace of teaching was
 
-Too fast: 50%	Too slow: 25%	Adequate: 25%
+Too fast: 50% Too slow: 25% Adequate: 25%
 
 ### Teaching aids used (e.g. slides) were well prepared
 
-Agree (completely): 83 %	Disagree: 8%
+Agree (completely): 83 % Disagree: 8%
 
 ### Hands-on exercises and demonstrations were
 
-OK: 50%		Few: 50%
+OK: 50%  Few: 50%
 
 ### Hands-on exercises and demonstrations were well prepared
 
-Agree (completely): 75 %	Disagree: 8%
+Agree (completely): 75 % Disagree: 8%
 
 ### How would you rate the instructors overall teaching performances?
 
@@ -73,11 +73,11 @@ Agree (completely): 75 %	Disagree: 8%
 
 ### Do you feel you achieved your desired learning outcome?
 
-Yes: 67%	Not sure: 33
+Yes: 67% Not sure: 33
 
 ### Did today's course meet your expectation?
 
-Yes: 67%	Not sure: 33
+Yes: 67% Not sure: 33
 
 ### Do you have any additional comments?
 
