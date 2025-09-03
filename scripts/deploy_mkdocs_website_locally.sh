@@ -21,5 +21,9 @@ fi
 # Install notes
 #
 # pip install mkdocs-material --break-system-packages
+#
+# or (untested):
+#
+# pip install -r requirements.txt --break-system-packages
 
 mkdocs serve
