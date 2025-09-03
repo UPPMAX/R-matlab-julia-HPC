@@ -9,6 +9,7 @@ nav:
       - Schedule: r/schedule.md
       - Intro: r/intro/README.md
       - Load and run: r/load_run.md
+      - RStudio: r/rstudio.md
       - Summary: r/summary.md
     - MATLAB: 
       - Schedule: matlab/schedule.md
