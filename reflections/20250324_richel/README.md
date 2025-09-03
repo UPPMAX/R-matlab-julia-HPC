@@ -254,6 +254,8 @@ Useless information to me.
 
 My grades (average is 77):
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 learning_outcome                                                                 |success_score|Comment
 ---------------------------------------------------------------------------------|-------------|-------
 I can find the module to be able to run R                                        |94           |Mine, great
@@ -274,6 +276,8 @@ I can start an interactive session                                              
 I can verify I am on the login node yes/no                                       |78           |Mine, not taught explicitly
 I can start an interactive session with multiple cores                           |78           |Mine, not taught explicitly
 I can start RStudio                                                              |84           |Simultaneous session
+
+<!-- markdownlint-enable MD013 -->
 
 ![Average confidence per setting](average_confidence_per_setting.png)
 
@@ -368,7 +372,7 @@ Does not apply to me.
 This seems like an easy fix.
 
 > - The whole material for the day was excellent,
->   and I’m feeling extremely confident about moving 
+>   and I’m feeling extremely confident about moving
 >   forward with getting started.
 
 Nice.

@@ -6,6 +6,8 @@
 
 ## Schedule
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 | Time  | Topic                                                                                          | Teacher(s)        |
 | ----- | ---------------------------------------------------------------------------------------------- | ----------------- |
 | 9:00  | (optional) [First login](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html) | BB + PO + RB + RP |
@@ -25,6 +27,8 @@
 | 14:50 | Parallel and multi-threaded functions                                                          | PO                |
 | 15:35 | Summary and evaluation                                                                         | RB                |
 | 15:50 | End of the day                                                                                 | .                 |
+
+<!-- markdownlint-enable MD013 -->
 
 ## Reflection before teaching
 
@@ -62,7 +66,9 @@ requires that.
 
 These are the questions in the evaluation now:
 
-```
+<!-- markdownlint-disable MD013 --><!-- Verbatim text cannot be split up over lines, hence will break 80 characters per line -->
+
+```text
 Introduction to running R, Python, Julia, and Matlab in HPC, 22-25/10-2024 - DAY 1 Python
 
 Thanks for your feedback.
@@ -186,6 +192,8 @@ Give you confidence levels of the following statements below:
 
 - Open question
 ```
+
+<!-- markdownlint-enable MD013 -->
 
 Only question 12 (the confidences) and 15 (any other comments)
 are the ones that matter to me. Question 11 is useful to me,
@@ -313,7 +321,7 @@ Suggests for next course:
 
 There are 5 evaluation results, out of the 9 learners that stayed in the end.
 
-```
+```text
 1. Overall, how would you rate today's training event?
 - 7.4. Average Number
 ```
@@ -321,21 +329,28 @@ There are 5 evaluation results, out of the 9 learners that stayed in the end.
 This question gives me no useful info.
 
 
-```
+<!-- markdownlint-disable MD013 --><!-- Verbatim text cannot be split up over lines, hence will break 80 characters per line -->
+
+```text
 2. Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?
 - "the best parts were how to find correct modules, submit jobs, and the examples for parallel codes "
 - "materials"
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 This question gives me no useful info.
 
+<!-- markdownlint-disable MD013 --><!-- Verbatim text cannot be split up over lines, hence will break 80 characters per line -->
 
-```
+```text
 3. Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?
 
 - "the lecturers shouldn't say the person's names and point to specific persons to reply questions"
 - "Going through the examples more throughly."
 ```
+
+<!-- markdownlint-enable MD013 -->
 
 I will definitely keep pointing to learners, as per the literature.
 When I told the class I would do so, I told them to turn off the cameras
@@ -350,15 +365,20 @@ Next time, I will show the references to the literature again.
 
 * [ ] Next iteration: take the time to discuss my teaching style
 
-```
+<!-- markdownlint-disable MD013 --><!-- Verbatim text cannot be split up over lines, hence will break 80 characters per line -->
+
+```text
 4. Training event organisation (e.g. announcement, registration, ...): – What did you like best? – Where should we improve?
 - "material online is excellent"
 - "well organized"
 ```
 
+<!-- markdownlint-enable MD013 -->
+
+
 No info.
 
-```
+```text
 5. Length of teaching today was
 Adequate 3 
 Too short 1 
@@ -367,7 +387,7 @@ Too long 1
 
 No info.
 
-```
+```text
 6. Depth of content was
 Adequate 5 
 Too superficial 0 
@@ -376,7 +396,7 @@ Too profound 0
 
 No info.
 
-```
+```text
 7. The pace of teaching was
 Adequate 3 
 Too slow 0 
@@ -385,7 +405,7 @@ Too fast 2
 
 No info: which session?
 
-```
+```text
 8. Teaching aids used (e.g. slides) were well prepared
 Agree completely 0 
 Agree 4 
@@ -396,7 +416,7 @@ Disagree completely 0
 
 No info: which session?
 
-```
+```text
 9. Hands-on exercises and demonstrations were
 Adequate 3 
 Too few 2 
@@ -405,7 +425,7 @@ Too many 0
 
 No info: which session?
 
-```
+```text
 10. Hands-on exercises and demonstrations were well prepared
 Agree completely 3 
 Agree 2 
@@ -417,7 +437,7 @@ Disagree completely 0
 No info: which session?
 
 
-```
+```text
 11. How would you rate the separate sessions?
 ```
 
@@ -433,13 +453,13 @@ My theory is that the person that did not like to be addressed by name
 followed Jupyter in the HPC2N or LUNARC session and gave a 'fair'
 to the other sessions.
 
-```
+```text
 12. Give your confidence levels of the following statements
 ```
 
-![](confidences_1.png)
-![](confidences_2.png)
-![](confidences_3.png)
+![Confidences 1](confidences_1.png)
+![Confidences 2](confidences_2.png)
+![Confidences 3](confidences_3.png)
 
 I am happy to see that the IPython question is not there.
 Seems like I am not the only one that thinks it can be removed from the
@@ -457,7 +477,8 @@ The sessions that I do care about ..
 * I can determine that a Python package is/is not installed
 * I can load a Python (machine learning) module
 * I can install a Python package
-* I can work (create, activate, work, deactivate) with a venv virtual environment
+* I can work (create, activate, work, deactivate)
+  with a venv virtual environment
 
 ... did reasonably well, with 1 learner
 stating 'I have some confidence in this'.
@@ -470,7 +491,7 @@ idea what this is about'. Maybe some carry-over effect?
 
 * [x] Remove question 'I can export and import a virtual environment' from evaluation
 
-```
+```text
 13.Did today's course meet your expectation?
 Yes 3 
 No 0 
@@ -479,18 +500,25 @@ Not sure 2
 
 Useless info to me.
 
-```
+<!-- markdownlint-disable MD013 --><!-- Verbatim text cannot be split up over lines, hence will break 80 characters per line -->
 
+```text
 14. Which future training topics would you like to be provided by the training host(s)?
 "- xarray and dask"
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 Useless info to me.
 
-```
+<!-- markdownlint-disable MD013 --><!-- Verbatim text cannot be split up over lines, hence will break 80 characters per line -->
+
+```text
 15. Do you have any additional comments?
 - A sheet summarizing the most important parts with key code snippets to do the items in 12)"
 ```
+
+<!-- markdownlint-enable MD013 -->
 
 Fun! This learner suggests that I actually should have worked on a proper
 summary page, with -indeed- the key points. Will do so next time! Thanks!
@@ -502,7 +530,7 @@ summary page, with -indeed- the key points. Will do so next time! Thanks!
 Analyzing the amount of learners present during the day
 (data: [20241022_counts.csv](20241022_counts.csv)) ...
 
-![](n_learners_in_time.png)
+![Number of learners in time](n_learners_in_time.png)
 
 I see that there have been 19 learners max (at around 10:35),
 where there were 10 at the start of lunch.

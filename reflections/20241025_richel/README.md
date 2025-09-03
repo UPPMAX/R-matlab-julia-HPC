@@ -32,9 +32,12 @@ I think it is too long
 TODO:
 
 * [ ] Make shorter, suggest at meeting
-* [ ] Decide upon first hour with the team, put the optional hour -if needed- in there.
+* [ ] Decide upon first hour with the team,
+  put the optional hour -if needed- in there.
 
-```
+<!-- markdownlint-disable MD013 --><!-- Verbatim text cannot be split up over lines, hence will break 80 characters per line -->
+
+```text
 > Hello!
 >
 > This email contains information for the UPPMAX/HPC2N/LUNARC four days online course “Introduction to running R, Python, Julia, and Matlab in HPC”, which will be given Tuesday-Friday, 22-25 October, 2024, 9:00-16:00 each day.
@@ -148,3 +151,5 @@ Suggest to remove this point, as I see no need to write down our Zoom room polic
 >
 >See you Tuesday!
 ```
+
+<!-- markdownlint-enable MD013 -->

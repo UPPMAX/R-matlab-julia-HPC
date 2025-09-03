@@ -103,19 +103,19 @@ and report to me.
 
 [20241024_counts.csv](20241024_counts.csv)
 
-![](centers_venn.png)
+![Centers of R learners](centers_venn.png)
 
 > Centers of R learners
 
-![](languages_venn.png)
+![Languages of R learners](languages_venn.png)
 
 > Languages of R learners
 
-![](n_learners_per_language.png)
+![Number of learners per language](n_learners_per_language.png)
 
 > Number of learners per language
 
-![](n_learners_in_time.png)
+![Learners in time](n_learners_in_time.png)
 
 > Learners in time
 
@@ -123,39 +123,52 @@ and report to me.
 
 5 responses
 
-```
+```text
 1. Overall, how would you rate today's training event?
 - 7.4. Average Number
 ```
 
 Useless info to me.
 
-```
+<!-- markdownlint-disable MD013 --><!-- Will not split up verbatim text over lines, hence will break 80 characters per line -->
+
+```text
 2. Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?
 
 - "I liked being able to run through the examples myself. "
 - "Pedro's sessions"
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 Useless to me, nice for Pedro!
 
-```
+<!-- markdownlint-disable MD013 --><!-- Will not split up verbatim text over lines, hence will break 80 characters per line -->
+
+```text
 3. Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?
 - "I think sometimes there could have been slightly less kinds of examples, and one main example per module with extra focus and more time to complete. "
 ```
 
+<!-- markdownlint-enable MD013 -->
+
+
 I think I focussed well on one example and did have enough time for exercises.
 
 
-```
+<!-- markdownlint-disable MD013 --><!-- Will not split up verbatim text over lines, hence will break 80 characters per line -->
+
+```text
 4. Training event organisation (e.g. announcement, registration, ...): – What did you like best? – Where should we improve?
 - "I liked the general organization, felt like any questions one might have where answered in the introductory email."
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 Nice for Birgitte!
 
 
-```
+```text
 5. Length of teaching today was
 Adequate 4 
 Too short 0 
@@ -164,7 +177,7 @@ Too long 1
 
 Useless to me: which sessions?
 
-```
+```text
 6. Depth of content was
 Adequate 4 
 Too superficial 1 
@@ -173,7 +186,7 @@ Too profound 0
 
 Useless to me: which sessions?
 
-```
+```text
 7. The pace of teaching was
 Adequate 3 
 Too slow 0 
@@ -182,7 +195,7 @@ Too fast 2
 
 Useless to me: which sessions?
 
-```
+```text
 8. Teaching aids used (e.g. slides) were well prepared
 Agree completely 2 
 Agree 3 
@@ -193,7 +206,7 @@ Disagree completely 0
 
 Useless to me: which sessions?
 
-```
+```text
 9. Hands-on exercises and demonstrations were
 Adequate 3 
 Too few 2 
@@ -202,7 +215,7 @@ Too many 0
 
 Useless to me: which sessions?
 
-```
+```text
 10. Hands-on exercises and demonstrations were well prepared
 Agree completely 2 
 Agree 3 
@@ -213,7 +226,7 @@ Disagree completely 0
 
 Useless to me: which sessions?
 
-```
+```text
 11. How would you rate the separate sessions?
 ```
 
@@ -229,7 +242,7 @@ Only my sessions:
 So, although I dislike my 'Load and run' session, it has been
 appreciated by the learners.
 
-```
+```text
 12. Give your confidence levels of the following statements
 ```
 
@@ -241,12 +254,15 @@ My learning objectives:
 * I can find the module to be able to run R: 1x some, 1x good, 3x absolutely
 * I can load the module to be able to run R: 1 some, 1 good, 3 absolutely
 * I can run the R interpreter: 1 some, 1 good, 3 absolutely
-* I can run the R command to get the list of installed R packages: 1 some, 1 good, 3 absolutely
+* I can run the R command to get the list of installed R packages:
+  1 some, 1 good, 3 absolutely
 * I can run an R script from the command-line: 1 some, 2 good, 2 absolutely
-* I can find out if an R package is already installed: 1 some, 1 good, 3 absolutely
+* I can find out if an R package is already installed:
+  1 some, 1 good, 3 absolutely
 * I can start an interactive session: 1 low, 1 some, 1 good, 2 absolutely
 * I can verify I am on the login node yes/no: 2 some, 2 good, 1 absolutely
-* I can start an interactive session with multiple cores: 2 some, 1 good, 2 absolutely
+* I can start an interactive session with multiple cores:
+  2 some, 1 good, 2 absolutely
 * I can start RStudio: 1 some, 1 good, 3 absolutely
 
 It seems my simultaneous session was weakest: they did feel confident to
@@ -259,7 +275,7 @@ To do next time:
 
 * [ ] In the simultaneous session, stay formal
 
-```
+```text
 13.Did today's course meet your expectation?
 Yes 3 
 No 0 
@@ -268,14 +284,18 @@ Not sure 2
 
 Useless info.
 
-```
+<!-- markdownlint-disable MD013 --><!-- Will not split up verbatim text over lines, hence will break 80 characters per line -->
+
+```text
 14. Which future training topics would you like to be provided by the training host(s)?
 - 2 responses
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 No idea what those are
 
-```
+```text
 15. Do you have any additional comments?
 - 1 response
 ```

@@ -118,13 +118,18 @@ For the other session, I wonder how many learners:
 * 9: 6x
 * 8: 1x
 
+<!-- markdownlint-disable MD013 --><!-- Vertatim text cannot be split up over lines, hence will break 80 characters per line -->
+
 ### Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?
+
+<!-- markdownlint-enable MD013 -->
 
 * materials and structure
 * materials are great
 * materials
 * introduction and packages
-* The explanation on how R in hpc environment can be used for machine learning and how to run RStudio interface on cluster
+* The explanation on how R in hpc environment can be used for machine learning
+  and how to run RStudio interface on cluster
 * materials are well structured
 * exercises
 * structure and material
@@ -136,25 +141,37 @@ Hey, someone likes our YouTube videos!
 * well thought structure and training exercises with clear and helpful lectures
 * I liked the handling of packages, since it is very useful in R!
 
+<!-- markdownlint-disable MD013 --><!-- Vertatim text cannot be split up over lines, hence will break 80 characters per line -->
+
 ### Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?
+
+<!-- markdownlint-enable MD013 -->
 
 * maybe more about onboarding
 
 I agree that this was advertised too late.
 
 * exercises could be improved in tandem speed with students.
-* Parallel and multithreaded functions was short and fast and would have liked to get info on background, how, why instead of just Learning how to sbatch. Would have been good to learn more about the topics.
+* Parallel and multithreaded functions was short and fast and would have liked
+  to get info on background, how, why instead of just Learning how to sbatch.
+  Would have been good to learn more about the topics.
 * Overall organization, speaking turns, given time and supervision for exercices
-* I would have liked to learn how the parellel code works rather than just knowing it can be sbatched
+* I would have liked to learn how the parellel code works rather than just
+  knowing it can be sbatched
 
 I think Pedro has no time for that, we teach at the Apply level.
 
 * it felt rushy at some points
 * exercises
 * Two things, maybe more time for parallel computing and Machine Learning
-* I would also have enjoyed Matlab but I think knowing R and Python in HPC is enough for applying this knowledge to Matlab.
-* more time for the code-along and training exercises, maybe separating the code-along for the different centers on the presenter´s screen that was a bit confusing from time to time. Also when giving lecture do one center at on time and then move on
-* I would have needed a bit more time for the exercises, and maybe a bit more? I'll finish it later =) But otherwise very good.
+* I would also have enjoyed Matlab but I think knowing R and Python in HPC is
+  enough for applying this knowledge to Matlab.
+* more time for the code-along and training exercises, maybe separating the
+  code-along for the different centers on the presenter´s screen that was a bit
+  confusing from time to time. Also when giving lecture do one center at on
+  time and then move on
+* I would have needed a bit more time for the exercises, and maybe a bit more?
+  I'll finish it later =) But otherwise very good.
 
 The usual: learners had too little time for exercises.
 As the one teaching only the first hour with most time spend
