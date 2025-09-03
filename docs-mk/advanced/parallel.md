@@ -19,6 +19,19 @@
     - ...
 
 
+=== "Julia"
+
+    Julia stuff here
+
+=== "MATLAB"
+
+    MATLAB stuff here
+
+=== "R"
+
+    R stuff here
+ 
+
 <!-- old stuff below 
 
 .. questions::
