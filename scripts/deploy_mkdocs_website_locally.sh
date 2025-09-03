@@ -18,4 +18,8 @@ if [[ "$PWD" =~ scripts$ ]]; then
     exit 42
 fi
 
+# Install notes
+#
+# pip install mkdocs-material --break-system-packages
+
 mkdocs serve
