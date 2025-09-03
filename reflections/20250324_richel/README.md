@@ -78,11 +78,14 @@ break there were around 12 learners.
 
 Recording has a clear effect on the number of learners with camera on/off.
 
-Online instruction in higher education: Promising, research-based, and evidence-based practices
+Online instruction in higher education:
+Promising, research-based, and evidence-based practices
 
 From:
 
-> Boettcher, Judith V., and Rita-Marie Conrad. The Online Teaching Survival Guide : Simple and Practical Pedagogical Tips, John Wiley & Sons,
+> Boettcher, Judith V., and Rita-Marie Conrad.
+> The Online Teaching Survival Guide : Simple and Practical Pedagogical Tips,
+> John Wiley & Sons,
 
 Table 3.1:
 
@@ -102,12 +105,15 @@ Table 3.1:
 - Assess as you go by gathering evidences of learning
 - Rigorously connect content to core concepts and learning outcomes
 - Develop and use a content frame for your course
-- Design experiences to help learners make progress on their novice-to-expert journey.
+- Design experiences to help learners make progress
+  on their novice-to-expert journey.
 
 
 From:
 
-> Nilson, Linda B., and Ludwika A. Goodson. Online teaching at its best: Merging instructional design with teaching and learning research. John Wiley & Sons, 2021.
+> Nilson, Linda B., and Ludwika A. Goodson. Online teaching at its best:
+> Merging instructional design with teaching and learning research.
+> John Wiley & Sons, 2021.
 
 I quote:
 
@@ -124,7 +130,9 @@ I quote:
 
 Reasons why learners do not turn on their camera, is
 
-> Tobi, Bernadette, et al. "A case study on students’ reasons for not switching on their cameras during online class sessions." Learning 6.41 (2021): 216-224
+> Tobi, Bernadette, et al. "A case study on students’ reasons for not
+> switching on their cameras during online class sessions."
+> Learning 6.41 (2021): 216-224
 
 with results (number of learners = 50):
 
@@ -138,7 +146,10 @@ Uncomfortable to be looked at all the time          |42%
 
 Or, from
 
-> Alim, Syahrul, Sirirat Petsangsri, and John Morris. "Does an activated video camera and class involvement affect academic achievement? An investigation of distance learning students." Education and Information Technologies 28.5 (2023): 5875-5892.
+> Alim, Syahrul, Sirirat Petsangsri, and John Morris.
+> "Does an activated video camera and class involvement affect
+> academic achievement? An investigation of distance learning students."
+> Education and Information Technologies 28.5 (2023): 5875-5892.
 
 the following reasons for not turning on the camera:
 
@@ -357,7 +368,8 @@ Does not apply to me.
 This seems like an easy fix.
 
 > - The whole material for the day was excellent,
->   and I’m feeling extremely confident about moving forward with getting started.
+>   and I’m feeling extremely confident about moving 
+>   forward with getting started.
 
 Nice.
 

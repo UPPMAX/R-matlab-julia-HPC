@@ -68,9 +68,9 @@ Disagree completely 0
 
 
 13.Did today's course meet your expectation?
-Yes 3 
-No 0 
-Not sure 2 
+Yes 3
+No 0
+Not sure 2
 
 14. Which future training topics would you like to be provided by the training host(s)?
 

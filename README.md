@@ -59,11 +59,15 @@ mkdocs serve
 
 ## Files used by continuous integration scripts
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 Filename                           |Descriptions
 -----------------------------------|------------------------------------------------------------------------------------------------------
 [.lycheeignore](.lycheeignore)     |URLs ignored by the link checker
 [`.spellcheck.yml`](.spellcheck.yml) |Configuration of the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
 [`.wordlist.txt`](.wordlist.txt)     |Whitelisted words for the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
+
+<!-- markdownlint-enable MD013 -->
 
 ## Links
 

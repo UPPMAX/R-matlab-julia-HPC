@@ -78,6 +78,7 @@ how to determine you fulfilled all pre-requirements.
 ## Interactive
 
 The session on starting an interactive session feels too fancy twice:
+
 * create an interactive session
     * with 1 node
     * with more nodes <--- feels beyond the teaching goals
