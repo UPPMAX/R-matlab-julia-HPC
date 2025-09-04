@@ -72,7 +72,6 @@ where one uses multiple CPU cores to work together on a same calculation
 
     R stuff here
 
-
 <!-- old stuff below 
 
 .. questions::
@@ -86,7 +85,6 @@ where one uses multiple CPU cores to work together on a same calculation
    - Learn basic concepts in parallel programming
    - Gain knowledge on the tools for parallel programming in different languages
    - Get familiar with the tools to monitor the usage of resources
-
 
 What is parallel programming?
 -----------------------------
@@ -139,7 +137,6 @@ what the simulation requires.
 
          If you are in a interactive node session the ``top`` command will give you information
          of the resources usage.
-
 
 Common parallel programming paradigms
 -------------------------------------
@@ -224,7 +221,6 @@ different threads write on the same memory address.
          potentially lead to a faster code compared to other schemes (Distributed discussed below)
          but notice that the code is not expected to support multi-node simulations.
 
-
 Distributed programming
 '''''''''''''''''''''''
 
@@ -296,7 +292,6 @@ available for each language.
          In Matlab `Tall Arrays <https://se.mathworks.com/help/matlab/tall-arrays.html>`_ and
          `Distributed Arrays <https://se.mathworks.com/help/parallel-computing/distributed-arrays.html>`_
          will assist you when dealing with large arrays.
-
 
 -------------------
 
@@ -461,7 +456,6 @@ available for each language.
 
 -------------------
 
-
 Exercises
 ---------
 
@@ -478,9 +472,7 @@ Exercises
 
    .. tabs::
 
-
       .. tab:: Julia
-
 
             Here is a parallel code using the ``Distributed`` package in Julia (call it
             ``integration2d_distributed.jl``):
@@ -599,7 +591,6 @@ Exercises
 
                              julia integration2d_distributed.jl
 
-
                   .. tab:: LUNARC
 
                        .. code-block:: sh
@@ -622,7 +613,6 @@ Exercises
                   .. tab:: PDC
 
                      .. code-block:: bash
-
 
                            #!/bin/bash
                            #SBATCH -A naiss202t-uv-wxyz # your project_ID
@@ -656,7 +646,6 @@ Exercises
 
                            julia integration2d_distributed.jl
 
-
             Try different number of cores for this batch script (*FIXME* string) using the sequence:
             1,2,4,8,12, and 14. Note: this number should match the number of processes
             (also a *FIXME* string) in the Julia script. Collect the timings that are
@@ -669,7 +658,6 @@ Exercises
             ``job-usage`` (HPC2N).
 
       .. tab:: R
-
 
             Here is a parallel code using the ``parallel`` and ``doParallel`` packages in R (call it
             ``integration2d.R``). Note: check if those packages are already installed for the required
@@ -716,7 +704,6 @@ Exercises
                      return(h^2 * mysum)
                    }
 
-
                    # Set up the cluster for doParallel
                    cl <- makeCluster(nworkers)
                    registerDoParallel(cl)
@@ -739,7 +726,6 @@ Exercises
 
                    # Stop the cluster after computation
                    stopCluster(cl)
-
 
             Run the code with the following batch script.
 
@@ -811,7 +797,6 @@ Exercises
                            #SBATCH --error=job.%J.err   # error file
                            #SBATCH --output=job.%J.out  # output file
 
-
                            # Load dependencies and R version
                            ml ...
 
@@ -845,9 +830,7 @@ Exercises
             with tools available at your center, for instance ``top`` (UPPMAX) or
             ``job-usage`` (HPC2N).
 
-
       .. tab:: Matlab
-
 
             Here is a parallel code using the ``parfor`` tool from Matlab (call it
             ``integration2d.m``).
@@ -889,7 +872,6 @@ Exercises
                    % Clean up the parallel pool
                    delete(gcp('nocreate'));
 
-
                    % Function for the 2D integration only computes a single bin
                    function mysum = integration2d_partial(n,i)
                        % bin size
@@ -916,7 +898,6 @@ Exercises
             ``job-usage`` (HPC2N), or if you're working in the GUI (e.g. on LUNARC), you can click ``Parallel``
             and then ``Monitor Jobs``. For ``job-usage``, you can see the job ID if you type ``squeue --me`` on a terminal on Kebnekaise.
 
-
 .. challenge:: Parallelizing a *for loop* workflow (Advanced)
    :class: dropdown
 
@@ -931,7 +912,6 @@ Exercises
    You can run the codes as suggested for each language.
 
    .. tabs::
-
 
       .. tab:: Julia
 
@@ -1019,7 +999,6 @@ Exercises
                         ml Julia/1.8.5-linux-x86_64
 
                         julia --threads 4 script-df.jl  # X number of threads
-
 
             .. tab:: LUNARC
 
@@ -1162,7 +1141,6 @@ Exercises
                         ml GCC/12.2.0  OpenMPI/4.1.4 R/4.2.2
                         Rscript --no-save --no-restore script-df.R
 
-
             .. tab:: LUNARC
 
                  .. code-block:: sh
@@ -1268,7 +1246,6 @@ Exercises
 .. solution:: Solution
 
    .. tabs::
-
 
       .. tab:: Julia
 
@@ -1396,13 +1373,11 @@ Exercises
                 total_sum_parallel = local_sums;
                 end
 
-
 .. admonition:: More info
 
    - `HPC2N Julia documentation <https://www.hpc2n.umu.se/resources/software/julia>`_.
    - `White paper on Julia parallel computing <https://juliahub.com/assets/pdf/Parallel-Computing-Guide-for-Julia-byJuliaHub.pdf>`_.
    - `HPC2N R documentation <https://www.hpc2n.umu.se/resources/software/r>`_.
    - `Wikipedias' article on Parallel Computing <https://en.wikipedia.org/wiki/Parallel_computing>`_.
-
 
 -->
