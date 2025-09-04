@@ -69,29 +69,26 @@ Before going into MATLAB specifics for batch jobs, we should look briefly at som
 First time configuration
 ------------------------
 
-In order to be able to submit jobs to the SLURM queue, you need to configure MATLAB:
+In order to be able to submit jobs to the SLURM queue, you need to configure MATLAB. To be able to use MATLAB 2019b and later with the batch system, MATLAB needs to be configured to use a **cluster profile**.This will provide a set of default specifications for batch and parallel jobs.
 
-.. admonition:: Follow these instructions to configure MATLAB
+- This needs to be done only once for each version of MATLAB on each cluster.
+- It is possible to have more than one profile for a single release.
+- Note that this is done **after loading MATLAB**,
+
+.. admonition:: Follow the linked instructions to configure MATLAB
 
    - `HPC2N <https://www.hpc2n.umu.se/resources/software/configure-matlab-2018>`_
    - `UPPMAX <https://docs.uppmax.uu.se/software/matlab_conf/>`_
    - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line>`_
-   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/matlab/>`_
-   - `PDC <https://support.pdc.kth.se/doc/applications/matlab/>`_
+   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/matlab/>`_ (Scroll down to "
+   - PDC: do NOT do `configCluster` on Dardel!
 
-- To be able to use MATLAB 2019b, and later, together with the batch system, MATLAB needs to be configured to use a cluster profile.
-- This needs to be done only once for each cluster and each version of MATLAB.
-- Note that this is done AFTER loading MATLAB.
+   NOTE: on Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there! We have added access for those participants who had PDC accounts on ***INSERT DATE***.
 
-This will provide a set of default specifications for batch and parallel jobs called a **cluster profile**. These specifications can be changed or added to at runtime, and it is possible to have more than one profile for a single release.
+For most clusters, configuration can be done at the regular terminal using a shell script called ``configCluster.sh``, before starting MATLAB. It is also possible to run ``configCluster`` (without ".sh") on the MATLAB command line, and for NSC, this is the **only** way to run the configuration file.
 
-.. admonition:: configCluster(.sh) from the terminal
+The tabs below demonstrate the preferred method for each cluster where configuration is required the first time you use a given version of Matlab, along with an example.
 
-   You do all these ONCE for each cluster, and for each version of MATLAB you use. You do this AFTER loading MATLAB but before starting the MATLAB command line or GUI (except for on Tetralith where it is done within MATLAB, see below).
-
-   NOTE: you do NOT do configCluster on Dardel!
-
-   NOTE: on Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there! We have added access for those participants who had PDC accounts on 19 March.
 
    .. tabs::
 
@@ -107,6 +104,11 @@ This will provide a set of default specifications for batch and parallel jobs ca
 
             configCluster.sh
 
+         **Example:**
+         
+         .. figure:: ../../img/configcluster.png
+            :width: 350
+            :align: center
 
       .. tab:: LUNARC
 
@@ -115,6 +117,46 @@ This will provide a set of default specifications for batch and parallel jobs ca
             configCluster.sh <project-id>
 
          Choose "cosmos" when prompted.
+         
+         **Example:**
+         
+         .. code-block::
+         
+            [bbrydsoe@cosmos3 ~]$ configCluster.sh lu2024-7-68
+            salloc: Granted job allocation 927531
+            salloc: Waiting for resource configuration
+            salloc: Nodes cn011 are ready for job
+         
+                                        < M A T L A B (R) >
+                              Copyright 1984-2023 The MathWorks, Inc.
+                         R2023b Update 7 (23.2.0.2515942) 64-bit (glnxa64)
+                                          January 30, 2024
+         
+            To get started, type doc.
+            For product information, visit www.mathworks.com.
+         
+            ip =
+         
+                "10.21.0.11"
+         
+             	   [1] aurora
+            	   [2] cosmos
+            2
+            Select a cluster [1-2]: >>Complete.  Default cluster profile set to "cosmos R2023b".
+         
+            	   Must set AccountName and WallTime before submitting jobs to COSMOS.  E.g.
+         
+            	   >> c = parcluster;
+            	   >> c.AdditionalProperties.AccountName = 'account-name';
+            	   >> % 5 hour walltime
+            	   >> c.AdditionalProperties.WallTime = '05:00:00';
+            	   >> c.saveProfile
+         
+            MATLAB is configured for multi-node parallelism.
+         
+            salloc: Relinquishing job allocation 927531
+            salloc: Job allocation 927531 has been revoked.
+            [bbrydsoe@cosmos3 ~]$
 
       .. tab:: NSC
 
@@ -122,71 +164,14 @@ This will provide a set of default specifications for batch and parallel jobs ca
 
             module load MATLAB/2024a-hpc1-bdist
             matlab -nodisplay -nodesktop -nosplash -softwareopengl
-            configCluster
+
+         Wait for MATLAB to start, then run
+
+         .. code-block::
+
+            >> configCluster
 
          Choose "tetralith" when prompted.
-
-
-.. note::
-
-   At LUNARC it is also possible do the cluster profile configuration on the MATLAB command line. In that case you just do
-
-   .. code-block::
-
-      >> configCluster
-
-   Be sure to choose "cosmos" when prompted. After this, you can use the Cluster Profile Manager to add to or refine submission parameters.
-
-
-**Example (HPC2N):**
-
-.. figure:: ../../img/configcluster.png
-   :width: 350
-   :align: center
-
-Apart from whether or not to include the .sh and the project-id, it should work the same at all centers.
-
-**Example (LUNARC):**
-
-.. code-block::
-
-   [bbrydsoe@cosmos3 ~]$ configCluster.sh lu2024-7-68
-   salloc: Granted job allocation 927531
-   salloc: Waiting for resource configuration
-   salloc: Nodes cn011 are ready for job
-
-                               < M A T L A B (R) >
-                     Copyright 1984-2023 The MathWorks, Inc.
-                R2023b Update 7 (23.2.0.2515942) 64-bit (glnxa64)
-                                 January 30, 2024
-
-
-   To get started, type doc.
-   For product information, visit www.mathworks.com.
-
-
-   ip =
-
-       "10.21.0.11"
-
-    	   [1] aurora
-   	   [2] cosmos
-   2
-   Select a cluster [1-2]: >>Complete.  Default cluster profile set to "cosmos R2023b".
-
-   	   Must set AccountName and WallTime before submitting jobs to COSMOS.  E.g.
-
-   	   >> c = parcluster;
-   	   >> c.AdditionalProperties.AccountName = 'account-name';
-   	   >> % 5 hour walltime
-   	   >> c.AdditionalProperties.WallTime = '05:00:00';
-   	   >> c.saveProfile
-
-   MATLAB is configured for multi-node parallelism.
-
-   salloc: Relinquishing job allocation 927531
-   salloc: Job allocation 927531 has been revoked.
-   [bbrydsoe@cosmos3 ~]$
 
 
 .. exercise::
