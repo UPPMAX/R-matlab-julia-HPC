@@ -1,10 +1,9 @@
 #!/bin/bash
-
-# Stop on error
 set -e
 
-# 1. Generate topology
-gmx pdb2gmx -f water.pdb -o water.gro -p topol.top << EOF
+# 1. Generate topology, ignore hydrogens
+gmx pdb2gmx -f water.pdb -o water.gro -p topol.top -ignh << EOF
+1
 1
 EOF
 
