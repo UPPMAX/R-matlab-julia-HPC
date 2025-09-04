@@ -25,6 +25,7 @@ nav:
     - Misc: 
       - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
+      - Reflections: reflections/README.md
 
 theme: 
     # It was decided to use material with the ReadTheDocs theme added on top of it,
