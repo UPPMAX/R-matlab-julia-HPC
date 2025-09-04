@@ -39,9 +39,10 @@
 
 [ system ]
 ; Name
-DNA (5'-D(*AP*GP*CP*TP*TP*GP*CP*CP*TP*TP*GP*AP*G)-3'); DNA (5'-D(*CP*TP*CP*AP*AP*GP*GP*CP*AP*AP*GP*CP*T)-3')
+DNA (5'-D(*AP*GP*CP*TP*TP*GP*CP*CP*TP*TP*GP*AP*G)-3'); DNA (5'-D(*CP*TP*CP*AP*AP*GP*GP*CP*AP*AP*GP*CP*T)-3') in water
 
 [ molecules ]
 ; Compound        #mols
 DNA_chain_A         1
 DNA_chain_B         1
+SOL             10015
