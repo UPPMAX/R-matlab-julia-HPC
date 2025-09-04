@@ -6,6 +6,7 @@
 #SBATCH --time=00:10:00 # maximum execution time of
 #SBATCH --ntasks-per-node=8 # 1 MPI rank
 #SBATCH --cpus-per-task=1 # number cpus-per-task
+#SBATCH --output=run_pelle_8.out
 
 filename=topol.tpr
 url=https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/docs-mk/lesson_plans/20251010_richel/lumi_course/topol.tpr
