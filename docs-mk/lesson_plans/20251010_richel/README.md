@@ -31,3 +31,14 @@ jmol 1UN3.pdb
 ![`jmol` shows the `1UN3` protein](jmol_works.png)
 
 - [GROMACS on LUMI course](https://zenodo.org/records/10683366)
+
+
+
+To run on Pelle:
+
+
+```
+wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/docs-mk/lesson_plans/20251010_richel/lumi_course/run_pelle.sh
+sbatch run_pelle.sh 
+```
+
