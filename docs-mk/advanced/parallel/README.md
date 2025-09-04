@@ -55,7 +55,7 @@ where one uses multiple CPU cores to work together on a same calculation
 
 === "Using 1 MPI processes"
 
-    ```
+    ```text
     Using 2 OpenMP threads 
 
                    Core t (s)   Wall t (s)        (%)
@@ -64,16 +64,33 @@ where one uses multiple CPU cores to work together on a same calculation
     Performance:        1.740       13.794
     ```
 
+=== "Using 2 MPI processes"
+
+    ```text
+                   Core t (s)   Wall t (s)        (%)
+           Time:      100.447       50.224      200.0
+                     (ns/day)    (hour/ns)
+    Performance:        1.591       15.082
+    ```
+
+=== "Using 4 MPI processes"
+
+    ```text
+                   Core t (s)   Wall t (s)        (%)
+           Time:      150.753       37.689      400.0
+                     (ns/day)    (hour/ns)
+    Performance:        3.783        6.345
+    ```
+
 
 === "Using 8 MPI processes"
 
-    ```
+    ```text
                    Core t (s)   Wall t (s)        (%)
            Time:      292.200       36.526      800.0
                      (ns/day)    (hour/ns)
     Performance:        6.446        3.723
     ```
-
 
 ## Remember
 
