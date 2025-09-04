@@ -4,8 +4,7 @@
 #
 #SBATCH -A staff
 #SBATCH --time=00:10:00 # maximum execution time of
-#SBATCH --ntasks-per-node=1 # 1 MPI rank
-#SBATCH --cpus-per-task=1 # number cpus-per-task
+#SBATCH --ntasks=1
 #SBATCH --output=run_pelle_1.out
 
 filename=topol.tpr

@@ -44,14 +44,21 @@ where one uses multiple CPU cores to work together on a same calculation
 
 ## When to use parallel computing
 
-- Be aware of Amdahl's law
+- Be aware of Amdahl's law and/or Gustafson's law
 - Single-threaded programs will never work
 
 ## Remember
 
 - Use `--ntasks=N`
 - Use `srun`
-- Use an MPI version of your software
+- Use an MPI version of your software:
+  a 'regular' non-MPI version will never work!
+
+## Links
+
+- [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
+- [Older explanation](https://youtu.be/GHbrpg75qbQ)
+- [Newer explanation](https://youtu.be/c7pVEBhPohk)
 
 === "Julia"
 
