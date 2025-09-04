@@ -80,10 +80,10 @@ In order to be able to submit jobs to the SLURM queue, you need to configure MAT
    - `HPC2N <https://www.hpc2n.umu.se/resources/software/configure-matlab-2018>`_
    - `UPPMAX <https://docs.uppmax.uu.se/software/matlab_conf/>`_
    - `LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line>`_
-   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/matlab/>`_ (Scroll down to "
-   - PDC: do NOT do `configCluster` on Dardel!
+   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/matlab/>`_ (Scroll down to "Before submitting your first job")
+   - PDC: do NOT do ``configCluster`` on Dardel!
 
-   NOTE: on Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there! We have added access for those participants who had PDC accounts on ***INSERT DATE***.
+   **NOTE:** on Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there! We have added access for those participants who had PDC accounts on **INSERT DATE**.
 
 For most clusters, configuration can be done at the regular terminal using a shell script called ``configCluster.sh``, before starting MATLAB. It is also possible to run ``configCluster`` (without ".sh") on the MATLAB command line, and for NSC, this is the **only** way to run the configuration file.
 
