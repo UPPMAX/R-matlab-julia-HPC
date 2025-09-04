@@ -5,7 +5,6 @@
 #SBATCH -A staff
 #SBATCH --time=00:10:00 # maximum execution time of
 ##SBATCH ## --nodes=1 # we run on 1 node
-#SBATCH -n=1 # we run on 1 core
 #SBATCH --ntasks-per-node=1 # 1 MPI rank
 #SBATCH --cpus-per-task=1 # number cpus-per-task
 
