@@ -21,7 +21,7 @@ nav:
       - The notebook Pluto: julia/notebook_pluto.md
     - Advanced: 
       - Schedule: advanced/schedule.md
-      - Parallel: advanced/parallel.md
+      - Parallel: advanced/parallel/README.md
     - Misc: 
       - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
