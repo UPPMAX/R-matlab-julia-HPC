@@ -18,7 +18,4 @@ else
 fi
 
 module load GROMACS/2024.4-foss-2023b
-
-srun gmx_mpi mdrun \
-  -g ex1.1_${SLURM_NTASKS}x${OMP_NUM_THREADS}_jID${SLURM_JOB_ID} \
-  -nsteps -1 -maxh 0.017 -resethway -notunepme
+srun gmx_mpi mdrun -g run_pelle_1 -nsteps -1 -maxh 0.017 -resethway -notunepme

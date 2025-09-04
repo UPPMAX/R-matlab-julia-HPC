@@ -42,3 +42,4 @@ wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/docs-mk/le
 sbatch run_pelle.sh 
 ```
 
+Need to use `srun`

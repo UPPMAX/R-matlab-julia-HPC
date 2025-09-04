@@ -86,3 +86,71 @@ Hardware detected on host richel-latitude-7430 (the node of MPI rank 0):
 Likely fastest SIMD instructions supported by all nodes: AVX2_256
 SIMD instructions selected at compile time:              SSE4.1
 ```
+
+
+
+
+Running on Pelle:
+
+Single core, 85 seconds:
+
+```bash
+#SBATCH -A staff
+#SBATCH --time=00:10:00 # maximum execution time of
+#SBATCH --ntasks-per-node=1 # 1 MPI rank
+#SBATCH --cpus-per-task=1 # number cpus-per-task
+```
+
+with log:
+
+```
+$ head -n 100 ex1.1_1x_jID42696.log 
+              :-) GROMACS - gmx mdrun, 2024.4-EasyBuild_5.1.0 (-:
+
+                  Coordinated by the GROMACS project leaders:
+                           Berk Hess and Erik Lindahl
+
+GROMACS:      gmx mdrun, version 2024.4-EasyBuild_5.1.0
+Executable:   /sw/arch/eb/software/GROMACS/2024.4-foss-2023b/bin/gmx_mpi
+Data prefix:  /sw/arch/eb/software/GROMACS/2024.4-foss-2023b
+Working dir:  /domus/h1/richel
+Process ID:   193730
+Command line:
+  gmx_mpi mdrun -g ex1.1_1x_jID42696 -nsteps -1 -maxh 0.017 -resethway -notunepme
+
+GROMACS version:     2024.4-EasyBuild_5.1.0
+Precision:           mixed
+Memory model:        64 bit
+MPI library:         MPI
+MPI library version: Open MPI v4.1.6, package: Open MPI iusan@p204.uppmax.uu.se Distribution, ident: 4.1.6, repo rev: v4.1.6, Sep 30, 2023
+OpenMP support:      enabled (GMX_OPENMP_MAX_THREADS = 128)
+GPU support:         disabled
+SIMD instructions:   AVX_512
+CPU FFT library:     fftw-3.3.10-sse2-avx-avx2-avx2_128
+GPU FFT library:     none
+Multi-GPU FFT:       none
+RDTSCP usage:        enabled
+TNG support:         enabled
+Hwloc support:       disabled
+Tracing support:     disabled
+C compiler:          /sw/arch/eb/software/OpenMPI/4.1.6-GCC-13.2.0/bin/mpicc GNU 13.2.0
+C compiler flags:    -fexcess-precision=fast -funroll-all-loops -march=skylake-avx512 -Wno-missing-field-initializers -O3 -DNDEBUG
+C++ compiler:        /sw/arch/eb/software/OpenMPI/4.1.6-GCC-13.2.0/bin/mpicxx GNU 13.2.0
+C++ compiler flags:  -fexcess-precision=fast -funroll-all-loops -march=skylake-avx512 -Wno-missing-field-initializers -Wno-cast-function-type-strict SHELL:-fopenmp -O3 -DNDEBUG
+BLAS library:        External - user-supplied
+LAPACK library:      External - user-supplied
+
+Running on 1 node with total 1 cores, 2 processing units
+Hardware detected on host p62.uppmax.uu.se (the node of MPI rank 0):
+  CPU info:
+    Vendor: AMD
+    Brand:  AMD EPYC 9454P 48-Core Processor               
+    Family: 25   Model: 17   Stepping: 1
+    Features: aes amd apic avx avx2 avx512f avx512cd avx512bw avx512vl avx512bf16 avx512secondFMA clfsh cmov cx8 cx16 f16c fma htt lahf misalignsse mmx msr nonstop_tsc pcid pclmuldq pdpe1gb popcnt pse rdrnd rdtscp sha sse2 sse3 sse4a sse4.1 sse4.2 ssse3 x2apic
+  Hardware topology: Basic
+    Packages, cores, and logical processors:
+    [indices refer to OS logical processors]
+      Package  0: [  32  80]
+    CPU limit set by OS: -1   Recommended max number of threads: 2
+```
+

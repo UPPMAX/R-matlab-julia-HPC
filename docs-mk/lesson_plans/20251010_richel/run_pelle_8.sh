@@ -4,7 +4,7 @@
 #
 #SBATCH -A staff
 #SBATCH --time=00:10:00 # maximum execution time of
-#SBATCH --ntasks-per-node=1 # 1 MPI rank
+#SBATCH --ntasks-per-node=8 # 1 MPI rank
 #SBATCH --cpus-per-task=1 # number cpus-per-task
 
 filename=topol.tpr
@@ -19,6 +19,4 @@ fi
 
 module load GROMACS/2024.4-foss-2023b
 
-srun gmx_mpi mdrun \
-  -g ex1.1_${SLURM_NTASKS}x${OMP_NUM_THREADS}_jID${SLURM_JOB_ID} \
-  -nsteps -1 -maxh 0.017 -resethway -notunepme
+srun gmx_mpi mdrun -g run_pelle_8 -nsteps -1 -maxh 0.017 -resethway -notunepme
