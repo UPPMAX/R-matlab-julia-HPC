@@ -1,0 +1,47 @@
+;
+;	File 'topol.top' was generated
+;	By user: richel (1000)
+;	On host: richel-latitude-7430
+;	At date: Thu Sep  4 13:26:12 2025
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	         :-) GROMACS - gmx pdb2gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:
+;	
+;	Executable:   /usr/bin/gmx
+;	Data prefix:  /usr
+;	Working dir:  /home/richel/GitHubs/R-matlab-julia-HPC/docs-mk/lesson_plans/20251010_richel
+;	Command line:
+;	  gmx pdb2gmx -f 140D.pdb -o protein
+;	Force field was read from the standard GROMACS share directory.
+;
+
+; Include forcefield parameters
+#include "amber99sb-ildn.ff/forcefield.itp"
+
+; Include chain topologies
+#include "topol_DNA_chain_A.itp"
+#include "topol_DNA_chain_B.itp"
+
+; Include water topology
+#include "amber99sb-ildn.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+; Name
+DNA (5'-D(*AP*GP*CP*TP*TP*GP*CP*CP*TP*TP*GP*AP*G)-3'); DNA (5'-D(*CP*TP*CP*AP*AP*GP*GP*CP*AP*AP*GP*CP*T)-3')
+
+[ molecules ]
+; Compound        #mols
+DNA_chain_A         1
+DNA_chain_B         1
