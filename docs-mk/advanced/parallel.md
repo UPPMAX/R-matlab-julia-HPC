@@ -16,7 +16,24 @@
 
     Prior:
 
-    - ...
+    - What is parallel computing?
+
+    Feedback:
+
+    - When to use parallel computing?
+    - When not to use parallel computing?
+
+## Why parallel computing is important
+
+Most HPC clusters use 10 days as a maximum duration for a job.
+Your calculation may take longer than that.
+One technique that may work is to use parallel computing,
+where one uses multiple CPU cores to work together on a same calculation
+
+## When to use parallel computing
+
+- Be aware of Amdahl's law
+- Single-threaded programs will never work
 
 
 === "Julia"
@@ -49,47 +66,6 @@
 
 What is parallel programming?
 -----------------------------
-
-Parallel programming is the science and art of writing code that execute tasks on different
-computing units (cores) simultaneously. In the past computers were shiped with a
-single core per Central Processing Unit (CPU) and therefore only
-a single computation at the time (serial program) could be executed.
-
-Nowadays computer architectures are more complex than the single core CPU mentioned
-already. For instance, common architectures include those where several cores in a
-CPU share a common memory space and also those where CPUs are connected through some
-network interconnect.
-
-.. figure:: ../../img/shared-distributed-mem.svg
-   :width: 550
-   :align: center
-
-   Shared Memory and Distributed Memory architectures.
-
-A more realistic picture of a computer architecture can be seen in the following
-picture where we have 14 cores that shared a common memory of 64 GB. These cores
-form the socket and the two sockets shown in this picture constitute a node.
-
-.. figure:: ../../img/cpus.png
-   :width: 550
-   :align: center
-
-   1 standard node on Kebnekaise @HPC2N
-
-It is interesting to notice that there are different types of memory
-available for the cores, ranging from the L1 cache to the node's memory for a single
-node. In the former, the bandwidth can be TB/s while in the latter GB/s.
-
-Now you can see that on a single node you already have several computing units
-(cores) and also a hierarchy of memory resources which is denoted as Non Uniform
-Memory Access (NUMA).
-
-Besides the standard CPUs, nowadays one finds Graphic Processing Units (GPUs)
-architectures in HPC clusters.
-
-
-Why is parallel programming needed?
------------------------------------
 
 There is no "free lunch" when trying to use features (computing/memory resources) in
 modern architectures. If you want your code to be aware of those features, you will
