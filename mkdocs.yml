@@ -23,6 +23,7 @@ nav:
       - Schedule: advanced/schedule.md
       - Parallel: advanced/parallel.md
     - Misc: 
+      - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
 
 theme: 
