@@ -22,6 +22,8 @@ nav:
     - Advanced: 
       - Schedule: advanced/schedule.md
       - Parallel: advanced/parallel.md
+    - Misc: 
+      - Lesson plans: lesson_plans/README.md
 
 theme: 
     # It was decided to use material with the ReadTheDocs theme added on top of it,
