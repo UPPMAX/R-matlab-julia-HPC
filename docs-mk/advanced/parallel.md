@@ -30,11 +30,28 @@ Your calculation may take longer than that.
 One technique that may work is to use parallel computing,
 where one uses multiple CPU cores to work together on a same calculation
 
+## Types of 'doing more things at the same time'
+
+- Message Passing Interface: for a job that use multiple cores,
+  for example, a weather prediction.
+  In this session!
+- Slurm job arrays: for running jobs that are embarassingly parallel,
+  for example, running a simulation with different random numbers
+  Not in this session
+- Multithreaded: jobs that do more tasks per CPU,
+  for example, an operating system.
+  Not in this session
+
 ## When to use parallel computing
 
 - Be aware of Amdahl's law
 - Single-threaded programs will never work
 
+## Remember
+
+- Use `--ntasks=N`
+- Use `srun`
+- Use an MPI version of your software
 
 === "Julia"
 
