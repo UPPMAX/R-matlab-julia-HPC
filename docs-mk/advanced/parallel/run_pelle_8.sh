@@ -7,4 +7,8 @@
 #SBATCH --ntasks=8
 #SBATCH --output=run_pelle_8.out
 module load OpenMPI/5.0.7-GCC-14.2.0 GROMACS/2024.4-foss-2023b
+
+# Overwrite an exisiting output file, do not create a new version as a backup
+GMX_MAXBACKUP=-1
+
 mpirun -n 8 gmx_mpimdrun -g run_pelle_8 -nsteps -1 -maxh 0.017 -resethway -notunepme
