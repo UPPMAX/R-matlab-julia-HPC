@@ -23,6 +23,10 @@
     - When to use parallel computing?
     - When not to use parallel computing?
 
+
+![Arnold (at the left): a robot that was controlled by MPI](arnold.jpg)
+![Cora, the robotic platform for Arnold](cora.jpg)
+
 ## Why parallel computing is important
 
 Most HPC clusters use 10 days as a maximum duration for a job.
@@ -46,6 +50,30 @@ where one uses multiple CPU cores to work together on a same calculation
 
 - Be aware of Amdahl's law and/or Gustafson's law
 - Single-threaded programs will never work
+
+## Output
+
+=== "Using 1 MPI processes"
+
+    ```
+    Using 2 OpenMP threads 
+
+                   Core t (s)   Wall t (s)        (%)
+           Time:       86.902       43.452      200.0
+                     (ns/day)    (hour/ns)
+    Performance:        1.740       13.794
+    ```
+
+
+=== "Using 8 MPI processes"
+
+    ```
+                   Core t (s)   Wall t (s)        (%)
+           Time:      292.200       36.526      800.0
+                     (ns/day)    (hour/ns)
+    Performance:        6.446        3.723
+    ```
+
 
 ## Remember
 
