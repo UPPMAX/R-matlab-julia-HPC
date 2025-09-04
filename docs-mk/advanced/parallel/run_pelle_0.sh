@@ -5,7 +5,7 @@
 #SBATCH -A staff
 #SBATCH --time=00:10:00 # maximum execution time of
 #SBATCH --ntasks=1
-#SBATCH --output=run_pelle_1.out
+#SBATCH --output=run_pelle_0.out
 
 filename=topol.tpr
 url=https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/docs-mk/lesson_plans/20251010_richel/lumi_course/topol.tpr
