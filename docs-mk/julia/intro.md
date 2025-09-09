@@ -77,25 +77,25 @@ the features of this language are:
 
 ## More on Julia
 
-- Official Julia documentation is found [here](https://docs.julialang.org/en/v1/)
-- Slack channel for Julia and instructions for joining it are found here: <https://julialang.org/slack/>
+- Official Julia documentation is found
+  [here](https://docs.julialang.org/en/v1/)
+- Official Julia discussion/support forum is
+  [here](https://discourse.julialang.org)
+- Slack channel for Julia and instructions for joining it are found here:
+  <https://julialang.org/slack/>
 - [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
+- [Extra materials in these course pages](https://uppmax.github.io/R-matlab-julia-HPC/extra/julia_extra.html)
 
 ## Julia documentation at the centers
 
-- Documentation at the HPC centres
-    - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
-    - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
-    - LUNARC has no specific Julia documentation, but you can find installed versions
-     [here](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/)
-    - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
-    - [PDC](https://support.pdc.kth.se/doc/applications/)
+- [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
+- [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
+- LUNARC has no specific Julia documentation, but you can find installed versions
+[here](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/)
+- [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
+- [PDC](https://support.pdc.kth.se/doc/applications/julia/)
 
-!!! info "See also"
 
-    Material for improving your programming skills
-
-    - [Extra material](https://uppmax.github.io/R-matlab-julia-HPC/extra/julia_extra.html)
 
 !!! info "Key points:"
 
