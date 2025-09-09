@@ -6,10 +6,10 @@ tags:
 
 # Julia schedule
 
-!!! warning "Ruthlessly converted"
+!!! warning "Schedule not quite up-to-date"
 
-    This page has been ruthlessly converted from RST to Markdown.
-    It would be wise to double-check!
+    This schedule has not been updated to reflect changes such as the addition
+    of the advanced day.
 
 Time |Topic                                                      |Teacher
 -----|-----------------------------------------------------------|------
