@@ -1,6 +1,6 @@
 # Load and run Julia
 
-!!! note
+!!! info
 
     At the Swedish HPC centers we call the applications available via the *module system* **modules**:
 
@@ -40,8 +40,8 @@ The module activates paths to a specific version of the julia interpreter and it
     Note that the module systems at UPPMAX and HPC2N are slightly different.
     All modules at UPPMAX, for instance, not directly related to bio-informatics are shown by ``ml avail``.
 
-    Modules at many other centres are only available when one has loaded all prerequisites,
-for instance the compilers (``GNU``, ``Intel``, etc.).
+    Modules at many other centres are only available when one has loaded all
+    prerequisites, for instance the compilers (``GNU``, ``Intel``, etc.).
 
 
 ## Check for Julia versions
@@ -121,102 +121,102 @@ module spider julia
     -------------------------------------------------------------------------------------------------------
     ```
 
-Load a Julia module
---------------------
+## Load a Julia module
 
 For reproducibility, we recommend ALWAYS loading a specific module for the Julia version instead of using the
 default one.
 
-Principle
-#########
+#### Principle
 
-- Use the overview of existing module above!
-
+- Use the output of existing module above!
 - Load the module!
 
 At some clusters:
 
-.. code-block:: console
-
-   $ module load julia/1.8.5
+``` { .console }
+module load julia/1.8.5
+```
 
 or at cluster that includes "architecture" or "build name" in module name:
 
-.. code-block:: console
-
-   $ ml julia/1.10.2-bdist
+``` { .console }
+ml julia/1.10.2-bdist
+```
 
 Some clusters will require other modules to be loaded (Kebnekaise and Dardel)
 
 - First check how to load (see Check for Julia versions above)
 
-.. code-block:: console
+``` { .console data-copy="module spider julia/1.10.2-cpeGNU-23.12" }
+$ module spider julia/1.10.2-cpeGNU-23.12
 
-   $ module spider julia/1.10.2-cpeGNU-23.12
+...
+You will need to load all module(s) on any one of the lines below before the "julia/1.10.2-cpeGNU-23.12" module is available to load.
 
-     ...
-     You will need to load all module(s) on any one of the lines below before the "julia/1.10.2-cpeGNU-23.12" module is available to load.
-
-     PDC/23.12
+PDC/23.12
+```
 
 - Load PDC/23.12 first and then the julia module
 
-.. code-block:: console
+``` { .console }
+ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+```
 
-   $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+## Run
 
-Run
----
-
-Run Julia as a session
-######################
-
+### Run Julia as a session
 
 - After loading the appropriate modules for Julia, you will have access to the **read-eval-print-loop (REPL)** command line by typing ``julia``:
 
-.. code-block:: console
-
-   $ julia
+``` { .console }
+julia
+```
 
 - In julia REPL
 
-.. admonition:: How will it look like?
-   :class: dropdown
+!!! Example
+    This is what loading the Julia REPL looks like on Pelle:
 
-   .. code-block:: julia-repl
+    ``` { .console }
+    [username@pelle1 ~]$ ml
+    No modules loaded
+    [username@pelle1 ~]$ ml Julia/1.10.9
+    [username@pelle1 ~]$ ml
 
-      $ ml julia/1.8.5
-      $ julia
+    Currently Loaded Modules:
+      1) Julia/1.10.9-LTS-linux-x86_64
 
-            _       _ _(_)_     |  Documentation: https://docs.julialang.org
-           (_)     | (_) (_)    |
-            _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
-           | | | | | | |/ _` |  |
-           | | |_| | | | (_| |  |  Version 1.8.5 (2023-01-08)
-          _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
-         |__/                   |
+     
 
-      julia>
+    [username@pelle1 ~]$ julia
+               _
+       _       _ _(_)_     |  Documentation: https://docs.julialang.org
+      (_)     | (_) (_)    |
+       _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+      | | | | | | |/ _` |  |
+      | | |_| | | | (_| |  |  Version 1.10.9 (2025-03-10)
+     _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+    |__/                   |
 
-Modes: Julian mode
-..................
+    julia> 
+
+    ```
+
+### Modes: Julian mode
 
 - Julia has different modes, the one we arrive at is the so-called ``Julian`` mode, where one can execute commands.
-
 - The description for accessing these modes will be given in the following paragraphs.
-
 - Once you are done with your work in any of the modes, you can return to the ``Julian`` mode by pressing the ``backspace`` key.
 
-Shell mode
-..........
+### Shell mode
 
 While being on the Julian mode you can enter the ``shell`` mode by typing ``;``:
 
-.. code-block:: julia
-
+``` { .julia-repl }
    julia>;
    shell>pwd
    /current-folder-path
+```
 
 this will allow you to use Linux commands. Notice that the availability of these commands
 depend on the OS, for instance, on Windows it will depend on the terminal that you have
