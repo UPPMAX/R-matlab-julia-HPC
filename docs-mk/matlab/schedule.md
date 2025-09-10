@@ -6,11 +6,6 @@ tags:
 
 # MATLAB schedule
 
-!!! warning "Ruthlessly converted"
-
-    This page has been ruthlessly converted from RST to Markdown.
-    It would be wise to double-check!
-
 | Time  | Topic                                                        | Teacher(s) |
 | -----:|:------------------------------------------------------------ |:---------- |
 | 09:00 | Log in                                                       | Several    |
