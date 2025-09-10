@@ -1,5 +1,9 @@
 # Load and Run MATLAB
 
+> **Objectives**
+> - Be able to load MATLAB
+> - Be able to run MATLAB scripts and start the MATLAB graphical user interface (GUI)
+
 > [!IMPORTANT]
 > Different recommended procedures for each HPC center:
 > - **UPPMAX, NSC, and HPC2N**: use module system to load at command line
@@ -8,13 +12,8 @@
 
 Most HPC centres in Sweden use the same or a similar module system for their software. The difference lies in which modules are installed and their versions/naming. The general examples below will be similar for all HPC centres in Sweden, with some variation in naming and available versions.
 
-!!! note "Objectives"
-
-   - Be able to load MATLAB
-   - Be able to run MATLAB scripts and start the MATLAB graphical user interface (GUI)
-
 <details>
-  <summary>Short cheat sheet</summary>
+  <summary><b>Short cheat sheet (click here)</b></summary>
 
     - See which modules exists: ``module spider`` or ``ml spider``
     - Find module versions for a particular software: ``module spider <software>``
@@ -465,55 +464,54 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
 
 Try them yourself! Note that `$` indicates a bash prompt and `>>` indicates the Matlab prompt; those characters should not be included at the front of your input.
 
-**Exercise 1.** Load MATLAB in the terminal or GUI and do a few simple commands at the command line. For example,
+> :writing_hand: **Exercise 1:** Load MATLAB in the terminal or GUI and do a few simple commands at the command line. For example,
+>
+> ```bash
+> $ ml matlab/2023b
+> $ matlab -singleCompThread -nodisplay
+>                             < M A T L A B (R) >
+>                Copyright 1984-2023 The MathWorks, Inc.
+>           R2023b Update 7 (23.2.0.2515942) 64-bit (glnxa64)
+>                            January 30, 2024
+> To get started, type doc.
+> For product information, visit www.mathworks.com.
+> >> a = 5;
+> >> b = eye(2);
+> >> c = a+b
+> c =
+>     6     5
+>     5     6
+> ```
 
-    ```bash
-       $ ml matlab/2023b
-       $ matlab -singleCompThread -nodisplay
-                                   < M A T L A B (R) >
-                      Copyright 1984-2023 The MathWorks, Inc.
-                 R2023b Update 7 (23.2.0.2515942) 64-bit (glnxa64)
-                                  January 30, 2024
-       To get started, type doc.
-       For product information, visit www.mathworks.com.
-       >> a = 5;
-       >> b = eye(2);
-       >> c = a+b
-       c =
-           6     5
-           5     6
-    ```
-
-**Exercise 2.** Copy the example function below to a file called ``add2.m`` in your working directory or the MATLAB directory that the configuration step created for you in your Documents folder. Then run it at the MATLAB command line.
-
-  ```matlab
-  function result = add2(x,y)
-  result = x+y
-  disp("The sum of "+x+" and "+y+" is "+result)
-  end
-  ```
+> :writing_hand: **Exercise 2:** Copy the example function below to a file called ``add2.m`` in your working directory or the MATLAB directory that the configuration step created for you in your Documents folder. Then run it at the MATLAB command line.
+>
+>  ```matlab
+>  function result = add2(x,y)
+>  result = x+y
+>  disp("The sum of "+x+" and "+y+" is "+result)
+>  end
+>  ```
 
 <details>
-  <summary>Solution</summary>
+  <summary><b>Solution</b></summary>
 
-    ```matlab
-    >> add2(5,8)
-    result =
-         13
-    The sum of 5 and 8 is 13
-    >>
-    ```
-    
+ ```matlab
+ >> add2(5,8)
+ result =
+      13
+ The sum of 5 and 8 is 13
+ >>
+ ```
 </details>
 
-**Exercise 3.** Exit the MATLAB command line with `quit` or `exit` (this can take a few seconds).
+> :writing_hand: **Exercise 3:** Exit the MATLAB command line with `quit` or `exit` (this can take a few seconds).
 
 <details>
-  <summary>Solution</summary>
+  <summary><b>Solution</b></summary>
   
-  ```matlab
-  >> exit
-  ```
+```matlab
+>> exit
+```
 </details>
 
 > [!IMPORTANT]
