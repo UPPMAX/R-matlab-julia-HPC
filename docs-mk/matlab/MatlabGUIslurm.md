@@ -43,10 +43,10 @@ In the following sections we will extend the last two options.
 ## MATLAB Desktop/graphical interface
 
 Jobs can be submitted to the SLURM queue directly from the the MATLAB GUI as an alternative
-to the standard bash scripts that are used with the command ``sbatch my-script.sh``, for instance.
+to the standard bash scripts that are used with the command `sbatch my-script.sh`, for instance.
 
 <div align="center">
-  <img src="../../img/matlab-gui.png" alt="Matlab GUI" width="500"/>
+  <img src="../../docs/img/matlab-gui.png" alt="Matlab GUI" width="500"/>
 </div>
 MATLAB GUI
 
