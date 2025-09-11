@@ -1,6 +1,6 @@
 #!/bin/bash -l
 #SBATCH -n 16                # nr. tasks/coresw
-#SBATCH -A naiss202u-wv-xyz  # your project_ID
+#SBATCH -A staff
 #SBATCH --time=00:20:00      # requested time
 
 ml R_packages/4.1.1
