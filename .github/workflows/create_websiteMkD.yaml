@@ -1,0 +1,42 @@
+# Creates and deploys the rendered site version of this repository
+name: Create site
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" (or "master") branch
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - devel
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# This script writes to gh-pages,
+# fixes warning from https://github.com/bridgecrewio/checkov/blob/main/checkov/github_actions/checks/graph_checks/ReadOnlyTopLevelPermissions.yaml
+# yamllint disable rule:CKV2_GHA_1
+# checkov:skip=CKV2_GHA_1:Please ignore
+#
+# Remove these:
+#
+# checkov: skip=CKV2_GHA_1:This script does need to write
+# permissions: write-all
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "create_site"
+  create_site:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: pip install mkdocstrings mkdocs-embed-external-markdown feedparser mkdocs-gen-files markdown-exec[ansi] markdown-include mkdocs-open-in-new-tab markdown-extra mkdocs-mermaid2-plugin
+      - run: mkdocs gh-deploy --force
