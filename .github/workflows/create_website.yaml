@@ -4,7 +4,7 @@ name: Create website
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   create_website:
