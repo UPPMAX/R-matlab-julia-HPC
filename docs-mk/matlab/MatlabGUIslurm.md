@@ -201,11 +201,11 @@ end
 Then, in the MATLAB GUI I can execute this function and retrieve/print out the results as follows:
 
 ```matlab
-    c=parcluster('name-of-your-cluster');
-    j = c.batch(@hostnm,'nr. outputs',{'list of input args'},'pool','nr. workers');
-    j.wait;                               % wait for the results
-    t = j.fetchOutputs{:};                % fetch the results
-    fprintf('Name of host: %s \n', t);    % Print out the results
+c=parcluster('name-of-your-cluster');
+j = c.batch(@hostnm,'nr. outputs',{'list of input args'},'pool','nr. workers');
+j.wait;                               % wait for the results
+t = j.fetchOutputs{:};                % fetch the results
+fprintf('Name of host: %s \n', t);    % Print out the results
 ```
 
 Notice that if you will use this sequence of commands to launch many jobs, it will be convenient to write
