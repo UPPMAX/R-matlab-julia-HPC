@@ -43,3 +43,9 @@ sbatch run_pelle.sh
 ```
 
 Need to use `srun`
+
+## 2025-09-11
+
+I think this was a bad idea: the course is an R and MATLAB and Julia course.
+Let's change the learning outcome to run a script in one of those
+languages.

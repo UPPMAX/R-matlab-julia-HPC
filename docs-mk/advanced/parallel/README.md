@@ -2,15 +2,17 @@
 
 !!! info "Learning outcomes"
 
-    - Learners can schedule and run a job that needs more cores
-    - Learners understand when it is possible/impossible
+    - Schedule and run a job that needs more cores,
+      with a calculation in their favorite language
+    - Understand when it is possible/impossible
       and/or useful/useless to run a job with multiple cores
 
 ???- info "For teachers"
 
     Teaching goals are:
 
-    - Learners have scheduled a job that needs more cores
+    - Learners have scheduled and run a job that needs more cores,
+      with a calculation in their favorite language
     - Learners understand when it is possible/impossible
       and/or useful/useless to run a job with multiple cores
 
