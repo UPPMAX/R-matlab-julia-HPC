@@ -256,7 +256,7 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     ```
     We want now to repeat these steps (generating the numbers and taking the sum) 6 times so that the steps are run at the same time. Use `parfor` to parallelize these steps. Once your code is parallelized enclose it in a `parpool` section and send the job to the queue.
 
-??? example "Solution"
+??? check "Solution"
 
     ```matlab
     % Nr. of workers
@@ -289,7 +289,7 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     ```
     Place this function in a file called **parfeval_mean.m** and submit this function with the MATLAB `batch` command.
 
-??? example "Solution"
+??? check "Solution"
 
     ```matlab
     c=parcluster('name-of-your-cluster');
