@@ -6,15 +6,15 @@
 
 Please find the **exercise files** [here](../exercises/exercises.tar.gz)
 
-!!! note "Learning outcomes"
+!!! info "Objectives"
 
-- Load MATLAB modules and site-installed MATLAB packages
-- Create a MATLAB environment
-- Install MATLAB packages with **Add-Ons** manager
-- Write a batch script for running MATLAB
-- Use MATLAB in parallel mode
-- Use GPUs with MATLAB
-- Use MATLAB for ML
+    - Load MATLAB modules and site-installed MATLAB packages
+    - Create a MATLAB environment
+    - Install MATLAB packages with **Add-Ons** manager
+    - Write a batch script for running MATLAB
+    - Use MATLAB in parallel mode
+    - Use GPUs with MATLAB
+    - Use MATLAB for ML
 
 
 !!! note "Your expectations?"
@@ -67,11 +67,11 @@ Of course MATLAB also has some drawbacks:
 
 - Official MATLAB documentation is found [here](https://se.mathworks.com/help/matlab/index.html?s_tid=hc_panel)
 
-!!! note "Material for improving your programming skills"
+!!! tip "Material for improving your programming skills"
 
-- [Extra material](https://uppmax.github.io/R-matlab-julia-HPC/extra/matlab_extra.html)
+    - [Extra material](https://uppmax.github.io/R-matlab-julia-HPC/extra/matlab_extra.html)
 
-!!! note "Key Points"
+!!! summary
 
-- MATLAB is a 4th generation language with an interactive environment that can generate code that handles common problems for you.
-- Parallelization is easy with the GUI, but be careful to set ``-singleCompThread`` when starting it at the command line or it may hog a full node.
+    - MATLAB is a 4th generation language with an interactive environment that can generate code that handles common problems for you.
+    - Parallelization is easy with the GUI, but be careful to set ``-singleCompThread`` when starting it at the command line or it may hog a full node.
