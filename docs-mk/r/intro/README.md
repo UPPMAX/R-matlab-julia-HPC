@@ -53,7 +53,7 @@ R is a programming language for statistical computing and data visualization
 ([Wikipedia](https://en.wikipedia.org/wiki/R_(programming_language))).
 
 ```mermaid
-flowchart TD
+graph TD
 
     subgraph r[R]
       r_interpreter[the R interpreter]
@@ -89,7 +89,7 @@ R is used in many NAISS centres:
 ## Schedule
 
 ```mermaid
-flowchart TD
+graph TD
 
     subgraph login[HPC login]
       ssh[0.SSH]
@@ -106,7 +106,7 @@ flowchart TD
 ```
 
 ```mermaid
-flowchart TD
+graph TD
 
     subgraph r[R]
       r_interpreter[1.the R interpreter]
