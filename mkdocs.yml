@@ -45,6 +45,9 @@ extra:
     feature:
         tabs: true
 
+extra_css:
+  - css/extra.css
+
 markdown_extensions:
   - toc:
       toc_depth: 3
