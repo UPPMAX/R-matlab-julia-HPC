@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -n 16
+#SBATCH -n 1
 #SBATCH -A staff
-module load R_packages
+module load R R_packages
 Rscript r_script.R ${SLURM_NTASKS}
