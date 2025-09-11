@@ -2,7 +2,7 @@
 
 Here we discuss how MATLAB interacts with SLURM.
 
-!!! objectives
+!!! info "Objectives"
 
     - Understand and use the Slurm scheduler in MATLAB
     - Start batch jobs from MATLAB Graphical User Interface (GUI)
@@ -246,16 +246,17 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
 
 ## Exercises
 
-> :writing_hand: **Challenge:** Create and run a parallel code
-> We have the following code in MATLAB that generates an array of 10000 random numbers and then the sum of all elements is stored in a variable called **s**:
->
-> ```matlab
-> r = rand(1,10000);
-> s = sum(r);
-> ```
-> We want now to repeat these steps (generating the numbers and taking the sum) 6 times so that the steps are run at the same time. Use `parfor` to parallelize these steps. Once your code is parallelized enclose it in a `parpool` section and send the job to the queue.
+!!! example "**Challenge:** Create and run a parallel code"
+    
+    We have the following code in MATLAB that generates an array of 10000 random numbers and then the sum of all elements is stored in a variable called **s**:
+    
+    ```matlab
+    r = rand(1,10000);
+    s = sum(r);
+    ```
+    We want now to repeat these steps (generating the numbers and taking the sum) 6 times so that the steps are run at the same time. Use `parfor` to parallelize these steps. Once your code is parallelized enclose it in a `parpool` section and send the job to the queue.
 
-<details><Summary><b>Solution</b></Summary>
+??? example "**Solution**"
 
     ```matlab
     % Nr. of workers
@@ -276,19 +277,19 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     % Clean up the parallel pool
     delete(gcp('nocreate'));
     ```
-</details>
+    
+!!! example "**Challenge:** Run a parallel code with `batch` MATLAB function"
 
-> :writing_hand: **Challenge:** Run a parallel code with ``batch`` MATLAB function
-> The following function uses ``parfeval`` to do some computation (specifically it takes the average per-column of a matrix with a size ``nsize`` equal to 1000):
->
-> ```matlab
-> function results = parfeval_mean(nsize)
->    results = parfeval(@mean, 1, rand(nsize))
-> end
-> ```
-> Place this function in a file called **parfeval_mean.m** and submit this function with the MATLAB ``batch`` command.
+    The following function uses ``parfeval`` to do some computation (specifically it takes the average per-column of a matrix with a size ``nsize`` equal to 1000):
+    
+    ```matlab
+    function results = parfeval_mean(nsize)
+       results = parfeval(@mean, 1, rand(nsize))
+    end
+    ```
+    Place this function in a file called **parfeval_mean.m** and submit this function with the MATLAB `batch` command.
 
-<details><Summary><b>Solution</b></Summary>
+??? example "**Solution**"
 
     ```matlab
     c=parcluster('name-of-your-cluster');
@@ -297,9 +298,8 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     t = j.fetchOutputs{:};                % fetch the results
     fprintf('Name of host: %.5f \n', t);    % Print out the results
     ```
-</details>
 
-!!! important
+!!! summary
 
     - The SLURM scheduler handles allocations to the calculation nodes
     - MATLAB has good integration with SLURM and because of that one can submit jobs to the
