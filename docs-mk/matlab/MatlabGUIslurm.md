@@ -71,7 +71,7 @@ Note that `batch` also accepts script names in place of function names, but thes
 
 ### Job settings in the Cluster Profile Manager
 
-!!! note
+!!! tip
 
     You can change the job settings (or make them all together) inside the GUI. To do that, you change the job settings within the Cluster Profile Manager.
     
