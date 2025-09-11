@@ -246,7 +246,7 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
 
 ## Exercises
 
-!!! example "**Challenge:** Create and run a parallel code"
+!!! example "**Challenge 1.** Create and run a parallel code"
     
     We have the following code in MATLAB that generates an array of 10000 random numbers and then the sum of all elements is stored in a variable called **s**:
     
@@ -256,7 +256,7 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     ```
     We want now to repeat these steps (generating the numbers and taking the sum) 6 times so that the steps are run at the same time. Use `parfor` to parallelize these steps. Once your code is parallelized enclose it in a `parpool` section and send the job to the queue.
 
-??? example "**Solution**"
+??? example "Solution"
 
     ```matlab
     % Nr. of workers
@@ -278,7 +278,7 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     delete(gcp('nocreate'));
     ```
     
-!!! example "**Challenge:** Run a parallel code with `batch` MATLAB function"
+!!! example "**Challenge 2.** Run a parallel code with `batch` MATLAB function"
 
     The following function uses ``parfeval`` to do some computation (specifically it takes the average per-column of a matrix with a size ``nsize`` equal to 1000):
     
@@ -289,7 +289,7 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     ```
     Place this function in a file called **parfeval_mean.m** and submit this function with the MATLAB `batch` command.
 
-??? example "**Solution**"
+??? example "Solution"
 
     ```matlab
     c=parcluster('name-of-your-cluster');
