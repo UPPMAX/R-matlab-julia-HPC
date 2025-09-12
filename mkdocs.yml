@@ -37,8 +37,8 @@ extra:
     feature:
         tabs: true
 
-extra_css:
-  - css/extra.css
+# extra_css:
+#   - css/extra.css
 
 markdown_extensions:
   - toc:
