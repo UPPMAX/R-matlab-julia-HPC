@@ -10,4 +10,4 @@ markdown-extra==1.0.1
 mkdocs-mermaid2-plugin
 pymdown-extensions>=9.8
 markdown-fenced-code-tabs
-mkdocs-mermaid2-plugin
+
