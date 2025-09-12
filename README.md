@@ -52,6 +52,29 @@ Build and deploy the website, from this project's root folder:
 mkdocs serve
 ```
 
+### Building old sphinx version as we're transitioning
+
+1. Create and activate separate python venv:
+    ```console
+    mkdir oldsphinxenv
+    python -m venv oldsphinxenv
+    source oldsphinxenv/bin/activate
+    ```
+
+2. Install the correct requirements for sphinx:
+    ```console
+    pip install --upgrade pip
+    pip install -r requirements.txt
+    ```
+
+3. (I have not seen a case of needing to deactivate and reactivate the venv at
+   this point for sphinx.) Build and deploy, automatically choosing an open
+   port:
+    ```console
+    sphinx-autobuild --port 0 docs/ build/
+    ```
+
+
 ## Credits
 
 - The old and online version is built with Sphinx using a theme provided by Read the Docs
