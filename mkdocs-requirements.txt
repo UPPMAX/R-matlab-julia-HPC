@@ -8,5 +8,5 @@ markdown-include==0.8.1
 mkdocs-open-in-new-tab==1.0.3
 markdown-extra==1.0.1
 pymdown-extensions>=9.8
-markdown-fenced-code-tabs
+mkdocstrings[python]
 
