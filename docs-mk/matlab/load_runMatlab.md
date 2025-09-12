@@ -132,7 +132,7 @@ Below we have examples for how to check for MATLAB versions on different cluster
     ml spider matlab
     ```
 
-    Or, if on Desktop On-Demand, select ``Applications`` in the top left corner and hover over ``Applications - Matlab`` (see also GUI section below).
+    Or, if on Desktop On-Demand, select `Applications` in the top left corner and hover over ``Applications - Matlab`` (see also GUI section below).
 
     As of 27 Feb 2025, `ml spider matlab` on COSMOS outputs the following:
 
@@ -206,7 +206,7 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), NSC (2023b
 
 ### Type-along
 
-Try loading a Matlab module at the command line. First, go back and check which MATLAB modules were available.
+Try loading a MATLAB module at the command line. First, go back and check which MATLAB modules were available.
 
 === "UPPMAX (Rackham)"
 
@@ -391,7 +391,7 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
 
      For UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
 
-     ![Matlab GUI, Rackham](../../img/Rackham-Matlab.png)
+     ![MATLAB GUI, Rackham](../../img/Rackham-Matlab.png)
 
      It is also possible to start the MATLAB GUI on the login node, but even if you are already logged into Rackham, you must use Snowy for any interactive work. Fortunately, the ``interactive`` command takes care of this for you without requiring SSH, as long as you specify ``-M snowy``. A MATLAB GUI session can be run with the following commands (again, edit time, resources, project ID, and MATLAB version as needed):
 
@@ -428,7 +428,7 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
 
     There are 3 versions per MATLAB release in the Apps menu---regular, (CPU), and (HEP,CPU)---and your resource choices in the GfxLauncher partly depend on which of those you select.
 
-    [Matlab GUI, COSMOS](../../img/Cosmos-AppMenu-Matlab.png)
+    [MATLAB GUI, COSMOS](../../img/Cosmos-AppMenu-Matlab.png)
 
     The (HEP,CPU) nodes are private. The regular versions run on Intel 32-core nodes because they have built-in GPU partitions, but you may choose other nodes. If you don't plan to do any intensive graphical work inside the GUI, you can choose the (CPU) version of your preferred release to access an AMD 48-core node, which also allows you to run for up to 7 days (168:00:00) instead of the usual 2-day limit.
 
@@ -464,7 +464,7 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
 
 ### Exercises
 
-Try them yourself! Note that `$` indicates a bash prompt and `>>` indicates the Matlab prompt; those characters should not be included at the front of your input.
+Try them yourself! Note that `$` indicates a bash prompt and `>>` indicates the MATLAB prompt; those characters should not be included at the front of your input.
 
 !!! example "**Challenge 1.** Load MATLAB in the terminal or GUI."
 
