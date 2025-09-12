@@ -1,19 +1,21 @@
 # Load and Run MATLAB
 
-> **Objectives**
-> - Be able to load MATLAB
-> - Be able to run MATLAB scripts and start the MATLAB graphical user interface (GUI)
+!!! info "Objectives"
 
-> [!IMPORTANT]
-> Different recommended procedures for each HPC center:
-> - **UPPMAX, NSC, and HPC2N**: use module system to load at command line
-> - **LUNARC**: recommended to use Desktop On-Demand menu, but interactive and non-interactive command lines available
-> - **PDC**: recommended to load at command line; can run interactively on a compute node with X-forwarding and `salloc`. ThinLinc access is restricted to 30 users for the whole Dardel cluster.
+    - Load MATLAB
+    - Run MATLAB scripts
+    - Start the MATLAB graphical user interface (GUI)
+
+!!! important
+
+    Different recommended procedures for each HPC center:
+    - **UPPMAX, NSC, and HPC2N**: use module system to load at command line
+    - **LUNARC**: recommended to use Desktop On-Demand menu, but interactive and non-interactive command lines available
+    - **PDC**: recommended to load at command line; can run interactively on a compute node with X-forwarding and `salloc`. ThinLinc access is restricted to 30 users for the whole Dardel cluster.
 
 Most HPC centres in Sweden use the same or a similar module system for their software. The difference lies in which modules are installed and their versions/naming. The general examples below will be similar for all HPC centres in Sweden, with some variation in naming and available versions.
 
-<details>
-  <summary><b>Short cheat sheet (click here)</b></summary>
+??? faq "Short cheat sheet"
 
     - See which modules exists: ``module spider`` or ``ml spider``
     - Find module versions for a particular software: ``module spider <software>``
@@ -25,15 +27,14 @@ Most HPC centres in Sweden use the same or a similar module system for their sof
     - Unload all modules except the 'sticky' modules: ``module purge`` or ``ml purge``
     - Save currently loaded modules: ``module save <collection_name>`` (especially useful on Dardel)
     - (Re)load modules from saved collection: ``module restore <collection_name>``
-    
-</details>
 
-> [!WARNING]  
-> - Note that the module systems at UPPMAX, HPC2N, LUNARC, NSC, and PDC are slightly different.
-> - While all modules at UPPMAX and NSC not directly related to bio-informatics are shown by ``ml avail``, modules at the other centers may be hidden until one has loaded a prerequisite like the compiler ``GCC``.
-> - Thus, you need to use ``module spider`` to see all modules at HPC2N, LUNARC, and PDC, and ``ml avail`` for those available to load given your currently loaded prerequisites.
-> - There is no system MATLAB that comes preloaded like Python, but `ml load matlab` with no release date will load the latest release, which is periodically updated. For reproducibility reasons, you should be sure to load the same release throughout a given project.
-> - New sessions on Dardel (PDC) start with 13 modules loaded, but only one of them is sticky (i.e. will remain loaded after a ``ml purge`` command). We highly recommended that you save the preloaded modules as a collection so that you can quickly restore the default modules if you accidentally use ``ml purge`` instead of ``ml unload <module>``.
+!!! caution  
+
+    - Note that the module systems at UPPMAX, HPC2N, LUNARC, NSC, and PDC are slightly different.
+    - While all modules at UPPMAX and NSC not directly related to bio-informatics are shown by ``ml avail``, modules at the other centers may be hidden until one has loaded a prerequisite, like the compiler ``GCC``.
+    - You need to use ``module spider`` to see all modules at HPC2N, LUNARC, and PDC, and ``ml avail`` for those available to load given your currently loaded prerequisites.
+    - There is no system MATLAB that comes preloaded like Python, but `ml load matlab` with no release date will load the latest release, which is periodically updated. For reproducibility reasons, you should be sure to load the same release throughout a given project.
+    - New sessions on Dardel (PDC) start with 13 modules loaded, but only one of them is sticky (i.e. will remain loaded after a ``ml purge`` command). We highly recommended that you save the preloaded modules as a collection so that you can quickly restore the default modules if you accidentally use ``ml purge`` instead of ``ml unload <module>``.
 
 
 ## Check for MATLAB versions
@@ -193,8 +194,9 @@ Below we have examples for how to check for MATLAB versions on different cluster
            https://www.mathworks.com
     ```
 
-> [!TIP]
-> In this course we will mainly use MATLAB R2023b.
+!!! note
+
+    In this course we will mainly use MATLAB R2023b.
 
 ## Load a MATLAB module
 
@@ -464,58 +466,60 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
 
 Try them yourself! Note that `$` indicates a bash prompt and `>>` indicates the Matlab prompt; those characters should not be included at the front of your input.
 
-> :writing_hand: **Exercise 1:** Load MATLAB in the terminal or GUI and do a few simple commands at the command line. For example,
->
-> ```bash
-> $ ml matlab/2023b
-> $ matlab -singleCompThread -nodisplay
->                             < M A T L A B (R) >
->                Copyright 1984-2023 The MathWorks, Inc.
->           R2023b Update 7 (23.2.0.2515942) 64-bit (glnxa64)
->                            January 30, 2024
-> To get started, type doc.
-> For product information, visit www.mathworks.com.
-> >> a = 5;
-> >> b = eye(2);
-> >> c = a+b
-> c =
->     6     5
->     5     6
-> ```
+!!! example "**Challenge 1.** Load MATLAB in the terminal or GUI."
 
-> :writing_hand: **Exercise 2:** Copy the example function below to a file called ``add2.m`` in your working directory or the MATLAB directory that the configuration step created for you in your Documents folder. Then run it at the MATLAB command line.
->
->  ```matlab
->  function result = add2(x,y)
->  result = x+y
->  disp("The sum of "+x+" and "+y+" is "+result)
->  end
->  ```
+    Then do a few simple commands at the command line. For example,
+    ```bash
+    $ ml matlab/2023b
+    $ matlab -singleCompThread -nodisplay
+                                < M A T L A B (R) >
+                   Copyright 1984-2023 The MathWorks, Inc.
+               R2023b Update 7 (23.2.0.2515942) 64-bit (glnxa64)
+                               January 30, 2024
+    To get started, type doc.
+    For product information, visit www.mathworks.com.
+    >> a = 5;
+    >> b = eye(2);
+    >> c = a+b
+    c =
+        6     5
+        5     6
+    ```
 
-<details>
-  <summary><b>Solution</b></summary>
+!!! example "**Challenge 2.** Run a function."
 
- ```matlab
- >> add2(5,8)
- result =
-      13
- The sum of 5 and 8 is 13
- >>
- ```
-</details>
+    Copy the example function below to a file called ``add2.m`` in your working directory or the MATLAB directory that the configuration step created for you in your Documents folder. Then run it at the MATLAB command line.
 
-> :writing_hand: **Exercise 3:** Exit the MATLAB command line with `quit` or `exit` (this can take a few seconds).
+    ```matlab
+    function result = add2(x,y)
+    result = x+y
+    disp("The sum of "+x+" and "+y+" is "+result)
+    end
+    ```
 
-<details>
-  <summary><b>Solution</b></summary>
-  
-```matlab
->> exit
-```
-</details>
+??? check "Solution"
 
-> [!IMPORTANT]
-> - You can start MATLAB either in a GUI or, with the ``-nodisplay`` flag, run it in the terminal.
-> - If you start either interface from the terminal, you must first load the correct module(s).
-> - For interactive work, you will usually have to reserve time on a compute node.
-> - If you take the risk of starting on a login node, use the ``-singleCompThread`` flag in the starting command to avoid hogging the node, unless you are sure that your cluster sets that constraint on the login node automatically.
+    ```matlab
+    >> add2(5,8)
+    result =
+        13
+    The sum of 5 and 8 is 13
+    >>
+    ```
+
+!!! example "**Challenge 3.** Exit the MATLAB command line."
+
+    Use `quit` or `exit` (this can take a few seconds).
+
+??? check "Solution"
+
+    ```matlab
+    >> exit
+    ```
+
+!!! summary
+
+    - You can start MATLAB either in a GUI or, with the ``-nodisplay`` flag, run it in the terminal.
+    - If you start either interface from the terminal, you must first load the correct module(s).
+    - For interactive work, you will usually have to reserve time on a compute node.
+    - If you take the risk of starting on a login node, use the ``-singleCompThread`` flag in the starting command to avoid hogging the node, unless you are sure that your cluster sets that constraint on the login node automatically.
