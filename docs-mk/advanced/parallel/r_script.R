@@ -35,7 +35,7 @@ library(doParallel, quietly = TRUE) # for %%dopar%
 testthat::expect_true(system.file(package = "doParallel") != "")
 
 # grid size
-n <- 840
+n <- 16 * 1
 
 # Function for 2D integration (non-optimal implementation)
 integration2d <- function(n, numprocesses, processindex) {
