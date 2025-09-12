@@ -2,3 +2,14 @@ mkdocs>=1.4.2
 mkdocs-material>=8.5.9
 pymdown-extensions>=9.8
 markdown-fenced-code-tabs
+
+
+mkdocstrings
+mkdocs-embed-external-markdown
+feedparser 
+mkdocs-gen-files 
+markdown-exec[ansi] 
+markdown-include 
+mkdocs-open-in-new-tab 
+markdown-extra 
+mkdocs-mermaid2-plugin
