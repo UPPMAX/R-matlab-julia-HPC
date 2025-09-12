@@ -14,9 +14,9 @@ tags:
 | 10:15 | Introduction, MATLAB in general                              | RP         |
 | 10:25 | Loading modules and running MATLAB codes                     | RP         |
 | 10:50 | Break                                                        |            |
-| 11:05 | Slurm job scheduler and Matlab                               | BB         |
+| 11:05 | Slurm job scheduler and MATLAB                               | BB         |
 | 12:00 | LUNCH                                                        |            |
-| 13:00 | Matlab GUI and Slurm                                         | PO, RP     |
+| 13:00 | MATLAB GUI and Slurm                                         | PO, RP     |
 | 13:30 | Parallel and multithreaded functions                         | PO         |
 | 13:50 | break                                                        |            |
 | 14:00 | Cont’d Parallel and multithreaded functions                  | PO         |
