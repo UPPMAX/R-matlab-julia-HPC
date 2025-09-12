@@ -32,7 +32,7 @@ theme:
     # https://github.com/UPPMAX/R-matlab-julia-HPC/blame/main/meeting_notes/20250829.md#L61
     #
     # No idea how to put the ReadTheDocs on top of this ...
-    name: material
+    name: readthedocs
     #highlightjs: true   # with pygments the theme provides the palette
     #hljs_languages:
     #    - yaml
