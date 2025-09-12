@@ -7,7 +7,6 @@ markdown-exec[ansi]==1.8.3
 markdown-include==0.8.1
 mkdocs-open-in-new-tab==1.0.3
 markdown-extra==1.0.1
-mkdocs-mermaid2-plugin
 pymdown-extensions>=9.8
 markdown-fenced-code-tabs
 
