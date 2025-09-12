@@ -22,3 +22,4 @@ pandas
 seaborn
 scipy
 numba
+sphinx_design
