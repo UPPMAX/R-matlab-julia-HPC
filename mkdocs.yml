@@ -13,6 +13,10 @@ nav:
       - Summary: r/summary.md
     - MATLAB: 
       - Schedule: matlab/schedule.md
+      - Intro: matlab/intro-matlab.md
+      - Load and run: matlab/load_runMatlab.md
+      - MATLAB terminal and SLURM: matlab/slurmMatlab.md
+      - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
     - Julia:
       - Schedule: julia/schedule.md
       - Intro: julia/intro.md
