@@ -1,36 +1,36 @@
-Running R in batch mode
-=======================
+# Running R in batch mode
 
-.. questions::
+!!! note "Questions"
 
-   - What is a batch job?
-   - How to write a batch script and submit a batch job?
+    - What is a batch job?
+    - How to write a batch script and submit a batch job?
 
+ 
    
-   
-.. objectives:: 
+!!! note "Objectives"
 
-   - Short introduction to SLURM scheduler
-   - Show structure of a batch script
-   - Examples to try
+    - Short introduction to SLURM scheduler
+    - Show structure of a batch script
+    - Examples to try
 
-.. admonition:: Compute allocations in this workshop 
+!!! note "Compute allocations in this workshop" 
 
-   - Rackham: ``uppmax2025-2-272``
-   - Kebnekaise: ``hpc2n2025-062``
-   - Cosmos: ``lu2025-7-24``
-   - Tetralith: ``naiss-2025-22-262``
-   - Dardel: ``naiss-2025-22-262`` 
+    - Pelle/Rackham: `` ``
+    - Kebnekaise: ``hpc2n2025-151``
+    - Cosmos: `` ``
+    - Tetralith: ``naiss2025-22-934``
+    - Dardel: ``naiss2025-22-934`` 
+    - Alvis: ``naiss2025-22-934``
 
-.. admonition:: Storage space for this workshop 
+!!! note "Storage space for this workshop" 
 
-   - Rackham: ``/proj/r-matlab-julia-uppmax``
-   - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
-   - Tetralith: ``/proj/r-matlab-julia-naiss/users/``
-   - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
+    - Pelle/Rackham: ``/proj/????``
+    - Kebnekaise: ``/proj/nobackup/fall-courses``
+    - Tetralith: ``/proj/courses-fall-2025/users/``
+    - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
+    - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/
 
-Overview of the UPPMAX systems
-##############################
+## Overview of the UPPMAX systems
 
 .. mermaid:: ../mermaid/uppmax2.mmd
 

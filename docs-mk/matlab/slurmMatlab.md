@@ -1,28 +1,30 @@
 # Slurm job scheduler and MATLAB in terminal
 
-**Objectives:**
+!!! info "Objectives"
 
-- Understand and use the Slurm scheduler
-- Configure the cluster
-- Start (MATLAB) batch jobs from the command line
-- Try example
+    - Understand and use the Slurm scheduler
+    - Configure the cluster
+    - Start (MATLAB) batch jobs from the command line
+    - Try example
 
-> [!IMPORTANT]
-> **Compute allocations in this workshop**
->  - Rackham: ``uppmax2025-2-272``
->  - Kebnekaise: ``hpc2n2025-062``
->  - Cosmos: ``lu2025-7-24``
->  - Tetralith: ``naiss2025-22-262``
->  - Dardel: ``naiss2025-22-262``
-> 
-> **Storage space for this workshop**
->  - Rackham: ``/proj/r-matlab-julia-uppmax``
->  - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
->  - Tetralith: ``/proj/r-matlab-julia-naiss/users``
->  - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
+!!! important
 
-> [!WARNING]
-> Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
+    **Compute allocations in this workshop**
+    - Rackham: ``uppmax2025-2-272``
+    - Kebnekaise: ``hpc2n2025-062``
+    - Cosmos: ``lu2025-7-24``
+    - Tetralith: ``naiss2025-22-262``
+    - Dardel: ``naiss2025-22-262``
+     
+    **Storage space for this workshop**
+    - Rackham: ``/proj/r-matlab-julia-uppmax``
+    - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
+    - Tetralith: ``/proj/r-matlab-julia-naiss/users``
+    - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
+
+!!! warning
+
+    Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
 
 The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC is called SLURM. The same is the case at most of the Swedish HPC centres.
 
@@ -54,28 +56,28 @@ Before going into MATLAB specifics for batch jobs, we should look briefly at som
 - Useful info about a job: ``sacct -l -j <job-id> | less -S``
 - Url to a page with info about the job (Kebnekaise only): ``job-usage <job-id>``
 
-
 ## First time configuration
 
 In order to be able to submit jobs to the SLURM queue, you usually need to configure MATLAB the first time you load any particular version. This configuration step will provide a set of default specifications for batch and parallel jobs called a **cluster profile**.
 
-Configuration only needs to be run once per version of Matlab on each cluster. These specifications can be changed or added to at runtime, and it is possible to have more than one profile for a single release.
+Configuration only needs to be run once per version of MATLAB on each cluster. These specifications can be changed or added to at runtime, and it is possible to have more than one profile for a single release.
 
 The instructions for each facility are linked below:
-- [HPC2N: Configure Matlab](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018)
-- [UPPMAX: Matlab configuration](https://docs.uppmax.uu.se/software/matlab_conf/)
+- [HPC2N: Configure MATLAB](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018)
+- [UPPMAX: MATLAB configuration](https://docs.uppmax.uu.se/software/matlab_conf/)
 - [LUNARC: Configuration at the command line](https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line)
-- [NSC: Matlab (scroll down to "Before submitting your first job")](https://www.nsc.liu.se/software/installed/tetralith/matlab/).
+- [NSC: MATLAB (scroll down to "Before submitting your first job")](https://www.nsc.liu.se/software/installed/tetralith/matlab/).
 - PDC: no need to configure
 
-> [!IMPORTANT]
-> - On Dardel you need your own Mathworks account or to contact them and ask for access to run Matlab there!
-> - We have added access for those participants who had PDC accounts on (INSERT DATE)
-> - **Do NOT run configCluster(.sh) on Dardel!**
+!!! warning
+
+    - On Dardel you need to either have your own Mathworks account, or contact them ahead of time and ask for access to run MATLAB there!
+    - We have added access for those participants who had PDC accounts on (INSERT DATE)
+    - **Do NOT run configCluster(.sh) on Dardel!**
 
 For most clusters, configuration can be done at the regular terminal using a shell script called `configCluster.sh`.
 It is also possible to run `configCluster` (without ".sh") on the MATLAB command line; for NSC, this is the only way to run the configuration program.
-The tabs below demonstrate the preferred method for each cluster where configuration is required the first time you use a given version of Matlab.
+The tabs below demonstrate the preferred method for each cluster where configuration is required the first time you use a given version of MATLAB.
 
 === "UPPMAX"
 
@@ -149,26 +151,28 @@ The tabs below demonstrate the preferred method for each cluster where configura
      
      Choose "tetralith" when prompted.
 
-> **Exercise.** Login to either HPC2N, UPPMAX, LUNARC, NSC, or PDC if you have not already.
-> Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
-> On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC. You do not do ``configCluster`` at PDC.
+!!! example "**Challenge 1.** Log in and Configure MATLAB."
+
+    #. Log into your chosen HPC cluster if you have not already.
+    #. Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
+    #. On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC. You do not do ``configCluster`` at PDC.
 
 ## MATLAB terminal interface
 
 Here we will discuss:
 
- - Starting Matlab on the command line
+ - Starting MATLAB on the command line
  - Job settings
     - ``c.parcluster``
     - ``c.AdditionalProperties.``
     - ``c.batch``
- - Starting a job from within Matlab
+ - Starting a job from within MATLAB
 
 This section will show you how to use MATLAB completely from the shell/terminal without having to open the GUI. This can be useful if you only have a regular SSH connection or otherwise need to run something fast and lightweight instead of having to open the GUI. This is an extra advantage when you have a poor network connection.
 
 ### Starting MATLAB
 
-To start Matlab on the command line, without running the GUI, load the MATLAB version and do
+To start MATLAB on the command line, without running the GUI, load the MATLAB version and do
 
 ```bash
 matlab -singleCompThread -nodisplay -nosplash -nodesktop
@@ -176,8 +180,9 @@ matlab -singleCompThread -nodisplay -nosplash -nodesktop
 
 This starts MATLAB. Not all of the flags shown are needed at every center, but it does no harm to include them.
 
-> [!CAUTION]
-> On the login-nodes MATLAB MUST be started with the option ``-singleCompThread`` to prevent MATLAB from starting an arbitrary number of threads, potentially occupying the whole node.
+!!! danger
+
+    On the login-nodes MATLAB ***must*** be started with the option `-singleCompThread` to prevent MATLAB from starting an arbitrary number of threads, potentially occupying the whole node.
 
 ### Working in MATLAB
 
@@ -243,22 +248,25 @@ If you want to run a MATLAB program on the cluster with batch, you have to set s
 
 To list the content of your profile, enter `c.AdditionalProperties` at the prompt.
 
-> [!IMPORTANT]
-> On UPPMAX and PDC you should use `c=parcluster;` instead of `c=parcluster('CLUSTER')`. On UPPMAX you also need to add ``c.AdditionalProperties.ProcsPerNode=20;``.
+!!! important
 
-The process at PDC (Dardel) is more involved than at other facilities:
- - At PDC, you do **NOT** set any ``AdditionalProperties``. You instead work in an interactive session.
- - To start an interactive session at **PDC**...
-    - ...on a full node: use `salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main`
-    - ...on a subset of the cores on a node (here 24): use `salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`
- - When the job is allocated, start an SSH connection to the compute node.
+    On UPPMAX and PDC you should use `c=parcluster;` instead of `c=parcluster('CLUSTER')`. On UPPMAX you also need to add ``c.AdditionalProperties.ProcsPerNode=20;``.
 
-If you need the GUI on Dardel, you need to start both the SSH connection to the Dardel login node and to the compute node with `SSH -X` (i.e. use `ssh -X <node-allocated-to-you>`). Then, you can load MATLAB and start it (on shell) as usual with
+!!! info "Additional instructions specific to Dardel"
 
-```bash
-ml PDC/23.12 matlab/r2024a-ps
-matlab -nodisplay -nodesktop -nosplash
-```
+    The process at PDC (Dardel) is more involved than at other facilities:
+    - At PDC, you do **NOT** set any ``AdditionalProperties``. You instead work in an interactive session.
+    - To start an interactive session at **PDC**...
+       - ...on a full node: use `salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main`
+       - ...on a subset of the cores on a node (here 24): use `salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`
+    - When the job is allocated, start an SSH connection to the compute node.
+
+    If you need the GUI on Dardel, you need to start both the SSH connection to the Dardel login node and to the compute node with `ssh -X` (i.e. use `ssh -X <node-allocated-to-you>`). Then, you can load MATLAB and start it (on shell) as usual with
+
+    ```bash
+    ml PDC/23.12 matlab/r2024a-ps
+    matlab -nodisplay -nodesktop -nosplash
+    ```
 
 **Example, for HPC2N**
 
@@ -310,25 +318,21 @@ For product information, visit www.mathworks.com.
 >>
 ```
 
-> **Exercise.** Fill in the job settings on one of:
-> - HPC2N: `CLUSTER=kebnekaise`
-> - UPPMAX: no CLUSTER, as said above - i.e. just ``c=parcluster;``
-> - LUNARC: `CLUSTER=cosmos R2023b`
-> - NSC: `CLUSTER=tetralith`
-> - PDC: no `CLUSTER`, as said above - i.e. just ``c=parcluster;`` NO OTHER JOB SETTINGS! Here you instead start an interactive session first!
->
-> Remember, the `project-id` is:
-> - Rackham: uppmax2025-2-272
-> - Kebnekaise: hpc2n2025-062
-> - Cosmos: lu2025-7-24
-> - Tetralith: naiss2025-22-262
-> - Dardel: naiss2025-22-262
->
-> Since we are just doing a short test, you can use 15 min instead of 1 hour. Also remember the `c.AdditionalProperties.ProcsPerNode=20` if you are on UPPMAX.
-> Test that the settings were added by viewing `c.AdditionalProperties`.
+!!! example "**Challenge 2.** Set MATLAB job settings."
+
+    Fill in the job settings on one of:
+    - **HPC2N:** `CLUSTER=kebnekaise`
+    - **UPPMAX:** no CLUSTER, as said above - i.e. just ``c=parcluster;``
+    - **LUNARC:** `CLUSTER=cosmos R2023b`
+    - **NSC:** `CLUSTER=tetralith`
+    - **PDC:** no `CLUSTER`, as said above - i.e. just ``c=parcluster;`` NO OTHER JOB SETTINGS! Here you instead start an interactive session first!
+    
+    Remember, the `project-id` is the compute allocation number given for your choice of cluster at the top of this webpage.
+    
+    Since we are just doing a short test, you can use 15 min instead of 1 hour. Also remember the `c.AdditionalProperties.ProcsPerNode=20` if you are on UPPMAX. Test that the settings were added by viewing `c.AdditionalProperties`.
 
 
-### Running a job from within MATLAB terminal interface
+### Running a job from within the MATLAB terminal interface
 
 When starting a simple MATLAB program inside MATLAB on the terminal, by default, it will use your cluster profile which you just created and saved above. If you have a script file called `myScript.m`, the code to run it as a batch job with the default settings is:
 
@@ -360,11 +364,12 @@ or using the `.fetchOutputs` attribute:
 job.fetchOutputs{:}
 ```
 
-> [!TIP]
-> Other useful job monitoring commands:
-> - If you need the Job id, run ``squeue --me`` on the command line.
-> - To get the MATLAB jobid do ``id=job.ID`` within MATLAB.
-> - To see if the job is running, inside MATLAB, do ``job.State``
+!!! tip
+
+    Other useful job monitoring commands:
+    - If you need the Job id, run ``squeue --me`` on the command line.
+    - To get the MATLAB jobid do ``id=job.ID`` within MATLAB.
+    - To see if the job is running, inside MATLAB, do ``job.State``
 
 #### Serial
 
@@ -407,11 +412,13 @@ j2=jobs(2)
 output = j2.fetchOutputs{:}
 ```
 
-**Type-along.** After doing the job settings further up, let us try running an example. We will use the example ``add2.m`` which adds two numbers. This example uses 1 and 2, but you can pick any numbers you want. You can find the ``add2.m`` script in the exercises/matlab directory or you can [download it from here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/add2.m).
+!!! example "**Type-along.**"
+    
+    After doing the job settings further up, let us try running an example. We will use the example ``add2.m`` which adds two numbers. This example uses 1 and 2, but you can pick any numbers you want. You can find the ``add2.m`` script in the exercises/matlab directory or you can [download it from here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/add2.m).
 
-1. Set up the job with `job = c.batch(@add2, 1, {1,2})`
-2. Check if it has finished with `job.State`
-3. When it has finished, retrieve the result with `job.fetchOutputs{:}`
+    #. Set up the job with `job = c.batch(@add2, 1, {1,2})`
+    #. Check if it has finished with `job.State`
+    #. When it has finished, retrieve the result with `job.fetchOutputs{:}`
 
 #### Parallel
 
@@ -423,7 +430,7 @@ To make a pool of workers, and to give input etc., the basic syntax is:
 >> job = c.batch(@SCRIPT, #output, {input1, input2, input3, ...}, 'pool', #workers);
 ```
 
-**Example:** Running a simple Matlab script, parallel-example.m, giving the input "16", creating 4 workers, expecting 1 output. The name of the job handle is up to you (here it is `j`).
+**Example:** Running a simple MATLAB script, parallel-example.m, giving the input "16", creating 4 workers, expecting 1 output. The name of the job handle is up to you (here it is `j`).
 
 ```matlab
 >> j = c.batch(@parallel_example, 1, {16}, 'pool', 4);
@@ -460,16 +467,17 @@ ans =
 >>
 ```
 
-> **Exercise.** Try the above example. It should work on all the clusters.
-> This exercise assumes you did the previous ones on this page; loading MATLAB, doing the configCluster.sh, adding the job settings.
->
-> You can download [parallel_example.m here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m>).
+!!! example "**Challenge 3.** Try the above example."
 
-> [!Important] `parpool`
-> On the clusters where this works, you can start a ``parpool`` and then (for instance) run a parallel code inside MATLAB.
+    This exercise assumes you did the previous ones on this page; loading MATLAB, doing the configCluster.sh, adding the job settings. It should work on all the clusters.
+    
+    You can download [parallel_example.m here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m>).
 
-**Parpool Example: PDC**
-As shown earlier, first start an interactive session, login to the compute node you got, then load matlab and start it. Then create a parpool of the size (at most) that you asked for in number of cores.
+##### `parpool`
+
+On the clusters where this works, you can start a ``parpool`` and then (for instance) run a parallel code inside MATLAB.
+
+**Parpool Example, for PDC:** As shown earlier, first start an interactive session, login to the compute node you got, then load matlab and start it. Then create a parpool of the size (at most) that you asked for in number of cores.
 
 ```matlab
 >> p=parpool(24)
@@ -491,7 +499,7 @@ There is more information about batch jobs [here on Mathworks](https://se.mathwo
 
 ## Batch scripts containing MATLAB code
 
-Here we will discuss creating a batch script to run Matlab in
+Here we will discuss creating a batch script to run MATLAB in
 - Serial
 - Parallel
 
@@ -499,8 +507,9 @@ While we can submit batch jobs (or even batch jobs of batch jobs) from inside MA
 
 The difference here is that when the batch script has been submitted, you cannot make changes to your job. It is not interactive. That is also an advantage - you can submit the job, log out, and then come back later and see the results.
 
-> [!WARNING]
-> `parpool` can only be used on UPPMAX, Cosmos, and Kebnekaise.
+!!! warning
+
+    `parpool` can only be used on UPPMAX, Cosmos, Dardel, and Kebnekaise.
 
 
 ### Serial batch jobs
@@ -642,9 +651,10 @@ sbatch <batchscript.sh>
 
 Where `<batchscript.sh>` is the name you gave your batchscript. You can find ones for each of the clusters in the `exercises -> matlab` directory, named `monte_carlo_pi_<cluster>.sh`.
 
-> **Exercise.** Try run the serial batch script. 
-> Submit it, then check that it is running with ``squeue --me``.
-> Check the output in the ``matlab_JOBID.out`` (and the error in the ``matlab_JOBID.err`` file).
+!!! example "**Challenge 4:** Try run the serial batch script." 
+
+    Submit it, then check that it is running with `squeue --me`.
+    Check the output in the `matlab_JOBID.out` (and the error in the ``matlab_JOBID.err`` file).
 
 ### Parallel batch script
 
@@ -679,424 +689,407 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
 >> poolobj = parpool('local', 8);
 ```
 
-> **Exercise.** Try making a batch script for running the ``parallel_example.m`` that was run in the example from inside MATLAB above.
-> You can use the above batch script as template.
+!!! example "**Challenge 5.** Write a batch script."
+     
+     Try making a batch script to run the ``parallel_example.m`` in the example from inside MATLAB above. You can use the above batch script as template.
 
-<details>
-<summary>Solutions</summary>
-   .. tabs::
+??? Solutions
 
-      .. tab:: UPPMAX
+      === "UPPMAX"
+            
+          ```bash
+          #!/bin/bash
+          # Change to your actual project number
+          #SBATCH -A uppmax2025-2-272
+          # Remember, there are 4 workers and 1 master!
+          #SBATCH --ntasks=5
+          #SBATCH --cpus-per-task=1
+          #SBATCH --ntasks-per-node=5
+          #SBATCH --ntasks-per-core=1
+          # Asking for 30 min (change as you want)
+          #SBATCH -t 00:30:00
+          #SBATCH --error=matlab_%J.err
+          #SBATCH --output=matlab_%J.out
+          
+          # Clean the environment
+          module purge > /dev/null 2>&1
+          
+          # Change depending on resource and MATLAB version
+          # to find out available versions: module spider matlab
+          module add matlab/R2023b
+          
+          # Executing a parallel matlab program
+          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+          ```
+        
+      === "HPC2N"
 
-         .. code-block::
+          ```bash
+          #!/bin/bash
+          # Change to your actual project number
+          #SBATCH -A hpc2n2025-062
+          # Remember, there are 4 workers and 1 master!
+          #SBATCH --ntasks=5
+          #SBATCH --cpus-per-task=1
+          #SBATCH --ntasks-per-node=5
+          #SBATCH --ntasks-per-core=1
+          # Asking for 30 min (change as you want)
+          #SBATCH -t 00:30:00
+          #SBATCH --error=matlab_%J.err
+          #SBATCH --output=matlab_%J.out
 
-            #!/bin/bash
-            # Change to your actual project number
-            #SBATCH -A uppmax2025-2-272
-            # Remember, there are 4 workers and 1 master!
-            #SBATCH --ntasks=5
-            #SBATCH --cpus-per-task=1
-            #SBATCH --ntasks-per-node=5
-            #SBATCH --ntasks-per-core=1
-            # Asking for 30 min (change as you want)
-            #SBATCH -t 00:30:00
-            #SBATCH --error=matlab_%J.err
-            #SBATCH --output=matlab_%J.out
+          # Clean the environment
+          module purge > /dev/null 2>&1
 
-            # Clean the environment
-            module purge > /dev/null 2>&1
+          # Change depending on resource and MATLAB version
+          # to find out available versions: module spider matlab
+          module add MATLAB/2023a.Update4
 
-            # Change depending on resource and MATLAB version
-            # to find out available versions: module spider matlab
-            module add matlab/R2023b
+          # Executing a parallel matlab program
+          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+          ```
 
-            # Executing a parallel matlab program
-            srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+      === "LUNARC"
 
-      .. tab:: HPC2N
+          ```bash
+          #!/bin/bash
+          # Change to your actual project number
+          #SBATCH -A lu2025-7-24
+          # Remember, there are 4 workers and 1 master!
+          #SBATCH --ntasks=5
+          #SBATCH --cpus-per-task=1
+          #SBATCH --ntasks-per-node=5
+          #SBATCH --ntasks-per-core=1
+          # Asking for 30 min (change as you want)
+          #SBATCH -t 00:30:00
+          #SBATCH --error=matlab_%J.err
+          #SBATCH --output=matlab_%J.out
 
-         .. code-block::
+          # Clean the environment
+          module purge > /dev/null 2>&1
 
-            #!/bin/bash
-            # Change to your actual project number
-            #SBATCH -A hpc2n2025-062
-            # Remember, there are 4 workers and 1 master!
-            #SBATCH --ntasks=5
-            #SBATCH --cpus-per-task=1
-            #SBATCH --ntasks-per-node=5
-            #SBATCH --ntasks-per-core=1
-            # Asking for 30 min (change as you want)
-            #SBATCH -t 00:30:00
-            #SBATCH --error=matlab_%J.err
-            #SBATCH --output=matlab_%J.out
+          # Change depending on resource and MATLAB version
+          # to find out available versions: module spider matlab
+          module add matlab/2023b
 
-            # Clean the environment
-            module purge > /dev/null 2>&1
+          # Executing a parallel matlab program
+          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+          ```
 
-            # Change depending on resource and MATLAB version
-            # to find out available versions: module spider matlab
-            module add MATLAB/2023a.Update4
+      === "NSC"
 
-            # Executing a parallel matlab program
-            srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+          ```bash
+          #!/bin/bash
+          # Change to your actual project number
+          #SBATCH -A naiss2025-22-262
+          # Remember, there are 4 workers and 1 master!
+          #SBATCH --ntasks=5
+          #SBATCH --cpus-per-task=1
+          #SBATCH --ntasks-per-core=1
+          # Asking for 30 min (change as you want)
+          #SBATCH -t 00:30:00
+          #SBATCH --error=matlab_%J.err
+          #SBATCH --output=matlab_%J.out
 
-      .. tab:: LUNARC
+          # Clean the environment
+          module purge > /dev/null 2>&1
 
-         .. code-block::
+          # Change depending on resource and MATLAB version
+          # to find out available versions: module spider matlab
+          module add MATLAB/2024a-hpc1-bdist
 
-            #!/bin/bash
-            # Change to your actual project number
-            #SBATCH -A lu2025-7-24
-            # Remember, there are 4 workers and 1 master!
-            #SBATCH --ntasks=5
-            #SBATCH --cpus-per-task=1
-            #SBATCH --ntasks-per-node=5
-            #SBATCH --ntasks-per-core=1
-            # Asking for 30 min (change as you want)
-            #SBATCH -t 00:30:00
-            #SBATCH --error=matlab_%J.err
-            #SBATCH --output=matlab_%J.out
+          # Executing a parallel matlab program
+          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+          ```
 
-            # Clean the environment
-            module purge > /dev/null 2>&1
+      === "PDC"
 
-            # Change depending on resource and MATLAB version
-            # to find out available versions: module spider matlab
-            module add matlab/2023b
+          ```bash
+          #!/bin/bash
+          # Change to your actual project number
+          #SBATCH -A naiss2025-22-262
+          # Remember, there are 4 workers and 1 master!
+          #SBATCH -p shared
+          #SBATCH -n 5
+          # Asking for 30 min (change as you want)
+          #SBATCH -t 00:30:00
+          #SBATCH --error=matlab_%J.err
+          #SBATCH --output=matlab_%J.out
 
-            # Executing a parallel matlab program
-            srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+          # Clean the environment
+          module purge > /dev/null 2>&1
 
-      .. tab:: NSC
+          # Change depending on resource and MATLAB version
+          # to find out available versions: module spider matlab
+          module add PDC/23.12 matlab/r2024a-ps
 
-         .. code-block::
-
-            #!/bin/bash
-            # Change to your actual project number
-            #SBATCH -A naiss2025-22-262
-            # Remember, there are 4 workers and 1 master!
-            #SBATCH --ntasks=5
-            #SBATCH --cpus-per-task=1
-            #SBATCH --ntasks-per-core=1
-            # Asking for 30 min (change as you want)
-            #SBATCH -t 00:30:00
-            #SBATCH --error=matlab_%J.err
-            #SBATCH --output=matlab_%J.out
-
-            # Clean the environment
-            module purge > /dev/null 2>&1
-
-            # Change depending on resource and MATLAB version
-            # to find out available versions: module spider matlab
-            module add MATLAB/2024a-hpc1-bdist
-
-            # Executing a parallel matlab program
-            srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
-
-      .. tab:: PDC
-
-         .. code-block::
-
-            #!/bin/bash
-            # Change to your actual project number
-            #SBATCH -A naiss2025-22-262
-            # Remember, there are 4 workers and 1 master!
-            #SBATCH -p shared
-            #SBATCH -n 5
-            # Asking for 30 min (change as you want)
-            #SBATCH -t 00:30:00
-            #SBATCH --error=matlab_%J.err
-            #SBATCH --output=matlab_%J.out
-
-            # Clean the environment
-            module purge > /dev/null 2>&1
-
-            # Change depending on resource and MATLAB version
-            # to find out available versions: module spider matlab
-            module add PDC/23.12 matlab/r2024a-ps
-
-            # Executing a parallel matlab program
-            matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
-</details>
-
+          # Executing a parallel matlab program
+          matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+          ```
 
 ## GPU code
 
 Here we cover how to use GPUs with MATLAB
-- Inside Matlab
+- Inside MATLAB
 - In a batch script
 
 In order to use GPUs, you have to ask for them.
 
 ### Inside MATLAB
 
-.. note::
+In order to use GPUs from inside MATLAB, you must add them as additional properties to your profile.
 
-   In order to use GPUs from inside MATLAB, you add them as additional properties to your profile.
+Remember, after it is saved to your profile it will use GPUs again next time you submit a job, even if you don't want GPUs there. To reset this, do:
 
-   Remember, after it is saved to your profile it will use GPUs again next time you submit a job, even if you don't want GPUs there. To reset this, do:
+```bash
+c.AdditionalProperties.GpuCard = '';
+c.AdditionalProperties.GpusPerNode = '';
+```
 
-   .. code-block::
+This is how you add GPUs to use in batch jobs submitted inside MATLAB:
 
-      c.AdditionalProperties.GpuCard = '';
-      c.AdditionalProperties.GpusPerNode = '';
+=== "UPPMAX"
 
-.. admonition:: GPU in batch job
+    !!! important
+    
+        You have to first do an interactive session to Snowy, asking for GPUs, since there are no GPUs on Rackham. You should ask for at least 2 cores so MATLAB will start.
+        
+    Ask for a GPU and enough time to do what you need.
 
-   This is how you add GPUs to use in batch jobs submitted inside MATLAB:
+    ```bash
+    interactive -A uppmax2025-2-272 -n 2 -M snowy --gres=gpu:1  -t 2:00:00
+    ```
 
-   .. tabs::
+    Load MATLAB
 
-      .. tab:: UPPMAX
+    ```bash
+    ml matlab/R2023b
+    ```
 
-         Note: you have to first do an interactive session to Snowy, asking for GPUs, since there are no GPUs on Rackham. You should ask for at least 2 cores so Matlab will start. Ask for a GPU and enough time to do what you need.
+    Then run MATLAB either as GUI...
 
-         .. code-block:: sh
+    ```bash
+    matlab -singleCompThread
+    ```
 
-            interactive -A uppmax2025-2-272 -n 2 -M snowy --gres=gpu:1  -t 2:00:00
+    ...Or on the terminal
 
-         Load Matlab
+    ```bash
+    matlab -singleCompThread -nodisplay -nosplash -nodesktop
+    ```
 
-         .. code-block::
+    Finally, inside MATLAB, add this to your profile (remember the `c=parcluster;` after you start MATLAB again, to get a handle):
 
-            ml matlab/R2023b
+    ```matlab
+    c.AdditionalProperties.GpusPerNode = 1;
+    c.saveProfile
+    ```
 
-         Run Matlab either as GUI
+=== "HPC2N"
 
-         .. code-block::
+    Load and start MATLAB, then do (remember the `c=parcluster;` after you start MATLAB again, to get a handle)
 
-            matlab -singleCompThread
+    ```matlab
+    c.AdditionalProperties.GpuCard = 'card-type';
+    c.AdditionalProperties.GpusPerNode = '#gpus';
+    c.saveProfile
+    ```
 
-         Or on the terminal
+    where `card-type` is one of `v100`, `a40`, `a6000`, `l40s`, `a100`, `h100`, or `mi100`, and `#gpus` depends on the card-type:
 
-         .. code-block::
+     - V100 (2 cards/node)
+     - A40 (8 cards/node)
+     - A6000 (2 cards/node)
+     - L40s (2 or 6 cards/node)
+     - A100 (2 cards/node)
+     - H100 (4 cards/node)
+     - MI100 (2 cards/node)
 
-            matlab -singleCompThread -nodisplay -nosplash -nodesktop
+=== "LUNARC"
 
-         Then, inside MATLAB, you need to add this to your profile (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
+    Load and start MATLAB, then do (remember the `c=parcluster;` after you start MATLAB again, to get a handle)
 
-         .. code-block:: matlab
+    ```matlab
+    c.AdditionalProperties.GpusPerNode = #GPUs;
+    c.saveProfile
+    ```
 
-            c.AdditionalProperties.GpusPerNode = 1;
-            c.saveProfile
+    where `#GPUs` is 1 or 2.
+    
+=== "NSC"
 
-      .. tab:: HPC2N
+    Load and start MATLAB, then do (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
+  
+    ```matlab
+    c.AdditionalProperties.GPUsPerNode = #GPUs;
+    c.saveProfile
+    ```
 
-         Load and start Matlab, then do (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
+    where `#GPUs` is 1 or 2.
 
-         .. code-block:: matlab
+=== "PDC"
 
-            c.AdditionalProperties.GpuCard = 'card-type';
-            c.AdditionalProperties.GpusPerNode = '#gpus';
-            c.saveProfile
+    Remember, here you cannot set `AdditionalProperties`. Instead, you do the following: 
 
-         where ``card-type`` is one of: v100, a40, a6000, l40s, a100, h100, mi100
+    #. Start an interactive session on the GPU partition: `salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu`
+    #. Load MATLAB: `module load PDC/23.12 matlab/r2024a-ps`
+    #. Start MATLAB: `matlab -nodisplay -nodesktop -nosplash`
 
-         and ``#gpus`` depends on the card-type:
+    You are now ready to run your GPU MATLAB scripts.
 
-         - V100 (2 cards/node)
-         - A40 (8 cards/node)
-         - A6000 (2 cards/node)
-         - L40s (2 or 6 cards/node)
-         - A100 (2 cards/node)
-         - H100 (4 cards/node)
-         - MI100 (2 cards/node)
+!!! example "**Challenge 5.** Add/remove GPUs in your cluster profile.
 
-      .. tab:: LUNARC
-
-         Load and start Matlab, then do (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
-
-         .. code-block:: matlab
-
-            c.AdditionalProperties.GpusPerNode = #GPUs;
-            c.saveProfile
-
-         where #GPUs is 1 or 2.
-
-      .. tab:: NSC
-
-         Load and start Matlab, then do (remember the ``c=parcluster;`` after you start MATLAB again, to get a handle)
-
-         .. code-block:: matlab
-
-            c.AdditionalProperties.GPUsPerNode = #GPUs;
-            c.saveProfile
-
-         where #GPUs is 1 or 2.
-
-      .. tab:: PDC
-
-         Remember, here you cannot set ``AdditionalProperties``. Instead you do this:
-
-         - Start an interactive session where you ask for GPUs:
-
-             - ``salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu``
-             - Load Matlab: ``module load PDC/23.12 matlab/r2024a-ps``
-             - Start Matlab: ``matlab -nodisplay -nodesktop -nosplash``
-
-         - You are now ready to run your GPU Matlab scripts.
-
-.. exercise::
-
-   Try and add GPUs to your cluster profile, save it. Run ``c.AdditionalProperties`` to see what was added. Then do ``c.AdditionalProperties.GpusPerNode = '';`` to remove it. See that it was removed.
+    Try to add GPUs to your cluster profile and save it. Run `c.AdditionalProperties` to see what was added. Then do `c.AdditionalProperties.GpusPerNode = '';` to remove it. See that it was removed.
 
 ### In batch scripts
 
-In order to use GPUs in a batch job, you do something like this:
+How to request a GPU node varies somewhat between clusters. Refer to the following templates:
 
-.. tabs::
+=== "UPPMAX"
 
-   .. tab:: UPPMAX
+    ```bash
+    #!/bin/bash
+    # Change to your actual project number
+    #SBATCH -A naiss20224-22-1202
+    #SBATCH -n 2
+    #SBATCH -M snowy
+    #SBATCH --gres=gpu:1
+    # Asking for 30 min (change as you want)
+    #SBATCH -t 00:30:00
+    #SBATCH --error=matlab_%J.err
+    #SBATCH --output=matlab_%J.out
+    
+    # Clean the environment
+    module purge > /dev/null 2>&1
+    
+    # Change depending on resource and MATLAB version
+    # to find out available versions: module spider matlab
+    module add matlab/R2023b
+    
+    # Executing a GPU matlab program
+    matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
+    ```
 
-      .. code-block::
+=== "HPC2N"
 
-         #!/bin/bash
-         # Change to your actual project number
-         #SBATCH -A naiss20224-22-1202
-         #SBATCH -n 2
-         #SBATCH -M snowy
-         #SBATCH --gres=gpu:1
-         # Asking for 30 min (change as you want)
-         #SBATCH -t 00:30:00
-         #SBATCH --error=matlab_%J.err
-         #SBATCH --output=matlab_%J.out
+    ```bash
+    #!/bin/bash
+    # Change to your actual project number
+    #SBATCH -A hpc2n2025-062
+    #SBATCH -n 1
+    #SBATCH --gpus=<#gpus>
+    #SBATCH -C <gpu-type>
+    # Asking for 30 min (change as you want)
+    #SBATCH -t 00:30:00
+    #SBATCH --error=matlab_%J.err
+    #SBATCH --output=matlab_%J.out
+    
+    # Clean the environment
+    module purge > /dev/null 2>&1
+    
+    # Change depending on resource and MATLAB version
+    # to find out available versions: module spider matlab
+    module load MATLAB/2023a.Update4
+    
+    # Executing a GPU matlab program
+    matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
+    ```
 
-         # Clean the environment
-         module purge > /dev/null 2>&1
+    where `card-type` is one of `v100`, `a40`, `a6000`, `l40s`, `a100`, `h100`, or `mi100`, and `#gpus` depends on the card-type:
 
-         # Change depending on resource and MATLAB version
-         # to find out available versions: module spider matlab
-         module add matlab/R2023b
+    - V100 (2 cards/node)
+    - A40 (8 cards/node)
+    - A6000 (2 cards/node)
+    - L40s (2 or 6 cards/node)
+    - A100 (2 cards/node)
+    - H100 (4 cards/node)
+    - MI100 (2 cards/node)
 
-         # Executing a GPU matlab program
-         matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
+=== "LUNARC"
 
-   .. tab:: HPC2N
+    ```bash
+    #!/bin/bash
+    # Change to your actual project number
+    #SBATCH -A lu2025-7-24
+    #SBATCH -n 1
+    #SBATCH -p gpua100
+    # The number of GPUs.#gpus, can be 1 or 2
+    #SBATCH --gpus=<#gpus>
+    
+    # Asking for 30 min (change as you want)
+    #SBATCH -t 00:30:00
+    #SBATCH --error=matlab_%J.err
+    #SBATCH --output=matlab_%J.out
+    
+    # Clean the environment
+    module purge > /dev/null 2>&1
+    
+    # Change depending on resource and MATLAB version
+    # to find out available versions: module spider matlab
+    module load matlab/2023b
+    
+    # Executing a GPU matlab program
+    matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
+    
+=== NSC
 
-      .. code-block::
+    ```bash
+    #!/bin/bash
+    # Change to your actual project number
+    #SBATCH -A naiss2025-22-262
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=1
+    #SBATCH --ntasks-per-core=1
+    # The number of GPUs.#gpus, can be 1 or 2
+    #SBATCH --gpus-per-task=1
+    
+    # Asking for 30 min (change as you want)
+    #SBATCH -t 00:30:00
+    #SBATCH --error=matlab_%J.err
+    #SBATCH --output=matlab_%J.out
+    
+    # Clean the environment
+    module purge > /dev/null 2>&1
+    
+    # Change depending on resource and MATLAB version
+    # to find out available versions: module spider matlab
+    module load MATLAB/2024a-hpc1-bdist
+    
+    # Executing a GPU matlab program
+    matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
 
-         #!/bin/bash
-         # Change to your actual project number
-         #SBATCH -A hpc2n2025-062
-         #SBATCH -n 1
-         #SBATCH --gpus=<#gpus>
-         #SBATCH -C <gpu-type>
-         # Asking for 30 min (change as you want)
-         #SBATCH -t 00:30:00
-         #SBATCH --error=matlab_%J.err
-         #SBATCH --output=matlab_%J.out
+=== "PDC"
 
-         # Clean the environment
-         module purge > /dev/null 2>&1
+    ```bash
+    #!/bin/bash
+    # Change to your actual project number
+    #SBATCH -A naiss2025-22-262
+    #SBATCH --ntasks-per-node=1
+    #SBATCH -N 1
+    # Ask for GPUs
+    #SBATCH -p gpu
+    
+    # Asking for 30 min (change as you want)
+    #SBATCH -t 00:30:00
+    #SBATCH --error=matlab_%J.err
+    #SBATCH --output=matlab_%J.out
+    
+    # Clean the environment
+    module purge > /dev/null 2>&1
+    
+    # Change depending on resource and MATLAB version
+    # to find out available versions: module spider matlab
+    module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0
+    
+    # Executing a GPU matlab program
+    matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
+    ```
+    
+!!! summary
 
-         # Change depending on resource and MATLAB version
-         # to find out available versions: module spider matlab
-         module load MATLAB/2023a.Update4
-
-         # Executing a GPU matlab program
-         matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
-
-      where ``gpu-type`` is one of: v100, a40, a6000, l40s, a100, h100, mi100
-
-      and ``#gpus`` depends on the card-type:
-
-      - V100 (2 cards/node)
-      - A40 (8 cards/node)
-      - A6000 (2 cards/node)
-      - L40s (2 or 6 cards/node)
-      - A100 (2 cards/node)
-      - H100 (4 cards/node)
-      - MI100 (2 cards/node)
-
-   .. tab:: LUNARC
-
-      .. code-block::
-
-         #!/bin/bash
-         # Change to your actual project number
-         #SBATCH -A lu2025-7-24
-         #SBATCH -n 1
-         #SBATCH -p gpua100
-         # The number of GPUs.#gpus, can be 1 or 2
-         #SBATCH --gpus=<#gpus>
-
-         # Asking for 30 min (change as you want)
-         #SBATCH -t 00:30:00
-         #SBATCH --error=matlab_%J.err
-         #SBATCH --output=matlab_%J.out
-
-         # Clean the environment
-         module purge > /dev/null 2>&1
-
-         # Change depending on resource and MATLAB version
-         # to find out available versions: module spider matlab
-         module load matlab/2023b
-
-         # Executing a GPU matlab program
-         matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
-
-   .. tab:: NSC
-
-      .. code-block::
-
-         #!/bin/bash
-         # Change to your actual project number
-         #SBATCH -A naiss2025-22-262
-         #SBATCH --ntasks=1
-         #SBATCH --cpus-per-task=1
-         #SBATCH --ntasks-per-core=1
-         # The number of GPUs.#gpus, can be 1 or 2
-         #SBATCH --gpus-per-task=1
-
-         # Asking for 30 min (change as you want)
-         #SBATCH -t 00:30:00
-         #SBATCH --error=matlab_%J.err
-         #SBATCH --output=matlab_%J.out
-
-         # Clean the environment
-         module purge > /dev/null 2>&1
-
-         # Change depending on resource and MATLAB version
-         # to find out available versions: module spider matlab
-         module load MATLAB/2024a-hpc1-bdist
-
-         # Executing a GPU matlab program
-         matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
-
-   .. tab:: PDC
-
-      .. code-block::
-
-         #!/bin/bash
-         # Change to your actual project number
-         #SBATCH -A naiss2025-22-262
-         #SBATCH --ntasks-per-node=1
-         #SBATCH -N 1
-         # Ask for GPUs
-         #SBATCH -p gpu
-
-         # Asking for 30 min (change as you want)
-         #SBATCH -t 00:30:00
-         #SBATCH --error=matlab_%J.err
-         #SBATCH --output=matlab_%J.out
-
-         # Clean the environment
-         module purge > /dev/null 2>&1
-
-         # Change depending on resource and MATLAB version
-         # to find out available versions: module spider matlab
-         module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0
-
-         # Executing a GPU matlab program
-         matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
-
-
-
-.. keypoints::
-
-   - The SLURM scheduler handles allocations to the calculation/compute nodes
-   - Batch jobs run without interaction with user
-   - A batch script consists of a part with SLURM parameters describing the allocation and a second part describing the actual work within the job, for instance one or several Matlab scripts.
-   - You can run MATLAB as a batch job through a batch script or from inside MATLAB (shell or GUI)
-   - Remember to include possible input arguments to the MATLAB script in the batch script.
-   - **You need to configure MATLAB before submitting batch jobs** (except on Dardel).
+    - The SLURM scheduler handles allocations to the calculation/compute nodes
+    - Batch jobs run without interaction with user
+    - A batch script consists of a part with SLURM parameters describing the allocation and a second part describing the actual work within the job, for instance one or several MATLAB scripts.
+    - You can run MATLAB as a batch job through a batch script or from inside MATLAB (shell or GUI)
+    - Remember to include possible input arguments to the MATLAB script in the batch script.
+    - **You need to configure MATLAB before submitting batch jobs** (except on Dardel).
