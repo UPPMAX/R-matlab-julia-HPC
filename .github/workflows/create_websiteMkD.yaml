@@ -38,5 +38,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install -r mkdocs-requirements.txt 
+      - run: pip install mkdocs-requirements.txt 
       - run: mkdocs gh-deploy --force
