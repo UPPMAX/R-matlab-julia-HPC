@@ -56,14 +56,14 @@ We might want to know where the ``R`` interpreter will be searching for packages
     $ R 
     ```
 
-   Then check find the path of the library using the ``libPaths()`` function. 
+    Then check find the path of the library using the ``libPaths()`` function. 
 
-   ```R 
-   > .libPaths()
-   [1] "/cfs/klemming/home/b/bbrydsoe/.R/23.12/4.4.1/library"                                    
-   [2] "/cfs/klemming/pdc/software/dardel/23.12/eb/software/R/4.4.1-cpeGNU-23.12/lib64/R/library"
-   > 
-   ```
+    ```R 
+    > .libPaths()
+    [1] "/cfs/klemming/home/b/bbrydsoe/.R/23.12/4.4.1/library"                  
+    [2] "/cfs/klemming/pdc/software/dardel/23.12/eb/software/R/4.4.1-cpeGNU-23.12/lib64/R/library"
+    > 
+    ```
 
 === "UPPMAX"
 
@@ -115,7 +115,7 @@ We might want to know where the ``R`` interpreter will be searching for packages
     [2] "/sw/easybuild_milan/software/R/4.2.1-foss-2022a/lib64/R/library"
     ```
 
-!!! warning "Modules on Dardel"
+!!! warning "Warning: Modules on Dardel"
 
     If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do ``module purge`` there, they will all be removed together with the application software modules you wanted to purge. This may cause problems. 
 
@@ -613,8 +613,8 @@ For PDC the package ``Rmpi`` does not work correctly, so we will instead use the
         Installing package "anomalize". Using the repo http://ftp.acc.umu.se/mirror/CRAN/
          
         ```bash
-	$ R --quiet --no-save --no-restore -e "install.packages('anomalize', repo='http://ftp.acc.umu.se/mirror/CRAN/')"
-	```
+    	$ R --quiet --no-save --no-restore -e "install.packages('anomalize', repo='http://ftp.acc.umu.se/mirror/CRAN/')"
+	    ```
   
         This assumes you have already loaded the R module. If not, then do so first. 
 	 
