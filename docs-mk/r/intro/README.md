@@ -76,8 +76,10 @@ graph TD
 
 ```mermaid
 graph LR 
-    "Interpreted" [shape=box, color=black, fillcolor=lightgrey,style=filled]
-    "R packages" [shape=box, color=black, fillcolor=lightgrey,style=filled]
+    B["Interpreted"]
+    style B fill:lightgrey
+    C["R packages"]
+    style C fill:lightgrey
     "R software development" [shape=box, color=black, fillcolor=lightgrey,style=filled]
     "the R interpreter" [shape=box, color=black, fillcolor=lightgrey,style=filled]
     "CRAN" [shape=box, color=black, fillcolor=lightgrey,style=filled]
