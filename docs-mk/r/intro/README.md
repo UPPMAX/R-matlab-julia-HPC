@@ -76,22 +76,43 @@ graph TD
 
 ```mermaid
 graph LR 
-    "Interpreted" [shape=box, color=black, fillcolor=lightgrey,style=filled];
-    "R packages" [shape=box, color=black, fillcolor=lightgrey,style=filled];
-    "R software development" [shape=box, color=black, fillcolor=lightgrey,style=filled];
-    "the R interpreter" [shape=box, color=black, fillcolor=lightgrey,style=filled];
-    "CRAN" [shape=box, color=black, fillcolor=lightgrey,style=filled];
-    "RStudio" [shape=box, color=black, fillcolor=lightgrey,style=filled];
+    "Interpreted" [shape=box, color=black, fillcolor=lightgrey,style=filled]
+    "R packages" [shape=box, color=black, fillcolor=lightgrey,style=filled]
+    "R software development" [shape=box, color=black, fillcolor=lightgrey,style=filled]
+    "the R interpreter" [shape=box, color=black, fillcolor=lightgrey,style=filled]
+    "CRAN" [shape=box, color=black, fillcolor=lightgrey,style=filled]
+    "RStudio" [shape=box, color=black, fillcolor=lightgrey,style=filled]
   
-  "the R programming language" -> "Interpreted" [label="is"];
-  "the R programming language" -> "R packages" [label=" uses"];
-  "the R programming language" -> "R software development" [label="has"];
-  "Interpreted" -> "the R interpreter" [label=" done by"];
-  "R packages" -> "CRAN" [label=" maintained by"];
-  "R software development" -> "RStudio" [label=" commonly done in"];
+  A --> "Interpreted" [label="is"]
+  A --> "R packages" [label=" uses"]
+  A --> "R software development" [label="has"]
+  "Interpreted" -> "the R interpreter" [label=" done by"]
+  "R packages" -> "CRAN" [label=" maintained by"]
+  "R software development" -> "RStudio" [label=" commonly done in"]
 
-  "the R programming language" [shape=rectangle,style=filled,fillcolor=lightgrey];
+  A["the R programming language"]
+  style A shape=rectangle,fill:lightgrey
 ```
+
+```mermaid
+graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  old_head["HEAD"]
+  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
+  B --> A
+  C --> B
+  master -.-> C
+  head -.-> A
+  old_head -.-> B
+  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+```
+
 
 
 The main general R resources are:
