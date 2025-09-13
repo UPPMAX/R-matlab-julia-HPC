@@ -10,6 +10,7 @@ nav:
       - Intro: r/intro/README.md
       - Load and run: r/load_run.md
       - Packages: r/packages.md
+      - Batch: r/batch.md
       - RStudio: r/rstudio.md
       - Summary: r/summary.md
     - MATLAB: 

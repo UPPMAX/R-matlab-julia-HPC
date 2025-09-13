@@ -844,39 +844,38 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
            
         ```bash
         #!/bin/bash
-             #SBATCH -A naiss2025-22-262 
-             #SBATCH --time=00:10:00 # Asking for 10 minutes
-             #SBATCH -n 1 # Asking for 1 core
+        #SBATCH -A naiss2025-22-934 
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
 
-             # Load any modules you need, here for R/4.2.2 
-             module load R/4.2.2-hpc1-gcc-11.3.0-bare 
+        # Load any modules you need, here for R/4.2.2 
+        module load R/4.2.2-hpc1-gcc-11.3.0-bare 
 
-             # Run your R script 
-             Rscript add2.R 2 3 
+        # Run your R script 
+        Rscript add2.R 2 3 
+        ``` 
 
-.. solution:: Solution for PDC
-    :class: dropdown 
-
-          Serial script on R
+!!! note "Solution for PDC" 
+    
+    ??? note "Serial script on Dardel" 
            
-          .. code-block:: sh 
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss2025-22-934 
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
+        #SBATCH -p main 
 
-             #!/bin/bash
-             #SBATCH -A naiss2025-22-262 
-             #SBATCH --time=00:10:00 # Asking for 10 minutes
-             #SBATCH -n 1 # Asking for 1 core
-             #SBATCH -p main 
+        # Load any modules you need, here for R/4.4.1 
+        module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
 
-             # Load any modules you need, here for R/4.4.1 
-             module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
-
-             # Run your R script 
-             Rscript add2.R 2 3 
-
+        # Run your R script 
+        Rscript add2.R 2 3 
+        ```
    
 
-.. challenge:: Parallel job run
+!!! warning "Challenge: Parallel job run" 
 
-   Try making a batch script for running the parallel example with "foreach" from further up on the page. 
+    Try making a batch script for running the parallel example with "foreach" from further up on the page. 
 
 
