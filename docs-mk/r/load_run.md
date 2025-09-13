@@ -62,13 +62,13 @@ to start R.
 
 ???- note "Prefer this session as video?"
 
-    HPC cluster| Login method           | Location                                                 |
-    -----------+------------------------+-------------------------------------
-    COSMOS     | Local ThinLinc client  | [Here](https://youtu.be/sSWd54Gunck)
-    Dardel     | Local ThinLinc client  | [Here](https://youtu.be/xBFH7Ab37FU)
-    Kebnekaise | Local ThinLinc client  | [Here](https://youtu.be/miAxHkSePIA)
-    Rackham    | Local ThinLinc client  | [Here](https://youtu.be/fSUYE_Xahe8)
-    Tetralith  | Local ThinLinc client  | [Here](https://youtu.be/HxBtyCB3w0k)
+     HPC cluster| Login method           | Location                                                 |
+     -----------+------------------------+-------------------------------------
+     COSMOS     | Local ThinLinc client  | [Here](https://youtu.be/sSWd54Gunck)
+     Dardel     | Local ThinLinc client  | [Here](https://youtu.be/xBFH7Ab37FU)
+     Kebnekaise | Local ThinLinc client  | [Here](https://youtu.be/miAxHkSePIA)
+     Rackham    | Local ThinLinc client  | [Here](https://youtu.be/fSUYE_Xahe8)
+     Tetralith  | Local ThinLinc client  | [Here](https://youtu.be/HxBtyCB3w0k)
 
 
 +------------------+-------------------+

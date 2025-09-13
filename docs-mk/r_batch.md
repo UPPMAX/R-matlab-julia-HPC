@@ -392,33 +392,30 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
 #### Rmpi
 
-.. type-along:: 
+!!! hint "Type-along"
 
-   Short parallel example using package “Rmpi” ("pbdMPI on Dardel")  
+    Short parallel example using package “Rmpi” ("pbdMPI on Dardel")  
 
-   .. tabs::
+    === "UPPMAX"
 
-      .. tab:: UPPMAX
+        Short parallel example (using package "Rmpi", so we need to load the module R_packages/4.1.1 instead of R/4.1.1 and we need to load a suitable openmpi module, openmpi/4.0.3)
 
-         Short parallel example (using package "Rmpi", so we need to load the module R_packages/4.1.1 instead of R/4.1.1 and we need to load a suitable openmpi module, openmpi/4.0.3)
-
-         .. code-block:: sh
-        
-            #!/bin/bash -l
-            #SBATCH -A uppmax2025-2-272
-            #Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH -n 8
+        ```bash
+        #!/bin/bash -l
+        #SBATCH -A uppmax2025-Y-ZZZ
+        #Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH -n 8
             
-            export OMPI_MCA_mpi_warn_on_fork=0
-            export OMPI_MCA_btl_openib_allow_ib=1
+        export OMPI_MCA_mpi_warn_on_fork=0
+        export OMPI_MCA_btl_openib_allow_ib=1
             
-            ml purge > /dev/null 2>&1
-            ml R_packages/4.1.1
-            ml openmpi/4.0.3
+        ml purge > /dev/null 2>&1
+        ml R_packages/4.1.1
+        ml openmpi/4.0.3
             
-            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out 
-           
+        mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out 
+        ```   
 
 
       .. tab:: HPC2N
