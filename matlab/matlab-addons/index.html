@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Add-Ons - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Add-Ons";
+        var mkdocs_page_input_path = "matlab/matlab-addons.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Introduction to R, MATLAB, and Julia in HPC
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../slurmMatlab/">MATLAB terminal and SLURM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/notebook_pluto/">The notebook Pluto</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel/">Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Add-Ons</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs-mk/matlab/matlab-addons.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="add-ons">Add-Ons<a class="headerlink" href="#add-ons" title="Anchor link to this section for reference">&para;</a></h1>
+<p>Add-ons extend the capabilities of MATLAB® by providing additional functionality for specific tasks and applications, such as:
+- connecting to hardware devices
+- additional algorithms
+- interactive apps</p>
+<p>Encompass a wide variety of resources
+- products
+- apps
+- toolboxes
+- support packages</p>
+<p>Available from:
+- MathWorks®
+- the global MATLAB user community</p>
+<p>For more information, <a href="https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ">click here</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Navigate to toolboxes and Add-Ons</li>
+<li>View Add-Ons and toolboxes</li>
+<li>Install and use Add-Ons</li>
+</ul>
+</div>
+<p>Before going into installing Add-Ons, let&rsquo;s have a background to the MATLAB environments and ecosystem!</p>
+<div class="admonition tip">
+<p class="admonition-title">Want a video?</p>
+<p>See <a href="https://www.youtube.com/watch?v=TLXdzEF06xU&amp;list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&amp;index=42">Matlab add-ons (Oct 2024)</a></p>
+</div>
+<h2 id="matlab-add-ons-manager">MATLAB Add-Ons manager<a class="headerlink" href="#matlab-add-ons-manager" title="Anchor link to this section for reference">&para;</a></h2>
+<p>.. figure:: ./img/Toolbar_Add-Ons.PNG</p>
+<p>In the GUI, the Add-Ons manager can be selected from the menu at the top. The drop-down menu options allow users to:</p>
+<ul>
+<li><strong>Browse a library of Add-Ons to download.</strong> Note that some Add-Ons require a separate license.</li>
+</ul>
+<p>.. admonition:: How does that look like?
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>  <span class="k">..</span> figure:: ./img/Add-On_explorer.PNG
+</code></pre></div>
+
+<ul>
+<li><strong>Manage Add-Ons already downloaded.</strong></li>
+</ul>
+<p>.. admonition:: How does that look like?
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>  <span class="k">..</span> figure:: ./img/Add-On_manager.PNG
+</code></pre></div>
+
+<ul>
+<li>
+<p>Package user-generated code as a Toolbox or App</p>
+</li>
+<li>
+<p>Get hardware-related support packages</p>
+</li>
+</ul>
+<p>Here we will only focus on the first two options.</p>
+<p>.. note::</p>
+<p>Note that very many packages are already included in the  Academic installation and license</p>
+<ul>
+<li>In Add-On explorer: &ldquo;View My products&rdquo;</li>
+</ul>
+<p>.. admonition:: How does that look like?
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>  <span class="k">..</span> figure:: ./img/my_products.PNG
+</code></pre></div>
+
+<p>.. seealso:: Some toolboxes</p>
+<ul>
+<li>Matlab products</li>
+<li>Simulink</li>
+<li>Some toolboxes provide <strong>GUI</strong> for their tools Apps</li>
+<li>:ref:<code>Read more &lt;matlab-extra-addons&gt;</code></li>
+<li>We won&rsquo;t cover the usage of the toolboxes here!</li>
+</ul>
+<p>Install Add-Ons
+~~~~~~~~~~~~~~~</p>
+<ul>
+<li>Search in Add-Ons explorer and install.</li>
+</ul>
+<p>.. figure:: ./img/searchforaddons.PNG</p>
+<ul>
+<li>
+<p>Ends up in local folder and is in the part so it should be reached wherever you are in the file tree.</p>
+</li>
+<li>
+<p><code>~/MATLAB Add-Ons</code></p>
+</li>
+<li>
+<p>It&rsquo;s in the path so it should be possible to run directly if you don&rsquo;t need to run a installation file.</p>
+</li>
+<li>
+<p>For more information about a specific support package install location, see the documentation for the package.</p>
+</li>
+</ul>
+<p>.. warning::</p>
+<p>To be able to install you need to use the email for a <strong>personal mathworks account</strong>.</p>
+<p>.. seealso::</p>
+<p>You can install some Add-Ons manually using an installation file. This is useful in several situations:</p>
+<p>.. admonition:: When?
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">add</span><span class="o">-</span><span class="n">on</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Add</span><span class="o">-</span><span class="n">On</span><span class="w"> </span><span class="n">Explorer</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">example</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">add</span><span class="o">-</span><span class="n">on</span><span class="w"> </span><span class="n">yourself</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">receive</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">someone</span><span class="w"> </span><span class="k">else</span><span class="o">.</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">downloaded</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">add</span><span class="o">-</span><span class="n">on</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Add</span><span class="o">-</span><span class="n">On</span><span class="w"> </span><span class="n">Explorer</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">installing</span><span class="w"> </span><span class="n">it</span><span class="o">.</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">downloaded</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">add</span><span class="o">-</span><span class="n">on</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Exchange</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">MATLAB</span><span class="w"> </span><span class="n">Central</span><span class="err">™</span><span class="o">.</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="err">`</span><span class="n">MathWorks</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="n">Add</span><span class="o">-</span><span class="n">Ons</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">se</span><span class="o">.</span><span class="n">mathworks</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">help</span><span class="o">/</span><span class="n">matlab</span><span class="o">/</span><span class="n">matlab_env</span><span class="o">/</span><span class="n">get</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">ons</span><span class="o">.</span><span class="n">html</span><span class="o">&gt;</span><span class="err">`</span><span class="n">_</span>
+</code></pre></div>
+
+<p>.. demo::</p>
+<ul>
+<li>Search for <code>kalmanf</code></li>
+<li>Click &ldquo;Learning the Kalman Filter&rdquo;</li>
+<li>Look at the documentation</li>
+<li>Test if the command works today:</li>
+</ul>
+<p>.. code-block:: matlab</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">kalmanf</span>
+<span class="w">  </span><span class="n">Unrecognized</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="s1">&#39;kalmanf&#39;</span><span class="o">.</span>
+</code></pre></div>
+
+<ul>
+<li>OK, it is not there</li>
+<li>Click &ldquo;Add&rdquo;, and &ldquo;Download and Add to path&rdquo;</li>
+<li>Type email address connected to your MathWorks account (not needed for some versions at Dardel)</li>
+<li>Installation starts</li>
+<li>It will end up in the <code>~/MATLAB\ Add-Ons/</code> folder</li>
+<li>This is how the file tree looked for me (<code>tree</code> command is available at some centres)</li>
+</ul>
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code><span class="n">  $ tree MATLAB\ Add-Ons/</span>
+<span class="n">  MATLAB\ Add-Ons/</span>
+<span class="n">  └── Collections</span>
+<span class="n">  |   └── Efficient\ GRIB1\ data\ reader</span>
+<span class="n">  |       ├── core.28328</span>
+<span class="n">  |       ├── license.txt</span>
+<span class="n">  |       ├── readGRIB1.c</span>
+<span class="n">  |       ├── readGRIB1.mexa64</span>
+<span class="n">  |       └── resources</span>
+<span class="n">  |           ├── addons_core.xml</span>
+<span class="n">  |           ├── matlab_path_entries.xml</span>
+<span class="n">  |           ├── metadata.xml</span>
+<span class="n">  |           ├── previewImage.png</span>
+<span class="n">  |           ├── readGRIB1.zip</span>
+<span class="n">  |           └── screenshot.png</span>
+<span class="n">  └── Functions</span>
+<span class="n">      └── Learning\ the\ Kalman\ Filter</span>
+<span class="n">          ├── kalmanf.m</span>
+<span class="n">          └── resources</span>
+<span class="n">              ├── addons_core.xml</span>
+<span class="n">              ├── kalmanf.zip</span>
+<span class="n">              ├── matlab_path_entries.xml</span>
+<span class="n">              ├── metadata.xml</span>
+<span class="n">              ├── previewImage.png</span>
+<span class="n">              └── screenshot.png</span>
+</code></pre></div>
+
+<ul>
+<li>Evidently it is a <code>function</code>. Note that I already have something classified as <code>collections</code></li>
+<li>Now test:</li>
+</ul>
+<p>.. code-block:: matlab</p>
+<div class="codehilite"><pre><span></span><code>  &gt;&gt; kalmanf()
+  &#39;kalmanf&#39; requires Learning the Kalman Filter version 1.0.0.0 to be enabled.
+</code></pre></div>
+
+<ul>
+<li>OK. It is installed but may need some other things. Just an example!!</li>
+</ul>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<p>.. challenge:: 1. Find the <strong>kalmanf</strong> and install it and run a test command.</p>
+<p>Use the Demo as instruction!</p>
+<p>.. challenge:: 2. (Optional) Browse the add-ons and get inspired for your own work!</p>
+<p>Use the Demo as inspiration!</p>
+<p>.. keypoints::</p>
+<ul>
+<li>Many Add-Ons, like toolboxes and packages are available at the Clusters</li>
+<li>
+<p>You can view Add-Ons and toolboxes</p>
+<ul>
+<li>
+<p>It is all more or less graphical</p>
+</li>
+<li>
+<p>To install Add-Ons</p>
+</li>
+<li>
+<p>Search in Add-Ons explorer and install.</p>
+</li>
+<li>Ends up in local folder and is in the path so it should be reached wherever you are in the file tree.</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

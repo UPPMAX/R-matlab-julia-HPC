@@ -1,0 +1,13 @@
+ID,Start time,Completion time,Email,Name,"Overall, how would you rate today's training event?",What do you think about the pace of teaching overall?,I can use the module system to load a specific verison of Julia,I can run Julia,I can use the Julia interpreter,I can run a Julia script,I can install a Julia package,I can work with Julia project environments,I can write a batch script,I can submit a batch script to the job scheduler,I can work interactively with Julia on the compute nodes,Would you recommend this course to someone else?,"Which future training topics would you like to be provided by the training host(s)?
+
+Note: we will not provide courses on things like area-specific Julia packages. 
+","Do you have any additional comments?
+
+Suggestions/ideas:
+
+- What did you like best? (materials, exercises, structure)
+- Where should we improve? (materials, exercises, structure)
+- Training organi...",Last modified time
+1,3/28/25 0:24:26,3/28/25 0:25:37,anonymous,,10,teaching was excellent,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,Yes,machine learning/deep learning/ai-releated training,,
+2,3/31/25 19:53:55,3/31/25 19:56:34,anonymous,,8,"It was good. However, some parts were redundant if you hade attended another day.",I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I have good confidence I can do this,I have some confidence I can do this,I have good confidence I can do this,I have good confidence I can do this,I have good confidence I can do this,Yes,A more detailed overview of how to setup everything to work with the gpus. ,,
+3,4/3/25 13:27:20,4/3/25 13:28:13,anonymous,,7,ok,I have good confidence I can do this,I have good confidence I can do this,I absolutely can do this!,I have good confidence I can do this,I have low confidence I can do this,I have low confidence I can do this,I have low confidence I can do this,I have some confidence I can do this,I have no confidence I can do this,Yes,,,

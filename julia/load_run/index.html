@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Load and run - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Load and run";
+        var mkdocs_page_input_path = "julia/load_run.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Introduction to R, MATLAB, and Julia in HPC
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and SLURM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Load and run</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#check-for-julia-versions">Check for Julia versions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#principle">Principle</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-a-julia-module">Load a Julia module</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run">Run</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#run-julia-as-a-session">Run Julia as a session</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modes-julian-mode">Modes: Julian mode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#shell-mode">Shell mode</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../notebook_pluto/">The notebook Pluto</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel/">Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Julia</li>
+      <li class="breadcrumb-item active">Load and run</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs-mk/julia/load_run.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="load-and-run-julia">Load and run Julia<a class="headerlink" href="#load-and-run-julia" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>At the Swedish HPC centers we call the applications available via the <em>module system</em> <strong>modules</strong>:</p>
+<ul>
+<li><a href="https://www.nsc.liu.se/software/modules/">NSC</a></li>
+<li><a href="https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/">PDC</a></li>
+<li><a href="https://docs.uppmax.uu.se/cluster_guides/modules/">UPPMAX</a></li>
+<li><a href="https://docs.hpc2n.umu.se/software/modules/">HPC2N</a></li>
+<li><a href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept">LUNARC</a></li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Learn to load Julia</li>
+<li>Get started with the Julia command line</li>
+<li>Learn to run Julia scripts</li>
+</ul>
+</div>
+<details class="note">
+<summary>Instructor note</summary>
+<ul>
+<li>Lecture and demo 15 min</li>
+<li>Exercise 15 min</li>
+<li>Total time 30 min</li>
+</ul>
+</details>
+<p>Julia can be started after a Julia module is loaded.
+The module activates paths to a specific version of the julia interpreter and its libraries and packages.</p>
+<details class="note">
+<summary>Short cheat sheet</summary>
+<ul>
+<li>See which modules exists: <code>module spider</code> or <code>ml spider</code>.</li>
+<li>Find module versions for a particular software: <code>module spider &lt;software&gt;</code></li>
+<li>Modules depending only on what is currently loaded: <code>module avail</code> or <code>ml av</code></li>
+<li>See which modules are currently loaded: <code>module list</code> or <code>ml</code></li>
+<li>Load a module: <code>module load &lt;module&gt;/&lt;version&gt;</code> or <code>ml &lt;module&gt;/&lt;version&gt;</code></li>
+<li>Unload a module: <code>module unload &lt;module&gt;/&lt;version&gt;</code> or <code>ml -&lt;module&gt;/&lt;version&gt;</code></li>
+<li>Unload all modules except the &lsquo;sticky&rsquo; modules: <code>module purge</code> or <code>ml purge</code></li>
+</ul>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that the module systems at UPPMAX and HPC2N are slightly different.
+All modules at UPPMAX, for instance, not directly related to bio-informatics are shown by <code>ml avail</code>.</p>
+<p>Modules at many other centres are only available when one has loaded all
+prerequisites, for instance the compilers (<code>GNU</code>, <code>Intel</code>, etc.).</p>
+</div>
+<h2 id="check-for-julia-versions">Check for Julia versions<a class="headerlink" href="#check-for-julia-versions" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="principle">Principle<a class="headerlink" href="#principle" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>For some clusters</li>
+</ul>
+<div class="language-console highlight" data-copy="module avail julia"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">module avail julia</span>
+</span></code></pre></div>
+<details class="note">
+<summary>Example output</summary>
+<p>From Tetralith:</p>
+<div class="language-console highlight" data-copy="module avail julia"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gp">$ </span>module<span class="w"> </span>avail<span class="w"> </span>julia
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="go">---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="go">   julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="go">   julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="go">   julia/1.4.1                          julia/1.8.5-nsc1-bdist</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="go"> Where:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="go">  D:  Default Module</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="go">Use &quot;module spider&quot; to find all possible modules and extensions.</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="go">Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching any of the &quot;keys&quot;.</span>
+</span></code></pre></div>
+</details>
+<ul>
+<li>Or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N &amp; PDC)</li>
+</ul>
+<div class="language-console highlight" data-copy="module spider julia"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">module spider julia</span>
+</span></code></pre></div>
+<details class="note">
+<summary>Example output</summary>
+<p>From Dardel:
+<div class="language-console highlight" data-copy="module spider julia"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span>module<span class="w"> </span>spider<span class="w"> </span>julia
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go">  julia:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="go">    Description:</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="go">      Julia is a high-level general-purpose dynamic programming language that was originally designed</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="go">      to address the needs of high-performance numerical analysis and computational science, without</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="go">      the typical need of separate compilation to be fast, also usable for client and server web use,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="go">      low-level systems programming or as a specification language (wikipedia.org). Julia provides</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="go">      ease and expressiveness for high-level numerical computing, in the same way as languages such as</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="go">      R, MATLAB, and Python, but also supports general programming. To achieve this, Julia builds upon</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="go">      the lineage of mathematical programming languages, but also borrows much from popular dynamic</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="go">      languages, including Lisp, Perl, Python, Lua, and Ruby (julialang.org).</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="go">     Versions:</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="go">        julia/1.8.2-cpeGNU-22.06</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="go">        julia/1.9.3-cpeGNU-22.06</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="go">        julia/1.9.3-cpeGNU-23.03</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="go">        julia/1.10.2-cpeGNU-23.03</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="go">        julia/1.10.2-cpeGNU-23.12</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="go">     Other possible modules matches:</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="go">        Julia  libuv-julia</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="go">  To find other possible module matches execute:</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="gp">      $ </span>module<span class="w"> </span>-r<span class="w"> </span>spider<span class="w"> </span><span class="s1">&#39;.*julia.*&#39;</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="go">  For detailed information about a specific &quot;julia&quot; package (including how to load the modules) use the module&#39;s full name.</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="go">  Note that names that have a trailing (E) are extensions provided by other modules.</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="go">  For example:</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="gp">     $ </span>module<span class="w"> </span>spider<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span></code></pre></div></p>
+</details>
+<h2 id="load-a-julia-module">Load a Julia module<a class="headerlink" href="#load-a-julia-module" title="Anchor link to this section for reference">&para;</a></h2>
+<p>For reproducibility, we recommend ALWAYS loading a specific module for the Julia version instead of using the
+default one.</p>
+<h4 id="principle_1">Principle<a class="headerlink" href="#principle_1" title="Anchor link to this section for reference">&para;</a></h4>
+<ul>
+<li>Use the output of existing module above!</li>
+<li>Load the module!</li>
+</ul>
+<p>At some clusters:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">module load julia/1.8.5</span>
+</span></code></pre></div>
+<p>or at cluster that includes &ldquo;architecture&rdquo; or &ldquo;build name&rdquo; in module name:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">ml julia/1.10.2-bdist</span>
+</span></code></pre></div>
+<p>Some clusters will require other modules to be loaded (Kebnekaise and Dardel)</p>
+<ul>
+<li>First check how to load (see Check for Julia versions above)</li>
+</ul>
+<div class="language-console highlight" data-copy="module spider julia/1.10.2-cpeGNU-23.12"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">$ </span>module<span class="w"> </span>spider<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">...</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="go">You will need to load all module(s) on any one of the lines below before the &quot;julia/1.10.2-cpeGNU-23.12&quot; module is available to load.</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="go">PDC/23.12</span>
+</span></code></pre></div>
+<ul>
+<li>Load PDC/23.12 first and then the julia module</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">ml PDC/23.12 julia/1.10.2-cpeGNU-23.12</span>
+</span></code></pre></div>
+<h2 id="run">Run<a class="headerlink" href="#run" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="run-julia-as-a-session">Run Julia as a session<a class="headerlink" href="#run-julia-as-a-session" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>After loading the appropriate modules for Julia, you will have access to the <strong>read-eval-print-loop (REPL)</strong> command line by typing <code>julia</code>:</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">julia</span>
+</span></code></pre></div>
+<ul>
+<li>In julia REPL</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>This is what loading the Julia REPL looks like on Pelle:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="gp">[username@pelle1 ~]$ </span>ml
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">No modules loaded</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="gp">[username@pelle1 ~]$ </span>ml<span class="w"> </span>Julia/1.10.9
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="gp">[username@pelle1 ~]$ </span>ml
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="go">Currently Loaded Modules:</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="go">  1) Julia/1.10.9-LTS-linux-x86_64</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="gp">[username@pelle1 ~]$ </span>julia
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="go">           _</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="go">   _       _ _(_)_     |  Documentation: https://docs.julialang.org</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="go">  (_)     | (_) (_)    |</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="go">   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="go">  | | | | | | |/ _` |  |</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="go">  | | |_| | | | (_| |  |  Version 1.10.9 (2025-03-10)</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="go"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="go">|__/                   |</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="go">julia&gt; </span>
+</span></code></pre></div>
+</div>
+<h3 id="modes-julian-mode">Modes: Julian mode<a class="headerlink" href="#modes-julian-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Julia has different modes, the one we arrive at is the so-called <code>Julian</code> mode, where one can execute commands.</li>
+<li>The description for accessing these modes will be given in the following paragraphs.</li>
+<li>Once you are done with your work in any of the modes, you can return to the <code>Julian</code> mode by pressing the <code>backspace</code> key.</li>
+</ul>
+<h3 id="shell-mode">Shell mode<a class="headerlink" href="#shell-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<p>While being on the Julian mode you can enter the <code>shell</code> mode by typing <code>;</code>:</p>
+<div class="language-julia-repl highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">   julia&gt;;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="go">   shell&gt;pwd</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="go">   /current-folder-path</span>
+</span></code></pre></div>
+<p>this will allow you to use Linux commands. Notice that the availability of these commands
+depend on the OS, for instance, on Windows it will depend on the terminal that you have
+installed and if it is visible to the Julia installation.</p>
+<p>Package manage mode
+...................</p>
+<p>Another mode available in Julia is the <code>package manager</code> mode, it can be accessed by typing
+<code>]</code> in the <code>Julian</code> mode:</p>
+<p>.. code-block:: julia-repl</p>
+<p>julia&gt;]
+   (v1.8) pkg&gt;</p>
+<p>this will make your interaction with the package manager <strong>Pkg</strong> easier, for instance,
+instead of typing the complete name of <strong>Pkg</strong> commands such as <code>Pkg.status()</code> in the
+<code>Julian</code> mode, you can just type <code>status</code> in the <code>package</code> mode.</p>
+<p>Help mode
+.........</p>
+<p>The last mode is the <code>help</code> mode, you can enter this mode from the <code>Julian</code> one by
+typing <code>?</code>, then you may type some string from which you need more information:</p>
+<p>.. code-block:: julia</p>
+<p>julia&gt;?</p>
+<p>help?&gt; ans
+   search: ans transpose transcode contains expanduser instances MathConstants readlines
+   LinearIndices leading_ones leading_zeros</p>
+<p>ans</p>
+<p>A variable referring to the last computed value, automatically set at the interactive prompt.</p>
+<p>Exiting
+.......</p>
+<p>Exit with</p>
+<p>.. code-block:: julia-repl</p>
+<p>julia&gt; <Ctrl-D></p>
+<p>or</p>
+<p>.. code-block:: julia-repl</p>
+<p>julia&gt; exit()</p>
+<p>.. admonition:: The Julian modes summary</p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="nx">enter</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="o">*</span><span class="nx">shell</span><span class="w"> </span><span class="nx">mode</span><span class="o">*</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">typing</span><span class="w"> </span><span class="err">``</span><span class="p">;</span><span class="err">``</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">go</span><span class="w"> </span><span class="nx">back</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="o">*</span><span class="nx">Julian</span><span class="o">*</span><span class="w"> </span><span class="nx">mode</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="err">``</span><span class="p">&lt;</span><span class="nx">backspace</span><span class="p">&gt;</span><span class="err">``</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">access</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="o">*</span><span class="kn">package</span><span class="w"> </span><span class="nx">manager</span><span class="o">*</span><span class="w"> </span><span class="nx">mode</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">typing</span><span class="w"> </span><span class="err">``</span><span class="p">]</span><span class="err">``</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="o">*</span><span class="nx">Julian</span><span class="o">*</span><span class="w"> </span><span class="nx">mode</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="o">*</span><span class="nx">help</span><span class="w"> </span><span class="nx">mode</span><span class="o">*</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">typing</span><span class="w"> </span><span class="err">``</span><span class="p">?</span><span class="err">``</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="o">*</span><span class="nx">Julian</span><span class="w"> </span><span class="nx">mode</span><span class="o">*</span>
+</code></pre></div>
+
+<p>.. seealso::</p>
+<p><code>More detailed information about the modes in Julia can be found &lt;https://docs.julialang.org/en/v1/stdlib/REPL/&gt;</code>_.</p>
+<p>Run a Julia script</p>
+<h6 id="_1"><a class="headerlink" href="#_1" title="Anchor link to this section for reference">&para;</a></h6>
+<p>You can run a Julia script on the Linux shell as follows:</p>
+<p>.. code-block:: console</p>
+<p>$ julia example.jl</p>
+<p>where the script is a text file could contain these lines:</p>
+<p>.. code-block:: bash</p>
+<p>println(&ldquo;hello world&rdquo;)</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<p>.. challenge:: 1a. Find out which versions are on your cluster from documentation</p>
+<ul>
+<li>Find/search for that documentation!</li>
+</ul>
+<p>.. solution:: Solution
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>  <span class="k">-</span> <span class="sb">`UPPMAX &lt;http://docs.uppmax.uu.se/software/julia/&gt;`</span>_
+  <span class="k">-</span> <span class="sb">`HPC2N &lt;https://www.hpc2n.umu.se/resources/software/julia&gt;`</span>_
+  <span class="k">-</span> <span class="sb">`LUNARC &lt;The user demand on Julia has been low, so there is currently no site-specific documentation.&gt;`</span>_
+  <span class="k">-</span> <span class="sb">`NSC &lt;https://www.nsc.liu.se/software/installed/tetralith/julia/&gt;`</span>_
+  <span class="k">-</span> <span class="sb">`PDC &lt;https://support.pdc.kth.se/doc/applications/&gt;`</span>_
+</code></pre></div>
+
+<p>.. challenge:: 1b. Find out which versions are on your cluster from command line</p>
+<ul>
+<li>Use the <code>spider</code> or <code>avail</code> module commands</li>
+</ul>
+<p>.. solution:: Solution
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tabs</span><span class="p">::</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">UPPMAX</span>
+
+<span class="w">       </span><span class="n">Check</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">with</span><span class="p">:</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">            </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">julia</span>
+
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">HPC2N</span>
+
+<span class="w">        </span><span class="n">Check</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">with</span><span class="p">:</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">julia</span>
+
+<span class="w">        </span><span class="n">Notice</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">working</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Intel</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">kebnekaise</span><span class="o">.</span><span class="n">hpc2n</span><span class="o">.</span><span class="n">umu</span><span class="o">.</span><span class="n">se</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">AMD</span>
+<span class="w">        </span><span class="p">(</span><span class="o">*</span><span class="n">kebnekaise</span><span class="o">-</span><span class="n">amd</span><span class="o">.</span><span class="n">hpc2n</span><span class="o">.</span><span class="n">umu</span><span class="o">.</span><span class="n">se</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">nodes</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">different</span><span class="o">.</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">former</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">more</span>
+<span class="w">        </span><span class="n">installed</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">hardware</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">older</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">To</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">specific</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Julia</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">prerequisites</span><span class="p">,</span><span class="w"> </span><span class="n">do</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span><span class="o">/&lt;</span><span class="n">version</span><span class="o">&gt;</span>
+
+<span class="w">        </span><span class="n">Example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">LUNARC</span>
+
+<span class="w">        </span><span class="n">Check</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">with</span><span class="p">:</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span>
+
+<span class="w">        </span><span class="n">To</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">specific</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Julia</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">prerequisites</span><span class="p">,</span><span class="w"> </span><span class="n">do</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span><span class="o">/&lt;</span><span class="n">version</span><span class="o">&gt;</span>
+
+<span class="w">        </span><span class="n">Example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">Tetralith</span>
+
+<span class="w">        </span><span class="n">Check</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">with</span><span class="p">:</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">Julia</span>
+
+<span class="w">        </span><span class="n">Example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">nsc1</span><span class="o">-</span><span class="n">bdist</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">Dardel</span>
+
+<span class="w">        </span><span class="n">Check</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">with</span><span class="p">:</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span>
+
+<span class="w">        </span><span class="n">To</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">specific</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Julia</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">prerequisites</span><span class="p">,</span><span class="w"> </span><span class="n">do</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span><span class="o">/&lt;</span><span class="n">version</span><span class="o">&gt;</span>
+
+<span class="w">        </span><span class="n">Example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">Julia</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+</code></pre></div>
+
+<p>.. admonition:: Output at UPPMAX as of Oct 2024
+   :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>   <span class="k">..</span> code-block::  console
+
+      $ module avail julia
+      ----------------------------- /sw/mf/rackham/compilers -----------------------------
+         julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
+         julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
+         julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
+
+       Where:
+        D:  Default Module
+
+      Use &quot;module spider&quot; to find all possible modules and extensions.
+      Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching any of the &quot;keys&quot;.
+</code></pre></div>
+
+<p>.. admonition:: Output at HPC2N as of Oct 2024
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="c">    </span><span class="nt">..</span><span class="c"> code</span><span class="nb">-</span><span class="c">block:: console</span>
+
+<span class="c">       $ module spider julia  # Assuming you are working on the Intel login nodes</span>
+<span class="c">       </span><span class="nb">------------------------------------------------------------------------------------------------</span>
+<span class="c">         Julia:</span>
+<span class="c">       </span><span class="nb">------------------------------------------------------------------------------------------------</span>
+<span class="c">         Description:</span>
+<span class="c">           Julia is a high</span><span class="nb">-</span><span class="c">level</span><span class="nt">,</span><span class="c"> high</span><span class="nb">-</span><span class="c">performance dynamic programming language for numerical</span>
+<span class="c">           computing</span>
+
+<span class="c">         Versions:</span>
+<span class="c">            Julia/1</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">3</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">            Julia/1</span><span class="nt">.</span><span class="c">7</span><span class="nt">.</span><span class="c">1</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">            Julia/1</span><span class="nt">.</span><span class="c">8</span><span class="nt">.</span><span class="c">5</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">            Julia/1</span><span class="nt">.</span><span class="c">9</span><span class="nt">.</span><span class="c">3</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">       </span><span class="nb">------------------------------------------------------------------------------------------------</span>
+<span class="c">         For detailed information about a specific &quot;Julia&quot; package (including how to load the modules) use the module&#39;s full name</span><span class="nt">.</span>
+<span class="c">         Note that names that have a trailing (E) are extensions provided by other modules</span><span class="nt">.</span>
+<span class="c">         For example:</span>
+
+<span class="c">            $ module spider Julia/1</span><span class="nt">.</span><span class="c">8</span><span class="nt">.</span><span class="c">5</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">       </span><span class="nb">------------------------------------------------------------------------------------------------</span>
+</code></pre></div>
+
+<p>.. admonition:: Output at LUNARC as of Oct 2024
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="c">    </span><span class="nt">..</span><span class="c"> code</span><span class="nb">-</span><span class="c">block:: console</span>
+
+<span class="c">       $ module spider julia</span>
+<span class="c">       </span><span class="nb">-----------------------------------------------------------------------------------------------------</span>
+<span class="c">         Julia:</span>
+<span class="c">       </span><span class="nb">-----------------------------------------------------------------------------------------------------</span>
+<span class="c">           Description:</span>
+<span class="c">             Julia is a high</span><span class="nb">-</span><span class="c">level</span><span class="nt">,</span><span class="c"> high</span><span class="nb">-</span><span class="c">performance dynamic programming language for numerical computing</span>
+
+<span class="c">            Versions:</span>
+<span class="c">               Julia/1</span><span class="nt">.</span><span class="c">8</span><span class="nt">.</span><span class="c">5</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">               Julia/1</span><span class="nt">.</span><span class="c">9</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">               Julia/1</span><span class="nt">.</span><span class="c">9</span><span class="nt">.</span><span class="c">2</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">               Julia/1</span><span class="nt">.</span><span class="c">9</span><span class="nt">.</span><span class="c">3</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+<span class="c">               Julia/1</span><span class="nt">.</span><span class="c">10</span><span class="nt">.</span><span class="c">4</span><span class="nb">-</span><span class="c">linux</span><span class="nb">-</span><span class="c">x86_64</span>
+</code></pre></div>
+
+<p>.. admonition:: Output at NSC as of Mar 2025
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>    <span class="k">..</span> code-block:: console
+
+       $ module avail julia
+
+       ---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------
+          julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist
+          julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
+          julia/1.4.1                          julia/1.8.5-nsc1-bdist
+</code></pre></div>
+
+<p>.. admonition:: Output at PDC as of Mar 2025
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">       </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="n">julia</span>
+<span class="w">       </span><span class="o">-------------------------------------------------------------------------------------------------------</span>
+<span class="w">         </span><span class="n">julia</span><span class="p">:</span>
+<span class="w">       </span><span class="o">-------------------------------------------------------------------------------------------------------</span>
+<span class="w">           </span><span class="n">Description</span><span class="p">:</span>
+<span class="w">             </span><span class="n">Julia</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">high</span><span class="o">-</span><span class="n">level</span><span class="w"> </span><span class="n">general</span><span class="o">-</span><span class="n">purpose</span><span class="w"> </span><span class="n">dynamic</span><span class="w"> </span><span class="n">programming</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">originally</span><span class="w"> </span><span class="n">designed</span>
+<span class="w">             </span><span class="n">to</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">needs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">high</span><span class="o">-</span><span class="n">performance</span><span class="w"> </span><span class="n">numerical</span><span class="w"> </span><span class="n">analysis</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">computational</span><span class="w"> </span><span class="n">science</span><span class="p">,</span><span class="w"> </span><span class="n">without</span>
+<span class="w">             </span><span class="n">the</span><span class="w"> </span><span class="n">typical</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">separate</span><span class="w"> </span><span class="n">compilation</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">fast</span><span class="p">,</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">usable</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">use</span><span class="p">,</span>
+<span class="w">             </span><span class="n">low</span><span class="o">-</span><span class="n">level</span><span class="w"> </span><span class="n">systems</span><span class="w"> </span><span class="n">programming</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">specification</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="p">(</span><span class="n">wikipedia</span><span class="o">.</span><span class="n">org</span><span class="p">)</span><span class="o">.</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">provides</span>
+<span class="w">             </span><span class="nb">ease</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">expressiveness</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">high</span><span class="o">-</span><span class="n">level</span><span class="w"> </span><span class="n">numerical</span><span class="w"> </span><span class="n">computing</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">way</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">languages</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">as</span>
+<span class="w">             </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">MATLAB</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Python</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">supports</span><span class="w"> </span><span class="n">general</span><span class="w"> </span><span class="n">programming</span><span class="o">.</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="n">achieve</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">builds</span><span class="w"> </span><span class="n">upon</span>
+<span class="w">             </span><span class="n">the</span><span class="w"> </span><span class="n">lineage</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">mathematical</span><span class="w"> </span><span class="n">programming</span><span class="w"> </span><span class="n">languages</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">borrows</span><span class="w"> </span><span class="n">much</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">popular</span><span class="w"> </span><span class="n">dynamic</span>
+<span class="w">             </span><span class="n">languages</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">Lisp</span><span class="p">,</span><span class="w"> </span><span class="n">Perl</span><span class="p">,</span><span class="w"> </span><span class="n">Python</span><span class="p">,</span><span class="w"> </span><span class="n">Lua</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Ruby</span><span class="w"> </span><span class="p">(</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">            </span><span class="n">Versions</span><span class="p">:</span>
+<span class="w">               </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">22.06</span>
+<span class="w">               </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">22.06</span>
+<span class="w">               </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.03</span>
+<span class="w">               </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.03</span>
+<span class="w">               </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.12</span>
+<span class="w">            </span><span class="n">Other</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="n">matches</span><span class="p">:</span>
+<span class="w">               </span><span class="n">Julia</span><span class="w">  </span><span class="n">libuv</span><span class="o">-</span><span class="n">julia</span>
+
+<span class="w">       </span><span class="o">-------------------------------------------------------------------------------------------------------</span>
+<span class="w">         </span><span class="n">To</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">matches</span><span class="w"> </span><span class="n">execute</span><span class="p">:</span>
+
+<span class="w">             </span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">spider</span><span class="w"> </span><span class="s1">&#39;.*julia.*&#39;</span>
+
+<span class="w">       </span><span class="o">-------------------------------------------------------------------------------------------------------</span>
+<span class="w">         </span><span class="n">For</span><span class="w"> </span><span class="n">detailed</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">specific</span><span class="w"> </span><span class="s2">&quot;julia&quot;</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="p">(</span><span class="n">including</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">modules</span><span class="p">)</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">module</span><span class="s1">&#39;s full name.</span>
+</code></pre></div>
+
+<p>.. challenge:: 1c. Which method to trust?</p>
+<p>.. solution:: Solution
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">Looking</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">modules</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">session</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">cluster</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">closer</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">truth</span>
+</code></pre></div>
+
+<p>.. challenge:: 2. Try to start julia without having loaded julia module</p>
+<ul>
+<li>
+<p>If you have a <code>julia</code> module loaded already, you may unload it with the <code>unload</code> command.</p>
+<ul>
+<li><strong>Tip:</strong> Type: <code>unload julia</code> and press <code>&lt;tab&gt;</code> until the full module name is shown, then press <code>&lt;enter&gt;</code>. (If the Julia module starts with an uppercase, use that instead!)</li>
+</ul>
+</li>
+</ul>
+<p>.. solution:: Solution
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>  .. code-block:: console
+
+     $ julia
+</code></pre></div>
+
+<p>.. challenge:: 3.  Load and start <code>julia</code> from the command line</p>
+<p>.. solution:: Solution
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="p">..</span><span class="w"> </span><span class="n">tabs</span><span class="o">::</span>
+
+<span class="w">     </span><span class="p">..</span><span class="w"> </span><span class="n">tab</span><span class="o">::</span><span class="w"> </span><span class="n">UPPMAX</span>
+
+<span class="w">        </span><span class="n">Go</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="n">were</span><span class="w"> </span><span class="n">available</span><span class="p">.</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="mf">1.8.5</span><span class="p">,</span><span class="w"> </span><span class="k">do</span><span class="o">:</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">          </span><span class="n">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.8.5</span>
+
+<span class="w">        </span><span class="n">Note</span><span class="o">:</span><span class="w"> </span><span class="n">Lowercase</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">j</span><span class="n n-Quoted">``</span><span class="p">.</span>
+
+<span class="w">        </span><span class="k">For</span><span class="w"> </span><span class="n">short</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="k">use</span><span class="o">:</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">ml</span><span class="w"> </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.8.5</span>
+
+<span class="w">     </span><span class="p">..</span><span class="w"> </span><span class="n">tab</span><span class="o">::</span><span class="w"> </span><span class="n">HPC2N</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">Julia</span><span class="o">/</span><span class="mf">1.8.5</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+
+<span class="w">        </span><span class="n">Note</span><span class="o">:</span><span class="w"> </span><span class="n">Uppercase</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">J</span><span class="n n-Quoted">``</span><span class="p">.</span>
+
+<span class="w">        </span><span class="k">For</span><span class="w"> </span><span class="n">short</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="k">use</span><span class="o">:</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">ml</span><span class="w"> </span><span class="n">Julia</span><span class="o">/</span><span class="mf">1.8.5</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+
+<span class="w">     </span><span class="p">..</span><span class="w"> </span><span class="n">tab</span><span class="o">::</span><span class="w"> </span><span class="n">LUNARC</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">Julia</span><span class="o">/</span><span class="mf">1.8.5</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+
+<span class="w">        </span><span class="n">Note</span><span class="o">:</span><span class="w"> </span><span class="n">Uppercase</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">J</span><span class="n n-Quoted">``</span><span class="p">.</span>
+
+<span class="w">        </span><span class="k">For</span><span class="w"> </span><span class="n">short</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="k">use</span><span class="o">:</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">ml</span><span class="w"> </span><span class="n">Julia</span><span class="o">/</span><span class="mf">1.8.5</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+
+<span class="w">     </span><span class="p">..</span><span class="w"> </span><span class="n">tab</span><span class="o">::</span><span class="w"> </span><span class="n">NSC</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.10.2</span><span class="o">-</span><span class="n">bdist</span>
+
+<span class="w">        </span><span class="n">Note</span><span class="o">:</span><span class="w"> </span><span class="n">lowercase</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">j</span><span class="n n-Quoted">``</span><span class="p">.</span>
+
+<span class="w">        </span><span class="k">For</span><span class="w"> </span><span class="n">short</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="k">use</span><span class="o">:</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">ml</span><span class="w"> </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.10.2</span><span class="o">-</span><span class="n">bdist</span>
+
+<span class="w">     </span><span class="p">..</span><span class="w"> </span><span class="n">tab</span><span class="o">::</span><span class="w"> </span><span class="n">PDC</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">PDC</span><span class="o">/</span><span class="mf">23.12</span><span class="w"> </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.10.2</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.12</span>
+
+<span class="w">        </span><span class="n">Note</span><span class="o">:</span><span class="w"> </span><span class="n">lowercase</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">j</span><span class="n n-Quoted">``</span><span class="p">.</span>
+
+<span class="w">        </span><span class="k">For</span><span class="w"> </span><span class="n">short</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="k">use</span><span class="o">:</span>
+
+<span class="w">        </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">console</span>
+
+<span class="w">           </span><span class="n">$</span><span class="w"> </span><span class="n">ml</span><span class="w"> </span><span class="n">PDC</span><span class="o">/</span><span class="mf">23.12</span><span class="w"> </span><span class="n">julia</span><span class="o">/</span><span class="mf">1.10.2</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.12</span>
+</code></pre></div>
+
+<p>.. challenge:: 4. Getting familiar with Julia REPL</p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">important</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">know</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">navigate</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="w"> </span><span class="n">Here</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="n">live</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">aout</span><span class="w"> </span><span class="n">things</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="k">install</span><span class="w"> </span><span class="n">packages</span><span class="p">.</span>
+<span class="o">-</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">exercise</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">help</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">become</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">familiar</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">REPL</span><span class="p">.</span><span class="w"> </span><span class="k">Do</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">following</span><span class="w"> </span><span class="n">steps</span><span class="o">:</span>
+
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="k">Start</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Julia</span><span class="w"> </span><span class="k">session</span><span class="p">.</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">Julian</span><span class="n n-Quoted">``</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">numbers</span>
+<span class="w">     </span><span class="mi">5</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="k">Change</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">shell</span><span class="n n-Quoted">``</span><span class="w"> </span><span class="k">mode</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="k">directory</span>
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Now</span><span class="p">,</span><span class="w"> </span><span class="n">go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">package</span><span class="n n-Quoted">``</span><span class="w"> </span><span class="k">mode</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">list</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">currently</span><span class="w"> </span><span class="n">installed</span><span class="w"> </span><span class="n">packages</span>
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Finally</span><span class="p">,</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="k">help</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">println</span><span class="n n-Quoted">``</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="k">help</span><span class="n n-Quoted">``</span><span class="w"> </span><span class="k">mode</span><span class="p">.</span>
+</code></pre></div>
+
+<p>.. solution:: Solution
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="o">..</span><span class="w"> </span><span class="nt">code-block</span><span class="o">::</span><span class="w"> </span><span class="nt">julia</span>
+
+<span class="w">        </span><span class="o">$</span><span class="w"> </span><span class="nt">julia</span>
+<span class="w">        </span><span class="nt">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nt">6</span>
+<span class="w">        </span><span class="nt">julia</span><span class="o">&gt;;</span>
+<span class="w">        </span><span class="nt">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">pwd</span>
+<span class="w">        </span><span class="nt">julia</span><span class="o">&gt;]</span>
+<span class="w">        </span><span class="nt">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">status</span>
+<span class="w">        </span><span class="nt">julia</span><span class="o">&gt;?</span>
+<span class="w">        </span><span class="nt">help</span><span class="o">?&gt;</span><span class="w"> </span><span class="nt">println</span>
+</code></pre></div>
+
+<p>.. challenge:: 5. Load another module and run a script</p>
+<div class="codehilite"><pre><span></span><code>- Load the latest version and run
+- Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input:
+
+        .. code-block:: julia
+
+            x = parse( Int32, ARGS[1] )
+            y = parse( Int32, ARGS[2] )
+            summ = x + y
+            println(&quot;The sum of the two numbers is &quot;, summ)
+</code></pre></div>
+
+<p>.. solution:: Solution for HPC2N
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>  <span class="k">..</span> code-block:: console
+
+        $ ml purge  &gt; /dev/null 2&gt;&amp;1       # recommended purge
+        $ ml Julia/1.8.5-linux-x86_64      # Julia module
+
+        $ julia serial-sum.jl Arg1 Arg2    # run the serial script
+</code></pre></div>
+
+<p>.. solution:: Solution for UPPMAX
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">This</span><span class="w"> </span><span class="nv">batch</span><span class="w"> </span><span class="nv">script</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">UPPMAX</span>.<span class="w"> </span><span class="nv">Adding</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">numbers</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="mi">3</span>.<span class="w"> </span><span class="ss">(</span><span class="nv">FIX</span><span class="ss">)</span>
+
+<span class="w">  </span>..<span class="w"> </span><span class="nv">code</span><span class="o">-</span><span class="nv">block</span>::<span class="w"> </span><span class="nv">console</span>
+
+<span class="w">        </span>$<span class="w"> </span><span class="nv">ml</span><span class="w"> </span><span class="nv">julia</span><span class="o">/</span><span class="mi">1</span>.<span class="mi">8</span>.<span class="mi">5</span><span class="w">                   </span>#<span class="w"> </span><span class="nv">Julia</span><span class="w"> </span><span class="nv">module</span>
+
+<span class="w">        </span><span class="nv">julia</span><span class="w"> </span><span class="nv">serial</span><span class="o">-</span><span class="nv">sum</span>.<span class="nv">jl</span><span class="w"> </span><span class="nv">Arg1</span><span class="w"> </span><span class="nv">Arg2</span><span class="w">      </span>#<span class="w"> </span><span class="nv">run</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">serial</span><span class="w"> </span><span class="nv">script</span>
+</code></pre></div>
+
+<p>.. solution:: Solution for LUNARC
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code>  This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
+
+  <span class="k">..</span> code-block:: console
+
+        $ ml Julia/1.8.5-linux-x86_64           # Julia module
+
+        julia serial-sum.jl Arg1 Arg2      # run the serial script
+</code></pre></div>
+
+<p>.. solution:: Solution for NSC
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">This</span><span class="w"> </span><span class="nv">batch</span><span class="w"> </span><span class="nv">script</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">UPPMAX</span>.<span class="w"> </span><span class="nv">Adding</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">numbers</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="mi">3</span>.<span class="w"> </span><span class="ss">(</span><span class="nv">FIX</span><span class="ss">)</span>
+
+<span class="w">  </span>..<span class="w"> </span><span class="nv">code</span><span class="o">-</span><span class="nv">block</span>::<span class="w"> </span><span class="nv">console</span>
+
+<span class="w">        </span>$<span class="w"> </span><span class="nv">ml</span><span class="w"> </span><span class="nv">julia</span><span class="o">/</span><span class="mi">1</span>.<span class="mi">10</span>.<span class="mi">2</span><span class="o">-</span><span class="nv">bdist</span><span class="w">           </span>#<span class="w"> </span><span class="nv">Julia</span><span class="w"> </span><span class="nv">module</span>
+
+<span class="w">        </span><span class="nv">julia</span><span class="w"> </span><span class="nv">serial</span><span class="o">-</span><span class="nv">sum</span>.<span class="nv">jl</span><span class="w"> </span><span class="nv">Arg1</span><span class="w"> </span><span class="nv">Arg2</span><span class="w">      </span>#<span class="w"> </span><span class="nv">run</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">serial</span><span class="w"> </span><span class="nv">script</span>
+</code></pre></div>
+
+<p>.. solution:: Solution for PDC
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">This</span><span class="w"> </span><span class="nv">batch</span><span class="w"> </span><span class="nv">script</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">UPPMAX</span>.<span class="w"> </span><span class="nv">Adding</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">numbers</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="mi">3</span>.<span class="w"> </span><span class="ss">(</span><span class="nv">FIX</span><span class="ss">)</span>
+
+<span class="w">  </span>..<span class="w"> </span><span class="nv">code</span><span class="o">-</span><span class="nv">block</span>::<span class="w"> </span><span class="nv">console</span>
+
+<span class="w">        </span>$<span class="w"> </span><span class="nv">ml</span><span class="w"> </span><span class="nv">PDC</span><span class="o">/</span><span class="mi">23</span>.<span class="mi">12</span><span class="w"> </span><span class="nv">julia</span><span class="o">/</span><span class="mi">1</span>.<span class="mi">10</span>.<span class="mi">2</span><span class="o">-</span><span class="nv">cpeGNU</span><span class="o">-</span><span class="mi">23</span>.<span class="mi">12</span><span class="w">           </span>#<span class="w"> </span><span class="nv">Julia</span><span class="w"> </span><span class="nv">module</span>
+
+<span class="w">        </span><span class="nv">julia</span><span class="w"> </span><span class="nv">serial</span><span class="o">-</span><span class="nv">sum</span>.<span class="nv">jl</span><span class="w"> </span><span class="nv">Arg1</span><span class="w"> </span><span class="nv">Arg2</span><span class="w">      </span>#<span class="w"> </span><span class="nv">run</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">serial</span><span class="w"> </span><span class="nv">script</span>
+</code></pre></div>
+
+<p>.. challenge:: 6. Check your understanding</p>
+<ul>
+<li>Check your understanding and answer in the shared document</li>
+<li>
+<p>Can you start Julia without loading a Julia module?</p>
+<ul>
+<li>Yes?</li>
+<li>No?</li>
+</ul>
+</li>
+<li>
+<p>Which character to use to toggle</p>
+<ul>
+<li>to the <code>package</code> mode?</li>
+<li>back to the <code>Julia</code> mode?</li>
+<li>to the <code>help</code> mode?</li>
+<li>to the <code>shell</code> mode?</li>
+</ul>
+</li>
+</ul>
+<p>.. keypoints::</p>
+<ul>
+<li>Before you can run Julia scripts or work in a Julia shell, first load a Julia module with <code>module load &lt;julia module&gt;</code></li>
+<li>Start a Julia shell session with <code>julia</code></li>
+<li>
+<p>It offers several modes that can make your workflow easier, i.e.</p>
+<ul>
+<li><code>Julian</code></li>
+<li><code>shell</code></li>
+<li><code>package manager</code></li>
+<li><code>help</code></li>
+</ul>
+</li>
+<li>
+<p>Run scripts with <code>julia &lt;script.jl&gt;</code></p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../intro/" class="btn btn-neutral float-left" title="Intro"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../environments_packages/" class="btn btn-neutral float-right" title="Environments and packages">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../intro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../environments_packages/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

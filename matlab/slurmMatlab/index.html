@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>MATLAB terminal and SLURM - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MATLAB terminal and SLURM";
+        var mkdocs_page_input_path = "matlab/slurmMatlab.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Introduction to R, MATLAB, and Julia in HPC
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">MATLAB terminal and SLURM</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#useful-commands-to-the-batch-system">Useful commands to the batch system</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#first-time-configuration">First time configuration</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/notebook_pluto/">The notebook Pluto</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel/">Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MATLAB</li>
+      <li class="breadcrumb-item active">MATLAB terminal and SLURM</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs-mk/matlab/slurmMatlab.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="slurm-job-scheduler-and-matlab-in-terminal">Slurm job scheduler and MATLAB in terminal<a class="headerlink" href="#slurm-job-scheduler-and-matlab-in-terminal" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Understand and use the Slurm scheduler</li>
+<li>Configure the cluster</li>
+<li>Start (MATLAB) batch jobs from the command line</li>
+<li>Try example</li>
+</ul>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Compute allocations in this workshop</strong>
+- Rackham: <code>uppmax2025-2-272</code>
+- Kebnekaise: <code>hpc2n2025-062</code>
+- Cosmos: <code>lu2025-7-24</code>
+- Tetralith: <code>naiss2025-22-262</code>
+- Dardel: <code>naiss2025-22-262</code></p>
+<p><strong>Storage space for this workshop</strong>
+- Rackham: <code>/proj/r-matlab-julia-uppmax</code>
+- Kebnekaise: <code>/proj/nobackup/r-matlab-julia</code>
+- Tetralith: <code>/proj/r-matlab-julia-naiss/users</code>
+- Dardel: <code>/cfs/klemming/projects/snic/r-matlab-julia-naiss</code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Any longer, resource-intensive, or parallel jobs must be run through a <strong>batch script</strong>.</p>
+</div>
+<p>The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC is called SLURM. The same is the case at most of the Swedish HPC centres.</p>
+<p>SLURM is an Open Source job scheduler, which provides three key functions:
+- Keeps track of available system resources
+- Enforces local system resource usage and job scheduling policies
+- Manages a job queue, distributing work across resources according to policies</p>
+<p>Users ask for compute resources via the <code>sbatch</code> command (as those who attended yesterday&rsquo;s R session will already know).
+ - To run a batch job, you must create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
+ - Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/run_jobs/job_scheduling/</p>
+<p>MATLAB is well integrated with SLURM, so there are several ways to run these jobs:
+ - Using the job scheduler (<code>batch</code> command) in MATLAB Desktop/graphical interface (This is the Recommended Use).
+ - Starting a <code>parpool</code> with a predefined cluster (This allows for more interactivity).
+ - Writing a batch script as for any other software and submitting the job with the <code>sbatch</code> command from SLURM
+   (This could be useful if you want to run long jobs and you don&rsquo;t need to modify the code in the meantime).</p>
+<p>In the following sections we will extend these concepts.</p>
+<h2 id="useful-commands-to-the-batch-system">Useful commands to the batch system<a class="headerlink" href="#useful-commands-to-the-batch-system" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Before going into MATLAB specifics for batch jobs, we should look briefly at some useful commands:</p>
+<ul>
+<li>Submit job: <code>sbatch &lt;jobscript.sh&gt;</code></li>
+<li>Get list of your jobs: <code>squeue --me</code></li>
+<li>Check on a specific job: <code>scontrol show job &lt;job-id&gt;</code></li>
+<li>Delete a specific job: <code>scancel &lt;job-id&gt;</code></li>
+<li>Useful info about a job: <code>sacct -l -j &lt;job-id&gt; | less -S</code></li>
+<li>Url to a page with info about the job (Kebnekaise only): <code>job-usage &lt;job-id&gt;</code></li>
+</ul>
+<h2 id="first-time-configuration">First time configuration<a class="headerlink" href="#first-time-configuration" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In order to be able to submit jobs to the SLURM queue, you usually need to configure MATLAB the first time you load any particular version. This configuration step will provide a set of default specifications for batch and parallel jobs called a <strong>cluster profile</strong>.</p>
+<p>Configuration only needs to be run once per version of MATLAB on each cluster. These specifications can be changed or added to at runtime, and it is possible to have more than one profile for a single release.</p>
+<p>The instructions for each facility are linked below:
+- <a href="https://www.hpc2n.umu.se/resources/software/configure-matlab-2018">HPC2N: Configure MATLAB</a>
+- <a href="https://docs.uppmax.uu.se/software/matlab_conf/">UPPMAX: MATLAB configuration</a>
+- <a href="https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line">LUNARC: Configuration at the command line</a>
+- <a href="https://www.nsc.liu.se/software/installed/tetralith/matlab/">NSC: MATLAB (scroll down to &ldquo;Before submitting your first job&rdquo;)</a>.
+- PDC: no need to configure</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>On Dardel you need to either have your own Mathworks account, or contact them ahead of time and ask for access to run MATLAB there!</li>
+<li>We have added access for those participants who had PDC accounts on (INSERT DATE)</li>
+<li><strong>Do NOT run configCluster(.sh) on Dardel!</strong></li>
+</ul>
+</div>
+<p>For most clusters, configuration can be done at the regular terminal using a shell script called <code>configCluster.sh</code>.
+It is also possible to run <code>configCluster</code> (without &ldquo;.sh&rdquo;) on the MATLAB command line; for NSC, this is the only way to run the configuration program.
+The tabs below demonstrate the preferred method for each cluster where configuration is required the first time you use a given version of MATLAB.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">UPPMAX</label><label for="__tabbed_1_2">HPC2N</label><label for="__tabbed_1_3">LUNARC</label><label for="__tabbed_1_4">NSC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>configCluster.sh<span class="w"> </span>&lt;project-id&gt;
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>configCluster.sh
+</span></code></pre></div>
+<p><strong>Example:</strong>
+ <a href="../../img/configcluster.png">running configCluster.sh at HPC2N</a></p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>configCluster.sh<span class="w"> </span>&lt;project-id&gt;
+</span></code></pre></div>
+<p>Choose &ldquo;cosmos&rdquo; when prompted.</p>
+<p><strong>Example:</strong>
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>bbrydsoe@cosmos3<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>configCluster.sh<span class="w"> </span>lu2024-7-68
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">927531</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>salloc:<span class="w"> </span>Nodes<span class="w"> </span>cn011<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">                           </span>&lt;<span class="w"> </span>M<span class="w"> </span>A<span class="w"> </span>T<span class="w"> </span>L<span class="w"> </span>A<span class="w"> </span>B<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>&gt;
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">                 </span>Copyright<span class="w"> </span><span class="m">1984</span>-2023<span class="w"> </span>The<span class="w"> </span>MathWorks,<span class="w"> </span>Inc.
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">            </span>R2023b<span class="w"> </span>Update<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">(</span><span class="m">23</span>.2.0.2515942<span class="o">)</span><span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span>glnxa64<span class="o">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">                             </span>January<span class="w"> </span><span class="m">30</span>,<span class="w"> </span><span class="m">2024</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>doc.
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>For<span class="w"> </span>product<span class="w"> </span>information,<span class="w"> </span>visit<span class="w"> </span>www.mathworks.com.
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nv">ip</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">   </span><span class="s2">&quot;10.21.0.11&quot;</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">   </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>aurora
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">   </span><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>cosmos
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="m">2</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>Select<span class="w"> </span>a<span class="w"> </span>cluster<span class="w"> </span><span class="o">[</span><span class="m">1</span>-2<span class="o">]</span>:<span class="w"> </span>&gt;&gt;Complete.<span class="w">  </span>Default<span class="w"> </span>cluster<span class="w"> </span>profile<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="s2">&quot;cosmos R2023b&quot;</span>.
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">   </span>Must<span class="w"> </span><span class="nb">set</span><span class="w"> </span>AccountName<span class="w"> </span>and<span class="w"> </span>WallTime<span class="w"> </span>before<span class="w"> </span>submitting<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to<span class="w"> </span>COSMOS.<span class="w">  </span>E.g.
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">   </span>&gt;&gt;<span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>parcluster<span class="p">;</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">   </span>&gt;&gt;<span class="w"> </span>c.AdditionalProperties.AccountName<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;account-name&#39;</span><span class="p">;</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">   </span>&gt;&gt;<span class="w"> </span>%<span class="w"> </span><span class="m">5</span><span class="w"> </span>hour<span class="w"> </span>walltime
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">   </span>&gt;&gt;<span class="w"> </span>c.AdditionalProperties.WallTime<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;05:00:00&#39;</span><span class="p">;</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">   </span>&gt;&gt;<span class="w"> </span>c.saveProfile
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>MATLAB<span class="w"> </span>is<span class="w"> </span>configured<span class="w"> </span><span class="k">for</span><span class="w"> </span>multi-node<span class="w"> </span>parallelism.
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>salloc:<span class="w"> </span>Relinquishing<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">927531</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>salloc:<span class="w"> </span>Job<span class="w"> </span>allocation<span class="w"> </span><span class="m">927531</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>revoked.
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="o">[</span>bbrydsoe@cosmos3<span class="w"> </span>~<span class="o">]</span>$
+</span></code></pre></div></p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2024a-hpc1-bdist
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nodesktop<span class="w"> </span>-nosplash<span class="w"> </span>-softwareopengl
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>&gt;&gt;<span class="w"> </span>configCluster
+</span></code></pre></div>
+<p>Choose &ldquo;tetralith&rdquo; when prompted.</p>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 1.</strong> Log in and Configure MATLAB.</p>
+<h1 id="log-into-your-chosen-hpc-cluster-if-you-have-not-already">. Log into your chosen HPC cluster if you have not already.<a class="headerlink" href="#log-into-your-chosen-hpc-cluster-if-you-have-not-already" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="load-the-newest-version-of-matlab-find-with-ml-spider-matlab-note-that-on-dardel-it-has-a-prerequisite-which-you-must-load-first-and-that-only-the-matlabr2024a-ps-prerequisite-pdc2312-allows-access-from-the-shellterminal-without-you-having-to-give-your-own-mathworks-credentials">. Load the newest version of MATLAB (find with <code>ml spider MATLAB</code>). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.<a class="headerlink" href="#load-the-newest-version-of-matlab-find-with-ml-spider-matlab-note-that-on-dardel-it-has-a-prerequisite-which-you-must-load-first-and-that-only-the-matlabr2024a-ps-prerequisite-pdc2312-allows-access-from-the-shellterminal-without-you-having-to-give-your-own-mathworks-credentials" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="on-the-command-line-run-configclustersh-on-hpc2n-or-configclustersh-project-id-on-uppmaxlunarc-run-configcluster-inside-matlab-on-the-terminal-at-nsc-you-do-not-do-configcluster-at-pdc">. On the command line, run <code>configCluster.sh</code> on HPC2N or <code>configCluster.sh &lt;project-id&gt;</code> on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC. You do not do <code>configCluster</code> at PDC.<a class="headerlink" href="#on-the-command-line-run-configclustersh-on-hpc2n-or-configclustersh-project-id-on-uppmaxlunarc-run-configcluster-inside-matlab-on-the-terminal-at-nsc-you-do-not-do-configcluster-at-pdc" title="Anchor link to this section for reference">&para;</a></h1>
+</div>
+<h2 id="matlab-terminal-interface">MATLAB terminal interface<a class="headerlink" href="#matlab-terminal-interface" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Here we will discuss:</p>
+<ul>
+<li>Starting MATLAB on the command line</li>
+<li>Job settings<ul>
+<li><code>c.parcluster</code></li>
+<li><code>c.AdditionalProperties.</code></li>
+<li><code>c.batch</code></li>
+</ul>
+</li>
+<li>Starting a job from within MATLAB</li>
+</ul>
+<p>This section will show you how to use MATLAB completely from the shell/terminal without having to open the GUI. This can be useful if you only have a regular SSH connection or otherwise need to run something fast and lightweight instead of having to open the GUI. This is an extra advantage when you have a poor network connection.</p>
+<h3 id="starting-matlab">Starting MATLAB<a class="headerlink" href="#starting-matlab" title="Anchor link to this section for reference">&para;</a></h3>
+<p>To start MATLAB on the command line, without running the GUI, load the MATLAB version and do</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop
+</span></code></pre></div>
+<p>This starts MATLAB. Not all of the flags shown are needed at every center, but it does no harm to include them.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>On the login-nodes MATLAB <strong><em>must</em></strong> be started with the option <code>-singleCompThread</code> to prevent MATLAB from starting an arbitrary number of threads, potentially occupying the whole node.</p>
+</div>
+<h3 id="working-in-matlab">Working in MATLAB<a class="headerlink" href="#working-in-matlab" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Of course, we can work in MATLAB like this in exactly the same way as in the GUI, as the example below shows</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Opening<span class="w"> </span>log<span class="w"> </span>file:<span class="w">  </span>/home/b/bbrydsoe/java.log.43927
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">                                 </span>&lt;<span class="w"> </span>M<span class="w"> </span>A<span class="w"> </span>T<span class="w"> </span>L<span class="w"> </span>A<span class="w"> </span>B<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>&gt;
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">                       </span>Copyright<span class="w"> </span><span class="m">1984</span>-2023<span class="w"> </span>The<span class="w"> </span>MathWorks,<span class="w"> </span>Inc.
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">                  </span>R2023a<span class="w"> </span>Update<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">(</span><span class="m">9</span>.14.0.2306882<span class="o">)</span><span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span>glnxa64<span class="o">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">                                    </span>June<span class="w"> </span><span class="m">19</span>,<span class="w"> </span><span class="m">2023</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>doc.
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>For<span class="w"> </span>product<span class="w"> </span>information,<span class="w"> </span>visit<span class="w"> </span>www.mathworks.com.
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>&gt;&gt;<span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="p">;</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>&gt;&gt;<span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">8</span><span class="p">;</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>&gt;&gt;<span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="w"> </span>+<span class="w"> </span>b
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="nv">c</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="m">8</span><span class="w">     </span><span class="m">7</span><span class="w">     </span><span class="m">9</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="m">6</span><span class="w">     </span><span class="m">5</span><span class="w">    </span><span class="m">14</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">   </span><span class="m">12</span><span class="w">    </span><span class="m">15</span><span class="w">    </span><span class="m">10</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>&gt;&gt;<span class="w"> </span><span class="nv">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="w"> </span>-<span class="w"> </span>b
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="nv">d</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">   </span>-6<span class="w">    </span>-3<span class="w">    </span>-3
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">    </span><span class="m">2</span><span class="w">     </span><span class="m">5</span><span class="w">    </span>-2
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">    </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">8</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>&gt;&gt;<span class="w"> </span><span class="nv">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>c<span class="w"> </span>+<span class="w"> </span>d<span class="p">;</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>&gt;&gt;<span class="w"> </span>e
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="nv">e</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="w">    </span><span class="m">2</span><span class="w">     </span><span class="m">4</span><span class="w">     </span><span class="m">6</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">10</span><span class="w">    </span><span class="m">12</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="w">   </span><span class="m">14</span><span class="w">    </span><span class="m">16</span><span class="w">    </span><span class="m">18</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>&gt;&gt;
+</span></code></pre></div>
+<h2 id="running-matlab-code-with-batch">Running MATLAB code with batch<a class="headerlink" href="#running-matlab-code-with-batch" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Now going to look at running in batch on the compute nodes.</p>
+<h3 id="job-settings-at-the-command-line">Job settings at the command line<a class="headerlink" href="#job-settings-at-the-command-line" title="Anchor link to this section for reference">&para;</a></h3>
+<p>If you want to run a MATLAB program on the cluster with batch, you have to set some things for the job. Start MATLAB and input the following:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;CLUSTER&#39;</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">AccountName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;PROJECT-ID&#39;</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">WallTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;HHH1:MM:SS&#39;</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+<p>To list the content of your profile, enter <code>c.AdditionalProperties</code> at the prompt.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>On UPPMAX and PDC you should use <code>c=parcluster;</code> instead of <code>c=parcluster('CLUSTER')</code>. On UPPMAX you also need to add <code>c.AdditionalProperties.ProcsPerNode=20;</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Additional instructions specific to Dardel</p>
+<p>The process at PDC (Dardel) is more involved than at other facilities:
+- At PDC, you do <strong>NOT</strong> set any <code>AdditionalProperties</code>. You instead work in an interactive session.
+- To start an interactive session at <strong>PDC</strong>&hellip;
+   - &hellip;on a full node: use <code>salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main</code>
+   - &hellip;on a subset of the cores on a node (here 24): use <code>salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared</code>
+- When the job is allocated, start an SSH connection to the compute node.</p>
+<p>If you need the GUI on Dardel, you need to start both the SSH connection to the Dardel login node and to the compute node with <code>ssh -X</code> (i.e. use <code>ssh -X &lt;node-allocated-to-you&gt;</code>). Then, you can load MATLAB and start it (on shell) as usual with</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>matlab/r2024a-ps
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nodesktop<span class="w"> </span>-nosplash
+</span></code></pre></div>
+</div>
+<p><strong>Example, for HPC2N</strong></p>
+<p>Asking for 1 hour walltime.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;kebnekaise&#39;</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">AccountName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;hpc2n2025-062&#39;</span><span class="p">;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">WallTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;01:00:00&#39;</span><span class="p">;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+<p><strong>Example, for PDC</strong></p>
+<p>Asking for 1 hour. Starting from personal computer.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>bbrydsoe@enterprise:~$<span class="w"> </span>ssh<span class="w"> </span>-X<span class="w"> </span>dardel.pdc.kth.se
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Last<span class="w"> </span>login:<span class="w"> </span>Thu<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">17</span>:02:49<span class="w"> </span><span class="m">2025</span><span class="w"> </span>from<span class="w"> </span>enterprise.hpc2n.umu.se
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w"> </span><span class="m">2025</span>-03-14<span class="w"> </span>at<span class="w"> </span><span class="m">15</span>:39<span class="w"> </span><span class="o">[</span>dardel<span class="o">]</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>System<span class="w"> </span>maintenance<span class="w"> </span><span class="k">done</span>,<span class="w"> </span>Dardel<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>since<span class="w"> </span>a<span class="w"> </span>few<span class="w"> </span>hours.
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w"> </span>--<span class="o">==</span><span class="w"> </span>Welcome<span class="w"> </span>to<span class="w"> </span>Dardel!<span class="w"> </span><span class="o">==</span>--
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>bbrydsoe@login1:~&gt;
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>bbrydsoe@login1:~&gt;<span class="w"> </span>salloc<span class="w"> </span>-c<span class="w"> </span><span class="m">24</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-262<span class="w"> </span>-p<span class="w"> </span>shared
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">9050479</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">9050479</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">9050479</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">9050479</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>salloc:<span class="w"> </span>Nodes<span class="w"> </span>nid002585<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>bbrydsoe@login1:~&gt;<span class="w"> </span>ssh<span class="w"> </span>nid002585
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>bbrydsoe@nid002585:~&gt;<span class="w"> </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>matlab/r2024a-ps
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>bbrydsoe@nid002585:~&gt;<span class="w"> </span>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nodesktop<span class="w"> </span>-nosplash
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">                                    </span>&lt;<span class="w"> </span>M<span class="w"> </span>A<span class="w"> </span>T<span class="w"> </span>L<span class="w"> </span>A<span class="w"> </span>B<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>&gt;
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">                          </span>Copyright<span class="w"> </span><span class="m">1984</span>-2024<span class="w"> </span>The<span class="w"> </span>MathWorks,<span class="w"> </span>Inc.
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">                     </span>R2024a<span class="w"> </span>Update<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span><span class="m">24</span>.1.0.2603908<span class="o">)</span><span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span>glnxa64<span class="o">)</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">                                        </span>May<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">2024</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>doc.
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>For<span class="w"> </span>product<span class="w"> </span>information,<span class="w"> </span>visit<span class="w"> </span>www.mathworks.com.
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>&gt;&gt;<span class="w"> </span><span class="nv">c</span><span class="o">=</span>parcluster<span class="p">;</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>&gt;&gt;
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 2.</strong> Set MATLAB job settings.</p>
+<p>Fill in the job settings on one of:
+- <strong>HPC2N:</strong> <code>CLUSTER=kebnekaise</code>
+- <strong>UPPMAX:</strong> no CLUSTER, as said above - i.e. just <code>c=parcluster;</code>
+- <strong>LUNARC:</strong> <code>CLUSTER=cosmos R2023b</code>
+- <strong>NSC:</strong> <code>CLUSTER=tetralith</code>
+- <strong>PDC:</strong> no <code>CLUSTER</code>, as said above - i.e. just <code>c=parcluster;</code> NO OTHER JOB SETTINGS! Here you instead start an interactive session first!</p>
+<p>Remember, the <code>project-id</code> is the compute allocation number given for your choice of cluster at the top of this webpage.</p>
+<p>Since we are just doing a short test, you can use 15 min instead of 1 hour. Also remember the <code>c.AdditionalProperties.ProcsPerNode=20</code> if you are on UPPMAX. Test that the settings were added by viewing <code>c.AdditionalProperties</code>.</p>
+</div>
+<h3 id="running-a-job-from-within-the-matlab-terminal-interface">Running a job from within the MATLAB terminal interface<a class="headerlink" href="#running-a-job-from-within-the-matlab-terminal-interface" title="Anchor link to this section for reference">&para;</a></h3>
+<p>When starting a simple MATLAB program inside MATLAB on the terminal, by default, it will use your cluster profile which you just created and saved above. If you have a script file called <code>myScript.m</code>, the code to run it as a batch job with the default settings is:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">batch</span><span class="p">(</span><span class="s">&#39;myScript&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>The batch command does not block MATLAB so you can continue working while computations take place. If you want to block MATLAB until the job finishes, use the wait function on the job object, like this:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">wait</span><span class="p">(</span><span class="n">job</span><span class="p">);</span>
+</span></code></pre></div>
+<p>By default, MATLAB saves the Command Window output from the batch job to the diary of the job. To retrieve it, use the diary function:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">diary</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+</span></code></pre></div>
+<p>After the job finishes, fetch the results by using the <code>load</code> function:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">load</span><span class="p">(</span><span class="n">job</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>or using the <code>.fetchOutputs</code> attribute:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:}</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Other useful job monitoring commands:
+- If you need the Job id, run <code>squeue --me</code> on the command line.
+- To get the MATLAB jobid do <code>id=job.ID</code> within MATLAB.
+- To see if the job is running, inside MATLAB, do <code>job.State</code></p>
+</div>
+<h4 id="serial">Serial<a class="headerlink" href="#serial" title="Anchor link to this section for reference">&para;</a></h4>
+<p>After starting MATLAB, you can get a handle to the cluster (remember, on Rackham and Dardel, just use <code>c=parcluster;</code>) like this:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">=</span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;CLUSTER&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>For example, given that</p>
+<ul>
+<li>myfcn is a command or serial MATLAB program.</li>
+<li>N is the number of output arguments from the evaluated function</li>
+<li>x1, x2, x3,&hellip; are the input arguments</li>
+</ul>
+<p>then starting a batch job with these inputs would look like:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">myfcn</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">x3</span><span class="p">,</span><span class="k">...</span><span class="c">})</span>
+</span></code></pre></div>
+<p>This job handle <code>j</code> then allows us to:</p>
+<ul>
+<li>Query the job status with <code>j.State</code></li>
+<li>Fetch the result, if the job is finished, using <code>j.fetchOutputs{:}</code>, and </li>
+<li>Delete the job when it is not needed anymore using <code>j.delete</code></li>
+</ul>
+<p>If you are running a lot of jobs, or if you want to quit MATLAB and restart it at a later time, you can retrieve the list of jobs and fetch the outputs of a specific job by index. For example:</p>
+<p>Get the list of jobs:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">jobs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">Jobs</span>
+</span></code></pre></div>
+<p>Retrieve the output of the second job:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">j2</span><span class="p">=</span><span class="n">jobs</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">j2</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:}</span>
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Type-along.</strong></p>
+<p>After doing the job settings further up, let us try running an example. We will use the example <code>add2.m</code> which adds two numbers. This example uses 1 and 2, but you can pick any numbers you want. You can find the <code>add2.m</code> script in the exercises/matlab directory or you can <a href="https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/add2.m">download it from here</a>.</p>
+<h1 id="set-up-the-job-with-job-cbatchadd2-1-12">. Set up the job with <code>job = c.batch(@add2, 1, {1,2})</code><a class="headerlink" href="#set-up-the-job-with-job-cbatchadd2-1-12" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="check-if-it-has-finished-with-jobstate">. Check if it has finished with <code>job.State</code><a class="headerlink" href="#check-if-it-has-finished-with-jobstate" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="when-it-has-finished-retrieve-the-result-with-jobfetchoutputs">. When it has finished, retrieve the result with <code>job.fetchOutputs{:}</code><a class="headerlink" href="#when-it-has-finished-retrieve-the-result-with-jobfetchoutputs" title="Anchor link to this section for reference">&para;</a></h1>
+</div>
+<h4 id="parallel">Parallel<a class="headerlink" href="#parallel" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Running parallel batch jobs are quite similar to running serial jobs. We just need to specify a MATLAB Pool to use and of course MATLAB code that is parallelized. This is easiest illustrated with an example.</p>
+<p>To make a pool of workers, and to give input etc., the basic syntax is:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">SCRIPT</span><span class="p">,</span><span class="w"> </span>#<span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">input1</span><span class="p">,</span><span class="w"> </span><span class="n">input2</span><span class="p">,</span><span class="w"> </span><span class="n">input3</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="c">}, &#39;pool&#39;, #workers);</span>
+</span></code></pre></div>
+<p><strong>Example:</strong> Running a simple MATLAB script, parallel-example.m, giving the input &ldquo;16&rdquo;, creating 4 workers, expecting 1 output. The name of the job handle is up to you (here it is <code>j</code>).</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parallel_example</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;pool&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Let us try running this on Kebnekaise, including checking state and then getting output:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parallel_example</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;pool&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">additionalSubmitArgs</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">  </span><span class="s">&#39;--ntasks=5 --cpus-per-task=1 -A hpc2n2025-062 -t 01:00:00&#39;</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">j</span><span class="p">.</span><span class="n">State</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w">   </span><span class="s">&#39;running&#39;</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">j</span><span class="p">.</span><span class="n">State</span>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">   </span><span class="s">&#39;finished&#39;</span>
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">j</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:}</span>
+</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>
+</span><span id="__span-22-21"><a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-22-22"><a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>
+</span><span id="__span-22-23"><a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a><span class="w">   </span><span class="mf">9.3387</span>
+</span><span id="__span-22-24"><a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a>
+</span><span id="__span-22-25"><a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a><span class="o">&gt;&gt;</span>
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 3.</strong> Try the above example.</p>
+<p>This exercise assumes you did the previous ones on this page; loading MATLAB, doing the configCluster.sh, adding the job settings. It should work on all the clusters.</p>
+<p>You can download <a href="https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m&gt;">parallel_example.m here</a>.</p>
+</div>
+<h5 id="parpool"><code>parpool</code><a class="headerlink" href="#parpool" title="Anchor link to this section for reference">&para;</a></h5>
+<p>On the clusters where this works, you can start a <code>parpool</code> and then (for instance) run a parallel code inside MATLAB.</p>
+<p><strong>Parpool Example, for PDC:</strong> As shown earlier, first start an interactive session, login to the compute node you got, then load matlab and start it. Then create a parpool of the size (at most) that you asked for in number of cores.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">=</span><span class="n">parpool</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">Starting</span><span class="w"> </span><span class="s">parallel</span><span class="w"> </span><span class="s">pool</span><span class="w"> </span><span class="s">(parpool)</span><span class="w"> </span><span class="s">using</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">&#39;Processes&#39;</span><span class="w"> </span><span class="s">profile</span><span class="w"> </span><span class="s">...</span><span class="w"> </span><span class="s">connected</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">24</span><span class="w"> </span><span class="s">workers.</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">p</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">Pool</span><span class="w"> </span><span class="s">with</span><span class="w"> </span><span class="s">properties:</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="n">Connected</span><span class="p">:</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="n">NumWorkers</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="n">Cluster</span><span class="p">:</span><span class="w"> </span><span class="n">local</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="n">AttachedFiles</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">IdleTimeout</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="nb">minute</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">30</span><span class="w"> </span><span class="nb">minutes</span><span class="w"> </span><span class="n">remaining</span><span class="p">)</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">SpmdEnabled</span><span class="p">:</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">parallel_example</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="mf">8.9287</span>
+</span></code></pre></div>
+<p>There is more information about batch jobs <a href="https://se.mathworks.com/help/parallel-computing/batch.html">here on Mathworks</a>.</p>
+<h2 id="batch-scripts-containing-matlab-code">Batch scripts containing MATLAB code<a class="headerlink" href="#batch-scripts-containing-matlab-code" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Here we will discuss creating a batch script to run MATLAB in
+- Serial
+- Parallel</p>
+<p>While we can submit batch jobs (or even batch jobs of batch jobs) from inside MATLAB (and that may be the most common way of using the batch system with MATLAB), it is also possible to create a batch submit script and use that to run MATLAB.</p>
+<p>The difference here is that when the batch script has been submitted, you cannot make changes to your job. It is not interactive. That is also an advantage - you can submit the job, log out, and then come back later and see the results.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>parpool</code> can only be used on UPPMAX, Cosmos, Dardel, and Kebnekaise.</p>
+</div>
+<h3 id="serial-batch-jobs">Serial batch jobs<a class="headerlink" href="#serial-batch-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Here is an example of a serial batch job formatted for each of the 5 facilities covered.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">UPPMAX</label><label for="__tabbed_2_2">HPC2N</label><label for="__tabbed_2_3">LUNARC</label><label for="__tabbed_2_4">NSC</label><label for="__tabbed_2_5">PDC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># Change to your actual project number later</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1">#SBATCH -A uppmax2025-2-272</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Asking for 1 core</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># Asking for 30 min (change as you want)</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1">#SBATCH -t 00:30:00</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="c1"># Change depending on resource and MATLAB version</span>
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="c1"># to find out available versions: module spider matlab</span>
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>module<span class="w"> </span>add<span class="w"> </span>matlab/R2023b
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="c1"># Executing the matlab program monte_carlo_pi.m for the value n=100000</span>
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="c1"># (n is number of steps - see program).</span>
+</span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="c1"># The command &#39;time&#39; is timing the execution</span>
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="nb">time</span><span class="w"> </span>matlab<span class="w"> </span>-nojvm<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;monte_carlo_pi(100000)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># Change to your actual project number later</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="c1">#SBATCH -A hpc2n2025-062</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Asking for 1 core</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="c1"># Asking for 30 min (change as you want)</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1">#SBATCH -t 00:30:00</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="c1"># Change depending on resource and MATLAB version</span>
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="c1"># to find out available versions: module spider matlab</span>
+</span><span id="__span-25-16"><a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>module<span class="w"> </span>add<span class="w"> </span>MATLAB/2023a.Update4
+</span><span id="__span-25-17"><a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
+</span><span id="__span-25-18"><a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="c1"># Executing the matlab program monte_carlo_pi.m for the value n=100000</span>
+</span><span id="__span-25-19"><a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="c1"># (n is number of steps - see program).</span>
+</span><span id="__span-25-20"><a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="c1"># The command &#39;time&#39; is timing the execution</span>
+</span><span id="__span-25-21"><a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="nb">time</span><span class="w"> </span>matlab<span class="w"> </span>-nojvm<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;monte_carlo_pi(100000)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="c1"># Change to your actual project number later</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="c1">#SBATCH -A lu2025-7-24</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1"># Asking for 1 core</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="c1"># Asking for 30 min (change as you want)</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="c1">#SBATCH -t 00:30:00</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="c1"># Change depending on resource and MATLAB version</span>
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="c1"># to find out available versions: module spider matlab</span>
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>module<span class="w"> </span>add<span class="w"> </span>matlab/2023b
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="c1"># Executing the matlab program monte_carlo_pi.m for the value n=100000</span>
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="c1"># (n is number of steps - see program).</span>
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="c1"># The command &#39;time&#39; is timing the execution</span>
+</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="nb">time</span><span class="w"> </span>matlab<span class="w"> </span>-nojvm<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;monte_carlo_pi(100000)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="c1"># Change to your actual project number later</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="c1">#SBATCH -A naiss2025-22-262</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1">#SBATCH --ntasks=1</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="c1">#SBATCH --cpus-per-task=1</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="c1">#SBATCH --ntasks-per-core=1</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="c1"># Asking for 15 min (change as you want)</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="c1">#SBATCH -t 00:15:00</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2024a-hpc1-bdist
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>
+</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="c1"># Executing the matlab program monte_carlo_pi.m for the value n=100000</span>
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="c1"># (n is number of steps - see program).</span>
+</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="c1"># The command &#39;time&#39; is timing the execution</span>
+</span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="nb">time</span><span class="w"> </span>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nojvm<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;monte_carlo_pi(100000)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1"># Change to your actual project number later</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="c1">#SBATCH -A naiss2025-22-262</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="c1"># Asking for 15 min (change as you want)</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="c1">#SBATCH -t 00:15:00</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="c1">#SBATCH -p main</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>module<span class="w"> </span>load<span class="w">  </span>PDC/23.12<span class="w"> </span>matlab/r2024a-ps
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>
+</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="c1"># Executing the matlab program monte_carlo_pi.m for the value n=100000</span>
+</span><span id="__span-28-16"><a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="c1"># (n is number of steps - see program).</span>
+</span><span id="__span-28-17"><a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="c1"># The command &#39;time&#39; is timing the execution</span>
+</span><span id="__span-28-18"><a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="nb">time</span><span class="w"> </span>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nojvm<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;monte_carlo_pi(100000)&quot;</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>You can download <a href="https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/monte_carlo_pi.m">monte_carlo_pi.m here</a> here or find it under <code>matlab</code> in the exercises directory.</p>
+<p>You submit it with</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sbatch<span class="w"> </span>&lt;batchscript.sh&gt;
+</span></code></pre></div>
+<p>Where <code>&lt;batchscript.sh&gt;</code> is the name you gave your batchscript. You can find ones for each of the clusters in the <code>exercises -&gt; matlab</code> directory, named <code>monte_carlo_pi_&lt;cluster&gt;.sh</code>.</p>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 4:</strong> Try run the serial batch script.</p>
+<p>Submit it, then check that it is running with <code>squeue --me</code>.
+Check the output in the <code>matlab_JOBID.out</code> (and the error in the <code>matlab_JOBID.err</code> file).</p>
+</div>
+<h3 id="parallel-batch-script">Parallel batch script<a class="headerlink" href="#parallel-batch-script" title="Anchor link to this section for reference">&para;</a></h3>
+<p>This is an example batch script for parallel MATLAB. Adjust to your preferred facility by cross-referencing the tabs above.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># Change to your actual project number</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="c1">#SBATCH -A XXXX-YY-ZZZ</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1">#SBATCH --ntasks-per-node=&lt;how many tasks&gt;</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1">#SBATCH --nodes &lt;how many nodes&gt;</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="c1"># Asking for 30 min (change as you want)</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="c1">#SBATCH -t 00:30:00</span>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="c1"># Change depending on resource and MATLAB version</span>
+</span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="c1"># to find out available versions: module spider matlab</span>
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>module<span class="w"> </span>add<span class="w"> </span>MATLAB/&lt;version&gt;
+</span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>
+</span><span id="__span-30-19"><a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="c1"># Executing a parallel matlab program</span>
+</span><span id="__span-30-20"><a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>srun<span class="w"> </span>matlab<span class="w"> </span>-nojvm<span class="w"> </span>-nodisplay<span class="w"> </span>-nodesktop<span class="w"> </span>-nosplash<span class="w"> </span>-r<span class="w"> </span>parallel-matlab-script.m
+</span></code></pre></div>
+<p>Inside the MATLAB code, the number of CPU-cores (<code>NumWorkers</code> in MATLAB terminology) can be specified when creating the parallel pool, for example, with 8 threads:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">poolobj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">(</span><span class="s">&#39;local&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 5.</strong> Write a batch script.</p>
+<p>Try making a batch script to run the <code>parallel_example.m</code> in the example from inside MATLAB above. You can use the above batch script as template.</p>
+</div>
+<details class="solutions">
+<summary>Solutions</summary>
+<p>=== &ldquo;UPPMAX&rdquo;</p>
+<div class="codehilite"><pre><span></span><code>  ```bash
+  #!/bin/bash
+  # Change to your actual project number
+  #SBATCH -A uppmax2025-2-272
+  # Remember, there are 4 workers and 1 master!
+  #SBATCH --ntasks=5
+  #SBATCH --cpus-per-task=1
+  #SBATCH --ntasks-per-node=5
+  #SBATCH --ntasks-per-core=1
+  # Asking for 30 min (change as you want)
+  #SBATCH -t 00:30:00
+  #SBATCH --error=matlab_%J.err
+  #SBATCH --output=matlab_%J.out
+
+  # Clean the environment
+  module purge &gt; /dev/null 2&gt;&amp;1
+
+  # Change depending on resource and MATLAB version
+  # to find out available versions: module spider matlab
+  module add matlab/R2023b
+
+  # Executing a parallel matlab program
+  srun matlab -nojvm -nodisplay -nodesktop -nosplash -r &quot;parallel_example(16)&quot;
+  ```
+</code></pre></div>
+
+<p>=== &ldquo;HPC2N&rdquo;</p>
+<div class="codehilite"><pre><span></span><code>  ```bash
+  #!/bin/bash
+  # Change to your actual project number
+  #SBATCH -A hpc2n2025-062
+  # Remember, there are 4 workers and 1 master!
+  #SBATCH --ntasks=5
+  #SBATCH --cpus-per-task=1
+  #SBATCH --ntasks-per-node=5
+  #SBATCH --ntasks-per-core=1
+  # Asking for 30 min (change as you want)
+  #SBATCH -t 00:30:00
+  #SBATCH --error=matlab_%J.err
+  #SBATCH --output=matlab_%J.out
+
+  # Clean the environment
+  module purge &gt; /dev/null 2&gt;&amp;1
+
+  # Change depending on resource and MATLAB version
+  # to find out available versions: module spider matlab
+  module add MATLAB/2023a.Update4
+
+  # Executing a parallel matlab program
+  srun matlab -nojvm -nodisplay -nodesktop -nosplash -r &quot;parallel_example(16)&quot;
+  ```
+</code></pre></div>
+
+<p>=== &ldquo;LUNARC&rdquo;</p>
+<div class="codehilite"><pre><span></span><code>  ```bash
+  #!/bin/bash
+  # Change to your actual project number
+  #SBATCH -A lu2025-7-24
+  # Remember, there are 4 workers and 1 master!
+  #SBATCH --ntasks=5
+  #SBATCH --cpus-per-task=1
+  #SBATCH --ntasks-per-node=5
+  #SBATCH --ntasks-per-core=1
+  # Asking for 30 min (change as you want)
+  #SBATCH -t 00:30:00
+  #SBATCH --error=matlab_%J.err
+  #SBATCH --output=matlab_%J.out
+
+  # Clean the environment
+  module purge &gt; /dev/null 2&gt;&amp;1
+
+  # Change depending on resource and MATLAB version
+  # to find out available versions: module spider matlab
+  module add matlab/2023b
+
+  # Executing a parallel matlab program
+  srun matlab -nojvm -nodisplay -nodesktop -nosplash -r &quot;parallel_example(16)&quot;
+  ```
+</code></pre></div>
+
+<p>=== &ldquo;NSC&rdquo;</p>
+<div class="codehilite"><pre><span></span><code>  ```bash
+  #!/bin/bash
+  # Change to your actual project number
+  #SBATCH -A naiss2025-22-262
+  # Remember, there are 4 workers and 1 master!
+  #SBATCH --ntasks=5
+  #SBATCH --cpus-per-task=1
+  #SBATCH --ntasks-per-core=1
+  # Asking for 30 min (change as you want)
+  #SBATCH -t 00:30:00
+  #SBATCH --error=matlab_%J.err
+  #SBATCH --output=matlab_%J.out
+
+  # Clean the environment
+  module purge &gt; /dev/null 2&gt;&amp;1
+
+  # Change depending on resource and MATLAB version
+  # to find out available versions: module spider matlab
+  module add MATLAB/2024a-hpc1-bdist
+
+  # Executing a parallel matlab program
+  srun matlab -nojvm -nodisplay -nodesktop -nosplash -r &quot;parallel_example(16)&quot;
+  ```
+</code></pre></div>
+
+<p>=== &ldquo;PDC&rdquo;</p>
+<div class="codehilite"><pre><span></span><code>  ```bash
+  #!/bin/bash
+  # Change to your actual project number
+  #SBATCH -A naiss2025-22-262
+  # Remember, there are 4 workers and 1 master!
+  #SBATCH -p shared
+  #SBATCH -n 5
+  # Asking for 30 min (change as you want)
+  #SBATCH -t 00:30:00
+  #SBATCH --error=matlab_%J.err
+  #SBATCH --output=matlab_%J.out
+
+  # Clean the environment
+  module purge &gt; /dev/null 2&gt;&amp;1
+
+  # Change depending on resource and MATLAB version
+  # to find out available versions: module spider matlab
+  module add PDC/23.12 matlab/r2024a-ps
+
+  # Executing a parallel matlab program
+  matlab -nodisplay -nodesktop -nosplash -r &quot;parallel_example(16)&quot;
+  ```
+</code></pre></div>
+
+</details>
+<h2 id="gpu-code">GPU code<a class="headerlink" href="#gpu-code" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Here we cover how to use GPUs with MATLAB
+- Inside MATLAB
+- In a batch script</p>
+<p>In order to use GPUs, you have to ask for them.</p>
+<h3 id="inside-matlab">Inside MATLAB<a class="headerlink" href="#inside-matlab" title="Anchor link to this section for reference">&para;</a></h3>
+<p>In order to use GPUs from inside MATLAB, you must add them as additional properties to your profile.</p>
+<p>Remember, after it is saved to your profile it will use GPUs again next time you submit a job, even if you don&rsquo;t want GPUs there. To reset this, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>c.AdditionalProperties.GpuCard<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>c.AdditionalProperties.GpusPerNode<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>This is how you add GPUs to use in batch jobs submitted inside MATLAB:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">UPPMAX</label><label for="__tabbed_3_2">HPC2N</label><label for="__tabbed_3_3">LUNARC</label><label for="__tabbed_3_4">NSC</label><label for="__tabbed_3_5">PDC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You have to first do an interactive session to Snowy, asking for GPUs, since there are no GPUs on Rackham. You should ask for at least 2 cores so MATLAB will start.</p>
+</div>
+<p>Ask for a GPU and enough time to do what you need.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>interactive<span class="w"> </span>-A<span class="w"> </span>uppmax2025-2-272<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>-M<span class="w"> </span>snowy<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w">  </span>-t<span class="w"> </span><span class="m">2</span>:00:00
+</span></code></pre></div>
+<p>Load MATLAB</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>ml<span class="w"> </span>matlab/R2023b
+</span></code></pre></div>
+<p>Then run MATLAB either as GUI&hellip;</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>matlab<span class="w"> </span>-singleCompThread
+</span></code></pre></div>
+<p>&hellip;Or on the terminal</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop
+</span></code></pre></div>
+<p>Finally, inside MATLAB, add this to your profile (remember the <code>c=parcluster;</code> after you start MATLAB again, to get a handle):</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GpusPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Load and start MATLAB, then do (remember the <code>c=parcluster;</code> after you start MATLAB again, to get a handle)</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GpuCard</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;card-type&#39;</span><span class="p">;</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GpusPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;#gpus&#39;</span><span class="p">;</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+<p>where <code>card-type</code> is one of <code>v100</code>, <code>a40</code>, <code>a6000</code>, <code>l40s</code>, <code>a100</code>, <code>h100</code>, or <code>mi100</code>, and <code>#gpus</code> depends on the card-type:</p>
+<ul>
+<li>V100 (2 cards/node)</li>
+<li>A40 (8 cards/node)</li>
+<li>A6000 (2 cards/node)</li>
+<li>L40s (2 or 6 cards/node)</li>
+<li>A100 (2 cards/node)</li>
+<li>H100 (4 cards/node)</li>
+<li>MI100 (2 cards/node)</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>Load and start MATLAB, then do (remember the <code>c=parcluster;</code> after you start MATLAB again, to get a handle)</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GpusPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>#<span class="n">GPUs</span><span class="p">;</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+<p>where <code>#GPUs</code> is 1 or 2.</p>
+</div>
+<div class="tabbed-block">
+<p>Load and start MATLAB, then do (remember the <code>c=parcluster;</code> after you start MATLAB again, to get a handle)</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GPUsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>#<span class="n">GPUs</span><span class="p">;</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+<p>where <code>#GPUs</code> is 1 or 2.</p>
+</div>
+<div class="tabbed-block">
+<p>Remember, here you cannot set <code>AdditionalProperties</code>. Instead, you do the following: </p>
+<h1 id="start-an-interactive-session-on-the-gpu-partition-salloc-n-1-ntasks-per-node1-t-10000-a-naiss2025-22-262-p-gpu">. Start an interactive session on the GPU partition: <code>salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu</code><a class="headerlink" href="#start-an-interactive-session-on-the-gpu-partition-salloc-n-1-ntasks-per-node1-t-10000-a-naiss2025-22-262-p-gpu" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="load-matlab-module-load-pdc2312-matlabr2024a-ps">. Load MATLAB: <code>module load PDC/23.12 matlab/r2024a-ps</code><a class="headerlink" href="#load-matlab-module-load-pdc2312-matlabr2024a-ps" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="start-matlab-matlab-nodisplay-nodesktop-nosplash">. Start MATLAB: <code>matlab -nodisplay -nodesktop -nosplash</code><a class="headerlink" href="#start-matlab-matlab-nodisplay-nodesktop-nosplash" title="Anchor link to this section for reference">&para;</a></h1>
+<p>You are now ready to run your GPU MATLAB scripts.</p>
+</div>
+</div>
+</div>
+<p>!!! example &ldquo;<strong>Challenge 5.</strong> Add/remove GPUs in your cluster profile.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Try</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">add</span><span class="w"> </span><span class="nv">GPUs</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">your</span><span class="w"> </span><span class="nv">cluster</span><span class="w"> </span><span class="nv">profile</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">save</span><span class="w"> </span><span class="nv">it</span>.<span class="w"> </span><span class="nv">Run</span><span class="w"> </span>`<span class="nv">c</span>.<span class="nv">AdditionalProperties</span>`<span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">see</span><span class="w"> </span><span class="nv">what</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">added</span>.<span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>`<span class="nv">c</span>.<span class="nv">AdditionalProperties</span>.<span class="nv">GpusPerNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="c1">;` to remove it. See that it was removed.</span>
+</code></pre></div>
+
+<h3 id="in-batch-scripts">In batch scripts<a class="headerlink" href="#in-batch-scripts" title="Anchor link to this section for reference">&para;</a></h3>
+<p>How to request a GPU node varies somewhat between clusters. Refer to the following templates:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">UPPMAX</label><label for="__tabbed_4_2">HPC2N</label><label for="__tabbed_4_3">LUNARC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="c1"># Change to your actual project number</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="c1">#SBATCH -A naiss20224-22-1202</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="c1">#SBATCH -n 2</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="c1">#SBATCH -M snowy</span>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a><span class="c1">#SBATCH --gres=gpu:1</span>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="c1"># Asking for 30 min (change as you want)</span>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="c1">#SBATCH -t 00:30:00</span>
+</span><span id="__span-46-9"><a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-46-10"><a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-46-11"><a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a>
+</span><span id="__span-46-12"><a id="__codelineno-46-12" name="__codelineno-46-12" href="#__codelineno-46-12"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-46-13"><a id="__codelineno-46-13" name="__codelineno-46-13" href="#__codelineno-46-13"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-46-14"><a id="__codelineno-46-14" name="__codelineno-46-14" href="#__codelineno-46-14"></a>
+</span><span id="__span-46-15"><a id="__codelineno-46-15" name="__codelineno-46-15" href="#__codelineno-46-15"></a><span class="c1"># Change depending on resource and MATLAB version</span>
+</span><span id="__span-46-16"><a id="__codelineno-46-16" name="__codelineno-46-16" href="#__codelineno-46-16"></a><span class="c1"># to find out available versions: module spider matlab</span>
+</span><span id="__span-46-17"><a id="__codelineno-46-17" name="__codelineno-46-17" href="#__codelineno-46-17"></a>module<span class="w"> </span>add<span class="w"> </span>matlab/R2023b
+</span><span id="__span-46-18"><a id="__codelineno-46-18" name="__codelineno-46-18" href="#__codelineno-46-18"></a>
+</span><span id="__span-46-19"><a id="__codelineno-46-19" name="__codelineno-46-19" href="#__codelineno-46-19"></a><span class="c1"># Executing a GPU matlab program</span>
+</span><span id="__span-46-20"><a id="__codelineno-46-20" name="__codelineno-46-20" href="#__codelineno-46-20"></a>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;gpu-matlab-script.m&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="c1"># Change to your actual project number</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="c1">#SBATCH -A hpc2n2025-062</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="c1">#SBATCH --gpus=&lt;#gpus&gt;</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="c1">#SBATCH -C &lt;gpu-type&gt;</span>
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="c1"># Asking for 30 min (change as you want)</span>
+</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="c1">#SBATCH -t 00:30:00</span>
+</span><span id="__span-47-9"><a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-47-10"><a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-47-11"><a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a>
+</span><span id="__span-47-12"><a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-47-13"><a id="__codelineno-47-13" name="__codelineno-47-13" href="#__codelineno-47-13"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-47-14"><a id="__codelineno-47-14" name="__codelineno-47-14" href="#__codelineno-47-14"></a>
+</span><span id="__span-47-15"><a id="__codelineno-47-15" name="__codelineno-47-15" href="#__codelineno-47-15"></a><span class="c1"># Change depending on resource and MATLAB version</span>
+</span><span id="__span-47-16"><a id="__codelineno-47-16" name="__codelineno-47-16" href="#__codelineno-47-16"></a><span class="c1"># to find out available versions: module spider matlab</span>
+</span><span id="__span-47-17"><a id="__codelineno-47-17" name="__codelineno-47-17" href="#__codelineno-47-17"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2023a.Update4
+</span><span id="__span-47-18"><a id="__codelineno-47-18" name="__codelineno-47-18" href="#__codelineno-47-18"></a>
+</span><span id="__span-47-19"><a id="__codelineno-47-19" name="__codelineno-47-19" href="#__codelineno-47-19"></a><span class="c1"># Executing a GPU matlab program</span>
+</span><span id="__span-47-20"><a id="__codelineno-47-20" name="__codelineno-47-20" href="#__codelineno-47-20"></a>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;gpu-matlab-script.m&quot;</span>
+</span></code></pre></div>
+<p>where <code>card-type</code> is one of <code>v100</code>, <code>a40</code>, <code>a6000</code>, <code>l40s</code>, <code>a100</code>, <code>h100</code>, or <code>mi100</code>, and <code>#gpus</code> depends on the card-type:</p>
+<ul>
+<li>V100 (2 cards/node)</li>
+<li>A40 (8 cards/node)</li>
+<li>A6000 (2 cards/node)</li>
+<li>L40s (2 or 6 cards/node)</li>
+<li>A100 (2 cards/node)</li>
+<li>H100 (4 cards/node)</li>
+<li>MI100 (2 cards/node)</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>```bash</p>
+<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="change-to-your-actual-project-number">Change to your actual project number<a class="headerlink" href="#change-to-your-actual-project-number" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-a-lu2025-7-24">SBATCH -A lu2025-7-24<a class="headerlink" href="#sbatch-a-lu2025-7-24" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-n-1">SBATCH -n 1<a class="headerlink" href="#sbatch-n-1" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-p-gpua100">SBATCH -p gpua100<a class="headerlink" href="#sbatch-p-gpua100" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="the-number-of-gpusgpus-can-be-1-or-2">The number of GPUs.#gpus, can be 1 or 2<a class="headerlink" href="#the-number-of-gpusgpus-can-be-1-or-2" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-gpusgpus">SBATCH &ndash;gpus=&lt;#gpus&gt;<a class="headerlink" href="#sbatch-gpusgpus" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="asking-for-30-min-change-as-you-want">Asking for 30 min (change as you want)<a class="headerlink" href="#asking-for-30-min-change-as-you-want" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-t-003000">SBATCH -t 00:30:00<a class="headerlink" href="#sbatch-t-003000" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-errormatlab_jerr">SBATCH &ndash;error=matlab_%J.err<a class="headerlink" href="#sbatch-errormatlab_jerr" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-outputmatlab_jout">SBATCH &ndash;output=matlab_%J.out<a class="headerlink" href="#sbatch-outputmatlab_jout" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="clean-the-environment">Clean the environment<a class="headerlink" href="#clean-the-environment" title="Anchor link to this section for reference">&para;</a></h1>
+<p>module purge &gt; /dev/null 2&gt;&amp;1</p>
+<h1 id="change-depending-on-resource-and-matlab-version">Change depending on resource and MATLAB version<a class="headerlink" href="#change-depending-on-resource-and-matlab-version" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="to-find-out-available-versions-module-spider-matlab">to find out available versions: module spider matlab<a class="headerlink" href="#to-find-out-available-versions-module-spider-matlab" title="Anchor link to this section for reference">&para;</a></h1>
+<p>module load matlab/2023b</p>
+<h1 id="executing-a-gpu-matlab-program">Executing a GPU matlab program<a class="headerlink" href="#executing-a-gpu-matlab-program" title="Anchor link to this section for reference">&para;</a></h1>
+<p>matlab -nodisplay -nosplash -r &ldquo;gpu-matlab-script.m&rdquo;</p>
+</div>
+</div>
+</div>
+<p>=== NSC</p>
+<div class="codehilite"><pre><span></span><code><span class="err">```</span><span class="n">bash</span>
+<span class="c1">#!/bin/bash</span>
+<span class="c1"># Change to your actual project number</span>
+<span class="c1">#SBATCH -A naiss2025-22-262</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --ntasks-per-core=1</span>
+<span class="c1"># The number of GPUs.#gpus, can be 1 or 2</span>
+<span class="c1">#SBATCH --gpus-per-task=1</span>
+
+<span class="c1"># Asking for 30 min (change as you want)</span>
+<span class="c1">#SBATCH -t 00:30:00</span>
+<span class="c1">#SBATCH --error=matlab_%J.err</span>
+<span class="c1">#SBATCH --output=matlab_%J.out</span>
+
+<span class="c1"># Clean the environment</span>
+<span class="n">module</span><span class="w"> </span><span class="n">purge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+
+<span class="c1"># Change depending on resource and MATLAB version</span>
+<span class="c1"># to find out available versions: module spider matlab</span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">MATLAB</span><span class="o">/</span><span class="mi">2024</span><span class="n">a</span><span class="o">-</span><span class="n">hpc1</span><span class="o">-</span><span class="n">bdist</span>
+
+<span class="c1"># Executing a GPU matlab program</span>
+<span class="n">matlab</span><span class="w"> </span><span class="o">-</span><span class="n">singleCompThread</span><span class="w"> </span><span class="o">-</span><span class="n">nodisplay</span><span class="w"> </span><span class="o">-</span><span class="n">nosplash</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="s2">&quot;gpu-matlab-script.m&quot;</span>
+</code></pre></div>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="c1"># Change to your actual project number</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="c1">#SBATCH -A naiss2025-22-262</span>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="c1">#SBATCH --ntasks-per-node=1</span>
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a><span class="c1"># Ask for GPUs</span>
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="c1">#SBATCH -p gpu</span>
+</span><span id="__span-48-8"><a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a>
+</span><span id="__span-48-9"><a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a><span class="c1"># Asking for 30 min (change as you want)</span>
+</span><span id="__span-48-10"><a id="__codelineno-48-10" name="__codelineno-48-10" href="#__codelineno-48-10"></a><span class="c1">#SBATCH -t 00:30:00</span>
+</span><span id="__span-48-11"><a id="__codelineno-48-11" name="__codelineno-48-11" href="#__codelineno-48-11"></a><span class="c1">#SBATCH --error=matlab_%J.err</span>
+</span><span id="__span-48-12"><a id="__codelineno-48-12" name="__codelineno-48-12" href="#__codelineno-48-12"></a><span class="c1">#SBATCH --output=matlab_%J.out</span>
+</span><span id="__span-48-13"><a id="__codelineno-48-13" name="__codelineno-48-13" href="#__codelineno-48-13"></a>
+</span><span id="__span-48-14"><a id="__codelineno-48-14" name="__codelineno-48-14" href="#__codelineno-48-14"></a><span class="c1"># Clean the environment</span>
+</span><span id="__span-48-15"><a id="__codelineno-48-15" name="__codelineno-48-15" href="#__codelineno-48-15"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-48-16"><a id="__codelineno-48-16" name="__codelineno-48-16" href="#__codelineno-48-16"></a>
+</span><span id="__span-48-17"><a id="__codelineno-48-17" name="__codelineno-48-17" href="#__codelineno-48-17"></a><span class="c1"># Change depending on resource and MATLAB version</span>
+</span><span id="__span-48-18"><a id="__codelineno-48-18" name="__codelineno-48-18" href="#__codelineno-48-18"></a><span class="c1"># to find out available versions: module spider matlab</span>
+</span><span id="__span-48-19"><a id="__codelineno-48-19" name="__codelineno-48-19" href="#__codelineno-48-19"></a>module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12<span class="w"> </span>rocm/5.7.0
+</span><span id="__span-48-20"><a id="__codelineno-48-20" name="__codelineno-48-20" href="#__codelineno-48-20"></a>
+</span><span id="__span-48-21"><a id="__codelineno-48-21" name="__codelineno-48-21" href="#__codelineno-48-21"></a><span class="c1"># Executing a GPU matlab program</span>
+</span><span id="__span-48-22"><a id="__codelineno-48-22" name="__codelineno-48-22" href="#__codelineno-48-22"></a>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;gpu-matlab-script.m&quot;</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>The SLURM scheduler handles allocations to the calculation/compute nodes</li>
+<li>Batch jobs run without interaction with user</li>
+<li>A batch script consists of a part with SLURM parameters describing the allocation and a second part describing the actual work within the job, for instance one or several MATLAB scripts.</li>
+<li>You can run MATLAB as a batch job through a batch script or from inside MATLAB (shell or GUI)</li>
+<li>Remember to include possible input arguments to the MATLAB script in the batch script.</li>
+<li><strong>You need to configure MATLAB before submitting batch jobs</strong> (except on Dardel).</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../load_runMatlab/" class="btn btn-neutral float-left" title="Load and run"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../MatlabGUIslurm/" class="btn btn-neutral float-right" title="MATLAB GUI and batch jobs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../load_runMatlab/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../MatlabGUIslurm/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

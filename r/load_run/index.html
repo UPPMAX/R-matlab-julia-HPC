@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Load and run - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Load and run";
+        var mkdocs_page_input_path = "r/load_run.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Introduction to R, MATLAB, and Julia in HPC
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Load and run</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and SLURM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/notebook_pluto/">The notebook Pluto</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel/">Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">R</li>
+      <li class="breadcrumb-item active">Load and run</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs-mk/r/load_run.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="load-and-run-r">Load and run R<a class="headerlink" href="#load-and-run-r" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>Practice using the documentation of your HPC cluster</li>
+<li>Load an R module</li>
+<li>Start the R interpreter</li>
+<li>Run an R script</li>
+<li>Download and extract the exercise files</li>
+<li>(optional) Find the different R modules</li>
+<li>(optional) See the list of installed R packages</li>
+</ul>
+</div>
+<details class="info">
+<summary>Learning outcomes</summary>
+<p>Teaching goals are:</p>
+<ul>
+<li>Learners have practiced using the documentation of their HPC clusters</li>
+<li>Learners have loaded the module to be able to run R</li>
+<li>Learners have run the R interpreter</li>
+<li>Learners have run an R script from the command-line</li>
+<li>Learners have downloaded and extracted the exercise files</li>
+<li>(optional) Learners have found the different R modules</li>
+<li>(optional) Learners have seen the list of installed R packages</li>
+</ul>
+<p>Prior:</p>
+<ul>
+<li>What is &lsquo;HPC&rsquo; in &lsquo;HPC cluster&rsquo;?</li>
+<li>What is &lsquo;cluster&rsquo; in &lsquo;HPC cluster&rsquo;?</li>
+<li>What is a software module?</li>
+<li>What is a script?</li>
+<li>What are features of using an HPC cluster?</li>
+<li>What problem would arise if users can install their own software?</li>
+</ul>
+</details>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Anchor link to this section for reference">&para;</a></h2>
+<p>You want to run R on an HPC cluster.
+For this, you&rsquo;ll need to read the documentation
+of your HPC cluster.</p>
+<p>In this session, we will use the documentation of your HPC cluster
+to start R.</p>
+<div class="admonition warning">
+<p class="admonition-title">Only do lightweight things!</p>
+<p>Only do lightweight things!</p>
+<p>We are still on the login node, which is shared with many other users.
+This means, that if we do heavy calculations, all the other users
+are affected.</p>
+<p>How to do heavy calculations will be shown in this course later.</p>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<details class="- note">
+<summary>Prefer this session as video?</summary>
+<p>HPC cluster| Login method           | Location                                                 |
+ -----------+------------------------+-------------------------------------
+ COSMOS     | Local ThinLinc client  | <a href="https://youtu.be/sSWd54Gunck">Here</a>
+ Dardel     | Local ThinLinc client  | <a href="https://youtu.be/xBFH7Ab37FU">Here</a>
+ Kebnekaise | Local ThinLinc client  | <a href="https://youtu.be/miAxHkSePIA">Here</a>
+ Rackham    | Local ThinLinc client  | <a href="https://youtu.be/fSUYE_Xahe8">Here</a>
+ Tetralith  | Local ThinLinc client  | <a href="https://youtu.be/HxBtyCB3w0k">Here</a></p>
+</details>
+<p>+------------------+-------------------+
+| HPC cluster name |Main breakout room |
++------------------+-------------------+
+| COSMOS           |Room 1             |
++------------------+-------------------+
+| Dardel           |Room 2             |
++------------------+-------------------+
+| Kebnekaise       |Room 3             |
++------------------+-------------------+
+| Rackham          |Room 4             |
++------------------+-------------------+
+| Tetralith        |Room 5             |
++------------------+-------------------+</p>
+<p>Exercise 1: start the R interpreter</p>
+<p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<ul>
+<li>Find the documentation of your HPC cluster</li>
+</ul>
+<p>.. admonition:: Answer
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------+-----------------------------------------------------------------------------------+</span>
+<span class="c">| HPC cluster| Location                                                                          |</span>
+<span class="nb">+</span><span class="c">============</span><span class="nb">+</span><span class="c">===================================================================================</span><span class="nb">+</span>
+<span class="c">| COSMOS     | `Here </span><span class="nv">&lt;</span><span class="c">https://lunarc</span><span class="nb">-</span><span class="c">documentation</span><span class="nt">.</span><span class="c">readthedocs</span><span class="nt">.</span><span class="c">io/en/latest/</span><span class="nv">&gt;</span><span class="c">`__                 |</span>
+<span class="nb">+------------+-----------------------------------------------------------------------------------+</span>
+<span class="c">| Dardel     | `Here </span><span class="nv">&lt;</span><span class="c">https://support</span><span class="nt">.</span><span class="c">pdc</span><span class="nt">.</span><span class="c">kth</span><span class="nt">.</span><span class="c">se/doc/contact/contact_support/</span><span class="nv">&gt;</span><span class="c">`__                                |</span>
+<span class="nb">+------------+-----------------------------------------------------------------------------------+</span>
+<span class="c">| Kebnekaise | `Here </span><span class="nv">&lt;</span><span class="c">https://docs</span><span class="nt">.</span><span class="c">hpc2n</span><span class="nt">.</span><span class="c">umu</span><span class="nt">.</span><span class="c">se/</span><span class="nv">&gt;</span><span class="c">`__                                             |</span>
+<span class="nb">+------------+-----------------------------------------------------------------------------------+</span>
+<span class="c">| Rackham    | `Here </span><span class="nv">&lt;</span><span class="c">http://docs</span><span class="nt">.</span><span class="c">uppmax</span><span class="nt">.</span><span class="c">uu</span><span class="nt">.</span><span class="c">se/</span><span class="nv">&gt;</span><span class="c">`__                                              |</span>
+<span class="nb">+------------+-----------------------------------------------------------------------------------+</span>
+<span class="c">| Tetralith  | `Here </span><span class="nv">&lt;</span><span class="c">https://www</span><span class="nt">.</span><span class="c">nsc</span><span class="nt">.</span><span class="c">liu</span><span class="nt">.</span><span class="c">se/support/systems/tetralith</span><span class="nb">-</span><span class="c">getting</span><span class="nb">-</span><span class="c">started/</span><span class="nv">&gt;</span><span class="c">`__      |</span>
+<span class="nb">+------------+-----------------------------------------------------------------------------------+</span>
+</code></pre></div>
+
+<ul>
+<li>Within the documentation of your HPC cluster, search for the documentation about R</li>
+</ul>
+<p>.. admonition:: Answer
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| HPC cluster| Page name and location                                                                                         |</span>
+<span class="nb">+</span><span class="c">============</span><span class="nb">+</span><span class="c">================================================================================================================</span><span class="nb">+</span>
+<span class="c">| COSMOS     | `R Software environment </span><span class="nv">&lt;</span><span class="c">https://lunarc</span><span class="nb">-</span><span class="c">documentation</span><span class="nt">.</span><span class="c">readthedocs</span><span class="nt">.</span><span class="c">io/en/latest/guides/applications/Rscript/</span><span class="nv">&gt;</span><span class="c">`__|</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Dardel     | `R </span><span class="nv">&lt;</span><span class="c">https://support</span><span class="nt">.</span><span class="c">pdc</span><span class="nt">.</span><span class="c">kth</span><span class="nt">.</span><span class="c">se/doc/applications/?sub=r/</span><span class="nv">&gt;</span><span class="c">`__                                                    |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Kebnekaise | `R </span><span class="nv">&lt;</span><span class="c">https://www</span><span class="nt">.</span><span class="c">hpc2n</span><span class="nt">.</span><span class="c">umu</span><span class="nt">.</span><span class="c">se/resources/software/r</span><span class="nv">&gt;</span><span class="c">`__                                                          |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Rackham    | `R </span><span class="nv">&lt;</span><span class="c">https://docs</span><span class="nt">.</span><span class="c">uppmax</span><span class="nt">.</span><span class="c">uu</span><span class="nt">.</span><span class="c">se/software/r/</span><span class="nv">&gt;</span><span class="c">`__                                                                  |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Tetralith  | `R </span><span class="nv">&lt;</span><span class="c">https://www</span><span class="nt">.</span><span class="c">nsc</span><span class="nt">.</span><span class="c">liu</span><span class="nt">.</span><span class="c">se/software/catalogue/tetralith/modules/r</span><span class="nt">.</span><span class="c">html</span><span class="nv">&gt;</span><span class="c">`__                                     |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+</code></pre></div>
+
+<ul>
+<li>From the terminal, load the module(s) for R,
+  of the recommend version as shown below</li>
+</ul>
+<p>+----------+---------+
+|HPC center|R version|
++==========+=========+
+|COSMOS    |4.2.1    |
++----------+---------+
+|Dardel    |4.1.1    |
++----------+---------+
+|Kebnekaise|4.1.2    |
++----------+---------+
+|Rackham   |4.1.1    |
++----------+---------+
+|Tetralith |4.2.2    |
++----------+---------+</p>
+<p>.. admonition:: Answer
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| HPC cluster| How to load the module(s) for R                                                                                |</span>
+<span class="nb">+</span><span class="c">============</span><span class="nb">+</span><span class="c">================================================================================================================</span><span class="nb">+</span>
+<span class="c">| COSMOS     | :code:`module load GCC/11</span><span class="nt">.</span><span class="c">3</span><span class="nt">.</span><span class="c">0 OpenMPI/4</span><span class="nt">.</span><span class="c">1</span><span class="nt">.</span><span class="c">4 R/4</span><span class="nt">.</span><span class="c">2</span><span class="nt">.</span><span class="c">1`                                                           |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Dardel     | :code:`module load PDC/23</span><span class="nt">.</span><span class="c">12 R/4</span><span class="nt">.</span><span class="c">1</span><span class="nt">.</span><span class="c">1`                                                                          |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Kebnekaise | :code:`module load GCC/11</span><span class="nt">.</span><span class="c">2</span><span class="nt">.</span><span class="c">0 OpenMPI/4</span><span class="nt">.</span><span class="c">1</span><span class="nt">.</span><span class="c">1 R/4</span><span class="nt">.</span><span class="c">1</span><span class="nt">.</span><span class="c">2`                                                           |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Rackham    | :code:`module load R/4</span><span class="nt">.</span><span class="c">1</span><span class="nt">.</span><span class="c">1`                                                                                    |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+<span class="c">| Tetralith  | :code:`module load R/4</span><span class="nt">.</span><span class="c">2</span><span class="nt">.</span><span class="c">2</span><span class="nb">-</span><span class="c">hpc1</span><span class="nb">-</span><span class="c">gcc</span><span class="nb">-</span><span class="c">11</span><span class="nt">.</span><span class="c">3</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">bare`                                                               |</span>
+<span class="nb">+------------+----------------------------------------------------------------------------------------------------------------+</span>
+</code></pre></div>
+
+<ul>
+<li>From the terminal, start the R interpreter</li>
+</ul>
+<p>.. admonition:: Answer
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------+----------------------------------+</span>
+<span class="c">| HPC cluster| How to start the R interpreter   |</span>
+<span class="nb">+</span><span class="c">============</span><span class="nb">+</span><span class="c">==================================</span><span class="nb">+</span>
+<span class="c">| COSMOS     | :code:`R`                        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Dardel     | :code:`R`                        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Kebnekaise | :code:`R`                        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Rackham    | :code:`R`                        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Tetralith  | :code:`R`                        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>From the R interpreter, run the R code :code:<code>message("Hello")</code>
+  to verify if this
+  makes the R interpreter show the text &lsquo;Hello&rsquo;</p>
+</li>
+<li>
+<p>From the R interpreter, run the R code :code:<code>quit()</code>
+  to quit the R interpreter
+  and go back to the terminal</p>
+</li>
+</ul>
+<p>Exercise 2: run an R script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>To run an R script, we&rsquo;ll download one, after which we&rsquo;ll run it:</p>
+<ul>
+<li>
+<p>From the terminal, run :code:<code>wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/r/hello.R</code></p>
+</li>
+<li>
+<p>From the terminal, run :code:<code>Rscript hello.R</code></p>
+</li>
+</ul>
+<p>Exercise 3: download and extract the tarball with exercises
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>See <code>here &lt;https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html&gt;</code>_
+how to download and extract the tarball with exercises.</p>
+<p>Exercise X1: find and use installed R packages</p>
+<p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<ul>
+<li>From the R interpreter, check which packages are installed,
+  using :code:<code>installed.packages()</code></li>
+</ul>
+<p>.. admonition:: Answer
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------+----------------------------------+</span>
+<span class="c">| HPC cluster| Answe                            |</span>
+<span class="nb">+</span><span class="c">============</span><span class="nb">+</span><span class="c">==================================</span><span class="nb">+</span>
+<span class="c">| COSMOS     | :code:`installed</span><span class="nt">.</span><span class="c">packages()`     |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Dardel     | :code:`installed</span><span class="nt">.</span><span class="c">packages()`     |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Kebnekaise | :code:`installed</span><span class="nt">.</span><span class="c">packages()`     |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Rackham    | :code:`installed</span><span class="nt">.</span><span class="c">packages()`     |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Tetralith  | :code:`installed</span><span class="nt">.</span><span class="c">packages()`     |</span>
+<span class="nb">+------------+----------------------------------+</span>
+</code></pre></div>
+
+<ul>
+<li>From the R interpreter, load the <code>parallel</code> package,
+  using :code:<code>library(parallel)</code></li>
+</ul>
+<p>.. admonition:: Answer
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------+----------------------------------+</span>
+<span class="c">| HPC cluster| Answe                            |</span>
+<span class="nb">+</span><span class="c">============</span><span class="nb">+</span><span class="c">==================================</span><span class="nb">+</span>
+<span class="c">| COSMOS     | :code:`library(parallel)`        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Dardel     | :code:`library(parallel)`        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Kebnekaise | :code:`library(parallel)`        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Rackham    | :code:`library(parallel)`        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Tetralith  | :code:`library(parallel)`        |</span>
+<span class="nb">+------------+----------------------------------+</span>
+</code></pre></div>
+
+<p>Exercise X2: search for other R versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Use the module system to find which versions of R are provided
+by your cluster&rsquo;s module system.</p>
+<p>.. admonition:: Answer
+    :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------+----------------------------------+</span>
+<span class="c">| HPC cluster| How to search for the R modules  |</span>
+<span class="nb">+</span><span class="c">============</span><span class="nb">+</span><span class="c">==================================</span><span class="nb">+</span>
+<span class="c">| COSMOS     | :code:`module spider R`          |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Dardel     | :code:`module spider R`          |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Kebnekaise | :code:`module spider R`          |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Rackham    | :code:`module spider R`          |</span>
+<span class="nb">+------------+----------------------------------+</span>
+<span class="c">| Tetralith  | :code:`module spider R`          |</span>
+<span class="nb">+------------+----------------------------------+</span>
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../intro/" class="btn btn-neutral float-left" title="Intro"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../packages/" class="btn btn-neutral float-right" title="Packages">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../intro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../packages/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

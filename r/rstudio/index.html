@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>RStudio - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "RStudio";
+        var mkdocs_page_input_path = "r/rstudio.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Introduction to R, MATLAB, and Julia in HPC
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">RStudio</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-use-rstudio">Why use Rstudio?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise-1-start-rstudio">Exercise 1: start Rstudio</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#on-uppmax">On UPPMAX</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#on-hpc2n">On HPC2N</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#at-lunarc">At LUNARC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#at-nsc">At NSC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#on-pdc">On PDC</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and SLURM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/notebook_pluto/">The notebook Pluto</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel/">Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">R</li>
+      <li class="breadcrumb-item active">RStudio</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs-mk/r/rstudio.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="using-rstudio">Using RStudio<a class="headerlink" href="#using-rstudio" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>Practice using the documentation of your HPC cluster</li>
+<li>Start RStudio</li>
+</ul>
+</div>
+<details class="- info">
+<summary>Learning outcomes</summary>
+<p>Teaching goals are:</p>
+<ul>
+<li>Learners have practiced using the documentation of their HPC clusters</li>
+<li>Learners have started RStudio</li>
+</ul>
+<p>Prior:</p>
+<ul>
+<li>What is RStudio?</li>
+<li>Why is RStudio useful?</li>
+</ul>
+</details>
+<h2 id="why-use-rstudio">Why use Rstudio?<a class="headerlink" href="#why-use-rstudio" title="Anchor link to this section for reference">&para;</a></h2>
+<p>&hellip;</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<details class="- question">
+<summary>Need a video?</summary>
+<p>Here are videos that do this exercises for the different HPC clusters:</p>
+<table>
+<thead>
+<tr>
+<th>HPC Cluster</th>
+<th>YouTube video</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alvis</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Berzelius</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Bianca</td>
+<td><a href="https://youtu.be/rRUb4pqaVak">YouTube video</a></td>
+</tr>
+<tr>
+<td>COSMOS</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>Dardel</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Kebnekaise</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>LUMI</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Pelle</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>Rackham</td>
+<td><a href="https://youtu.be/efSOFfBVBPQ">YouTube video</a></td>
+</tr>
+<tr>
+<td>Tetralith</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Vera</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="- question">
+<summary>How difficult will this be?</summary>
+<p>This depends mostly on your HPC cluster:</p>
+<p><!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line --></p>
+<table>
+<thead>
+<tr>
+<th>HPC Cluster</th>
+<th>Difficulty</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alvis</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Berzelius</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Bianca</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COSMOS</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Dardel</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Kebnekaise</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>LUMI</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Pelle</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Rackham</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Tetralith</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Vera</td>
+<td>.</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable MD013 -->
+</details>
+<h2 id="exercise-1-start-rstudio">Exercise 1: start Rstudio<a class="headerlink" href="#exercise-1-start-rstudio" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Use the documentation of your HPC cluster for help.</p>
+<ul>
+<li><strong>For maximally 5 minutes</strong>, search for the procedure on how to transfer a file
+  to/from your HPC cluster using FileZilla. Take a look at the answer if you
+  cannot find it: sometimes there <em>is</em> no documentation</li>
+</ul>
+<details class="- question">
+<summary>Where is that documentation?</summary>
+<p><!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line --></p>
+<table>
+<thead>
+<tr>
+<th>HPC Cluster</th>
+<th>Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alvis</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Berzelius</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Bianca</td>
+<td><a href="https://docs.uppmax.uu.se/software/rstudio_on_bianca/">Documentation</a></td>
+</tr>
+<tr>
+<td>COSMOS</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>Dardel</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Kebnekaise</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>LUMI</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Pelle</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>Rackham</td>
+<td><a href="https://docs.uppmax.uu.se/software/rstudio_on_rackham/">Documentation</a></td>
+</tr>
+<tr>
+<td>Tetralith</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Vera</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable MD013 -->
+</details>
+<ul>
+<li>Follow that procedure to start RStudio</li>
+</ul>
+<p>&lt;! &ndash;</p>
+<p>.. warning::</p>
+<p>Using RStudio differs between different HPC clusters.</p>
+<ul>
+<li>We also recommend ThinLinc!</li>
+</ul>
+<h2 id="on-uppmax">On UPPMAX<a class="headerlink" href="#on-uppmax" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There is a system installed version, available via the &ldquo;rstudio&rdquo; command (you
+will get RStudio/1.1.423).</p>
+<p>However, we recommend you to use a RStudio module.</p>
+<p>.. warning::</p>
+<p>We recommend ThinLinc because the graphics is more effective there!</p>
+<p><strong>Using ThinLinc</strong></p>
+<ul>
+<li>ThinLinc app: <code>&lt;user&gt;@rackham-gui.uppmax.uu.se</code></li>
+<li>
+<p>ThinLinc in web browser: <code>https://rackham-gui.uppmax.uu.se</code>   This requires 2FA!</p>
+</li>
+<li>
+<p>Choose Xfce as the desktop environment (faster)</p>
+</li>
+<li>start a command line window</li>
+</ul>
+<p><strong>Using terminal</strong></p>
+<ul>
+<li>Remember to have X11 installed!</li>
+<li>
+<p>On Mac</p>
+<ul>
+<li>install XQuartz</li>
+</ul>
+</li>
+<li>
+<p>On Windows</p>
+<ul>
+<li>Use MobaXterm or</li>
+</ul>
+</li>
+</ul>
+<p>Check for RStudio versions
+..........................</p>
+<p>Check all available  versions with:</p>
+<p>.. code-block:: console</p>
+<p>$ module avail RStudio</p>
+<p>.. admonition:: Output at UPPMAX as of March 10 2024
+   :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="p">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="nl">block</span><span class="p">:</span><span class="err">:</span><span class="w">  </span><span class="n">console</span>
+
+<span class="w">      </span><span class="o">[</span><span class="n">bjornc@rackham5 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ml</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="n">RStudio</span>
+
+<span class="w">      </span><span class="c1">------------------------------------- /sw/mf/rackham/applications -------------------------------------</span>
+<span class="w">         </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">1.0.136</span><span class="w">    </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">1.1.423</span><span class="w">     </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">2022.02.0</span><span class="o">-</span><span class="mi">443</span><span class="w">    </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">2023.06.0</span><span class="o">-</span><span class="mi">421</span>
+<span class="w">         </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">1.0.143</span><span class="w">    </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">1.1.463</span><span class="w">     </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">2022.02.3</span><span class="o">-</span><span class="mi">492</span><span class="w">    </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">2023.06.2</span><span class="o">-</span><span class="mi">561</span>
+<span class="w">         </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">1.0.153</span><span class="w">    </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">1.4.1106</span><span class="w">    </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">2022.07.1</span><span class="o">-</span><span class="mi">554</span><span class="w">    </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">2023.12.1</span><span class="o">-</span><span class="mi">402</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">Where</span><span class="err">:</span>
+<span class="w">         </span><span class="nl">D</span><span class="p">:</span><span class="w">  </span><span class="k">Default</span><span class="w"> </span><span class="k">Module</span>
+
+<span class="w">      </span><span class="k">Use</span><span class="w"> </span><span class="ss">&quot;module spider&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">extensions</span><span class="p">.</span>
+<span class="w">      </span><span class="k">Use</span><span class="w"> </span><span class="ss">&quot;module keyword key1 key2 ...&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="n">matching</span><span class="w"> </span><span class="ow">any</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="ss">&quot;keys&quot;</span><span class="p">.</span>
+</code></pre></div>
+
+<ul>
+<li>load R_packages</li>
+<li>module load RStudio</li>
+<li>
+<p>run <code>rstudio &amp;</code> from the command line, and wait</p>
+<ul>
+<li>it might take 5-10 minutes for RStudio to start, especially if you loaded R_packages as well, but once it starts, there should be no further delays</li>
+<li>do <em>not</em> start RStudio through the graphical menu system in ThinLinc, this will not have access to loaded modules.</li>
+<li>if it takes a long time and might be due to that you have saved a lot of workspace</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<p>.. demo::</p>
+<p>.. code:: console</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span>
+<span class="w">  </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">RStudio</span><span class="o">/</span><span class="mf">2023.12</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">402</span>
+<span class="w">  </span><span class="n">rstudio</span><span class="w"> </span><span class="o">&amp;</span>
+</code></pre></div>
+
+<p>If you&rsquo;re going to run heavier computations within RStudio then you have to remember that you need to do it inside an interactive session on one of the computation nodes, and not on a login node. But if you mostly want to use it as a pretty code editor then you can run it on the login node as well.</p>
+<p>To use Rstudio on a compute node, start by asking SLURM for an interactive allocation (within the ThinLink session). E.g.</p>
+<p>.. code:: console</p>
+<div class="codehilite"><pre><span></span><code>  interactive -A naiss2023-22-44 -p devcore -n 4 -t 10:00
+</code></pre></div>
+
+<p>On Bianca
+&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;</p>
+<p>When logging onto Bianca, you are placed on a login node, which nowadays has 2 CPU and a few GB of RAM. This is sufficient for doing some light-weight calculations, but interactive sessions and batch jobs provide access to much more resources and should be requested via the SLURM system.</p>
+<p>The desktop client version of ThinLinc does not work for Bianca. Instead you run and login to ThinLinc in the browser:</p>
+<ul>
+<li><a href="https://bianca.uppmax.uu.se">https://bianca.uppmax.uu.se</a></li>
+</ul>
+<h2 id="on-hpc2n">On HPC2N<a class="headerlink" href="#on-hpc2n" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Rstudio also exists on Kebnekaise but is only installed on the ThinLinc login nodes and not on the compute nodes (and also not on the regular login nodes accessible with SSH).
+Thus, Rstudio should only be used for development and very light analysis, since there is no way to submit a job to the compute nodes.</p>
+<p>Login to ThinLinc desktop application by providing the following</p>
+<ul>
+<li>server: kebnekaise-tl.hpc2n.umu.se</li>
+<li>username</li>
+<li>password</li>
+</ul>
+<p>Alternatively, you can use ThinLinc in the browser: <a href="https://kebnekaise-tl.hpc2n.umu.se:300/">https://kebnekaise-tl.hpc2n.umu.se:300/</a></p>
+<p>When in ThinLinc, you can start Rstudio either from the menu (version 4.0.4) or from the command line. If you start it from the command line you first need to load R and its prerequisites, but you can pick between several versions this way.</p>
+<h2 id="at-lunarc">At LUNARC<a class="headerlink" href="#at-lunarc" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There are two ways to run RStudio at LUNARC: ThinLinc with Desktop On Demand and through SSH -X.</p>
+<p>ThinLinc, DesktopOnDemand
+.........................</p>
+<p>At LUNARC the recommended way to run RStudio is in Thinlinc with Desktop On Demand. All available versions are in the Applications menu under <code>Applications-R</code>.</p>
+<p>.. figure:: ../../img/Cosmos-AppMenu-RStudio.png
+   :width: 350
+   :align: center</p>
+<p>There is a regular version and a &ldquo;(CPU)&rdquo; version for each release.</p>
+<ul>
+<li>Regular versions run an Intel 32-core node with a GPU partition, but the wall time limit is 48 hours.</li>
+<li>CPU versions run on an AMD 48-core CPU-only node, and allows users to set a wall time of up to 168 hours (7 days), at the cost of reduced graphical support.</li>
+</ul>
+<p>There is no need to pre-load any modules before starting RStudio from the Desktop On Demand <code>Applications-R menu</code>.</p>
+<p>If you run from the command line, you will need to load R/4.4.1 (check prerequisite versions of GCC and OpenMPI with <code>ml spider R/4.4.1</code>) and one of the RStudio modules above. Please only launch RStudio from one of the Desktop On Demand terminals, not the front-end terminal in the <code>Favorites</code> menu.</p>
+<p>.. admonition:: <code>ml avail</code> output at LUNARC as of October 21 2024
+   :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="p">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="nl">block</span><span class="p">:</span><span class="err">:</span><span class="w">  </span><span class="n">console</span>
+
+<span class="w">      </span><span class="o">[</span><span class="n">&lt;user&gt;@cosmos2 /</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ml</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">RStudio</span>
+
+<span class="w">      </span><span class="c1">--------------------- /sw/easybuild_milan/modules/all/Core ---------------------</span>
+<span class="w">           </span><span class="n">rstudio</span><span class="o">/</span><span class="mf">2024.04.0</span><span class="o">-</span><span class="mi">735</span><span class="w">    </span><span class="n">rstudio</span><span class="o">/</span><span class="mf">2024.04.2</span><span class="o">-</span><span class="mi">764</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+<span class="w">       </span><span class="k">Where</span><span class="err">:</span>
+<span class="w">        </span><span class="nl">D</span><span class="p">:</span><span class="w">  </span><span class="k">Default</span><span class="w"> </span><span class="k">Module</span>
+
+<span class="w">      </span><span class="k">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">too</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">consider</span><span class="w"> </span><span class="nl">trying</span><span class="p">:</span>
+
+<span class="w">      </span><span class="ss">&quot;module --default avail&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">&quot;ml -d av&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">just</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">modules</span><span class="p">.</span>
+<span class="w">      </span><span class="ss">&quot;module overview&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">&quot;ml ov&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">name</span><span class="p">.</span>
+
+<span class="w">      </span><span class="k">Use</span><span class="w"> </span><span class="ss">&quot;module spider&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">extensions</span><span class="p">.</span>
+<span class="w">      </span><span class="k">Use</span><span class="w"> </span><span class="ss">&quot;module keyword key1 key2 ...&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="n">matching</span>
+<span class="w">      </span><span class="ow">any</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="ss">&quot;keys&quot;</span><span class="p">.</span>
+</code></pre></div>
+
+<p>SSH -X
+......</p>
+<ol>
+<li>Login with SSH -X:</li>
+</ol>
+<p>.. code-block:: console</p>
+<p>$ ssh -X <username>@cosmos.lunarc.lu.se
+   (<username>@cosmos.lunarc.lu.se) Password:
+   (<username>@cosmos.lunarc.lu.se) Enter your Pocket Pass OTP:</p>
+<ol>
+<li>Load the RStudio module. It can be loaded directly (use <code>ml spider rstudio</code> to find versions):</li>
+</ol>
+<p>.. code-block:: console</p>
+<p>$ ml rstudio/2024.04.2-764</p>
+<ol>
+<li>Start RStudio:</li>
+</ol>
+<p>.. code-block:: console</p>
+<p>$ rstudio</p>
+<ol>
+<li>After a little while it starts:</li>
+</ol>
+<p>.. figure:: ../../img/rstudio-cosmos.png
+      :width: 500</p>
+<h2 id="at-nsc">At NSC<a class="headerlink" href="#at-nsc" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Rstudio is installed as a module on Tetralith at NSC. You can either use it by logging with ThinLinc or with SSH -X.</p>
+<p>ThinLinc
+........</p>
+<ol>
+<li>
+<p>Login to ThinLinc desktop application by providing the following</p>
+</li>
+<li>
+<p>server: tetralith.nsc.liu.se</p>
+</li>
+<li>username</li>
+<li>password</li>
+</ol>
+<p>Then provide the verification code when prompted.</p>
+<ol>
+<li>
+<p>Start a terminal: Click the icon at the bottom (#2) or open with &ldquo;Applications&rdquo; -&gt; &ldquo;System&rdquo; -&gt; &ldquo;Xfce Terminal&rdquo;</p>
+</li>
+<li>
+<p>Find a suitable version of Rstudio with &ldquo;module spider Rstudio&rdquo;. The options are currently:</p>
+</li>
+<li>
+<p>RStudio/2023.06.2+561</p>
+</li>
+<li>
+<p>RStudio/2023.09.1+494</p>
+</li>
+<li>
+<p>The RStudio module can be loaded directly:</p>
+</li>
+</ol>
+<p>.. code-block:: console</p>
+<p>module load RStudio/2023.09.1+494</p>
+<ol>
+<li>Start RStudio</li>
+</ol>
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">[</span><span class="n">x_birbr@tetralith1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">rstudio</span>
+</code></pre></div>
+
+<p>or, if there are problems, use</p>
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code>  rstudio --use-gl=angle
+</code></pre></div>
+
+<p>SSH -X
+......</p>
+<ol>
+<li>Login to Tetralith with</li>
+</ol>
+<p>.. code-block:: console</p>
+<p>SSH -X <username>@tetralith.nsc.liu.se</p>
+<p>Then give password and then verification code when prompted.</p>
+<ol>
+<li>
+<p>Find a suitable version of Rstudio with &ldquo;module spider Rstudio&rdquo;. The options are currently:</p>
+</li>
+<li>
+<p>RStudio/2023.06.2+561</p>
+</li>
+<li>
+<p>RStudio/2023.09.1+494</p>
+</li>
+<li>
+<p>The RStudio module can be loaded directly:</p>
+</li>
+</ol>
+<p>.. code-block:: console</p>
+<p>module load RStudio/2023.09.1+494</p>
+<ol>
+<li>Start RStudio</li>
+</ol>
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">[</span><span class="n">x_birbr@tetralith1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">rstudio</span>
+</code></pre></div>
+
+<p>or, if there are problems, use</p>
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code>  rstudio --use-gl=angle
+</code></pre></div>
+
+<h2 id="on-pdc">On PDC<a class="headerlink" href="#on-pdc" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Rstudio is installed on Dardel at PDC. You can use it by logging in with ThinLinc and start it with the gfxlauncher. RStudio is NOT available through regular SSH -X.</p>
+<ol>
+<li>
+<p>Login to ThinLinc desktop application by providing the following</p>
+</li>
+<li>
+<p>server: dardel-vnc.pdc.kth.se</p>
+</li>
+<li>username</li>
+<li>key (private)</li>
+</ol>
+<p>Then provide the code for the SSH key if/when prompted.</p>
+<p>NOTE: if it instead lists password, change it to SSH keys for authentication (&ldquo;Options&rdquo; -&gt; &ldquo;Security&rdquo; -&gt; &ldquo;Authentication method&rdquo; and change to &ldquo;Public key&rdquo;)</p>
+<ol>
+<li>In the menu, choose &ldquo;Applications&rdquo; -&gt; &ldquo;PDC Data Analysis&rdquo; -&gt; &ldquo;RStudio-R4.4.0&rdquo;</li>
+</ol>
+<p>The gfx-launcher will be shown, and you can choose project id, number of cores, etc.</p>
+<p>.. figure:: ../../img/gfx-launcher-studio-dardel.png
+      :width: 500</p>
+<ol>
+<li>
+<p>Click &ldquo;start&rdquo; when you have picked the settings.</p>
+</li>
+<li>
+<p>After some time the job starts and RStudio is opened.</p>
+</li>
+</ol>
+<p>.. figure:: ../../img/rstudio-dardel.png
+      :width: 500
+&ndash;&gt;</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../batch/" class="btn btn-neutral float-left" title="Batch"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../summary/" class="btn btn-neutral float-right" title="Summary">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../batch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../summary/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
