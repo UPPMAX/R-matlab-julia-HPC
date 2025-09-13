@@ -74,49 +74,6 @@ graph TD
     r_dev --> |commonly done in| rstudio
 ```
 
-```mermaid
-graph LR 
-    B["Interpreted"]
-    style B fill:lightgrey
-    C["R packages"]
-    style C fill:lightgrey
-    "R software development" [shape=box, color=black, fillcolor=lightgrey,style=filled]
-    "the R interpreter" [shape=box, color=black, fillcolor=lightgrey,style=filled]
-    "CRAN" [shape=box, color=black, fillcolor=lightgrey,style=filled]
-    "RStudio" [shape=box, color=black, fillcolor=lightgrey,style=filled]
-  
-  A --> "Interpreted" [label="is"]
-  A --> "R packages" [label=" uses"]
-  A --> "R software development" [label="has"]
-  "Interpreted" -> "the R interpreter" [label=" done by"]
-  "R packages" -> "CRAN" [label=" maintained by"]
-  "R software development" -> "RStudio" [label=" commonly done in"]
-
-  A["the R programming language"]
-  style A shape=rectangle,fill:lightgrey
-```
-
-```mermaid
-graph LR
-  A["A"]
-  B["B"]
-  C["C"]
-  master["master"]
-  style master fill:#ffffff,stroke:#ffffff
-  head["HEAD"]
-  style head fill:#ffffff,stroke:#ffffff
-  old_head["HEAD"]
-  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
-  B --> A
-  C --> B
-  master -.-> C
-  head -.-> A
-  old_head -.-> B
-  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
-```
-
-
-
 The main general R resources are:
 
 - [The R homepage](https://www.r-project.org/)
