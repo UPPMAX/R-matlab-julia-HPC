@@ -74,6 +74,26 @@ graph TD
     r_dev --> |commonly done in| rstudio
 ```
 
+```mermaid
+graph LR 
+    "Interpreted" [shape=box, color=black, fillcolor=lightgrey,style=filled];
+    "R packages" [shape=box, color=black, fillcolor=lightgrey,style=filled];
+    "R software development" [shape=box, color=black, fillcolor=lightgrey,style=filled];
+    "the R interpreter" [shape=box, color=black, fillcolor=lightgrey,style=filled];
+    "CRAN" [shape=box, color=black, fillcolor=lightgrey,style=filled];
+    "RStudio" [shape=box, color=black, fillcolor=lightgrey,style=filled];
+  
+  "the R programming language" -> "Interpreted" [label="is"];
+  "the R programming language" -> "R packages" [label=" uses"];
+  "the R programming language" -> "R software development" [label="has"];
+  "Interpreted" -> "the R interpreter" [label=" done by"];
+  "R packages" -> "CRAN" [label=" maintained by"];
+  "R software development" -> "RStudio" [label=" commonly done in"];
+
+  "the R programming language" [shape=rectangle,style=filled,fillcolor=lightgrey];
+```
+
+
 The main general R resources are:
 
 - [The R homepage](https://www.r-project.org/)
