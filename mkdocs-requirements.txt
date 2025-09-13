@@ -9,4 +9,9 @@ mkdocs-open-in-new-tab==1.0.3
 markdown-extra==1.0.1
 pymdown-extensions>=9.8
 mkdocstrings[python]
-
+python-markdown-comments
+markdown-footnotes
+mkdocs_graphviz 
+graphviz 
+pydot 
+mkdocs-mermaid2-plugin
