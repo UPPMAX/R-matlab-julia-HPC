@@ -552,52 +552,48 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
         This R script uses package "pbdMPI". 
 
-         .. code-block:: sh
+        ```R
+        library(pbdMPI)
 
-            library(pbdMPI)
+        ns <- comm.size()
 
-            ns <- comm.size()
+        # Tell all R sessions to return a message identifying themselves
+        id <- comm.rank()
+        ns <- comm.size()
+        host <- system("hostname", intern = TRUE)
+        comm.cat("I am", id, "on", host, "of", ns, "\n", all.rank = TRUE)
 
-            # Tell all R sessions to return a message identifying themselves
-            id <- comm.rank()
-            ns <- comm.size()
-            host <- system("hostname", intern = TRUE)
-            comm.cat("I am", id, "on", host, "of", ns, "\n", all.rank = TRUE)
+        # Test computations
+        x <- 5
+        x <- rnorm(x)
+        comm.print(length(x))
+        comm.print(x, all.rank = TRUE)
 
-            # Test computations
-            x <- 5
-            x <- rnorm(x)
-            comm.print(length(x))
-            comm.print(x, all.rank = TRUE)
-
-            finalize()
+        finalize()
+        ``` 
    
-      Send the script to the batch system: 
+        Send the script to the batch system: 
 
-      .. code-block:: console
+        ```bash
+        $ sbatch <batch script>
+        ```
 
-         $ sbatch <batch script>
-
-
-Using GPUs in a batch job
--------------------------
+### Using GPUs in a batch job
 
 There are generally either not GPUs on the login nodes or they cannot be accessed for computations. To use them you need to either launch an interactive job or submit a batch job.
 
-UPPMAX only
-'''''''''''
+#### UPPMAX only
 
 Rackham’s compute nodes do not have GPUs. You need to use Snowy for that. 
 
 You need to use this batch command (for x being the number of cards, 1 or 2):
 
-.. code-block::
+```bash
+#SBATCH -M snowy
+#SBATCH --gres=gpu:x
+``` 
 
-   #SBATCH -M snowy
-   #SBATCH --gres=gpu:x
-
-HPC2N
-'''''
+#### HPC2N
 
 Kebnekaise’s GPU nodes are considered a separate resource, and the regular compute nodes do not have GPUs.  
 
@@ -633,8 +629,7 @@ where type is
 
 For more information, see HPC2N’s guide to the different parts of the batch system: https://docs.hpc2n.umu.se/documentation/batchsystem/resources/
 
-LUNARC
-''''''
+#### LUNARC
 
 LUNARC has Nvidia A100 GPUs and Nvidia A40 GPUs, but the latter ones are reserved for interactive graphics work on the on-demand system, and Slurm jobs should not be submitted to them.
 
@@ -642,111 +637,104 @@ Thus in order to use the A100 GPUs on Cosmos, add this to your batch script:
 
 - A100 GPUs on AMD nodes:
 
-.. code-block::
-
-   #SBATCH -p gpua100
-   #SBATCH --gres=gpu:1
+```bash
+#SBATCH -p gpua100
+#SBATCH --gres=gpu:1
+``` 
 
 These nodes are configured as exclusive access and will not be shared between users. User projects will be charged for the entire node (48 cores). A job on a node will also have access to all memory on the node.
 
 - A100 GPUs on Intel nodes:
 
 
- .. code-block::
-
-    #SBATCH -p gpua100i
-    #SBATCH --gres=gpu:<number>
+```bash
+#SBATCH -p gpua100i
+#SBATCH --gres=gpu:<number>
+``` 
 
 where <number> is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).
 
-NSC
-''' 
+#### NSC
 
 Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch script or interactive job:
 
-.. code-block:: 
+```bash 
+#SBATCH -n 1
+#SBATCH -c 32
+#SBATCH --gpus-per-task=1
+``` 
 
-   #SBATCH -n 1
-   #SBATCH -c 32
-   #SBATCH --gpus-per-task=1
-
-PDC
-''' 
+#### PDC
 
 Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job: 
 
-.. code-block::
+```bash
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=1
+#SBATCH -p gpu  
+``` 
 
-   #SBATCH -N 1
-   #SBATCH --ntasks-per-node=1
-   #SBATCH -p gpu  
+#### Example batch script
 
-Example batch script
-''''''''''''''''''''
+=== "UPPMAX"
 
-.. tabs::
-
-   .. tab:: UPPMAX
-
-        .. code-block:: sh
-
-            #!/bin/bash -l 
-            #SBATCH -A uppmax2025-2-272
-            #Asking for runtime: hours, minutes, seconds. At most 1 week
-            #SBATCH -t HHH:MM:SS
-            #SBATCH --exclusive
-            #SBATCH -p node
-            #SBATCH -N 1
-            #SBATCH -M snowy
-            #SBATCH --gpus=1
-            #SBATCH --gpus-per-node=1
-            #Writing output and error files
-            #SBATCH --output=output%J.out
-            #SBATCH --error=error%J.error
+    ```bash 
+    #!/bin/bash -l 
+    #SBATCH -A uppmax2025-Y-ZZZ 
+    #Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH -t HHH:MM:SS
+    #SBATCH --exclusive
+    #SBATCH -p node
+    #SBATCH -N 1
+    #SBATCH -M snowy
+    #SBATCH --gpus=1
+    #SBATCH --gpus-per-node=1
+    #Writing output and error files
+    #SBATCH --output=output%J.out
+    #SBATCH --error=error%J.error
             
-            ml purge > /dev/null 2>&1
-            ml R/4.1.1 R_packages/4.1.1
+    ml purge > /dev/null 2>&1
+    ml R/4.1.1 R_packages/4.1.1
             
-            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
-           
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```           
 
-   .. tab:: HPC2N
+=== "HPC2N"
 
-        .. code-block:: sh
-
-            #!/bin/bash
-            #SBATCH -A hpc2n2025-062 # Change to your own project ID
-            #Asking for runtime: hours, minutes, seconds. At most 1 week
-            #SBATCH -t HHH:MM:SS
-            #Ask for GPU resources. You pick type as one of the ones shown above 
-            #x is how many cards you want, at most as many as shown above 
-            #SBATCH --gpus:x
-            #SBATCH -C type
-            #Writing output and error files
-            #SBATCH --output=output%J.out
-            #SBATCH --error=error%J.error
+    ```bash
+    #!/bin/bash
+    #SBATCH -A hpc2n2025-151 # Change to your own project ID
+    #Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH -t HHH:MM:SS
+    #Ask for GPU resources. You pick type as one of the ones shown above 
+    #x is how many cards you want, at most as many as shown above 
+    #SBATCH --gpus:x
+    #SBATCH -C type
+    #Writing output and error files
+    #SBATCH --output=output%J.out
+    #SBATCH --error=error%J.error
             
-            ml purge > /dev/null 2>&1
-            #R version 4.0.4 is the only one compiled for CUDA 
-            ml GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5
-            ml R/4.0.4
+    ml purge > /dev/null 2>&1
+    #R version 4.0.4 is the only one compiled for CUDA 
+    ml GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5
+    ml R/4.0.4
             
-            R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ``` 
 
-   .. tab:: LUNARC
+=== "LUNARC"
 
-        .. code-block:: sh 
+    ```bash 
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A lu2025-Y-ZZ
+    # Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH --time=HHH:MM:SS
+    # Ask for GPU resources - x is how many cards, 1 or 2 
+    #SBATCH -p gpua100
+    #SBATCH --gres=gpu:x
 
-           #!/bin/bash
-           # Remember to change this to your own project ID after the course!
-           #SBATCH -A lu2025-7-24
-           # Asking for runtime: hours, minutes, seconds. At most 1 week
-           #SBATCH --time=HHH:MM:SS
-           # Ask for GPU resources - x is how many cards, 1 or 2 
-           #SBATCH -p gpua100
-           #SBATCH --gres=gpu:x
-
-           # Remove any loaded modules and load the ones we need
+    # Remove any loaded modules and load the ones we need
            module purge  > /dev/null 2>&1
            module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1 
 
