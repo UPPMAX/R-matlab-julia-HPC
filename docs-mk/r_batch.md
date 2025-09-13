@@ -418,139 +418,139 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         ```   
 
 
-      .. tab:: HPC2N
+    === "HPC2N"
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.1.2 and its prerequisites. 
+        Short parallel example (using packages "Rmpi"). Loading R/4.1.2 and its prerequisites. 
        
-         .. code-block:: sh
-
-            #!/bin/bash
-            #SBATCH -A hpc2n2025-062 # Change to your own project ID
-            #Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH -n 8
+        ```bash
+        #!/bin/bash
+        #SBATCH -A hpc2n2025-151 # Change to your own project ID
+        #Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH -n 8
             
-            export OMPI_MCA_mpi_warn_on_fork=0
+        export OMPI_MCA_mpi_warn_on_fork=0
             
-            ml purge > /dev/null 2>&1
-            ml GCC/11.2.0  OpenMPI/4.1.1
-            ml R/4.1.2
+        ml purge > /dev/null 2>&1
+        ml GCC/11.2.0  OpenMPI/4.1.1
+        ml R/4.1.2
             
-            mpirun -np 1 Rscript Rmpi.R 
+        mpirun -np 1 Rscript Rmpi.R 
+        ``` 
 
-      .. tab:: LUNARC 
+    === "LUNARC" 
 
-         Short parallel example (using packages "Rmpi"). Loading R/4.2.1 and its prerequisites. 
+        Short parallel example (using packages "Rmpi"). Loading R/4.2.1 and its prerequisites. 
        
-         .. code-block:: sh
+        ```bash
+        #!/bin/bash
+        #SBATCH -A lu2025-Y-ZZ # Change to your own project ID
+        # Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH -n 8
 
-            #!/bin/bash
-            #SBATCH -A lu2025-7-24 # Change to your own project ID
-            # Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH -n 8
+        export OMPI_MCA_mpi_warn_on_fork=0
 
-            export OMPI_MCA_mpi_warn_on_fork=0
+        ml purge > /dev/null 2>&1
+        ml GCC/11.3.0  OpenMPI/4.1.4
+        ml R/4.2.1
 
-            ml purge > /dev/null 2>&1
-            ml GCC/11.3.0  OpenMPI/4.1.4
-            ml R/4.2.1
-
-            mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
-   
-      .. tab:: NSC 
-
-         Short parallel example (using packages "pbdMPI as "Rmpi" does not work correctly on NSC). Loading R/4.2.2. 
-
-         Note: for NSC you first need to install "pdbMPI" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('pbdMPI')``) 
-
-         .. code-block:: sh 
-
-            #!/bin/bash
-            #SBATCH -A naiss2025-22-262 
-            # Asking for 15 min.
-            #SBATCH -t 00:15:00
-            #SBATCH -n 8
-            #SBATCH --exclusive 
-
-            ml purge > /dev/null 2>&1
-            ml R/4.2.2-hpc1-gcc-11.3.0-bare 
-
-            srun --mpi=pmix Rscript pbdMPI.R  
-            
-      .. tab:: PDC 
-
-         Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
-
-         Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). 
-         - You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``. 
-         - Copy it to your own subdirectory under the project directory and then do: 
-           - ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12``
-           - ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
-
-         .. code-block:: sh 
-
-            #!/bin/bash -l 
-            #SBATCH -A naiss2025-22-262 
-            # Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH --nodes 2
-            #SBATCH --ntasks-per-node=8
-            #SBATCH -p main
-            #SBATCH --output=pbdMPI-test_%J.out 
-
-            # If you do ml purge you also need to restore the preloaded modules which you should have saved 
-            # when you logged in. Otherwise comment out the two following lines. 
-            ml purge > /dev/null 2>&1
-            ml restore preload
-            ml PDC/23.12
-            ml R/4.4.1-cpeGNU-23.12
-
-            srun -n 4 Rscript pbdMPI.R
-  
-      .. tab:: Rmpi.R
-
-         This R script uses package "Rmpi". 
-       
-         .. code-block:: sh
+        mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
+        ```
         
-           # Load the R MPI package if it is not already loaded.
-           if (!is.loaded("mpi_initialize")) {
-           library("Rmpi")
-           }
-           print(mpi.universe.size())
-           ns <- mpi.universe.size() - 1
-           mpi.spawn.Rslaves(nslaves=ns)
-           #
-           # In case R exits unexpectedly, have it automatically clean up
-           # resources taken up by Rmpi (slaves, memory, etc...)
-           .Last <- function(){
-           if (is.loaded("mpi_initialize")){
-           if (mpi.comm.size(1) > 0){
-           print("Please use mpi.close.Rslaves() to close slaves.")
-           mpi.close.Rslaves()
-           }
-           print("Please use mpi.quit() to quit R")
-           .Call("mpi_finalize")
-           }
-           }
-           # Tell all slaves to return a message identifying themselves
-           mpi.remote.exec(paste("I am",mpi.comm.rank(),"of",mpi.comm.size(),system("hostname",intern=T)))
-           
-           # Test computations
-           x <- 5
-           x <- mpi.remote.exec(rnorm, x)
-           length(x)
-           x
-           
-           # Tell all slaves to close down, and exit the program
-           mpi.close.Rslaves()
-           
-           mpi.quit()
+    === "NSC" 
 
-      .. tab:: pbdMPI.R 
+        Short parallel example (using packages "pbdMPI as "Rmpi" does not work correctly on NSC). Loading R/4.2.2. 
 
-         This R script uses package "pbdMPI". 
+        Note: for NSC you first need to install "pdbMPI" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('pbdMPI')``) 
+
+        ```bash  
+        #!/bin/bash
+        #SBATCH -A naiss2025-22-934 
+        # Asking for 15 min.
+        #SBATCH -t 00:15:00
+        #SBATCH -n 8
+        #SBATCH --exclusive 
+
+        ml purge > /dev/null 2>&1
+        ml R/4.2.2-hpc1-gcc-11.3.0-bare 
+
+        srun --mpi=pmix Rscript pbdMPI.R  
+        ```           
+
+    === "PDC" 
+
+        Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
+
+        Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). 
+        - You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``. 
+        - Copy it to your own subdirectory under the project directory and then do: 
+            - ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12``
+            - ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
+
+        ```bash 
+        #!/bin/bash -l 
+        #SBATCH -A naiss2025-22-934
+        # Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH --nodes 2
+        #SBATCH --ntasks-per-node=8
+        #SBATCH -p main
+        #SBATCH --output=pbdMPI-test_%J.out 
+
+        # If you do ml purge you also need to restore the preloaded modules which you should have saved 
+        # when you logged in. Otherwise comment out the two following lines. 
+        ml purge > /dev/null 2>&1
+        ml restore preload
+        ml PDC/23.12
+        ml R/4.4.1-cpeGNU-23.12
+
+        srun -n 4 Rscript pbdMPI.R
+        ```
+
+    === "Rmpi.R"
+
+        This R script uses package "Rmpi". 
+       
+        ```R
+        # Load the R MPI package if it is not already loaded.
+        if (!is.loaded("mpi_initialize")) {
+        library("Rmpi")
+        }
+        print(mpi.universe.size())
+        ns <- mpi.universe.size() - 1
+        mpi.spawn.Rslaves(nslaves=ns)
+        #
+        # In case R exits unexpectedly, have it automatically clean up
+        # resources taken up by Rmpi (slaves, memory, etc...)
+        .Last <- function(){
+        if (is.loaded("mpi_initialize")){
+        if (mpi.comm.size(1) > 0){
+        print("Please use mpi.close.Rslaves() to close slaves.")
+        mpi.close.Rslaves()
+        }
+        print("Please use mpi.quit() to quit R")
+        .Call("mpi_finalize")
+        }
+        }
+        # Tell all slaves to return a message identifying themselves
+        mpi.remote.exec(paste("I am",mpi.comm.rank(),"of",mpi.comm.size(),system("hostname",intern=T)))
+           
+        # Test computations
+        x <- 5
+        x <- mpi.remote.exec(rnorm, x)
+        length(x)
+        x
+           
+        # Tell all slaves to close down, and exit the program
+        mpi.close.Rslaves()
+         
+        mpi.quit()
+        ```
+
+    === "pbdMPI.R" 
+
+        This R script uses package "pbdMPI". 
 
          .. code-block:: sh
 
