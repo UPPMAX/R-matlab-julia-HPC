@@ -783,48 +783,46 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
 
 ## Exercises
 
-.. challenge:: Serial batch script for R
+!!! warning "Challenge: Serial batch script for R" 
 
-   Run the serial batch script from further up on the page, but for the add2.R code. Remember the arguments.
+    Run the serial batch script from further up on the page, but for the add2.R code. Remember the arguments.
     
-.. solution:: Solution for UPPMAX
-    :class: dropdown
-    
-          Serial script on Rackham  
+!!! note "Solution for UPPMAX" 
+
+    ??? note "Serial script on Rackham" 
           
-          .. code-block:: sh
- 
-             #!/bin/bash -l
-             #SBATCH -A uppmax2025-2-272 # Change to your own after the course
-             #SBATCH --time=00:10:00 # Asking for 10 minutes
-             #SBATCH -n 1 # Asking for 1 core
+        ```bash
+        #!/bin/bash -l
+        #SBATCH -A uppmax2025-Y-ZZZ # Change to your own after the course
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
              
-             # Load any modules you need, here for R/4.1.1
-             module load R/4.1.1
+        # Load any modules you need, here for R/4.1.1
+        module load R/4.1.1
              
-             # Run your R script 
-             Rscript add2.R 2 3 
+        # Run your R script 
+        Rscript add2.R 2 3 
+        ```
 
+!!! note "Solution for HPC2N" 
 
-.. solution:: Solution for HPC2N
-    :class: dropdown
-    
-          Serial script on Kebnekaise 
+    ??? note "Serial script on Kebnekaise" 
           
-          .. code-block:: sh
- 
-             #!/bin/bash
-             #SBATCH -A hpc2n2025-062 # Change to your own project ID
-             #SBATCH --time=00:10:00 # Asking for 10 minutes
-             #SBATCH -n 1 # Asking for 1 core
+        ```bash
+        #!/bin/bash
+        #SBATCH -A hpc2n2025-151 # Change to your own project ID
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
              
-             # Load any modules you need, here for R/4.1.2
-             module load GCC/11.2.0  OpenMPI/4.1.1 R/4.1.2
-             
-             # Run your R script 
-             Rscript add2.R 2 3 
+        # Load any modules you need, here for R/4.1.2
+        module load GCC/11.2.0  OpenMPI/4.1.1 R/4.1.2
+            
+        # Run your R script 
+        Rscript add2.R 2 3 
+        ``` 
 
-.. solution:: Solution for LUNARC 
+!!! note "Solution for LUNARC" 
+
     :class: dropdown 
 
           Serial script on R
