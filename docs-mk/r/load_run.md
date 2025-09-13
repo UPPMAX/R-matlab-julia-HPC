@@ -17,7 +17,7 @@ tags:
     - (optional) Find the different R modules
     - (optional) See the list of installed R packages
 
-???- info "Learning outcomes"
+??? info "Learning outcomes"
 
     Teaching goals are:
 
@@ -37,6 +37,7 @@ tags:
     - What is a script?
     - What are features of using an HPC cluster?
     - What problem would arise if users can install their own software?
+
 
 ## Introduction
 
