@@ -823,31 +823,27 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
 
 !!! note "Solution for LUNARC" 
 
-    :class: dropdown 
+    ??? note "Serial script on Cosmos"
 
-          Serial script on R
-
-          .. code-block:: sh
-
-             #!/bin/bash
-             #SBATCH -A lu2025-7-24 # Change to your own project ID
-             #SBATCH --time=00:10:00 # Asking for 10 minutes
-             #SBATCH -n 1 # Asking for 1 core
+        ```bash
+        #!/bin/bash
+        #SBATCH -A lu2025-Y-ZZ # Change to your own project ID
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
              
-             # Load any modules you need, here for R/4.2.1
-             module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1
+        # Load any modules you need, here for R/4.2.1
+        module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1
              
-             # Run your R script 
-             Rscript add2.R 2 3 
+        # Run your R script 
+        Rscript add2.R 2 3 
+        ``` 
 
-.. solution:: Solution for NSC
-    :class: dropdown 
-
-          Serial script on R
+!!! note "Solution for NSC" 
+    
+    ??? note "Serial script on Tetralith" 
            
-          .. code-block:: sh 
-
-             #!/bin/bash
+        ```bash
+        #!/bin/bash
              #SBATCH -A naiss2025-22-262 
              #SBATCH --time=00:10:00 # Asking for 10 minutes
              #SBATCH -n 1 # Asking for 1 core
