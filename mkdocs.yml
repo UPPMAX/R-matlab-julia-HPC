@@ -87,6 +87,7 @@ plugins:
   - markdown-exec
   - open-in-new-tab
   - mermaid2:
-      javascript: https://unpkg.com/mermaid/dist/mermaid.min.js
-      arguments:
-          theme: 'neutral'
+      version: 10.0.2
+    #      javascript: https://unpkg.com/mermaid/dist/mermaid.min.js
+        #      arguments:
+        #          theme: 'neutral'
