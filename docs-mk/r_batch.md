@@ -735,54 +735,53 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
     #SBATCH --gres=gpu:x
 
     # Remove any loaded modules and load the ones we need
-           module purge  > /dev/null 2>&1
-           module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1 
+    module purge  > /dev/null 2>&1
+    module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1 
 
-           R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ``` 
 
-   .. tab:: NSC 
+=== "NSC"
 
-        .. code-block:: sh
-
-           #!/bin/bash
-           # Remember to change this to your own project ID after the course!
-           #SBATCH -A naiss2025-22-262
-           # Asking for runtime: hours, minutes, seconds. At most 1 week
-           #SBATCH --time=HHH:MM:SS
-           # Ask for resources, including GPU resources
-           #SBATCH -n 1
-           #SBATCH -c 32
-           #SBATCH --gpus-per-task=1
+    ```bash
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A naiss2025-22-934
+    # Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH --time=HHH:MM:SS
+    # Ask for resources, including GPU resources
+    #SBATCH -n 1
+    #SBATCH -c 32
+    #SBATCH --gpus-per-task=1
            
-           # Remove any loaded modules and load the ones we need
-           module purge  > /dev/null 2>&1
-           module load R/4.4.0-hpc1-gcc-11.3.0-bare 
+    # Remove any loaded modules and load the ones we need
+    module purge  > /dev/null 2>&1
+    module load R/4.4.0-hpc1-gcc-11.3.0-bare 
 
-           R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ``` 
 
-   .. tab:: PDC 
+=== "PDC" 
 
-        .. code-block:: sh
-
-           #!/bin/bash -l 
-           # Remember to change this to your own project ID after the course!
-           #SBATCH -A naiss2025-22-262
-           # Asking for runtime: hours, minutes, seconds. At most 1 week
-           #SBATCH --time=HHH:MM:SS
-           # Ask for resources, including GPU resources
-           #SBATCH -N 1
-           #SBATCH --ntasks-per-node=1
-           #SBATCH -p gpu 
+    ```bash
+    #!/bin/bash -l 
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A naiss2025-22-934   
+    # Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH --time=HHH:MM:SS
+    # Ask for resources, including GPU resources
+    #SBATCH -N 1
+    #SBATCH --ntasks-per-node=1
+    #SBATCH -p gpu 
            
-           module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
-           module load rocm/5.7.0
-           #module load craype-accel-amd-gfx90a 
-           #module load cpeGNU/23.12
-           R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
-           
+    module load PDC/23.12 R/4.4.1-cpeGNU-23.12 
+    module load rocm/5.7.0
+    #module load craype-accel-amd-gfx90a 
+    #module load cpeGNU/23.12
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```           
 
-Exercises
-#########
+## Exercises
 
 .. challenge:: Serial batch script for R
 
