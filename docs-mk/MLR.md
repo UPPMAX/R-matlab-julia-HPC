@@ -1,17 +1,21 @@
-ML with R
-=========
+# ML with R
 
-.. questions::
+!!! note "Questions"
 
-   - Is R suitable for Machine Learning (ML)?
-   - How to run R ML jobs on a HPC system (UPPMAX, HPC2N, LUNARC, NSC, PDC)
+    - Is R suitable for Machine Learning (ML)?
+    - Which machine learning tools are installed at HPCs?
+    - How to run R ML jobs on an HPC system (NSC, PDC, C3SE, UPPMAX, HPC2N, LUNARC)
 
-.. objectives::
+!!! note "Objectives"
 
-   - Short introduction to ML with R
-   - Workflow
-   - Show the structure of a suitable batch script
-   - Examples to try
+    - Short introduction to ML with R
+    - Overview of installed ML tools at Swedish HPC centres 
+    - Workflow
+    - Show the structure of a suitable batch script
+    - Examples to try
+    - **We will not learn about:**
+        - How to write and optimize ML/DL code.
+        - How to use multi-node setup for training models on CPU and GPU.
 
 R provides many packages that are specifically designed for machine learning. R is also known for its statistical capabilities for analysis and interpretation of data.
 
@@ -19,16 +23,44 @@ This all makes it easier to develop and deploy models, also without having to wr
 
 The R community has contributed many powerful packages, both for machine learning and data science. Some of the popular packages are:
 
-- Dplyr
-- Tidyr
-- Caret
-- MLR
-- ggplot2
-- randomForest
-- mlbench
-- tidyverse
+| Package | What it does | 
+| ------- | ------------ | 
+| Dplyr   | Enables dataframe manipulation in an intuitive, user-friendly way. One of the core <br>packages of the popular tidyverse set of packages |  
+| Tidyr   | Provides a bunch of tools to help tidy up your messy datasets. tidyr is a member of <br>the core tidyverse | 
+| Caret   | A set of functions that attempt to streamline the process for creating predictive <br>models. Short for Classification And REgression Training | 
+| MLR     | R has no standardized interface for its ML algorithms. MLR provides this <br>infrastructure. The framework provides supervised methods like classification, regression <br>and survival analysis along with their corresponding evaluation and optimization <br>methods, as well as unsupervised methods like clustering. You can extend it yourself <br>or deviate from the implemented convenience methods and construct your own <br>complex experiments or algorithms | 
+| ggplot2 | A system for declaratively creating graphics. Part of tidyverse | 
+| randomForest | implements Breiman’s random forest algorithm | 
+| mlbench | A collection of artificial and real-world machine learning benchmark problem |
+| stringr | Provides a cohesive set of functions designed to make working with strings as easy <br>as possible | 
+| tidyverse | A set of packages that work in harmony because they share common data representations <br>and API design. Some of the popular packages in this set is: ggplot2, dplyr, tidyr, stringr, <br>and many more | 
 
 and others.
+
+## Installed ML tools 
+
+There are differences depending on the centre as well as minor differences depending on the version of R.
+
+This table is not exhaustive, but lists the more popular libraries/packages and what the module is called at the various centres. Please do ``module spider`` on them to see how to load them as well as which versions are available. 
+
+| Package | NSC | PDC | C3SE | UPPMAX | HPC2N | LUNARC | 
+| ------- | --- | --- | ---- | ------ | ----- | ------ | 
+| dplyr | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
+| tidyr | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN |
+| caret | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN |
+| mlr | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN |
+| randomForest | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
+| stringr | N/A | R | R | R_packages | R | R |
+| kernlab | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
+
+Some centes have several packages installed with R, some have module "bundles" of R packages installed at the various centres: 
+
+- NSC (R/4.4.0): ~30 packages installed with R. You will have to install the rest yourself. 
+- PDC (R/4.4.2): ~1250 packages installed with R. In addition, there are many Bioconductor packages installed with the Rbio module 
+- C3SE: R(R/4.3.3): ~100 packages installed with R. You will have to install the rest yourself. 
+- HPC2N (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN, R-bundle-CRAN-extra, R-bundle-Bioconductor
+- UPPMAX (R/4.1.1): Almost all packages in CRAN and BioConductor are contained in the R_packages module, as is a small number of other R packages not in CRAN/BioConductor. Total of 23476 R packages are installed.  
+- LUNARC (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN and R-bundle-Bioconductor 
 
 Running your code
 -----------------

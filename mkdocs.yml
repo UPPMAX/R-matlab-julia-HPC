@@ -28,10 +28,14 @@ nav:
     - Advanced: 
       - Schedule: advanced/schedule.md
       - Parallel: advanced/parallel/README.md
+      - Machine Learning: 
+        - With R: advanced/MLR.md
     - Misc: 
       - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
       - Reflections: reflections/README.md
+    - Extra reading: 
+      - More about R packages: r/morepackages.md
 
 theme: 
     name: readthedocs
