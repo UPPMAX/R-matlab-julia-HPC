@@ -62,12 +62,11 @@ Some centes have several packages installed with R, some have module "bundles" o
 - UPPMAX (R/4.1.1): Almost all packages in CRAN and BioConductor are contained in the R_packages module, as is a small number of other R packages not in CRAN/BioConductor. Total of 23476 R packages are installed.  
 - LUNARC (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN and R-bundle-Bioconductor 
 
-Running your code
------------------
+## Running your code
 
 **Workflow**
 
-1. Determine if you need any R libraries that are not already installed (load R module and R_packages/R-bundle-Bioconductor and check)
+1. Determine if you need any R libraries that are not already installed (load R module and R_packages/R-bundle-CRAN/R-bundle-Bioconductor and check)
 2. Determine if you want to run on CPUs or GPUs - some of the R version modules are not CUDA-aware
 3. Install any missing R libraries in an isolated environment
 4. Possibly download any datasets
@@ -76,146 +75,192 @@ Running your code
 
 **Example**
 
-.. type-along::
+!!! hint "Type-along" 
 
-   We will run a simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/
+    We will run a simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/
 
-   If you cannot access remote data-sets, change the R code as mentioned inside to use a local data-set, which has already been downloaded
+    If you cannot access remote data-sets, change the R code as mentioned inside to use a local data-set, which has already been downloaded
 
-   **NOTE**: normally we would not run this on the command line, but through a batch script, but since these are short examples we will run it on the command line.
+    **NOTE**: normally we would not run this on the command line, but through a batch script, but since these are short examples we will run it on the command line.
 
-   .. tabs::
+    === "NSC"
 
-      .. tab:: UPPMAX
+        You need to install ``caret``, ``kernlab``, and ``randomForest`` before running, as shown below. If it asks, agree to install in local directory.
 
-         .. code-block:: console
+        ```bash
+        $ module load R/4.4.0-hpc1-gcc-11.3.0-bare
+        $ R
+        > install.packages('caret', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+        > install.packages('kernlab', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+        > install.packages('randomForest', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+        > quit()
+        $ Rscript iris_ml.R
+        ```
 
-            $ module load R_packages/4.1.1
-            $ Rscript iris_ml.R
+    === "PDC" 
 
-      .. tab:: HPC2N
+        All the needed packages are part of the R module. 
 
-         .. code-block:: console
+        ```bash
+        $ module load PDC/24.11 R/4.4.2-cpeGNU-24.11
+        $ Rscript iris_ml.R
+        ```
 
-            $ module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2 R-bundle-Bioconductor/3.14-R-4.1.2
-            $ Rscript iris_ml.R
+    === "C3SE" 
 
-      .. tab:: LUNARC
+        You need to install ``caret``, ``kernlab``, and ``randomForest`` before running, as shown below. If it asks, agree to install in local directory. 
 
-         .. code-block:: console
+        ```bash 
+        $ ml R/4.3.3-gfbf-2023b        
+        $ R
+        > install.packages('MASS', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+        > install.packages('e1071, recipes,ipred,Matrix,survival,class,prodlim,lava, repos=http://ftp.acc.umu.se/mirror/CRAN/')
+        > install.packages('caret', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+        > install.packages('kernlab', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+        > install.packages('randomForest', repos='http://ftp.acc.umu.se/mirror/CRAN/')
+        > quit()
+        $ Rscript iris_ml.R 
+        ```
 
-            $ module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
-            $ Rscript iris_ml.R
+    === "UPPMAX"
 
-      .. tab:: NSC
+        All the needed packages are part of the R_packages module. 
 
-         You need to install ``caret``, ``kernlab``, and ``randomForest`` before running, as shown below. If it asks, agree to install in local directory.
+        ```bash 
+        $ module load R_packages/4.1.1
+        $ Rscript iris_ml.R
+        ```
 
-         .. code-block:: console
+    === "HPC2N" 
 
-            $ module load R/4.4.0-hpc1-gcc-11.3.0-bare
-            $ R
-            > install.packages('caret', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-            > install.packages('kernlab', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-            > install.packages('randomForest', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-            > quit()
-            $ Rscript iris_ml.R
+        All the needed packages are part of the R-bundle-CRAN module. 
+        
+        ```bash 
+        $ module load GCC/13.2.0 OpenMPI/4.1.6 R/4.4.1 R-bundle-CRAN/2024.06 
+        $ Rscript iris_ml.R
+        ``` 
 
-      .. tab:: PDC
+    === "LUNARC" 
 
-         You need to install ``caret``, ``kernlab``, and ``randomForest`` before running, as shown below. If it asks, agree to install in local directory.
+        All the needed packages are part of the R-bundle-CRAN module. 
 
-         .. code-block:: console
+        ```bash
+        $ module load GCC/12.3.0  OpenMPI/4.1.5 R/4.4.1 R-bundle-CRAN/2023.12-R-4.4.1 
+        $ Rscript iris_ml.R
+        ```
 
-            $ module load PDC/23.12 R/4.4.1-cpeGNU-23.12
-            $ R
-            > install.packages('caret', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-            > install.packages('kernlab', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-            > install.packages('randomForest', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-            > quit()
-            $ Rscript iris_ml.R
+    === "iris_ml.R" 
 
-      .. tab:: iris_ml.R
+        Simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/
 
-         .. code-block:: R
-            :class: dropdown
+        ```bash
+        library(caret)
 
-            # Simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/
-            library(caret)
+        # COMMENT OUT THIS SECTION IF YOU CANNOT ACCESS REMOTE DATA-SETS
+        # --------------------------------------------------------------
+        # attach the iris dataset to the environment
+        data(iris)
+        # rename the dataset
+        dataset <- iris
+        # ---------------------------------------------------------------
 
-            # COMMENT OUT THIS SECTION IF YOU CANNOT ACCESS REMOTE DATA-SETS
-            # --------------------------------------------------------------
-            # attach the iris dataset to the environment
-            data(iris)
-            # rename the dataset
-            dataset <- iris
-            # ---------------------------------------------------------------
+        # REMOVE THE COMMENTS ON THIS SECTION (except comments...) TO USE LOCAL DATA-SETS
+        # -------------------------------------------------------------------------------
+        # define the filename
+        #filename <- "iris.csv"
+        # load the CSV file from the local directory
+        #dataset <- read.csv(filename, header=FALSE)
+        # -------------------------------------------------------------------------------
 
-            # REMOVE THE COMMENTS ON THIS SECTION (except comments...) TO USE LOCAL DATA-SETS
-            # -------------------------------------------------------------------------------
-            # define the filename
-            #filename <- "iris.csv"
-            # load the CSV file from the local directory
-            #dataset <- read.csv(filename, header=FALSE)
-            # -------------------------------------------------------------------------------
+        # set the column names in the dataset
+        colnames(dataset) <- c("Sepal.Length","Sepal.Width","Petal.Length","Petal.Width","Species")
 
-            # set the column names in the dataset
-            colnames(dataset) <- c("Sepal.Length","Sepal.Width","Petal.Length","Petal.Width","Species")
+        # create a list of 80% of the rows in the original dataset we can use for training
+        validation_index <- createDataPartition(dataset$Species, p=0.80, list=FALSE)
+        # select 20% of the data for validation
+        validation <- dataset[-validation_index,]
+        # use the remaining 80% of data to training and testing the models
+        dataset <- dataset[validation_index,]
 
-            # create a list of 80% of the rows in the original dataset we can use for training
-            validation_index <- createDataPartition(dataset$Species, p=0.80, list=FALSE)
-            # select 20% of the data for validation
-            validation <- dataset[-validation_index,]
-            # use the remaining 80% of data to training and testing the models
-            dataset <- dataset[validation_index,]
+        # Run algorithms using 10-fold cross validation
+        control <- trainControl(method="cv", number=10)
+        metric <- "Accuracy"
 
-            # Run algorithms using 10-fold cross validation
-            control <- trainControl(method="cv", number=10)
-            metric <- "Accuracy"
+        # a) linear algorithms
+        set.seed(7)
+        fit.lda <- train(Species~., data=dataset, method="lda", metric=metric, trControl=control)
+        # b) nonlinear algorithms
+        # CART
+        set.seed(7)
+        fit.cart <- train(Species~., data=dataset, method="rpart", metric=metric, trControl=control)
+        # kNN
+        set.seed(7)
+        fit.knn <- train(Species~., data=dataset, method="knn", metric=metric, trControl=control)
+        # c) advanced algorithms
+        # SVM
+        set.seed(7)
+        fit.svm <- train(Species~., data=dataset, method="svmRadial", metric=metric, trControl=control)
+        # Random Forest
+        set.seed(7)
+        fit.rf <- train(Species~., data=dataset, method="rf", metric=metric, trControl=control)
 
-            # a) linear algorithms
-            set.seed(7)
-            fit.lda <- train(Species~., data=dataset, method="lda", metric=metric, trControl=control)
-            # b) nonlinear algorithms
-            # CART
-            set.seed(7)
-            fit.cart <- train(Species~., data=dataset, method="rpart", metric=metric, trControl=control)
-            # kNN
-            set.seed(7)
-            fit.knn <- train(Species~., data=dataset, method="knn", metric=metric, trControl=control)
-            # c) advanced algorithms
-            # SVM
-            set.seed(7)
-            fit.svm <- train(Species~., data=dataset, method="svmRadial", metric=metric, trControl=control)
-            # Random Forest
-            set.seed(7)
-            fit.rf <- train(Species~., data=dataset, method="rf", metric=metric, trControl=control)
+        # summarize accuracy of models
+        results <- resamples(list(lda=fit.lda, cart=fit.cart, knn=fit.knn, svm=fit.svm, rf=fit.rf))
+        summary(results)
 
-            # summarize accuracy of models
-            results <- resamples(list(lda=fit.lda, cart=fit.cart, knn=fit.knn, svm=fit.svm, rf=fit.rf))
-            summary(results)
+        # summarize Best Model
+        print(fit.lda)
 
-            # summarize Best Model
-            print(fit.lda)
+        # estimate skill of LDA on the validation dataset
+        predictions <- predict(fit.lda, validation)
+        confusionMatrix(predictions, validation$Species)
+        ```
 
-            # estimate skill of LDA on the validation dataset
-            predictions <- predict(fit.lda, validation)
-            confusionMatrix(predictions, validation$Species)
-
-
-R batch scripts for ML
-~~~~~~~~~~~~~~~~~~~~~~
+## R batch scripts for ML
 
 Since most R codes for Machine Learning would run for a fairly long time, you would usually have to run them in a batch script.
 
-Serial jobs
-'''''''''''
+### Serial jobs
 
-.. type-along::
+!!! hint "Type-along" 
 
-   Short serial batch example for running the R code above, ``iris_ml.R``
+    Short serial batch example for running the R code above, ``iris_ml.R``
 
-   .. tabs::
+    === "NSC" 
+
+        Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare
+
+        NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
+
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss2025-22-934 # Change to your own project ID
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
+
+        # Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare
+        module load R/4.4.0-hpc1-gcc-11.3.0-bare
+
+        # Run your R script (here 'iris_ml.R')
+        R --no-save --quiet < iris_ml.R
+        ```
+
+    === "PDC" 
+
+        Short serial example for running on Dardel. Loading PDC/24.11 R/4.4.2-cpeGNU-24.11 
+
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss2025-22-934 # Change to your own project ID
+            #SBATCH --time=00:10:00 # Asking for 10 minutes
+            #SBATCH -n 1 # Asking for 1 core
+
+            # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites
+            module load PDC/23.12 R/4.4.1-cpeGNU-23.12
+
+            # Run your R script (here 'iris_ml.R')
+            R --no-save --quiet < iris_ml.R
+
 
       .. tab:: UPPMAX
 
