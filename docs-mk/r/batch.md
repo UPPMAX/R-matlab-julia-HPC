@@ -17,7 +17,7 @@
 
     - Pelle/Rackham: `` ``
     - Kebnekaise: ``hpc2n2025-151``
-    - Cosmos: `` ``
+    - Cosmos: ``lu2025-2-94``
     - Tetralith: ``naiss2025-22-934``
     - Dardel: ``naiss2025-22-934`` 
     - Alvis: ``naiss2025-22-934``
@@ -175,7 +175,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
         ```bash
         #!/bin/bash
-        #SBATCH -A lu2025-Y-ZZ # Change to your own project ID
+        #SBATCH -A lu2025-2-94 # Change to your own project ID
         #SBATCH --time=00:10:00 # Asking for 10 minutes
         #SBATCH -n 1 # Asking for 1 core
             
@@ -287,7 +287,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         ```bash
         #!/bin/bash
         # A batch script for running the R program parallel_foreach.R
-        #SBATCH -A lu2025-Y-ZZ # Change to your own project ID
+        #SBATCH -A lu2025-2-94 # Change to your own project ID
         #SBATCH -t 00:10:00
         #SBATCH -N 1
         #SBATCH -c 4
@@ -444,7 +444,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
        
         ```bash
         #!/bin/bash
-        #SBATCH -A lu2025-Y-ZZ # Change to your own project ID
+        #SBATCH -A lu2025-2-94 # Change to your own project ID
         # Asking for 10 min.
         #SBATCH -t 00:10:00
         #SBATCH -n 8
@@ -727,7 +727,7 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
     ```bash 
     #!/bin/bash
     # Remember to change this to your own project ID after the course!
-    #SBATCH -A lu2025-Y-ZZ
+    #SBATCH -A lu2025-2-94
     # Asking for runtime: hours, minutes, seconds. At most 1 week
     #SBATCH --time=HHH:MM:SS
     # Ask for GPU resources - x is how many cards, 1 or 2 
@@ -827,7 +827,7 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
 
         ```bash
         #!/bin/bash
-        #SBATCH -A lu2025-Y-ZZ # Change to your own project ID
+        #SBATCH -A lu2025-2-94 # Change to your own project ID
         #SBATCH --time=00:10:00 # Asking for 10 minutes
         #SBATCH -n 1 # Asking for 1 core
              
