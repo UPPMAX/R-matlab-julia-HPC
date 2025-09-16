@@ -91,3 +91,28 @@ nworkers: 8
 [1] "Integral value is 9.07607322631065e-15 Error is 9.07607322631065e-15"
 [1] "Time spent: 0.228480815887451 seconds"
 ```
+
+Using a 10x bigger grid:
+
+```
+[richel@rackham3 6_integration2d]$ cat slurm-56825681.out
+[...]
+nworkers: 1
+[1] "Integral value is -6.2179313190142e-17 Error is 6.2179313190142e-17"
+[1] "Time spent: 64.7400653362274 seconds"
+[richel@rackham3 6_integration2d]$ cat slurm-56825683.out
+[...]
+nworkers: 8
+[1] "Integral value is -4.35873559467836e-13 Error is 4.35873559467836e-13"
+[1] "Time spent: 8.92967510223389 seconds"
+```
+
+Interesting, that if the grid increases 10x,
+1 worker takes 80x longer and 8 workers take 40x longer.
+
+Grid size|Time 1 worker|Time 8 workers
+---------|-------------|--------------
+Original |0.81         |0.22
+10x      |64.74        |8.93
+Increase |80x          |40x
+
