@@ -9,7 +9,7 @@
 #   ./schedule_rackham_runs.sh staff
 #
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -ne 2 ]; then
     echo "ERROR: Incorrect number of arguments"
     echo "when calling 'schedule_rackham_runs.sh'."
     echo " "
@@ -17,11 +17,11 @@ if [ "$#" -ne 1 ]; then
     echo " "
     echo "General usage:"
     echo " "
-    echo "  ./schedule_rackham_runs.sh [account]"
+    echo "  ./schedule_rackham_runs.sh [account] [grid_size]"
     echo " "
     echo "Examples:"
     echo " "
-    echo "  ./schedule_rackham_runs.sh staff"
+    echo "  ./schedule_rackham_runs.sh staff 16384"
     echo " "
     exit 42
 fi
