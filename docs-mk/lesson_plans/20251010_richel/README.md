@@ -49,3 +49,9 @@ Need to use `srun`
 I think this was a bad idea: the course is an R and MATLAB and Julia course.
 Let's change the learning outcome to run a script in one of those
 languages.
+
+## 2025-09-16
+
+I am going to start with the MPI scripts now.
+
+
