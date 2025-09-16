@@ -78,4 +78,16 @@ Loading required package: iterators
 [1] "Time spent: 0.263934373855591 seconds"
 ```
 
+Using a CLI arg works fine, as long as it is convert to a numeric value:
 
+```
+[richel@rackham3 6_integration2d]$ cat *.out
+[...]
+nworkers: 1
+[1] "Integral value is -5.22070689324334e-16 Error is 5.22070689324334e-16"
+[1] "Time spent: 0.813078641891479 seconds"
+[...]
+nworkers: 8
+[1] "Integral value is 9.07607322631065e-15 Error is 9.07607322631065e-15"
+[1] "Time spent: 0.228480815887451 seconds"
+```

@@ -17,8 +17,12 @@ nworkers <- as.numeric(args[1])
 # nworkers <- 8
 message("nworkers: ", nworkers)
 
+testthat::expect_true(is.numeric(nworkers))
+testthat::expect_true(nworkers > 0)
+testthat::expect_true(nworkers < 256 * 256)
+
 # grid size
-n <- 840
+n <- 840 * 100
 
 # Function for 2D integration (non-optimal implementation)
 integration2d <- function(n, numprocesses, processindex) {
