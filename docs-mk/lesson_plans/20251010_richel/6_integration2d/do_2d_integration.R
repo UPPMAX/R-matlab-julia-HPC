@@ -21,7 +21,7 @@ testthat::expect_true(nworkers > 0)
 testthat::expect_true(nworkers < 256 * 256)
 
 # grid size
-n <- 840 * 10
+n <- 16384
 message("Grid size: ", n)
 
 # Function for 2D integration (non-optimal implementation)
