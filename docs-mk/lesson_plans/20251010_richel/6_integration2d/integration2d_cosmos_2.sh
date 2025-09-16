@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -n 2
 #SBATCH -A lu2024-7-68
-#SBATCH --time=00:20:00
+#SBATCH --time=02:00:00
 #
 # Use 'projinfo' to see all your accounts
 #
