@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -n 2
 #SBATCH -A staff
-#SBATCH --time=00:20:00
+#SBATCH --time=02:00:00
 
 module load R_packages/4.1.1 >/dev/null 2>&1
 
