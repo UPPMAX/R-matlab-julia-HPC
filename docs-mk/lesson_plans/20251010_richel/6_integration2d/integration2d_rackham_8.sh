@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH -n 8           # nr. tasks/coresw
+#SBATCH -n 8
 #SBATCH -A staff
-#SBATCH --time=00:20:00      # requested time
+#SBATCH --time=00:20:00
 
 module load R_packages/4.1.1 >/dev/null 2>&1
 
