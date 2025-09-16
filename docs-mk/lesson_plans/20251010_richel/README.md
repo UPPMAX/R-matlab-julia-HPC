@@ -198,3 +198,42 @@ Time spent on all cores: 73.2491600513458 seconds
 
 I give up calling a Slurm script with the `-A` or `-n` parameter:
 it does not work (that is how I got a replicate run)
+
+```
+Number of cores booked in Slurm: 16
+Number of workers: 16
+Grid size: 8400
+Integral value: 1.25011112572793e-13
+Integral error: 1.25011112572793e-13
+Time spent on 1 core: 5.02698063850403 seconds
+Time spent on all cores: 80.4316902160645 seconds
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 72.2902419567108 seconds
+Time spent on all cores: 72.2902419567108 seconds
+Number of cores booked in Slurm: 2
+Number of workers: 2
+Grid size: 8400
+Integral value: -1.00190966634273e-11
+Integral error: 1.00190966634273e-11
+Time spent on 1 core: 38.5365948677063 seconds
+Time spent on all cores: 77.0731897354126 seconds
+Number of cores booked in Slurm: 4
+Number of workers: 4
+Grid size: 8400
+Integral value: -2.64421817774974e-12
+Integral error: 2.64421817774974e-12
+Time spent on 1 core: 16.1383211612701 seconds
+Time spent on all cores: 64.5532846450806 seconds
+Number of cores booked in Slurm: 8
+Number of workers: 8
+Grid size: 8400
+Integral value: -4.35873559467836e-13
+Integral error: 4.35873559467836e-13
+Time spent on 1 core: 9.13436603546143 seconds
+Time spent on all cores: 73.0749282836914 seconds
+```
+
