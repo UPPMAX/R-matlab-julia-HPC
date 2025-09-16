@@ -2,7 +2,8 @@ library(parallel)
 library(doParallel)
 
 # nr. of workers/cores that will solve the tasks
-nworkers <- *FIXME*
+# TODO: Use from caller
+nworkers <- 8
 
 # grid size
 n <- 840
