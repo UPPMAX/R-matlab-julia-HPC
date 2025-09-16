@@ -53,5 +53,21 @@ languages.
 ## 2025-09-16
 
 I am going to start with the MPI scripts now.
+They work!
+And then I find out that OpenMPI is not OpenMP.
+
+I feel:
+
+Technique|Uses                            |Notes
+---------|--------------------------------|--------------
+Normal   |1 core                          |
+OpenMP   |1 to all cores on a node        |A threaded mechanism, uses `OMP_NUM_THREADS`
+OpenMPI  |1 to all cores on multiple nodes|`Rmpi` package
+
+
+
+
+
+
 
 
