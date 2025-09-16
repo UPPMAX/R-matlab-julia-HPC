@@ -13,7 +13,7 @@ if (length(args) != 1) {
     " \n"
   )
 }
-nworkers <- args[1]
+nworkers <- as.numeric(args[1])
 # nworkers <- 8
 message("nworkers: ", nworkers)
 
