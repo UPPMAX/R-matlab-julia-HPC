@@ -13,7 +13,7 @@ if (length(args) != 1) {
   )
 }
 nworkers <- as.numeric(args[1])
-message("nworkers: ", nworkers)
+message("Number of workers: ", nworkers)
 
 # Else the error will be 'Cannot find port 0:nworkers'
 testthat::expect_true(is.numeric(nworkers))
@@ -22,7 +22,7 @@ testthat::expect_true(nworkers < 256 * 256)
 
 # grid size
 n <- 840 * 10
-message("grid size: ", n)
+message("Grid size: ", n)
 
 # Function for 2D integration (non-optimal implementation)
 integration2d <- function(n, numprocesses, processindex) {
@@ -50,7 +50,6 @@ integration2d <- function(n, numprocesses, processindex) {
   return(h^2 * mysum)
 }
 
-
 # Set up the cluster for doParallel
 cl <- makeCluster(nworkers)
 registerDoParallel(cl)
@@ -71,9 +70,10 @@ registerDoParallel(cl)
     error_value <- abs(integral_value - 0.0)
     duration_secs <- difftime(endtime, starttime, units = "secs")
     core_secs <- duration_secs * nworkers
-    message("Integral value: ", integral_value, ", error value: ", error_value)
-    message("Time spent on 1 core:", duration_secs, "seconds")
-    message("Time spent on all cores:", core_secs, "seconds")
+    message("Integral value: ", integral_value)
+    message("Integral error: ", error_value)
+    message("Time spent on 1 core: ", duration_secs, "seconds")
+    message("Time spent on all cores: ", core_secs, "seconds")
 
 # Stop the cluster after computation
 stopCluster(cl)
