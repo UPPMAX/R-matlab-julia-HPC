@@ -124,19 +124,24 @@ I want these to display the corehours too, and less fluff.
 Output is cleaner:
 
 ```bash
-integration2d-dardel.sh      integration2d-rackham_1.sh  slurm-56827359.out
-integration2d-kebnekaise.sh  integration2d-rackham_8.sh  slurm-56827362.out
+[richel@rackham3 6_integration2d]$ ls
+integration2d-cosmos.sh      integration2d-rackham_1.sh  schedule_rackham_runs.sh
+integration2d-dardel.sh      integration2d-rackham_8.sh  slurm-56827590.out
+integration2d-kebnekaise.sh  integration2d_rackham_x.sh  slurm-56827597.out
+integration2d.R              integration2d-tetralith.sh
 [richel@rackham3 6_integration2d]$ cat *.out
+Number of cores booked in Slurm: 1
 Number of workers: 1
 Grid size: 8400
 Integral value: -6.2179313190142e-17
 Integral error: 6.2179313190142e-17
-Time spent on 1 core: 65.875819683075seconds
-Time spent on all cores: 65.875819683075seconds
+Time spent on 1 core: 67.9925961494446 seconds
+Time spent on all cores: 67.9925961494446 seconds
+Number of cores booked in Slurm: 8
 Number of workers: 8
 Grid size: 8400
 Integral value: -4.35873559467836e-13
 Integral error: 4.35873559467836e-13
-Time spent on 1 core: 9.20177721977234seconds
-Time spent on all cores: 73.6142177581787seconds
+Time spent on 1 core: 9.48788905143738 seconds
+Time spent on all cores: 75.903112411499 seconds
 ```
