@@ -196,3 +196,5 @@ Time spent on all cores: 73.2491600513458 seconds
 [richel@rackham3 6_integration2d]$ 
 ```
 
+I give up calling a Slurm script with the `-A` or `-n` parameter:
+it does not work (that is how I got a replicate run)
