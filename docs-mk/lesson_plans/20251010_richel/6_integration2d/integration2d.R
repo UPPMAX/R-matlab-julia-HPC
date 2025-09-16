@@ -1,8 +1,7 @@
-library(parallel)
-library(doParallel)
+library(parallel, quietly = TRUE)
+library(doParallel, quietly = TRUE)
 
 # nr. of workers/cores that will solve the tasks
-
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) != 1) {
   stop(
@@ -14,15 +13,16 @@ if (length(args) != 1) {
   )
 }
 nworkers <- as.numeric(args[1])
-# nworkers <- 8
 message("nworkers: ", nworkers)
 
+# Else the error will be 'Cannot find port 0:nworkers'
 testthat::expect_true(is.numeric(nworkers))
 testthat::expect_true(nworkers > 0)
 testthat::expect_true(nworkers < 256 * 256)
 
 # grid size
 n <- 840 * 10
+message("grid size: ", n)
 
 # Function for 2D integration (non-optimal implementation)
 integration2d <- function(n, numprocesses, processindex) {
@@ -62,14 +62,18 @@ registerDoParallel(cl)
     results <- foreach(i = 1:nworkers, .combine = c) %dopar% { integration2d(n, nworkers, i) }
 
     # Calculate the total integral by summing over partial integrals
-    integral <- sum(results)
+    integral_value <- sum(results)
 
     # End the timing
     endtime <- Sys.time()
 
     # Print out the result
-    print(paste("Integral value is", integral, "Error is", abs(integral - 0.0)))
-    print(paste("Time spent:", difftime(endtime, starttime, units = "secs"), "seconds"))
+    error_value <- abs(integral_value - 0.0)
+    duration_secs <- difftime(endtime, starttime, units = "secs")
+    core_secs <- duration_secs * nworkers
+    message("Integral value: ", integral_value, ", error value: ", error_value)
+    message("Time spent on 1 core:", duration_secs, "seconds")
+    message("Time spent on all cores:", core_secs, "seconds")
 
 # Stop the cluster after computation
 stopCluster(cl)

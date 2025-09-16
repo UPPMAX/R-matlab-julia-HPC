@@ -94,7 +94,7 @@ nworkers: 8
 
 Using a 10x bigger grid:
 
-```
+```bash
 [richel@rackham3 6_integration2d]$ cat slurm-56825681.out
 [...]
 nworkers: 1
@@ -109,10 +109,14 @@ nworkers: 8
 
 Interesting, that if the grid increases 10x,
 1 worker takes 80x longer and 8 workers take 40x longer.
+Also, the accuracy decreases with multiple works.
+Also, the overhead changes
 
-Grid size|Time 1 worker|Time 8 workers
----------|-------------|--------------
-Original |0.81         |0.22
-10x      |64.74        |8.93
-Increase |80x          |40x
+Grid size|Time 1 worker|Time 8 workers|Corehours 8 workers|Overhead
+---------|-------------|--------------|-------------------|-----------------------
+Original |0.81         |0.22          |8*0.22=1.76        |1.76/0.81=2.172839506
+10x      |64.74        |8.93          |8*8.93=71.44       |71.44/64.74=1.103490887
+Increase |80x          |40x           |40x                |NA
 
+OK, now it is time to cleanup the script a bit.
+I want these to display the corehours too, and less fluff.
