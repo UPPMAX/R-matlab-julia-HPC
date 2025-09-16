@@ -5,33 +5,26 @@ library(doParallel, quietly = TRUE)
 
 # nr. of workers/cores that will solve the tasks
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) == 0) {
+if (length(args) != 1) {
   stop(
     "Please specify the number of cores this calculation uses, \n",
-    "as well as the grid size. \n",
+    "for example: \n",
     " \n",
-    "General use:\n",
-    " \n",
-    "  Rscript integration2d.R [number_of_cores] [grid_size]\n",
-    " \n",
-    "For example: \n",
-    " \n",
-    "  Rscript integration2d.R 1 16384\n",
+    "  Rscript integration2d.R 1 \n",
     " \n"
   )
 }
-
 nworkers <- as.numeric(args[1])
 message("Number of workers: ", nworkers)
-
-n <- as.numeric(args[2])
-message("Grid size: ", n)
 
 # Else the error will be 'Cannot find port 0:nworkers'
 testthat::expect_true(is.numeric(nworkers))
 testthat::expect_true(nworkers > 0)
 testthat::expect_true(nworkers < 256 * 256)
-testthat::expect_true(n > nworkers)
+
+# grid size
+n <- 16384
+message("Grid size: ", n)
 
 #' Function that integrates the function `sin(x + y)`.
 #' @param n the grid size
