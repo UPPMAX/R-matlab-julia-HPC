@@ -23,6 +23,7 @@ if [ "$#" -ne 1 ]; then
     echo " "
     echo "  ./schedule_rackham_runs.sh staff"
     echo " "
+    exit 42
 fi
 
 slurm_job_account=$1

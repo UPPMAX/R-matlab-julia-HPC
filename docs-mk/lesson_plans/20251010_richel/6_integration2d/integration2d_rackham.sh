@@ -24,6 +24,7 @@ if [ "$#" -ne 1 ]; then
     echo " "
     echo "  ./integration2d_rackham.sh 16384"
     echo " "
+    exit 42
 fi
 
 echo "Grid size: ${grid_size}"
