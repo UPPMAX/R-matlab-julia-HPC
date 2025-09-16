@@ -38,14 +38,25 @@ where one uses multiple CPU cores to work together on a same calculation
 
 ## Types of 'doing more things at the same time'
 
-- Message Passing Interface: for a job that use multiple cores,
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+Type of parallelism   |Number of cores|Number of nodes|Memory                      |Library
+----------------------|---------------|---------------|----------------------------|-------
+Single-threaded       |1              |1              |As given by operating system|None
+Threaded/shared memory|Multiple       |1              |Shared by all cores         |OpenMP
+Distributed           |Multiple       |Multiple       |Distributed                 |OpenMPI
+
+<!-- markdownlint-enable MD013 -->
+
+- Threaded parallelism: calculations that can use multiple
+  cores with a shared memory.
+
+- Distributed programming.
+  Uses a Message Passing Interface.
+  For a job that use many different nodes,
   for example, a weather prediction.
-  In this session!
 - Slurm job arrays: for running jobs that are embarassingly parallel,
   for example, running a simulation with different random numbers
-  Not in this session
-- Multithreaded: jobs that do more tasks per CPU,
-  for example, an operating system.
   Not in this session
 
 ## When to use parallel computing

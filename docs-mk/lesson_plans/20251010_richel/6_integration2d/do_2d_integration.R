@@ -1,3 +1,5 @@
+#!/bin/env Rscript
+
 library(parallel, quietly = TRUE)
 library(doParallel, quietly = TRUE)
 
@@ -24,8 +26,17 @@ testthat::expect_true(nworkers < 256 * 256)
 n <- 16384
 message("Grid size: ", n)
 
-# Function for 2D integration (non-optimal implementation)
+#' Function that integrates the function `sin(x + y)`.
+#' @param n the grid size
+#' @param numprocesses the number of workers
+#' @param processindex the index of this function call
+#' @return the sum of the integration for this function caller
 integration2d <- function(n, numprocesses, processindex) {
+  testthat::expect_true(n > 0)
+  testthat::expect_true(numprocesses > 0)
+  testthat::expect_true(processindex > 0)
+  testthat::expect_true(processindex <= numprocesses)
+
   # Interval size (same for X and Y)
   h <- pi / n
   # Cumulative variable
