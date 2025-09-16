@@ -72,8 +72,8 @@ registerDoParallel(cl)
     core_secs <- duration_secs * nworkers
     message("Integral value: ", integral_value)
     message("Integral error: ", error_value)
-    message("Time spent on 1 core: ", duration_secs, "seconds")
-    message("Time spent on all cores: ", core_secs, "seconds")
+    message("Time spent on 1 core: ", duration_secs, " seconds")
+    message("Time spent on all cores: ", core_secs, " seconds")
 
 # Stop the cluster after computation
 stopCluster(cl)

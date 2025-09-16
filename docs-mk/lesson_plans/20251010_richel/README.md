@@ -120,3 +120,23 @@ Increase |80x          |40x           |40x                |NA
 
 OK, now it is time to cleanup the script a bit.
 I want these to display the corehours too, and less fluff.
+
+Output is cleaner:
+
+```bash
+integration2d-dardel.sh      integration2d-rackham_1.sh  slurm-56827359.out
+integration2d-kebnekaise.sh  integration2d-rackham_8.sh  slurm-56827362.out
+[richel@rackham3 6_integration2d]$ cat *.out
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 65.875819683075seconds
+Time spent on all cores: 65.875819683075seconds
+Number of workers: 8
+Grid size: 8400
+Integral value: -4.35873559467836e-13
+Integral error: 4.35873559467836e-13
+Time spent on 1 core: 9.20177721977234seconds
+Time spent on all cores: 73.6142177581787seconds
+```
