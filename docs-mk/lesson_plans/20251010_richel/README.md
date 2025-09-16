@@ -237,7 +237,7 @@ Time spent on 1 core (seconds): 8.9283595085144
 Time spent on all cores (seconds): 71.4268760681152
 ```
 
-![Progression from grid size 8400](6_integration2d/core_hours_8400.png)
+![Rackham cores hours for grid size 8400](6_integration2d/rackham_core_hours_8400.png)
 
 
 Bigger job:
@@ -280,7 +280,58 @@ Time spent on 1 core (seconds): 17.8458185195923
 Time spent on all cores (seconds): 285.533096313477
 ```
 
-![Progression from grid size 16384](6_integration2d/core_hours_16384.png)
+![Rackham cores hours for grid size 16384](6_integration2d/rackham_core_hours_16384.png)
 
+Hmmm, my COSMOS jobs end up on different nodes ...?
 
+```bash
+[richel@cosmos1 6_integration2d]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1587029      lu48 integrat   richel  R    INVALID      3 cn[003,008,010]
+           1587033      lu48 integrat   richel  R    INVALID      1 cn010
+           1587032      lu48 integrat   richel  R    INVALID      1 cn010
+           1587031      lu48 integrat   richel  R    INVALID      1 cn039
+           1587030      lu48 integrat   richel  R    INVALID      1 cn010
+```
 
+Results:
+
+```
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 16384
+Integral value: 1.76582323875401e-16
+Integral error: 1.76582323875401e-16
+Time spent on 1 core (seconds): 141.671043157578
+Time spent on all cores (seconds): 141.671043157578
+Number of cores booked in Slurm: 2
+Number of workers: 2
+Grid size: 16384
+Integral value: -1.81823445188911e-11
+Integral error: 1.81823445188911e-11
+Time spent on 1 core (seconds): 72.5188694000244
+Time spent on all cores (seconds): 145.037738800049
+Number of cores booked in Slurm: 4
+Number of workers: 4
+Grid size: 16384
+Integral value: -3.75399711316504e-12
+Integral error: 3.75399711316504e-12
+Time spent on 1 core (seconds): 37.6001505851746
+Time spent on all cores (seconds): 150.400602340698
+Number of cores booked in Slurm: 8
+Number of workers: 8
+Grid size: 16384
+Integral value: -3.48418516260551e-12
+Integral error: 3.48418516260551e-12
+Time spent on 1 core (seconds): 19.8832325935364
+Time spent on all cores (seconds): 159.065860748291
+Number of cores booked in Slurm: 16
+Number of workers: 16
+Grid size: 16384
+Integral value: 2.79685996584789e-13
+Integral error: 2.79685996584789e-13
+Time spent on 1 core (seconds): 51.425624370575
+Time spent on all cores (seconds): 822.809989929199
+```
+
+![COSMOS cores hours for grid size 16384](6_integration2d/cosmos_core_hours_16384.png)
