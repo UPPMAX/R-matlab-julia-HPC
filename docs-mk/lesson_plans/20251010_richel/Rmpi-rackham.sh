@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A uppmax2025-2-272
+#SBATCH -A staff
 #Asking for 10 min.
 #SBATCH -t 00:10:00
 #SBATCH -n 8
