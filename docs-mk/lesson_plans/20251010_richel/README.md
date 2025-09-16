@@ -145,3 +145,54 @@ Integral error: 4.35873559467836e-13
 Time spent on 1 core: 9.48788905143738 seconds
 Time spent on all cores: 75.903112411499 seconds
 ```
+
+
+A replication experiment:
+
+```
+[richel@rackham3 6_integration2d]$ cat *.out
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 71.8729729652405 seconds
+Time spent on all cores: 71.8729729652405 seconds
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 72.9636025428772 seconds
+Time spent on all cores: 72.9636025428772 seconds
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 75.2127022743225 seconds
+Time spent on all cores: 75.2127022743225 seconds
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 74.9676728248596 seconds
+Time spent on all cores: 74.9676728248596 seconds
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 73.961464881897 seconds
+Time spent on all cores: 73.961464881897 seconds
+Number of cores booked in Slurm: 1
+Number of workers: 1
+Grid size: 8400
+Integral value: -6.2179313190142e-17
+Integral error: 6.2179313190142e-17
+Time spent on 1 core: 73.2491600513458 seconds
+Time spent on all cores: 73.2491600513458 seconds
+[richel@rackham3 6_integration2d]$ 
+```
+
