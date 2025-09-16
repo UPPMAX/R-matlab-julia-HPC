@@ -22,7 +22,7 @@ testthat::expect_true(nworkers > 0)
 testthat::expect_true(nworkers < 256 * 256)
 
 # grid size
-n <- 840 * 100
+n <- 840 * 10
 
 # Function for 2D integration (non-optimal implementation)
 integration2d <- function(n, numprocesses, processindex) {
