@@ -2,8 +2,20 @@ library(parallel)
 library(doParallel)
 
 # nr. of workers/cores that will solve the tasks
-# TODO: Use from caller
-nworkers <- 8
+
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) != 1) {
+  stop(
+    "Please specify the number of cores this calculation uses, \n",
+    "for example: \n",
+    " \n",
+    "  Rscript integration2d.R 1 \n",
+    " \n"
+  )
+}
+nworkers <- args[1]
+# nworkers <- 8
+message("nworkers: ", nworkers)
 
 # grid size
 n <- 840

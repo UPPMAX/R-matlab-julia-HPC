@@ -21,23 +21,21 @@ Let's start with GROMACS, as it is popular and available on Pelle.
 
 - [YouTube video](https://www.youtube.com/watch?v=-S1eP-iWE8c)
 - [1UN3 RCSB page](https://www.rcsb.org/structure/1UN3)
-- Downloaded [`1UN3.pdb`](1UN3.pdb)
+- Downloaded `1UN3.pdb`
 
 ```bash
 sudo apt install jmol
 jmol 1UN3.pdb
 ```
 
-![`jmol` shows the `1UN3` protein](jmol_works.png)
+![`jmol` shows the `1UN3` protein](4_lumi_course/jmol_works.png)
 
 - [GROMACS on LUMI course](https://zenodo.org/records/10683366)
 
 
-
 To run on Pelle:
 
-
-```
+```bash
 wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/docs-mk/lesson_plans/20251010_richel/lumi_course/run_pelle.sh
 sbatch run_pelle.sh 
 ```
