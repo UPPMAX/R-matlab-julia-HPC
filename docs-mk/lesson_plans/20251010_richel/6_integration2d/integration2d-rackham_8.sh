@@ -3,6 +3,6 @@
 #SBATCH -A staff
 #SBATCH --time=00:20:00      # requested time
 
-module load R_packages/4.1.1 > /dev/null
+module load R_packages/4.1.1 >/dev/null 2>&1
 
 Rscript --no-save --no-restore integration2d.R 8
