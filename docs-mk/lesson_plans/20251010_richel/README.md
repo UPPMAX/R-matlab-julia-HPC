@@ -64,10 +64,20 @@ Normal   |1 core                          |
 OpenMP   |1 to all cores on a node        |A threaded mechanism, uses `OMP_NUM_THREADS`
 OpenMPI  |1 to all cores on multiple nodes|`Rmpi` package
 
+Works:
 
+```bash
+$ sbatch integration2d-rackham_8.sh 
+Submitted batch job 56823317
 
+[richel@rackham3 6_integration2d]$ cat slurm-56823317.out
+R_packages/4.1.1: The RStudio packages pane is disabled when loading this module, due to performance issues. All packages are still available.
+R_packages/4.1.1: For more information and instructions to re-enable it, see 'module help R_packages/4.1.1'
 
-
-
+Loading required package: foreach
+Loading required package: iterators
+[1] "Integral value is 9.07607322631065e-15 Error is 9.07607322631065e-15"
+[1] "Time spent: 0.263934373855591 seconds"
+```
 
 
