@@ -205,35 +205,37 @@ Number of workers: 16
 Grid size: 8400
 Integral value: 1.25011112572793e-13
 Integral error: 1.25011112572793e-13
-Time spent on 1 core: 5.02698063850403 seconds
-Time spent on all cores: 80.4316902160645 seconds
+Time spent on 1 core (seconds): 4.89688730239868
+Time spent on all cores (seconds): 78.3501968383789
 Number of cores booked in Slurm: 1
 Number of workers: 1
 Grid size: 8400
 Integral value: -6.2179313190142e-17
 Integral error: 6.2179313190142e-17
-Time spent on 1 core: 72.2902419567108 seconds
-Time spent on all cores: 72.2902419567108 seconds
+Time spent on 1 core (seconds): 71.9557588100433
+Time spent on all cores (seconds): 71.9557588100433
 Number of cores booked in Slurm: 2
 Number of workers: 2
 Grid size: 8400
 Integral value: -1.00190966634273e-11
 Integral error: 1.00190966634273e-11
-Time spent on 1 core: 38.5365948677063 seconds
-Time spent on all cores: 77.0731897354126 seconds
+Time spent on 1 core (seconds): 38.2071380615234
+Time spent on all cores (seconds): 76.4142761230469
 Number of cores booked in Slurm: 4
 Number of workers: 4
 Grid size: 8400
 Integral value: -2.64421817774974e-12
 Integral error: 2.64421817774974e-12
-Time spent on 1 core: 16.1383211612701 seconds
-Time spent on all cores: 64.5532846450806 seconds
+Time spent on 1 core (seconds): 18.3012194633484
+Time spent on all cores (seconds): 73.2048778533936
 Number of cores booked in Slurm: 8
 Number of workers: 8
 Grid size: 8400
 Integral value: -4.35873559467836e-13
 Integral error: 4.35873559467836e-13
-Time spent on 1 core: 9.13436603546143 seconds
-Time spent on all cores: 73.0749282836914 seconds
+Time spent on 1 core (seconds): 8.9283595085144
+Time spent on all cores (seconds): 71.4268760681152
 ```
+
+![Progression](6_integration2d/core_hours.png)
 
