@@ -26,9 +26,11 @@ if [ "$#" -ne 1 ]; then
 fi
 
 slurm_job_account=$1
-echo "Slurm job account used: ${slurm_job_account}"
+grid_size=$2
+echo "Slurm job account: ${slurm_job_account}"
+echo "Grid size: ${grid_size}"
 
-sbatch -A ${slurm_job_account} -n 1 integration2d_rackham.sh
-sbatch -A ${slurm_job_account} -n 4 integration2d_rackham.sh
-sbatch -A ${slurm_job_account} -n 16 integration2d_rackham.sh
-sbatch -A ${slurm_job_account} -n 64 integration2d_rackham.sh
+sbatch -A ${slurm_job_account} -n 1 integration2d_rackham.sh ${grid_size}
+sbatch -A ${slurm_job_account} -n 4 integration2d_rackham.sh ${grid_size}
+sbatch -A ${slurm_job_account} -n 16 integration2d_rackham.sh ${grid_size}
+sbatch -A ${slurm_job_account} -n 64 integration2d_rackham.sh ${grid_size}
