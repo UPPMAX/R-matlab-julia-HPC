@@ -1,1 +1,10 @@
-sphinx-myst_test/**
+docs-mk/MLR.md
+docs-mk/julia/intro.md
+docs-mk/matlab/MatlabGUIslurm.md
+docs-mk/matlab/matlab-addons.md
+docs-mk/matlab/matlab-local-desktop.md
+docs-mk/matlab/slurmMatlab.md
+docs-mk/r/batch.md
+docs-mk/r/interactive.md
+docs-mk/r/morepackages.md
+docs-mk/r/packages.md
