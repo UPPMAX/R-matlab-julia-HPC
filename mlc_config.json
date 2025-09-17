@@ -2,16 +2,7 @@
   "aliveStatusCodes": [0, 200, 403, 418, 503],
   "ignorePatterns": [
     {
-      "pattern": "^morning_session/overview/$"
-    },
-    {
         "pattern": "^https://bianca.uppmax.uu.se"
-    },
-    {
-        "pattern": "^https://www.gnu.org/software/gzip/manual/gzip.html"
-    },
-    {
-        "pattern": "^https://rackham-gui.uppmax.uu.se"
     }
   ]
 }
