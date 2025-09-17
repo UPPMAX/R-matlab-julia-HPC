@@ -177,11 +177,11 @@ job = c.batch(@parallel_example_local, 1, {16,1}, 'Pool',8,'CurrentFolder','.');
     - It will not ask again until you define a new cluster handle `c` or in next session.
 
 <div align="center">
-  <img src="../../docs/matlab/img/matlab_usercred.PNG" alt="MATLAB user credentials prompt" width="500"/>
+  <img src="../../docs-sphinx/matlab/img/matlab_usercred.PNG" alt="MATLAB user credentials prompt" width="500"/>
 </div>
 
 <div align="center">
-  <img src="../../docs/matlab/img/matlab_enterpassword.PNG" alt="MATLAB password prompt" width="500"/>
+  <img src="../../docs-sphinx/matlab/img/matlab_enterpassword.PNG" alt="MATLAB password prompt" width="500"/>
 </div>
 
 - Jobs will now default to the cluster rather than submit to the local machine.
@@ -207,7 +207,7 @@ ans =
 - You can also watch the queue
 
 <div align="center">
-  <img src="../../docs/matlab/img/matlab_jobmonitor.PNG" alt="MATLAB job monitor" width="500"/>
+  <img src="../../docs-sphinx/matlab/img/matlab_jobmonitor.PNG" alt="MATLAB job monitor" width="500"/>
 </div>
 
   - Example on Rackham (it really runs there!):
