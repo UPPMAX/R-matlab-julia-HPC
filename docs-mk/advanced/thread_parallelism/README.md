@@ -1,4 +1,5 @@
-# Threaded parallelism
+# Thread parallelism
+
 
 !!! info "Learning outcomes"
 
@@ -30,14 +31,7 @@
 ![Arnold (at the left): a robot that was controlled by MPI](arnold.jpg)
 ![Cora, the robotic platform for Arnold](cora.jpg)
 
-## Why parallel computing is important
-
-Most HPC clusters use 10 days as a maximum duration for a job.
-Your calculation may take longer than that.
-One technique that may work is to use parallel computing,
-where one uses multiple CPU cores to work together on a same calculation
-
-## Types of 'doing more things at the same time'
+## Why thread parallelism is important
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
@@ -49,87 +43,122 @@ Distributed           |Multiple       |Multiple       |Distributed              
 
 <!-- markdownlint-enable MD013 -->
 
-- Threaded parallelism: calculations that can use multiple
-  cores with a shared memory.
+## What is thread parallelism?
 
-- Distributed programming.
-  Uses a Message Passing Interface.
-  For a job that use many different nodes,
-  for example, a weather prediction.
-- Slurm job arrays: for running jobs that are embarassingly parallel,
-  for example, running a simulation with different random numbers
-  Not in this session
+- [ScienceDirect definition and overview of thread parallelism](https://www.sciencedirect.com/topics/computer-science/thread-parallelism)
 
-## When to use parallel computing
+Calculations that can use multiple
+cores with a shared memory.
 
-- Be aware of Amdahl's law and/or Gustafson's law
-- Single-threaded programs will never work
+## Slurm script
 
-## Output
+This is the script that schedules a job with threaded parallelism.
 
-=== "Using 1 MPI processes"
+The goal of the script is to
+submit a calculation that uses threaded parallelism,
+with a custom amount of cores.
 
-    ```text
-    Using 2 OpenMP threads 
+??? question "How do I run it?"
 
-                   Core t (s)   Wall t (s)        (%)
-           Time:       86.902       43.452      200.0
-                     (ns/day)    (hour/ns)
-    Performance:        1.740       13.794
+    You do not, instead you will run the benchmark script below.
+
+    However, you can run it as such:
+
+    ```bash
+    sbatch -A [account] -n [number_of_cores] do_2d_integration_on_[hpc_cluster].sh
     ```
 
-=== "Using 2 MPI processes"
+    For example:
 
-    ```text
-                   Core t (s)   Wall t (s)        (%)
-           Time:      100.447       50.224      200.0
-                     (ns/day)    (hour/ns)
-    Performance:        1.591       15.082
+    ```bash
+    sbatch -A staff -n 1 do_2d_integration_on_rackham.sh
+    ```
+ 
+HPC cluster|Script with calculation
+-----------|------------------------------------------
+Alvis      |TODO
+Bianca     |TODO
+COSMOS     |TODO
+Dardel     |TODO
+Kebnekaise |TODO
+LUMI       |TODO
+Pelle      |TODO
+Rackham    |[do_2d_integration_on_rackham.sh](do_2d_integration_on_rackham.sh)
+Tetralith  |TODO
+
+## Calculation script
+
+This is the code that performs a job with threaded parallelism.
+
+The goal of the code is to have a fixed unit of work that
+can be done by a custom amount of cores.
+
+This calculation script is called by the Slurm script,
+i.e. not directly by a user.
+
+??? question "How do I run it?"
+
+    You do not, instead you will run the benchmark script below.
+
+    However, **when not on a login node**, you can run it as such:
+
+    ```bash
+    [interpreter] [script_name] [number_of_cores]
     ```
 
-=== "Using 4 MPI processes"
+    For example:
 
-    ```text
-                   Core t (s)   Wall t (s)        (%)
-           Time:      150.753       37.689      400.0
-                     (ns/day)    (hour/ns)
-    Performance:        3.783        6.345
+    ```bash
+    Rscript integration2d.R 1
     ```
 
+Language|Script with calculation
+--------|------------------------------------------
+Julia   |TODO
+MATLAB  |TODO
+R       |[do_2d_integration.R](do_2d_integration.R)
 
-=== "Using 8 MPI processes"
+## Benchmark script
 
-    ```text
-                   Core t (s)   Wall t (s)        (%)
-           Time:      292.200       36.526      800.0
-                     (ns/day)    (hour/ns)
-    Performance:        6.446        3.723
-    ```
+This is the script that starts a benchmark,
+by submitting multiple jobs to the Slurm queue.
 
-## Remember
+The goal of the benchmark script is to 
+do a fixed unit of work
+with increasingly more cores.
 
-- Use `--ntasks=N`
-- Use `srun`
-- Use an MPI version of your software:
-  a 'regular' non-MPI version will never work!
+As the script itself only does light calculations,
+you can run it directly, as such:
 
-## Links
+```bash
+./benchmark_[language]_2d_integration_on_[hpc_cluster].sh
+```
 
-- [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
-- [Older explanation](https://youtu.be/GHbrpg75qbQ)
-- [Newer explanation](https://youtu.be/c7pVEBhPohk)
+For example:
 
-=== "Julia"
+```bash
+./benchmark_r_2d_integration_on_rackham.sh
+```
 
-    Julia stuff here
+HPC cluster|Julia benchmark script                                  |MATLAB benchmark script                                 |R benchmark script
+-----------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------
+Alvis      |.                                                       |.                                                       |.
+Bianca     |.                                                       |.                                                       |.
+COSMOS     |.                                                       |.                                                       |.
+Dardel     |.                                                       |.                                                       |.
+Kebnekaise |.                                                       |.                                                       |.
+LUMI       |.                                                       |.                                                       |.
+Pelle      |.                                                       |.                                                       |.
+Rackham    |.                                                       |.                                                       |[R on Rackham](benchmark_r_2d_integration_on_rackham.sh)
+Tetralith  |.                                                       |.                                                       |.
 
-=== "MATLAB"
+## Analysis script
 
-    MATLAB stuff here
+The goal of the analysis script is to 
+observe the relation between 
+the number of cores and core runtime.
 
-=== "R"
 
-    R stuff here
 
 <!-- old stuff below 
 

@@ -9,7 +9,7 @@
 Time  | Topic                                                                            | Teacher(s)
 ------|----------------------------------------------------------------------------------|-----------
 9:00  | [Parallel computing: general](parallel_computing/README.md)                      | R
-.     | [Parallel computing: Threaded parallelism](threaded_parallelism/README.md)       | R
+.     | [Parallel computing: Thread parallelism](thread_parallelism/README.md)           | R
 10:00 | Break                                                                            | .
 10:15 | [Parallel computing: Distributed parallelism](distributed_parallelism/README.md) | R
 11:00 | Break                                                                            | .

@@ -341,3 +341,6 @@ Time spent on all cores (seconds): 822.809989929199
 I feel confident with the threaded parallelism.
 Pedro did a great job with the materials!
 
+Steps:
+
+- [ ] Thread parallelisms
