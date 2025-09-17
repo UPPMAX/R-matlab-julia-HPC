@@ -3,11 +3,11 @@
 #
 # Usage:
 #
-#   sbatch -A [account] -n [number_of_cores] do_2d_integration_on_rackham.sh
+#   sbatch -A [account] -n [number_of_cores] do_r_2d_integration_on_rackham.sh
 #
 # Example:
 #
-#   sbatch -A staff -n 1 do_2d_integration_on_rackham.sh
+#   sbatch -A staff -n 1 do_r_2d_integration_on_rackham.sh
 #
 
 module load R_packages/4.1.1 >/dev/null 2>&1

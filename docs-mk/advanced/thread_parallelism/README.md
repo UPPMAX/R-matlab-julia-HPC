@@ -65,26 +65,26 @@ with a custom amount of cores.
     However, you can run it as such:
 
     ```bash
-    sbatch -A [account] -n [number_of_cores] do_2d_integration_on_[hpc_cluster].sh
+    sbatch -A [account] -n [number_of_cores] do_[language]_2d_integration_on_[hpc_cluster].sh
     ```
 
     For example:
 
     ```bash
-    sbatch -A staff -n 1 do_2d_integration_on_rackham.sh
+    sbatch -A staff -n 1 do_r_2d_integration_on_rackham.sh
     ```
  
-HPC cluster|Script with calculation
------------|------------------------------------------
-Alvis      |TODO
-Bianca     |TODO
-COSMOS     |TODO
-Dardel     |TODO
-Kebnekaise |TODO
-LUMI       |TODO
-Pelle      |TODO
-Rackham    |[do_2d_integration_on_rackham.sh](do_2d_integration_on_rackham.sh)
-Tetralith  |TODO
+HPC cluster|Julia Slurm script                                  |MATLAB Slurm script                                 |R Slurm script
+-----------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------
+Alvis      |.                                                   |.                                                   |.
+Bianca     |.                                                   |.                                                   |.
+COSMOS     |.                                                   |.                                                   |.
+Dardel     |.                                                   |.                                                   |.
+Kebnekaise |.                                                   |.                                                   |.
+LUMI       |.                                                   |.                                                   |.
+Pelle      |.                                                   |.                                                   |.
+Rackham    |.                                                   |.                                                   |[do_r_2d_integration_on_rackham.sh](do_2d_integration_on_rackham.sh)
+Tetralith  |.                                                   |.                                                   |.
 
 ## Calculation script
 
