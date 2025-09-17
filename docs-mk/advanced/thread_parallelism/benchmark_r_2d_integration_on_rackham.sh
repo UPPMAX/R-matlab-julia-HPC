@@ -30,7 +30,7 @@ fi
 slurm_job_account=$1
 echo "Slurm job account used: ${slurm_job_account}"
 
-sbatch -A ${slurm_job_account} -n 1 do_r_2d_integration_on_rackham.sh
-sbatch -A ${slurm_job_account} -n 4 do_r_2d_integration_on_rackham.sh
-sbatch -A ${slurm_job_account} -n 16 do_r_2d_integration_on_rackham.sh
-sbatch -A ${slurm_job_account} -n 64 do_r_2d_integration_on_rackham.sh
+for n_cores in $(seq 1 64)
+do 
+  sbatch -A ${slurm_job_account} -n ${n_cores} do_r_2d_integration_on_rackham.sh
+done
