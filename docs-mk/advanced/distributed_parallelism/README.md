@@ -1,42 +1,28 @@
-# Parallel and multithreaded functions
+# Distributed parallelism
 
 !!! info "Learning outcomes"
 
-    - Schedule and run a job that needs more cores,
-      with a calculation in their favorite language
-    - Understand when it is possible/impossible
-      and/or useful/useless to run a job with multiple cores
+    - .
 
 ???- info "For teachers"
 
     Teaching goals are:
 
-    - Learners have scheduled and run a job that needs more cores,
-      with a calculation in their favorite language
-    - Learners understand when it is possible/impossible
-      and/or useful/useless to run a job with multiple cores
+    - .
 
     Prior:
 
-    - What is parallel computing?
+    - .
 
     Feedback:
 
-    - When to use parallel computing?
-    - When not to use parallel computing?
+    - .
 
 
 ![Arnold (at the left): a robot that was controlled by MPI](arnold.jpg)
 ![Cora, the robotic platform for Arnold](cora.jpg)
 
-## Why parallel computing is important
-
-Most HPC clusters use 10 days as a maximum duration for a job.
-Your calculation may take longer than that.
-One technique that may work is to use parallel computing,
-where one uses multiple CPU cores to work together on a same calculation
-
-## Types of 'doing more things at the same time'
+## Why distributed parallelism is important
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
@@ -48,21 +34,12 @@ Distributed           |Multiple       |Multiple       |Distributed              
 
 <!-- markdownlint-enable MD013 -->
 
-- Threaded parallelism: calculations that can use multiple
-  cores with a shared memory.
+## Notes
 
 - Distributed programming.
   Uses a Message Passing Interface.
   For a job that use many different nodes,
   for example, a weather prediction.
-- Slurm job arrays: for running jobs that are embarassingly parallel,
-  for example, running a simulation with different random numbers
-  Not in this session
-
-## When to use parallel computing
-
-- Be aware of Amdahl's law and/or Gustafson's law
-- Single-threaded programs will never work
 
 ## Output
 

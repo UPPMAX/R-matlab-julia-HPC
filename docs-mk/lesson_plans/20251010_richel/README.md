@@ -335,3 +335,9 @@ Time spent on all cores (seconds): 822.809989929199
 ```
 
 ![COSMOS cores hours for grid size 16384](6_integration2d/cosmos_core_hours_16384.png)
+
+## 2025-09-17
+
+I feel confident with the threaded parallelism.
+Pedro did a great job with the materials!
+
