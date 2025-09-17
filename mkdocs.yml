@@ -1,7 +1,7 @@
 site_name: Introduction to R, MATLAB, and Julia in HPC
 repo_url: https://github.com/UPPMAX/R-matlab-julia-HPC
-docs_dir: docs-mk/
-edit_uri: blob/main/docs-mk/
+docs_dir: docs/
+edit_uri: blob/main/docs/
 
 nav:
     - Overview: index.md
