@@ -21,22 +21,22 @@
 
     - UPPMAX has three different clusters
 
-      - Rackham for general purpose computing on CPUs only
-      - Snowy available for local projects and suits long
+        - Rackham for general purpose computing on CPUs only
+        - Snowy available for local projects and suits long
         jobs (< 1 month) and has GPUs
-      - Bianca for sensitive data and has GPUs
+        - Bianca for sensitive data and has GPUs
 
     - HPC2N has Kebnekaise with GPUs
     - LUNARC has Cosmos with GPUs (and Cosmos-SENS)
     - NSC has several clusters
-      - BerzeLiUs (AI/ML, NAISS)
-      - Tetralith (NAISS)
-      - Sigma (LiU local)
-      - Freja (R&D, located at SMHI)
-      - Nebula (MET Norway R&D)
-      - Stratus (weather forecasts, located at NSC)
-      - Cirrus (weather forecasts, located at SMHI)
-      - We will be using Tetralith, which also has GPUs
+        - BerzeLiUs (AI/ML, NAISS)
+        - Tetralith (NAISS)
+        - Sigma (LiU local)
+        - Freja (R&D, located at SMHI)
+        - Nebula (MET Norway R&D)
+        - Stratus (weather forecasts, located at NSC)
+        - Cirrus (weather forecasts, located at SMHI)
+        - We will be using Tetralith, which also has GPUs
     - PDC has Dardel with AMD GPUs
 
 !!! warning "Terminology: modules"
