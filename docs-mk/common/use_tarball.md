@@ -23,31 +23,47 @@ The procedure has these steps:
 
 ## Step 1: get the tarball
 
-- In a terminal, ``cd`` to a good directory to keep the exercises (for instance in your just created folder in the project directory)
+- In a terminal, ``cd`` to a good directory to keep the exercises
+  (for instance in your just created folder in the project directory)
 - You may create a new folder (``mkdir``), called ``exercises`` or similar).
 - Use the following command to download the file to your current folder:
 
+
 === "R""
+
+    <!-- markdownlint-disable MD013 --><!-- Verbatim one-liners cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
     wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercisesR.tar.gz
     ```
 
+    <!-- markdownlint-enable MD013 -->
+
 === "Matlab (wait until that day)"
+
+    <!-- markdownlint-disable MD013 --><!-- Verbatim one-liners cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
     wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercisesMatlab.tar.gz
     ```
 
+    <!-- markdownlint-enable MD013 -->
+
 === "Julia (wait until that day)"
+
+    <!-- markdownlint-disable MD013 --><!-- Verbatim one-liners cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
     wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercisesJulia.tar.gz
     ```
 
+    <!-- markdownlint-enable MD013 -->
+
 ???- question "How does that look like?"
 
     Your output will look somewhat like  this:
+
+    <!-- markdownlint-disable MD013 --><!-- Verbatim output cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
     [sven@rackham3 ~]$ wget https://github.com/UPPMAX/R-matlab-julia-HPC/raw/refs/heads/main/exercises/exercisesR.tar.gz
@@ -67,6 +83,8 @@ The procedure has these steps:
 
     2024-10-23 11:49:30 (31.4 MB/s) - ‘exercisesR.tar.gz’ saved [56007/56007]
     ```
+
+    <!-- markdownlint-enable MD013 -->
 
 
 ## Step 2: Uncompress the tarball
@@ -240,5 +258,6 @@ that contains the exercises.
     Note however, that if you during exercise work modify files,
     they will be overwritten if you make `git pull`
     (like if the teacher needs to modify something).
-    - Then make a copy somewhere else with your answers!
+    If this is the case, then make a copy somewhere
+    else with your answers!
 
