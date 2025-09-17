@@ -1,7 +1,8 @@
 # Lesson plan Python by Richel
 
 - Date: Tuesday 2024-10-22
-- Course: Python, part of [R, Python, Julia, and Matlab in HPC](https://github.com/UPPMAX/R-matlab-julia-HPC/)
+- Course: Python, part of
+  [R, Python, Julia, and Matlab in HPC](https://github.com/UPPMAX/R-matlab-julia-HPC/)
 
 ## Suggest new schedule
 
@@ -26,7 +27,7 @@ Time     |Topic                                      |Teacher
 **14.00**|Parallel and multithreaded functions       |Pedro
 **14.25**|Conclusion & Q/A                           |Birgitte
 **14.45**|.                                          |.
-**15.00**|END
+**15.00**|END                                        |.
 
 Notes:
 
@@ -69,7 +70,7 @@ Time       |Topic                                      |Duration (mins)
 14:15-15:00|Session 4                                  |45
 15:00-15:15|Break                                      |.
 15:15-16:00|Session 5                                  |45
-Total                                                  |255
+Total      |                                           |255
 
 This means I can add 50 minutes. Here I distribute these from the notes:
 
@@ -88,6 +89,8 @@ Parallel and multithreaded functions       |25 + 10
 Total                                      |205 + 50 = 255
 
 Now fitting this into this decided schedule:
+
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
 Time       |Topic                                                 |Teacher
 -----------|------------------------------------------------------|-------
@@ -108,6 +111,8 @@ Time       |Topic                                                 |Teacher
 15:10-15:25|Break                                                 |.
 15:25-16:00|Parallel and multithreaded functions                  |PO
 16:00-16:15|Summary and evaluation                                |RB
+
+<!-- markdownlint-enable MD013 -->
 
 Simultaneous session:
 
@@ -141,7 +146,7 @@ Time       |Topic                                                 |Teacher
         - Yes:
         - No:
 - If evaluation, suggest questions on confidence,
-  see [here](https://github.com/UPPMAX/uppmax_intro_day_1/tree/main/evaluations/20240827)
+  see [this earlier evaluation](https://github.com/UPPMAX/uppmax_intro_day_1/tree/main/evaluations/20240827)
     - Pro: useful to asses stronger/weaker sessions of the course
     - Con: maybe must use a standard evaluation form, needs teachers to formulate
     their lesson goals

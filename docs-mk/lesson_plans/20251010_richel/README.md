@@ -58,11 +58,13 @@ I feel:
 
 Technique|Uses                            |Notes
 ---------|--------------------------------|--------------
-Normal   |1 core                          |
+Normal   |1 core                          |.
 OpenMP   |1 to all cores on a node        |A threaded mechanism, uses `OMP_NUM_THREADS`
 OpenMPI  |1 to all cores on multiple nodes|`Rmpi` package
 
 Works:
+
+<!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
 ```bash
 $ sbatch integration2d-rackham_8.sh 
@@ -78,9 +80,11 @@ Loading required package: iterators
 [1] "Time spent: 0.263934373855591 seconds"
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 Using a CLI arg works fine, as long as it is convert to a numeric value:
 
-```
+```bash
 [richel@rackham3 6_integration2d]$ cat *.out
 [...]
 nworkers: 1
@@ -149,7 +153,7 @@ Time spent on all cores: 75.903112411499 seconds
 
 A replication experiment:
 
-```
+```console
 [richel@rackham3 6_integration2d]$ cat *.out
 Number of cores booked in Slurm: 1
 Number of workers: 1
@@ -199,7 +203,7 @@ Time spent on all cores: 73.2491600513458 seconds
 I give up calling a Slurm script with the `-A` or `-n` parameter:
 it does not work (that is how I got a replicate run)
 
-```
+```console
 Number of cores booked in Slurm: 16
 Number of workers: 16
 Grid size: 8400
@@ -242,7 +246,7 @@ Time spent on all cores (seconds): 71.4268760681152
 
 Bigger job:
 
-```
+```console
 Number of cores booked in Slurm: 1
 Number of workers: 1
 Grid size: 16384
@@ -296,7 +300,7 @@ Hmmm, my COSMOS jobs end up on different nodes ...?
 
 Results:
 
-```
+```console
 Number of cores booked in Slurm: 1
 Number of workers: 1
 Grid size: 16384

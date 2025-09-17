@@ -107,6 +107,8 @@ Distributed           |Multiple       |Multiple       |Distributed              
 
     R stuff here
 
+
+<!-- markdownlint-disable -->
 <!-- old stuff below 
 
 .. questions::

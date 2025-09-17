@@ -13,7 +13,7 @@ Time  | Topic                                                                   
 10:00 | Break                                                                            | .
 10:15 | [Parallel computing: Distributed parallelism](distributed_parallelism/README.md) | R
 11:00 | Break                                                                            | .
-11:15 | .                                                                                |
+11:15 | .                                                                                | .
 12:00 | Break                                                                            | .
 13:00 | Machine learning                                                                 | ?
 

@@ -74,6 +74,8 @@ with a custom amount of cores.
     sbatch -A staff -n 1 do_r_2d_integration_on_rackham.sh
     ```
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 HPC cluster|Julia Slurm script                                  |MATLAB Slurm script                                 |R Slurm script
 -----------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------
 Alvis      |.                                                   |.                                                   |.
@@ -85,6 +87,8 @@ LUMI       |.                                                   |.              
 Pelle      |.                                                   |.                                                   |.
 Rackham    |.                                                   |.                                                   |[do_r_2d_integration_on_rackham.sh](do_2d_integration_on_rackham.sh)
 Tetralith  |.                                                   |.                                                   |.
+
+<!-- markdownlint-enable MD013 -->
 
 ## Calculation script
 
@@ -140,6 +144,8 @@ For example:
 ./benchmark_r_2d_integration_on_rackham.sh
 ```
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 HPC cluster|Julia benchmark script                                  |MATLAB benchmark script                                 |R benchmark script
 -----------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------
 Alvis      |.                                                       |.                                                       |.
@@ -152,12 +158,16 @@ Pelle      |.                                                       |.          
 Rackham    |.                                                       |.                                                       |[R on Rackham](benchmark_r_2d_integration_on_rackham.sh)
 Tetralith  |.                                                       |.                                                       |.
 
+<!-- markdownlint-enable MD013 -->
+
 ## Analysis script
 
 The goal of the analysis script is to
 observe the relation between
 the number of cores and core runtime.
 
+
+<!-- markdownlint-disable -->
 
 <!-- old stuff below 
 

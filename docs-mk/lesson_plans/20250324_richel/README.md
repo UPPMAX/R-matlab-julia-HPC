@@ -63,7 +63,8 @@ to documentation.
 
 - [ ] In the simultaneous session, stay formal
 
-- [For next time] RB: suggest to make ‘Batch’ 15 minutes longer and remove a session, in the next course iteration
+- [For next time] RB: suggest to make ‘Batch’ 15 minutes longer
+  and remove a session, in the next course iteration
 
 These are the learning outcomes for which I have 45 minutes:
 

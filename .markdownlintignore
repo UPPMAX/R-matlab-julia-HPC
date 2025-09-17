@@ -39,6 +39,14 @@ exercises/julia/batchJulia/Solutions/1/*.md
 exercises/julia/batchJulia/Solutions/2/*.md
 exercises/julia/batchJulia/Solutions/3/*.md
 docs/python/not_used/*.md
+docs-mk/r/summary.md
+docs-mk/r/rstudio.md
+docs-mk/r/load_run.md
+docs-mk/matlab/*.md
+docs-mk/julia/*.md
+docs-mk/evaluations/20250326_julia/README.md
+docs-mk/evaluations/20250325_matlab/README.md
+docs-mk/lesson_plans/20251010_richel/4_lumi_course/README.md
 
 
 

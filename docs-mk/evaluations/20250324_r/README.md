@@ -55,7 +55,11 @@ Yes     |8
 No      |0
 Not sure|0
 
+<!-- markdownlint-disable MD013 --><!-- Headers cannot be split up over lines, hence will break 80 characters per line -->
+
 ## Question 5: Which future training topics would you like to be provided by the training host(s)?
+
+<!-- markdownlint-enable MD013 -->
 
 - More on parallelizing in R
 - It would be nice to perhaps have a little module on transferring

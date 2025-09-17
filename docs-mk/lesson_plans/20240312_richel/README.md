@@ -21,7 +21,7 @@ Storage space:
 * Kebnekaise: `/proj/nobackup/hpc2n2024-025`
 * Mine: `/proj/staff`
 
-### Python (Tuesday 2024-03-12)
+## Python (Tuesday 2024-03-12)
 
 Time     |Topic                      |Teacher
 ---------|---------------------------|-------
@@ -71,7 +71,8 @@ Use Python 3.11.8 on UPPMAX
 
 ### Pre-requirements
 
-I feel the pre-requirements page, <https://uppmax.github.io/R-python-julia-HPC/prereqs.html>, is too extensive.
+I feel the pre-requirements page,
+<https://uppmax.github.io/R-python-julia-HPC/prereqs.html>, is too extensive.
 I feel it should link to regular documentation and mostly show
 how to determine you fulfilled all pre-requirements.
 

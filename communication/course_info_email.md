@@ -1,5 +1,7 @@
 # Course info email
 
+<!-- markdownlint-disable MD013 --><!-- Use short lines for easy copy-paste, hence will break 80 characters per line -->
+
 ```text
 Hello!
 
@@ -122,3 +124,5 @@ Zoom: `[zoom_room_url]`
 Meeting ID: `[zoom_room_meeting_id]`
 Passcode: `[zoom_room_passcode]`
 ```
+
+<!-- markdownlint-enable MD013 -->

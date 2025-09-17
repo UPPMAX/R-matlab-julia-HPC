@@ -5,25 +5,29 @@
 
 ## Schedule
 
-| Time  | Topic                                                                                          | Teacher(s)      |
-| ----- | ---------------------------------------------------------------------------------------------- | --------------- |
-| 9:00  | (optional) [First login](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html) | BB + PO + RB    |
-| 9:45  | Break                                                                                          | .               |
-| 10:00 | Introduction                                                                                   | RB              |
-| 10:10 | Syllabus                                                                                       | RB              |
-| 10:20 | Load modules and run                                                                           | RB              |
-| 10:45 | Break                                                                                          | .               |
-| 11:00 | Packages                                                                                       | BB              |
-| 11:30 | Isolated environments                                                                          | BB              |
-| 12:00 | Lunch                                                                                          | .               |
-| 13:00 | Batch                                                                                          | BB              |
-| 13:30 | Parallel                                                                                       | PO              |
-| 14:15 | Break                                                                                          | .               |
-| 14:30 | Simultaneous session                                                                           | PO \* RB \* ?RP |
-| 15:15 | Break                                                                                          | .               |
-| 15:30 | Machine learning                                                                               | BB or PO        |
-| 16:00 | Summary and evaluation                                                                         | RB              |
-| 16:15 | Done                                                                                           | .               |
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+Time |Topic                                                                                          | Teacher(s)
+-----|-----------------------------------------------------------------------------------------------|----------------
+9:00 |(optional) [First login](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html)        | BB + PO + RB
+9:45 |Break                                                                                          | .
+10:00|Introduction                                                                                   | RB
+10:10|Syllabus                                                                                       | RB
+10:20|Load modules and run                                                                           | RB
+10:45|Break                                                                                          | .
+11:00|Packages                                                                                       | BB
+11:30|Isolated environments                                                                          | BB
+12:00|Lunch                                                                                          | .
+13:00|Batch                                                                                          | BB
+13:30|Parallel                                                                                       | PO
+14:15|Break                                                                                          | .
+14:30|Simultaneous session                                                                           | PO \* RB \* ?RP
+15:15|Break                                                                                          | .
+15:30|Machine learning                                                                               | BB or PO
+16:00|Summary and evaluation                                                                         | RB
+16:15|Done                                                                                           | .
+
+<!-- markdownlint-enable MD013 -->
 
 ## Preparation
 
@@ -61,11 +65,11 @@ Time  | Topic                   | State
 
 Currently, my sessions have two setups:
 
-![](tab_look.png)
+![The tab look](tab_look.png)
 
 > The tab look
 
-![](dropdown_look.png)
+![The dropdown look](dropdown_look.png)
 
 > The dropdown look
 
