@@ -28,7 +28,7 @@ sudo apt install jmol
 jmol 1UN3.pdb
 ```
 
-![`jmol` shows the `1UN3` protein](4_lumi_course/jmol_works.png)
+![`jmol` shows the `1UN3` protein](4_lumi_course/jmol_works_on_pdb.png)
 
 - [GROMACS on LUMI course](https://zenodo.org/records/10683366)
 

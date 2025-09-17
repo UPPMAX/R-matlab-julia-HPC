@@ -5,6 +5,10 @@ edit_uri: blob/main/docs-mk/
 
 nav:
     - Overview: index.md
+    - Prequisites: prereqs.md
+    - Common:
+      - HPC clusters: common/hpc_clusters.md
+      - Other courses: common/other_courses.md
     - R: 
       - Schedule: r/schedule.md
       - Intro: r/intro/README.md

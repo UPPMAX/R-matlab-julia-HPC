@@ -1,5 +1,7 @@
 # Welcome to R-MATLAB-Julia course material
 
+- [Prerequisites](prereqs.md)
+
 Day                |Language|Schedule
 -------------------|--------|-----------------------------------------
 Monday 6 October   |R       |[R schedule](r/schedule.md)
