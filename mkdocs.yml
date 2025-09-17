@@ -24,6 +24,7 @@ nav:
       - Load and run: matlab/load_runMatlab.md
       - MATLAB terminal and SLURM: matlab/slurmMatlab.md
       - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
+      - MATLAB Add-Ons: matlab/matlab-addons.md
     - Julia:
       - Schedule: julia/schedule.md
       - Intro: julia/intro.md
