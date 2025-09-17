@@ -7,6 +7,7 @@ nav:
     - Overview: index.md
     - Prequisites: prereqs.md
     - Common:
+      - Use the tarball: common/use_tarball.md
       - HPC clusters: common/hpc_clusters.md
       - Other courses: common/other_courses.md
     - R: 
