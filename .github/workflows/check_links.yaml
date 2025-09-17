@@ -6,13 +6,15 @@ name: Check links
 on:
   push:
     paths:
-      - 'docs/**'
       - .github/workflows/check_links.yaml
+      - 'docs/**'
+      - 'docs-mk/**'
       - mlc_config.json
   pull_request:
     paths:
-      - 'docs/**'
       - .github/workflows/check_links.yaml
+      - 'docs/**'
+      - 'docs-mk/**'
       - mlc_config.json
   schedule:
   - cron: "0 0 21 * *"
