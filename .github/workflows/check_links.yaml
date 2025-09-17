@@ -25,6 +25,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Remove folders that need no link checking
+        run: |
+          rm -rf meeting_notes
+
       # The link checker will only work if mlc_config.json is a valid JSON
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
@@ -35,7 +39,6 @@ jobs:
       # These are status code that cannot be ignored.
       - name: Internal links must checked, do not allow '400' in the 'aliveStatusCodes' of mlc_config.json
         run: if [[ $(grep --count --regexp "[^0-9]400[^0-9]" mlc_config.json) == "1" ]]; then echo "FOUND"; exit 42; fi
-
 
       # For an indented block, a link to a broken image is ignored, as the link checker assumes it to be code.
       # In our case, it is not: for us, it is usually an admonition (i.e. a 'question' or 'info' block)
