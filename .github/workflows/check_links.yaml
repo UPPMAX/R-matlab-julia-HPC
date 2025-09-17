@@ -8,13 +8,13 @@ on:
     paths:
       - .github/workflows/check_links.yaml
       - 'docs/**'
-      - 'docs-mk/**'
+      - 'docs-sphinx/**'
       - mlc_config.json
   pull_request:
     paths:
       - .github/workflows/check_links.yaml
       - 'docs/**'
-      - 'docs-mk/**'
+      - 'docs-sphinx/**'
       - mlc_config.json
   schedule:
   - cron: "0 0 21 * *"
@@ -33,12 +33,8 @@ jobs:
 
       - name: Remove files that want no link checking yet
         run: |
-          rm docs-mk/matlab/matlab-local-desktop.md
-          rm docs-mk/matlab/slurmMatlab.md
-          rm docs-mk/matlab/intro-matlab.md
-          rm docs-mk/matlab/load_runMatlab.md
-          rm docs-mk/r/interactive.md
-          rm docs-mk/r/batch.md
+          rm docs/r/interactive.md
+          rm docs/r/batch.md
 
       # The link checker will only work if mlc_config.json is a valid JSON
       - name: Validate JSON
