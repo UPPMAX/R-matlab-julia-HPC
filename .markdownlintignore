@@ -9,3 +9,11 @@ docs-mk/r/interactive.md
 docs-mk/r/morepackages.md
 docs-mk/r/packages.md
 sphinx-myst_test/README.md
+sphinx-myst_test/docs/julia/summaryJulia.md
+sphinx-myst_test/docs/julia/load_runJulia.md
+sphinx-myst_test/docs/julia/isolatedJulia.md
+sphinx-myst_test/docs/julia/introJulia.md
+sphinx-myst_test/docs/julia/interactiveJulia.md
+sphinx-myst_test/docs/julia/evaluationJulia.md
+sphinx-myst_test/docs/julia/batchJulia.md
+sphinx-myst_test/docs/index.md
