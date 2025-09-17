@@ -29,7 +29,6 @@
     - HPC2N has Kebnekaise with GPUs
     - LUNARC has Cosmos with GPUs (and Cosmos-SENS)
     - NSC has several clusters
-
       - BerzeLiUs (AI/ML, NAISS)
       - Tetralith (NAISS)
       - Sigma (LiU local)
@@ -38,13 +37,11 @@
       - Stratus (weather forecasts, located at NSC)
       - Cirrus (weather forecasts, located at SMHI)
       - We will be using Tetralith, which also has GPUs
-
     - PDC has Dardel with AMD GPUs
 
 !!! warning "Terminology: modules"
 
     We call the applications available via the *module system* **modules**.
-
     - [HPC2N](https://docs.hpc2n.umu.se/software/modules/)
     - [LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/)
     - [NSC](https://www.nsc.liu.se/software/modules/)
@@ -70,8 +67,7 @@ What is a cluster?
 ![A node](img/node.png)
 
 - The user logs in to **login nodes**  via Internet through ssh or Thinlinc.
-
-    - Here the file management and lighter data analysis can be performed.
+  - Here the file management and lighter data analysis can be performed.
 
 ![Multiple nodes](img/nodes.png)
 
