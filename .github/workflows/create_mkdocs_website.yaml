@@ -1,5 +1,5 @@
 # Creates and deploys the rendered site version of this repository
-name: Create MkD site
+name: Create MkDocs site
 
 # Controls when the workflow will run
 on:
@@ -26,8 +26,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "create_site"
-  create_site:
+  # This workflow contains a single job called "create_mkdocs_website"
+  create_mkdocs_website:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 

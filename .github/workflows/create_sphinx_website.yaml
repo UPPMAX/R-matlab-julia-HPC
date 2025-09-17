@@ -1,5 +1,5 @@
 # Creates the Sphinx website
-name: Create website
+name: Create Sphinx website
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  create_website:
+  create_sphinx_website:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.2.0
@@ -26,15 +26,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
-
-      - name: remove unused folders
-        run: |
-          rm -rf docs/julia/not_used
-          rm -rf docs/r/not_used
-          rm -rf docs/python
-          rm -rf docs/matlab/not_used
-          rm -rf docs/matlab/README.md
-          rm -rf docs/not_used
 
       - name: Build website, show error log if fail
         run: |
