@@ -55,6 +55,7 @@ mkdocs serve
 ### Building old sphinx version as we're transitioning
 
 1. Create and activate separate python venv:
+
     ```console
     mkdir oldsphinxenv
     python -m venv oldsphinxenv
@@ -62,6 +63,7 @@ mkdocs serve
     ```
 
 2. Install the correct requirements for sphinx:
+
     ```console
     pip install --upgrade pip
     pip install -r requirements.txt
@@ -70,6 +72,7 @@ mkdocs serve
 3. (I have not seen a case of needing to deactivate and reactivate the venv at
    this point for sphinx.) Build and deploy, automatically choosing an open
    port:
+
     ```console
     sphinx-autobuild --port 0 docs/ build/
     ```

@@ -1,4 +1,4 @@
-# LUMI course 
+# LUMI course
 
 Get the data:
 
@@ -86,8 +86,6 @@ Hardware detected on host richel-latitude-7430 (the node of MPI rank 0):
 Likely fastest SIMD instructions supported by all nodes: AVX2_256
 SIMD instructions selected at compile time:              SSE4.1
 ```
-
-
 
 
 Running on Pelle:

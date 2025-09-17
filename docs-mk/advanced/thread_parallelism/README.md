@@ -73,7 +73,7 @@ with a custom amount of cores.
     ```bash
     sbatch -A staff -n 1 do_r_2d_integration_on_rackham.sh
     ```
- 
+
 HPC cluster|Julia Slurm script                                  |MATLAB Slurm script                                 |R Slurm script
 -----------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------
 Alvis      |.                                                   |.                                                   |.
@@ -123,7 +123,7 @@ R       |[do_2d_integration.R](do_2d_integration.R)
 This is the script that starts a benchmark,
 by submitting multiple jobs to the Slurm queue.
 
-The goal of the benchmark script is to 
+The goal of the benchmark script is to
 do a fixed unit of work
 with increasingly more cores.
 
@@ -154,10 +154,9 @@ Tetralith  |.                                                       |.          
 
 ## Analysis script
 
-The goal of the analysis script is to 
-observe the relation between 
+The goal of the analysis script is to
+observe the relation between
 the number of cores and core runtime.
-
 
 
 <!-- old stuff below 
