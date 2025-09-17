@@ -72,14 +72,14 @@ mkdocs serve
     source oldsphinxenv/bin/activate
     ```
 
-2. Install the correct requirements for Sphinx:
+1. Install the correct requirements for Sphinx:
 
     ```console
     pip install --upgrade pip
     pip install -r requirements.txt
     ```
 
-3. (I have not seen a case of needing to deactivate and reactivate the `venv` at
+1. (I have not seen a case of needing to deactivate and reactivate the `venv` at
    this point for Sphinx.) Build and deploy, automatically choosing an open
    port:
 

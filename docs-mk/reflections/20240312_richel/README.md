@@ -2,7 +2,7 @@
 
 * Teaching day: 2023-03-12
 * Topic: Python
-* Written on 2023-03-12
+* Written on 2023-03-12 by Richel
 
 ## Schedule
 
@@ -25,7 +25,7 @@ Time     |Topic                      |Teacher
 **14.25**|Conclusion & Q/A           |Birgitte
 **14.45**|Evaluation                 |Richel
 
-## Reflection
+## Reflection 1
 
 I prepared well for the lessons, as I remembered from the
 previous course iteration that my material was not blended
@@ -224,7 +224,7 @@ Misc:
   and env extra useful in the future!
 * info mail was +1, same for material
 
-### Reflection
+### Reflection 2
 
 The learners again like the structure of the course and the course material.
 
@@ -327,7 +327,7 @@ should get accustomed to the documentation of his/her HPC center.
 * If prerequisite is well informed, such as little knowledge on Linus?
   it would have been better.
 
-### Reflection
+### Reflection 3
 
 Most of the negative feedback was about the high pace
 in general, yet mostly in the afternoon.
@@ -472,7 +472,7 @@ Instead, doing Pair-Share-Pound in little groups would make it work.
   Just use them as backup if anyone need to get private help.
 * i really need more time for exercises
 
-### Reflection
+### Reflection 4
 
 I agree that the Zoom setup could be improved, next to the technical problems.
 

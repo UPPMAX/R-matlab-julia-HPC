@@ -88,7 +88,8 @@ which was moved to 13:45-13:55. I felt 15 mins would have been enough,
 10 mins was too short.
 
 At 14:00-14:25, I and the Rackham learners did an exercises on `interactive`
-and conda. I think it was enough time. Note that creating a new conda environment
+and conda.
+I think it was enough time. Note that creating a new conda environment
 takes 13 minutes, which I used to talk about Python things with the learners.
 
 ## [W3] We tried out something new: a new format for the evaluation
@@ -155,7 +156,11 @@ to prepare. I decided to prepare ruthlessly, ignoring email and other comms
 for some weeks. I knew this would be annoying to the team,
 yet I trusted the team would make the right decisions without me.
 
+<!-- markdownlint-disable MD013 --><!-- Headers cannot be split up over lines, hence will break 80 characters per line -->
+
 ## [I6] Tell students clearly what to do: observe or type along or do an exercise
+
+<!-- markdownlint-enable MD013 -->
 
 There was this feedback given during the lesson: a student asked
 to another instructor: 'Should we watch or type along?'.
@@ -208,22 +213,31 @@ Google Form.
 
 Hmmm that is quite some variation there...
 
+<!-- markdownlint-disable MD013 --><!-- Headers cannot be split up over lines, hence will break 80 characters per line -->
+
 ### Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?
+
+<!-- markdownlint-enable MD013 -->
 
 * Cou[r]se materials are really nicely put together
 * Formatted ReadTheDocs
 * Good material
-* I liked how easy it was to ask questions, how friendly the lecturers / organizers were and that there was time for trying it yourself. The course material is really nice to read and helpful.
+* I liked how easy it was to ask questions,
+  how friendly the lecturers / organizers were
+  and that there was time for trying it yourself.
+  The course material is really nice to read and helpful.
 
 This is nice to hear!
 
-* I liked the 'code along' parts, when it worked and was an appropriate pace one could actually follow.
+* I liked the 'code along' parts,
+  when it worked and was an appropriate pace one could actually follow.
 
 Unsure if this about mine or Birgittes parts :-|
 
 * Materials
 * That materials were extensive and provided (both in advance and during the day).
-The break-out session was good to let me ask the stupid questions to fellows that could help out or make me catch up.
+  The break-out session was good to let me ask the stupid questions
+  to fellows that could help out or make me catch up.
 
 The goal of the break-out sessions has been achieved :-)
 
@@ -237,42 +251,88 @@ I will fix this in the future.
 * materials
 * structure
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 ### Today's content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?
 
-* Create one single entrance point for all the material where links to the rest are to be found. I got lost with five or more different links, folders and the information overflow as it got started. I also missed the big picture of the super computer (no previous experience), how the different systems are related, the main difference of Rackham and hp2cn/kebnekaise and so on. I felt I have too little information to make informed choices. For example, it would be easier if everybody used the same server, and only one...
+<!-- markdownlint-enable MD013 -->
+
+* Create one single entrance point for all the material
+  where links to the rest are to be found.
+  I got lost with five or more different links, folders and the information
+  overflow as it got started.
+  I also missed the big picture of the super computer
+  (no previous experience), how the different systems are related,
+  the main difference of Rackham and hp2cn/kebnekaise and so on.
+  I felt I have too little information to make informed choices.
+  For example, it would be easier if everybody used the same server,
+  and only one...
 
 I agree I should harmonize the course material more.
 
-* For some tasks, there was too much time allocated, for example for the pip installs at the start. I would suggest checking in with students more frequently about if they are done or not, and then continuing. Or students could be instructed to join the main room again when they are done. This way, if someone takes longer, you could see who is left in the breakout rooms and check in with them.
+* For some tasks, there was too much time allocated,
+  for example for the pip installs at the start.
+  I would suggest checking in with students more frequently
+  about if they are done or not, and then continuing.
+  Or students could be instructed to join the main room again
+  when they are done. This way, if someone takes longer,
+  you could see who is left in the breakout rooms and check in with them.
 
 I agree that we mistimed some sessions and we already plan to change that.
 The Zoom breakout room setup is intentional: we do checkup regularly with
 the students and we do not call the students back when all are done earlier.
 I feel this gives rest and clarity to the course.
 
-* It looked like everything was rushed up and it was not clear what we were supposed to do in the breakout rooms
+* It looked like everything was rushed up and it was not clear what we were
+  supposed to do in the breakout rooms
 
 After each exercise, the instructors always checked if the learners understood
 what to do. Most students usually knew what to do.
 
-* It will be good if you give a small introduction about different uppmax servers and what are the differences at the beginning of the course.
+* It will be good if you give a small introduction about different uppmax
+  servers and what are the differences at the beginning of the course.
 
 Maybe.
 
 * Lectures should be given more time (or the contents reduced).
-   Unfortunately it was at times a hard to follow.
-   Perhaps, also, make it a bit more clear what is expected from the exercises.
+  Unfortunately it was at times a hard to follow.
+  Perhaps, also, make it a bit more clear what is expected from the exercises.
 
-* Maybe actually follow the material that is there. It's hard for us to do exercises and go back and check later when one of the presenters just had his own material. Also, maybe make actual parallel sessions instead of going break rooms. Too much time in break rooms in general, and then other sections got rushed.
+* Maybe actually follow the material that is there.
+  It's hard for us to do exercises and go back and check later
+  when one of the presenters just had his own material.
+  Also, maybe make actual parallel sessions instead of going break rooms.
+  Too much time in break rooms in general, and then other sections got rushed.
 
 I agree, I should harmonize the materials.
 
-* Maybe have two streams, since most Python programmers already know about venv, etc.
+* Maybe have two streams, since most Python programmers
+  already know about venv, etc.
 
 We cannot. There are plans to teach other courses at two different levels,
 so that we split absolute beginners from the more advanced students.
 
-* Much more time spent on code along and instructions, this would improve the course a lot I think! I understand and respect that for you this is very clear and it flows really easily. But for us who is watching over zoom: scrolling up and down fast while screen sharing makes it impossible to follow; as it is over zoom the instructions for the exercise part needs to be much clearer in my view, also do this - BEFORE - entering breakout rooms; additional thought about exercises is what really are the exercises, the ones stated at the end of each lecture part or the text/instructions embedded in the ‘slides’ in the instruction pages; the ‘messages’ that can be sent out to the breakout rooms are hard to notice sometimes while working on exercise, perhaps paste this in chat and/or document so one can re-read; please specify clearly how long a task 'should' take approx. (is the whole time in breakout rooms dedicated to the assigned task, or is the time also there for break); specify in start of each part/‘lecture’ what the plan is maybe?; ‘slides’ can be a bit clearer I would say. Thank you, though! I understand that this is no easy feat to lecture and teach HPC over zoom. You didi a great job, but these are things I wish for at least.
+* Much more time spent on code along and instructions, this would improve
+  the course a lot I think!
+  I understand and respect that for you this is very clear
+  and it flows really easily.
+  But for us who is watching over zoom: scrolling up and down fast
+  while screen sharing makes it impossible to follow;
+  as it is over zoom the instructions for the exercise part
+  needs to be much clearer in my view, also do this - BEFORE - entering
+  breakout rooms; additional thought about exercises is what really
+  are the exercises, the ones stated at the end of each lecture part or
+  the text/instructions embedded in the ‘slides’ in the instruction pages;
+  the ‘messages’ that can be sent out to the breakout rooms are hard
+  to notice sometimes while working on exercise,
+  perhaps paste this in chat and/or document so one can re-read;
+  please specify clearly how long a task 'should' take approx.
+  (is the whole time in breakout rooms dedicated to the assigned task,
+  or is the time also there for break); specify in start of each
+  part/‘lecture’ what the plan is maybe?; ‘slides’ can be a bit clearer
+  I would say. Thank you, though! I understand that this is no easy feat to
+  lecture and teach HPC over zoom.
+  You didi a great job, but these are things I wish for at least.
 
 I like this extensive feedback! To compensate for unclear instructions (to some)
 for a breakout-room exercise, we teachers always visited the break-out rooms
@@ -285,11 +345,16 @@ Comment from 2024-01-24: I am happy to see I took this feedback seriously,
 practiced this and forgot it was based on this! Now I always show the
 exercise before sending the learners to a breakout room :-)
 
-* The first should be how to run a simple script.  "batch mode" should come before "virtual environments".  Also, avoid "pip" at the start, take that later since modules are enough for standard tasks
+* The first should be how to run a simple script.
+  "batch mode" should come before "virtual environments".
+  Also, avoid "pip" at the start,
+  take that later since modules are enough for standard tasks
 
 I like this suggestion!
 
-* a little bit too much information too fast during the zoom call. It's not possible to fit in all your superb infos from the material in the course itself
+* a little bit too much information too fast during the zoom call.
+  It's not possible to fit in all your superb infos
+  from the material in the course itself
 * materials
 
 
@@ -359,7 +424,9 @@ instructor performance 10% higher.
 
 I agree. This is unavoidable.
 
-* Drop the break out rooms and having people go there for exercises. Or just make a silent room for those that don't want to discuss and rest can stay in main room. Wastes time.
+* Drop the break out rooms and having people go there for exercises.
+  Or just make a silent room for those that don't want to discuss
+  and rest can stay in main room. Wastes time.
 
 Assuming this was about me putting people in breakout rooms:
 I will not do this. I think it is very important to put people in different
@@ -369,7 +436,12 @@ smaller groups, so that people can discuss and a teacher can check.
 * No
 * Overall nicely put together course
 * Thanks!
-* generally, the teaching speed was a bit high and then lots of waiting time in-between, but if you get lost, it's hard to catch up later when all is presented in a serial way. If the entire chain is provided (and I as participant know the path we are following), I could potentially use the breaks to catch up later and jump back in.
+* generally, the teaching speed was a bit high and then lots of waiting time
+  in-between, but if you get lost, it's hard to catch up later
+  when all is presented in a serial way.
+  If the entire chain is provided
+  (and I as participant know the path we are following),
+  I could potentially use the breaks to catch up later and jump back in.
 
 My parts indeed needed less time. We'll adept :-)
 
@@ -387,5 +459,11 @@ conda   |25 mins      |25 mins         | 30 mins
 * Have a pre-course login session for those that need it
 * No Zoom chat, only use shared document
 * No anonymous evaluation needed if the Google Form is so good
-* Suggest to follow this students' suggestion: 'The first should be how to run a simple script. "batch mode" should come before "virtual environments".  Also, avoid "pip" at the start, take that later since modules are enough for standard tasks'
-* I will: schedule more time to prepare, due to that have the time to communicate with the team more and merge/harmonize course materials
+* Suggest to follow this students' suggestion:
+  'The first should be how to run a simple script. "batch mode" should come
+  before "virtual environments".
+  Also, avoid "pip" at the start, take that later since modules
+  are enough for standard tasks'
+* I will: schedule more time to prepare,
+  due to that have the time to communicate with the team more
+  and merge/harmonize course materials
