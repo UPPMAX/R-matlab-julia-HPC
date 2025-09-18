@@ -42,6 +42,7 @@
 !!! warning "Terminology: modules"
 
     We call the applications available via the *module system* **modules**.
+
     - [HPC2N](https://docs.hpc2n.umu.se/software/modules/)
     - [LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/)
     - [NSC](https://www.nsc.liu.se/software/modules/)

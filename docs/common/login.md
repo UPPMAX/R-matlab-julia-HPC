@@ -6,8 +6,8 @@
 
     - [You have fulfilled the prerequisites](../prereqs.md)
     - [You have prepared your environment](../preparations.md):
-      - you can log in
-      - you can start a text editor
+        - you can log in
+        - you can start a text editor
 
     We will also download exercise snippets and solutions
     that you can work with:
@@ -121,7 +121,7 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
     Please log in to Rackham, Kebnekaise, or other cluster that you are using.
 
     === "UPPMAX"
-
+        
         1. Log in to Rackham!
 
         - Terminal: ``ssh -X <user>@rackham.uppmax.uu.se``
@@ -142,6 +142,7 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
 
     === "HPC2N"
 
+        
         - Kebnekaise through terminal: `<user>@kebnekaise.hpc2n.umu.se`
         - Kebnekaise through ThinLinc, use: `<user>@kebnekaise-tl.hpc2n.umu.se`
         - Create a working directory where you can code along.
@@ -154,32 +155,33 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
 
     === "LUNARC"
 
-         - Cosmos through terminal: ``<user>@cosmos.lunarc.lu.se``
-         - Cosmos through ThinLinc, use: ``<user>@cosmos-dt.lunarc.lu.se``
+        - Cosmos through terminal: ``<user>@cosmos.lunarc.lu.se``
+        - Cosmos through ThinLinc, use: ``<user>@cosmos-dt.lunarc.lu.se``
 
-         - Create a working directory in your home space where you can code along.
+        - Create a working directory in your home space where you can code along.
 
-           - Example. Create this folder:
+        Example. Create this folder:
 
-           .. code-block:: console
-
-              $ mkdir $HOME/r-matlab-julia
+        ```bash
+        mkdir $HOME/r-matlab-julia
+        ```
 
     === "NSC"
 
-         - Tetralith through terminal or Thinlinc: ``<user>@tetralith.nsc.liu.se``
+        - Tetralith through terminal or Thinlinc: ``<user>@tetralith.nsc.liu.se``
 
-         - Create a working directory where you can code along.
+        - Create a working directory where you can code along.
 
-           - Example. If your username is jlpicard and you are at NSC,
-             then we recommend you create this folder:
+        Example. If your username is jlpicard and you are at NSC,
+         then we recommend you create this folder:
 
-           .. code-block:: console
+        ```bash
+        mkdir /proj/r-matlab-julia-naiss/jlpicard
+        ```
 
-              $ mkdir /proj/r-matlab-julia-naiss/jlpicard
 
     === "PDC"
-        
+
         - Dardel through terminal: ``<user>@dardel.pdc.kth.se``
         - Dardel through ThinLinc: ``<user>@dardel-vnc.pdc.kth.se``
 
@@ -190,7 +192,7 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
 
         - Example. If your username is sevenof9 and you are at PDC,
           then we recommend you create this folder:
-
+        
         ```bash
         mkdir /cfs/klemming/projects/supr/r-matlab-julia-naiss/sevenof9/
         ```
