@@ -8,16 +8,13 @@ image:
 
 environment:
   matrix:
-  - TOXENV: py38    # https://devguide.python.org/versions
+  - TOXENV: py38
 
 build: false
 
 build_script:
   - pip install --upgrade pip
   - pip install -r mkdocs-requirements.txt
-  - mkdocs serve
-
-# If one wants to see the full file structure
-# on_failure:
-#   - ps: Get-ChildItem -Recurse "$env:APPVEYOR_BUILD_FOLDER\build" -ErrorAction SilentlyContinue | Out-String | Write-Host
-
+  - mkdocs build
+  # Will deploy the website and this build will stall
+  # - mkdocs serve
