@@ -4,7 +4,6 @@ name: Check Markdown
 # Check Markdown on the 18th day of the month.
 # 18th as the first letter of this repo is the 18th letter in the alphabet.
 on:
-on:
   push:
     paths:
       - .github/workflows/check_markdown.yaml
