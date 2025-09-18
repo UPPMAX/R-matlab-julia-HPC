@@ -1,6 +1,6 @@
 # R evaluation 2023-10-19
 
-- Reflections: [Richel](../../reflections/20231019_richel/README.md)
+- Reflections: [Richel](../../reflections/20231017_richel/README.md)
 
 ## Spoken evaluation
 

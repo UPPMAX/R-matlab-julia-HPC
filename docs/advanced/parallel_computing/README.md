@@ -25,10 +25,6 @@
     - When to use parallel computing?
     - When not to use parallel computing?
 
-
-![Arnold (at the left): a robot that was controlled by MPI](arnold.jpg)
-![Cora, the robotic platform for Arnold](cora.jpg)
-
 ## Why parallel computing is important
 
 Most HPC clusters use 10 days as a maximum duration for a job.

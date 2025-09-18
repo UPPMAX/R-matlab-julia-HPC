@@ -194,7 +194,7 @@ I will count this under 'materials'.
 * materials, exercise and structure
 * Materials and structure were good
 * Clear exercises and instructions, availability of deepening material
-* <https://uppmax.github.io/R-python-julia-HPC/prereqs.html>
+* `[URL to prerequisites]`
   <- this webpage was great!
 * materials
 * Very good material, mostly in one location
