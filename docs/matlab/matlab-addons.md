@@ -38,7 +38,7 @@ Before going into installing Add-Ons, let's have a background to the MATLAB envi
 
 <!---
 <div align="center">
-  <img src="../../docs-sphinx/matlab/img/Toolbar_Add-Ons.PNG" alt="MATLAB Add-ons" width="500"/>
+  <img src="./img/Toolbar_Add-Ons.PNG" alt="MATLAB Add-ons" width="500"/>
 </div
 -->
 
@@ -46,18 +46,18 @@ In the GUI, the Add-Ons manager can be selected from the menu at the top. The dr
 
 - **Browse a library of Add-Ons to download.** Note that some Add-Ons require a separate license.
 
-???- question "What does that look like?"
+???- tip "What does that look like?"
 
     <div align="center">
-        <img src="../../docs-sphinx/matlab/img/Add-On_explorer.PNG" alt="Add-on Explorer" width="500"/>
+        <img src="./img/Add-On_explorer.PNG" alt="Add-on Explorer" width="500"/>
     </div>
 
 - **Manage Add-Ons already downloaded.**
 
-???- question "What does that look like?"
+???- tip "What does that look like?"
    
     <div align="center">
-        <img src="../../docs-sphinx/matlab/img/Add-On_manager.PNG" alt="Add-on Manager" width="500"/>
+        <img src="./img/Add-On_manager.PNG" alt="Add-on Manager" width="500"/>
     </div>
 
 - Package user-generated code as a Toolbox or App
@@ -71,7 +71,7 @@ Here we will only focus on the first two options.
     Note that very many packages are already included in the Academic installation and license. You can go to the Add-On explorer and select "View My Products" to see what is available.
 
     <div align="center">
-      <img src="../../docs-sphinx/matlab/img/my_products.PNG" alt="View My Products" width="500"/>
+      <img src="./img/my_products.PNG" alt="View My Products" width="500"/>
     </div>
 
 !!! seealso 
@@ -93,7 +93,7 @@ Here we will only focus on the first two options.
 - Search in Add-Ons explorer and install.
 
 <div align="center">
-  <img src="../../docs-sphinx/matlab/img/searchforaddons.PNG" alt="Search for Add-ons" width="500"/>
+  <img src="./img/searchforaddons.PNG" alt="Search for Add-ons" width="500"/>
 </div>
 
 - Installation goes in local folder, `~/MATLAB Add-Ons`, and should be accessible wherever you are in the file tree.
@@ -172,11 +172,11 @@ You can install some Add-Ons manually using an installation file. This is useful
 
 ## Exercises
 
-!!! example "**Challenge 1.**"
+!!! note "<img src="../../images/shell-logo_small.png"> Exercise"
 
     Find the **kalmanf** add-on, install it, and run a test command. Use the Demo as instruction.
 
-!!! example "**Challenge 2.** (Optional)"
+!!! note "<img src="../../images/shell-logo_small.png"> Exercise" (Optional)"
 
     Browse the add-ons and get inspired for your own work. Use the Demo as inspiration.
 
