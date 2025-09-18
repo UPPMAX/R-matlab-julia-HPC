@@ -391,7 +391,7 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
 
      For UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
 
-     ![MATLAB GUI, Rackham](../../img/Rackham-Matlab.png)
+     ![MATLAB GUI, Rackham](../img/Rackham-Matlab.png)
 
      It is also possible to start the MATLAB GUI on the login node, but even if you are already logged into Rackham, you must use Snowy for any interactive work. Fortunately, the ``interactive`` command takes care of this for you without requiring SSH, as long as you specify ``-M snowy``. A MATLAB GUI session can be run with the following commands (again, edit time, resources, project ID, and MATLAB version as needed):
 
