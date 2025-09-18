@@ -59,7 +59,7 @@ then
   echo "- julia"
   echo "- matlab"
   echo "- r"
-  exit 41
+  exit 42
 fi
 
 # Detect HPC cluster
@@ -91,15 +91,22 @@ then
   echo "- bianca"
   echo "- pelle"
   echo "- rackham"
-  exit 41
+  exit 42
 fi
 
 # Script filename
-scriptname="do_${language}_2d_integration_on_${hpc_cluster}.sh"
-echo "Script name: ${scriptname}"
+script_name="do_${language}_2d_integration_on_${hpc_cluster}.sh"
+echo "Script name: ${script_name}"
+
+if [ ! -f "${script_name}" ]; then
+  echo "ERROR: script with name '${script_name}' not found."
+  echo " "
+  echo "Add it :-)"
+  exit 42
+fi
 
 # Schedule all the jobs
 for n_cores in $(seq 1 64)
 do 
-  sbatch -A "${slurm_job_account}" -n "${n_cores}" "${scriptname}"
+  sbatch -A "${slurm_job_account}" -n "${n_cores}" "${script_name}"
 done
