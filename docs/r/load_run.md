@@ -71,203 +71,171 @@ to start R.
      Tetralith  | Local ThinLinc client  | [Here](https://youtu.be/HxBtyCB3w0k)
 
 
-+------------------+-------------------+
-| HPC cluster name |Main breakout room |
-+------------------+-------------------+
-| COSMOS           |Room 1             |
-+------------------+-------------------+
-| Dardel           |Room 2             |
-+------------------+-------------------+
-| Kebnekaise       |Room 3             |
-+------------------+-------------------+
-| Rackham          |Room 4             |
-+------------------+-------------------+
-| Tetralith        |Room 5             |
-+------------------+-------------------+
+HPC cluster name |Main breakout room
+-----------------+------------------
+Alvis            |.             
+Bianca           |.             
+COSMOS           |Room 1             
+Dardel           |Room 2             
+Kebnekaise       |Room 3             
+LUMI             |.
+Pelle            |.
+Rackham          |Room 4             
+Tetralith        |Room 5             
 
-Exercise 1: start the R interpreter
+## Exercise 1: start the R interpreter
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Find the user documentation of your HPC cluster
 
-- Find the documentation of your HPC cluster
+??? hint "Answer"
 
-.. admonition:: Answer
-    :class: dropdown
-
-    +------------+-----------------------------------------------------------------------------------+
-    | HPC cluster| Location                                                                          |
-    +============+===================================================================================+
-    | COSMOS     | `Here <https://lunarc-documentation.readthedocs.io/en/latest/>`__                 |
-    +------------+-----------------------------------------------------------------------------------+
-    | Dardel     | `Here <https://support.pdc.kth.se/doc/contact/contact_support/>`__                                |
-    +------------+-----------------------------------------------------------------------------------+
-    | Kebnekaise | `Here <https://docs.hpc2n.umu.se/>`__                                             |
-    +------------+-----------------------------------------------------------------------------------+
-    | Rackham    | `Here <http://docs.uppmax.uu.se/>`__                                              |
-    +------------+-----------------------------------------------------------------------------------+
-    | Tetralith  | `Here <https://www.nsc.liu.se/support/systems/tetralith-getting-started/>`__      |
-    +------------+-----------------------------------------------------------------------------------+
+    HPC cluster| User documentation for that HPC cluster
+    -----------+-----------------------------------------------------------------------------------
+    Alvis      | .
+    Bianca     | [User documentation](http://docs.uppmax.uu.se/)
+    COSMOS     | [User documentation](https://lunarc-documentation.readthedocs.io/en/latest)
+    Dardel     | [User documentation](https://support.pdc.kth.se/doc/contact/contact_support/)
+    Kebnekaise | [User documentation](https://docs.hpc2n.umu.se/)
+    LUMI       | .
+    Pelle      | [User documentation](http://docs.uppmax.uu.se/)
+    Rackham    | [User documentation](http://docs.uppmax.uu.se/)
+    Tetralith  | [User documentation](https://www.nsc.liu.se/support/systems/tetralith-getting-started/)
 
 - Within the documentation of your HPC cluster, search for the documentation about R
 
-.. admonition:: Answer
-    :class: dropdown
+??? hint "Answer"
 
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | HPC cluster| Page name and location                                                                                         |
-    +============+================================================================================================================+
-    | COSMOS     | `R Software environment <https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Rscript/>`__|
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Dardel     | `R <https://support.pdc.kth.se/doc/applications/?sub=r/>`__                                                    |
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Kebnekaise | `R <https://www.hpc2n.umu.se/resources/software/r>`__                                                          |
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Rackham    | `R <https://docs.uppmax.uu.se/software/r/>`__                                                                  |
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Tetralith  | `R <https://www.nsc.liu.se/software/catalogue/tetralith/modules/r.html>`__                                     |
-    +------------+----------------------------------------------------------------------------------------------------------------+
+    HPC cluster| R user documentation for that HPC cluster
+    -----------+----------------------------------------------------------------------------------------------------------------
+    Alvis      | .
+    Bianca     | [R user documentation](https://docs.uppmax.uu.se/software/r/)
+    COSMOS     | [R user documentation](https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Rscript/)
+    Dardel     | [R user documentation](https://support.pdc.kth.se/doc/applications/?sub=r/)
+    Kebnekaise | [R user documentation](https://www.hpc2n.umu.se/resources/software/r)
+    LUMI       | .
+    Pelle      | [R user documentation](https://docs.uppmax.uu.se/software/r/)
+    Rackham    | [R user documentation](https://docs.uppmax.uu.se/software/r/)
+    Tetralith  | [R user documentation](https://www.nsc.liu.se/software/catalogue/tetralith/modules/r.html)
 
 - From the terminal, load the module(s) for R,
   of the recommend version as shown below
 
-+----------+---------+
-|HPC center|R version|
-+==========+=========+
-|COSMOS    |4.2.1    |
-+----------+---------+
-|Dardel    |4.1.1    |
-+----------+---------+
-|Kebnekaise|4.1.2    |
-+----------+---------+
-|Rackham   |4.1.1    |
-+----------+---------+
-|Tetralith |4.2.2    |
-+----------+---------+
+HPC center|R version
+----------+---------
+Alvis     |?
+Bianca    |?4.1.1    
+COSMOS    |4.2.1    
+Dardel    |4.1.1    
+Kebnekaise|4.1.2    
+LUMI      |?
+Pelle     |?4.1.1    
+Rackham   |4.1.1    
+Tetralith |4.2.2    
 
-.. admonition:: Answer
-    :class: dropdown
+??? hint "Answer"
 
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | HPC cluster| How to load the module(s) for R                                                                                |
-    +============+================================================================================================================+
-    | COSMOS     | :code:`module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1`                                                           |
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Dardel     | :code:`module load PDC/23.12 R/4.1.1`                                                                          |
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Kebnekaise | :code:`module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2`                                                           |
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Rackham    | :code:`module load R/4.1.1`                                                                                    |
-    +------------+----------------------------------------------------------------------------------------------------------------+
-    | Tetralith  | :code:`module load R/4.2.2-hpc1-gcc-11.3.0-bare`                                                               |
-    +------------+----------------------------------------------------------------------------------------------------------------+
+    HPC cluster| How to load the module(s) for R                                                                                
+    -----------+----------------------------------------------------------------------------------------------------------------
+    Alvis      | .
+    Bianca     | `module load R/4.1.1`                                                                                    
+    COSMOS     | `module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1`                                                           
+    Dardel     | `module load PDC/23.12 R/4.1.1`                                                                          
+    Kebnekaise | `module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2`                                                           
+    LUMI       | .
+    Pelle      | `module load R/4.1.1`                                                                                    
+    Rackham    | `module load R/4.1.1`                                                                                    
+    Tetralith  | `module load R/4.2.2-hpc1-gcc-11.3.0-bare`                                                               
 
 - From the terminal, start the R interpreter
 
-.. admonition:: Answer
-    :class: dropdown
+??? hint "Answer"
 
-    +------------+----------------------------------+
-    | HPC cluster| How to start the R interpreter   |
-    +============+==================================+
-    | COSMOS     | :code:`R`                        |
-    +------------+----------------------------------+
-    | Dardel     | :code:`R`                        |
-    +------------+----------------------------------+
-    | Kebnekaise | :code:`R`                        |
-    +------------+----------------------------------+
-    | Rackham    | :code:`R`                        |
-    +------------+----------------------------------+
-    | Tetralith  | :code:`R`                        |
-    +------------+----------------------------------+
+    HPC cluster| How to start the R interpreter   
+    -----------+----------------------------------
+    Alvis      | `R`                        
+    Bianca     | `R`                        
+    COSMOS     | `R`                        
+    Dardel     | `R`                        
+    Kebnekaise | `R`                        
+    LUMI       | `R`                        
+    Pelle      | `R`                        
+    Rackham    | `R`                        
+    Tetralith  | `R`                       
 
-- From the R interpreter, run the R code :code:`message("Hello")`
+- From the R interpreter, run the R code `message("Hello")`
   to verify if this
   makes the R interpreter show the text 'Hello'
 
-- From the R interpreter, run the R code :code:`quit()`
+- From the R interpreter, run the R code `quit()`
   to quit the R interpreter
   and go back to the terminal
 
 
-Exercise 2: run an R script
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Exercise 2: run an R script
 
 To run an R script, we'll download one, after which we'll run it:
 
-- From the terminal, run :code:`wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/r/hello.R`
+- From the terminal, run `wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/r/hello.R`
 
-- From the terminal, run :code:`Rscript hello.R`
+- From the terminal, run `Rscript hello.R`
 
-Exercise 3: download and extract the tarball with exercises
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Exercise 3: download and extract the tarball with exercises
 
-See `here <https://uppmax.github.io/R-matlab-julia-HPC/common/use_tarball.html>`_
+See [how to download and use the tarball](../common/use_tarball.md)
 how to download and extract the tarball with exercises.
 
-Exercise X1: find and use installed R packages
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Exercise X1: find and use installed R packages
 
 - From the R interpreter, check which packages are installed,
-  using :code:`installed.packages()`
+  using `installed.packages()`
 
-.. admonition:: Answer
-    :class: dropdown
+??? hint "Answer"
 
-    +------------+----------------------------------+
-    | HPC cluster| Answe                            |
-    +============+==================================+
-    | COSMOS     | :code:`installed.packages()`     |
-    +------------+----------------------------------+
-    | Dardel     | :code:`installed.packages()`     |
-    +------------+----------------------------------+
-    | Kebnekaise | :code:`installed.packages()`     |
-    +------------+----------------------------------+
-    | Rackham    | :code:`installed.packages()`     |
-    +------------+----------------------------------+
-    | Tetralith  | :code:`installed.packages()`     |
-    +------------+----------------------------------+
+    HPC cluster| Answer                            
+    -----------+----------------------------------
+    Alvis      | `installed.packages()`     |
+    Bianca     | `installed.packages()`     |
+    COSMOS     | `installed.packages()`     |
+    Dardel     | `installed.packages()`     |
+    Kebnekaise | `installed.packages()`     |
+    LUMI       | `installed.packages()`     |
+    Pelle      | `installed.packages()`     |
+    Rackham    | `installed.packages()`     |
+    Tetralith  | `installed.packages()`     |
 
-- From the R interpreter, load the ``parallel`` package,
-  using :code:`library(parallel)`
+- From the R interpreter, load the `parallel` package,
+  using `library(parallel)`
 
-.. admonition:: Answer
-    :class: dropdown
+??? hint "Answer"
 
-    +------------+----------------------------------+
-    | HPC cluster| Answe                            |
-    +============+==================================+
-    | COSMOS     | :code:`library(parallel)`        |
-    +------------+----------------------------------+
-    | Dardel     | :code:`library(parallel)`        |
-    +------------+----------------------------------+
-    | Kebnekaise | :code:`library(parallel)`        |
-    +------------+----------------------------------+
-    | Rackham    | :code:`library(parallel)`        |
-    +------------+----------------------------------+
-    | Tetralith  | :code:`library(parallel)`        |
-    +------------+----------------------------------+
+    HPC cluster| Answer                            
+    -----------+----------------------------------
+    Alvis      | `library(parallel)`        
+    Bianca     | `library(parallel)`        
+    COSMOS     | `library(parallel)`        
+    Dardel     | `library(parallel)`        
+    Kebnekaise | `library(parallel)`        
+    LUMI       | `library(parallel)`        
+    Pelle      | `library(parallel)`        
+    Rackham    | `library(parallel)`        
+    Tetralith  | `library(parallel)`        
 
 
-Exercise X2: search for other R versions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Exercise X2: search for other R versions
 
 Use the module system to find which versions of R are provided
 by your cluster's module system.
 
-.. admonition:: Answer
-    :class: dropdown
+??? hint "Answer"
 
-    +------------+----------------------------------+
-    | HPC cluster| How to search for the R modules  |
-    +============+==================================+
-    | COSMOS     | :code:`module spider R`          |
-    +------------+----------------------------------+
-    | Dardel     | :code:`module spider R`          |
-    +------------+----------------------------------+
-    | Kebnekaise | :code:`module spider R`          |
-    +------------+----------------------------------+
-    | Rackham    | :code:`module spider R`          |
-    +------------+----------------------------------+
-    | Tetralith  | :code:`module spider R`          |
-    +------------+----------------------------------+
+    HPC cluster| How to search for the R modules  
+    -----------+----------------------------------
+    Alvis      | `module spider R`          
+    Bianca     | `module spider R`          
+    COSMOS     | `module spider R`          
+    Dardel     | `module spider R`          
+    Kebnekaise | `module spider R`          
+    LUMI       | .
+    Pelle      | `module spider R`          
+    Rackham    | `module spider R`          
+    Tetralith  | `module spider R`          
