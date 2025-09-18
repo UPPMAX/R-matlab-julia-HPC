@@ -54,7 +54,8 @@ jobs:
       # Results in error. Idiom taken from
       # https://stackoverflow.com/a/54439997/3364162
       - name: Check threaded parallelism script for style
-        run: Rscript -e "quit(save = 'no', status = length(lintr::lint('docs/advanced/thread_parallelism/do_2d_integration.R')))"
+        run: Rscript -e "lintr::lint('docs/advanced/thread_parallelism/do_2d_integration.R')"
+        env: LINTR_ERROR_ON_LINT=true
 
 
 
