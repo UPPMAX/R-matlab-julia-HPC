@@ -24,7 +24,7 @@
 
 ## Exercises
 
-???- question "Need a video?"
+???- hint "Need a video?"
 
     Here are videos that do this exercises for the different HPC clusters:
 
@@ -42,7 +42,7 @@
     Tetralith  |.
     Vera       |.
 
-???- question "How difficult will this be?"
+???- hint "How difficult will this be?"
 
     This depends mostly on your HPC cluster:
 
@@ -72,7 +72,7 @@ Use the documentation of your HPC cluster for help.
   to/from your HPC cluster using FileZilla. Take a look at the answer if you
   cannot find it: sometimes there *is* no documentation
 
-???- question "Where is that documentation?"
+???- hint "Where is that documentation?"
 
     <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 

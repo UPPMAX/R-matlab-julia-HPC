@@ -54,7 +54,7 @@ The goal of the script is to
 submit a calculation that uses threaded parallelism,
 with a custom amount of cores.
 
-??? question "How do I run it?"
+???- hint "How do I run it?"
 
     You do not, instead you will run the benchmark script below.
 
@@ -96,7 +96,7 @@ can be done by a custom amount of cores.
 This calculation script is called by the Slurm script,
 i.e. not directly by a user.
 
-??? question "How do I run it?"
+???- hint "How do I run it?"
 
     You do not, instead you will run the benchmark script below.
 

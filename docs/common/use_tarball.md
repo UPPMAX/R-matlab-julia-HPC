@@ -11,7 +11,7 @@ first.
 
 ## Procedure
 
-??? question "Prefer a video?"
+???- tip "Prefer a video?"
 
     [This part of this YouTube video](https://youtu.be/N-TRzv9LdF4?si=6uIqHI4J8h_2ry7P&t=396)
     shows you this procedure.
@@ -39,7 +39,7 @@ The procedure has these steps:
 
     <!-- markdownlint-enable MD013 -->
 
-=== "Matlab (wait until that day)"
+=== "MATLAB (wait until that day)"
 
     <!-- markdownlint-disable MD013 --><!-- Verbatim one-liners cannot be split up over lines, hence will break 80 characters per line -->
 
@@ -59,7 +59,7 @@ The procedure has these steps:
 
     <!-- markdownlint-enable MD013 -->
 
-???- question "How does that look like?"
+???- hint "How does that look like?"
 
     Your output will look somewhat like  this:
 
@@ -97,19 +97,19 @@ In a terminal, use the following command to uncompress the file:
     tar -xvzf exercisesR.tar.gz
     ```
 
-=== "Matlab"
+=== "MATLAB (wait until that day)"
 
     ```bash
     tar -xvzf exercisesMatlab.tar.gz
     ```
 
-=== "Julia"
+=== "Julia (wait until that day)"
 
     ```bash
     tar -xvzf exercisesJulia.tar.gz
     ```
 
-???- question "How does that look like?"
+???- hint "How does that look like?"
 
     Your output will look similar to this:
 
@@ -236,11 +236,10 @@ In a terminal, use the following command to uncompress the file:
         julia/loadRun/1.md
         ```
 
-
 After decompressing, there is a folder called `r`, or `matlab` or `julia`
 that contains the exercises.
 
-???- question "Do you want the whole repo?"
+???- hint "Do you want the whole repo?"
 
     If you are happy with just the exercises,
     the tarballs of the language specific ones are enough.

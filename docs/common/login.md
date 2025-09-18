@@ -63,7 +63,7 @@
     - If you have user account and course/research project on Dardel,
       follow the **PDC** track below.
 
-!!! question "Use ThinLinc or terminal?"
+!!! hint "Use ThinLinc or terminal?"
 
     It is up to you!
     
@@ -102,7 +102,7 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
 
 <!-- markdownlint-enable MD013 -->
 
-???- question "What are the differences between these login methods?"
+???- hint "What are the differences between these login methods?"
 
     These are the ways to access your HPC cluster and some of their features:
 
