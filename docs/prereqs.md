@@ -11,6 +11,14 @@
     The process of getting an account can take several days,
     due to some waiting steps.
 
+
+<!-- 
+
+RJCB: I think this is misleading:
+learners perfectly get away with this,
+as we teachers tell all they need to know.
+I think these study prerequirements do more damage than good.
+
 These are the things you need to follow the course:
 
 - You have a basic understanding of what an HPC cluster is.
@@ -20,3 +28,5 @@ These are the things you need to follow the course:
   To get familiar with the Linux/Bash command line,
   we recommend the courses and material at
   [our collection of other courses](common/other_courses.md)
+
+-->
