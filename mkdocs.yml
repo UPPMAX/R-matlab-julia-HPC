@@ -153,4 +153,7 @@ plugins:
         #      arguments:
         #          theme: 'neutral'
   # Find unused files, https://github.com/wilhelmer/mkdocs-unused-files
-  - unused_files
+  # RJCB: removed for now, it breaks the build
+  # - unused_files
+
+
