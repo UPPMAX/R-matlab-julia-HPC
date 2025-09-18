@@ -51,6 +51,7 @@ if ! is_valid_language "julia" ; then echo "Internal error: julia is a valid lan
 if ! is_valid_language "matlab" ; then echo "Internal error: julia is a valid language"; exit 41; fi
 if ! is_valid_language "r" ; then echo "Internal error: julia is a valid language"; exit 41; fi
 
+# Using
 if ! is_valid_language "${language}"
 then
   echo "ERROR: '${language}' is not valid language."
@@ -77,6 +78,7 @@ if ! is_valid_hpc_cluster "bianca" ; then echo "Internal error: bianca is a vali
 if ! is_valid_hpc_cluster "pelle" ; then echo "Internal error: pelle is a valid hpc_cluster"; exit 41; fi
 if ! is_valid_hpc_cluster "rackham" ; then echo "Internal error: rackham is a valid hpc_cluster"; exit 41; fi
 
+# Using
 if ! is_valid_hpc_cluster "${hpc_cluster}"
 then
   echo "ERROR: '${hpc_cluster}' is not valid hpc_cluster."
@@ -87,11 +89,11 @@ then
   exit 41
 fi
 
+# Script filename
 scriptname="do_${language}_2d_integration_on_${hpc_cluster}.sh"
 echo "Script name: ${scriptname}"
 
-exit 42
-
+# Schedule all the jobs
 for n_cores in $(seq 1 64)
 do 
   sbatch -A "${slurm_job_account}" -n "${n_cores}" do_r_2d_integration_on_rackham.sh
