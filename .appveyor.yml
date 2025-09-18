@@ -1,0 +1,16 @@
+# Check if MkDocs deploy works on Windows
+branches:
+  only:
+    - main
+
+version: '{build}'
+image: Python 3.3.5 x86
+
+build_script:
+  - pip install --upgrade pip
+  - pip install -r mkdocs-requirements.txt
+  - mkdocs serve
+
+# If one wants to see the full file structure
+# on_failure:
+#   - ps: Get-ChildItem -Recurse "$env:APPVEYOR_BUILD_FOLDER\build" -ErrorAction SilentlyContinue | Out-String | Write-Host
