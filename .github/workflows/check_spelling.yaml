@@ -28,12 +28,10 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v4.2.0
 
-      - name: Remove test file. Skip this test to test the spell checker :-)
-        run: rm docs/r/testR.rst
-
       - name: Remove folders that do not care about spelling
         run: |
-          rm -rf evaluations
+          rm -rf docs/evaluations
+          rm -rf exercises
           rm -rf meeting_notes
 
       - uses: igsekor/pyspelling-any@v1.0.4
