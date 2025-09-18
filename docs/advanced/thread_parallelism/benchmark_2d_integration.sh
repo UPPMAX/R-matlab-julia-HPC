@@ -66,6 +66,7 @@ fi
 hpc_cluster="unknown"
 
 [[ "${HOSTNAME}" =~ ^rackham[1-4].uppmax.uu.se$ ]] && hpc_cluster="rackham"
+[[ "${HOSTNAME}" =~ ^pelle[1-4].uppmax.uu.se$ ]] && hpc_cluster="pelle"
 
 echo "HPC cluster: ${hpc_cluster}"
 
