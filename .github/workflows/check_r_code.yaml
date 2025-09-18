@@ -45,12 +45,12 @@ jobs:
       ##########################
 
       - name: Run threaded parallelism script
-        run: Rscript docs/advanced/threaded_parallelism/do_2d_integration.R 1 100
+        run: Rscript docs/advanced/thread_parallelism/do_2d_integration.R 1 100
 
       ##########################
       # Check style
       ##########################
 
       - name: Check threaded parallelism script for style
-        run: Rscript -e 'lintr::lint("docs/advanced/threaded_parallelism/do_2d_integration.R")'
+        run: Rscript -e 'lintr::lint("docs/advanced/thread_parallelism/do_2d_integration.R")'
 
