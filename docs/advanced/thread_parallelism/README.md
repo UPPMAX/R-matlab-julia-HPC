@@ -80,7 +80,7 @@ COSMOS     |.                                                   |.              
 Dardel     |.                                                   |.                                                   |.
 Kebnekaise |.                                                   |.                                                   |.
 LUMI       |.                                                   |.                                                   |.
-Pelle      |.                                                   |.                                                   |.
+Pelle      |.                                                   |.                                                   |[do_r_2d_integration_on_pelle.sh](do_r_2d_integration_on_pelle.sh)
 Rackham    |.                                                   |.                                                   |[do_r_2d_integration_on_rackham.sh](do_r_2d_integration_on_rackham.sh)
 Tetralith  |.                                                   |.                                                   |.
 
@@ -98,18 +98,17 @@ i.e. not directly by a user.
 
 ???- hint "How do I run it?"
 
-    You do not, instead you will run the benchmark script below.
-
-    However, **when not on a login node**, you can run it as such:
+    You can run it as such:
 
     ```bash
-    [interpreter] [script_name] [number_of_cores]
+    [interpreter] [script_name] [number_of_cores] [grid_size]
     ```
 
-    For example:
+    On a login node, use 1 core and a grid size of 1 to start
+    the lightest calculation possible:
 
     ```bash
-    Rscript integration2d.R 1
+    Rscript integration2d.R 1 1
     ```
 
 Language|Script with calculation
