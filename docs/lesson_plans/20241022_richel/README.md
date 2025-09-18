@@ -146,7 +146,7 @@ Time       |Topic                                                 |Teacher
         - Yes:
         - No:
 - If evaluation, suggest questions on confidence,
-  see [this earlier evaluation](https://github.com/UPPMAX/uppmax_intro_day_1/tree/main/evaluations/20240827)
+  see [this earlier evaluation](https://github.com/UPPMAX/uppmax_intro_day_1/tree/main/docs/evaluations/20240827)
     - Pro: useful to asses stronger/weaker sessions of the course
     - Con: maybe must use a standard evaluation form, needs teachers to formulate
     their lesson goals

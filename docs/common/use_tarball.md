@@ -29,7 +29,7 @@ The procedure has these steps:
 - Use the following command to download the file to your current folder:
 
 
-=== "R""
+=== "R"
 
     <!-- markdownlint-disable MD013 --><!-- Verbatim one-liners cannot be split up over lines, hence will break 80 characters per line -->
 
