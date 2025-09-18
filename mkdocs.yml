@@ -101,3 +101,5 @@ plugins:
     #      javascript: https://unpkg.com/mermaid/dist/mermaid.min.js
         #      arguments:
         #          theme: 'neutral'
+  # Find unused files, https://github.com/wilhelmer/mkdocs-unused-files
+  - unused_files
