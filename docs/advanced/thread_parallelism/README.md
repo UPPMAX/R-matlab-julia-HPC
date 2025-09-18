@@ -154,17 +154,33 @@ the number of cores and core runtime.
 
 ## Exercises
 
-## Exercise 1: start the benchmark on your HPC cluster
+## Exercise 1: run the calculation script
 
-## Exercise 2: read the benchmark script
+Our benchmark needs some libraries installed.
 
-## Exercise 3: read the Slurm script
+The goal of this step is to find out if we are ready to go.
 
-## Exercise 4: read the calculation script
+Run the calculation script on the login node with a minimal sensible workload:
 
-## Exercise 5: analyse the results
+Language|Script name                               |How to run
+--------|------------------------------------------|---------------------------
+R       |[do_2d_integration.R](do_2d_integration.R)|`./do_2d_integration.R 1 1`
 
-## Exercise 6: compare to others
+If there are errors about libraries missing, install these.
+
+## Exercise 2: start the benchmark on your HPC cluster
+
+## Exercise 3: read the benchmark script
+
+
+
+## Exercise 4: read the Slurm script
+
+## Exercise 5: read the calculation script
+
+## Exercise 6: analyse the results
+
+## Exercise 7: compare to others
 
 ![Benchmark results](benchmark_results.png)
 

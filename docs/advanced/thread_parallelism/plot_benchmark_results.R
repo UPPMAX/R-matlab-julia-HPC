@@ -17,6 +17,9 @@ ggplot2::ggplot(
   ggplot2::scale_x_continuous("Number of workers", limits = c(0, max(t$n_workers))) +
   ggplot2::scale_y_continuous("Core seconds", limits = c(0, max(t$core_secs))) +
   ggplot2::facet_grid(language ~ .) +
-  ggplot2::labs(title = "Threaded parallelism")
+  ggplot2::labs(
+    title = "Threaded parallelism",
+    caption = paste0("Number of runs: ", nrow(t))
+  )
 
 ggplot2::ggsave("benchmark_results.png", width = 7, height = 7)
