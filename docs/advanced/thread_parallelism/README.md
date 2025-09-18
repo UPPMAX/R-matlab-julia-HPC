@@ -127,34 +127,24 @@ The goal of the benchmark script is to
 do a fixed unit of work
 with increasingly more cores.
 
+The script is here: [benchmark_2d_integration.sh](benchmark_2d_integration.sh)
+
 As the script itself only does light calculations,
-you can run it directly, as such:
+you can run it directly.
+
+Here is how to call the script:
 
 ```bash
-./benchmark_[language]_2d_integration_on_[hpc_cluster].sh
+./benchmark_2d_integration.sh [account] [language] [hpc_cluster]
 ```
 
 For example:
 
 ```bash
-./benchmark_r_2d_integration_on_rackham.sh
+./benchmark_2d_integration.sh staff r rackham
 ```
 
-<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
-
-HPC cluster|Julia benchmark script                                  |MATLAB benchmark script                                 |R benchmark script
------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------
-Alvis      |.                                                       |.                                                       |.
-Bianca     |.                                                       |.                                                       |.
-COSMOS     |.                                                       |.                                                       |.
-Dardel     |.                                                       |.                                                       |.
-Kebnekaise |.                                                       |.                                                       |.
-LUMI       |.                                                       |.                                                       |.
-Pelle      |.                                                       |.                                                       |.
-Rackham    |.                                                       |.                                                       |[R on Rackham](benchmark_r_2d_integration_on_rackham.sh)
-Tetralith  |.                                                       |.                                                       |.
-
-<!-- markdownlint-enable MD013 -->
+If you use the incorrect spelling, the script will help you.
 
 ## Analysis script
 
