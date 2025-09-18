@@ -128,12 +128,12 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
         - ThinLinc app: ``<user>@rackham-gui.uppmax.uu.se``
         - ThinLinc in web browser: ``https://rackham-gui.uppmax.uu.se``
 
-        2. If not already: **create a working directory**
+        1. If not already: **create a working directory**
            where you can code along.
 
         - We recommend creating it under the course project storage directory
 
-        3. Example. If your username is "mrspock" and you are at UPPMAX,
+        1. Example. If your username is "mrspock" and you are at UPPMAX,
             then we recommend you create this folder:
 
             .. code-block:: console
