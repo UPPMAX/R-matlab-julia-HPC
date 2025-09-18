@@ -1,6 +1,6 @@
 # Python evaluation 2023-10-17
 
-- Reflections: [Richel](../../reflections/20231017/README.md)
+- Reflections: [Richel](../../reflections/20231017_richel/README.md)
 
 <!-- markdownlint-disable MD013 --><!-- A URL cannot be split up over lines, hence will break 80 characters per line -->
 

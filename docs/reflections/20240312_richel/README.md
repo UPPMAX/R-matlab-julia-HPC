@@ -70,7 +70,7 @@ technical error.
 
 ### Pre-requirements
 
-I feel the pre-requirements page, <https://uppmax.github.io/R-python-julia-HPC/prereqs.html>,
+I feel the pre-requirements page, `[URL]`,
 is too extensive.
 I feel it should link to regular documentation and mostly show
 how to determine you fulfilled all pre-requirements.

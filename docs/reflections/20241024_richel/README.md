@@ -230,7 +230,7 @@ Useless to me: which sessions?
 11. How would you rate the separate sessions?
 ```
 
-![Ratings](../../evaluations/20241024/evaluation_4.png)
+![Ratings](../../evaluations/20241024_r/evaluation_4.png)
 
 Only my sessions:
 
@@ -246,8 +246,8 @@ appreciated by the learners.
 12. Give your confidence levels of the following statements
 ```
 
-![Confidences 1](../../evaluations/20241024/evaluation_5.png)
-![Confidences 2](../../evaluations/20241024/evaluation_6.png)
+![Confidences 1](../../evaluations/20241024_r/evaluation_5.png)
+![Confidences 2](../../evaluations/20241024_r/evaluation_6.png)
 
 My learning objectives:
 

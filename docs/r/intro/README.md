@@ -150,7 +150,7 @@ graph TD
 The course uses a so-called tarball files with exercises as
 used in this course.
 
-See [How to use the course tarball](../common/use_tarball.md)
+See [How to use the course tarball](../../common/use_tarball.md)
 how to get and decompress it.
 
 In the 'Load and run R' session, there is the time to do so.

@@ -1,6 +1,6 @@
 # Evaluation 2024-10-24: R
 
-- Reflections: [Richel](../../reflections/20241024/README.md)
+- Reflections: [Richel](../../reflections/20241024_richel/README.md)
 
 5 responses
 

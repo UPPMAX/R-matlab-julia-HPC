@@ -27,10 +27,6 @@
     - When to use parallel computing?
     - When not to use parallel computing?
 
-
-![Arnold (at the left): a robot that was controlled by MPI](arnold.jpg)
-![Cora, the robotic platform for Arnold](cora.jpg)
-
 ## Why thread parallelism is important
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
@@ -85,7 +81,7 @@ Dardel     |.                                                   |.              
 Kebnekaise |.                                                   |.                                                   |.
 LUMI       |.                                                   |.                                                   |.
 Pelle      |.                                                   |.                                                   |.
-Rackham    |.                                                   |.                                                   |[do_r_2d_integration_on_rackham.sh](do_2d_integration_on_rackham.sh)
+Rackham    |.                                                   |.                                                   |[do_r_2d_integration_on_rackham.sh](do_r_2d_integration_on_rackham.sh)
 Tetralith  |.                                                   |.                                                   |.
 
 <!-- markdownlint-enable MD013 -->

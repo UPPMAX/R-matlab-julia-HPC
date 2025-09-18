@@ -7,7 +7,7 @@
 - Number of evaluations filled in: 8 (67% response rate)
 - Average course satisfaction: 8.25/10.0
 - Success score: 77%
-- Reflections: [Richel](../../reflections/20250324/README.md)
+- Reflections: [Richel](../../reflections/20250324_richel/README.md)
 
 ## Question 1: Overall, how would you rate today's training event?
 

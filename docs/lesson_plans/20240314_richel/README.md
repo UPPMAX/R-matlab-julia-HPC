@@ -13,7 +13,7 @@ Time     |Topic                            |Teacher
 **9:20** |Load modules and run             |Richel
 **9:45** |Break                            |.
 
-The exercises are already in place at <https://uppmax.github.io/R-python-julia-HPC/r/exercisesR.html>:
+The exercises are already in place at `[URL]`:
 great! There are no learning objectives in place, though, so I will add those
 and streamline the pages.
 

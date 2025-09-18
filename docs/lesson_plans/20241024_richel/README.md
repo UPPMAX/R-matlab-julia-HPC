@@ -9,7 +9,7 @@
 
 Time |Topic                                                                                          | Teacher(s)
 -----|-----------------------------------------------------------------------------------------------|----------------
-9:00 |(optional) [First login](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html)        | BB + PO + RB
+9:00 |(optional) First login                                                                         | BB + PO + RB
 9:45 |Break                                                                                          | .
 10:00|Introduction                                                                                   | RB
 10:10|Syllabus                                                                                       | RB
