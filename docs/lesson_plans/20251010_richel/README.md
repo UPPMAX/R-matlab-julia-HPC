@@ -347,4 +347,7 @@ Pedro did a great job with the materials!
 
 Steps:
 
-- [ ] Thread parallelisms
+- [x] Sketch content 'Threaded parallelisms'
+- [ ] Sketch content 'Distributed parallelisms'
+- [ ] Sketch content 'General parallelism'
+

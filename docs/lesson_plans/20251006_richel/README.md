@@ -13,3 +13,6 @@ and started working on the MkDocs website.
 I continued working on the MkDocs website.
 All CI tests are back.
 
+All CI tests pass now.
+As the session about parallelism has more unknown,
+I will now focus on that one first.

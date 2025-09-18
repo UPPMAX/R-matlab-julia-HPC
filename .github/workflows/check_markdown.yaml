@@ -7,14 +7,14 @@ on:
   push:
     paths:
       - .github/workflows/check_markdown.yaml
-      - 'docs/**'
+      - README.md
       - '**.md'
       - .markdownlintignore
       - .markdownlint.jsonc
   pull_request:
     paths:
       - .github/workflows/check_markdown.yaml
-      - 'docs/**'
+      - README.md
       - '**.md'
       - .markdownlintignore
       - .markdownlint.jsonc

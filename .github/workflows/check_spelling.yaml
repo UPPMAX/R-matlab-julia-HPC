@@ -7,12 +7,14 @@ on:
   push:
     paths:
       - .github/workflows/check_spelling.yaml
-      - 'docs/**'
+      - README.md
+      - '**.md'
       - .wordlist.txt
   pull_request:
     paths:
       - .github/workflows/check_spelling.yaml
-      - 'docs/**'
+      - README.md
+      - '**.md'
       - .wordlist.txt
   schedule:
   - cron: "0 0 18 * *"

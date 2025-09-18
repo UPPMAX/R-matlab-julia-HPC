@@ -7,15 +7,13 @@ on:
   push:
     paths:
       - .github/workflows/check_links.yaml
-      - 'docs/**'
-      - 'docs-sphinx/**'
       - mlc_config.json
+      - 'docs/**.md'
   pull_request:
     paths:
       - .github/workflows/check_links.yaml
-      - 'docs/**'
-      - 'docs-sphinx/**'
       - mlc_config.json
+      - 'docs/**.md'
   schedule:
   - cron: "0 0 18 * *"
 
