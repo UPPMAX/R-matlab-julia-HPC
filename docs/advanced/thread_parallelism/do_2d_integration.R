@@ -40,7 +40,9 @@ extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
   testthat::expect_equal(1, length(hostname))
   if (nchar(hostname) == 0) return("unknown")
   if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
+  if (stringr::str_detect(hostname, "^r[:digit:]{1,3}$")) return("rackham")
   if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) return("pelle")
+  if (stringr::str_detect(hostname, "^p[:digit:]{1,3}$")) return("pelle")
   hostname
 }
 
@@ -49,6 +51,9 @@ testthat::expect_equal("some.hostname", extract_hpc_cluster("some.hostname"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham1.uppmax.uu.se"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham4.uppmax.uu.se"))
 testthat::expect_equal("pelle", extract_hpc_cluster("pelle1.uppmax.uu.se"))
+testthat::expect_equal("pelle", extract_hpc_cluster("p1"))
+testthat::expect_equal("pelle", extract_hpc_cluster("p12"))
+testthat::expect_equal("pelle", extract_hpc_cluster("p123"))
 testthat::expect_equal("pelle", extract_hpc_cluster("pelle4.uppmax.uu.se"))
 
 # grid size
