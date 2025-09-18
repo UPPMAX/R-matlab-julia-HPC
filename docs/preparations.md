@@ -11,10 +11,12 @@ These are the things you need to follow the course:
 - you can start a text editor,
   See [our text editot guide](common/use_text_editor.md).
 
-!!! note 
+!!! note
 
-   - There will be an opportunity to get help with log in every morning of the workshop at 9:00.
-   - You are also welcome to join the On-boarding at 13:00 the day before the ordinary program starts.
+- There will be an opportunity to get help with log in
+  every morning of the workshop at 9:00.
+- You are also welcome to join the On-boarding at 13:00
+  the day before the ordinary program starts.
 
 Need help? Contact support:
 
