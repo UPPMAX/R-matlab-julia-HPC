@@ -18,9 +18,14 @@
     - Why is RStudio useful?
 
 
-## Why use Rstudio?
+## Why use RStudio?
 
-...
+RStudio is the most popular program to write R code in.
+
+Software developers commonly use programs that help them write
+code, with extra features such as a debugger.
+Such a program is called an IDE (`aj-dee-ee`),
+short for Integrated Development Environment.
 
 ## Exercises
 
@@ -33,11 +38,11 @@
     Alvis      |.
     Berzelius  |.
     Bianca     |[YouTube video](https://youtu.be/rRUb4pqaVak)
-    COSMOS     |TODO
+    COSMOS     |.
     Dardel     |.
-    Kebnekaise |TODO
+    Kebnekaise |.
     LUMI       |.
-    Pelle      |TODO
+    Pelle      |.
     Rackham    |[YouTube video](https://youtu.be/efSOFfBVBPQ)
     Tetralith  |.
     Vera       |.
@@ -52,24 +57,24 @@
     -----------|----------|-------------------------------------------
     Alvis      |.         |.
     Berzelius  |.         |.
-    Bianca     |.         |.
+    Bianca     |Medium    |Step-by-step documentation, complex procedure
     COSMOS     |.         |.
     Dardel     |.         |.
     Kebnekaise |.         |.
     LUMI       |.         |.
     Pelle      |.         |.
-    Rackham    |.         |.
+    Rackham    |Easy      |Step-by-step documentation
     Tetralith  |.         |.
     Vera       |.         |.
 
     <!-- markdownlint-enable MD013 -->
 
-## Exercise 1: start Rstudio
+## Exercise 1: start RStudio
 
 Use the documentation of your HPC cluster for help.
 
-- **For maximally 5 minutes**, search for the procedure on how to transfer a file
-  to/from your HPC cluster using FileZilla. Take a look at the answer if you
+- **For maximally 5 minutes**, search for the procedure on how to start
+  RStudio on your HPC cluster. Take a look at the answer if you
   cannot find it: sometimes there *is* no documentation
 
 ???- hint "Where is that documentation?"
@@ -81,11 +86,11 @@ Use the documentation of your HPC cluster for help.
     Alvis      |.
     Berzelius  |.
     Bianca     |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_bianca/)
-    COSMOS     |TODO
+    COSMOS     |.
     Dardel     |.
-    Kebnekaise |TODO
+    Kebnekaise |.
     LUMI       |.
-    Pelle      |TODO
+    Pelle      |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_pelle/)
     Rackham    |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_rackham/)
     Tetralith  |.
     Vera       |.
@@ -95,7 +100,7 @@ Use the documentation of your HPC cluster for help.
 - Follow that procedure to start RStudio
 
 
-<! --
+<!--
 
 .. warning::
 
@@ -184,7 +189,7 @@ Example:
 
    If you're going to run heavier computations within RStudio then you have to remember that you need to do it inside an interactive session on one of the computation nodes, and not on a login node. But if you mostly want to use it as a pretty code editor then you can run it on the login node as well.
 
-   To use Rstudio on a compute node, start by asking SLURM for an interactive allocation (within the ThinLink session). E.g.
+   To use RStudio on a compute node, start by asking SLURM for an interactive allocation (within the ThinLink session). E.g.
 
 
    .. code:: console
@@ -204,8 +209,8 @@ The desktop client version of ThinLinc does not work for Bianca. Instead you run
 On HPC2N
 --------
 
-Rstudio also exists on Kebnekaise but is only installed on the ThinLinc login nodes and not on the compute nodes (and also not on the regular login nodes accessible with SSH).
-Thus, Rstudio should only be used for development and very light analysis, since there is no way to submit a job to the compute nodes.
+RStudio also exists on Kebnekaise but is only installed on the ThinLinc login nodes and not on the compute nodes (and also not on the regular login nodes accessible with SSH).
+Thus, RStudio should only be used for development and very light analysis, since there is no way to submit a job to the compute nodes.
 
 Login to ThinLinc desktop application by providing the following
 
@@ -215,7 +220,7 @@ Login to ThinLinc desktop application by providing the following
 
 Alternatively, you can use ThinLinc in the browser: <https://kebnekaise-tl.hpc2n.umu.se:300/>
 
-When in ThinLinc, you can start Rstudio either from the menu (version 4.0.4) or from the command line. If you start it from the command line you first need to load R and its prerequisites, but you can pick between several versions this way.
+When in ThinLinc, you can start RStudio either from the menu (version 4.0.4) or from the command line. If you start it from the command line you first need to load R and its prerequisites, but you can pick between several versions this way.
 
 
 At LUNARC
@@ -295,7 +300,7 @@ SSH -X
 At NSC
 ------
 
-Rstudio is installed as a module on Tetralith at NSC. You can either use it by logging with ThinLinc or with SSH -X.
+RStudio is installed as a module on Tetralith at NSC. You can either use it by logging with ThinLinc or with SSH -X.
 
 ThinLinc
 ........
@@ -310,7 +315,7 @@ Then provide the verification code when prompted.
 
 2. Start a terminal: Click the icon at the bottom (#2) or open with "Applications" -> "System" -> "Xfce Terminal"
 
-3. Find a suitable version of Rstudio with "module spider Rstudio". The options are currently:
+3. Find a suitable version of RStudio with "module spider RStudio". The options are currently:
 
    - RStudio/2023.06.2+561
    - RStudio/2023.09.1+494
@@ -344,7 +349,7 @@ SSH -X
 
 Then give password and then verification code when prompted.
 
-2. Find a suitable version of Rstudio with "module spider Rstudio". The options are currently:
+2. Find a suitable version of RStudio with "module spider RStudio". The options are currently:
 
    - RStudio/2023.06.2+561
    - RStudio/2023.09.1+494
@@ -370,7 +375,7 @@ Then give password and then verification code when prompted.
 On PDC
 ------
 
-Rstudio is installed on Dardel at PDC. You can use it by logging in with ThinLinc and start it with the gfxlauncher. RStudio is NOT available through regular SSH -X.
+RStudio is installed on Dardel at PDC. You can use it by logging in with ThinLinc and start it with the gfxlauncher. RStudio is NOT available through regular SSH -X.
 
 1. Login to ThinLinc desktop application by providing the following
 
