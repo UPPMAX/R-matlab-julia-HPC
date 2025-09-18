@@ -172,7 +172,6 @@ If there are errors about libraries missing, install these.
 ## Exercise 3: read the benchmark script
 
 
-
 ## Exercise 4: read the Slurm script
 
 ## Exercise 5: read the calculation script
@@ -182,7 +181,6 @@ If there are errors about libraries missing, install these.
 ## Exercise 7: compare to others
 
 ![Benchmark results](benchmark_results.png)
-
 
 
 ## Extra questions
