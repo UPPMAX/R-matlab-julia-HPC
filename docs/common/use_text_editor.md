@@ -37,7 +37,7 @@ We recommend `nano` unless you are used to another editor:
 
     Save and exit. In nano: `<ctrl>+O`, `<ctrl>+X`
 
-   You can run the Python script in the shell like this:
+    You can run the Python script in the shell like this:
 
     ```bash
     python example.py
