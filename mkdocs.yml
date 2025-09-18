@@ -94,6 +94,7 @@ not_in_nav: |
 
 theme: 
     name: readthedocs
+    logo: img/new-logo.png  
     features: 
         - content.tabs.link
         - content.code.annotate
