@@ -7,9 +7,35 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/create_mkdocs_website.yaml
+      - mkdocs.yaml
+      - 'docs/**.md'
+      - 'docs/**.png'
+      - 'docs/**.jpg'
+      - 'docs/**.css'
+      - 'docs/**.jpg'
+      - 'docs/**.md'
+      - 'docs/**.mdp'
+      - 'docs/**.mmd'
+      - 'docs/**.pdb'
+      - 'docs/**.png'
   pull_request:
     branches:
       - main
+    paths:
+      - .github/workflows/create_mkdocs_website.yaml
+      - mkdocs.yaml
+      - 'docs/**.md'
+      - 'docs/**.png'
+      - 'docs/**.jpg'
+      - 'docs/**.css'
+      - 'docs/**.jpg'
+      - 'docs/**.md'
+      - 'docs/**.mdp'
+      - 'docs/**.mmd'
+      - 'docs/**.pdb'
+      - 'docs/**.png'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
