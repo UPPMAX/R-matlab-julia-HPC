@@ -162,6 +162,19 @@ The goal of the analysis script is to
 observe the relation between
 the number of cores and core runtime.
 
+## Exercises
+
+## Exercise 1: start the benchmark on your HPC cluster
+
+## Exercise 2: read the benchmark script
+
+## Exercise 3: read the Slurm script
+
+## Exercise 4: read the calculation script
+
+## Exercise 5: analyse the results
+
+## Exercise 6: compare to others
 
 <!-- markdownlint-disable -->
 
