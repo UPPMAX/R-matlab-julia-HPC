@@ -1,11 +1,21 @@
 # Check that there is correct spelling in all files
 name: Check spelling
 
+# Check spelling on the 18th day of the month.
+# 18th as the first letter of this repo is the 18th letter in the alphabet.
 on:
   push:
-    branches:
-      - develop
+    paths:
+      - .github/workflows/check_spelling.yaml
+      - 'docs/**'
+      - .wordlist.txt
   pull_request:
+    paths:
+      - .github/workflows/check_spelling.yaml
+      - 'docs/**'
+      - .wordlist.txt
+  schedule:
+  - cron: "0 0 18 * *"
 
 jobs:
   check_spelling:

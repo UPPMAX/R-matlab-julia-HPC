@@ -1,13 +1,26 @@
 # Check that there is correct Markdown in all files
 name: Check Markdown
 
-# Check spelling on the 21st day of the month.
-# 21st as the first letter of this repo is the 21st letter in the alphabet.
+# Check Markdown on the 18th day of the month.
+# 18th as the first letter of this repo is the 18th letter in the alphabet.
+on:
 on:
   push:
+    paths:
+      - .github/workflows/check_markdown.yaml
+      - 'docs/**'
+      - '**.md'
+      - .markdownlintignore
+      - .markdownlint.jsonc
   pull_request:
+    paths:
+      - .github/workflows/check_markdown.yaml
+      - 'docs/**'
+      - '**.md'
+      - .markdownlintignore
+      - .markdownlint.jsonc
   schedule:
-  - cron: "0 0 21 * *"
+  - cron: "0 0 18 * *"
 
 jobs:
   check_markdown:
