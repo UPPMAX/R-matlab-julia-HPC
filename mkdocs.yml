@@ -49,6 +49,7 @@ theme:
     name: readthedocs
     features: 
         - content.tabs.link
+        - content.code.annotate
         - content.code.copy
         
 extra:
