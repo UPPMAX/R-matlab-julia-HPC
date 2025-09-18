@@ -41,11 +41,11 @@ extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
   if (nchar(hostname) == 0) return("unknown")
   if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
   if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) return("pelle")
-  "unknown"
+  hostname
 }
 
 testthat::expect_equal("unknown", extract_hpc_cluster(""))
-testthat::expect_equal("unknown", extract_hpc_cluster("nonsense"))
+testthat::expect_equal("some.hostname", extract_hpc_cluster("some.hostname"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham1.uppmax.uu.se"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham4.uppmax.uu.se"))
 testthat::expect_equal("pelle", extract_hpc_cluster("pelle1.uppmax.uu.se"))
