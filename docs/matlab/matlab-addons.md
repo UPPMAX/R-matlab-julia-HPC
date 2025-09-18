@@ -44,25 +44,25 @@ Before going into installing Add-Ons, let's have a background to the MATLAB envi
 
 In the GUI, the Add-Ons manager can be selected from the menu at the top. The drop-down menu options allow users to:
 
-   - **Browse a library of Add-Ons to download.** Note that some Add-Ons require a separate license.
+- **Browse a library of Add-Ons to download.** Note that some Add-Ons require a separate license.
 
-   ???- question "What does that look like?"
+???- question "What does that look like?"
 
-      <div align="center">
+    <div align="center">
         <img src="../../docs-sphinx/matlab/img/Add-On_explorer.PNG" alt="Add-on Explorer" width="500"/>
-      </div>
+    </div>
 
-   - **Manage Add-Ons already downloaded.**
+- **Manage Add-Ons already downloaded.**
 
-   ???- question "What does that look like?"
+???- question "What does that look like?"
    
-      <div align="center">
+    <div align="center">
         <img src="../../docs-sphinx/matlab/img/Add-On_manager.PNG" alt="Add-on Manager" width="500"/>
-      </div>
+    </div>
 
-   - Package user-generated code as a Toolbox or App
+- Package user-generated code as a Toolbox or App
 
-   - Get hardware-related support packages
+- Get hardware-related support packages
 
 Here we will only focus on the first two options.
 
