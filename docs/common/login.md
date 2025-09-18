@@ -1,21 +1,22 @@
 # Log in session
 
-!!! info "Goal"
+!!! info "Learning outcomes"
 
-    The goal of this optional sessions is to make sure that:
+    This is an optional session.
+    If you have done all three steps, see you at 10:00 sharp!
 
-    - [You have fulfilled the prerequisites](../prereqs.md)
-    - [You have prepared your environment](../preparations.md):
-        - you can log in
-        - you can start a text editor
+    Be able to follow this course:
 
-    We will also download exercise snippets and solutions
-    that you can work with:
+    - Step 1: [You have fulfilled the prerequisites](../prereqs.md)
+    - Step 2: [You can log in (see below)](#step-1-log-in)
+    - Step 3: You can [use a text editor](use_text_editor.md)
+    - (optional) Step 4: [Use the tarball with exercises](use_tarball.md).
+      This step is optional, as we also do this under course time
 
-    - [Use the tarball with exercises](use_tarball.md)
+<!-- 
 
-    If/when you have done all this, see you at 10:00 sharp!
-    Else, see you in this session.
+RJCB: I do not see why this is important, in relation to a login session.
+This content may be important, yet not at this page.
 
 !!! info "Cluster-specific approaches"
 
@@ -40,15 +41,19 @@
     - When present, links to the Julia/R/Matlab documentation
       at other NAISS centres are given in the corresponding session.
 
+-->
+
 !!! note
 
     - You were invited to be part of the course project.
     - If you already have research projects in any of the clusters
       you can use them. The CPU-hours required during the course will be low!
 
-!!! info "Learning outcomes"
+<!--
 
-    Be able to login, where you are
+RJCB: I have no idea why this is important.
+I have no idea why this is important in a login session.
+It may be important somewhere and I hope it will be moved there.
 
 !!! tip
 
@@ -63,6 +68,15 @@
     - If you have user account and course/research project on Dardel,
       follow the **PDC** track below.
 
+-->
+
+<!-- 
+
+RJCB: I think this is a duplicate of the text below.
+I do not think 'It is up to you!' is helpful,
+instead recommend that what is most familiar to a learner.
+The reason why to use ThinLinc does not convince me.
+
 !!! hint "Use ThinLinc or terminal?"
 
     It is up to you!
@@ -71,6 +85,8 @@
 
     For this course, when having many windows open,
     it may sometimes be better to run in terminal, for screen space issues.
+
+-->
 
 ## Step 1: Log in
 
@@ -115,6 +131,11 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
     Console environment using an SSH client     | A console environment, powerful, need to install an SSH client                                    | ![Console environment](../img/login_rackham_via_terminal_terminal_409_x_290.png)
 
     <!-- markdownlint-enable MD013 -->
+
+<!--
+
+RJCB: I feel this is a duplication of the links to the documentation
+with the YouTube videos
 
 !!! info "Type-along"
 
@@ -197,10 +218,4 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
         mkdir /cfs/klemming/projects/supr/r-matlab-julia-naiss/sevenof9/
         ```
 
-## Test [a text editor](use_text_editor.md)
-
-Read [how to use a text editor](use_text_editor.md).
-
-## [Download and extract the tarball with exercises](use_tarball.md)
-
-Read [how to download and extract the tarball with exercises](use_tarball.md)
+-->
