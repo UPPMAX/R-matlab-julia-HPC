@@ -5,11 +5,11 @@ name: Check bash code style
 on:
   push:
     paths:
-      - .github/workflows/check_bash_code.yaml
+      - .github/workflows/check_bash_style.yaml
       - 'docs/advanced/**.sh'
   pull_request:
     paths:
-      - .github/workflows/check_bash_code.yaml
+      - .github/workflows/check_bash_style.yaml
       - 'docs/advanced/**.sh'
   schedule:
   - cron: "0 0 18 * *"
