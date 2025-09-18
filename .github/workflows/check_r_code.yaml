@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          remotes::install_cran("remotes")
+          install.packages("remotes")
           remotes::install_cran("testthat")
           remotes::install_cran("doParallel")
           remotes::install_cran("lintr")
