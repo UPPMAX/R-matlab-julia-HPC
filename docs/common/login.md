@@ -127,11 +127,11 @@ Tetralith  |SSH                      |[Documentation](https://www.nsc.liu.se/sup
 
     <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
-    How it looks like                                                                |How to access your HPC cluster               | Features
-    ---------------------------------------------------------------------------------|---------------------------------------------|---------------------------------------------------------------------------------------------------
-    ![Website](../img/rackham_remote_desktop_via_website_480_x_270.png)              | Remote desktop via a website                | Familiar remote desktop, clumsy, clunky, no need to install software, not available at all centers
-    ![Local ThinLinc client](../img/thinlinc_local_rackham_zoom.png)                 | Remote desktop via a local ThinLinc client  | Familiar remote desktop, clumsy, need to install ThinLinc
-    ![Console environment](../img/login_rackham_via_terminal_terminal_409_x_290.png) | Console environment using an SSH client     | A console environment, powerful, need to install an SSH client
+    How it looks like                                                         |How to access your HPC cluster               | Features
+    --------------------------------------------------------------------------|---------------------------------------------|---------------------------------------------------------------------------------------------------
+    ![Website](rackham_remote_desktop_via_website_480_x_270.png)              | Remote desktop via a website                | Familiar remote desktop, clumsy, clunky, no need to install software, not available at all centers
+    ![Local ThinLinc client](thinlinc_local_rackham_zoom.png)                 | Remote desktop via a local ThinLinc client  | Familiar remote desktop, clumsy, need to install ThinLinc
+    ![Console environment](login_rackham_via_terminal_terminal_409_x_290.png) | Console environment using an SSH client     | A console environment, powerful, need to install an SSH client
 
     <!-- markdownlint-enable MD013 -->
 

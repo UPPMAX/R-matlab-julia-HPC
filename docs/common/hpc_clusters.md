@@ -65,12 +65,12 @@ What is a cluster?
 - Each node contains several processor cores and RAM
   and a local disk called scratch.
 
-![A node](../img/node.png)
+![A node](node.png)
 
 - The user logs in to **login nodes**  via Internet through ssh or Thinlinc.
     - Here the file management and lighter data analysis can be performed.
 
-![Multiple nodes](../img/nodes.png)
+![Multiple nodes](nodes.png)
 
 - The **calculation nodes** have to be used for intense computing.
 
@@ -136,8 +136,8 @@ GPU                |NVidia V100, A100, A6000, L40s, H100, A40, AMD MI100|None   
 
 ## Overview of the LUNARC system
 
-![COSMOS resources](../img/cosmos-resources.png)
+![COSMOS resources](cosmos-resources.png)
 
 ## Overview of the NSC systems
 
-![Tetralith image](../img/mermaid-tetralith.png)
+![Tetralith image](mermaid-tetralith.png)

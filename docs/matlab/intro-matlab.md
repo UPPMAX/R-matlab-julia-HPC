@@ -4,7 +4,7 @@
 
 - Also link at House symbol |:house:| at top of page
 
-Please find the **exercise files** [here](../exercises/exercises.tar.gz)
+Please find the **exercise files** [here](../../exercises/exercises.tar.gz)
 
 !!! info "Objectives"
 
