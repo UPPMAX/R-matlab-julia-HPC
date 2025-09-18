@@ -96,6 +96,17 @@ In the file [`.markdownlintignore`](.markdownlintignore).
 
 In the file [`.github/workflows/check_links.yaml` line 34](.github/workflows/check_links.yaml#34).
 
+## Which adminitions work?
+
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+Theme      |Admonitions test page
+-----------|------------------------
+ReadTheDocs|[Admonitions test page](https://uppmax.github.io/linux-command-line-201/misc/test_admonitions/)
+materials  |[Admonitions test page](https://uppmax.github.io/naiss_intro_python/misc/test_admonitions/)
+
+<!-- markdownlint-enable MD013 -->
+
 ## Credits
 
 - The old and online version is built with Sphinx
