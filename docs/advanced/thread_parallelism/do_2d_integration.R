@@ -106,7 +106,7 @@ integral_value <- sum(results)
 # End the timing
 endtime <- Sys.time()
 
-# Print out the result
+# Print out the result in a human-friendly way
 error_value <- abs(integral_value - 0.0)
 duration_secs <- difftime(endtime, starttime, units = "secs")
 core_secs <- duration_secs * n_workers
@@ -114,6 +114,24 @@ message("Integral value: ", integral_value)
 message("Integral error: ", error_value)
 message("Time spent on 1 core (seconds): ", duration_secs)
 message("Time spent on all cores (seconds): ", core_secs)
+
+# Print out the result in a computer-friendly way
+language <- "r"
+hpc_cluster <- "rackham"
+message(
+  "language", ",",
+  "hpc_cluster", ",",
+  "grid_size", ",",
+  "n_workers", ",",
+  "core_secs"
+)
+message(
+  language, ",",
+  hpc_cluster, ",",
+  grid_size, ",",
+  n_workers, ",",
+  core_secs
+)
 
 # Stop the cluster after computation
 stopCluster(cl)
