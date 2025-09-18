@@ -8,9 +8,12 @@
     Be able to follow this course:
 
     - Step 1: [You have fulfilled the prerequisites](../prereqs.md)
-    - Step 2: [You can log in (see below)](#step-1-log-in)
-    - Step 3: You can [use a text editor](use_text_editor.md)
-    - (optional) Step 4: [Use the tarball with exercises](use_tarball.md).
+      (you have already done this)
+    - **Step 2a**: [You can log in (see below)](#step-1-log-in)
+      (this session)
+    - **Step 2b**: You can [use a text editor](use_text_editor.md)
+      on your HPC cluster (this session)
+    - (optional) Step 3: [Use the tarball with exercises](use_tarball.md).
       This step is optional, as we also do this under course time
 
 <!-- 
