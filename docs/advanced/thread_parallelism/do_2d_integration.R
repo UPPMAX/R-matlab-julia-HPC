@@ -25,6 +25,7 @@ if (length(args) == 0 || length(args) > 2) {
     " \n"
   )
 }
+
 n_workers <- as.numeric(args[1])
 message("Number of workers: ", n_workers)
 
@@ -32,6 +33,23 @@ message("Number of workers: ", n_workers)
 testthat::expect_true(is.numeric(n_workers))
 testthat::expect_true(n_workers > 0)
 testthat::expect_true(n_workers < 256 * 256)
+
+#' Detect the HPC cluster this script is run on
+#' @param hostname the `HOSTNAME` environmental variable
+extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
+  testthat::expect_equal(1, length(hostname))
+  if (nchar(hostname) == 0) return("unknown")
+  if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
+  if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) return("pelle")
+  "unknown"
+}
+
+testthat::expect_equal("unknown", extract_hpc_cluster(""))
+testthat::expect_equal("unknown", extract_hpc_cluster("nonsense"))
+testthat::expect_equal("rackham", extract_hpc_cluster("rackham1.uppmax.uu.se"))
+testthat::expect_equal("rackham", extract_hpc_cluster("rackham4.uppmax.uu.se"))
+testthat::expect_equal("pelle", extract_hpc_cluster("pelle1.uppmax.uu.se"))
+testthat::expect_equal("pelle", extract_hpc_cluster("pelle4.uppmax.uu.se"))
 
 # grid size
 grid_size <- 16384
@@ -117,7 +135,7 @@ message("Time spent on all cores (seconds): ", core_secs)
 
 # Print out the result in a computer-friendly way
 language <- "r"
-hpc_cluster <- "rackham"
+hpc_cluster <- get_hpc_cluster()
 message(
   "language", ",",
   "hpc_cluster", ",",

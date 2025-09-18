@@ -168,6 +168,22 @@ the number of cores and core runtime.
 
 ![Benchmark results](benchmark_results.png)
 
+
+
+## Extra questions
+
+What went wrong here? Why is this a problem?
+
+```console
+[richel@pelle1 thread_parallelism]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             54197     pelle do_r_2d_   richel  R       0:14      1 p66
+             54200     pelle do_r_2d_   richel  R       0:14      4 p[64-67]
+             54216     pelle do_r_2d_   richel  R       0:14      3 p[104-106]
+             54217     pelle do_r_2d_   richel  R       0:14      6 p[106-111]
+             54169     pelle do_r_2d_   richel  R       0:15      1 p70
+```
+
 <!-- markdownlint-disable -->
 
 <!-- old stuff below 
