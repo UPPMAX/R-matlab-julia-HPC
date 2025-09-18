@@ -1,8 +1,8 @@
 # Check that all links are valid, i.e. not broken
 name: Check links
 
-# Check links on the 21st day of the month.
-# 21st as the first letter of this repo is the 21st letter in the alphabet.
+# Check links on the 18th day of the month.
+# 18th as the first letter of this repo is the 18th letter in the alphabet.
 on:
   push:
     paths:
@@ -17,7 +17,7 @@ on:
       - 'docs-sphinx/**'
       - mlc_config.json
   schedule:
-  - cron: "0 0 21 * *"
+  - cron: "0 0 18 * *"
 
 jobs:
   check-links:
