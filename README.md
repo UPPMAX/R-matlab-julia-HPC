@@ -88,13 +88,17 @@ mkdocs serve
     sphinx-autobuild --port 0 docs/ build/
     ```
 
-## Where is it indicated which files are not checked for Markdown style?
-
-In the file [`.markdownlintignore`](.markdownlintignore).
-
 ## Where is it indicated which files are not checked for broken URLs?
 
 In the file [`.github/workflows/check_links.yaml` line 34](.github/workflows/check_links.yaml#34).
+
+## Where is it indicated which files are not checked for spelling?
+
+In the file [`.github/workflows/check_spelling.yaml` line 39](.github/workflows/check_spelling.yaml#39).
+
+## Where is it indicated which files are not checked for Markdown style?
+
+In the file [`.markdownlintignore`](.markdownlintignore).
 
 ## Which admonitions work?
 
