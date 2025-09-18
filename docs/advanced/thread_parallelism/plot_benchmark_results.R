@@ -19,4 +19,4 @@ ggplot2::ggplot(
   ggplot2::facet_grid(hpc_cluster ~ .) +
   ggplot2::labs(title = "Threaded parallelism")
 
-ggplot2::ggsave("benchmark_result.png", width = 7, height = 7)
+ggplot2::ggsave("benchmark_results.png", width = 7, height = 7)
