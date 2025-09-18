@@ -96,7 +96,7 @@ In the file [`.markdownlintignore`](.markdownlintignore).
 
 In the file [`.github/workflows/check_links.yaml` line 34](.github/workflows/check_links.yaml#34).
 
-## Which adminitions work?
+## Which admonitions work?
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 

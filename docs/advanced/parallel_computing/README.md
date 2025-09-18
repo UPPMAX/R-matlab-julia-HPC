@@ -34,6 +34,9 @@ where one uses multiple CPU cores to work together on a same calculation
 
 ## Types of 'doing more things at the same time'
 
+There are many types of 'doing more things at the same time'.
+Below is an overview of the types that are relevant to this session.
+
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
 Type of parallelism   |Number of cores|Number of nodes|Memory                      |Library
@@ -43,17 +46,6 @@ Threaded/shared memory|Multiple       |1              |Shared by all cores      
 Distributed           |Multiple       |Multiple       |Distributed                 |OpenMPI
 
 <!-- markdownlint-enable MD013 -->
-
-- Threaded parallelism: calculations that can use multiple
-  cores with a shared memory.
-
-- Distributed programming.
-  Uses a Message Passing Interface.
-  For a job that use many different nodes,
-  for example, a weather prediction.
-- Slurm job arrays: for running jobs that are embarassingly parallel,
-  for example, running a simulation with different random numbers
-  Not in this session
 
 ## When to use parallel computing
 

@@ -34,4 +34,10 @@ jobs:
           rm -rf exercises
           rm -rf meeting_notes
 
+      - name: Remove files that do not care about spelling (yet)
+        run: |
+          rm docs/MLR.md
+
+
+
       - uses: igsekor/pyspelling-any@v1.0.4

@@ -9,7 +9,7 @@ These are the things you need to follow the course:
 - you can log in to at least one HPC cluster, in at least one way.
   See [our login guide](common/login.md).
 - you can start a text editor,
-  See [our text editot guide](common/use_text_editor.md).
+  See [our text editor guide](common/use_text_editor.md).
 
 !!! note
 
