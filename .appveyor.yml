@@ -1,8 +1,7 @@
 # Check if MkDocs deploy works on Windows
 branches:
   only:
-    - main
-
+    - develop
 
 image:
   - Visual Studio 2019
