@@ -172,11 +172,11 @@ You can install some Add-Ons manually using an installation file. This is useful
 
 <img src="../img/shell-logo_small.png">
 
-!!! note "<img src="../img/shell-logo_small.png"> Exercise"
+!!! note '<img src="../img/shell-logo_small.png"> Exercise'
 
     Find the **kalmanf** add-on, install it, and run a test command. Use the Demo as instruction.
 
-!!! note "<img src="../img/shell-logo_small.png"> Exercise"
+!!! note '<img src="../img/shell-logo_small.png"> Exercise'
 
     Browse the add-ons and get inspired for your own work. Use the Demo as inspiration.
 
@@ -186,4 +186,4 @@ You can install some Add-Ons manually using an installation file. This is useful
     - You can view Add-Ons and toolboxes with the Add-on manager
     - It is all more or less graphical
     - Use Add-Ons explorer to find and install add-ons/toolboxes.
-    - Add-ons install to local folder, and folder is added to Path, so it should be found no matter you are in the file tree.
+    - Add-ons installed by you can be found in ``~/MATLAB\ Add-Ons/``, and folder is automatically added to the MATLE PATH, so it should be found no matter which working directory you are working in..
