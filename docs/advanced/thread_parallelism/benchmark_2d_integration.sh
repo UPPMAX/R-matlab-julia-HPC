@@ -101,5 +101,5 @@ echo "Script name: ${scriptname}"
 # Schedule all the jobs
 for n_cores in $(seq 1 64)
 do 
-  sbatch -A "${slurm_job_account}" -n "${n_cores}" do_r_2d_integration_on_rackham.sh
+  sbatch -A "${slurm_job_account}" -n "${n_cores}" "${scriptname}"
 done
