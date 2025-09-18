@@ -698,9 +698,10 @@ In the following demo you will find instructions to install this package and run
          199.416 sec elapsed
 
 
+## Exercises 
 
-Exercises
----------
+!!! note "<img src="../img/shell-logo_small.png"> Exercise"
+
 
 .. challenge:: Run validation.R with Rscript
 
