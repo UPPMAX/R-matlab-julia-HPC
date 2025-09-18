@@ -15,19 +15,19 @@
 #   ./benchmark_2d_integration.sh staff r rackham
 #
 
-if [ "$#" -ne 3 ]; then
+if [ "$#" -ne 2 ]; then
     echo "ERROR: Incorrect number of arguments"
     echo "when calling 'benchmark_r_2d_integration_on_rackham.sh'."
     echo " "
-    echo "Please supply all three arguments."
+    echo "Please supply all two arguments."
     echo " "
     echo "General usage:"
     echo " "
-    echo "  ./benchmark_r_2d_integration_on_rackham.sh [account] [language] [hpc_cluster]"
+    echo "  ./benchmark_r_2d_integration_on_rackham.sh [account] [language]"
     echo " "
     echo "Examples:"
     echo " "
-    echo "  ./benchmark_r_2d_integration_on_rackham.sh staff r rackham"
+    echo "  ./benchmark_r_2d_integration_on_rackham.sh staff r"
     echo " "
     exit 42
 fi
@@ -62,7 +62,11 @@ then
   exit 41
 fi
 
-hpc_cluster=$3
+# Detect HPC cluster
+hpc_cluster="unknown"
+
+[[ "${HOSTNAME}" =~ ^rackham[1-4].uppmax.uu.se$ ]] && hpc_cluster="rackham"
+
 echo "HPC cluster: ${hpc_cluster}"
 
 function is_valid_hpc_cluster() 
