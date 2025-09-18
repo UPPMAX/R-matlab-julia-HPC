@@ -3,12 +3,15 @@ branches:
   only:
     - main
 
-version: '{build}'
+
+image:
+  - Visual Studio 2019
 
 environment:
-- PYTHON: "C:\\Python33"
-- PYTHON_VERSION: "3.3.5"
-- PYTHON_ARCH: "32"
+  matrix:
+  - TOXENV: py38    # https://devguide.python.org/versions
+
+build: false
 
 build_script:
   - pip install --upgrade pip
