@@ -84,32 +84,36 @@ integration2d <- function(grid_size, n_workers, worker_index) {
   h^2 * mysum
 }
 
-testthat::expect_true(abs(integration2d(grid_size = 100, n_workers = 1, worker_index = 1)) < 0.0001)
+testthat::expect_true(
+  abs(integration2d(grid_size = 100, n_workers = 1, worker_index = 1)) < 0.0001
+)
 
 # Set up the cluster for doParallel
 cl <- makeCluster(n_workers)
 registerDoParallel(cl)
 
-    # Start the timer
-    starttime <- Sys.time()
+# Start the timer
+starttime <- Sys.time()
 
-    # Distribute tasks to processes and combine the outputs into the results list
-    results <- foreach(i = 1:n_workers, .combine = c) %dopar% { integration2d(grid_size, n_workers, i) }
+# Distribute tasks to processes and combine the outputs into the results list
+results <- foreach(i = 1:n_workers, .combine = c) %dopar% {
+  integration2d(grid_size, n_workers, i)
+}
 
-    # Calculate the total integral by summing over partial integrals
-    integral_value <- sum(results)
+# Calculate the total integral by summing over partial integrals
+integral_value <- sum(results)
 
-    # End the timing
-    endtime <- Sys.time()
+# End the timing
+endtime <- Sys.time()
 
-    # Print out the result
-    error_value <- abs(integral_value - 0.0)
-    duration_secs <- difftime(endtime, starttime, units = "secs")
-    core_secs <- duration_secs * n_workers
-    message("Integral value: ", integral_value)
-    message("Integral error: ", error_value)
-    message("Time spent on 1 core (seconds): ", duration_secs)
-    message("Time spent on all cores (seconds): ", core_secs)
+# Print out the result
+error_value <- abs(integral_value - 0.0)
+duration_secs <- difftime(endtime, starttime, units = "secs")
+core_secs <- duration_secs * n_workers
+message("Integral value: ", integral_value)
+message("Integral error: ", error_value)
+message("Time spent on 1 core (seconds): ", duration_secs)
+message("Time spent on all cores (seconds): ", core_secs)
 
 # Stop the cluster after computation
 stopCluster(cl)
