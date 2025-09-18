@@ -44,8 +44,7 @@ nav:
       - Thread parallelism: advanced/thread_parallelism/README.md
       - Distributed parallelism: advanced/distributed_parallelism/README.md
       - Machine Learning: 
-        - in general: MLR.md
-        - With R: advanced/MLR.md
+        - With R: MLR.md
     - Misc: 
       - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
