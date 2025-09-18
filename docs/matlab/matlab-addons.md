@@ -1,17 +1,20 @@
 # Add-Ons
 
 Add-ons extend the capabilities of MATLAB® by providing additional functionality for specific tasks and applications, such as:
+
 - connecting to hardware devices
 - additional algorithms
 - interactive apps
       
 Encompass a wide variety of resources
+
 - products
 - apps
 - toolboxes
 - support packages
 
 Available from:
+
 - MathWorks®
 - the global MATLAB user community
 
@@ -31,15 +34,19 @@ Before going into installing Add-Ons, let's have a background to the MATLAB envi
 
 ## MATLAB Add-Ons manager
 
+[Toolbar_add-ons](./img/Toolbar_Add-Ons.PNG)
+
+<!---
 <div align="center">
   <img src="../../docs-sphinx/matlab/img/Toolbar_Add-Ons.PNG" alt="MATLAB Add-ons" width="500"/>
-</div>
+</div
+-->
 
 In the GUI, the Add-Ons manager can be selected from the menu at the top. The drop-down menu options allow users to:
 
    - **Browse a library of Add-Ons to download.** Note that some Add-Ons require a separate license.
 
-   ??? faq "What does that look like?"
+   ???- question "What does that look like?"
 
       <div align="center">
         <img src="../../docs-sphinx/matlab/img/Add-On_explorer.PNG" alt="Add-on Explorer" width="500"/>
@@ -47,7 +54,7 @@ In the GUI, the Add-Ons manager can be selected from the menu at the top. The dr
 
    - **Manage Add-Ons already downloaded.**
 
-   ??? faq "What does that look like?"
+   ???- question "What does that look like?"
    
       <div align="center">
         <img src="../../docs-sphinx/matlab/img/Add-On_manager.PNG" alt="Add-on Manager" width="500"/>
