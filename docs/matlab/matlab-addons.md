@@ -170,11 +170,13 @@ You can install some Add-Ons manually using an installation file. This is useful
 
 ## Exercises
 
+<img src="../img/shell-logo_small.png">
+
 !!! note "<img src="../img/shell-logo_small.png"> Exercise"
 
     Find the **kalmanf** add-on, install it, and run a test command. Use the Demo as instruction.
 
-!!! note "<img src="../img/shell-logo_small.png"> Exercise" (Optional)"
+!!! note "<img src="../img/shell-logo_small.png"> Exercise"
 
     Browse the add-ons and get inspired for your own work. Use the Demo as inspiration.
 
