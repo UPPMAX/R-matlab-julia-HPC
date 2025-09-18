@@ -17,7 +17,7 @@ tags:
     - (optional) Find the different R modules
     - (optional) See the list of installed R packages
 
-???- info "Learning outcomes"
+???- note "For teachers"
 
     Teaching goals are:
 
@@ -62,7 +62,7 @@ to start R.
 
 ???- note "Prefer this session as video?"
 
-     HPC cluster| Login method           | Location                                                 
+     HPC cluster| Login method           | Location
      -----------|------------------------|-------------------------------------
      COSMOS     | Local ThinLinc client  | [Here](https://youtu.be/sSWd54Gunck)
      Dardel     | Local ThinLinc client  | [Here](https://youtu.be/xBFH7Ab37FU)
@@ -73,15 +73,15 @@ to start R.
 
 HPC cluster name |Main breakout room
 -----------------|------------------
-Alvis            |.             
-Bianca           |.             
-COSMOS           |Room 1             
-Dardel           |Room 2             
-Kebnekaise       |Room 3             
+Alvis            |.
+Bianca           |.
+COSMOS           |Room 1
+Dardel           |Room 2
+Kebnekaise       |Room 3
 LUMI             |.
 Pelle            |.
-Rackham          |Room 4             
-Tetralith        |Room 5             
+Rackham          |Room 4
+Tetralith        |Room 5
 
 ## Exercise 1: start the R interpreter
 
@@ -123,44 +123,44 @@ Tetralith        |Room 5
 HPC center|R version
 ----------|---------
 Alvis     |?
-Bianca    |?4.1.1    
-COSMOS    |4.2.1    
-Dardel    |4.1.1    
-Kebnekaise|4.1.2    
+Bianca    |?4.1.1
+COSMOS    |4.2.1
+Dardel    |4.1.1
+Kebnekaise|4.1.2
 LUMI      |?
-Pelle     |?4.1.1    
-Rackham   |4.1.1    
-Tetralith |4.2.2    
+Pelle     |?4.1.1
+Rackham   |4.1.1
+Tetralith |4.2.2
 
 ??? hint "Answer"
 
-    HPC cluster| How to load the module(s) for R                                                                                
+    HPC cluster| How to load the module(s) for R
     -----------|----------------------------------------------------------------------------------------------------------------
     Alvis      | .
-    Bianca     | `module load R/4.1.1`                                                                                    
-    COSMOS     | `module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1`                                                           
-    Dardel     | `module load PDC/23.12 R/4.1.1`                                                                          
-    Kebnekaise | `module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2`                                                           
+    Bianca     | `module load R/4.1.1`
+    COSMOS     | `module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1`
+    Dardel     | `module load PDC/23.12 R/4.1.1`
+    Kebnekaise | `module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2`
     LUMI       | .
-    Pelle      | `module load R/4.1.1`                                                                                    
-    Rackham    | `module load R/4.1.1`                                                                                    
-    Tetralith  | `module load R/4.2.2-hpc1-gcc-11.3.0-bare`                                                               
+    Pelle      | `module load R/4.1.1`
+    Rackham    | `module load R/4.1.1`
+    Tetralith  | `module load R/4.2.2-hpc1-gcc-11.3.0-bare`
 
 - From the terminal, start the R interpreter
 
 ??? hint "Answer"
 
-    HPC cluster| How to start the R interpreter   
+    HPC cluster| How to start the R interpreter
     -----------|----------------------------------
-    Alvis      | `R`                        
-    Bianca     | `R`                        
-    COSMOS     | `R`                        
-    Dardel     | `R`                        
-    Kebnekaise | `R`                        
-    LUMI       | `R`                        
-    Pelle      | `R`                        
-    Rackham    | `R`                        
-    Tetralith  | `R`                       
+    Alvis      | `R`
+    Bianca     | `R`
+    COSMOS     | `R`
+    Dardel     | `R`
+    Kebnekaise | `R`
+    LUMI       | `R`
+    Pelle      | `R`
+    Rackham    | `R`
+    Tetralith  | `R`
 
 - From the R interpreter, run the R code `message("Hello")`
   to verify if this
@@ -191,34 +191,34 @@ how to download and extract the tarball with exercises.
 
 ??? hint "Answer"
 
-    HPC cluster| Answer                            
+    HPC cluster| Answer
     -----------|----------------------------------
-    Alvis      | `installed.packages()`     
-    Bianca     | `installed.packages()`     
-    COSMOS     | `installed.packages()`     
-    Dardel     | `installed.packages()`     
-    Kebnekaise | `installed.packages()`     
-    LUMI       | `installed.packages()`     
-    Pelle      | `installed.packages()`     
-    Rackham    | `installed.packages()`     
-    Tetralith  | `installed.packages()`     
+    Alvis      | `installed.packages()`
+    Bianca     | `installed.packages()`
+    COSMOS     | `installed.packages()`
+    Dardel     | `installed.packages()`
+    Kebnekaise | `installed.packages()`
+    LUMI       | `installed.packages()`
+    Pelle      | `installed.packages()`
+    Rackham    | `installed.packages()`
+    Tetralith  | `installed.packages()`
 
 - From the R interpreter, load the `parallel` package,
   using `library(parallel)`
 
 ??? hint "Answer"
 
-    HPC cluster| Answer                            
+    HPC cluster| Answer
     -----------|----------------------------------
-    Alvis      | `library(parallel)`        
-    Bianca     | `library(parallel)`        
-    COSMOS     | `library(parallel)`        
-    Dardel     | `library(parallel)`        
-    Kebnekaise | `library(parallel)`        
-    LUMI       | `library(parallel)`        
-    Pelle      | `library(parallel)`        
-    Rackham    | `library(parallel)`        
-    Tetralith  | `library(parallel)`        
+    Alvis      | `library(parallel)`
+    Bianca     | `library(parallel)`
+    COSMOS     | `library(parallel)`
+    Dardel     | `library(parallel)`
+    Kebnekaise | `library(parallel)`
+    LUMI       | `library(parallel)`
+    Pelle      | `library(parallel)`
+    Rackham    | `library(parallel)`
+    Tetralith  | `library(parallel)`
 
 
 ## Exercise X2: search for other R versions
@@ -228,14 +228,14 @@ by your cluster's module system.
 
 ??? hint "Answer"
 
-    HPC cluster| How to search for the R modules  
+    HPC cluster| How to search for the R modules
     -----------|----------------------------------
-    Alvis      | `module spider R`          
-    Bianca     | `module spider R`          
-    COSMOS     | `module spider R`          
-    Dardel     | `module spider R`          
-    Kebnekaise | `module spider R`          
+    Alvis      | `module spider R`
+    Bianca     | `module spider R`
+    COSMOS     | `module spider R`
+    Dardel     | `module spider R`
+    Kebnekaise | `module spider R`
     LUMI       | .
-    Pelle      | `module spider R`          
-    Rackham    | `module spider R`          
-    Tetralith  | `module spider R`          
+    Pelle      | `module spider R`
+    Rackham    | `module spider R`
+    Tetralith  | `module spider R`
