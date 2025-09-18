@@ -1,0 +1,32 @@
+name: Check bash code style
+
+# Check R code on the 18th day of the month.
+# 18th as the first letter of this repo is the 18th letter in the alphabet.
+on:
+  push:
+    paths:
+      - .github/workflows/check_bash_code.yaml
+      - 'docs/advanced/**.sh'
+  pull_request:
+    paths:
+      - .github/workflows/check_bash_code.yaml
+      - 'docs/advanced/**.sh'
+  schedule:
+  - cron: "0 0 18 * *"
+
+jobs:
+  check_bash_style:
+
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      - name: Check developer scripts
+        run: shellcheck scripts/*.sh
+
+      - name: Check thread parallelism
+        run: shellcheck docs/advanced/thread_parallelism/*.sh
