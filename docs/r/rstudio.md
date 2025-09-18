@@ -5,7 +5,7 @@
     - Practice using the documentation of your HPC cluster
     - Start RStudio
 
-???- info "Learning outcomes"
+???- note "For teachers"
 
     Teaching goals are:
 
