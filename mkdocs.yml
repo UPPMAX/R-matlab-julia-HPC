@@ -8,6 +8,7 @@ nav:
     - Prequisites: prereqs.md
     - Common:
       - Login: common/login.md
+      - Preparations: preparations.md
       - Use the tarball: common/use_tarball.md
       - Use a text editor: common/use_text_editor.md
       - HPC clusters: common/hpc_clusters.md
@@ -18,6 +19,7 @@ nav:
       - Load and run: r/load_run.md
       - Packages: r/packages.md
       - Batch: r/batch.md
+      - r/interactive.md
       - RStudio: r/rstudio.md
       - Summary: r/summary.md
       - Evaluation: r/evaluation.md
@@ -28,6 +30,8 @@ nav:
       - MATLAB terminal and SLURM: matlab/slurmMatlab.md
       - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
       - MATLAB Add-Ons: matlab/matlab-addons.md
+      - matlab/matlab-local-desktop.md
+      - matlab/matlab-summary.md
     - Julia:
       - Schedule: julia/schedule.md
       - Intro: julia/intro.md
@@ -40,6 +44,7 @@ nav:
       - Thread parallelism: advanced/thread_parallelism/README.md
       - Distributed parallelism: advanced/distributed_parallelism/README.md
       - Machine Learning: 
+        - in general: MLR.md
         - With R: advanced/MLR.md
     - Misc: 
       - Evaluations: evaluations/README.md
