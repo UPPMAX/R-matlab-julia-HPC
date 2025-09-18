@@ -4,6 +4,7 @@
 [![Check Markdown](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_markdown.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_markdown.yaml)
 [![Check spelling](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_spelling.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/check_spelling.yaml)
 [![Create MkDocs site](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/create_mkdocs_website.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/R-matlab-julia-HPC/actions/workflows/create_mkdocs_website.yaml)
+[![Create MkDocs site](https://ci.appveyor.com/api/projects/status/2wxcc7qapefo5gqi/branch/main?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/r-matlab-julia-hpc/branch/main)
 
 This repository contains the source code for the UPPMAX/HPC2N
 [R, MATLAB, and Julia in HPC course](https://uppmax.github.io/R-matlab-julia-HPC/)
