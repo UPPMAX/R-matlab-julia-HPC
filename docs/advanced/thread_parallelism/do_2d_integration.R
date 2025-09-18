@@ -135,7 +135,7 @@ message("Time spent on all cores (seconds): ", core_secs)
 
 # Print out the result in a computer-friendly way
 language <- "r"
-hpc_cluster <- get_hpc_cluster()
+hpc_cluster <- extract_hpc_cluster()
 message(
   "language", ",",
   "hpc_cluster", ",",
