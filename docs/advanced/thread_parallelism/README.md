@@ -7,7 +7,7 @@
     - Understand how code achieves threaded parallelism
     - Observe or conclude the costs of threaded parallelism
 
-???- info "For teachers"
+???- note "For teachers"
 
     Teaching goals are:
 
