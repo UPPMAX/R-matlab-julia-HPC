@@ -4,7 +4,7 @@ branches:
     - main
 
 version: '{build}'
-image: Python 3.3.5 x86
+image: Python 3.3.5
 
 build_script:
   - pip install --upgrade pip
