@@ -105,8 +105,11 @@ if [ ! -f "${script_name}" ]; then
   exit 42
 fi
 
+# Threaded parallelism only makes sense on a single node
+n_nodes=1
+
 # Schedule all the jobs
 for n_cores in $(seq 1 64)
 do 
-  sbatch -A "${slurm_job_account}" -n "${n_cores}" "${script_name}"
+  sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${script_name}"
 done
