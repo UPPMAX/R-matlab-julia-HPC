@@ -166,6 +166,8 @@ the number of cores and core runtime.
 
 ## Exercise 6: compare to others
 
+![Benchmark results](benchmark_results.png)
+
 <!-- markdownlint-disable -->
 
 <!-- old stuff below 
