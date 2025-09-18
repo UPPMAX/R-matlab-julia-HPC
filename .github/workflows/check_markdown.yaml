@@ -1,0 +1,56 @@
+# Check that there is correct Markdown in all files
+name: Check Markdown
+
+# Check Markdown on the 18th day of the month.
+# 18th as the first letter of this repo is the 18th letter in the alphabet.
+on:
+  push:
+    paths:
+      - .github/workflows/check_markdown.yaml
+      - README.md
+      - '**.md'
+      - .markdownlintignore
+      - .markdownlint.jsonc
+  pull_request:
+    paths:
+      - .github/workflows/check_markdown.yaml
+      - README.md
+      - '**.md'
+      - .markdownlintignore
+      - .markdownlint.jsonc
+  schedule:
+  - cron: "0 0 18 * *"
+
+jobs:
+  check_markdown:
+
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      # Indented blocks are ignored, as the linter assumes it to be code.
+      # In our case, it is not: for us, it is usually an admonition (i.e. a 'question' or 'info' block)
+      # Here all indented text is unindented
+      # https://github.com/UPPMAX/UPPMAX-documentation/issues/114
+      - name: unindent text
+        run: ./scripts/unindent_text.sh
+
+      - uses: articulate/actions-markdownlint@v1
+        with:
+          config: .markdownlint.jsonc
+          ignore: .markdownlintignore
+
+      # There are many linters with the same name,
+      # this is the linter whose documentation to look into :-)
+      - name: CLI to the linter is at https://github.com/igorshubovych/markdownlint-cli
+        run: echo "CLI to the linter is at https://github.com/igorshubovych/markdownlint-cli"
+
+      # There are many linters with the same name,
+      # this is the linter whose documentation to look into :-)
+      - name: Linter is at https://github.com/DavidAnson/markdownlint
+        run: echo "Linter is at https://github.com/DavidAnson/markdownlint"
+

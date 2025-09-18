@@ -58,7 +58,7 @@ for instance the compilers (`GNU`, `Intel`, etc.).
 - For some clusters
 
 ```console
-$ module avail julia
+module avail julia
 ```
 
 :::{admonition} How will it look like?
@@ -80,12 +80,13 @@ $ module avail julia
 Use "module spider" to find all possible modules and extensions.
 Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 ```
+
 :::
 
 - Or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N & PDC)
 
 ```console
-$ module spider julia
+module spider julia
 ```
 
 :::{admonition} How will it look like?
@@ -130,6 +131,7 @@ $ module spider julia
      $ module spider julia/1.10.2-cpeGNU-23.12
 -------------------------------------------------------------------------------------------------------
 ```
+
 :::
 
 ## Load a Julia module
@@ -145,13 +147,13 @@ default one.
 At some clusters:
 
 ```console
-$ module load julia/1.8.5
+module load julia/1.8.5
 ```
 
 or at cluster that includes "architecture" or "build name" in module name:
 
 ```console
-$ ml julia/1.10.2-bdist
+ml julia/1.10.2-bdist
 ```
 
 Some clusters will require other modules to be loaded (Kebnekaise and Dardel)
@@ -170,7 +172,7 @@ $ module spider julia/1.10.2-cpeGNU-23.12
 - Load PDC/23.12 first and then the julia module
 
 ```console
-$ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 ```
 
 ## Run
@@ -180,7 +182,7 @@ $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 - After loading the appropriate modules for Julia, you will have access to the **read-eval-print-loop (REPL)** command line by typing `julia`:
 
 ```console
-$ julia
+julia
 ```
 
 - In julia REPL
@@ -202,6 +204,7 @@ $ julia
 
 julia>
 ```
+
 :::
 
 #### Modes: Julian mode
@@ -270,6 +273,7 @@ julia> exit()
 ```
 
 :::{admonition} The Julian modes summary
+
 - enter the *shell mode* by typing `;`
 - go back to *Julian* mode by `<backspace>`
 - access the *package manager* mode by typing `]` in the *Julian* mode
@@ -285,7 +289,7 @@ julia> exit()
 You can run a Julia script on the Linux shell as follows:
 
 ```console
-$ julia example.jl
+julia example.jl
 ```
 
 where the script is a text file could contain these lines:
@@ -427,6 +431,7 @@ println("hello world")
 > Use "module spider" to find all possible modules and extensions.
 > Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 > ```
+>
 :::
 
 :::{admonition} Output at HPC2N as of Oct 2024
@@ -454,6 +459,7 @@ println("hello world")
 >      $ module spider Julia/1.8.5-linux-x86_64
 > ------------------------------------------------------------------------------------------------
 > ```
+>
 :::
 
 :::{admonition} Output at LUNARC as of Oct 2024
@@ -474,6 +480,7 @@ println("hello world")
 >         Julia/1.9.3-linux-x86_64
 >         Julia/1.10.4-linux-x86_64
 > ```
+>
 :::
 
 :::{admonition} Output at NSC as of Mar 2025
@@ -487,6 +494,7 @@ println("hello world")
 >    julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
 >    julia/1.4.1                          julia/1.8.5-nsc1-bdist
 > ```
+>
 :::
 
 :::{admonition} Output at PDC as of Mar 2025
@@ -524,6 +532,7 @@ println("hello world")
 > -------------------------------------------------------------------------------------------------------
 >   For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
 > ```
+>
 :::
 
 ```{eval-rst}

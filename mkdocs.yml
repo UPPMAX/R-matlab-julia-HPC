@@ -1,34 +1,110 @@
 site_name: Introduction to R, MATLAB, and Julia in HPC
 repo_url: https://github.com/UPPMAX/R-matlab-julia-HPC
-docs_dir: docs-mk/
-edit_uri: blob/main/docs-mk/
+docs_dir: docs/
+edit_uri: blob/main/docs/
 
 nav:
     - Overview: index.md
+    - Prequisites: prereqs.md
+    - Common:
+      - Login: common/login.md
+      - Preparations: preparations.md
+      - Use the tarball: common/use_tarball.md
+      - Use a text editor: common/use_text_editor.md
+      - HPC clusters: common/hpc_clusters.md
+      - Other courses: common/other_courses.md
     - R: 
       - Schedule: r/schedule.md
       - Intro: r/intro/README.md
       - Load and run: r/load_run.md
+      - Packages: r/packages.md
+      - Batch: r/batch.md
+      - r/interactive.md
+      - RStudio: r/rstudio.md
       - Summary: r/summary.md
+      - Evaluation: r/evaluation.md
+    - MATLAB: 
+      - Schedule: matlab/schedule.md
+      - Intro: matlab/intro-matlab.md
+      - Load and run: matlab/load_runMatlab.md
+      - MATLAB terminal and SLURM: matlab/slurmMatlab.md
+      - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
+      - MATLAB Add-Ons: matlab/matlab-addons.md
+      - matlab/matlab-local-desktop.md
+      - matlab/matlab-summary.md
     - Julia:
+      - Schedule: julia/schedule.md
       - Intro: julia/intro.md
       - Load and run: julia/load_run.md
       - Environments and packages: julia/environments_packages.md
       - The notebook Pluto: julia/notebook_pluto.md
+    - Advanced: 
+      - Schedule: advanced/schedule.md
+      - Parallel computing: advanced/parallel_computing/README.md
+      - Thread parallelism: advanced/thread_parallelism/README.md
+      - Distributed parallelism: advanced/distributed_parallelism/README.md
+      - Machine Learning: 
+        - With R: MLR.md
+    - Misc: 
+      - Evaluations: evaluations/README.md
+      - Lesson plans: lesson_plans/README.md
+      - Reflections: reflections/README.md
+    - Extra reading: 
+      - More about R packages: r/morepackages.md
+
+
+not_in_nav: |
+  evaluations/202302_courses/README.md
+  evaluations/20231017_python/README.md
+  evaluations/20231018_julia/README.md
+  evaluations/20231019_r/README.md
+  evaluations/202310_courses/README.md
+  evaluations/20240312_python/README.md
+  evaluations/20240313_julia/README.md
+  evaluations/20240314_r/README.md
+  evaluations/20241022_python/README.md
+  evaluations/20241023_julia/README.md
+  evaluations/20241024_r/README.md
+  evaluations/20241025_matlab/README.md
+  evaluations/20250324_r/README.md
+  evaluations/20250325_matlab/README.md
+  evaluations/20250326_julia/README.md
+  evaluations/202503_courses/README.md
+  evaluations/20251006_r/README.md
+  evaluations/20251007_matlab/README.md
+  evaluations/20251008_julia/README.md
+  evaluations/20251010_advanced/README.md
+  lesson_plans/20240312_richel/README.md
+  lesson_plans/20240314_richel/README.md
+  lesson_plans/20241022_richel/README.md
+  lesson_plans/20241024_richel/README.md
+  lesson_plans/20250324_richel/README.md
+  lesson_plans/20251006_richel/README.md
+  lesson_plans/20251010_richel/README.md
+  lesson_plans/20251010_richel/4_lumi_course/README.md
+  reflections/20231017_richel/README.md
+  reflections/20240312_richel/README.md
+  reflections/20240314_richel/README.md
+  reflections/20241022_richel/README.md
+  reflections/20241024_richel/README.md
+  reflections/20241025_richel/README.md
+  reflections/20250324_richel/README.md
+  reflections/20251006_richel/README.md
+  reflections/20251010_richel/README.md
 
 theme: 
     name: readthedocs
-    #highlightjs: true   # with pygments the theme provides the palette
-    #hljs_languages:
-    #    - yaml
-    #    - rust
     features: 
         - content.tabs.link
+        - content.code.annotate
         - content.code.copy
         
 extra:
     feature:
         tabs: true
+
+extra_css:
+   - css/extra.css
 
 markdown_extensions:
   - toc:
@@ -41,17 +117,39 @@ markdown_extensions:
   - md_in_html
   - smarty
   - tables
+  - codehilite
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   #- pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
   #- pymdownx.keys
   #- pymdownx.emoji:
   #    emoji_index: !!python/name:materialx.emoji.twemoji
   #    emoji_generator: !!python/name:materialx.emoji.to_svg
-      
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
 
+plugins:
+  - search
+  - external-markdown
+  - mkdocstrings
+  - markdown-exec
+  - open-in-new-tab
+  - mermaid2
+    #      version: 10.0.2
+    #      javascript: https://unpkg.com/mermaid/dist/mermaid.min.js
+        #      arguments:
+        #          theme: 'neutral'
+  # Find unused files, https://github.com/wilhelmer/mkdocs-unused-files
+  - unused_files

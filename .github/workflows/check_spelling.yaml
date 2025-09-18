@@ -1,14 +1,23 @@
 # Check that there is correct spelling in all files
-#
-# Errors are reported via an Issue being created,
-# instead of via en email to all repository Watchers
 name: Check spelling
 
+# Check spelling on the 18th day of the month.
+# 18th as the first letter of this repo is the 18th letter in the alphabet.
 on:
   push:
-    branches:
-      - develop
+    paths:
+      - .github/workflows/check_spelling.yaml
+      - README.md
+      - '**.md'
+      - .wordlist.txt
   pull_request:
+    paths:
+      - .github/workflows/check_spelling.yaml
+      - README.md
+      - '**.md'
+      - .wordlist.txt
+  schedule:
+  - cron: "0 0 18 * *"
 
 jobs:
   check_spelling:
@@ -23,7 +32,14 @@ jobs:
 
       - name: Remove folders that do not care about spelling
         run: |
-          rm -rf evaluations
+          rm -rf docs/evaluations
+          rm -rf exercises
           rm -rf meeting_notes
+
+      - name: Remove files that do not care about spelling (yet)
+        run: |
+          rm docs/MLR.md
+
+
 
       - uses: igsekor/pyspelling-any@v1.0.4

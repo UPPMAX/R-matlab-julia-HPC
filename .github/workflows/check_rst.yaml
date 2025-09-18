@@ -1,5 +1,5 @@
 # Checks if the rst files are formatted correctly.
-name: Check RST
+name: Check RST style
 
 # Always run, it shold always pass
 on:

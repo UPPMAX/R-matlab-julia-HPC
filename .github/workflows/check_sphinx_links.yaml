@@ -1,0 +1,52 @@
+# Checks if all links are valid, i.e. not broken
+# for the Sphinx version
+#
+# Errors are reported via an Issue being created,
+# instead of via en email to all repository Watchers
+name: Check Sphinx links
+
+# Only run this on the main branch, or with Pull Requests
+on:
+#  schedule:
+#  - cron: "0 9-21/3 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+  pull_request:
+  
+jobs:
+  check_sphinx_links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove folders that need not to be checked
+        run: |
+          rm -rf docs/not_used/
+          rm -rf docs/python/
+          rm -rf docs/julia/not_used/
+          rm -rf docs/R/not_used/
+          rm -rf docs/matlab/not_used/
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.10.0
+        with:
+          # Check all reStructuredText files in repo 
+          args: --base docs/ --max-redirects 10 --user-agent "curl/8.4.0" --verbose --no-progress './**/*.rst'
+
+      - name: Create Issue From File
+        if: env.lychee_exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue

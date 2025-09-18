@@ -18,6 +18,7 @@
 ```
 
 :::{admonition} Compute allocations in this workshop
+
 - Rackham: `uppmax2025-2-272`
 - Kebnekaise: `hpc2n2025-062`
 - Cosmos: `lu2025-7-24`
@@ -27,6 +28,7 @@ Please, change the project IDs in the templates accordingly.
 :::
 
 :::{admonition} Storage space for this workshop
+
 - Rackham: `/proj/r-py-jl-m-rackham`
 - Kebnekaise: `/proj/nobackup/r-matlab-julia`
 - Cosmos: `<your own good place>`
@@ -36,6 +38,7 @@ Please, change the paths to the project storage in the templates accordingly.
 :::
 
 :::{warning}
+
 - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
 :::
 
@@ -56,10 +59,10 @@ Guides and documentation at: [HPC2N](http://www.hpc2n.umu.se/support), [UPPMAX](
 
 - Write a batch script
 
-  - Inside the batch script you need to load the modules you need, for instance Julia
-  - Possibly activate an isolated/virtual environment to access own-installed packages
-  - Ask for resources depending on if it is a parallel job or a serial job, if you need GPUs or not, etc.
-  - Give the command(s) to your Julia script
+    - Inside the batch script you need to load the modules you need, for instance Julia
+    - Possibly activate an isolated/virtual environment to access own-installed packages
+    - Ask for resources depending on if it is a parallel job or a serial job, if you need GPUs or not, etc.
+    - Give the command(s) to your Julia script
 
 - Submit batch script with `sbatch <my-julia-script.sh>`
 
@@ -181,7 +184,7 @@ Short serial example for running on different clusters.
 
 ```
 
-### Serial code + self-installed package in virt. env.
+### Serial code + self-installed package in virt. env
 
 Short serial example for running on Julia with a virtual environment. Create an environment `my-third-env`
 and install the package `DFTK`. Here, there are batch scripts for using this environment (it is assumed that

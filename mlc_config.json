@@ -1,0 +1,8 @@
+{
+  "aliveStatusCodes": [0, 200, 403, 418, 503],
+  "ignorePatterns": [
+    {
+        "pattern": "^https://bianca.uppmax.uu.se"
+    }
+  ]
+}

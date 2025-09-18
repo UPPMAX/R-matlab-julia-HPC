@@ -18,7 +18,7 @@ You can also try run the R codes directly, with Rscript (after loading R modules
 
 ## iris_ml example
 
-- ``iris_ml.R``  : R code, using ``caret``, taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/
+- ``iris_ml.R``  : R code, using ``caret``, taken from <https://machinelearningmastery.com/machine-learning-in-r-step-by-step/>
 - ``iris.csv``  : dataset for the above file, in case the remote data-set cannot be accessed
 - ``iris-ml-kebnekaise.sh``
 - ``iris_ml-rackham.sh``
