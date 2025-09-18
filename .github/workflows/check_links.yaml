@@ -8,13 +8,13 @@ on:
     paths:
       - .github/workflows/check_links.yaml
       - 'docs/**'
-      - 'docs-mk/**'
+      - 'docs-sphinx/**'
       - mlc_config.json
   pull_request:
     paths:
       - .github/workflows/check_links.yaml
       - 'docs/**'
-      - 'docs-mk/**'
+      - 'docs-sphinx/**'
       - mlc_config.json
   schedule:
   - cron: "0 0 21 * *"
