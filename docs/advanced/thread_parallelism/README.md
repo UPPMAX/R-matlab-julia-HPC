@@ -87,8 +87,8 @@ with a custom amount of cores.
 
 Language|Script with calculation
 --------|------------------------------------------
-Julia   |TODO
-MATLAB  |TODO
+Julia   |[do_julia_2d_integration.sh](do_julia_2d_integration.sh)
+MATLAB  |[do_matlab_2d_integration.sh](do_matlab_2d_integration.sh)
 R       |[do_r_2d_integration.sh](do_r_2d_integration.sh)
 
 ## Calculation script
@@ -101,7 +101,7 @@ can be done by a custom amount of cores.
 This calculation script is called by the Slurm script,
 i.e. not directly by a user.
 
-???- hint "How do I run it?"
+???- hint "R: How do I run it?"
 
     You can run it as such:
 
@@ -118,8 +118,8 @@ i.e. not directly by a user.
 
 Language|Script with calculation
 --------|------------------------------------------
-Julia   |TODO
-MATLAB  |TODO
+Julia   |[do_2d_integration.jl](do_2d_integration.jl)
+MATLAB  |[do_2d_integration.m](do_2d_integration.m)
 R       |[do_2d_integration.R](do_2d_integration.R)
 
 ## Benchmark script
@@ -166,9 +166,11 @@ The goal of this step is to find out if we are ready to go.
 
 Run the calculation script on the login node with a minimal sensible workload:
 
-Language|Script name                               |How to run
---------|------------------------------------------|---------------------------
-R       |[do_2d_integration.R](do_2d_integration.R)|`./do_2d_integration.R 1 1`
+Language|Script name                                 |How to run
+--------|--------------------------------------------|---------------------------
+Julia   |[do_2d_integration.jl](do_2d_integration.jl)|`./do_2d_integration.jl 1 1`
+MATLAB  |[do_2d_integration.m](do_2d_integration.m)  |`./do_2d_integration.m 1 1`
+R       |[do_2d_integration.R](do_2d_integration.R)  |`./do_2d_integration.R 1 1`
 
 If there are errors about libraries missing, install these,
 for example, using the R command below:

@@ -3,11 +3,11 @@
 #
 # Usage:
 #
-#   sbatch -A [account] -n [number_of_cores] do_r_2d_integration.sh
+#   sbatch -A [account] -n [number_of_cores] do_matlab_2d_integration.sh
 #
 # Example:
 #
-#   sbatch -A staff -n 1 do_r_2d_integration.sh
+#   sbatch -A staff -n 1 do_matlab_2d_integration.sh
 #
 
 
