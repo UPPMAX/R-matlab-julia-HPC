@@ -170,7 +170,12 @@ Language|Script name                               |How to run
 --------|------------------------------------------|---------------------------
 R       |[do_2d_integration.R](do_2d_integration.R)|`./do_2d_integration.R 1 1`
 
-If there are errors about libraries missing, install these.
+If there are errors about libraries missing, install these,
+for example, using the R command below:
+
+```r
+install.packages(c("doParallel", "stringr", "testthat"), repos = "http://cran.us.r-project.org")
+```
 
 ## Exercise 2: start the benchmark on your HPC cluster
 
@@ -205,6 +210,101 @@ What went wrong here? Why is this a problem?
 ```
 
 ## Troubleshooting
+
+### There is no package called ‘doParallel’
+
+Checking the log files:
+
+```bash
+cat *.out
+```
+
+You see, for example:
+
+```
+HPC cluster: tetralith
+Slurm job account used: naiss2025-22-934
+Number of cores booked in Slurm: 32
+Error in library(doParallel, quietly = TRUE) : 
+  there is no package called ‘doParallel’
+Execution halted
+```
+
+Install that package.
+
+```bash
+[x_ricbi@tetralith3 thread_parallelism]$ module load R/4.4.0-hpc1-gcc-11.3.0-bare
+
+Loading R module. Also loading a compatible "build environment"
+Setting environment variable OPENBLAS_NUM_THREADS=1. Increase this for
+parallel BLAS/LAPACK (linalg) execution, but don't run
+on a login node. The OMP_NUM_THREADS variable is also set to
+1, and you may increase this to control other aspects of R's threading. If
+using both types of parallelization in your R session, make sure
+OMP_NUM_THREADS * OPENBLAS_NUM_THREADS doesn't exceed 32 (the number of
+cores on the nodes)
+
+Starting from R v. 3.6.3, NSC by default uses separate library
+directories for user installed packages down to bugfix versions, i.e.
+X.Y.Z, via the R_LIBS_USER environment variable. This is to avoid possible
+dependency mismatches between user installed packages from different R
+installations built differently. This has the effect that all
+user installed packages must be rebuilt when using different installed
+releases of R (following v. 3.6.3) at NSC. Setting the R_LIBS_USER
+environment variable to "${HOME}/R/%p-library/%v"
+(in your ~/.bashrc file for instance), restores the R standard default.
+
+***************************************************
+You have loaded an gcc buildenv module
+***************************************************
+The buildenv-gcc module makes available:
+ - Compilers: gcc, gfortran, etc.
+ - MPI library with mpi-wrapped compilers: OpenMPI with mpicc, mpifort, etc.
+ - Numerical libraries: OpenBLAS, LAPACK, ScaLAPACK, FFTW
+
+It also makes a set of dependency library modules available via
+the regular module command. Just do:
+  module avail
+to see what is available.
+
+NOTE: You shoud never load build environments inside submitted jobs.
+(with the single exception of when using supercomputer time to compile code.)
+
+[x_ricbi@tetralith3 thread_parallelism]$ R
+
+R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> install.packages("doParallel")
+Warning in install.packages("doParallel") :
+  'lib = "/software/sse2/tetralith_el9/manual/R/4.4.0/g11/hpc1/lib64/R/library"' is not writable
+Would you like to use a personal library instead? (yes/No/cancel) yes
+Would you like to create a personal library
+‘/home/x_ricbi/R/x86_64-pc-linux-gnu-library/4.4.0’
+to install packages into? (yes/No/cancel) yes
+--- Please select a CRAN mirror for use in this session ---
+also installing the dependencies ‘foreach’, ‘iterators’
+
+trying URL 'https://mirror.accum.se/mirror/CRAN/src/contrib/foreach_1.5.2.tar.gz'
+Content type 'application/x-gzip' length 89758 bytes (87 KB)
+==================================================
+downloaded 87 KB
+
+[...]
+```
 
 ### Invalid account or account/partition combination specified
 

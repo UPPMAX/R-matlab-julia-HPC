@@ -39,14 +39,16 @@ testthat::expect_true(n_workers < 256 * 256)
 extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
   testthat::expect_equal(1, length(hostname))
   if (nchar(hostname) == 0) return("unknown")
+  if (stringr::str_detect(hostname, "^b-cn[:digit:]{1,6}$")) return("kebnekaise")
   if (stringr::str_detect(hostname, "^cn[:digit:]{1,3}$")) return("cosmos")
   if (stringr::str_detect(hostname, "^cosmos[:digit:].int.lunarc$")) return("cosmos")
   if (stringr::str_detect(hostname, "^login[:digit:]$")) return("dardel")
+  if (stringr::str_detect(hostname, "^n[:digit:]{1,6}$")) return("tetralith")
   if (stringr::str_detect(hostname, "^nid[:digit:]{1,6}$")) return("dardel")
-  if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
-  if (stringr::str_detect(hostname, "^r[:digit:]{1,3}$")) return("rackham")
   if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) return("pelle")
   if (stringr::str_detect(hostname, "^p[:digit:]{1,3}$")) return("pelle")
+  if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
+  if (stringr::str_detect(hostname, "^r[:digit:]{1,3}$")) return("rackham")
   hostname
 }
 
@@ -59,6 +61,7 @@ testthat::expect_equal("cosmos", extract_hpc_cluster("cn12"))
 testthat::expect_equal("cosmos", extract_hpc_cluster("cn123"))
 testthat::expect_equal("dardel", extract_hpc_cluster("login1"))
 testthat::expect_equal("dardel", extract_hpc_cluster("nid001962"))
+testthat::expect_equal("kebnekaise", extract_hpc_cluster("b-cn1707"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham1.uppmax.uu.se"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham4.uppmax.uu.se"))
 testthat::expect_equal("pelle", extract_hpc_cluster("pelle1.uppmax.uu.se"))
@@ -66,6 +69,10 @@ testthat::expect_equal("pelle", extract_hpc_cluster("p1"))
 testthat::expect_equal("pelle", extract_hpc_cluster("p12"))
 testthat::expect_equal("pelle", extract_hpc_cluster("p123"))
 testthat::expect_equal("pelle", extract_hpc_cluster("pelle4.uppmax.uu.se"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n1301"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n130"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n13"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n1"))
 
 # grid size
 grid_size <- 16384
