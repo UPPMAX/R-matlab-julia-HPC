@@ -115,7 +115,8 @@ then
 fi
 
 # Script filename
-script_name="do_${language}_2d_integration_on_${hpc_cluster}.sh"
+script_name="do_${language}_2d_integration.sh"
+#script_name="do_${language}_2d_integration_on_${hpc_cluster}.sh"
 echo "Script name: ${script_name}"
 
 if [ ! -f "${script_name}" ]; then
