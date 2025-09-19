@@ -56,7 +56,7 @@ function cluster = extract_hpc_cluster(hostname)
         cluster = "pelle";
     elseif ~isempty(regexp(hostname, '^rackham\d*\.uppmax\.uu\.se$', 'once'))
         cluster = "rackham";
-    elseif ~isempty(regexp(hostname, '^r\d{1,3}$', 'once'))
+    elseif ~isempty(regexp(hostname, '^r\d{1,4}$', 'once'))
         cluster = "rackham";
     else
         cluster = string(hostname);
