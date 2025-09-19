@@ -36,4 +36,4 @@ jobs:
         run: julia -e 'import Pkg ; Pkg.add(url="https://github.com/RelationalAI-oss/ReLint.jl")'
 
       - name: Check
-        run: julia -e 'ReLint.run_lint("docs/advances/thread_parallelism/do_2d_integration.jl")'
+        run: julia -e 'import Pkg ; Pkg.add(url="https://github.com/RelationalAI-oss/ReLint.jl") ; ReLint.run_lint("docs/advances/thread_parallelism/do_2d_integration.jl")'

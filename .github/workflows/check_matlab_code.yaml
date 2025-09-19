@@ -6,11 +6,13 @@ on:
   push:
     paths:
       - .github/workflows/check_matlab_code.yaml
-      - 'docs/advanced/**.m'
+      # License problems :-/
+      #- 'docs/advanced/**.m'
   pull_request:
     paths:
       - .github/workflows/check_matlab_code.yaml
-      - 'docs/advanced/**.m'
+      # License problems :-/
+      #- 'docs/advanced/**.m'
   schedule:
   - cron: "0 0 18 * *"
 
