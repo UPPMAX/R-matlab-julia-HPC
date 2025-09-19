@@ -78,7 +78,7 @@ fi
 
 if [ ${hpc_cluster} == "cosmos" ]
 then
-  module load julia >/dev/null 2>&1
+  module load Julia/1.10.4-linux-x86_64 >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "dardel" ]
