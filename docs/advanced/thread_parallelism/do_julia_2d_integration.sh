@@ -88,7 +88,7 @@ fi
 
 if [ ${hpc_cluster} == "kebnekaise" ]
 then
-  module load julia >/dev/null 2>&1
+  module load Julia/1.9.3-linux-x86_64 >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "lumi" ]
