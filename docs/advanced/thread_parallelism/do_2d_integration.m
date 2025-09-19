@@ -1,5 +1,3 @@
-#!/usr/bin/env matlab
-
 function integration2d_main(varargin)
 % Parse command-line arguments
 args = varargin;

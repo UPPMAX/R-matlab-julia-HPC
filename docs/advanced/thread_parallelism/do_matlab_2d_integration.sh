@@ -121,4 +121,17 @@ fi
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
 
-matlab -nodisplay -nosplash -nojvm -batch do_2d_integration.m "${SLURM_NPROCS}"
+# matlab -nodisplay -nosplash -nojvm -batch do_2d_integration.m "${SLURM_NPROCS}"
+
+# matlab -nodisplay -nosplash -nojvm -r "do_2d_integration.m ${SLURM_NPROCS}"
+
+# Use -batch
+# https://stackoverflow.com/a/58358304/3364162
+#matlab -nodisplay -nosplash -nojvm -batch "do_2d_integration.m ${SLURM_NPROCS}"
+
+# Put command in a text
+# https://stackoverflow.com/a/6717782/3364162
+matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration.m ${SLURM_NPROCS}\"); exit;"
+
+
+
