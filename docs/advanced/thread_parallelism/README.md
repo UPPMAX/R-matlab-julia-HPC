@@ -188,6 +188,8 @@ If there are errors about libraries missing, install these.
 
 ![Benchmark results: core seconds](benchmark_results_core_seconds.png)
 
+![Benchmark results: efficiency](benchmark_results_efficiency.png)
+
 ## Extra questions
 
 What went wrong here? Why is this a problem?
