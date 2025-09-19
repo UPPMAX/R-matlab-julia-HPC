@@ -73,24 +73,26 @@ fi
 
 if [ ${hpc_cluster} == "bianca" ]
 then
-  module load matlab >/dev/null 2>&1
+  module load matlab/R2023b >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "cosmos" ]
 then
   module purge > /dev/null 2>&1
-  module load matlab >/dev/null 2>&1
+  module load matlab/2023b >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "dardel" ]
 then
-  module load matlab >/dev/null 2>&1
+  module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0 >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "kebnekaise" ]
 then
   module purge >/dev/null 2>&1
-  module load matlab >/dev/null 2>&1
+  module load MATLAB/2023a.Update4 >/dev/null 2>&1
+
+
 fi
 
 if [ ${hpc_cluster} == "lumi" ]
@@ -100,20 +102,20 @@ fi
 
 if [ ${hpc_cluster} == "pelle" ]
 then
-  module load matlab >/dev/null 2>&1
+  module load matlab/R2023b >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "rackham" ]
 then
-  module load matlab >/dev/null 2>&1
+  module load matlab/R2023b >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "tetralith" ]
 then
-  module load matlab >/dev/null 2>&1
+  module load MATLAB/2024a-hpc1-bdist >/dev/null 2>&1
 fi
 
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
 
-matlab do_2d_integration.m "${SLURM_NPROCS}"
+matlab -nodisplay -nosplash -r do_2d_integration.m "${SLURM_NPROCS}"
