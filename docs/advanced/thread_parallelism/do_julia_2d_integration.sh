@@ -108,7 +108,7 @@ fi
 
 if [ ${hpc_cluster} == "tetralith" ]
 then
-  module load julia >/dev/null 2>&1
+  module load julia/1.10.2-bdist >/dev/null 2>&1
 fi
 
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
