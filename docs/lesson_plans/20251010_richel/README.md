@@ -348,6 +348,15 @@ Pedro did a great job with the materials!
 Steps:
 
 - [x] Sketch content 'Threaded parallelisms'
+  - [ ] Julia
+  - [ ] MATLAB
+  - [x] R 
 - [ ] Sketch content 'Distributed parallelisms'
+  - [ ] Julia
+  - [ ] MATLAB
+  - [ ] R 
 - [ ] Sketch content 'General parallelism'
+  - [ ] Julia
+  - [ ] MATLAB
+  - [ ] R 
 
