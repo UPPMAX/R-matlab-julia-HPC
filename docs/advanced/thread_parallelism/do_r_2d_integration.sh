@@ -64,12 +64,52 @@ then
   exit 42
 fi
 
+if [ ${hpc_cluster} == "alvis" ]
+then
+  echo "No idea which modules to load"
+fi
+
+if [ ${hpc_cluster} == "bianca" ]
+then
+  module load R_packages/4.1.1 >/dev/null 2>&1
+fi
+
 if [ ${hpc_cluster} == "cosmos" ]
 then
   module purge > /dev/null 2>&1
   module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 >/dev/null 2>&1
 fi
 
+if [ ${hpc_cluster} == "dardel" ]
+then
+  module load PDC/24.11 R/4.4.2-cpeGNU-24.11 >/dev/null 2>&1
+fi
+
+if [ ${hpc_cluster} == "kebnekaise" ]
+then
+  module purge >/dev/null 2>&1
+  module load GCC/12.2.0  OpenMPI/4.1.4 R/4.2.2 >/dev/null 2>&1
+fi
+
+if [ ${hpc_cluster} == "lumi" ]
+then
+  echo "No idea which modules to load"
+fi
+
+if [ ${hpc_cluster} == "pelle" ]
+then
+  module load R/4.4.2-gfbf-2024a >/dev/null 2>&1
+fi
+
+if [ ${hpc_cluster} == "rackham" ]
+then
+  module load R_packages/4.1.1 >/dev/null 2>&1
+fi
+
+if [ ${hpc_cluster} == "tetralith" ]
+then
+  module load R/4.2.0-hpc1-gcc-11.3.0-bare >/dev/null 2>&1
+fi
 
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
