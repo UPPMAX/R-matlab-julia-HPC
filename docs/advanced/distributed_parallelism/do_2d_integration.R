@@ -226,4 +226,3 @@ message(
 # Stop the cluster after computation
 stopCluster(cl)
 
-
