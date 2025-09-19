@@ -108,6 +108,9 @@ fi
 if [ ${hpc_cluster} == "rackham" ]
 then
   module load matlab/R2023b >/dev/null 2>&1
+
+  # Need this only once
+  configCluster.sh ${SLURM_JOB_ACCOUNT}
 fi
 
 if [ ${hpc_cluster} == "tetralith" ]
