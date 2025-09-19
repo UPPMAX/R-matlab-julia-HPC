@@ -41,6 +41,12 @@ Distributed           |Multiple       |Multiple       |Distributed              
   For a job that use many different nodes,
   for example, a weather prediction.
 
+## Test the R script
+
+```bash
+mpirun Rscript do_2d_integration.R 1 1
+```
+
 ## Output
 
 === "Using 1 MPI processes"

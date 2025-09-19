@@ -18,8 +18,8 @@ if (length(args) == 0 || length(args) > 2) {
     " \n",
     "Examples: \n",
     " \n",
-    "  Rscript do_2d_integration 1\n",
-    "  Rscript do_2d_integration 1 16384\n",
+    "  Rscript do_2d_integration 2\n",
+    "  Rscript do_2d_integration 2 16384\n",
     " \n"
   )
 }
@@ -27,61 +27,10 @@ if (length(args) == 0 || length(args) > 2) {
 n_workers <- as.numeric(args[1])
 message("Number of workers: ", n_workers)
 
+testthat::expect_equal(1, length(n_workers))
 testthat::expect_true(is.numeric(n_workers))
-testthat::expect_true(n_workers > 0)
+testthat::expect_true(n_workers > 1)
 testthat::expect_true(n_workers < 256 * 256)
-
-universe_size <- mpi.universe.size()
-message("Universe size: ", universe_size)
-
-
-if (universe_size != n_workers) {
-  stop(
-    "ERROR: mismatch between the number of cores and the number of workers. \n",
-    "universe_size: ", universe_size, " \n",
-    "n_workers: ", n_workers
-  )
-}
-
-
-ns <- mpi.universe.size() - 1
-mpi.spawn.Rslaves(nslaves = ns)
-#
-# In case R exits unexpectedly, have it automatically clean up
-# resources taken up by Rmpi (slaves, memory, etc...)
-.Last <- function(){
-if (is.loaded("mpi_initialize")){
-if (mpi.comm.size(1) > 0){
-print("Please use mpi.close.Rslaves() to close slaves.")
-mpi.close.Rslaves()
-}
-print("Please use mpi.quit() to quit R")
-.Call("mpi_finalize")
-}
-}
-# Tell all slaves to return a message identifying themselves
-mpi.remote.exec(paste("I am",mpi.comm.rank(),"of",mpi.comm.size(),system("hostname",intern=T)))
-
-# Test computations
-x <- 5
-x <- mpi.remote.exec(rnorm, x)
-length(x)
-x
-
-# Tell all slaves to close down, and exit the program
-mpi.close.Rslaves()
-
-mpi.quit()
-
-
-
-
-
-
-
-exit 12324
-
-
 
 #' Detect the HPC cluster this script is run on
 #' @param hostname the `HOSTNAME` environmental variable
@@ -122,6 +71,81 @@ testthat::expect_equal("tetralith", extract_hpc_cluster("n1301"))
 testthat::expect_equal("tetralith", extract_hpc_cluster("n130"))
 testthat::expect_equal("tetralith", extract_hpc_cluster("n13"))
 testthat::expect_equal("tetralith", extract_hpc_cluster("n1"))
+
+
+max_n_workers <- mpi.universe.size()
+
+testthat::expect_equal(1, length(max_n_workers))
+testthat::expect_true(is.numeric(max_n_workers))
+testthat::expect_true(max_n_workers >= 1)
+
+message("Maximum number of workers possible: ", max_n_workers)
+
+if (max_n_workers < n_workers) {
+  stop(
+    "ERROR: less workers available than requested. \n",
+    "max_n_workers: ", max_n_workers, " \n",
+    "n_workers: ", n_workers
+  )
+}
+
+n_slaves <- n_workers - 1
+testthat::expect_equal(1, length(n_slaves))
+testthat::expect_true(is.numeric(n_slaves))
+
+message("Number of slaves: ", n_slaves)
+
+if (n_slaves <= 0) {
+  stop(
+    "ERROR: Need at least 1 slave, hence need at least 2 workers.\n",
+    "max_n_workers: ", max_n_workers, " \n",
+    "n_workers: ", n_workers,
+    "n_slaves: ", n_workers
+  )
+}
+
+mpi.spawn.Rslaves(nslaves = n_slaves)
+#
+# In case R exits unexpectedly, have it automatically clean up
+# resources taken up by Rmpi (slaves, memory, etc...)
+.Last <- function(){
+  if (is.loaded("mpi_initialize"))
+  {
+    if (mpi.comm.size(1) > 0) {
+      message("Please use mpi.close.Rslaves() to close slaves.")
+      mpi.close.Rslaves()
+    }
+    message("Please use mpi.quit() to quit R")
+    .Call("mpi_finalize")
+  }
+}
+# Tell all slaves to return a message identifying themselves
+# mpi.remote.exec(
+#   paste(
+#     "I am", mpi.comm.rank(), "of" , mpi.comm.size(), system("hostname", intern = TRUE)
+#   )
+# )
+
+# Test computations
+n_numbers <- 5
+results <- mpi.remote.exec(rnorm, n_numbers)
+
+# Tell all slaves to close down, and exit the program
+mpi.close.Rslaves()
+
+message(results)
+
+mpi.quit()
+
+
+
+
+
+
+
+exit 12324
+
+
 
 # grid size
 grid_size <- 16384
@@ -178,10 +202,6 @@ testthat::expect_true(
   abs(integration2d(grid_size = 100, n_workers = 1, worker_index = 1)) < 0.0001
 )
 
-# Set up the cluster for doParallel
-cl <- makeCluster(n_workers)
-registerDoParallel(cl)
-
 # Start the timer
 starttime <- Sys.time()
 
@@ -222,7 +242,3 @@ message(
   n_workers, ",",
   core_secs
 )
-
-# Stop the cluster after computation
-stopCluster(cl)
-
