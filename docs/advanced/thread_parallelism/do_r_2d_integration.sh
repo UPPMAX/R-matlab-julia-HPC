@@ -20,8 +20,7 @@ hpc_cluster="unknown"
 [[ "${HOSTNAME}" =~ ^b-cn[0-9]{1,6}$ ]] && hpc_cluster="kebnekaise"
 [[ "${HOSTNAME}" =~ ^p[0-9]{1,6}$ ]] && hpc_cluster="pelle"
 [[ "${HOSTNAME}" =~ ^r[0-9]{1,6}$ ]] && hpc_cluster="rackham"
-
-
+[[ "${HOSTNAME}" =~ ^n[0-9]{1,6}$ ]] && hpc_cluster="tetralith"
 
 echo "HPC cluster: ${hpc_cluster}"
 
