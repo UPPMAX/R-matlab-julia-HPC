@@ -166,18 +166,26 @@ The goal of this step is to find out if we are ready to go.
 
 Run the calculation script on the login node with a minimal sensible workload:
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 Language|Script name                                 |How to run
 --------|--------------------------------------------|---------------------------
 Julia   |[do_2d_integration.jl](do_2d_integration.jl)|`./do_2d_integration.jl 1 1`
 MATLAB  |[do_2d_integration.m](do_2d_integration.m)  |`./do_2d_integration.m 1 1`
 R       |[do_2d_integration.R](do_2d_integration.R)  |`./do_2d_integration.R 1 1`
 
+<!-- markdownlint-enable MD013 -->
+
 If there are errors about libraries missing, install these,
 for example, using the R command below:
+
+<!-- markdownlint-disable MD013 --><!-- Verbatim one-liners cannot be split up over lines, hence will break 80 characters per line -->
 
 ```r
 install.packages(c("doParallel", "stringr", "testthat"), repos = "http://cran.us.r-project.org")
 ```
+
+<!-- markdownlint-enable MD013 -->
 
 ## Exercise 2: start the benchmark on your HPC cluster
 
@@ -201,6 +209,8 @@ install.packages(c("doParallel", "stringr", "testthat"), repos = "http://cran.us
 
 What went wrong here? Why is this a problem?
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 ```console
 [richel@pelle1 thread_parallelism]$ squeue --me
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -210,6 +220,8 @@ What went wrong here? Why is this a problem?
              54217     pelle do_r_2d_   richel  R       0:14      6 p[106-111]
              54169     pelle do_r_2d_   richel  R       0:15      1 p70
 ```
+
+<!-- markdownlint-enable MD013 -->
 
 ## Troubleshooting
 
@@ -223,7 +235,7 @@ cat *.out
 
 You see, for example:
 
-```
+```bash
 HPC cluster: tetralith
 Slurm job account used: naiss2025-22-934
 Number of cores booked in Slurm: 32
@@ -233,6 +245,8 @@ Execution halted
 ```
 
 Install that package.
+
+<!-- markdownlint-disable MD013 --><!-- Verbatim output cannot be split up over lines, hence will break 80 characters per line -->
 
 ```bash
 [x_ricbi@tetralith3 thread_parallelism]$ module load R/4.4.0-hpc1-gcc-11.3.0-bare
@@ -308,92 +322,25 @@ downloaded 87 KB
 [...]
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 ### Invalid account or account/partition combination specified
+
+<!-- markdownlint-disable MD013 --><!-- Verbatim error message cannot be split up over lines, hence will break 80 characters per line -->
 
 ```bash
 sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
 ```
 
+<!-- markdownlint-enable MD013 -->
+
 You've specified the wrong account.
 
-Run `projinfo`
-
+Run `projinfo`.
 
 <!-- markdownlint-disable -->
 
 <!-- old stuff below 
-
-.. questions::
-
-   - What is parallel programming?
-   - Why do we need it?
-   - When can I use it?
-
-.. objectives::
-
-   - Learn basic concepts in parallel programming
-   - Gain knowledge on the tools for parallel programming in different languages
-   - Get familiar with the tools to monitor the usage of resources
-
-What is parallel programming?
------------------------------
-
-There is no "free lunch" when trying to use features (computing/memory resources) in
-modern architectures. If you want your code to be aware of those features, you will
-need to either add them explicitly (by coding them yourself) or implicitly (by using
-libraries that were coded by others).
-
-In your local machine, you may have some number of cores available and some memory
-attached to them which can be exploited by using a parallel program. There can be
-some limited resources for running your data-production simulations as you may use
-your local machine for other purposes such as writing a manuscript, making a presentation,
-etc. One alternative to your local machine can be a High Performance Computing (HPC)
-cluster another could be a cloud service. A common layout for the resources in an
-HPC cluster is a shown in the figure below.
-
-.. figure:: ../../img/workflow-hpc.png
-   :width: 550
-   :align: center
-
-   High Performance Computing (HPC) cluster.
-
-Although a serial application can run in such a cluster, it would not gain much of the
-HPC resources. If fact, one can underuse the cluster if one allocates more resources than
-what the simulation requires.
-
-.. figure:: ../../img/laundry-machines.svg
-   :width: 200
-   :align: center
-
-   Under-using a cluster.
-
-.. warning::
-
-   - Check if the resources that you allocated are being used properly.
-   - Monitor the usage of hardware resources with tools offered at your HPC center, for instance
-     `job-usage at HPC2N <https://hpc2n.github.io/intro-course/software/#best__practices>`_.
-   - Here there are some examples (of many) of what you will need to pay attention when porting
-     a parallel code from your laptop (or another HPC center) to our clusters:
-
-   .. tabs::
-
-      .. tab:: HPC2N
-
-         We have a tool to monitor the usage of resources called:
-         `job-usage at HPC2N <https://hpc2n.github.io/intro-course/software/#best__practices>`_.
-
-      .. tab:: UPPMAX
-
-         If you are in a interactive node session the ``top`` command will give you information
-         of the resources usage.
-
-Common parallel programming paradigms
--------------------------------------
-
-Now the question is how to take advantage of modern architectures which consist of many-cores,
-interconnected through networks, and that have different types of memory available?
-Python, Julia, Matlab, and R languages have different tools and libraries that can help you
-to get more from your local machine or HPC cluster resources.
 
 Threaded programming
 ''''''''''''''''''''
@@ -470,43 +417,7 @@ different threads write on the same memory address.
          potentially lead to a faster code compared to other schemes (Distributed discussed below)
          but notice that the code is not expected to support multi-node simulations.
 
-Distributed programming
-'''''''''''''''''''''''
 
-Although threaded programming is convenient because one can achieve considerable initial speedups
-with little code modifications, this approach does not scale for more than hundreds of
-cores. Scalability can be achieved with distributed programming. Here, there is not
-a common shared memory but the individual `processes` (notice the different terminology
-with `threads` in shared memory) have their own memory space. Then, if a process requires
-data from or should transfer data to another process, it can do that by using `send` and
-`receive` to transfer messages. A standard API for distributed computing is the Message
-Passing Interface (MPI). In general, MPI requires refactoring of your code.
-
-.. admonition:: Language-specific nuances for distributed programming
-   :class: dropdown
-
-   .. tabs::
-
-      .. tab:: Julia
-
-         The mechanism here is called `Julia processes` which  can be activated by executing a script as follows
-         ``julia -p X script.jl``, where *X* is the number of processes. Code modifications are required to support the
-         workers. Julia also supports MPI through the package ``MPI.jl``.
-
-      .. tab:: R
-
-         R doesn't have a multiprocessing mechanism as the other languages discussed in this course. Some
-         functions provided by certain packages (parallel, doParallel, etc.), for instance, *foreach*,
-         offer parallel features. The processes generated by these functions have their own workspace which
-         could lead to `data replication <https://hpc2n.github.io/intro-course/software/#recommendations>`_.
-         MPI is supported in R through the ``Rmpi`` package.
-
-      .. tab:: Matlab
-
-         In Matlab one can use the ``parpool('my-cluster',X)`` where *X* is the number of workers.  The total number of processes spawned will always be *X+1* where the extra process handles the overhead for the rest. See the
-         `documentation for parpool <https://se.mathworks.com/help/parallel-computing/parpool.html>`_ from MatWorks.
-         Matlab doesn't support MPI function calls in Matlab code, it could be used indirectly through
-         `mex <https://se.mathworks.com/help/matlab/ref/mex.html>`_ functions though.
 
 Big data
 ''''''''
