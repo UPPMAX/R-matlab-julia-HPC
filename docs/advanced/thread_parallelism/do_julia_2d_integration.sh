@@ -114,4 +114,6 @@ fi
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
 
-Rscript --no-save --no-restore do_2d_integration.R "${SLURM_NPROCS}"
+julia do_2d_integration.jl "${SLURM_NPROCS}"
+
+
