@@ -1,138 +1,178 @@
-#!/usr/bin/env julia
+#!/bin/env Rscript
 
-using Distributed
-using Printf
-using Dates
+library(parallel, quietly = TRUE)
+library(doParallel, quietly = TRUE)
 
-# --- Helper for argument parsing ---
-function parse_args()
-    args = ARGS
-    if length(args) == 0 || length(args) > 2
-        println("""
-        ERROR: Incorrect number of arguments.
+# nr. of workers/cores that will solve the tasks
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) == 0 || length(args) > 2) {
+  stop(
+    "ERROR: Incorrect number of arguments. \n",
+    " \n",
+    "Please specify: \n",
+    " \n",
+    "- the number of workers this calculation uses \n",
+    "- (optionally) a grid size \n",
+    " \n",
+    "General usage:",
+    " \n",
+    "  Rscript integration2d.R [n_workers] [grid_size]\n",
+    " \n",
+    "Examples: \n",
+    " \n",
+    "  Rscript integration2d.R 1\n",
+    "  Rscript integration2d.R 1 16384\n",
+    " \n"
+  )
+}
 
-        Please specify:
+n_workers <- as.numeric(args[1])
+message("Number of workers: ", n_workers)
 
-        - the number of workers this calculation uses
-        - (optionally) a grid size
+# Else the error will be 'Cannot find port 0:n_workers'
+testthat::expect_true(is.numeric(n_workers))
+testthat::expect_true(n_workers > 0)
+testthat::expect_true(n_workers < 256 * 256)
 
-        General usage:
+#' Detect the HPC cluster this script is run on
+#' @param hostname the `HOSTNAME` environmental variable
+extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
+  testthat::expect_equal(1, length(hostname))
+  if (nchar(hostname) == 0) return("unknown")
+  if (stringr::str_detect(hostname, "^b-cn[:digit:]{1,6}$")) return("kebnekaise")
+  if (stringr::str_detect(hostname, "^cn[:digit:]{1,3}$")) return("cosmos")
+  if (stringr::str_detect(hostname, "^cosmos[:digit:].int.lunarc$")) return("cosmos")
+  if (stringr::str_detect(hostname, "^login[:digit:]$")) return("dardel")
+  if (stringr::str_detect(hostname, "^n[:digit:]{1,6}$")) return("tetralith")
+  if (stringr::str_detect(hostname, "^nid[:digit:]{1,6}$")) return("dardel")
+  if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) return("pelle")
+  if (stringr::str_detect(hostname, "^p[:digit:]{1,3}$")) return("pelle")
+  if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
+  if (stringr::str_detect(hostname, "^r[:digit:]{1,3}$")) return("rackham")
+  hostname
+}
 
-          julia integration2d.jl [n_workers] [grid_size]
 
-        Examples:
+testthat::expect_equal("unknown", extract_hpc_cluster(""))
+testthat::expect_equal("some.hostname", extract_hpc_cluster("some.hostname"))
+testthat::expect_equal("cosmos", extract_hpc_cluster("cosmos2.int.lunarc"))
+testthat::expect_equal("cosmos", extract_hpc_cluster("cn1"))
+testthat::expect_equal("cosmos", extract_hpc_cluster("cn12"))
+testthat::expect_equal("cosmos", extract_hpc_cluster("cn123"))
+testthat::expect_equal("dardel", extract_hpc_cluster("login1"))
+testthat::expect_equal("dardel", extract_hpc_cluster("nid001962"))
+testthat::expect_equal("kebnekaise", extract_hpc_cluster("b-cn1707"))
+testthat::expect_equal("rackham", extract_hpc_cluster("rackham1.uppmax.uu.se"))
+testthat::expect_equal("rackham", extract_hpc_cluster("rackham4.uppmax.uu.se"))
+testthat::expect_equal("pelle", extract_hpc_cluster("pelle1.uppmax.uu.se"))
+testthat::expect_equal("pelle", extract_hpc_cluster("p1"))
+testthat::expect_equal("pelle", extract_hpc_cluster("p12"))
+testthat::expect_equal("pelle", extract_hpc_cluster("p123"))
+testthat::expect_equal("pelle", extract_hpc_cluster("pelle4.uppmax.uu.se"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n1301"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n130"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n13"))
+testthat::expect_equal("tetralith", extract_hpc_cluster("n1"))
 
-          julia integration2d.jl 1
-          julia integration2d.jl 1 16384
-        """)
-        exit(1)
-    end
-    n_workers = parse(Int, args[1])
-    grid_size = length(args) == 2 ? parse(Int, args[2]) : 16384
-    return n_workers, grid_size
-end
+# grid size
+grid_size <- 16384
 
-# --- HPC cluster detection ---
-function extract_hpc_cluster(hostname::String = get(ENV, "HOSTNAME", ""))
-    if length(hostname) == 0
-        return "unknown"
-    elseif occursin(r"^b-cn\d{1,6}$", hostname)
-        return "kebnekaise"
-    elseif occursin(r"^cn\d{1,3}$", hostname)
-        return "cosmos"
-    elseif occursin(r"^cosmos\d*\.int\.lunarc$", hostname)
-        return "cosmos"
-    elseif occursin(r"^login\d$", hostname)
-        return "dardel"
-    elseif occursin(r"^n\d{1,6}$", hostname)
-        return "tetralith"
-    elseif occursin(r"^nid\d{1,6}$", hostname)
-        return "dardel"
-    elseif occursin(r"^pelle\d*\.uppmax\.uu\.se$", hostname)
-        return "pelle"
-    elseif occursin(r"^p\d{1,3}$", hostname)
-        return "pelle"
-    elseif occursin(r"^rackham\d*\.uppmax\.uu\.se$", hostname)
-        return "rackham"
-    elseif occursin(r"^r\d{1,3}$", hostname)
-        return "rackham"
-    else
-        return hostname
-    end
-end
+if (length(args) == 2) {
+  grid_size <- as.numeric(args[2])
+}
+testthat::expect_true(is.numeric(grid_size))
+message("Grid size: ", grid_size)
 
-# --- 2D integration function ---
-function integration2d(grid_size::Int, n_workers::Int, worker_index::Int)
-    @assert grid_size > 0
-    @assert n_workers > 0
-    @assert worker_index > 0
-    @assert worker_index <= n_workers
+#' Function that integrates the function `sin(x + y)` in a threaded fashion.
+#' @param grid_size the grid size
+#' @param n_workers the number of workers
+#' @param worker_index the index of this worker
+#' @return the sum of the integration for this worker
+#' @examples
+#' # A single-threaded calculation
+#' integration2d(grid_size = 100, n_workers = 1, worker_index = 1)
+#'
+#' # Using two workers, each having their own partial result
+#' sum_1 <- integration2d(grid_size = 100, n_workers = 2, worker_index = 1)
+#' sum_2 <- integration2d(grid_size = 100, n_workers = 2, worker_index = 2)
+integration2d <- function(grid_size, n_workers, worker_index) {
+  testthat::expect_true(grid_size > 0)
+  testthat::expect_true(n_workers > 0)
+  testthat::expect_true(worker_index > 0)
+  testthat::expect_true(worker_index <= n_workers)
 
-    h = π / grid_size
-    mysum = 0.0
-    workload = fld(grid_size, n_workers)
-    begin_index = workload * (worker_index - 1) + 1
-    end_index = workload * worker_index
+  # Interval size (same for X and Y)
+  h <- pi / grid_size
+  # Cumulative variable
+  mysum <- 0.0
+  # Workload for each process
+  workload <- floor(grid_size / n_workers)
 
-    for i in begin_index:end_index
-        x = h * (i - 0.5)
-        for j in 1:grid_size
-            y = h * (j - 0.5)
-            mysum += sin(x + y)
-        end
-    end
-    return h^2 * mysum
-end
+  # Define the range of work for each process according to index
+  begin_index <- workload * (worker_index - 1) + 1
+  end_index <- workload * worker_index
 
-# --- Main program ---
-function main()
-    n_workers, grid_size = parse_args()
-    @info "Number of workers: $n_workers"
-    @assert n_workers > 0 && n_workers < 256*256
-    @info "Grid size: $grid_size"
+  # Regular integration in the X axis
+  for (i in begin_index:end_index) {
+    x <- h * (i - 0.5)
+    # Regular integration in the Y axis
+    for (j in 1:grid_size) {
+      y <- h * (j - 0.5)
+      mysum <- mysum + sin(x + y)
+    }
+  }
+  # Return the result
+  h^2 * mysum
+}
 
-    # Add workers for parallel computation
-    if n_workers > 1
-        addprocs(n_workers - 1)
-    end
+testthat::expect_true(
+  abs(integration2d(grid_size = 100, n_workers = 1, worker_index = 1)) < 0.0001
+)
 
-    # Distribute integration2d to all workers
-    @everywhere function integration2d(grid_size::Int, n_workers::Int, worker_index::Int)
-        h = π / grid_size
-        mysum = 0.0
-        workload = fld(grid_size, n_workers)
-        begin_index = workload * (worker_index - 1) + 1
-        end_index = workload * worker_index
-        for i in begin_index:end_index
-            x = h * (i - 0.5)
-            for j in 1:grid_size
-                y = h * (j - 0.5)
-                mysum += sin(x + y)
-            end
-        end
-        return h^2 * mysum
-    end
+# Set up the cluster for doParallel
+cl <- makeCluster(n_workers)
+registerDoParallel(cl)
 
-    # Start timing
-    starttime = now()
-    results = pmap(worker_index -> integration2d(grid_size, n_workers, worker_index), 1:n_workers)
-    integral_value = sum(results)
-    endtime = now()
+# Start the timer
+starttime <- Sys.time()
 
-    # Print human-friendly results
-    error_value = abs(integral_value - 0.0)
-    duration_secs = convert(Float64, (endtime - starttime).value) / 1e9
-    core_secs = duration_secs * n_workers
-    @info "Integral value: $integral_value"
-    @info "Integral error: $error_value"
-    @info "Time spent on 1 core (seconds): $duration_secs"
-    @info "Time spent on all cores (seconds): $core_secs"
+# Distribute tasks to processes and combine the outputs into the results list
+results <- foreach(i = 1:n_workers, .combine = c) %dopar% {
+  integration2d(grid_size, n_workers, i)
+}
 
-    # Print computer-friendly results
-    language = "julia"
-    hpc_cluster = extract_hpc_cluster()
-    println("language,hpc_cluster,grid_size,n_workers,core_secs")
-    println("$(language),$(hpc_cluster),$(grid_size),$(n_workers),$(core_secs)")
-end
+# Calculate the total integral by summing over partial integrals
+integral_value <- sum(results)
 
-main()
+# End the timing
+endtime <- Sys.time()
+
+# Print out the result in a human-friendly way
+error_value <- abs(integral_value - 0.0)
+duration_secs <- difftime(endtime, starttime, units = "secs")
+core_secs <- duration_secs * n_workers
+message("Integral value: ", integral_value)
+message("Integral error: ", error_value)
+message("Time spent on 1 core (seconds): ", duration_secs)
+message("Time spent on all cores (seconds): ", core_secs)
+
+# Print out the result in a computer-friendly way
+language <- "r"
+hpc_cluster <- extract_hpc_cluster()
+message(
+  "language", ",",
+  "hpc_cluster", ",",
+  "grid_size", ",",
+  "n_workers", ",",
+  "core_secs"
+)
+message(
+  language, ",",
+  hpc_cluster, ",",
+  grid_size, ",",
+  n_workers, ",",
+  core_secs
+)
+
+# Stop the cluster after computation
+stopCluster(cl)
