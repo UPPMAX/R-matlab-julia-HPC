@@ -131,8 +131,9 @@ n_nodes=1
 # Schedule all the jobs
 for n_cores in $(seq 1 64)
 do 
-  if [ $hpc_cluster == "dardel ] 
+  if [ $hpc_cluster == "dardel" ] 
   then
+    # Dardel needs to have a partition specified
     sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" -p main "${script_name}"
   else
     sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${script_name}"
