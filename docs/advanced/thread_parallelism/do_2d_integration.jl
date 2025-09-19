@@ -54,7 +54,7 @@ function extract_hpc_cluster(hostname::String = get(ENV, "HOSTNAME", ""))
         return "pelle"
     elseif occursin(r"^rackham\d*\.uppmax\.uu\.se$", hostname)
         return "rackham"
-    elseif occursin(r"^r\d{1,3}$", hostname)
+    elseif occursin(r"^r\d{1,4}$", hostname)
         return "rackham"
     else
         return hostname
