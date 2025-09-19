@@ -33,11 +33,11 @@
     Bianca     |.
     COSMOS     |Yes
     Dardel     |Yes
-    Kebnekaise |.
+    Kebnekaise |Running
     LUMI       |.
     Rackham    |Yes
     Pelle      |Yes
-    Tetralith  |.
+    Tetralith  |Yes
 
 ## Why thread parallelism is important
 
