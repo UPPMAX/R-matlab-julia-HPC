@@ -73,15 +73,23 @@ echo "HPC cluster: ${hpc_cluster}"
 function is_valid_hpc_cluster() 
 { 
   if [ "$1" == "bianca" ]; then return 0; fi
+  if [ "$1" == "cosmos" ]; then return 0; fi
+  if [ "$1" == "dardel" ]; then return 0; fi
+  if [ "$1" == "kebnekaise" ]; then return 0; fi
   if [ "$1" == "pelle" ]; then return 0; fi
   if [ "$1" == "rackham" ]; then return 0; fi
+  if [ "$1" == "tetralith" ]; then return 0; fi
   return 1;
 }
 
 # Testing
-if ! is_valid_hpc_cluster "bianca" ; then echo "Internal error: bianca is a valid hpc_cluster"; exit 41; fi
-if ! is_valid_hpc_cluster "pelle" ; then echo "Internal error: pelle is a valid hpc_cluster"; exit 41; fi
-if ! is_valid_hpc_cluster "rackham" ; then echo "Internal error: rackham is a valid hpc_cluster"; exit 41; fi
+if ! is_valid_hpc_cluster "bianca" ; then echo "Internal error: 'bianca' is a valid hpc_cluster"; exit 41; fi
+if ! is_valid_hpc_cluster "cosmos" ; then echo "Internal error: 'cosmos' is a valid hpc_cluster"; exit 41; fi
+if ! is_valid_hpc_cluster "dardel" ; then echo "Internal error: 'dardel' is a valid hpc_cluster"; exit 41; fi
+if ! is_valid_hpc_cluster "kebnekaise" ; then echo "Internal error: 'kebnekaise' is a valid hpc_cluster"; exit 41; fi
+if ! is_valid_hpc_cluster "pelle" ; then echo "Internal error: 'pelle' is a valid hpc_cluster"; exit 41; fi
+if ! is_valid_hpc_cluster "rackham" ; then echo "Internal error: 'rackham' is a valid hpc_cluster"; exit 41; fi
+if ! is_valid_hpc_cluster "tetralith" ; then echo "Internal error: 'tetralith' is a valid hpc_cluster"; exit 41; fi
 
 # Using
 if ! is_valid_hpc_cluster "${hpc_cluster}"
@@ -89,8 +97,12 @@ then
   echo "ERROR: '${hpc_cluster}' is not valid hpc_cluster."
   echo "Supported hpc_clusters: "
   echo "- bianca"
+  echo "- cosmos"
+  echo "- dardel"
+  echo "- kebnekaise"
   echo "- pelle"
   echo "- rackham"
+  echo "- tetralith"
   exit 42
 fi
 
