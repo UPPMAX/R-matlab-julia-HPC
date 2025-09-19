@@ -9,7 +9,7 @@
 #
 #   sbatch -A staff -n 1 do_r_2d_integration_on_dardel.sh
 #
-module load PDC/24.11 R/4.4.1-cpeGNU-23.12 >/dev/null 2>&1
+module load PDC/24.11 R/4.4.2-cpeGNU-24.11 >/dev/null 2>&1
 
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
