@@ -87,9 +87,9 @@ end
 # --- Main program ---
 function main()
     n_workers, grid_size = parse_args()
-    @info "Number of workers: $n_workers"
+    println("Number of workers: $n_workers")
     @assert n_workers > 0 && n_workers < 256*256
-    @info "Grid size: $grid_size"
+    println("Grid size: $grid_size")
 
     # Add workers for parallel computation
     if n_workers > 1
@@ -123,10 +123,10 @@ function main()
     error_value = abs(integral_value - 0.0)
     duration_secs = convert(Float64, (endtime - starttime).value) / 1e9
     core_secs = duration_secs * n_workers
-    @info "Integral value: $integral_value"
-    @info "Integral error: $error_value"
-    @info "Time spent on 1 core (seconds): $duration_secs"
-    @info "Time spent on all cores (seconds): $core_secs"
+    println("Integral value: $integral_value")
+    println("Integral error: $error_value")
+    println("Time spent on 1 core (seconds): $duration_secs")
+    println("Time spent on all cores (seconds): $core_secs")
 
     # Print computer-friendly results
     language = "julia"
