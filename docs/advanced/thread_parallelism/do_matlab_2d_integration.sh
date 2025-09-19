@@ -121,4 +121,4 @@ fi
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
 
-matlab -nodisplay -nosplash -r do_2d_integration.m "${SLURM_NPROCS}"
+matlab -nodisplay -nosplash -nojvm -batch do_2d_integration.m "${SLURM_NPROCS}"
