@@ -1,5 +1,3 @@
-# Introduction Julia
-
 !!! info "Learning outcomes for today"
 
     - Short introduction to SLURM scheduler
@@ -21,6 +19,7 @@
 !!! warning
     - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
 
+# Batch system
 
 The batch system used at HPC clusters in Sweden is called SLURM.
 
@@ -48,8 +47,7 @@ Guides and documentation at: [HPC2N](http://www.hpc2n.umu.se/support){:target="_
 
 Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are not necessary. You can choose any name that makes sense to you.
 
-Useful commands to the batch system
------------------------------------
+## Useful commands
 
 - Submit job: ``sbatch <jobscript.sh>``
 - Get list of your jobs: ``squeue -u <username>``
@@ -58,4 +56,110 @@ Useful commands to the batch system
 - Useful info about a job: ``sacct -l -j <job-id> | less -S``
 - Url to a page with info about the job (Kebnekaise only): ``job-usage <job-id>``
 
+## Examples of batch scripts
+
+### Serial code
+
+!!! important "Hello World"
+
+    Short serial example for running on different clusters.
+
+    === "UPPMAX"
+
+        ```bash
+        #!/bin/bash -l                 # -l cleans the environment in the batch job, recommended at UPPMAX
+        #SBATCH -A naiss202t-uv-wxyz    # your project_ID
+        #SBATCH --time=00:10:00        # Asking for 10 minutes
+        #SBATCH -n 1                   # Asking for 1 core
+        #SBATCH --error=job.%J.err     # error file
+        #SBATCH --output=job.%J.out    # output file
+        ml julia/1.8.5 # Julia module
+
+        julia script.jl              # run the serial script
+        ```
+
+    === "HPC2N"
+
+        ```bash
+        #!/bin/bash
+        #SBATCH -A hpc2n202w-xyz     # your project_ID
+        #SBATCH -J job-serial        # name of the job
+        #SBATCH -n 1                 # nr. tasks
+        #SBATCH --time=00:03:00      # requested time
+        #SBATCH --error=job.%J.err   # error file
+        #SBATCH --output=job.%J.out  # output file
+
+        ml purge  > /dev/null 2>&1   # recommended purge
+        ml Julia/1.8.5-linux-x86_64  # Julia module
+
+        julia script.jl              # run the serial script
+        ```
+
+    === "LUNARC"
+
+        ```bash
+        #!/bin/bash
+        #SBATCH -A lu202w-x-yz       # your project_ID
+        #SBATCH -J job-serial        # name of the job
+        #SBATCH -n 1                 # nr. tasks
+        #SBATCH --time=00:03:00      # requested time
+        #SBATCH --error=job.%J.err   # error file
+        #SBATCH --output=job.%J.out  # output file
+
+        ml purge  > /dev/null 2>&1   # recommended purge
+        ml Julia/1.8.5-linux-x86_64  # Julia module
+
+        julia script.jl              # run the serial script
+        ```
+
+    === "PDC"
+
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss202t-uv-wxyz # your project_ID
+        #SBATCH -J job-serial        # name of the job
+        #SBATCH  -p shared           # name of the queue
+        #SBATCH  --ntasks=1          # nr. of tasks
+        #SBATCH --cpus-per-task=1    # nr. of cores per-task
+        #SBATCH --time=00:03:00      # requested time
+        #SBATCH --error=job.%J.err   # error file
+        #SBATCH --output=job.%J.out  # output file
+
+        # Load dependencies and Julia version
+        ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+
+        julia script.jl              # run the serial script
+        ```
+
+    === "NSC"
+
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss202t-uv-xyz  # your project_ID
+        #SBATCH -J job-serial        # name of the job
+        #SBATCH -n *FIXME*           # nr. tasks
+        #SBATCH --time=00:20:00      # requested time
+        #SBATCH --error=job.%J.err   # error file
+        #SBATCH --output=job.%J.out  # output file
+
+        # Load any modules you need, here for Julia
+        ml julia/1.9.4-bdist
+
+        julia script.jl              # run the serial script
+        ```
+
+    === "script.jl"
+
+        Julia example code.
+
+        ```bash
+        y = "Hello World"
+        println(y)
+        ```
+
+    Send the script to the batch:
+
+    ```bash
+    $ sbatch <batch script>
+    ```
 
