@@ -74,15 +74,15 @@ with a custom amount of cores.
 
 HPC cluster|Julia Slurm script                                  |MATLAB Slurm script                                 |R Slurm script
 -----------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------
-Alvis      |.                                                   |.                                                   |.
-Bianca     |.                                                   |.                                                   |.
-COSMOS     |.                                                   |.                                                   |.
-Dardel     |.                                                   |.                                                   |.
-Kebnekaise |.                                                   |.                                                   |.
-LUMI       |.                                                   |.                                                   |.
+Alvis      |.                                                   |.                                                   |[do_r_2d_integration_on_alvis.sh](do_r_2d_integration_on_alvis.sh)
+Bianca     |.                                                   |.                                                   |[do_r_2d_integration_on_bianca.sh](do_r_2d_integration_on_bianca.sh)
+COSMOS     |.                                                   |.                                                   |[do_r_2d_integration_on_cosmos.sh](do_r_2d_integration_on_cosmos.sh)
+Dardel     |.                                                   |.                                                   |[do_r_2d_integration_on_dardel.sh](do_r_2d_integration_on_dardel.sh)
+Kebnekaise |.                                                   |.                                                   |[do_r_2d_integration_on_kebnekaise.sh](do_r_2d_integration_on_kebnekaise.sh)
+LUMI       |.                                                   |.                                                   |[do_r_2d_integration_on_lumi.sh](do_r_2d_integration_on_lumi.sh)
 Pelle      |.                                                   |.                                                   |[do_r_2d_integration_on_pelle.sh](do_r_2d_integration_on_pelle.sh)
 Rackham    |.                                                   |.                                                   |[do_r_2d_integration_on_rackham.sh](do_r_2d_integration_on_rackham.sh)
-Tetralith  |.                                                   |.                                                   |.
+Tetralith  |.                                                   |.                                                   |[do_r_2d_integration_on_tetralith.sh](do_r_2d_integration_on_tetralith.sh)
 
 <!-- markdownlint-enable MD013 -->
 
