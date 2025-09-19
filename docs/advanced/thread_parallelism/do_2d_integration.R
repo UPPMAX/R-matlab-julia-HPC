@@ -41,6 +41,8 @@ extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
   if (nchar(hostname) == 0) return("unknown")
   if (stringr::str_detect(hostname, "^cn[:digit:]{1,3}$")) return("cosmos")
   if (stringr::str_detect(hostname, "^cosmos[:digit:].int.lunarc$")) return("cosmos")
+  if (stringr::str_detect(hostname, "^login[:digit:]$")) return("dardel")
+  if (stringr::str_detect(hostname, "^nid[:digit:]{1,6}$")) return("dardel")
   if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
   if (stringr::str_detect(hostname, "^r[:digit:]{1,3}$")) return("rackham")
   if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) return("pelle")
@@ -48,12 +50,15 @@ extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
   hostname
 }
 
+
 testthat::expect_equal("unknown", extract_hpc_cluster(""))
 testthat::expect_equal("some.hostname", extract_hpc_cluster("some.hostname"))
 testthat::expect_equal("cosmos", extract_hpc_cluster("cosmos2.int.lunarc"))
 testthat::expect_equal("cosmos", extract_hpc_cluster("cn1"))
 testthat::expect_equal("cosmos", extract_hpc_cluster("cn12"))
 testthat::expect_equal("cosmos", extract_hpc_cluster("cn123"))
+testthat::expect_equal("dardel", extract_hpc_cluster("login1"))
+testthat::expect_equal("dardel", extract_hpc_cluster("nid001962"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham1.uppmax.uu.se"))
 testthat::expect_equal("rackham", extract_hpc_cluster("rackham4.uppmax.uu.se"))
 testthat::expect_equal("pelle", extract_hpc_cluster("pelle1.uppmax.uu.se"))
