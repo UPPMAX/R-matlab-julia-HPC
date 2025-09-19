@@ -27,6 +27,18 @@
     - When to use parallel computing?
     - When not to use parallel computing?
 
+    HPC cluster|Tested
+    -----------|--------
+    Alvis      |.
+    Bianca     |.
+    COSMOS     |Yes
+    Dardel     |Yes
+    Kebnekaise |.
+    LUMI       |.
+    Rackham    |Yes
+    Pelle      |Yes
+    Tetralith  |.
+
 ## Why thread parallelism is important
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
@@ -173,8 +185,7 @@ If there are errors about libraries missing, install these.
 
 ## Exercise 7: compare to others
 
-![Benchmark results](benchmark_results.png)
-
+![Benchmark results: core seconds](benchmark_results_core_seconds.png)
 
 ## Extra questions
 

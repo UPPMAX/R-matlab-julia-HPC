@@ -22,4 +22,7 @@ ggplot2::ggplot(
     caption = paste0("Number of runs: ", nrow(t))
   )
 
-ggplot2::ggsave("benchmark_results.png", width = 7, height = 7)
+ggplot2::ggsave("benchmark_results_core_seconds.png", width = 7, height = 7)
+
+names(t)
+t |> dplyr::filter(n_workers == 1)
