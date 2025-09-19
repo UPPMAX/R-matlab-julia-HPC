@@ -24,6 +24,7 @@ ggplot2::ggplot(
 ) + ggplot2::geom_point() +
   ggplot2::scale_x_continuous("Number of workers", limits = c(0, max(t$n_workers))) +
   ggplot2::scale_y_continuous("Core seconds", limits = c(0, max(t$core_secs))) +
+  ggplot2::geom_smooth() +
   ggplot2::facet_grid(language ~ .) +
   ggplot2::labs(
     title = "Threaded parallelism",
@@ -42,6 +43,7 @@ ggplot2::ggplot(
     limits = c(0, max(efficiencies$f)),
     labels = scales::percent
   ) +
+  ggplot2::geom_smooth() +
   ggplot2::facet_grid(language ~ .) +
   ggplot2::labs(
     title = "Threaded parallelism",
