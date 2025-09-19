@@ -66,6 +66,7 @@ fi
 hpc_cluster="unknown"
 
 [[ "${HOSTNAME}" =~ ^cosmos[1-4].int.lunarc$ ]] && hpc_cluster="cosmos"
+[[ "${HOSTNAME}" =~ ^login[1-4]$ ]] && hpc_cluster="dardel"
 [[ "${HOSTNAME}" =~ ^pelle[1-4].uppmax.uu.se$ ]] && hpc_cluster="pelle"
 [[ "${HOSTNAME}" =~ ^rackham[1-4].uppmax.uu.se$ ]] && hpc_cluster="rackham"
 
