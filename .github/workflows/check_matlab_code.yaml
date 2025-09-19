@@ -1,3 +1,7 @@
+# Checks that the MATLAB code works and has correct style.
+#
+# Note that in practice, GNU Octave is used to do so,
+# as MATLAB requires software licenses
 name: Check MATLAB code
 
 # Check MATLAB code on the 18th day of the month.
@@ -6,13 +10,11 @@ on:
   push:
     paths:
       - .github/workflows/check_matlab_code.yaml
-      # License problems :-/
-      #- 'docs/advanced/**.m'
+      - 'docs/advanced/**.m'
   pull_request:
     paths:
       - .github/workflows/check_matlab_code.yaml
-      # License problems :-/
-      #- 'docs/advanced/**.m'
+      - 'docs/advanced/**.m'
   schedule:
   - cron: "0 0 18 * *"
 
@@ -26,11 +28,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v2
+      - name: Check code
+        uses: repos4u/octave-action@v1
+        with:
+          command: checkcode("docs/advances/thread_parallelism/do_2d_integration.m");
+
+      - name: Run code
+        uses: repos4u/octave-action@v1
+        with:
+          command: run("docs/advances/thread_parallelism/do_2d_integration.m 1 1");
+
+
+      #- name: Set up MATLAB
+      #  uses: matlab-actions/setup-matlab@v2
 
       #- name: Run build
       #  uses: matlab-actions/run-build@v2
 
-      - name: Check
-        run: matlab -nodisplay -nosplash -nodesktop -r 'checkcode("docs/advances/thread_parallelism/do_2d_integration.m")'
+      #- name: Check
+      #  run: matlab -nodisplay -nosplash -nodesktop -r 'checkcode("docs/advances/thread_parallelism/do_2d_integration.m")'
