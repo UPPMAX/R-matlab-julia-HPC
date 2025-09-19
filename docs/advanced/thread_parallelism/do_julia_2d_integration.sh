@@ -98,7 +98,7 @@ fi
 
 if [ ${hpc_cluster} == "pelle" ]
 then
-  module load julia/1.8.5 >/dev/null 2>&1
+  module load Julia/1.11.3-linux-x86_64 >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "rackham" ]
