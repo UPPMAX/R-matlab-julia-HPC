@@ -1,26 +1,24 @@
-function [n_workers, grid_size] = parse_args(varargin)
-  args = varargin
+args = argv();
 
-  disp(args)
+function [n_workers, grid_size] = parse_args(args)
+
   if length(args) == 0
-      args = [1 1]
+      args = [1 1];
   end
-  disp(args)
 
   n_workers = str2double(args{1});
-  disp(['Number of workers 1: ', num2str(n_workers)]);
   assert(isnumeric(n_workers) && n_workers > 0 && n_workers < 256*256);
 
   grid_size = 16384;
   if length(args) == 2
       grid_size = str2double(args{2});
   end
-  disp(['Grid size 1: ', num2str(grid_size)]);
   assert(isnumeric(grid_size) && grid_size > 0);
 end
 
-disp(['Number of workers 2: ', num2str(n_workers)]);
-disp(['Grid size 2: ', num2str(grid_size)]);
+[n_workers, grid_size] = parse_args(args)
+disp(['Number of workers: ', num2str(n_workers)]);
+disp(['Grid size: ', num2str(grid_size)]);
 
 function cluster = extract_hpc_cluster(hostname)
     if nargin == 0 || isempty(hostname)
@@ -53,11 +51,6 @@ function cluster = extract_hpc_cluster(hostname)
     end
 end
 
-exit 42
-
-%{
-
-
 function s = integration2d(grid_size, n_workers, worker_index)
     assert(grid_size > 0 && n_workers > 0 && worker_index > 0 && worker_index <= n_workers);
     h = pi / grid_size;
@@ -75,7 +68,6 @@ function s = integration2d(grid_size, n_workers, worker_index)
     s = h^2 * mysum;
 end
 
-% --- Parallel computation ---
 if n_workers > 1
     pool = gcp('nocreate');
     if isempty(pool) || pool.NumWorkers ~= n_workers
@@ -115,10 +107,7 @@ if ~isempty(pool)
 end
 
 % For script execution, call the function if not loaded as a function
-%if ~isdeployed && isempty(getenv('MATLAB_TEST'))
-%    integration2d_main();
-%end
-
-
-%}
+% if ~isdeployed && isempty(getenv('MATLAB_TEST'))
+%     integration2d_main();
+% end
 
