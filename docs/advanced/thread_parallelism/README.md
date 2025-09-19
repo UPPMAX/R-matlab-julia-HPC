@@ -61,30 +61,23 @@ with a custom amount of cores.
     However, you can run it as such:
 
     ```bash
-    sbatch -A [account] -n [number_of_cores] do_[language]_2d_integration_on_[hpc_cluster].sh
+    sbatch -A [account] -n [number_of_cores] do_[language]_2d_integration.sh
     ```
 
     For example:
 
     ```bash
-    sbatch -A staff -n 1 do_r_2d_integration_on_rackham.sh
+    sbatch -A staff -n 1 do_r_2d_integration.sh
+
+    # On Dardel
+    sbatch -A staff -n 1 -p main do_r_2d_integration.sh
     ```
 
-<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
-
-HPC cluster|Julia Slurm script                                  |MATLAB Slurm script                                 |R Slurm script
------------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------
-Alvis      |.                                                   |.                                                   |[do_r_2d_integration_on_alvis.sh](do_r_2d_integration_on_alvis.sh)
-Bianca     |.                                                   |.                                                   |[do_r_2d_integration_on_bianca.sh](do_r_2d_integration_on_bianca.sh)
-COSMOS     |.                                                   |.                                                   |[do_r_2d_integration_on_cosmos.sh](do_r_2d_integration_on_cosmos.sh)
-Dardel     |.                                                   |.                                                   |[do_r_2d_integration_on_dardel.sh](do_r_2d_integration_on_dardel.sh)
-Kebnekaise |.                                                   |.                                                   |[do_r_2d_integration_on_kebnekaise.sh](do_r_2d_integration_on_kebnekaise.sh)
-LUMI       |.                                                   |.                                                   |[do_r_2d_integration_on_lumi.sh](do_r_2d_integration_on_lumi.sh)
-Pelle      |.                                                   |.                                                   |[do_r_2d_integration_on_pelle.sh](do_r_2d_integration_on_pelle.sh)
-Rackham    |.                                                   |.                                                   |[do_r_2d_integration_on_rackham.sh](do_r_2d_integration_on_rackham.sh)
-Tetralith  |.                                                   |.                                                   |[do_r_2d_integration_on_tetralith.sh](do_r_2d_integration_on_tetralith.sh)
-
-<!-- markdownlint-enable MD013 -->
+Language|Script with calculation
+--------|------------------------------------------
+Julia   |TODO
+MATLAB  |TODO
+R       |[do_r_2d_integration.sh](do_r_2d_integration.sh)
 
 ## Calculation script
 
