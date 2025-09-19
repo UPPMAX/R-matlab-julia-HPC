@@ -30,3 +30,6 @@ jobs:
 
       - name: Check thread parallelism
         run: shellcheck docs/advanced/thread_parallelism/*.sh
+
+      - name: Check distributed parallelism
+        run: shellcheck docs/advanced/distributed_parallelism/*.sh
