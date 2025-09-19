@@ -121,7 +121,7 @@ function main()
 
     # Print human-friendly results
     error_value = abs(integral_value - 0.0)
-    duration_secs = convert(Float64, (endtime - starttime).value) / 1e9
+    duration_secs = convert(Float64, (endtime - starttime).value) / 1000.0
     core_secs = duration_secs * n_workers
     println("Integral value: $integral_value")
     println("Integral error: $error_value")
