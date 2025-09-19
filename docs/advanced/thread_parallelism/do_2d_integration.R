@@ -16,12 +16,12 @@ if (length(args) == 0 || length(args) > 2) {
     " \n",
     "General usage:",
     " \n",
-    "  Rscript integration2d.R [n_workers] [grid_size]\n",
+    "  Rscript do_2d_integration [n_workers] [grid_size]\n",
     " \n",
     "Examples: \n",
     " \n",
-    "  Rscript integration2d.R 1\n",
-    "  Rscript integration2d.R 1 16384\n",
+    "  Rscript do_2d_integration 1\n",
+    "  Rscript do_2d_integration 1 16384\n",
     " \n"
   )
 }
