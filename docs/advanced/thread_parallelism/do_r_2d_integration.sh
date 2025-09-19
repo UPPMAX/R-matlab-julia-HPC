@@ -110,7 +110,8 @@ fi
 
 if [ ${hpc_cluster} == "tetralith" ]
 then
-  module load R/4.2.0-hpc1-gcc-11.3.0-bare >/dev/null 2>&1
+
+  module load R/4.4.0-hpc1-gcc-11.3.0-bare >/dev/null 2>&1
 fi
 
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
