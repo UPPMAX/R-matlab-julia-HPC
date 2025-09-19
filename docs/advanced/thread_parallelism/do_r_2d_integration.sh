@@ -17,8 +17,11 @@ hpc_cluster="unknown"
 
 [[ "${HOSTNAME}" =~ ^cn[0-9]{1,6}$ ]] && hpc_cluster="cosmos"
 [[ "${HOSTNAME}" =~ ^nid[0-9]{1,6}$ ]] && hpc_cluster="dardel"
+[[ "${HOSTNAME}" =~ ^b-cn[0-9]{1,6}$ ]] && hpc_cluster="kebnekaise"
 [[ "${HOSTNAME}" =~ ^p[0-9]{1,6}$ ]] && hpc_cluster="pelle"
 [[ "${HOSTNAME}" =~ ^r[0-9]{1,6}$ ]] && hpc_cluster="rackham"
+
+
 
 echo "HPC cluster: ${hpc_cluster}"
 
@@ -50,7 +53,7 @@ if ! is_valid_hpc_cluster "tetralith" ; then echo "Internal error: 'tetralith' i
 # Using
 if ! is_valid_hpc_cluster "${hpc_cluster}"
 then
-  echo "ERROR: '${hpc_cluster}' is not valid hpc_cluster."
+  echo "ERROR: '${hpc_cluster}' with hostname '${HOSTNAME}' is not valid hpc_cluster."
   echo "Supported hpc_clusters: "
   echo "- alvis"
   echo "- bianca"

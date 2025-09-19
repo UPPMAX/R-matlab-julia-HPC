@@ -174,6 +174,7 @@ If there are errors about libraries missing, install these.
 
 ## Exercise 2: start the benchmark on your HPC cluster
 
+
 ## Exercise 3: read the benchmark script
 
 
@@ -200,6 +201,19 @@ What went wrong here? Why is this a problem?
              54217     pelle do_r_2d_   richel  R       0:14      6 p[106-111]
              54169     pelle do_r_2d_   richel  R       0:15      1 p70
 ```
+
+## Troubleshooting
+
+### Invalid account or account/partition combination specified
+
+```bash
+sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
+```
+
+You've specified the wrong account.
+
+Run `projinfo`
+
 
 <!-- markdownlint-disable -->
 
