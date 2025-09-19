@@ -1,0 +1,39 @@
+name: Check Julia code
+
+# Check Julia code on the 18th day of the month.
+# 18th as the first letter of this repo is the 18th letter in the alphabet.
+on:
+  push:
+    paths:
+      - .github/workflows/check_julia_code.yaml
+      - 'docs/advanced/**.jl'
+  pull_request:
+    paths:
+      - .github/workflows/check_julia_code.yaml
+      - 'docs/advanced/**.jl'
+  schedule:
+  - cron: "0 0 18 * *"
+
+jobs:
+  check_r_code:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: julia-actions/setup-julia@v2
+
+      #- uses: julia-actions/cache@v2
+
+      #- uses: julia-actions/julia-buildpkg@v1
+
+      #- uses: julia-actions/julia-runtest@v1
+
+      - name: Install ReLint
+        run: julia -e 'import Pkg ; Pkg.add(url="https://github.com/RelationalAI-oss/ReLint.jl")'
+
+      - name: Check
+        run: julia -e 'ReLint.run_lint("docs/advances/thread_parallelism/do_2d_integration.jl")'
