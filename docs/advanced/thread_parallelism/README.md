@@ -29,12 +29,12 @@
 
     HPC cluster|Tested
     -----------|--------
-    Alvis      |.
-    Bianca     |.
+    Alvis      |Not, maybe never
+    Bianca     |Need certicate
     COSMOS     |Yes
     Dardel     |Yes
     Kebnekaise |Running
-    LUMI       |.
+    LUMI       |Not, maybe never
     Rackham    |Yes
     Pelle      |Yes
     Tetralith  |Yes
