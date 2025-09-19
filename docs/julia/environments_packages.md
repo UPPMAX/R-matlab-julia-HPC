@@ -2,28 +2,27 @@ Packages and isolated environments
 ==================================
 
 
-.. questions::
+!!! info "Questions:"
 
-- How to install packages?
-- How to work with isolated environments?
-- How to check for and use the pre-installed packages?
+    - How to install packages?
+    - How to work with isolated environments?
+    - How to check for and use the pre-installed packages?
 
 
-.. objectives::
+!!! info "objectives"
 
-- Give a general *theoretical* introduction to isolated environments
-- Show how to install own packages
-- Show how to check for site-installed Julia packages
+    - Give a general *theoretical* introduction to isolated environments
+    - Show how to install own packages
+    - Show how to check for site-installed Julia packages
 
-.. admonition:: Julia packages and environments
+!!! info "Julia packages and environments"
 
-- Julia **packages** significantly expand Julia's usability!
-- Instead of writing code yourself there may be others that have done the same!
-- Isolated environments solve a couple of problems:
-
-    - You can install specific, also older, versions into them.
-    - You can create one for each project and no problem if the two projects require different versions.
-    - You can remove the environment and create a new one, if not needed or with errors.
+    - Julia **packages** significantly expand Julia's usability!
+    - Instead of writing code yourself there may be others that have done the same!
+    - Isolated environments solve a couple of problems:
+        - You can install specific, also older, versions into them.
+        - You can create one for each project and no problem if the two projects require different versions.
+        - You can remove the environment and create a new one, if not needed or with errors.
 
 
 Before going into installing packages let's have a background to the Julia environments and ecosystem!
@@ -33,64 +32,63 @@ In the Python's lesson on environments, we saw that there are different ways to 
 environments in this language, for instance, ``conda`` and ``pip``. This situation is simplified
 in Julia (if you are working with Julia code only) because environments are managed by Julia
 itself. Julia distinguishes between **project environments** and **package directories**
-(`Julia environments <https://docs.julialang.org/en/v1/manual/code-loading/#Environments>`_). In the former, only the
+([Julia environments](https://docs.julialang.org/en/v1/manual/code-loading/#Environments)). In the former, only the
 Tom's Obvious Minimal Language (TOML) files (Project.toml, Manifest.toml) are present while in the
 latter also source files are included with some specific layout.
 
 Packages are imported or loaded by the commands ``import`` and ``using``, respectively. The difference is (briefly):
 
-    To use "module" functions, use ``import <module>`` to import the "module", and ``Module.fn(x)`` to use the functions.
-    Alternatively, ``using <Module`` will import *all* exported Module functions into the *current namespace*, i.e. ``Module.fn(x)`` becomes ``fn(x)``.
+> To use "module" functions, use ``import <module>`` to import the "module", and ``Module.fn(x)`` to use the functions.
+> Alternatively, ``using <Module`` will import *all* exported Module functions into the *current namespace*, i.e. ``Module.fn(x)`` becomes ``fn(x)``.
 
 
 If you have started Julia previously, you will get the folders like this in the ~/.julia folder.
 
-.. code-block:: bash
+``` console
+$ tree .julia/ -d -L 1
+.
+├── artifacts
+├── bin
+├── compiled
+├── conda
+├── environments
+├── logs
+├── packages
+├── prefs
+├── registries
+└── scratchspaces
+```
 
-   $ tree .julia/ -d -L 1
-   .
-   ├── artifacts
-   ├── bin
-   ├── compiled
-   ├── conda
-   ├── environments
-   ├── logs
-   ├── packages
-   ├── prefs
-   ├── registries
-   └── scratchspaces
 
+??? note "Alternative to **tree** command"
 
-.. admonition:: Alternative to **tree** command
-   :class: dropdown
+    In case you don't have the **tree** command on your system you can use the
+    **find** command which is more common on Linux:
 
-   In case you don't have the **tree** command on your system you can use the **find** command
-   which is more common on Linux:
-
-   .. code-block:: bash
-
-      $ find .julia -mindepth 1 -maxdepth 1 -type d
-      .julia/registries
-      .julia/logs
-      .julia/packages
-      .julia/artifacts
-      .julia/conda
-      .julia/compiled
-      .julia/environments
-      .julia/prefs
-      .julia/scratchspaces
+    ``` console
+    $ find .julia -mindepth 1 -maxdepth 1 -type d
+    .julia/registries
+    .julia/logs
+    .julia/packages
+    .julia/artifacts
+    .julia/conda
+    .julia/compiled
+    .julia/environments
+    .julia/prefs
+    .julia/scratchspaces
+    ```
 
 Packages in Julia work as decentralized units which can be connected through their
 universally unique identifiers (UUIDs) in the so-called federated package management.
 The active environments can be seen with the command:
 
-.. code-block:: julia-repl
-
+``` jlcon
    julia>LOAD_PATH
    3-element Vector{String}:
    "@"
    "@v#.#"
    "@stdlib"
+```
 
 where ``@`` is the current environment, ``@v#.#`` is the default environment for the
 Julia version that is being in use, and ``@stdlib`` is the standard library.
