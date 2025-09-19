@@ -83,7 +83,7 @@ fi
 
 if [ ${hpc_cluster} == "dardel" ]
 then
-  module load julia/1.11.4-cpeAMD-24.11 >/dev/null 2>&1
+  module load PDC/24.11 julia/1.11.4-cpeAMD-24.11 >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "kebnekaise" ]
