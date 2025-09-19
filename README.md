@@ -66,7 +66,7 @@ mkdocs serve
 
 ### Building Sphinx version
 
-1. Create and activate separate Python `venv`:
+1. Create and activate separate Python `venv`, with Python 3.12 or earlier (see issue https://github.com/UPPMAX/R-matlab-julia-HPC/issues/237 if you have 3.13 or later):
 
     ```console
     mkdir oldsphinxenv
@@ -81,12 +81,10 @@ mkdocs serve
     pip install -r requirements.txt
     ```
 
-1. (I have not seen a case of needing to deactivate and reactivate the `venv` at
-   this point for Sphinx.) Build and deploy, automatically choosing an open
-   port:
+1. Build and deploy, automatically choosing an open port:
 
     ```console
-    sphinx-autobuild --port 0 docs/ build/
+    sphinx-autobuild --port 0 docs-sphinx/ build/
     ```
 
 ## Where is it indicated which files are not checked for broken URLs?
