@@ -66,7 +66,7 @@ mkdocs serve
 
 ### Building Sphinx version
 
-1. Create and activate separate Python `venv`, with Python 3.12 or earlier (see issue https://github.com/UPPMAX/R-matlab-julia-HPC/issues/237 if you have 3.13 or later):
+1. Create and activate separate Python `venv`, with Python 3.12 or earlier (see [issue237](https://github.com/UPPMAX/R-matlab-julia-HPC/issues/237) if you have 3.13 or later):
 
     ```console
     mkdir oldsphinxenv
