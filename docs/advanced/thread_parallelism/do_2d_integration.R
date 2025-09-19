@@ -39,15 +39,23 @@ testthat::expect_true(n_workers < 256 * 256)
 extract_hpc_cluster <- function(hostname = Sys.getenv("HOSTNAME")) {
   testthat::expect_equal(1, length(hostname))
   if (nchar(hostname) == 0) return("unknown")
-  if (stringr::str_detect(hostname, "^b-cn[:digit:]{1,6}$")) return("kebnekaise")
+  if (stringr::str_detect(hostname, "^b-cn[:digit:]{1,6}$")) {
+    return("kebnekaise")
+  }
   if (stringr::str_detect(hostname, "^cn[:digit:]{1,3}$")) return("cosmos")
-  if (stringr::str_detect(hostname, "^cosmos[:digit:].int.lunarc$")) return("cosmos")
+  if (stringr::str_detect(hostname, "^cosmos[:digit:].int.lunarc$")) {
+    return("cosmos")
+  }
   if (stringr::str_detect(hostname, "^login[:digit:]$")) return("dardel")
   if (stringr::str_detect(hostname, "^n[:digit:]{1,6}$")) return("tetralith")
   if (stringr::str_detect(hostname, "^nid[:digit:]{1,6}$")) return("dardel")
-  if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) return("pelle")
+  if (stringr::str_detect(hostname, "^pelle[:digit:].uppmax.uu.se$")) {
+    return("pelle")
+  }
   if (stringr::str_detect(hostname, "^p[:digit:]{1,3}$")) return("pelle")
-  if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) return("rackham")
+  if (stringr::str_detect(hostname, "^rackham[:digit:].uppmax.uu.se$")) {
+    return("rackham")
+  }
   if (stringr::str_detect(hostname, "^r[:digit:]{1,4}$")) return("rackham")
   hostname
 }
