@@ -193,7 +193,6 @@ div.tabbed-set.tabbed-alternate {
   transition:color .25s;
   width:1.5em;
   z-index:1
-  text-align:right;
 }
 
 .btn-clipboard {
