@@ -161,4 +161,8 @@ plugins:
   # RJCB: removed for now, it breaks the build
   # - unused_files
 
-
+extra_javascript:
+  - js/popper.min.js
+  - js/tippy-bundle.umd.js
+  - js/clipboard.js
+  - js/extra.js

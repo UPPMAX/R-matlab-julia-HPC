@@ -177,3 +177,33 @@ div.tabbed-set.tabbed-alternate {
 	padding-left: 1rem;
 	padding-right: 1rem;
 }
+
+# Getting code copy to clipboard to work 
+
+.clipboard {
+  border-radius:.1rem;
+  color:var(--md-default-fg-color--lightest);
+  cursor:pointer;
+  height:1.5em;
+  outline-color:var(--md-accent-fg-color);
+  outline-offset:.1rem;
+  position:absolute;
+  right:.5em;
+  top:.5em;
+  transition:color .25s;
+  width:1.5em;
+  z-index:1
+}
+
+.btn-clipboard {
+    position: relative;
+    top: .2rem;
+    right: 3.4rem;
+    z-index: 10;
+    display: block;
+    padding: .25rem .5rem;
+    cursor: pointer;
+    width:3.2em;
+    float:right;
+}
+
