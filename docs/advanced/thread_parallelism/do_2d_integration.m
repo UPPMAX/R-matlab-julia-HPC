@@ -118,8 +118,6 @@ if ~isempty(pool)
     delete(pool);
 end
 
-end
-
 % For script execution, call the function if not loaded as a function
 if ~isdeployed && isempty(getenv('MATLAB_TEST'))
     integration2d_main();
