@@ -181,6 +181,7 @@ div.tabbed-set.tabbed-alternate {
 # Getting code copy to clipboard to work 
 
 .clipboard {
+  visibility: hidden;
   border-radius:.1rem;
   color:var(--md-default-fg-color--lightest);
   cursor:pointer;
@@ -201,12 +202,13 @@ div.tabbed-set.tabbed-alternate {
     right: 3.4rem;
     z-index: 10;
     display: block;
-    padding: .25rem .5rem;
+    padding: .15rem .2rem;
     cursor: pointer;
-    width:3.2em;
-    float:right;
+    width: 2.5em;
+    float: right;
 }
 
-.btn .btn-neutral .btn-clipboard {
+.btn.btn-neutral.btn-clipboard {
 	float:right;
 }
+
