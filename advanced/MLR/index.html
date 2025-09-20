@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>With R - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "With R";
+        var mkdocs_page_input_path = "advanced/MLR.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prequisites</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations/">Preparations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and SLURM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-local-desktop/">Session-UPPMAX: MATLAB client on the desktop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batchJulia/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/notebook_pluto/">The notebook Pluto</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Machine Learning</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">With R</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#installed-ml-tools">Installed ML tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-your-code">Running your code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#r-batch-scripts-for-ml">R batch scripts for ML</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#serial-jobs">Serial jobs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Advanced</li>
+          <li class="breadcrumb-item">Machine Learning</li>
+      <li class="breadcrumb-item active">With R</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/advanced/MLR.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ml-with-r">ML with R<a class="headerlink" href="#ml-with-r" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>Is R suitable for Machine Learning (ML)?</li>
+<li>Which machine learning tools are installed at HPCs?</li>
+<li>How to run R ML jobs on an HPC system (NSC, PDC, C3SE, UPPMAX, HPC2N, LUNARC)</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Short introduction to ML with R</li>
+<li>Overview of installed ML tools at Swedish HPC centres </li>
+<li>Workflow</li>
+<li>Show the structure of a suitable batch script</li>
+<li>Examples to try</li>
+<li><strong>We will not learn about:</strong><ul>
+<li>How to write and optimize ML/DL code.</li>
+<li>How to use multi-node setup for training models on CPU and GPU.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>R provides many packages that are specifically designed for machine learning. R is also known for its statistical capabilities for analysis and interpretation of data.</p>
+<p>This all makes it easier to develop and deploy models, also without having to write a lot of code yourself.</p>
+<p>The R community has contributed many powerful packages, both for machine learning and data science. Some of the popular packages are:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dplyr</td>
+<td>Enables dataframe manipulation in an intuitive, user-friendly way. One of the core <br>packages of the popular tidyverse set of packages</td>
+</tr>
+<tr>
+<td>Tidyr</td>
+<td>Provides a bunch of tools to help tidy up your messy datasets. tidyr is a member of <br>the core tidyverse</td>
+</tr>
+<tr>
+<td>Caret</td>
+<td>A set of functions that attempt to streamline the process for creating predictive <br>models. Short for Classification And REgression Training</td>
+</tr>
+<tr>
+<td>MLR</td>
+<td>R has no standardized interface for its ML algorithms. MLR provides this <br>infrastructure. The framework provides supervised methods like classification, regression <br>and survival analysis along with their corresponding evaluation and optimization <br>methods, as well as unsupervised methods like clustering. You can extend it yourself <br>or deviate from the implemented convenience methods and construct your own <br>complex experiments or algorithms</td>
+</tr>
+<tr>
+<td>ggplot2</td>
+<td>A system for declaratively creating graphics. Part of tidyverse</td>
+</tr>
+<tr>
+<td>randomForest</td>
+<td>implements Breiman’s random forest algorithm</td>
+</tr>
+<tr>
+<td>mlbench</td>
+<td>A collection of artificial and real-world machine learning benchmark problem</td>
+</tr>
+<tr>
+<td>stringr</td>
+<td>Provides a cohesive set of functions designed to make working with strings as easy <br>as possible</td>
+</tr>
+<tr>
+<td>tidyverse</td>
+<td>A set of packages that work in harmony because they share common data representations <br>and API design. Some of the popular packages in this set is: ggplot2, dplyr, tidyr, stringr, <br>and many more</td>
+</tr>
+</tbody>
+</table>
+<p>and others.</p>
+<h2 id="installed-ml-tools">Installed ML tools<a class="headerlink" href="#installed-ml-tools" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There are differences depending on the centre as well as minor differences depending on the version of R.</p>
+<p>This table is not exhaustive, but lists the more popular libraries/packages and what the module is called at the various centres. Please do <code>module spider</code> on them to see how to load them as well as which versions are available. </p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>NSC</th>
+<th>PDC</th>
+<th>C3SE</th>
+<th>UPPMAX</th>
+<th>HPC2N</th>
+<th>LUNARC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dplyr</td>
+<td>N/A</td>
+<td>R</td>
+<td>N/A</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>tidyr</td>
+<td>N/A</td>
+<td>R</td>
+<td>N/A</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>caret</td>
+<td>N/A</td>
+<td>R</td>
+<td>N/A</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>mlr</td>
+<td>N/A</td>
+<td>R</td>
+<td>N/A</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>randomForest</td>
+<td>N/A</td>
+<td>R</td>
+<td>N/A</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>stringr</td>
+<td>N/A</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R</td>
+<td>R</td>
+</tr>
+<tr>
+<td>kernlab</td>
+<td>N/A</td>
+<td>R</td>
+<td>N/A</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+</tbody>
+</table>
+<p>Some centes have several packages installed with R, some have module &ldquo;bundles&rdquo; of R packages installed at the various centres: </p>
+<ul>
+<li>NSC (R/4.4.0): ~30 packages installed with R. You will have to install the rest yourself. </li>
+<li>PDC (R/4.4.2): ~1250 packages installed with R. In addition, there are many Bioconductor packages installed with the Rbio module </li>
+<li>C3SE: R(R/4.3.3): ~100 packages installed with R. You will have to install the rest yourself. </li>
+<li>HPC2N (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN, R-bundle-CRAN-extra, R-bundle-Bioconductor</li>
+<li>UPPMAX (R/4.1.1): Almost all packages in CRAN and BioConductor are contained in the R_packages module, as is a small number of other R packages not in CRAN/BioConductor. Total of 23476 R packages are installed.  </li>
+<li>LUNARC (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN and R-bundle-Bioconductor </li>
+</ul>
+<h2 id="running-your-code">Running your code<a class="headerlink" href="#running-your-code" title="Anchor link to this section for reference">&para;</a></h2>
+<p><strong>Workflow</strong></p>
+<ol>
+<li>Determine if you need any R libraries that are not already installed (load R module and R_packages/R-bundle-CRAN/R-bundle-Bioconductor and check)</li>
+<li>Determine if you want to run on CPUs or GPUs - some of the R version modules are not CUDA-aware</li>
+<li>Install any missing R libraries in an isolated environment</li>
+<li>Possibly download any datasets</li>
+<li>Write a batch script</li>
+<li>Submit the batch script</li>
+</ol>
+<p><strong>Example</strong></p>
+<div class="admonition hint">
+<p class="admonition-title">Type-along</p>
+<p>We will run a simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/</p>
+<p>If you cannot access remote data-sets, change the R code as mentioned inside to use a local data-set, which has already been downloaded</p>
+<p><strong>NOTE</strong>: normally we would not run this on the command line, but through a batch script, but since these are short examples we will run it on the command line.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">NSC</label><label for="__tabbed_1_2">PDC</label><label for="__tabbed_1_3">C3SE</label><label for="__tabbed_1_4">UPPMAX</label><label for="__tabbed_1_5">HPC2N</label><label for="__tabbed_1_6">LUNARC</label><label for="__tabbed_1_7">iris_ml.R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>You need to install <code>caret</code>, <code>kernlab</code>, and <code>randomForest</code> before running, as shown below. If it asks, agree to install in local directory.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R/4.4.0-hpc1-gcc-11.3.0-bare
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$<span class="w"> </span>R
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;caret&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;kernlab&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;randomForest&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>&gt;<span class="w"> </span>quit<span class="o">()</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>All the needed packages are part of the R module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>PDC/24.11<span class="w"> </span>R/4.4.2-cpeGNU-24.11
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>You need to install <code>caret</code>, <code>kernlab</code>, and <code>randomForest</code> before running, as shown below. If it asks, agree to install in local directory. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R/4.3.3-gfbf-2023b<span class="w">        </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>R
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;MASS&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;e1071, recipes,ipred,Matrix,survival,class,prodlim,lava, repos=http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;caret&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;kernlab&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;randomForest&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>&gt;<span class="w"> </span>quit<span class="o">()</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>All the needed packages are part of the R_packages module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R_packages/4.1.1
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>All the needed packages are part of the R-bundle-CRAN module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R/4.4.1<span class="w"> </span>R-bundle-CRAN/2024.06<span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>All the needed packages are part of the R-bundle-CRAN module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w">  </span>OpenMPI/4.1.5<span class="w"> </span>R/4.4.1<span class="w"> </span>R-bundle-CRAN/2023.12-R-4.4.1<span class="w"> </span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># COMMENT OUT THIS SECTION IF YOU CANNOT ACCESS REMOTE DATA-SETS</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># --------------------------------------------------------------</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># attach the iris dataset to the environment</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>data<span class="o">(</span>iris<span class="o">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># rename the dataset</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>dataset<span class="w"> </span>&lt;-<span class="w"> </span>iris
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># ---------------------------------------------------------------</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># REMOVE THE COMMENTS ON THIS SECTION (except comments...) TO USE LOCAL DATA-SETS</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># -------------------------------------------------------------------------------</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># define the filename</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1">#filename &lt;- &quot;iris.csv&quot;</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># load the CSV file from the local directory</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1">#dataset &lt;- read.csv(filename, header=FALSE)</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># -------------------------------------------------------------------------------</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="c1"># set the column names in the dataset</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>colnames<span class="o">(</span>dataset<span class="o">)</span><span class="w"> </span>&lt;-<span class="w"> </span>c<span class="o">(</span><span class="s2">&quot;Sepal.Length&quot;</span>,<span class="s2">&quot;Sepal.Width&quot;</span>,<span class="s2">&quot;Petal.Length&quot;</span>,<span class="s2">&quot;Petal.Width&quot;</span>,<span class="s2">&quot;Species&quot;</span><span class="o">)</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="c1"># create a list of 80% of the rows in the original dataset we can use for training</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>validation_index<span class="w"> </span>&lt;-<span class="w"> </span>createDataPartition<span class="o">(</span>dataset<span class="nv">$Species</span>,<span class="w"> </span><span class="nv">p</span><span class="o">=</span><span class="m">0</span>.80,<span class="w"> </span><span class="nv">list</span><span class="o">=</span>FALSE<span class="o">)</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="c1"># select 20% of the data for validation</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>validation<span class="w"> </span>&lt;-<span class="w"> </span>dataset<span class="o">[</span>-validation_index,<span class="o">]</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="c1"># use the remaining 80% of data to training and testing the models</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>dataset<span class="w"> </span>&lt;-<span class="w"> </span>dataset<span class="o">[</span>validation_index,<span class="o">]</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="c1"># Run algorithms using 10-fold cross validation</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>control<span class="w"> </span>&lt;-<span class="w"> </span>trainControl<span class="o">(</span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;cv&quot;</span>,<span class="w"> </span><span class="nv">number</span><span class="o">=</span><span class="m">10</span><span class="o">)</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>metric<span class="w"> </span>&lt;-<span class="w"> </span><span class="s2">&quot;Accuracy&quot;</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="c1"># a) linear algorithms</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>fit.lda<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;lda&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="c1"># b) nonlinear algorithms</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="c1"># CART</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>fit.cart<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rpart&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="c1"># kNN</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>fit.knn<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;knn&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="c1"># c) advanced algorithms</span>
+</span><span id="__span-6-44"><a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="c1"># SVM</span>
+</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-6-46"><a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a>fit.svm<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;svmRadial&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-6-47"><a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a><span class="c1"># Random Forest</span>
+</span><span id="__span-6-48"><a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-6-49"><a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>fit.rf<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-6-50"><a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>
+</span><span id="__span-6-51"><a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a><span class="c1"># summarize accuracy of models</span>
+</span><span id="__span-6-52"><a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a>results<span class="w"> </span>&lt;-<span class="w"> </span>resamples<span class="o">(</span>list<span class="o">(</span><span class="nv">lda</span><span class="o">=</span>fit.lda,<span class="w"> </span><span class="nv">cart</span><span class="o">=</span>fit.cart,<span class="w"> </span><span class="nv">knn</span><span class="o">=</span>fit.knn,<span class="w"> </span><span class="nv">svm</span><span class="o">=</span>fit.svm,<span class="w"> </span><span class="nv">rf</span><span class="o">=</span>fit.rf<span class="o">))</span>
+</span><span id="__span-6-53"><a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a>summary<span class="o">(</span>results<span class="o">)</span>
+</span><span id="__span-6-54"><a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a>
+</span><span id="__span-6-55"><a id="__codelineno-6-55" name="__codelineno-6-55" href="#__codelineno-6-55"></a><span class="c1"># summarize Best Model</span>
+</span><span id="__span-6-56"><a id="__codelineno-6-56" name="__codelineno-6-56" href="#__codelineno-6-56"></a>print<span class="o">(</span>fit.lda<span class="o">)</span>
+</span><span id="__span-6-57"><a id="__codelineno-6-57" name="__codelineno-6-57" href="#__codelineno-6-57"></a>
+</span><span id="__span-6-58"><a id="__codelineno-6-58" name="__codelineno-6-58" href="#__codelineno-6-58"></a><span class="c1"># estimate skill of LDA on the validation dataset</span>
+</span><span id="__span-6-59"><a id="__codelineno-6-59" name="__codelineno-6-59" href="#__codelineno-6-59"></a>predictions<span class="w"> </span>&lt;-<span class="w"> </span>predict<span class="o">(</span>fit.lda,<span class="w"> </span>validation<span class="o">)</span>
+</span><span id="__span-6-60"><a id="__codelineno-6-60" name="__codelineno-6-60" href="#__codelineno-6-60"></a>confusionMatrix<span class="o">(</span>predictions,<span class="w"> </span>validation<span class="nv">$Species</span><span class="o">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="r-batch-scripts-for-ml">R batch scripts for ML<a class="headerlink" href="#r-batch-scripts-for-ml" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Since most R codes for Machine Learning would run for a fairly long time, you would usually have to run them in a batch script.</p>
+<h3 id="serial-jobs">Serial jobs<a class="headerlink" href="#serial-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Type-along</p>
+<p>Short serial batch example for running the R code above, <code>iris_ml.R</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">NSC</label><label for="__tabbed_2_2">PDC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare</p>
+<p>NOTE: if you did not install the packages <code>caret</code>, <code>kernlab</code>, and <code>randomForest</code> above, you have to do so now before running the script.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">#SBATCH -A naiss2025-22-934 # Change to your own project ID</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.4.0-hpc1-gcc-11.3.0-bare
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Dardel. Loading PDC/24.11 R/4.4.2-cpeGNU-24.11 </p>
+<p>```bash</p>
+<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-a-naiss2025-22-934-change-to-your-own-project-id">SBATCH -A naiss2025-22-934 # Change to your own project ID<a class="headerlink" href="#sbatch-a-naiss2025-22-934-change-to-your-own-project-id" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites</span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">PDC</span><span class="o">/</span><span class="mf">23.12</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.12</span>
+
+<span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+<span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">quiet</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iris_ml</span><span class="o">.</span><span class="n">R</span>
+</code></pre></div>
+
+</div>
+</div>
+</div>
+<p>.. tab:: UPPMAX</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">serial</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Rackham</span><span class="o">.</span><span class="w"> </span><span class="n">Loading</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">R_packages</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">    </span><span class="c1">#!/bin/bash</span>
+<span class="w">    </span><span class="c1">#SBATCH -A uppmax202u-w-xyz # Course project id. Change to your own project ID after the course</span>
+<span class="w">    </span><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="w">    </span><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="w">    </span><span class="c1"># Load any modules you need, here R_packages/4.1.1 (R/4.1.1 is loaded automatically)</span>
+<span class="w">    </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">R_packages</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w">    </span><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">quiet</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iris_ml</span><span class="o">.</span><span class="n">R</span>
+</code></pre></div>
+
+<p>.. tab:: HPC2N</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">serial</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Kebnekaise</span><span class="o">.</span><span class="w"> </span><span class="n">Loading</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">prerequisites</span><span class="p">,</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">R</span><span class="o">-</span><span class="n">bundle</span><span class="o">-</span><span class="n">Bioconductor</span><span class="o">/</span><span class="mf">3.15</span><span class="o">-</span><span class="n">R</span><span class="o">-</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">    </span><span class="c1">#!/bin/bash</span>
+<span class="w">    </span><span class="c1">#SBATCH -A hpc2n202w-xyz # Change to your own project ID</span>
+<span class="w">    </span><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="w">    </span><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="w">    </span><span class="c1"># Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor/3.15-R-4.2.1</span>
+<span class="w">    </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">GCC</span><span class="o">/</span><span class="mf">11.3</span><span class="o">.</span><span class="mi">0</span><span class="w">  </span><span class="n">OpenMPI</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="w">  </span><span class="n">R</span><span class="o">/</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="n">R</span><span class="o">-</span><span class="n">bundle</span><span class="o">-</span><span class="n">Bioconductor</span><span class="o">/</span><span class="mf">3.15</span><span class="o">-</span><span class="n">R</span><span class="o">-</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w">    </span><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">quiet</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iris_ml</span><span class="o">.</span><span class="n">R</span>
+</code></pre></div>
+
+<p>.. tab:: LUNARC</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">serial</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Cosmos</span><span class="o">.</span><span class="w"> </span><span class="n">Loading</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">prerequisites</span><span class="p">,</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">suitable</span><span class="w"> </span><span class="n">R</span><span class="o">-</span><span class="n">bundle</span><span class="o">-</span><span class="n">Bioconductor</span>
+
+<span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">    </span><span class="c1">#!/bin/bash</span>
+<span class="w">    </span><span class="c1">#SBATCH -A lu202w-x-yz # Change to your own project ID</span>
+<span class="w">    </span><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="w">    </span><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="w">    </span><span class="c1"># Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor</span>
+<span class="w">    </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">GCC</span><span class="o">/</span><span class="mf">11.3</span><span class="o">.</span><span class="mi">0</span><span class="w">  </span><span class="n">OpenMPI</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="w">  </span><span class="n">R</span><span class="o">/</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="n">R</span><span class="o">-</span><span class="n">bundle</span><span class="o">-</span><span class="n">Bioconductor</span><span class="o">/</span><span class="mf">3.15</span><span class="o">-</span><span class="n">R</span><span class="o">-</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w">    </span><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">quiet</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iris_ml</span><span class="o">.</span><span class="n">R</span>
+</code></pre></div>
+
+<p>.. tab:: NSC</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="kt">serial</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">Tetralith</span><span class="p">.</span><span class="w"> </span><span class="n">Loading</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4.0</span><span class="o">-</span><span class="n">hpc1</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">11.3.0</span><span class="o">-</span><span class="n">bare</span>
+
+<span class="w"> </span><span class="n">NOTE</span><span class="o">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">did</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">install</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">caret</span><span class="n n-Quoted">``</span><span class="p">,</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">kernlab</span><span class="n n-Quoted">``</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">randomForest</span><span class="n n-Quoted">``</span><span class="w"> </span><span class="n">above</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">script</span><span class="p">.</span>
+
+<span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">    </span><span class="c1">#!/bin/bash</span>
+<span class="w">    </span><span class="c1">#SBATCH -A naiss202t-uw-xyz # Change to your own project ID</span>
+<span class="w">    </span><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="w">    </span><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="w">    </span><span class="c1"># Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare</span>
+<span class="w">    </span><span class="n">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4.0</span><span class="o">-</span><span class="n">hpc1</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">11.3.0</span><span class="o">-</span><span class="n">bare</span>
+
+<span class="w">    </span><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="k">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">quiet</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iris_ml</span><span class="p">.</span><span class="n">R</span>
+</code></pre></div>
+
+<p>.. tab:: PDC</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="kt">serial</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">Dardel</span><span class="p">.</span><span class="w"> </span><span class="n">Loading</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4.1</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.12</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">prerequisites</span>
+
+<span class="w"> </span><span class="n">NOTE</span><span class="o">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">did</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">install</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">caret</span><span class="n n-Quoted">``</span><span class="p">,</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">kernlab</span><span class="n n-Quoted">``</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n n-Quoted">``</span><span class="n">randomForest</span><span class="n n-Quoted">``</span><span class="w"> </span><span class="n">above</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">script</span><span class="p">.</span>
+
+<span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="k">code</span><span class="o">-</span><span class="k">block</span><span class="o">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">    </span><span class="c1">#!/bin/bash</span>
+<span class="w">    </span><span class="c1">#SBATCH -A naiss202t-uw-xyz # Change to your own project ID</span>
+<span class="w">    </span><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="w">    </span><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="w">    </span><span class="c1"># Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites</span>
+<span class="w">    </span><span class="n">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">PDC</span><span class="o">/</span><span class="mf">23.12</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4.1</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.12</span>
+
+<span class="w">    </span><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="k">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">quiet</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iris_ml</span><span class="p">.</span><span class="n">R</span>
+</code></pre></div>
+
+</div>
+<p>Send the script to the batch:</p>
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code>  $ sbatch &lt;batch script&gt;
+</code></pre></div>
+
+<p>Parallel jobs
+&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;</p>
+<p>.. type-along::</p>
+<p>.. tabs::</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">UPPMAX</span>
+
+<span class="w">     </span><span class="n">Short</span><span class="w"> </span><span class="n">ML</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Snowy</span><span class="o">.</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">        </span><span class="c1">#!/bin/bash</span>
+<span class="w">        </span><span class="c1">#SBATCH -A uppmax202t-u-xyz</span>
+<span class="w">        </span><span class="c1">#Asking for 10 min.</span>
+<span class="w">        </span><span class="c1">#SBATCH -t 00:10:00</span>
+<span class="w">        </span><span class="c1">#SBATCH --exclusive</span>
+<span class="w">        </span><span class="c1">#SBATCH -p node</span>
+<span class="w">        </span><span class="c1">#SBATCH -n 1</span>
+<span class="w">        </span><span class="c1">#Writing output and error files</span>
+<span class="w">        </span><span class="c1">#SBATCH --output=output%J.out</span>
+<span class="w">        </span><span class="c1">#SBATCH --error=error%J.error</span>
+
+<span class="w">        </span><span class="n">ml</span><span class="w"> </span><span class="n">R_packages</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">restore</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">Rscript</span><span class="o">.</span><span class="n">R</span>
+
+
+<span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">HPC2N</span>
+
+<span class="w">     </span><span class="n">Short</span><span class="w"> </span><span class="n">ML</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Kebnekaise</span><span class="o">.</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">        </span><span class="c1">#!/bin/bash</span>
+<span class="w">        </span><span class="c1">#SBATCH -A hpc2n202u-xyz # Change to your own project ID</span>
+<span class="w">        </span><span class="c1">#Asking for 10 min.</span>
+<span class="w">        </span><span class="c1">#SBATCH -t 00:10:00</span>
+<span class="w">        </span><span class="c1">#SBATCH -n 1</span>
+<span class="w">        </span><span class="c1">#Writing output and error files</span>
+<span class="w">        </span><span class="c1">#SBATCH --output=output%J.out</span>
+<span class="w">        </span><span class="c1">#SBATCH --error=error%J.error</span>
+
+<span class="w">        </span><span class="n">ml</span><span class="w"> </span><span class="n">purge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="w">        </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">GCC</span><span class="o">/</span><span class="mf">11.3</span><span class="o">.</span><span class="mi">0</span><span class="w"> </span><span class="n">OpenMPI</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="n">CUDA</span><span class="o">/</span><span class="mf">12.1</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">restore</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">Rscript</span><span class="o">.</span><span class="n">R</span>
+
+<span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">LUNARC</span>
+
+<span class="w">     </span><span class="n">Short</span><span class="w"> </span><span class="n">ML</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Cosmos</span><span class="o">.</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">        </span><span class="c1">#!/bin/bash</span>
+<span class="w">        </span><span class="c1">#SBATCH -A lu202u-x-yz # Change to your own project ID</span>
+<span class="w">        </span><span class="c1">#Asking for 10 min.</span>
+<span class="w">        </span><span class="c1">#SBATCH -t 00:10:00</span>
+<span class="w">        </span><span class="c1">#SBATCH -n 1</span>
+<span class="w">        </span><span class="c1">#Writing output and error files</span>
+<span class="w">        </span><span class="c1">#SBATCH --output=output%J.out</span>
+<span class="w">        </span><span class="c1">#SBATCH --error=error%J.error</span>
+
+<span class="w">        </span><span class="n">ml</span><span class="w"> </span><span class="n">purge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="w">        </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">GCC</span><span class="o">/</span><span class="mf">11.3</span><span class="o">.</span><span class="mi">0</span><span class="w"> </span><span class="n">OpenMPI</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="n">CUDA</span><span class="o">/</span><span class="mf">12.1</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">restore</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">Rscript</span><span class="o">.</span><span class="n">R</span>
+
+<span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">NSC</span>
+
+<span class="w">     </span><span class="n">Short</span><span class="w"> </span><span class="n">ML</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Tetralith</span><span class="o">.</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">        </span><span class="c1">#!/bin/bash</span>
+<span class="w">        </span><span class="c1">#SBATCH -A naiss202t-uv-xyz # Change to your own project ID</span>
+<span class="w">        </span><span class="c1">#Asking for 10 min.</span>
+<span class="w">        </span><span class="c1">#SBATCH -t 00:10:00</span>
+<span class="w">        </span><span class="c1">#SBATCH -n 1</span>
+<span class="w">        </span><span class="c1">#Writing output and error files</span>
+<span class="w">        </span><span class="c1">#SBATCH --output=output%J.out</span>
+<span class="w">        </span><span class="c1">#SBATCH --error=error%J.error</span>
+
+<span class="w">        </span><span class="n">ml</span><span class="w"> </span><span class="n">purge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="w">        </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hpc1</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">11.3</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">bare</span>
+
+<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">restore</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">Rscript</span><span class="o">.</span><span class="n">R</span>
+
+<span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">PDC</span>
+
+<span class="w">     </span><span class="n">Short</span><span class="w"> </span><span class="n">ML</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Dardel</span><span class="o">.</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">        </span><span class="c1">#!/bin/bash</span>
+<span class="w">        </span><span class="c1">#SBATCH -A naiss202u-vw-xyz # Change to your own project ID</span>
+<span class="w">        </span><span class="c1">#Asking for 10 min.</span>
+<span class="w">        </span><span class="c1">#SBATCH -t 00:10:00</span>
+<span class="w">        </span><span class="c1">#SBATCH -N 1</span>
+<span class="w">        </span><span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="w">        </span><span class="c1">#SBATCH -p shared</span>
+<span class="w">        </span><span class="c1">#Writing output and error files</span>
+<span class="w">        </span><span class="c1">#SBATCH --output=output%J.out</span>
+<span class="w">        </span><span class="c1">#SBATCH --error=error%J.error</span>
+
+<span class="w">        </span><span class="n">ml</span><span class="w"> </span><span class="n">purge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="w">        </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">PDC</span><span class="o">/</span><span class="mf">23.12</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">cpeGNU</span><span class="o">-</span><span class="mf">23.12</span>
+
+<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">restore</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">Rscript</span><span class="o">.</span><span class="n">R</span>
+
+<span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">Rscript</span><span class="o">.</span><span class="n">R</span>
+
+<span class="w">     </span><span class="n">Short</span><span class="w"> </span><span class="n">ML</span><span class="w"> </span><span class="n">example</span><span class="o">.</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">        </span><span class="c1">#Example taken from https://github.com/lgreski/datasciencectacontent/blob/master/markdown/pml-randomForestPerformance.md</span>
+<span class="w">        </span><span class="n">library</span><span class="p">(</span><span class="n">mlbench</span><span class="p">)</span>
+<span class="w">        </span><span class="n">data</span><span class="p">(</span><span class="n">Sonar</span><span class="p">)</span>
+<span class="w">        </span><span class="n">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="w">        </span><span class="n">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">95014</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1"># create training &amp; testing data sets</span>
+<span class="w">        </span><span class="n">inTraining</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">createDataPartition</span><span class="p">(</span><span class="n">Sonar</span><span class="o">$</span><span class="n">Class</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">.</span><span class="mi">75</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="o">=</span><span class="n">FALSE</span><span class="p">)</span>
+<span class="w">        </span><span class="n">training</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Sonar</span><span class="p">[</span><span class="n">inTraining</span><span class="p">,]</span>
+<span class="w">        </span><span class="n">testing</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Sonar</span><span class="p">[</span><span class="o">-</span><span class="n">inTraining</span><span class="p">,]</span>
+
+<span class="w">        </span><span class="c1"># set up training run for x / y syntax because model format performs poorly</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">training</span><span class="p">[,</span><span class="o">-</span><span class="mi">61</span><span class="p">]</span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">training</span><span class="p">[,</span><span class="mi">61</span><span class="p">]</span>
+
+<span class="w">        </span><span class="c1">#Serial mode</span>
+<span class="w">        </span><span class="n">fitControl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">trainControl</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cv&quot;</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">allowParallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FALSE</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">stime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">train</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Sonar</span><span class="p">,</span><span class="n">trControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fitControl</span><span class="p">))</span>
+
+
+<span class="w">        </span><span class="c1">#Parallel mode</span>
+<span class="w">        </span><span class="n">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
+<span class="w">        </span><span class="n">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="w">        </span><span class="n">cluster</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">makeCluster</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="n">registerDoParallel</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">fitControl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">trainControl</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cv&quot;</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">allowParallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">ptime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">train</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Sonar</span><span class="p">,</span><span class="n">trControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fitControl</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">stopCluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
+<span class="w">        </span><span class="n">registerDoSEQ</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">fit</span>
+<span class="w">        </span><span class="n">fit</span><span class="o">$</span><span class="n">resample</span>
+<span class="w">        </span><span class="n">confusionMatrix</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">#Timings</span>
+<span class="w">        </span><span class="n">timing</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rbind</span><span class="p">(</span><span class="n">sequential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stime</span><span class="p">,</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptime</span><span class="p">)</span>
+<span class="w">        </span><span class="n">timing</span>
+</code></pre></div>
+
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code>  $ sbatch &lt;batch script&gt;
+</code></pre></div>
+
+<p>GPU jobs
+&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;&lsquo;&rsquo;</p>
+<p>Some packages are now able to use GPUs for ML jobs in R. One of them is <code>xgboost &lt;https://xgboost.readthedocs.io/en/latest/install.html&gt;</code>_.
+In the following demo you will find instructions to install this package and run a test case with GPUs.</p>
+<p>.. demo::
+   :class: dropdown</p>
+<p><strong>Prerequisites</strong></p>
+<p>Choose an R version &gt; 4.1 and a CUDA module:</p>
+<p>.. code-block:: bash</p>
+<div class="codehilite"><pre><span></span><code>  ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+</code></pre></div>
+
+<p>Get a release <code>xgboost</code> version with GPU support and place it in the package directory for your R version:</p>
+<p>.. code-block:: bash</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">u</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">R</span><span class="o">-</span><span class="n">packages</span><span class="o">-</span><span class="mf">4.4</span><span class="o">.</span><span class="mi">1</span>
+<span class="w">  </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dmlc</span><span class="o">/</span><span class="n">xgboost</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">5.0</span><span class="n">rc1</span><span class="o">/</span><span class="n">xgboost_r_gpu_linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</code></pre></div>
+
+<p>Then, install the package</p>
+<p>.. code-block:: bash</p>
+<div class="codehilite"><pre><span></span><code>  R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
+</code></pre></div>
+
+<p>Download a data set like the <code>HIGGS &lt;https://archive.ics.uci.edu/dataset/280/higgs&gt;</code>_ data set for detecting Higgs particles
+   that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):</p>
+<p>.. code-block:: bash</p>
+<div class="codehilite"><pre><span></span><code>  wget https://archive.ics.uci.edu/static/public/280/higgs.zip
+  unzip higgs.zip
+  gunzip HIGGS.csv.gz
+</code></pre></div>
+
+<p>Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:</p>
+<p>.. admonition:: gpu-script-db-higgs.R
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="p">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="nl">block</span><span class="p">:</span><span class="err">:</span><span class="w"> </span><span class="n">r</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">Inspired</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">benchmarking</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">Anatoly</span><span class="w"> </span><span class="nl">Tsyplenkov</span><span class="p">:</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">anatolii</span><span class="p">.</span><span class="n">nz</span><span class="o">/</span><span class="n">posts</span><span class="o">/</span><span class="mi">2024</span><span class="o">/</span><span class="n">xgboost</span><span class="o">-</span><span class="n">gpu</span><span class="o">-</span><span class="n">r</span>
+<span class="w">     </span><span class="err">#</span><span class="w">     </span><span class="n">step</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span><span class="w"> </span><span class="n">Install</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">haven</span><span class="err">&#39;</span><span class="n">t</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="n">it</span>
+<span class="w">     </span><span class="n">#install</span><span class="p">.</span><span class="n">packages</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="ss">&quot;xgboost&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;data.table&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;tictoc&quot;</span><span class="p">))</span>
+<span class="w">     </span><span class="n">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
+<span class="w">     </span><span class="n">library</span><span class="p">(</span><span class="k">data</span><span class="p">.</span><span class="nc">table</span><span class="p">)</span>
+<span class="w">     </span><span class="n">library</span><span class="p">(</span><span class="n">tictoc</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w">     </span><span class="n">step</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="k">Extract</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">ZIP</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">extracted</span><span class="p">)</span>
+<span class="w">     </span><span class="n">#unzip</span><span class="p">(</span><span class="ss">&quot;higgs.zip&quot;</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">Extracts</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">working</span><span class="w"> </span><span class="n">directory</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w">     </span><span class="n">step</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="k">Read</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">CSV</span><span class="w"> </span><span class="k">file</span>
+<span class="w">     </span><span class="n">higgs_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fread</span><span class="p">(</span><span class="ss">&quot;HIGGS.csv&quot;</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="k">Reads</span><span class="w"> </span><span class="k">large</span><span class="w"> </span><span class="n">datasets</span><span class="w"> </span><span class="n">efficiently</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w">     </span><span class="n">step</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="n">Preprocess</span><span class="w"> </span><span class="k">Data</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rest</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="n">features</span>
+<span class="w">     </span><span class="n">X</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">higgs_data</span><span class="o">[</span><span class="n">, -1, with = FALSE</span><span class="o">]</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">Remove</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="k">column</span>
+<span class="w">     </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="k">integer</span><span class="p">(</span><span class="n">higgs_data</span><span class="err">$</span><span class="n">V1</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">Target</span><span class="w"> </span><span class="k">column</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">Train</span><span class="o">-</span><span class="n">test</span><span class="w"> </span><span class="n">split</span><span class="w"> </span><span class="p">(</span><span class="mi">75</span><span class="o">%</span><span class="w"> </span><span class="n">train</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="o">%</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+<span class="w">     </span><span class="k">set</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="w">     </span><span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="w">     </span><span class="n">train_idx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample</span><span class="p">.</span><span class="nc">int</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="w">     </span><span class="n">dtrain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xgb</span><span class="p">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X</span><span class="o">[</span><span class="n">train_idx, </span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="o">[</span><span class="n">train_idx</span><span class="o">]</span><span class="p">)</span>
+<span class="w">     </span><span class="n">dtest</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xgb</span><span class="p">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X</span><span class="o">[</span><span class="n">-train_idx, </span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="o">[</span><span class="n">-train_idx</span><span class="o">]</span><span class="p">)</span>
+<span class="w">     </span><span class="n">evals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtest</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w">     </span><span class="n">step</span><span class="w"> </span><span class="mi">4</span><span class="err">:</span><span class="w"> </span><span class="n">Define</span><span class="w"> </span><span class="n">XGBoost</span><span class="w"> </span><span class="k">Parameters</span>
+<span class="w">     </span><span class="n">param</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="w"> </span><span class="n">objective</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;binary:logistic&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">eval_metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;error&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">eval_metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;logloss&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">max_depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">eta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w">     </span><span class="n">step</span><span class="w"> </span><span class="mi">5</span><span class="err">:</span><span class="w"> </span><span class="n">Train</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">CPU</span>
+<span class="w">     </span><span class="n">tic</span><span class="p">()</span>
+<span class="w">     </span><span class="n">xgb_cpu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xgb</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">watchlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evals</span><span class="p">,</span>
+<span class="w">     </span><span class="n">nrounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">tree_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;hist&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="n">toc</span><span class="p">()</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w">     </span><span class="n">step</span><span class="w"> </span><span class="mi">6</span><span class="err">:</span><span class="w"> </span><span class="n">Train</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">GPU</span>
+<span class="w">     </span><span class="n">tic</span><span class="p">()</span>
+<span class="w">     </span><span class="n">xgb_gpu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xgb</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">watchlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evals</span><span class="p">,</span>
+<span class="w">     </span><span class="n">nrounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">tree_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;hist&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="n">toc</span><span class="p">()</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">Print</span><span class="w"> </span><span class="n">models</span>
+<span class="w">     </span><span class="k">print</span><span class="p">(</span><span class="n">xgb_cpu</span><span class="p">)</span>
+<span class="w">     </span><span class="k">print</span><span class="p">(</span><span class="n">xgb_gpu</span><span class="p">)</span>
+</code></pre></div>
+
+<p>You can use the following template for your batch script:</p>
+<p>.. admonition:: job-gpu.sh
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">..</span><span class="w"> </span><span class="n">tabs</span><span class="p">::</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">UPPMAX</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">           </span><span class="c1">#!/bin/bash</span>
+<span class="w">           </span><span class="c1">#SBATCH -A testappl # Change to your own project ID</span>
+<span class="w">           </span><span class="c1">#Asking for 70 min.</span>
+<span class="w">           </span><span class="c1">#SBATCH -t 12:00:00</span>
+<span class="w">           </span><span class="c1">#SBATCH -p node</span>
+<span class="w">           </span><span class="c1">#SBATCH -N 1</span>
+<span class="w">           </span><span class="c1">##SBATCH -n 1</span>
+<span class="w">           </span><span class="c1">#SBATCH -M snowy</span>
+<span class="w">           </span><span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="w">           </span><span class="c1">#Writing output and error files</span>
+<span class="w">           </span><span class="c1">#SBATCH --output=output%J.out</span>
+<span class="w">           </span><span class="c1">#SBATCH --error=error%J.error</span>
+
+<span class="w">           </span><span class="n">ml</span><span class="w"> </span><span class="n">purge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="w">           </span><span class="c1">#module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1</span>
+<span class="w">           </span><span class="n">ml</span><span class="w"> </span><span class="n">R_packages</span>
+
+<span class="w">           </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">restore</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">gpu</span><span class="o">-</span><span class="n">script</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="n">higgs</span><span class="o">.</span><span class="n">R</span>
+
+<span class="w">     </span><span class="o">..</span><span class="w"> </span><span class="n">tab</span><span class="p">::</span><span class="w"> </span><span class="n">HPC2N</span>
+
+<span class="w">        </span><span class="o">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span><span class="w"> </span><span class="n">sh</span>
+
+<span class="w">           </span><span class="c1">#!/bin/bash</span>
+<span class="w">           </span><span class="c1">#SBATCH -A hpc2n202w-xyz # Change to your own project ID</span>
+<span class="w">           </span><span class="c1">#Asking for 10 min.</span>
+<span class="w">           </span><span class="c1">#SBATCH -t 30:50:00</span>
+<span class="w">           </span><span class="c1">#SBATCH -n 1</span>
+<span class="w">           </span><span class="c1">#SBATCH --gpus=1</span>
+<span class="w">           </span><span class="c1">#SBATCH -C l40s</span>
+<span class="w">           </span><span class="c1">#Writing output and error files</span>
+<span class="w">           </span><span class="c1">#SBATCH --output=output%J.out</span>
+<span class="w">           </span><span class="c1">#SBATCH --error=error%J.error</span>
+
+<span class="w">           </span><span class="n">ml</span><span class="w"> </span><span class="n">purge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="w">           </span><span class="c1">#module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1</span>
+<span class="w">           </span><span class="n">ml</span><span class="w"> </span><span class="n">GCC</span><span class="o">/</span><span class="mf">13.2</span><span class="o">.</span><span class="mi">0</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="mf">4.4</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="n">CUDA</span><span class="o">/</span><span class="mf">12.1</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="w">           </span><span class="n">R</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">restore</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">gpu</span><span class="o">-</span><span class="n">script</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="n">higgs</span><span class="o">.</span><span class="n">R</span>
+</code></pre></div>
+
+<p>.. admonition:: Timings
+      :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="o">::</span><span class="w"> </span><span class="n">r</span>
+
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="c1">#     step 5: Train on CPU</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">tic</span><span class="p">()</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xgb_cpu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">xgb.train</span><span class="p">(</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">watchlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evals</span><span class="p">,</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="n">nrounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">tree_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hist&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">toc</span><span class="p">()</span>
+<span class="w">     </span><span class="m">10337.386</span><span class="w"> </span><span class="n">sec</span><span class="w"> </span><span class="n">elapsed</span>
+<span class="w">     </span><span class="o">&gt;</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="c1">#     step 6: Train on GPU</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">tic</span><span class="p">()</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xgb_gpu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">xgb.train</span><span class="p">(</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">watchlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evals</span><span class="p">,</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="n">nrounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">tree_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hist&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">toc</span><span class="p">()</span>
+<span class="w">     </span><span class="m">199.416</span><span class="w"> </span><span class="n">sec</span><span class="w"> </span><span class="n">elapsed</span>
+</code></pre></div>
+
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title"><img src="../img/shell-logo_small.png"> Exercise</p>
+</div>
+<p>.. challenge:: Run validation.R with Rscript</p>
+<p>This example is taken from https://www.geeksforgeeks.org/cross-validation-in-r-programming/</p>
+<p>.. admonition:: <code>validation.R</code>
+   :class: dropdown</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="p">..</span><span class="w"> </span><span class="nx">code</span><span class="o">-</span><span class="nx">block</span><span class="o">::</span><span class="w"> </span><span class="nx">R</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">R</span><span class="w"> </span><span class="nx">program</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">implement</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">validation</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">approach</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">Taken</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">https</span><span class="p">:</span><span class="c1">//www.geeksforgeeks.org/cross-validation-in-r-programming/</span>
+<span class="w">     </span><span class="kn">library</span><span class="p">(</span><span class="nx">tidyverse</span><span class="p">)</span>
+<span class="w">     </span><span class="kn">library</span><span class="p">(</span><span class="nx">caret</span><span class="p">)</span>
+<span class="w">     </span><span class="kn">library</span><span class="p">(</span><span class="nx">datarium</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">setting</span><span class="w"> </span><span class="nx">seed</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">generate</span><span class="w"> </span><span class="nx">a</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">reproducible</span><span class="w"> </span><span class="nx">random</span><span class="w"> </span><span class="nx">sampling</span>
+<span class="w">     </span><span class="nx">set</span><span class="p">.</span><span class="nx">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">creating</span><span class="w"> </span><span class="nx">training</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="mi">80</span><span class="o">%</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">dataset</span>
+<span class="w">     </span><span class="nx">random_sample</span><span class="w"> </span><span class="p">&lt;</span><span class="o">-</span><span class="w"> </span><span class="nx">createDataPartition</span><span class="p">(</span><span class="nx">marketing</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="nx">sales</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m m-Double">0.8</span><span class="p">,</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">FALSE</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">generating</span><span class="w"> </span><span class="nx">training</span><span class="w"> </span><span class="nx">dataset</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">random_sample</span>
+<span class="w">     </span><span class="nx">training_dataset</span><span class="w"> </span><span class="p">&lt;</span><span class="o">-</span><span class="w"> </span><span class="nx">marketing</span><span class="p">[</span><span class="nx">random_sample</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">generating</span><span class="w"> </span><span class="nx">testing</span><span class="w"> </span><span class="nx">dataset</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="nx">which</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="k">not</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">included</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">random_sample</span>
+<span class="w">     </span><span class="nx">testing_dataset</span><span class="w"> </span><span class="p">&lt;</span><span class="o">-</span><span class="w"> </span><span class="nx">marketing</span><span class="p">[</span><span class="o">-</span><span class="nx">random_sample</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">Building</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">model</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">training</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">assigning</span><span class="w"> </span><span class="nx">sales</span><span class="w"> </span><span class="nx">column</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="nx">variable</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">rest</span><span class="w"> </span><span class="nx">other</span><span class="w"> </span><span class="nx">columns</span>
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">independent</span><span class="w"> </span><span class="nx">variables</span>
+<span class="w">     </span><span class="nx">model</span><span class="w"> </span><span class="p">&lt;</span><span class="o">-</span><span class="w"> </span><span class="nx">lm</span><span class="p">(</span><span class="nx">sales</span><span class="w"> </span><span class="o">~</span><span class="p">.,</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">training_dataset</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">predicting</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="nx">variable</span>
+<span class="w">     </span><span class="nx">predictions</span><span class="w"> </span><span class="p">&lt;</span><span class="o">-</span><span class="w"> </span><span class="nx">predict</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span><span class="w"> </span><span class="nx">testing_dataset</span><span class="p">)</span>
+
+<span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">computing</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="nx">performance</span><span class="w"> </span><span class="nx">metrics</span>
+<span class="w">     </span><span class="nx">data</span><span class="p">.</span><span class="nx">frame</span><span class="p">(</span><span class="w"> </span><span class="nx">R2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">R2</span><span class="p">(</span><span class="nx">predictions</span><span class="p">,</span><span class="w"> </span><span class="nx">testing_dataset</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="nx">sales</span><span class="p">),</span><span class="w"> </span><span class="nx">RMSE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">RMSE</span><span class="p">(</span><span class="nx">predictions</span><span class="p">,</span><span class="w"> </span><span class="nx">testing_dataset</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="nx">sales</span><span class="p">),</span><span class="w"> </span><span class="nx">MAE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">MAE</span><span class="p">(</span><span class="nx">predictions</span><span class="p">,</span><span class="w"> </span><span class="nx">testing_dataset</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="nx">sales</span><span class="p">))</span>
+</code></pre></div>
+
+<p>.. solution:: Solution</p>
+<p>.. code-block:: console</p>
+<div class="codehilite"><pre><span></span><code>  $ Rscript validation.R
+</code></pre></div>
+
+<p>.. challenge:: Create a batch script to run <code>validation.R</code></p>
+<p>You can find example batch scripts in the <code>exercises/r</code> directory.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../distributed_parallelism/" class="btn btn-neutral float-left" title="Distributed parallelism"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../evaluations/" class="btn btn-neutral float-right" title="Evaluations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../distributed_parallelism/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../evaluations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

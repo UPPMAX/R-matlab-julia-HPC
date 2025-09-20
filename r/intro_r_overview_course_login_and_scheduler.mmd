@@ -1,0 +1,13 @@
+flowchart TD
+
+    subgraph login[HPC login]
+      ssh[0.SSH]
+      remote_desktop_website[5.Remote desktop website]
+      remote_desktop_local_thinlinc_client[5.Remote desktop with local ThinLinc client]
+    end
+    subgraph scheduler[scheduler]
+      running_batch_jobs[3.Running batch jobs]
+      running_interactive_session[5.Running an interactive session]
+    end
+
+    login --> |allows for| scheduler
