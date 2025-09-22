@@ -357,7 +357,7 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
              
 === "PDC"
 
-    !!! note Solution" 
+    !!! note "Solution" 
 
         ```bash
         $ ml PDC/23.12 R/4.4.1-cpeGNU-23.12 
@@ -543,17 +543,19 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
     - LUNARC: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
     - NSC: ``module load R/4.2.2-hpc1-gcc-11.3.0-bare`` 
     - PDC: ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12`` 
+    - C3SE: ``module load R/4.2.1-foss-2022a`` 
 
     2)
 
     - ``echo R_LIBS_USER="$HOME/R-packages-%V" > ~/.Renviron``
 
-    OR (option if UPPMAX, HPC2N, NSC, or PDC)
+    OR (option if UPPMAX, HPC2N, NSC, PDC, or C3SE)
 
     - UPPMAX: ``echo R_LIBS_USER="/proj/r-matlab-julia-uppmax/<yourdir>/R-packages-%V" > ~/.Renviron``
     - HPC2N: ``echo R_LIBS_USER="/proj/nobackup/r-matlab-julia/<yourdir>/R-packages-%V" > ~/.Renviron``
     - NSC: ``echo R_LIBS_USER="/proj/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
     - PDC: ``echo R_LIBS_USER="/cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
+    - C3SE: ``echo R_LIBS_USER=/mimer/NOBACKUP/groups/courses-fall-2025/<yourdir>/R-packages-%V" > ~/.Renviron``
 
     3) Create directory for R packages:
 
@@ -570,6 +572,9 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
     - PDC: 
         - ``mkdir -p $HOME/R-packages-4.4.1``
         - OR ``mkdir -p /cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-4.4.1```
+    - C3SE: 
+        - ``mkdir -p $HOME/R-packages-4.2.1``
+        - OR ``mkdir -p /mimer/NOBACKUP/groups/courses-fall-2025/<yourdir>/R-packages-4.2.1``
 
     4) Either of
 
