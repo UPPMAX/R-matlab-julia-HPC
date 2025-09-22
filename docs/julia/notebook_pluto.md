@@ -3,7 +3,7 @@
 ## Goals
 
 - Learners 
-    - understand the use cases (pos and cons)
+    - understand the use cases (pros and cons)
     - can start a Pluto session
     - know in what environment to start
 
@@ -18,7 +18,7 @@ Pluto, like Jupyter, is a programming notebook.
 
 - Graphics
 - Interactive session?
-- packages and environemnts
+- packages and environments
 - Start Pluto
 
 ## Exercises
