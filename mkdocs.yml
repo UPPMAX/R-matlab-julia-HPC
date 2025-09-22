@@ -37,7 +37,8 @@ nav:
       - Intro: julia/intro.md
       - Load and run: julia/load_run.md
       - Environments and packages: julia/environments_packages.md
-      - Batch jobs: julia/batchJulia.md      
+      - Batch jobs: julia/batchJulia.md  
+      - Interactive jobs: julia/interactiveJulia.md     
       - The notebook Pluto: julia/notebook_pluto.md
     - Advanced: 
       - Schedule: advanced/schedule.md

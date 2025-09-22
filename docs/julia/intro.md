@@ -1,4 +1,4 @@
-# Introduction Julia
+# Why Julia?
 
 !!! info "Learning outcomes for today"
 
@@ -28,52 +28,87 @@
     - Lecture and 10 min
 
 
-## What is Julia?
+## Why it was created
 
-Julia is a relatively new Programming language (pre-released 1.0 announced in 2018), compared to well-known
-and standard languages such as Fortran, C, C++, R, and Python (some of them date back to the 70's).
-A common pattern in those well-established languages (traditional paradigm) is that they look after either:
+Quoting from the [blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/)
+that announced Julia to the world:
 
-- productivity (fast deployment, fast prototyping) or,
-- performance (fast numerical computations).
+> In short, because we are greedy.
 
-This pattern created the so called **two-language problem** where programmers had to choose between **productivity**
-(R, Python) or **performance** (Fortran, C/C++) and when both were needed programmers had to learn the language that
-offered the desired capability and use some interface between different languages.
-Performant languages traditionally need to be compiled while languages focusing on productivity are interpreted.
+They mention Matlab, Lisp, Python, Ruby, Perl, Mathematica, R and C.
 
-Among the different features of Julia, is its capability of integrating both aspects **productivity and performance
-into a single language**. In this way, Julia programmers can in principle write software without changing their focus
-to learn a new language.
+> We love all of these languages; they are wonderful and powerful. For the work
+> we do — scientific computing, machine learning, data mining, large-scale
+> linear algebra, distributed and parallel computing — each one is perfect for
+> some aspects of the work and terrible for others. Each one is a trade-off.
+>
+> We are greedy: we want more.
+
+No language can be everything for everyone, but Julia was created to get as
+close as possible for a certain set of users. A little later in the short post
+the creators talk again about HPC specifically:
+
+> While we're being demanding, we want something that provides the distributed
+> power of Hadoop — without the kilobytes of boilerplate Java and XML; without
+> being forced to sift through gigabytes of log files on hundreds of machines
+> to find our bugs. We want the power without the layers of impenetrable
+> complexity. We want to write simple scalar loops that compile down to tight
+> machine code using just the registers on a single CPU. We want to write A*B
+> and launch a thousand computations on a thousand machines, calculating a vast
+> matrix product together.
 
 
-   ![On orthogonal axis of productivity and performance,](../img/two-language.png)
+## Reasons to choose Julia
 
-   > *Two-language problem where Julia is shown as a bridge between the languages
-   in the traditional paradigms, productivity vs. performance.*
+<dl>
+    <dt>Fast:</dt>
+    <dd>Julia was designed from the beginning for high performance. Julia
+    programs compile to efficient native code for multiple platforms via
+    LLVM.</dd>
 
+    <dt>General:</dt>
+    <dd>It uses multiple dispatch as a paradigm, making it easy to express many
+    object-oriented and functional programming patterns. The standard library
+    provides asynchronous I/O, process control, logging, profiling, a package
+    manager, and more. </dd>
 
-## Features of Julia
+    <dt>Dynamic:</dt>
+    <dd>Julia is dynamically-typed, feels like a scripting language, and has
+    good support for interactive use. </dd>
 
-According to the [Julia documentation](https://docs.julialang.org/en/v1/) some of
-the features of this language are:
+    <dt>Technical:</dt>
+    <dd>It excels at numerical computing with a syntax that is great for math,
+    many supported numeric data types, and parallelism out of the box. Julia's
+    multiple dispatch is a natural fit for defining number and array-like data
+    types. </dd>
 
-- Good Base library with efficiently implemented operations written in Julia itself
-- "Good performance, approaching that of statically-compiled languages like C"
-- Modular and self-contained approach for libraries and development
-- "A rich language of types for constructing and describing objects"
-- A fast growing community of users and developers
+    <dt>Optionally typed:</dt>
+    <dd>Julia has a rich language of descriptive data types, and type
+    declarations can be used to clarify and solidify programs. </dd>
 
-## Shortcomings of Julia
+    <dt>Composable:</dt>
+    <dd>Julia’s packages naturally work well together. Matrices of unit
+    quantities, or data table columns of currencies and colors, just work — and
+    with good performance. </dd>
+</dl>
 
-- As this is a new language, the libraries ecosystem is not as rich as in Python or R, for instance
-- Currently, using Julia for simple tasks (for instance, opening a file and writing text, plotting) is not as
-  efficient as using Linux tools (AWK, GREP) or compiled languages (Fortran, C/C++, Rust)
-- Previous situation is more noticeable upon running simple tasks in parallel mode (MPI, Threads)
-- An initial code version can be fast (compared to base Python) with a code that is clear to
-  novices and without spending a long time writing. However, if one needs to get a more optimized code,
-  it would most likely increase its complexity (readability) and one would need to spend more time
-  (learning/programming) as in the case of C/C++/Fortran.
+- Special compilation model
+    - Enables interactive use and development without the drawbacks of
+      interpreted languages
+- Special type system
+    - Hierarchical, deep, types can be defined as precisely or loosely as makes
+      sense for the situation at hand
+    - This (along with multiple dispatch and the compilation model) enables not
+      only great flexibility but also great composability
+- Built for numerical computing
+- Built-in powerful package management (based on Git) with efficient
+  per-project environments, very good for reproducibility
+- Pluto
+    - Reproducible (even without Pluto), gittable, extraordinarily interactive
+      programming notebooks
+- 
+
+## Reasons to choose something else
 
 ## More on Julia
 
