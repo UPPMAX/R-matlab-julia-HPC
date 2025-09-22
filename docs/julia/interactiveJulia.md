@@ -70,7 +70,7 @@ PDC     | N/A             | Recommended | Possible
 Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):
 
 ```mermaid
-../../docs-sphinx/mermaid/interactive_node_transitions.mmd
+    ../../docs-sphinx/mermaid/interactive_node_transitions.mmd
 ```
 
 - First, you make a request for resources with ``interactive``/``salloc``, like this:
