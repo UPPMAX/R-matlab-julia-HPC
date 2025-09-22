@@ -55,17 +55,11 @@ short for Integrated Development Environment.
 
     HPC Cluster|Difficulty|Reason
     -----------|----------|-------------------------------------------
-    Alvis      |.         |.
-    Berzelius  |.         |.
-    Bianca     |Medium    |Step-by-step documentation, complex procedure
     COSMOS     |.         |.
     Dardel     |.         |.
     Kebnekaise |.         |.
-    LUMI       |.         |.
     Pelle      |Easy      |Step-by-step documentation
     Rackham    |Easy      |Step-by-step documentation
-    Tetralith  |.         |.
-    Vera       |.         |.
 
     <!-- markdownlint-enable MD013 -->
 
