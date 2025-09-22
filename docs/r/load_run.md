@@ -126,13 +126,10 @@ Tetralith        |Room 5
 
 HPC center|R version
 ----------|---------
-Alvis     |?
-Bianca    |?4.1.1
 COSMOS    |4.2.1
 Dardel    |4.1.1
 Kebnekaise|4.1.2
-LUMI      |?
-Pelle     |?4.1.1
+Pelle     |`4.5.1-gfbf-2024a`
 Rackham   |4.1.1
 Tetralith |4.2.2
 
@@ -146,7 +143,7 @@ Tetralith |4.2.2
     Dardel     | `module load PDC/23.12 R/4.1.1`
     Kebnekaise | `module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2`
     LUMI       | .
-    Pelle      | `module load R/4.1.1`
+    Pelle      | `module load 4.5.1-gfbf-2024a`
     Rackham    | `module load R/4.1.1`
     Tetralith  | `module load R/4.2.2-hpc1-gcc-11.3.0-bare`
 
@@ -239,7 +236,6 @@ by your cluster's module system.
     COSMOS     | `module spider R`
     Dardel     | `module spider R`
     Kebnekaise | `module spider R`
-    LUMI       | .
     Pelle      | `module spider R`
     Rackham    | `module spider R`
     Tetralith  | `module spider R`

@@ -37,7 +37,7 @@ short for Integrated Development Environment.
     -----------|------
     Bianca     |[YouTube video](https://youtu.be/rRUb4pqaVak)
     COSMOS     |[YouTube video](https://youtu.be/eT4D_K5JODA)
-    Dardel     |.
+    Dardel     |[YouTube video](https://youtu.be/IEd5G1bkT4c)
     Kebnekaise |[YouTube video](https://youtu.be/Hy37qVd_Q20)
     Pelle      |.
     Rackham    |[YouTube video](https://youtu.be/efSOFfBVBPQ)
@@ -52,7 +52,7 @@ short for Integrated Development Environment.
     -----------|----------|-------------------------------------------
     Bianca     |Easy      |Step-by-step documentation
     COSMOS     |Trivial   |Step-by-step documentation, trivial procedure
-    Dardel     |.         |.
+    Dardel     |Trivial   |Step-by-step documentation, trivial procedure
     Kebnekaise |Trivial   |Step-by-step documentation, trivial procedure
     Pelle      |Easy      |Step-by-step documentation
     Rackham    |Easy      |Step-by-step documentation
