@@ -19,9 +19,6 @@ Time  | Topic                                        | Teacher(s)
 13:00 | Batch                                        | B
 14:00 | Break                                        | .
 14:15 | [RStudio](rstudio.md)                        | R
-.     | HPC2N: ThinLinc, OnDemand, RStudio           | R
-.     | LUNARC: OnDemand, RStudio                    | R
-.     | UPPMAX: Interactive, RStudio                 | R
 14:45 | [Summary](summary.md)                        | R
 .     | [Evaluation](evaluation.md)                  | R
 15:00 | Done                                         | .

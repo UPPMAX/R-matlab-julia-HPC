@@ -35,7 +35,7 @@ Kebnekaise |[Reasonable documentation](https://docs.hpc2n.umu.se/tutorials/conne
 LUMI       |No documentation
 Pelle      |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_pelle/)
 Rackham    |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_rackham/)
-Tetralith  |[As good as no documentation](https://nsc.liu.se/software/catalogue/tetralith/modules/rstudio.html)
+Tetralith  |[As good as no documentation](https://nsc.liu.se/software/catalogue/tetralith/modules/rstudio.html), use [UPPMAX docs](https://docs.uppmax.uu.se/naiss/rstudio_on_tetralith/)
 Vera       |Only [OpenOnDemand doc](https://www.c3se.chalmers.se/documentation/connecting/ondemand/)
 
 There are, however, videos, that are not based on user documentation:
