@@ -41,6 +41,7 @@ short for Integrated Development Environment.
     Kebnekaise |[YouTube video](https://youtu.be/Hy37qVd_Q20)
     Pelle      |Cannot login to Pelle yet
     Rackham    |[YouTube video](https://youtu.be/efSOFfBVBPQ)
+    Tetralith  |[YouTube video](https://youtu.be/wfsh6-qk4uM)
 
 ???- hint "How difficult will this be?"
 
@@ -56,6 +57,7 @@ short for Integrated Development Environment.
     Kebnekaise |Trivial   |Step-by-step documentation, trivial procedure
     Pelle      |Easy      |Step-by-step documentation
     Rackham    |Easy      |Step-by-step documentation
+    Tetralith  |Easy      |Step-by-step documentation
 
     <!-- markdownlint-enable MD013 -->
 
@@ -93,6 +95,7 @@ Use the documentation of your HPC cluster for help.
 
     HPC Cluster|Documentation
     -----------|------------
+    Alvis      |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_alvis/)
     Bianca     |[UPPMAX documentation](https://docs.uppmax.uu.se/software/rstudio_on_bianca/)
     COSMOS     |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_cosmos/)
     Dardel     |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_dardel/)
@@ -106,7 +109,6 @@ Use the documentation of your HPC cluster for help.
     <!-- markdownlint-enable MD013 -->
 
 - Follow that procedure to start RStudio
-
 
 <!--
 

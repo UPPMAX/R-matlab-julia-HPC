@@ -109,12 +109,10 @@ Tetralith        |Room 6
 
     HPC cluster| R user documentation for that HPC cluster
     -----------|----------------------------------------------------------------------------------------------------------------
-    Alvis      | .
     Bianca     | [R user documentation](https://docs.uppmax.uu.se/software/r/)
     COSMOS     | [R user documentation](https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/Rscript/)
     Dardel     | [R user documentation](https://support.pdc.kth.se/doc/applications/?sub=r/)
     Kebnekaise | [R user documentation](https://www.hpc2n.umu.se/resources/software/r)
-    LUMI       | .
     Pelle      | [R user documentation](https://docs.uppmax.uu.se/software/r/)
     Rackham    | [R user documentation](https://docs.uppmax.uu.se/software/r/)
     Tetralith  | [R user documentation](https://www.nsc.liu.se/software/catalogue/tetralith/modules/r.html)
