@@ -66,6 +66,13 @@ LUNARC  | Works           | N/A         | Recommended
 NSC     | Recommended     | N/A         | N/A         
 PDC     | N/A             | Recommended | Possible    
 
+| Cluster | `interactive` | `salloc`     | GfxLauncher |
+|---------|:-------------:|--------------|-------------|
+| HPC2N   | Works         | Recommended  | N/A         |
+| UPPMAX  | Recommended   | Works        | N/A         |
+| LUNARC  | Works         | N/A          | Recommended |
+| NSC     | Recommended   | N/A          | N/A         |
+| PDC     | N/A           | Recommended  | Possible    |
 
 Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):
 
