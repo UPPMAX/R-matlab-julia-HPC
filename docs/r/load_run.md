@@ -62,13 +62,14 @@ to start R.
 
 ???- note "Prefer this session as video?"
 
-     HPC cluster| Login method           | Location
+     HPC cluster| Login method           | YouTube video
      -----------|------------------------|-------------------------------------
-     COSMOS     | Local ThinLinc client  | [Here](https://youtu.be/sSWd54Gunck)
-     Dardel     | Local ThinLinc client  | [Here](https://youtu.be/xBFH7Ab37FU)
-     Kebnekaise | Local ThinLinc client  | [Here](https://youtu.be/miAxHkSePIA)
-     Rackham    | Local ThinLinc client  | [Here](https://youtu.be/fSUYE_Xahe8)
-     Tetralith  | Local ThinLinc client  | [Here](https://youtu.be/HxBtyCB3w0k)
+     COSMOS     | Local ThinLinc client  | [YouTube video](https://youtu.be/sSWd54Gunck)
+     Dardel     | Local ThinLinc client  | [YouTube video](https://youtu.be/xBFH7Ab37FU)
+     Kebnekaise | Local ThinLinc client  | [YouTube video](https://youtu.be/miAxHkSePIA)
+     Pelle      | SSH                    | [YouTube video](https://youtu.be/F37ji6o7SY4)
+     Rackham    | Local ThinLinc client  | [YouTube video](https://youtu.be/fSUYE_Xahe8)
+     Tetralith  | Local ThinLinc client  | [YouTube video](https://youtu.be/HxBtyCB3w0k)
 
 
 HPC cluster name |Main breakout room

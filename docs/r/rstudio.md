@@ -39,7 +39,7 @@ short for Integrated Development Environment.
     COSMOS     |[YouTube video](https://youtu.be/eT4D_K5JODA)
     Dardel     |[YouTube video](https://youtu.be/IEd5G1bkT4c)
     Kebnekaise |[YouTube video](https://youtu.be/Hy37qVd_Q20)
-    Pelle      |.
+    Pelle      |Cannot login to Pelle yet
     Rackham    |[YouTube video](https://youtu.be/efSOFfBVBPQ)
 
 ???- hint "How difficult will this be?"
