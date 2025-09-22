@@ -1628,42 +1628,42 @@ we will use AMD GPUs.
 Julia has already several packages for ML, one of them is ``Flux`` (https://fluxml.ai/). We will work with one of
 the test cases provided by ``Flux`` which deals with a data set of tiny images (CIFAR10). Follow this steps:
 
-    - Create an environment called ``ML``, move to that environment directory and activate it
-    - Fetch the ``vgg_cifar10.jl`` test case from ``Flux`` repo (wget https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl)
-    - Load CUDA toolkit 11.4.1
-    - Install (add) the following packages: CUDA, MLDatasets, MLUtils
-    - The first time you use the data set CIFAR10, it will ask you to download it and accept. Do this in ``Julian`` mode:
+- Create an environment called ``ML``, move to that environment directory and activate it
+- Fetch the ``vgg_cifar10.jl`` test case from ``Flux`` repo (wget https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl)
+- Load CUDA toolkit 11.4.1
+- Install (add) the following packages: CUDA, MLDatasets, MLUtils
+- The first time you use the data set CIFAR10, it will ask you to download it and accept. Do this in ``Julian`` mode:
 
-    ```julia
-        julia> using MLDatasets: CIFAR10
-        julia> x, y = CIFAR10(:train)[:]
-    ```
+```julia
+    julia> using MLDatasets: CIFAR10
+    julia> x, y = CIFAR10(:train)[:]
+```
 
-    - Change the number of epochs in the ``vgg_cifar10.jl`` script from 50 to something shorter like 5.
-    - Submit the job with the script:
+- Change the number of epochs in the ``vgg_cifar10.jl`` script from 50 to something shorter like 5.
+- Submit the job with the script:
 
-    ```bash
-    #!/bin/bash
-    #SBATCH -A hpc2n202w-xyz        # your project_ID
-    #SBATCH -J job-serial        # name of the job
-    #SBATCH -n 1                 # nr. tasks        #remove this line for UPPMAX
-    #SBATCH --time=00:15:00      # requested time
-    #SBATCH --error=job.%J.err   # error file
-    #SBATCH --output=job.%J.out  # output file
-    #SBATCH --gres=gpu:v100:1     # 1 GPU v100 card   #remove this line for UPPMAX
-    # On Rackham use the follwing lines instead (rm one #) by subsituting the related HPC2N lines, se above
-    ##SBATCH -M snowy
-    ##SBATCH -p node
-    ##SBATCH --gres=gpu:1
-    ##SBATCH -N 1
-    ##SBATCH --qos=short
+```bash
+#!/bin/bash
+#SBATCH -A hpc2n202w-xyz        # your project_ID
+#SBATCH -J job-serial        # name of the job
+#SBATCH -n 1                 # nr. tasks        #remove this line for UPPMAX
+#SBATCH --time=00:15:00      # requested time
+#SBATCH --error=job.%J.err   # error file
+#SBATCH --output=job.%J.out  # output file
+#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card   #remove this line for UPPMAX
+# On Rackham use the follwing lines instead (rm one #) by subsituting the related HPC2N lines, se above
+##SBATCH -M snowy
+##SBATCH -p node
+##SBATCH --gres=gpu:1
+##SBATCH -N 1
+##SBATCH --qos=short
 
-    ml purge  > /dev/null 2>&1
-    ml Julia/1.8.5-linux-x86_64
-    ml CUDA/11.4.1
+ml purge  > /dev/null 2>&1
+ml Julia/1.8.5-linux-x86_64
+ml CUDA/11.4.1
 
-    julia <fix-activate-environment> <fix-name-script>.jl
-    ```
+julia <fix-activate-environment> <fix-name-script>.jl
+```
 
 ??? hint "Answer"
 
