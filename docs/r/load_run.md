@@ -122,14 +122,14 @@ Tetralith        |Room 6
   load the module(s) for R,
   of the recommend version as shown below
 
-HPC center|R version
+HPC center|R module
 ----------|---------
-COSMOS    |4.2.1
-Dardel    |4.1.1
-Kebnekaise|4.1.2
-Pelle     |`4.5.1-gfbf-2024a`
-Rackham   |4.1.1
-Tetralith |4.2.2
+COSMOS    |`R/4.2.1`
+Dardel    |`R/4.1.1`
+Kebnekaise|`R/4.1.2`
+Pelle     |`R/4.5.1-gfbf-2024a`
+Rackham   |`R/4.1.1`
+Tetralith |`R/4.2.2`
 
 ??? hint "Answer"
 
