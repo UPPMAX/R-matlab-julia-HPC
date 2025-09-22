@@ -108,17 +108,10 @@ Some centes have several packages installed with R, some have module "bundles" o
 
     === "C3SE" 
 
-        You need to install ``caret``, ``kernlab``, and ``randomForest`` before running, as shown below. If it asks, agree to install in local directory. 
+        Use version 4.2.1 of R, as that version has ``caret``, ``kernlab``, and ``randomForest`` included (the newest, 4.3.3, does not have these packages).  
 
         ```bash 
-        $ ml R/4.3.3-gfbf-2023b        
-        $ R
-        > install.packages('MASS', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-        > install.packages('e1071, recipes,ipred,Matrix,survival,class,prodlim,lava, repos=http://ftp.acc.umu.se/mirror/CRAN/')
-        > install.packages('caret', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-        > install.packages('kernlab', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-        > install.packages('randomForest', repos='http://ftp.acc.umu.se/mirror/CRAN/')
-        > quit()
+        $ module load R/4.2.1-foss-2022a        
         $ Rscript iris_ml.R 
         ```
 

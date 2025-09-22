@@ -221,6 +221,10 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         R --no-save --quiet < hello.R             
         ```
 
+    === "C3SE"
+
+        Alvis is only for running GPU code. 
+
     === "hello.R" 
    
         R example code
@@ -343,6 +347,10 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         R -q --slave -f parallel_foreach.R
         ```
             
+    === "C3SE" 
+
+        Alvis is only for running GPU code on. 
+
     === "parallel_foreach.R"
  
         This R script uses packages "foreach" and "doParallel". 
@@ -666,13 +674,37 @@ Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch sc
 
 #### PDC
 
-Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job: 
+Dardel has AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job: 
 
 ```bash
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=1
 #SBATCH -p gpu  
 ``` 
+
+#### C3SE 
+
+Alvis is meant for GPU jobs. There is no node-sharing on multi-node jobs (--exclusive is automatic). 
+
+NOTE: Requesting ``-N 1`` does not mean 1 full node
+
+```bash
+#SBATCH -p alvis
+#SBATCH -N <nodes>
+#SBATCH --gpus-per-node=<type>:x
+```
+
+where ``<type>`` is one of 
+
+- V100
+- T4
+- A100
+
+and ``x`` is number of GPU cards 
+
+- 1-4 for V100
+- 1-8 for T4
+- 1-4 for A100 
 
 #### Example batch script
 
@@ -781,11 +813,27 @@ Dardel has AMD AMD Instinct™ MI250X GPU chips. In order to access them, add th
     R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
     ```           
 
+=== "C3SE" 
+
+    ```bash
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A NAISS2025-22-934
+    #SBATCH -t HHH:MM:SS
+    #SBATCH -p alvis
+    #SBATCH -N 1 --gpus-per-node=T4:4
+
+    ml purge > /dev/null 2>&1
+    module load R/4.2.1-foss-2022a CUDA/12.9.1 
+
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R 
+    ``` 
+
 ## Exercises
 
 !!! warning "Challenge: Serial batch script for R" 
 
-    Run the serial batch script from further up on the page, but for the add2.R code. Remember the arguments.
+    Run the serial batch script from further up on the page, but for the add2.R code. Remember the arguments. This is not for Alvis since that resource is only for GPU code. 
     
 !!! note "Solution for UPPMAX" 
 
