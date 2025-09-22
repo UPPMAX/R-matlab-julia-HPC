@@ -113,10 +113,10 @@ graph TD
       r_packages[2.R packages]
       r_virtual_environments[2.R virtual environments]
       r_language[1.the R programming language]
-      parallel_and_multithreaded_functions[3.Parallel and multithreaded functions]
+      parallel_and_multithreaded_functions[A.Parallel and multithreaded functions]
       r_dev[5.R software development]
       rstudio[5.RStudio]
-      ml[4.Machine learning]
+      ml[A.Machine learning]
       interpreted_language[1.Interpreted]
       cran[1.CRAN]
     end
