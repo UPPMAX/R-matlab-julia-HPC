@@ -43,30 +43,36 @@ Most HPC centres in Sweden use the same or a similar module system for their sof
 
 Below we have examples for how to check for MATLAB versions on different clusters.
 
-=== "UPPMAX and NSC (Tetralith)"
+=== "UPPMAX (Rackham and Pelle) and NSC (Tetralith)"
 
     Check all available MATLAB versions with:
 
     ```bash
     module avail matlab
     ```
-    Output on Rackham as of 16 October 2024:
+    Output on Rackham as of 22 September 2025:
     
     ```bash
     ---------------------------- /sw/mf/rackham/applications ----------------------------
        matlab/R2014a    matlab/R2018a    matlab/R2022b          matlab/7.10
        matlab/R2015a    matlab/R2018b    matlab/R2023a          matlab/7.13
-       matlab/R2015b    matlab/R2019a    matlab/R2023b (L,D)    matlab/8.0
+       matlab/R2015b    matlab/R2019a    matlab/R2023b (D)      matlab/8.0
        matlab/R2016a    matlab/R2020b    matlab/7.4             matlab/8.1
        matlab/R2017a    matlab/R2022a    matlab/7.8
 
       Where:
-       L:  Module is loaded
        D:  Default Module
+    ```
 
-    Use "module spider" to find all possible modules and extensions.
-    Use "module keyword key1 key2 ..." to search for all possible modules matching any
-    of the "keys".
+    Output on Pelle as of 22 September 2025:
+
+    ```bash
+    ---------------------------- /sw/mf/pelle/applications ----------------------------
+       MATLAB/2023b-update4
+       MATLAB/2024a
+    
+      Where:
+       D:  Default Module
     ```
 
     Output on Tetralith as of 27 Feb 2025:
@@ -208,20 +214,26 @@ For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), NSC (2023b
 
 Try loading a MATLAB module at the command line. First, go back and check which MATLAB modules were available.
 
-=== "UPPMAX (Rackham)"
+=== "UPPMAX"
 
-     To load version 2023b, do:
+     **Rackham.** To load version 2023b, do:
 
      ```bash
      module load matlab/R2023b
      ```
 
      Note: all lowercase except the R.
-     For short, you can also use:
+     For short, you can also use `ml` instead of `module load`
+
+     **Pelle.** To load version 2023b-update4, do:
 
      ```bash
-     ml matlab/R2023b
+     module load MATLAB/2023b-update4
      ```
+
+     Note: MATLAB is all uppercase.
+     For short, you can also use `ml` instead of `module load`
+
      
 === "HPC2N (Kebnekaise)"
 
@@ -307,7 +319,7 @@ Setting `-singleCompThread` does **not** prevent MATLAB from sending parallelize
 
 Try starting MATLAB at the command line. We will use the same versions as in the previous section.
 
-=== "UPPMAX (Rackham) and NSC (Tetralith)"
+=== "UPPMAX (Rackham and Pelle) and NSC (Tetralith)"
 
      Once you've loaded your preferred version of MATLAB, type:
 
