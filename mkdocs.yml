@@ -27,7 +27,7 @@ nav:
       - Schedule: matlab/schedule.md
       - Intro: matlab/intro-matlab.md
       - Load and run: matlab/load_runMatlab.md
-      - MATLAB terminal and SLURM: matlab/slurmMatlab.md
+      - MATLAB terminal and Slurm: matlab/slurmMatlab.md
       - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
       - MATLAB Add-Ons: matlab/matlab-addons.md
       - matlab/matlab-local-desktop.md
