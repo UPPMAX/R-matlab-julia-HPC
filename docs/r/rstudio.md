@@ -35,17 +35,12 @@ short for Integrated Development Environment.
 
     HPC Cluster|YouTube video
     -----------|------
-    Alvis      |.
-    Berzelius  |.
     Bianca     |[YouTube video](https://youtu.be/rRUb4pqaVak)
-    COSMOS     |.
+    COSMOS     |[YouTube video](https://youtu.be/eT4D_K5JODA)
     Dardel     |.
-    Kebnekaise |.
-    LUMI       |.
+    Kebnekaise |[YouTube video](https://youtu.be/Hy37qVd_Q20)
     Pelle      |.
     Rackham    |[YouTube video](https://youtu.be/efSOFfBVBPQ)
-    Tetralith  |.
-    Vera       |.
 
 ???- hint "How difficult will this be?"
 
@@ -55,9 +50,10 @@ short for Integrated Development Environment.
 
     HPC Cluster|Difficulty|Reason
     -----------|----------|-------------------------------------------
-    COSMOS     |.         |.
+    Bianca     |Easy      |Step-by-step documentation
+    COSMOS     |Trivial   |Step-by-step documentation, trivial procedure
     Dardel     |.         |.
-    Kebnekaise |.         |.
+    Kebnekaise |Trivial   |Step-by-step documentation, trivial procedure
     Pelle      |Easy      |Step-by-step documentation
     Rackham    |Easy      |Step-by-step documentation
 
@@ -97,9 +93,7 @@ Use the documentation of your HPC cluster for help.
 
     HPC Cluster|Documentation
     -----------|------------
-    Alvis      |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_alvis/)
-    Berzelius  |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_berzelius/)
-    Bianca     |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_bianca/)
+    Bianca     |[UPPMAX documentation](https://docs.uppmax.uu.se/software/rstudio_on_bianca/)
     COSMOS     |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_cosmos/)
     Dardel     |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_dardel/)
     Kebnekaise |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_kebnekaise/)
