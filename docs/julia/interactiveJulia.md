@@ -99,7 +99,6 @@ graph TD
   user_on_computer_node --> |exit| user_on_login_node
   user_on_computer_node --> |srun| user_on_computer_node
 
-
   hpc2n_user_on_login_node --> |salloc| hpc2n_user_in_interactive_mode
   hpc2n_user_in_interactive_mode --> |exit| hpc2n_user_on_login_node
   hpc2n_user_on_login_node --> |sbatch| hpcn2_job_on_compute_node
