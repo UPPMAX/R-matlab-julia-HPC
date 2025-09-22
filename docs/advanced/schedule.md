@@ -15,7 +15,7 @@ Time  | Topic                                                                   
 11:00 | Break                                                                            | .
 11:15 | .                                                                                | .
 12:00 | Break                                                                            | .
-13:00 | Machine learning                                                                 | ?
+13:00 | Machine learning                                                                 | B
 
 <!-- markdownlint-enable MD013 -->
 
