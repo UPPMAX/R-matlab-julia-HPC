@@ -118,7 +118,8 @@ Tetralith        |Room 6
     Rackham    | [R user documentation](https://docs.uppmax.uu.se/software/r/)
     Tetralith  | [R user documentation](https://www.nsc.liu.se/software/catalogue/tetralith/modules/r.html)
 
-- From the terminal, load the module(s) for R,
+- From a terminal on your HPC cluster,
+  load the module(s) for R,
   of the recommend version as shown below
 
 HPC center|R version
@@ -134,12 +135,10 @@ Tetralith |4.2.2
 
     HPC cluster| How to load the module(s) for R
     -----------|----------------------------------------------------------------------------------------------------------------
-    Alvis      | .
     Bianca     | `module load R/4.1.1`
     COSMOS     | `module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1`
     Dardel     | `module load PDC/23.12 R/4.1.1`
     Kebnekaise | `module load GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2`
-    LUMI       | .
     Pelle      | `module load 4.5.1-gfbf-2024a`
     Rackham    | `module load R/4.1.1`
     Tetralith  | `module load R/4.2.2-hpc1-gcc-11.3.0-bare`
