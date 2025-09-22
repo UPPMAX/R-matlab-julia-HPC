@@ -62,7 +62,7 @@ short for Integrated Development Environment.
     Dardel     |.         |.
     Kebnekaise |.         |.
     LUMI       |.         |.
-    Pelle      |.         |.
+    Pelle      |Easy      |Step-by-step documentation
     Rackham    |Easy      |Step-by-step documentation
     Tetralith  |.         |.
     Vera       |.         |.
@@ -72,6 +72,26 @@ short for Integrated Development Environment.
 ## Exercise 1: start RStudio
 
 Use the documentation of your HPC cluster for help.
+
+- Find the user documentation of your HPC cluster
+
+??? hint "Answer"
+
+    <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+    HPC cluster| User documentation for that HPC cluster
+    -----------|-----------------------------------------------------------------------------------
+    Alvis      | [Alvis user documentation](https://www.c3se.chalmers.se/about/Alvis/)
+    Bianca     | [Bianca user documentation](http://docs.uppmax.uu.se/)
+    COSMOS     | [COSMOS user documentation](https://lunarc-documentation.readthedocs.io/en/latest)
+    Dardel     | [Dardel user documentation](https://support.pdc.kth.se/doc/contact/contact_support/)
+    Kebnekaise | [Kebnekaise user documentation](https://docs.hpc2n.umu.se/)
+    LUMI       | [LUMI user documentation](https://docs.lumi-supercomputer.eu/)
+    Pelle      | [Pelle user documentation](http://docs.uppmax.uu.se/)
+    Rackham    | [Rackham user documentation](http://docs.uppmax.uu.se/)
+    Tetralith  | [Tetralith user documentation](https://www.nsc.liu.se/support/systems/tetralith-getting-started/)
+
+    <!-- markdownlint-enable MD013 -->
 
 - **For maximally 5 minutes**, search for the procedure on how to start
   RStudio on your HPC cluster. Take a look at the answer if you
@@ -83,17 +103,17 @@ Use the documentation of your HPC cluster for help.
 
     HPC Cluster|Documentation
     -----------|------------
-    Alvis      |.
-    Berzelius  |.
+    Alvis      |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_alvis/)
+    Berzelius  |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_berzelius/)
     Bianca     |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_bianca/)
-    COSMOS     |.
-    Dardel     |.
-    Kebnekaise |.
-    LUMI       |.
+    COSMOS     |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_cosmos/)
+    Dardel     |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_dardel/)
+    Kebnekaise |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_kebnekaise/)
+    LUMI       |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_lumi/)
     Pelle      |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_pelle/)
     Rackham    |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_rackham/)
-    Tetralith  |.
-    Vera       |.
+    Tetralith  |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_tetralith/)
+    Vera       |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_vera/)
 
     <!-- markdownlint-enable MD013 -->
 

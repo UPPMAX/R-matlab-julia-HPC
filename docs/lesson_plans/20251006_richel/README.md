@@ -41,13 +41,12 @@ Vera       |Only [OpenOnDemand doc](https://www.c3se.chalmers.se/documentation/c
 There are, however, videos, that are not based on user documentation:
 
 - [COSMOS RStudio](https://youtu.be/sPszk4DqI_U)
-  - OpenOnDemand CPU setup: I will use this one
-  - OpenOnDemand GPU setup
-  - From terminal
+    - OpenOnDemand CPU setup: I will use this one
+    - OpenOnDemand GPU setup
+    - From terminal
 - [HPC2N RStudio](https://youtu.be/V69FcmjzwwU)
-  - From terminal, no interactive session
-  - I will use: interactive session from terminal
+    - From terminal, no interactive session
+    - I will use: interactive session from terminal
 
 Those videos will make it easy to write that user documentation.
-
 

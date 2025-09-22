@@ -89,17 +89,21 @@ Tetralith        |Room 5
 
 ??? hint "Answer"
 
+    <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
     HPC cluster| User documentation for that HPC cluster
     -----------|-----------------------------------------------------------------------------------
-    Alvis      | .
-    Bianca     | [User documentation](http://docs.uppmax.uu.se/)
-    COSMOS     | [User documentation](https://lunarc-documentation.readthedocs.io/en/latest)
-    Dardel     | [User documentation](https://support.pdc.kth.se/doc/contact/contact_support/)
-    Kebnekaise | [User documentation](https://docs.hpc2n.umu.se/)
-    LUMI       | .
-    Pelle      | [User documentation](http://docs.uppmax.uu.se/)
-    Rackham    | [User documentation](http://docs.uppmax.uu.se/)
-    Tetralith  | [User documentation](https://www.nsc.liu.se/support/systems/tetralith-getting-started/)
+    Alvis      | [Alvis user documentation](https://www.c3se.chalmers.se/about/Alvis/)
+    Bianca     | [Bianca user documentation](http://docs.uppmax.uu.se/)
+    COSMOS     | [COSMOS user documentation](https://lunarc-documentation.readthedocs.io/en/latest)
+    Dardel     | [Dardel user documentation](https://support.pdc.kth.se/doc/contact/contact_support/)
+    Kebnekaise | [Kebnekaise user documentation](https://docs.hpc2n.umu.se/)
+    LUMI       | [LUMI user documentation](https://docs.lumi-supercomputer.eu/)
+    Pelle      | [Pelle user documentation](http://docs.uppmax.uu.se/)
+    Rackham    | [Rackham user documentation](http://docs.uppmax.uu.se/)
+    Tetralith  | [Tetralith user documentation](https://www.nsc.liu.se/support/systems/tetralith-getting-started/)
+
+    <!-- markdownlint-enable MD013 -->
 
 - Within the documentation of your HPC cluster, search for the documentation about R
 
