@@ -69,22 +69,6 @@ echo R_LIBS_USER="$HOME/R-packages-%V" > ~/.Renviron
 rsync -Pa R ~/
 ```
 
-You can use `renv` to create, activate, use and deactivate a virtual environment
-
-```r
-renv::init()
-renv::snapshot()
-renv::restore()
-```
-
-- UPPMAX-only: I can use `conda` to create, activate, use and deactivate a virtual environment
-
-```bash
-conda env create -f r_env.yaml
-source activate r_env
-deactivate
-```
-
 You can submit a job to the scheduler to run an R script with regular code
 
 ```bash
