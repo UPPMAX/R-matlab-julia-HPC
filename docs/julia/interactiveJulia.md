@@ -58,20 +58,6 @@ one needs to allocate resources on the cluster first.
 
 The command to request an interactive node differs per HPC cluster:
 
-+---------+-----------------+-------------+-------------+
-| Cluster | ``interactive`` | ``salloc``  | GfxLauncher |
-+=========+=================+=============+=============+
-| HPC2N   | Works           | Recommended | N/A         |
-+---------+-----------------+-------------+-------------+
-| UPPMAX  | Recommended     | Works       | N/A         |
-+---------+-----------------+-------------+-------------+
-| LUNARC  | Works           | N/A         | Recommended |
-+---------+-----------------+-------------+-------------+
-| NSC     | Recommended     | N/A         | N/A         |
-+---------+-----------------+-------------+-------------+
-| PDC     | N/A             | Recommended | Possible    |
-+---------+-----------------+-------------+-------------+
-
 Cluster | ``interactive`` | ``salloc``  | GfxLauncher 
 --------|-----------------|-------------|-------------
 HPC2N   | Works           | Recommended | N/A         
@@ -84,7 +70,7 @@ PDC     | N/A             | Recommended | Possible
 Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):
 
 ```mermaid
-../mermaid/interactive_node_transitions.mmd
+../docs-sphinx/mermaid/interactive_node_transitions.mmd
 ```
 
 - First, you make a request for resources with ``interactive``/``salloc``, like this:
