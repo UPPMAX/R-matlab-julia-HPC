@@ -22,6 +22,7 @@ Before the course, you must have done these five things:
 - Prerequisite 5/5: You have a good Zoom setup
 
 ## Working in Linux environment
+
 - On your HPC cluster, you can:
     - Use a text editor, for example, ``nano``
 
