@@ -235,7 +235,7 @@ cat *.out
 
 You see, for example:
 
-```bash
+```text
 HPC cluster: tetralith
 Slurm job account used: naiss2025-22-934
 Number of cores booked in Slurm: 32
@@ -244,13 +244,19 @@ Error in library(doParallel, quietly = TRUE) :
 Execution halted
 ```
 
-Install that package.
+Install that package from the terminal:
+
+- Load an R module
+
+```bash
+module load R/4.4.0-hpc1-gcc-11.3.0-bare
+```
+
+Which gives output similar to:
 
 <!-- markdownlint-disable MD013 --><!-- Verbatim output cannot be split up over lines, hence will break 80 characters per line -->
 
-```bash
-[x_ricbi@tetralith3 thread_parallelism]$ module load R/4.4.0-hpc1-gcc-11.3.0-bare
-
+```text
 Loading R module. Also loading a compatible "build environment"
 Setting environment variable OPENBLAS_NUM_THREADS=1. Increase this for
 parallel BLAS/LAPACK (linalg) execution, but don't run
@@ -285,9 +291,17 @@ to see what is available.
 
 NOTE: You shoud never load build environments inside submitted jobs.
 (with the single exception of when using supercomputer time to compile code.)
+```
 
-[x_ricbi@tetralith3 thread_parallelism]$ R
+- Start R from the terminal
 
+```bash
+R
+```
+
+Output will be similar to:
+
+```text
 R version 4.4.0 (2024-04-24) -- "Puppy Cup"
 Copyright (C) 2024 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
@@ -303,8 +317,17 @@ Type 'contributors()' for more information and
 Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
+```
 
-> install.packages("doParallel")
+Within R, do:
+
+```r
+install.packages("doParallel")
+```
+
+Output will be similar to:
+
+```text
 Warning in install.packages("doParallel") :
   'lib = "/software/sse2/tetralith_el9/manual/R/4.4.0/g11/hpc1/lib64/R/library"' is not writable
 Would you like to use a personal library instead? (yes/No/cancel) yes

@@ -970,6 +970,13 @@ println
 mf
 LTS
 bdist
+CIFAR
+fluxml
+FluxML
+cifar
+wget
+MLDatasets
+MLUtils
 clusterFeatures
 clusterGpuCards
 clusterPartitionNames
@@ -1031,3 +1038,4 @@ thirdparty
 Wickham
 pelle
 prev
+Gantt

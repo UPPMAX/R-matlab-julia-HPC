@@ -38,8 +38,7 @@ jobs:
 
       - name: Remove files that do not care about spelling (yet)
         run: |
-          rm docs/MLR.md
-
-
+          rm docs/advanced/MLR.md
+          rm docs/julia/batchJulia.md
 
       - uses: igsekor/pyspelling-any@v1.0.4
