@@ -1,3 +1,5 @@
+# Julia interactively
+
 !!! info "Learning outcomes for today"
 
     - Be able to start interactive sessions
@@ -27,7 +29,7 @@ There are several ways to run Julia interactively
 - As an interactive job on the computer nodes, launched via the batch system
 - Jupyter notebooks on compute node.
 
-# General
+## General
 
 In order to run interactively, you need to have compute nodes allocated to run on, and this is done through the Slurm system.
 
@@ -70,10 +72,20 @@ The command to request an interactive node differs per HPC cluster:
 | PDC     | N/A             | Recommended | Possible    |
 +---------+-----------------+-------------+-------------+
 
+Cluster | ``interactive`` | ``salloc``  | GfxLauncher 
+--------|-----------------|-------------|-------------
+HPC2N   | Works           | Recommended | N/A         
+UPPMAX  | Recommended     | Works       | N/A         
+LUNARC  | Works           | N/A         | Recommended 
+NSC     | Recommended     | N/A         | N/A         
+PDC     | N/A             | Recommended | Possible    
+
 
 Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):
 
-.. mermaid:: ../mermaid/interactive_node_transitions.mmd
+```mermaid
+../mermaid/interactive_node_transitions.mmd
+```
 
 - First, you make a request for resources with ``interactive``/``salloc``, like this:
 
