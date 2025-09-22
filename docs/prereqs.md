@@ -21,8 +21,7 @@ Before the course, you must have done these five things:
 - Prerequisite 4/5: You are able to login (e.g. using SSH) to your HPC cluster
 - Prerequisite 5/5: You have a good Zoom setup
 
-
-
+## Working in Linux environment
 - On your HPC cluster, you can:
     - Use a text editor, for example, ``nano``
 
