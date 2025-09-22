@@ -8,7 +8,25 @@
 ls > mylsoutput.txt
 ```
 
+## Tabs
+
+=== "Dardel"
+
+    Content
+
+=== "Tetralith"
+
+    Content
+
 ## Mermaid
+
+(Have not made mmd files to work yet. So far only code directly within)
+
+
+
+>```
+>mermaid code
+>```
 
 
 ### Gantt chart
@@ -25,6 +43,8 @@ gantt
 ```
 
 ### Flow chart
+
+Use ``graph`` instead of ``flowchart`` for diagram type definition
 
 ```mermaid
 graph TD
