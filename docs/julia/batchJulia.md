@@ -619,404 +619,388 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
         === "serial.sh"
 
-            .. code-block:: bash
-
-               #!/bin/bash -l
-               #SBATCH -A naiss202t-uv-wxyz
-               #SBATCH -J job
-               #SBATCH -n 1
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml julia/1.8.5
-
-               # "time" command is optional
-               time julia serial.jl
-
-
-         .. tab:: threaded.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml julia/1.8.5
-
-               # "time" command is optional
-               time julia -t 8 threaded.jl
-
-         .. tab:: distributed.sh
-
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml julia/1.8.5
-
-               # "time" command is optional
-               time julia -p 8 distributed.jl
-
-         .. tab:: mpi.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml julia/1.8.5
-               ml gcc/11.3.0 openmpi/4.1.3
-               # "time" command is optional
-
-               # export the PATH of the Julia MPI wrapper
-               export PATH=~/.julia/bin:$PATH
-
-               time mpiexecjl -np 8 julia mpi.jl
-
-   .. tab:: HPC2N
-
-      .. tabs::
-
-         .. tab:: serial.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A hpc2n202w-xyz
-               #SBATCH -J job
-               #SBATCH -n 1
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-
-               # "time" command is optional
-               time julia serial.jl
-
-
-         .. tab:: threaded.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A hpc2n202w-xyz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-
-               # "time" command is optional
-               time julia -t 8 threaded.jl
-
-         .. tab:: distributed.sh
-
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A hpc2n202w-xyz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-
-               # "time" command is optional
-               time julia -p 8 distributed.jl
-
-         .. tab:: mpi.sh
-
-            .. code-block:: sh
-
-               #!/bin/bash
-               #SBATCH -A hpc2n202w-xyz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-               ml foss/2021b
-
-               # export the PATH of the Julia MPI wrapper
-               export PATH=/home/u/username/.julia/bin:$PATH
-
-               time mpiexecjl -np 8 julia mpi.jl
-
-   .. tab:: LUNARC
-
-      .. tabs::
-
-         .. tab:: serial.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A lu202w-x-yz
-               #SBATCH -J job
-               #SBATCH -n 1
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-
-               # "time" command is optional
-               time julia serial.jl
-
-
-         .. tab:: threaded.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A lu202w-x-yz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-
-               # "time" command is optional
-               time julia -t 8 threaded.jl
-
-         .. tab:: distributed.sh
-
-
-            .. code-block:: sh
-
-               #!/bin/bash
-               #SBATCH -A lu202w-x-yz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-
-               # "time" command is optional
-               time julia -p 8 distributed.jl
-
-         .. tab:: mpi.sh
-
-            .. code-block:: sh
-
-               #!/bin/bash
-               #SBATCH -A lu202w-x-yz
-               #SBATCH -J job
-               #SBATCH -n 8
-               #SBATCH --time=00:10:00
-               #SBATCH --error=job.%J.err
-               #SBATCH --output=job.%J.out
-
-               ml purge  > /dev/null 2>&1
-               ml Julia/1.8.5-linux-x86_64
-               ml foss/2021b
-
-               # export the PATH of the Julia MPI wrapper
-               export PATH=/home/u/username/.julia/bin:$PATH
-
-               time mpiexecjl -np 8 julia mpi.jl
-
-   .. tab:: PDC
-
-      .. tabs::
-
-         .. tab:: serial.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH  -p shared           # name of the queue
-               #SBATCH  --ntasks=1          # nr. of tasks
-               #SBATCH --cpus-per-task=1    # nr. of cores per-task
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
-
-               # "time" command is optional
-               time julia serial.jl
-
-
-         .. tab:: threaded.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH  -p shared           # name of the queue
-               #SBATCH  --ntasks=1          # nr. of tasks
-               #SBATCH --cpus-per-task=8    # nr. of cores per-task
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
-
-               # "time" command is optional
-               time julia -t 8 threaded.jl
-
-         .. tab:: distributed.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH  -p shared           # name of the queue
-               #SBATCH  --ntasks=1          # nr. of tasks
-               #SBATCH --cpus-per-task=8    # nr. of cores per-task
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
-
-               # "time" command is optional
-               time julia -p 8 distributed.jl
-
-         .. tab:: mpi.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH  -p shared           # name of the queue
-               #SBATCH  --ntasks=8          # nr. of tasks
-               #SBATCH --cpus-per-task=1    # nr. of cores per-task
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
-
-               # export the PATH of the Julia MPI wrapper
-               export PATH=/cfs/klemming/home/u/username/.julia/bin:$PATH
-
-               time mpiexecjl -np 8 julia mpi.jl
-
-
-   .. tab:: NSC
-
-      .. tabs::
-
-         .. tab:: serial.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH -n 1                 # nr. of tasks
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml julia/1.9.4-bdist
-
-               # "time" command is optional
-               time julia serial.jl
-
-
-         .. tab:: threaded.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH -n 8                 # nr. of tasks
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml julia/1.9.4-bdist
-
-               # "time" command is optional
-               time julia -t 8 threaded.jl
-
-         .. tab:: distributed.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH -n 8                 # nr. of tasks
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml julia/1.9.4-bdist
-
-               # "time" command is optional
-               time julia -p 8 distributed.jl
-
-         .. tab:: mpi.sh
-
-            .. code-block:: bash
-
-               #!/bin/bash
-               #SBATCH -A naiss202t-uv-wxyz # your project_ID
-               #SBATCH -J job               # name of the job
-               #SBATCH -n 8                 # nr. of tasks
-               #SBATCH --time=00:03:00      # requested time
-               #SBATCH --error=job.%J.err   # error file
-               #SBATCH --output=job.%J.out  # output file
-
-               # Load dependencies and Julia version
-               ml buildtool-easybuild/4.8.0-hpce082752a2 foss/2023b
-               ml julia/1.9.4-bdist
-
-               # export the PATH of the Julia MPI wrapper
-               export PATH=/home/username/.julia/bin:$PATH
-
-               time mpiexecjl -np 8 julia mpi.jl
+            ```bash
+            #!/bin/bash -l
+            #SBATCH -A naiss202t-uv-wxyz
+            #SBATCH -J job
+            #SBATCH -n 1
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml julia/1.8.5
+
+            # "time" command is optional
+            time julia serial.jl
+            ```
+
+        === "threaded.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml julia/1.8.5
+
+            # "time" command is optional
+            time julia -t 8 threaded.jl
+            ```
+
+        === "distributed.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml julia/1.8.5
+
+            # "time" command is optional
+            time julia -p 8 distributed.jl
+            ```
+
+        === "mpi.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml julia/1.8.5
+            ml gcc/11.3.0 openmpi/4.1.3
+            # "time" command is optional
+
+            # export the PATH of the Julia MPI wrapper
+            export PATH=~/.julia/bin:$PATH
+
+            time mpiexecjl -np 8 julia mpi.jl
+            ```
+
+    === "HPC2N"
+
+        === "serial.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A hpc2n202w-xyz
+            #SBATCH -J job
+            #SBATCH -n 1
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+
+            # "time" command is optional
+            time julia serial.jl
+            ```
+
+        === "threaded.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A hpc2n202w-xyz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+
+            # "time" command is optional
+            time julia -t 8 threaded.jl
+            ```
+
+        === "distributed.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A hpc2n202w-xyz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+
+            # "time" command is optional
+            time julia -p 8 distributed.jl
+            ```
+
+        === "mpi.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A hpc2n202w-xyz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+            ml foss/2021b
+
+            # export the PATH of the Julia MPI wrapper
+            export PATH=/home/u/username/.julia/bin:$PATH
+
+            time mpiexecjl -np 8 julia mpi.jl
+            ```
+
+    === "LUNARC"
+
+        === "serial.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A lu202w-x-yz
+            #SBATCH -J job
+            #SBATCH -n 1
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+
+            # "time" command is optional
+            time julia serial.jl
+            ```
+
+        === "threaded.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A lu202w-x-yz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+
+            # "time" command is optional
+            time julia -t 8 threaded.jl
+            ```
+
+        === "distributed.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A lu202w-x-yz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+
+            # "time" command is optional
+            time julia -p 8 distributed.jl
+            ```
+
+        === "mpi.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A lu202w-x-yz
+            #SBATCH -J job
+            #SBATCH -n 8
+            #SBATCH --time=00:10:00
+            #SBATCH --error=job.%J.err
+            #SBATCH --output=job.%J.out
+
+            ml purge  > /dev/null 2>&1
+            ml Julia/1.8.5-linux-x86_64
+            ml foss/2021b
+
+            # export the PATH of the Julia MPI wrapper
+            export PATH=/home/u/username/.julia/bin:$PATH
+
+            time mpiexecjl -np 8 julia mpi.jl
+            ```
+
+    === "PDC"
+
+        === "serial.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH  -p shared           # name of the queue
+            #SBATCH  --ntasks=1          # nr. of tasks
+            #SBATCH --cpus-per-task=1    # nr. of cores per-task
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+
+            # "time" command is optional
+            time julia serial.jl
+            ```
+
+        === "threaded.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH  -p shared           # name of the queue
+            #SBATCH  --ntasks=1          # nr. of tasks
+            #SBATCH --cpus-per-task=8    # nr. of cores per-task
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+
+            # "time" command is optional
+            time julia -t 8 threaded.jl
+            ```
+
+        === "distributed.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH  -p shared           # name of the queue
+            #SBATCH  --ntasks=1          # nr. of tasks
+            #SBATCH --cpus-per-task=8    # nr. of cores per-task
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+
+            # "time" command is optional
+            time julia -p 8 distributed.jl
+            ```
+
+        === "mpi.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH  -p shared           # name of the queue
+            #SBATCH  --ntasks=8          # nr. of tasks
+            #SBATCH --cpus-per-task=1    # nr. of cores per-task
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+
+            # export the PATH of the Julia MPI wrapper
+            export PATH=/cfs/klemming/home/u/username/.julia/bin:$PATH
+
+            time mpiexecjl -np 8 julia mpi.jl
+            ```
+
+    === "NSC"
+
+        === "serial.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH -n 1                 # nr. of tasks
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml julia/1.9.4-bdist
+
+            # "time" command is optional
+            time julia serial.jl
+            ```
+
+        === "threaded.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH -n 8                 # nr. of tasks
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml julia/1.9.4-bdist
+
+            # "time" command is optional
+            time julia -t 8 threaded.jl
+            ```
+
+        === "distributed.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH -n 8                 # nr. of tasks
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml julia/1.9.4-bdist
+
+            # "time" command is optional
+            time julia -p 8 distributed.jl
+            ```
+
+        === "mpi.sh"
+
+            ```bash
+            #!/bin/bash
+            #SBATCH -A naiss202t-uv-wxyz # your project_ID
+            #SBATCH -J job               # name of the job
+            #SBATCH -n 8                 # nr. of tasks
+            #SBATCH --time=00:03:00      # requested time
+            #SBATCH --error=job.%J.err   # error file
+            #SBATCH --output=job.%J.out  # output file
+
+            # Load dependencies and Julia version
+            ml buildtool-easybuild/4.8.0-hpce082752a2 foss/2023b
+            ml julia/1.9.4-bdist
+
+            # export the PATH of the Julia MPI wrapper
+            export PATH=/home/username/.julia/bin:$PATH
+
+            time mpiexecjl -np 8 julia mpi.jl
+            ```
+            
