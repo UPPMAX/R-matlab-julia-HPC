@@ -58,13 +58,6 @@ one needs to allocate resources on the cluster first.
 
 The command to request an interactive node differs per HPC cluster:
 
-Cluster | ``interactive`` | ``salloc``  | GfxLauncher 
---------|-----------------|-------------|-------------
-HPC2N   | Works           | Recommended | N/A         
-UPPMAX  | Recommended     | Works       | N/A         
-LUNARC  | Works           | N/A         | Recommended 
-NSC     | Recommended     | N/A         | N/A         
-PDC     | N/A             | Recommended | Possible    
 
 | Cluster | `interactive` | `salloc`     | GfxLauncher |
 |---------|:-------------:|--------------|-------------|
@@ -114,53 +107,54 @@ graph TD
 
 - First, you make a request for resources with ``interactive``/``salloc``, like this:
 
-.. tabs::
+!!! important "Interactive jobs"
 
-   .. tab:: NSC (interactive)
+    Short serial example for running on different clusters.
 
-      .. code-block:: console
+    === "NSC"
 
-         $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2025-22-262
+        ```bash
+        $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2025-22-262
+        ```
 
-   .. tab:: PDC (salloc)
+    === "PDC"
 
-      .. code-block:: console
+        ```bash
+        $ salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 -p <partition>
+        ```
 
-         $ salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 -p <partition>
+        Where <partition> is ``shared``, ``main`` or ``gpu``
 
-      Where <partition> is ``shared``, ``main`` or ``gpu``
+        - We recommend ``shared``
+        - Wait until you get the node
+        - ``ssh``  to the node given and then work there
+            - Example:
 
-      - We recommend ``shared``
-      - Wait until you get the node
-      - ``ssh´´  to the node given and then work there
-          - Example:
+                ```bash
+                $ ssh nid001057
+                ```
 
-              .. code-block:: console
+    === "UPPMAX" 
 
-                 $ ssh nid001057
+        ```bash
+        $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-272
+        ```
 
-   .. tab:: UPPMAX (interactive)
+    === "LUNARC"
 
-      .. code-block:: console
+        ```bash
+        $ interactive -n <tasks> --time=HHH:MM:SS -A lu2025-7-24
+        ```
 
-         $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-272
+    === "HPC2N"
 
-   .. tab:: LUNARC (interactive)
-
-      .. code-block:: console
-
-         $ interactive -n <tasks> --time=HHH:MM:SS -A lu2025-7-24
-
-   .. tab:: HPC2N (salloc)
-
-      .. code-block:: console
-
-         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
-
-      - ssh to the node given and then work there
+        ```bash
+        $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
+        ```
 
 
-where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds (maximum T168 hours), and then you give the id for your project
+where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
+(maximum T168 hours), and then you give the id for your project.
 
 
 Then, when you get the allocation, do one of:
@@ -171,168 +165,168 @@ Then, when you get the allocation, do one of:
 - When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with ``srun``.
 - The commands you run with ``srun`` will then be executed on the resources your job has been allocated.
 
-.. admonition:: On HPC2N
+!!! important "On HPC2N"
 
    - If you do not preface with ``srun`` the command is run on the login node!
    - You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.
    - This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.
 
-.. admonition:: Documentation at the centers
 
-   - `Interactive allocation on PDC <https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/>`_
-   - `Interactive allocation on NSC <https://www.nsc.liu.se/support/running-applications/#interactive-jobs>`_
-   - `Interactive allocation on UPPMAX <https://docs.uppmax.uu.se/cluster_guides/start_interactive_node/>`_
-   - `Interactive allocation on HPC2N <https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive>`_
-   - `Interactive allocation on LUNARC <https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session>`_
+!!! important "Documentation at the centers"
 
-Example **Demo**
-################
+   - [Interactive allocation on PDC](https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/){:target="_blank"}
+   - [Interactive allocation on NSC](https://www.nsc.liu.se/support/running-applications/#interactive-jobs){:target="_blank"}
+   - [Interactive allocation on UPPMAX](https://docs.uppmax.uu.se/cluster_guides/start_interactive_node/){:target="_blank"}
+   - [Interactive allocation on HPC2N](https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive){:target="_blank"}
+   - [Interactive allocation on LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session){:target="_blank"}
 
-.. type-along::
+### Example 
 
-   **Requesting 4 cores for 10 minutes, then running Julia**
+Requesting 4 cores for 10 minutes, then running Julia
 
-   .. tabs::
+!!! important "Demo"
 
-      .. tab:: NSC
+    Short serial example for running on different clusters.
 
-         .. code-block:: console
+    === "NSC"
 
-            [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 0:30:0 -A naiss2025-22-262
-            salloc: Pending job allocation 43071298
-            salloc: job 43071298 queued and waiting for resources
-            salloc: job 43071298 has been allocated resources
-            salloc: Granted job allocation 43071298
-            salloc: Waiting for resource configuration
-            salloc: Nodes n760 are ready for job
+        ```bash
+        [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 0:30:0 -A naiss2025-22-262
+        salloc: Pending job allocation 43071298
+        salloc: job 43071298 queued and waiting for resources
+        salloc: job 43071298 has been allocated resources
+        salloc: Granted job allocation 43071298
+        salloc: Waiting for resource configuration
+        salloc: Nodes n760 are ready for job
 
-            [bjornc@r483 ~]$ module load julia/1.10.2-bdist
+        [bjornc@r483 ~]$ module load julia/1.10.2-bdist
+        ```
 
-         Let us check that we actually run on the compute node:
+        Let us check that we actually run on the compute node:
 
-         .. code-block:: console
+        ```bash
+        [sm_bcarl@n760 ~]$ srun hostname
+        n760
+        n760
+        n760
+        n760
+        ```
 
-            [sm_bcarl@n760 ~]$ srun hostname
-            n760
-            n760
-            n760
-            n760
+        We are. Notice that we got a response from all four cores we have allocated.
 
-         We are. Notice that we got a response from all four cores we have allocated.
+    === "PDC"
 
-      .. tab:: PDC
+        ```bash
+        claremar@login1:~> salloc --ntasks=4 -t 0:30:00 -p shared --qos=normal -A naiss2025-22-262
+        salloc: Pending job allocation 9102757
+        salloc: job 9102757 queued and waiting for resources
+        salloc: job 9102757 has been allocated resources
+        salloc: Granted job allocation 9102757
+        salloc: Waiting for resource configuration
+        salloc: Nodes nid001057 are ready for job
 
-         .. code-block:: console
+        claremar@login1:~> module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+        ```
 
-            claremar@login1:~> salloc --ntasks=4 -t 0:30:00 -p shared --qos=normal -A naiss2025-22-262
-            salloc: Pending job allocation 9102757
-            salloc: job 9102757 queued and waiting for resources
-            salloc: job 9102757 has been allocated resources
-            salloc: Granted job allocation 9102757
-            salloc: Waiting for resource configuration
-            salloc: Nodes nid001057 are ready for job
+        Let us check that we actually run on the compute node. This has to be done differently
 
-            claremar@login1:~> module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+        ```bash
+        claremar@login1:~> srun hostname
+        nid001064
+        nid001063
+        nid001064
+        nid001063
+        ```
 
-         Let us check that we actually run on the compute node. This has to be done differently
+        Now, it seems that Dardel allows for "hyperthreading", that is 2 threads per core.
 
-         .. code-block:: console
+        ```bash
+        claremar@login1:~> srun -n 8 hostname
+        nid001064
+        nid001064
+        nid001063
+        nid001063
+        nid001064
+        nid001064
+        nid001063
+        nid001063
+        ```
 
-            claremar@login1:~> srun hostname
-            nid001064
-            nid001063
-            nid001064
-            nid001063
+        We are. Notice that we got a response from all four cores we have allocated.
 
-         Now, it seems that Dardel allows for "hyperthreading", that is 2 threads per core.
+    === "UPPMAX"
 
-         .. code-block:: console
+        ```bash
+        [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 0:30:00
+        You receive the high interactive priority.
+        There are free cores, so your job is expected to start at once.
 
-            claremar@login1:~> srun -n 8 hostname
-            nid001064
-            nid001064
-            nid001063
-            nid001063
-            nid001064
-            nid001064
-            nid001063
-            nid001063
+        Please, use no more than 6.4 GB of RAM.
 
-         We are. Notice that we got a response from all four cores we have allocated.
+        Waiting for job 29556505 to start...
+        Starting job now -- you waited for 1 second.
 
-      .. tab:: UPPMAX
+        [bjornc@r483 ~]$ module load julia/1.8.5
+        ```
 
-         .. code-block:: console
+        Let us check that we actually run on the compute node:
 
-            [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 0:30:00
-            You receive the high interactive priority.
-            There are free cores, so your job is expected to start at once.
+        ```bash
+        [bjornc@r483 ~]$ srun hostname
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        ```
 
-            Please, use no more than 6.4 GB of RAM.
+        We are. Notice that we got a response from all four cores we have allocated.
 
-            Waiting for job 29556505 to start...
-            Starting job now -- you waited for 1 second.
+    === "HPC2N"
 
-            [bjornc@r483 ~]$ module load julia/1.8.5
+        ```bash
+        [~]$ salloc -n 4 --time=00:30:00 -A hpc2n2025-062
+        salloc: Pending job allocation 20174806
+        salloc: job 20174806 queued and waiting for resources
+        salloc: job 20174806 has been allocated resources
+        salloc: Granted job allocation 20174806
+        salloc: Waiting for resource configuration
+        salloc: Nodes b-cn0241 are ready for job
+        [~]$ module load GCC/11.2.0 OpenMPI/4.1.1 julia/1.8.5
+        [~]$
+        ```
 
-         Let us check that we actually run on the compute node:
+        Let us check that we actually run on the compute node:
 
-         .. code-block:: console
+        ```bash
+        [~]$ srun hostname
+        b-cn0241.hpc2n.umu.se
+        b-cn0241.hpc2n.umu.se
+        b-cn0241.hpc2n.umu.se
+        b-cn0241.hpc2n.umu.se
+        ```
 
-            [bjornc@r483 ~]$ srun hostname
-            r483.uppmax.uu.se
-            r483.uppmax.uu.se
-            r483.uppmax.uu.se
-            r483.uppmax.uu.se
+        We are. Notice that we got a response from all four cores we have allocated.
 
-         We are. Notice that we got a response from all four cores we have allocated.
+    === "LUNARC"
 
-      .. tab:: HPC2N
+        ```bash
+        [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 30:00
+        Cluster name: COSMOS
+        Waiting for JOBID 930844 to start
 
-         .. code-block:: console
+        [bjornc@cn050 ~]$ module load Julia/1.8.5-linux-x86_64
+        ```
 
-            [~]$ salloc -n 4 --time=00:30:00 -A hpc2n2025-062
-            salloc: Pending job allocation 20174806
-            salloc: job 20174806 queued and waiting for resources
-            salloc: job 20174806 has been allocated resources
-            salloc: Granted job allocation 20174806
-            salloc: Waiting for resource configuration
-            salloc: Nodes b-cn0241 are ready for job
-            [~]$ module load GCC/11.2.0 OpenMPI/4.1.1 julia/1.8.5
-            [~]$
+        Let us check that we actually run on the compute node:
 
-         Let us check that we actually run on the compute node:
+        ```bash
+        [bjornc@cn050 ~]$ echo $SLURM_CPUS_ON_NODE
+        4
+        ```
 
-         .. code-block:: console
+        We are, because the *$SLURM* environment variable gves an output. Notice that we got 4, whihc is nt the size of the physcial node bt the allocation size.
 
-            [~]$ srun hostname
-            b-cn0241.hpc2n.umu.se
-            b-cn0241.hpc2n.umu.se
-            b-cn0241.hpc2n.umu.se
-            b-cn0241.hpc2n.umu.se
-
-         We are. Notice that we got a response from all four cores we have allocated.
-
-      .. tab:: LUNARC
-
-         .. code-block:: console
-
-            [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 30:00
-            Cluster name: COSMOS
-            Waiting for JOBID 930844 to start
-
-            [bjornc@cn050 ~]$ module load Julia/1.8.5-linux-x86_64
-
-         Let us check that we actually run on the compute node:
-
-         .. code-block:: console
-
-            [bjornc@cn050 ~]$ echo $SLURM_CPUS_ON_NODE
-            4
-
-         We are, because the $SLURM* environment variable gves an output. Notice that we got 4, whihc is nt the size of the physcial node bt the allocation size.
-
-
+---- Up to here ---
 Running a script
 ''''''''''''''''
 
