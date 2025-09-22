@@ -22,12 +22,9 @@ ls > mylsoutput.txt
 
 (Have not made mmd files to work yet. So far only code directly within)
 
-
-
->```
+>```code
 >mermaid code
 >```
-
 
 ### Gantt chart
 
