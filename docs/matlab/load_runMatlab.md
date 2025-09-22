@@ -319,7 +319,7 @@ Setting `-singleCompThread` does **not** prevent MATLAB from sending parallelize
 
 Try starting MATLAB at the command line. We will use the same versions as in the previous section.
 
-=== "UPPMAX (Rackham and Pelle) and NSC (Tetralith)"
+=== "UPPMAX (Rackham and Pelle?) and NSC (Tetralith)"
 
      Once you've loaded your preferred version of MATLAB, type:
 
@@ -399,7 +399,7 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
      srun matlab
      ```
 
-=== "UPPMAX (Rackham)"
+=== "UPPMAX (Rackham and Pelle?)"
 
      For UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
 
