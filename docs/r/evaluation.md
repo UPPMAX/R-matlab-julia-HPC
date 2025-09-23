@@ -49,17 +49,6 @@ This is the page for evaluating the current iteration of the course.
 
     - Question 3: Confidences
 
-    Coding scheme:
-
-    Column text|Description
-    -----------|---------------------------------
-    `NA`       |I did not attend that session
-    `0`        |I have no confidence I can do this
-    `1`        |I have low confidence I can do this
-    `2`        |I have some confidence I can do this
-    `3`        |I have good confidence I can do this
-    `4`        |I can absolutely do this!
-
       - I can find the module to be able to run R
       - I can load the module to be able to run R
       - I can run the R interpreter
@@ -78,6 +67,18 @@ This is the page for evaluating the current iteration of the course.
       - I can verify I am on the login node yes/no
       - I can start an interactive session with multiple cores
       - I can start RStudio
+
+    Coding scheme:
+
+    Column text|Description
+    -----------|---------------------------------
+    `NA`       |I did not attend that session
+    `0`        |I have no confidence I can do this
+    `1`        |I have low confidence I can do this
+    `2`        |I have some confidence I can do this
+    `3`        |I have good confidence I can do this
+    `4`        |I can absolutely do this!
+
 
     - Question 4: Would you recommend this course to someone else?
 
