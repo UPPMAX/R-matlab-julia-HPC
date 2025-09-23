@@ -348,15 +348,17 @@ Pedro did a great job with the materials!
 Steps:
 
 - [x] Sketch content 'Threaded parallelisms'
+    - [x] Julia
+    - [ ] MATLAB
+    - [x] R
+- [ABANDON] Sketch content 'Distributed parallelisms'
+- [x] Sketch content 'General parallelism'
     - [ ] Julia
     - [ ] MATLAB
     - [x] R
-- [ ] Sketch content 'Distributed parallelisms'
-    - [ ] Julia
-    - [ ] MATLAB
-    - [ ] R
-- [ ] Sketch content 'General parallelism'
-    - [ ] Julia
-    - [ ] MATLAB
-    - [ ] R
+
+## 2025-09-23
+
+Now I have more or less carved out the content,
+let's restart with learning outcomes...
 
