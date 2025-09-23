@@ -30,7 +30,7 @@
 
 ## Why it was created
 
-Quoting from the [blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/)
+Quoting from the [2012 blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/)
 that announced Julia to the world:
 
 > In short, because we are greedy.
@@ -45,81 +45,95 @@ They mention Matlab, Lisp, Python, Ruby, Perl, Mathematica, R and C.
 > We are greedy: we want more.
 
 No language can be everything for everyone, but Julia was created to get as
-close as possible for a certain set of users. A little later in the short post
-the creators talk again about HPC specifically:
-
-> While we're being demanding, we want something that provides the distributed
-> power of Hadoop — without the kilobytes of boilerplate Java and XML; without
-> being forced to sift through gigabytes of log files on hundreds of machines
-> to find our bugs. We want the power without the layers of impenetrable
-> complexity. We want to write simple scalar loops that compile down to tight
-> machine code using just the registers on a single CPU. We want to write A*B
-> and launch a thousand computations on a thousand machines, calculating a vast
-> matrix product together.
+close as possible for a certain set of users. If the work you do falls in the
+categories mentioned, as HPC work does, this target audience includes you.
 
 
 ## Reasons to choose Julia
 
-<dl>
-    <dt>Fast:</dt>
-    <dd>Julia was designed from the beginning for high performance. Julia
-    programs compile to efficient native code for multiple platforms via
-    LLVM.</dd>
-
-    <dt>General:</dt>
-    <dd>It uses multiple dispatch as a paradigm, making it easy to express many
-    object-oriented and functional programming patterns. The standard library
-    provides asynchronous I/O, process control, logging, profiling, a package
-    manager, and more. </dd>
-
-    <dt>Dynamic:</dt>
-    <dd>Julia is dynamically-typed, feels like a scripting language, and has
-    good support for interactive use. </dd>
-
-    <dt>Technical:</dt>
-    <dd>It excels at numerical computing with a syntax that is great for math,
-    many supported numeric data types, and parallelism out of the box. Julia's
-    multiple dispatch is a natural fit for defining number and array-like data
-    types. </dd>
-
-    <dt>Optionally typed:</dt>
-    <dd>Julia has a rich language of descriptive data types, and type
-    declarations can be used to clarify and solidify programs. </dd>
-
-    <dt>Composable:</dt>
-    <dd>Julia’s packages naturally work well together. Matrices of unit
-    quantities, or data table columns of currencies and colors, just work — and
-    with good performance. </dd>
-</dl>
+The strengths of Julia are based on flexibility. Moreso than forcing either your
+code or your workflow into anything, it enables you to choose the right way to
+write or work for the task at hand.
 
 - Special compilation model
     - Enables interactive use and development without the drawbacks of
       interpreted languages
 - Special type system
     - Hierarchical, deep, types can be defined as precisely or loosely as makes
-      sense for the situation at hand
+      sense for each situation
     - This (along with multiple dispatch and the compilation model) enables not
       only great flexibility but also great composability
-- Built for numerical computing
+- Built for numerical computing, but works well also for general tasks
 - Built-in powerful package management (based on Git) with efficient
   per-project environments, very good for reproducibility
-- Pluto
-    - Reproducible (even without Pluto), gittable, extraordinarily interactive
-      programming notebooks
-- 
+
+Finally, the built-in or integrated documentation tools are good enough that
+many Julia packages have relatively good documentation.
+
+In addition to the strengths of the core language, a few standout packages that
+you may want to make use of:
+
+- [Pluto](https://plutojl.org): Reproducible (even without Pluto), gittable,
+  extraordinarily interactive programming notebooks
+- [Flux](https://fluxml.ai): Machine learning stack based on differentiable
+  programming, which Julia does especially well
+- [DifferentialEquations](https://github.com/SciML/DifferentialEquations.jl),
+  which is especially state-of-the-art, or other components from the large
+  [SciML](https://docs.sciml.ai/Overview/stable/) toolkit for ML in scientific
+  computing
+- [JuMP](https://jump.dev), a modeling language and toolkit for mathematical
+  optimization
+
+
 
 ## Reasons to choose something else
 
+An interpreted language (such as R or MATLAB) will execute your instructions
+immediately, without compilation. If your code changes and recompiles a lot in
+relation to the time spent running the code and the computations, this will give
+you a better interactive experience and save CPU time.
+
+For really large projects, the structure and consistency enforced by a more
+rigid language such as Java can be an important benefit.
+
+As always, it may be faster to use a tool you already know well than to use a
+tool that you have not learned yet.
+
+There are some cases where existing tools are best used from their own
+environments (often the case for graphical tools), but in general the Julia
+solutions for using packages and libraries from other languages (R, MATLAB,
+Python, Fortran, C) are very useful.
+
+
+!!! info "Questions?"
+    - What are your first impressions, what do you hope that Julia can solve for
+      you?
+    - Which tools do you need to find to start using Julia?
+    - What do you need to learn from us, and what can you easily learn from
+      online resources?
+
+
 ## More on Julia
+
+Almost everything you could ask for can be found from or on the official website
+https://julialang.org. Some shortcuts:
 
 - Official Julia documentation is found
   [here](https://docs.julialang.org/en/v1/)
 - Official Julia discussion/support forum is
   [here](https://discourse.julialang.org)
-- Slack channel for Julia and instructions for joining it are found here:
-  <https://julialang.org/slack/>
+- Many other channels, e.g. Slack, Zulip, Discord are found [in this
+  list](https://julialang.org/community/otherchannels/)
+- The list of [GitHub
+  organizations](https://julialang.org/community/organizations/) can be a
+  starting point for finding the packages relevant to your field
+
+And a few other extra resources:
+
+- A big list of [AI tools](https://github.com/svilupp/awesome-generative-ai-meets-julia-language)
 - [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
 - [Extra materials in these course pages](https://uppmax.github.io/R-matlab-julia-HPC/extra/julia_extra.html)
+
 
 ## Julia documentation at the centers
 
@@ -129,12 +143,4 @@ the creators talk again about HPC specifically:
 [here](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/)
 - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
 - [PDC](https://support.pdc.kth.se/doc/applications/julia/)
-
-
-
-!!! info "Key points:"
-
-    - Julia is a relatively new language with several attractive features.
-    - Julia purpose is to avoid changing between high performance and high productivity languages
-      in the different phases of code development.
 
