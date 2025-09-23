@@ -2,10 +2,10 @@
 
 !!! info "Learning outcomes"
 
-    - Schedule and run a job that needs more cores,
-      with a calculation in their favorite language
-    - Understand when it is possible/impossible
-      and/or useful/useless to run a job with multiple cores
+    - Understand some types of parallel computation
+    - Understand that the maximum effectiveness of parallelism depends
+      on the portion that can be parallelised
+    - Understand when to use threaded parallelism
 
 ???- info "For teachers"
 
@@ -19,6 +19,7 @@
     Prior:
 
     - What is parallel computing?
+    - When to use parallel computing
 
     Feedback:
 
@@ -32,91 +33,158 @@ Your calculation may take longer than that.
 One technique that may work is to use parallel computing,
 where one uses multiple CPU cores to work together on a same calculation
 
+## HPC cluster architecture
+
+Here is a simplified picture of HPC cluster architecture:
+
+```mermaid
+flowchart TD
+
+subgraph hpc_cluster[HPC cluster]
+subgraph node_3[More nodes]
+core_3_3[More cores]
+end
+subgraph node_2[Node 2]
+core_2_1[Core 2-1]
+core_2_2[Core 2-2]
+core_2_3[More cores]
+end
+subgraph node_1[Node 1]
+core_1_1[Core 1-1]
+core_1_2[Core 1-2]
+core_1_3[More cores]
+end
+end
+```
+
+Term        |What it loosely is
+------------|------------------------------------------------
+Core        |A CPU, something that does a calculation
+Node        |A collection of cores that share the same memory
+HPC cluster |A collection of nodes
+The universe|A collection of HPC clusters
+
+<!-- yes, I think this is funny :-) -->
+
 ## Types of 'doing more things at the same time'
 
 There are many types of 'doing more things at the same time'.
-Below is an overview of the types that are relevant to this session.
+One way to distinguish these, is to separate these on
+the extent of the parallelism:
 
-<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+Extent       |Parallelism
+-------------|-------------------------------------
+Core         |Single-threaded (you already do this)
+Node         |Thread parallelism (today's session)
+HPC cluster  |Distributed parallelism
+The universe |Distributed parallelism
 
-Type of parallelism   |Number of cores|Number of nodes|Memory                      |Library
-----------------------|---------------|---------------|----------------------------|-------
-Single-threaded       |1              |1              |As given by operating system|None
-Threaded/shared memory|Multiple       |1              |Shared by all cores         |OpenMP
-Distributed           |Multiple       |Multiple       |Distributed                 |OpenMPI
+Today, we will extend your toolkit from a single-threaded
+to thread parallelism.
 
-<!-- markdownlint-enable MD013 -->
+## The ideal effectiveness of parallelism
 
-## When to use parallel computing
+Before going into details, we will look at the
+effectiveness of parallelism in the most optimal case,
+with the goal the you can determine if it is worth it.
 
-- Be aware of Amdahl's law and/or Gustafson's law
-- Single-threaded programs will never work
+By now, you can probably guess that parallel computing spreads
+a calculation over multiple things that can calculate.
 
-## Output
+Imagine a calculation that takes 16 time units, represented as this:
 
-=== "Using 1 MPI processes"
+![1 core](amdahls_law_example_1.png)
 
-    ```text
-    Using 2 OpenMP threads 
+> A calculation of 16 time units run on 1 core,
+> where square is a time unit of calculation.
+> - Red square: a unit of calculation that cannot be run in parallel
+> - Green square: a unit of calculation that can be run in parallel
 
-                   Core t (s)   Wall t (s)        (%)
-           Time:       86.902       43.452      200.0
-                     (ns/day)    (hour/ns)
-    Performance:        1.740       13.794
-    ```
+Using 2 calculation units, this results in:
 
-=== "Using 2 MPI processes"
+![2 cores](amdahls_law_example_2.png)
 
-    ```text
-                   Core t (s)   Wall t (s)        (%)
-           Time:      100.447       50.224      200.0
-                     (ns/day)    (hour/ns)
-    Performance:        1.591       15.082
-    ```
+> A calculation of 16 time units run on 2 cores,
+> where square is a time unit of calculation.
+> - Red square: a unit of calculation that cannot be run in parallel
+> - Green square: a unit of calculation that can be run in parallel
+> - White square: a unit of calculation that is spent doing nothing
 
-=== "Using 4 MPI processes"
+This takes the calculation down to 10 time units. However, there
+are 4 units (out of 20) of calculation spent waiting, reducing
+efficiency to 80% (16 out of 20 units are spent on the calculation).
 
-    ```text
-                   Core t (s)   Wall t (s)        (%)
-           Time:      150.753       37.689      400.0
-                     (ns/day)    (hour/ns)
-    Performance:        3.783        6.345
-    ```
+Here one can see this calculation for more cores:
+
+Program runtime                      |Number of cores|Time|Relative speed|Efficiency
+-------------------------------------|---------------|----|--------------|----------
+![1 core](amdahls_law_example_1.png) |1              |16  |100%          |100%
+![2 cores](amdahls_law_example_2.png)|2              |10  |63%           |80%
+![3 cores](amdahls_law_example_3.png)|3              |8   |50%           |67%
+![4 cores](amdahls_law_example_4.png)|4              |7   |43%           |57%
+![6 cores](amdahls_law_example_6.png)|6              |6   |38%           |44%
+
+The best possible speed gain (as shown here) is called Amdahl's Law
+and, in a general form, is plotted like this:
+
+![Amdahl's law](amdahls_law.png)
+
+## Question
+
+- In the example of 16 time units, what is the shortest amount of time that
+  can be spent on the calculation, given infinite resources?
+
+??? tip "Answer"
+
+    The length of the calculation that cannot be run in parallel,
+    which is 4 time units.
 
 
-=== "Using 8 MPI processes"
+- In this example, what is the fastest relative speed?
 
-    ```text
-                   Core t (s)   Wall t (s)        (%)
-           Time:      292.200       36.526      800.0
-                     (ns/day)    (hour/ns)
-    Performance:        6.446        3.723
-    ```
+??? tip "Answer"
 
-## Remember
+  25%, as the calculation needs 4 time units to do 16 units of work.
 
-- Use `--ntasks=N`
-- Use `srun`
-- Use an MPI version of your software:
-  a 'regular' non-MPI version will never work!
 
-## Links
+- For your research project, you need to run a lot of calculations.
+  Each calculation takes 10 hours. How do you make optimal use
+  of your computational resources?
 
-- [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
-- [Older explanation](https://youtu.be/GHbrpg75qbQ)
-- [Newer explanation](https://youtu.be/c7pVEBhPohk)
+??? tip "Answer"
 
-=== "Julia"
+    Run the calculation on a single core for 100% efficiency
 
-    Julia stuff here
+- For your research project, you also have a calculation that takes 11 days.
+  Your HPC cluster allows a calculation of at most 10 days.
+  Assume your HPC center will not extend your job (they will when asked!).
+  How do you make optimal use of your time?
 
-=== "MATLAB"
+??? tip "Answer"
 
-    MATLAB stuff here
+    If your calculation already has parallelism built-in,
+    then run the calculation on two cores: this only involves changing your
+    Slurm script, with a low loss of computational resources.
 
-=== "R"
+    If you are a really tight on computational resources, you can
+    implement a 'save state' in your calculation, so that you can schedule
+    two runs of nine days in succession, each with 100% efficiency.
 
-    R stuff here
+    Alternatively, you can added thread parallelism to allow running
+    with multiple cores.
+
+- Your colleague runs many jobs with a lot of cores. 'It is way faster!',
+  he/she states. That same colleague, however, also complains about long
+  waiting times before his/her jobs start. How would you explain this
+  situation?
+
+??? tip "Answer"
+
+    The colleague used up (or: 'wasted') all his/her computational resources
+    (commonly 10,000 core hours per month).
+
+    Due to this, his/her jobs are only run when the HPC cluster has
+    a low workload and activates the so-called 'bonus queue'.
 
 <!-- markdownlint-disable -->
 
