@@ -35,4 +35,62 @@ This is the page for evaluating the current iteration of the course.
 
 ???- question "For teachers: what is in that form?"
 
-    ...
+    - Question 1: Overall, how would you rate today's training event?
+
+    ```text
+    A grade from 1 to (and including) 10
+    ```
+
+    - Question 2: What do you think about the pace of teaching overall?
+
+    ```text
+    [Free text]
+    ```
+
+    - Question 3: Confidences
+
+    Coding scheme:
+
+    Column text|Description
+    -----------|---------------------------------
+    `NA`       |I did not attend that session
+    `0`        |I have no confidence I can do this
+    `1`        |I have low confidence I can do this
+    `2`        |I have some confidence I can do this
+    `3`        |I have good confidence I can do this
+    `4`        |I can absolutely do this!
+
+      - I can find the module to be able to run R
+      - I can load the module to be able to run R
+      - I can run the R interpreter
+      - I can run the R command to get the list of installed R packages
+      - I can run an R script from the command-line
+      - I can find out if an R package is already installed
+      - I can load the pre-installed R packages
+      - I can install an R package from CRAN
+      - I can submit a job to the scheduler to run an R script with regular code
+      - I can submit a job to the scheduler to run an R script that uses parallel code
+      - I can submit a job to the scheduler to run an R script that uses a GPU
+      - I can submit a job to the scheduler to run an R script that uses machine learning
+      - I can start an interactive session
+      - I can verify I am on the login node yes/no
+      - I can start an interactive session with multiple cores
+      - I can start RStudio
+
+    - Question 4: Would you recommend this course to someone else?
+
+    ```text
+    Multiple choice: Yes, no, not sure
+    ```
+
+    - Question 5: Which future training topics would you like to be provided by the training host(s)?
+
+    ```text
+    [Free text]
+    ```
+
+    - Question 6: Do you have any additional comments?
+
+    ```text
+    [Free text]
+    ```
