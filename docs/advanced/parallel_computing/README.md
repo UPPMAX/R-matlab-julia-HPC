@@ -58,15 +58,18 @@ flowchart TD
   end
 ```
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 Term        |What it loosely is                              |Amount
 ------------|------------------------------------------------|---------------
 Core        |Something that does a calculation               |One or more per CPU
 CPU         |A collection of cores that share the same memory|One or more per node
 Node        |A collection of CPUs that share the same memory |One or more per HPC cluster
 HPC cluster |A collection of nodes                           |One or more per universe
-The universe|A collection of HPC clusters                    |One
+The universe|A collection of HPC clusters                    |One <!-- yes, I think this is funny :-) -->
 
-<!-- yes, I think this is funny :-) -->
+<!-- markdownlint-enable MD013 -->
+
 
 ## Types of 'doing more things at the same time'
 
@@ -99,6 +102,7 @@ Imagine a calculation that takes 16 time units, represented as this:
 
 > A calculation of 16 time units run on 1 core,
 > where square is a time unit of calculation.
+>
 > - Red square: a unit of calculation that cannot be run in parallel
 > - Green square: a unit of calculation that can be run in parallel
 
@@ -108,6 +112,7 @@ Using 2 calculation units, this results in:
 
 > A calculation of 16 time units run on 2 cores,
 > where square is a time unit of calculation.
+>
 > - Red square: a unit of calculation that cannot be run in parallel
 > - Green square: a unit of calculation that can be run in parallel
 > - White square: a unit of calculation that is spent doing nothing
