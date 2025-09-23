@@ -182,10 +182,9 @@ Then, when you get the allocation, do one of:
 
 ### Example 
 
-Requesting 4 cores for 10 minutes, then running Julia
-
-!!! important "Demo"
-
+!!! important "Interactive jobs"
+    
+    Requesting 4 cores for 10 minutes, then running Julia
     Short serial example for running on different clusters.
 
     === "NSC"
@@ -326,128 +325,123 @@ Requesting 4 cores for 10 minutes, then running Julia
 
         We are, because the *$SLURM* environment variable gves an output. Notice that we got 4, whihc is nt the size of the physcial node bt the allocation size.
 
----- Up to here ---
-Running a script
-''''''''''''''''
-
-**The script**
-      Adding two numbers from user input (serial-sum.jl)
-
-      .. code-block:: julia
-
-          # This program will add two numbers that are provided by the user
-
-          # Get the numbers
-          x = parse( Int32, ARGS[1] )
-          y = parse( Int32, ARGS[2] )
-          # Add the two numbers together
-          summ = x + y
-          println("The sum of the two numbers is ", summ)
 
 
-**Running the script**
+    **Test script**: adding two numbers from user input (``serial-sum.jl``)
 
-- Note that the commands are the same for both HPC2N and UPPMAX!
+    ```julia
+        # This program will add two numbers that are provided by the user
 
-      Running a Julia script in the allocation we made further up. Notice that since we asked for 4 cores, the script is run 4 times, since it is a serial script
-
-      .. code-block:: console
-
-          [~]$ srun julia serial-sum.jl 3 4
-          The sum of the two numbers is: 7
-          The sum of the two numbers is: 7
-          The sum of the two numbers is: 7
-          The sum of the two numbers is: 7
-          [~]$
-
-      Without the ``srun`` command, Julia won't understand that it can use several cores. Therefore the program is run only once.
-
-      .. code-block:: sh
-
-                  [~]$ julia serial-sum.jl 3 4
-                  The sum of the two numbers is: 7
-
-**Running Julia REPL**
-
-- First start Julia using the 4 cores and check if workers are available
-
-.. code-block:: console
-
-   $ julia -p 4
-
-.. code-block:: julia-repl
-
-   julia> nworkers()
-   4
-
-Exit Julia
-
-.. code-block:: julia-repl
-
-   julia> <CTRL-D>
-   4
+        # Get the numbers
+        x = parse( Int32, ARGS[1] )
+        y = parse( Int32, ARGS[2] )
+        # Add the two numbers together
+        summ = x + y
+        println("The sum of the two numbers is ", summ)
+    ```
 
 
-**Exit**
+    **Running the script**
 
-When you have finished using the allocation, either wait for it to end, or close it with ``exit``
+    - Note that the commands are the same for both HPC2N and UPPMAX!
 
-.. tabs::
+    Running a Julia script in the allocation we made further up. Notice that since we asked for 4 cores, the script is run 4 times, since it is a serial script
 
-   .. tab:: NSC
+    ```bash
+    [~]$ srun julia serial-sum.jl 3 4
+    The sum of the two numbers is: 7
+    The sum of the two numbers is: 7
+    The sum of the two numbers is: 7
+    The sum of the two numbers is: 7
+    [~]$
+    ```
 
-      .. code-block:: console
+    Without the ``srun`` command, Julia won't understand that it can use several cores. Therefore the program is run only once.
 
-         [sm_bcarl@n134 ~]$ exit
-         logout
-         srun: error: n134: task 0: Exited with exit code 130
-         srun: Terminating StepId=43071803.interactive
-         salloc: Relinquishing job allocation 43071803
-         salloc: Job allocation 43071803 has been revoked.
-         [sm_bcarl@tetralith3 ~]$
+    ```bash
+    [~]$ julia serial-sum.jl 3 4
+    The sum of the two numbers is: 7
+    ```
 
-   .. tab:: PDC
+    **Running Julia REPL**
 
-      .. code-block:: console
+    - First start Julia using the 4 cores and check if workers are available
 
-         claremar@login1:~> exit
-         exit
-         salloc: Relinquishing job allocation 9103056
-         claremar@login1:~>
+    ```bash
+    $ julia -p 4
+    ```
 
-   .. tab:: UPPMAX
+    ```julia
+    julia> nworkers()
+    4
+    ```
 
-      .. code-block:: console
+    Exit Julia
 
-                  [bjornc@r483 ~]$ exit
+    ```julia
+    julia> <CTRL-D>
+    4
+    ```
 
-                  exit
-                  [screen is terminating]
-                  Connection to r483 closed.
+    **Exit**
 
-                  [bjornc@rackham2 ~]$
+    When you have finished using the allocation, either wait for it to end, or close it with ``exit``
 
-   .. tab:: HPC2N
+    === "NSC"
 
-      .. code-block:: sh
+        ```bash
+        [sm_bcarl@n134 ~]$ exit
+        logout
+        srun: error: n134: task 0: Exited with exit code 130
+        srun: Terminating StepId=43071803.interactive
+        salloc: Relinquishing job allocation 43071803
+        salloc: Job allocation 43071803 has been revoked.
+        [sm_bcarl@tetralith3 ~]$
+        ```
 
-                  [~]$ exit
-                  exit
-                  salloc: Relinquishing job allocation 20174806
-                  salloc: Job allocation 20174806 has been revoked.
-                  [~]$
+    === "PDC"
 
-   .. tab:: LUNARC
+        ```bash
+        claremar@login1:~> exit
+        exit
+        salloc: Relinquishing job allocation 9103056
+        claremar@login1:~>
+        ```
 
-      .. code-block:: sh
+    === "UPPMAX"
 
-                  [~]$ exit
-                  exit
-                  [screen is terminating]
-                  Connection to cn050 closed.
+        ```bash
+        [bjornc@r483 ~]$ exit
 
-                  [~]$
+        exit
+        [screen is terminating]
+        Connection to r483 closed.
 
+        [bjornc@rackham2 ~]$
+        ```
+
+    === "HPC2N"
+
+        ```bash
+        [~]$ exit
+        exit
+        salloc: Relinquishing job allocation 20174806
+        salloc: Job allocation 20174806 has been revoked.
+        [~]$
+        ```
+
+    === "LUNARC"
+
+        ```bash
+        [~]$ exit
+        exit
+        [screen is terminating]
+        Connection to cn050 closed.
+
+        [~]$
+        ```
+        
+---->.  <-----
 Running Julia in Jupyter
 ------------------------
 
