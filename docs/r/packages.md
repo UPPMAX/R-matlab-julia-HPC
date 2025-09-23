@@ -67,10 +67,10 @@ We might want to know where the ``R`` interpreter will be searching for packages
 
 === "UPPMAX"
 
-    Load ``R``, e.g. version 4.1.1 and start the Interpreter
+    Load ``R``, e.g. version 4.4.2 and start the Interpreter
 
     ```bash 
-    $ ml R/4.1.1
+    $ ml R/4.4.2-gfbf-2024a
     $ R
     ```
 
@@ -78,7 +78,7 @@ We might want to know where the ``R`` interpreter will be searching for packages
 
     ```R
     > .libPaths()
-    [1] "/sw/apps/R/4.1.1/rackham/lib64/R/library"
+    [1] "/sw/arch/eb/software/R/4.4.2-gfbf-2024a/lib64/R/library"
     ```
 	
 === "HPC2N"
@@ -114,6 +114,23 @@ We might want to know where the ``R`` interpreter will be searching for packages
     [1] "/home/bbrydsoe/R-packages-4.2.1"                                     
     [2] "/sw/easybuild_milan/software/R/4.2.1-foss-2022a/lib64/R/library"
     ```
+
+=== "C3SE" 
+
+    Load ``R``, e.g. version 4.2.1 and start the Interpreter 
+
+    ```bash 
+    $ ml R/4.2.1-foss-2022a 
+    $ R
+    ```
+
+    Then check to find the path of the library using the ``libPaths()`` function. 
+
+    ```R
+    > .libPaths()
+    [1] "/apps/Arch/software/R/4.2.1-foss-2022a/lib64/R/library"
+    >
+    ``` 
 
 !!! warning "Warning: Modules on Dardel"
 
@@ -181,6 +198,9 @@ UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer larger or smaller amounts of prein
 
     On PDC about 250 packages come with the ``R`` module. 
 
+!!! note "C3SE" 
+
+    On Alvis at C3SE, around 1340 packages are installed with R/4.2.1 - but much fewer with R/4.3.3. 
 
 There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within ``R`` (you can also get a list of all packages with ``installed.packages()`` but that can be overwhelming): 
 
@@ -337,7 +357,7 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
              
 === "PDC"
 
-    !!! note Solution" 
+    !!! note "Solution" 
 
         ```bash
         $ ml PDC/23.12 R/4.4.1-cpeGNU-23.12 
@@ -366,7 +386,39 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
         Error in library(caret) : there is no package called ‘caret’
         >
         ```
-         
+        
+=== "C3SE" 
+
+    !!! note "Solution" 
+
+        ```bash 
+        $ ml R/4.2.1-foss-2022a
+        $ R
+        
+        Copyright (C) 2022 The R Foundation for Statistical Computing
+        Platform: x86_64-pc-linux-gnu (64-bit)
+
+        R is free software and comes with ABSOLUTELY NO WARRANTY.
+        You are welcome to redistribute it under certain conditions.
+        Type 'license()' or 'licence()' for distribution details.
+
+          Natural language support but running in an English locale
+
+        R is a collaborative project with many contributors.
+        Type 'contributors()' for more information and
+        'citation()' on how to cite R or R packages in publications.
+
+        Type 'demo()' for some demos, 'help()' for on-line help, or
+        'help.start()' for an HTML browser interface to help.
+        Type 'q()' to quit R.
+    
+        > library(pillar)
+        > library(caret)
+        Loading required package: ggplot2
+        Loading required package: lattice
+        >
+        ```
+
 ## Installing your own packages
 
 Sometimes you will need R packages that are not already installed. The solution
@@ -491,17 +543,19 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
     - LUNARC: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
     - NSC: ``module load R/4.2.2-hpc1-gcc-11.3.0-bare`` 
     - PDC: ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12`` 
+    - C3SE: ``module load R/4.2.1-foss-2022a`` 
 
     2)
 
     - ``echo R_LIBS_USER="$HOME/R-packages-%V" > ~/.Renviron``
 
-    OR (option if UPPMAX, HPC2N, NSC, or PDC)
+    OR (option if UPPMAX, HPC2N, NSC, PDC, or C3SE)
 
     - UPPMAX: ``echo R_LIBS_USER="/proj/r-matlab-julia-uppmax/<yourdir>/R-packages-%V" > ~/.Renviron``
     - HPC2N: ``echo R_LIBS_USER="/proj/nobackup/r-matlab-julia/<yourdir>/R-packages-%V" > ~/.Renviron``
     - NSC: ``echo R_LIBS_USER="/proj/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
     - PDC: ``echo R_LIBS_USER="/cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
+    - C3SE: ``echo R_LIBS_USER=/mimer/NOBACKUP/groups/courses-fall-2025/<yourdir>/R-packages-%V" > ~/.Renviron``
 
     3) Create directory for R packages:
 
@@ -518,6 +572,9 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
     - PDC: 
         - ``mkdir -p $HOME/R-packages-4.4.1``
         - OR ``mkdir -p /cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-4.4.1```
+    - C3SE: 
+        - ``mkdir -p $HOME/R-packages-4.2.1``
+        - OR ``mkdir -p /mimer/NOBACKUP/groups/courses-fall-2025/<yourdir>/R-packages-4.2.1``
 
     4) Either of
 

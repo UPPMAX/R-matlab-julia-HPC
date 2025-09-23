@@ -11,6 +11,21 @@
     The process of getting an account can take several days,
     due to some waiting steps.
 
+## Registration
+
+Before the course, you must have done these five things:
+
+- Prerequisite 1/5: You have registered at our registration form.
+- Prerequisite 2/5: You have registered at SUPR
+- Prerequisite 3/5: You have accepted access to the NAISS course project
+- Prerequisite 4/5: You are able to login (e.g. using SSH) to your HPC cluster
+- Prerequisite 5/5: You have a good Zoom setup
+
+## Working in Linux environment
+
+- On your HPC cluster, you can:
+    - Use a text editor, for example, ``nano``
+
 
 <!-- 
 

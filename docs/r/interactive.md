@@ -94,6 +94,12 @@ To run interactively, you need to allocate resources on the cluster first. You c
 
     Where ``[partition]`` is main or gpu. After your resources have been allocated, you can login to the compute node with ``ssh <node>`` and have real interactivity. 
 
+=== "C3SE" 
+
+    ```bash
+    srun -A NAISS2025-22-934 -p alvis --gpus-per-node=T4:1 --pty bash
+    ```
+
 Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources. When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with ``srun`` (or login to the compute node with ssh on PDC). The commands you run with ``srun`` will then be executed on the resources your job has been allocated. If you do not preface with ``srun`` the command is run on the login node! 
       
 You can now run R scripts on the allocated resources directly instead of waiting for your batch job to return a result. This is an advantage if you want to test your R script or perhaps figure out which parameters are best.
