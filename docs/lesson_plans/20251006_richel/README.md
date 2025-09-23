@@ -50,3 +50,8 @@ There are, however, videos, that are not based on user documentation:
 
 Those videos will make it easy to write that user documentation.
 
+## 2025-09-23
+
+All is done, except:
+
+- [ ] RStudio video Pelle, reported at UPPMAX that ThinLinc cannot connect
