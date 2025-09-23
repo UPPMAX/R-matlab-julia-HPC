@@ -59,7 +59,7 @@ This is the page for evaluating the current iteration of the course.
         - I can install an R package from CRAN
         - I can submit a job to the scheduler to run an R script
           with regular code
-        - I can submit a job to the scheduler to run an R script 
+        - I can submit a job to the scheduler to run an R script
           that uses parallel code
         - I can submit a job to the scheduler to run an R script
           that uses a GPU
