@@ -68,10 +68,12 @@ This is the page for evaluating the current iteration of the course.
       - I can find out if an R package is already installed
       - I can load the pre-installed R packages
       - I can install an R package from CRAN
-      - I can submit a job to the scheduler to run an R script with regular code
-      - I can submit a job to the scheduler to run an R script that uses parallel code
-      - I can submit a job to the scheduler to run an R script that uses a GPU
-      - I can submit a job to the scheduler to run an R script that uses machine learning
+      - I can submit a job to the scheduler to run an R script
+        with regular code
+      - I can submit a job to the scheduler to run an R script 
+        that uses parallel code
+      - I can submit a job to the scheduler to run an R script
+        that uses a GPU
       - I can start an interactive session
       - I can verify I am on the login node yes/no
       - I can start an interactive session with multiple cores
@@ -83,7 +85,11 @@ This is the page for evaluating the current iteration of the course.
     Multiple choice: Yes, no, not sure
     ```
 
+    <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
     - Question 5: Which future training topics would you like to be provided by the training host(s)?
+
+    <!-- markdownlint-enable MD013 -->
 
     ```text
     [Free text]
