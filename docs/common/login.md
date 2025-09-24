@@ -1,4 +1,8 @@
-# Log in session
+# Log in and other preparations
+
+!!! warning
+
+    Under production. Details are not updated for this course instance yet!
 
 !!! info "Learning outcomes"
 
@@ -160,7 +164,7 @@ with the YouTube videos
         1. Example. If your username is "mrspock" and you are at UPPMAX,
             then we recommend you create this folder:
 
-            .. code-block:: console
+            ``` console
 
                $ mkdir /proj/r-matlab-julia-uppmax/mrspock/
 
@@ -222,3 +226,74 @@ with the YouTube videos
         ```
 
 -->
+
+## Step 2: Make a work directory
+
+- **Directory names OK?**
+
+=== UPPMAX
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is "mrspock" and you are at UPPMAX, 
+    then we recommend you create this folder:
+
+        ``` console
+        mkdir /proj/hpc-python-pelle/mrspock/
+        ```
+
+=== HPC2N
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is bbrydsoe and you are at HPC2N, 
+        then we recommend you create this folder:
+
+        ``` console
+        mkdir /proj/nobackup/hpc-python-spring/bbrydsoe/
+        ```
+
+=== LUNARC
+
+    - Create a working directory in your home space where you can code along.
+
+        - Example. Create this folder:
+
+        ``` console
+        mkdir $HOME/hpc-
+        ```
+
+=== NSC
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is jlpicard and you are at NSC, 
+        then we recommend you create this folder:
+
+        ``` console
+        mkdir /proj/hpc-python-spring-naiss/users/jlpicard
+        ```
+      
+=== PDC
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is sevenof9 and you are at PDC, 
+        then we recommend you create this folder:
+
+        ``` console
+        mkdir /cfs/klemming/projects/supr/hpc-python-spring-naiss/sevenof9/
+        ```
+
+Test an editor
+--------------
+
+Learn how to use an text editor at :ref:`common-use-text-editor`.
+
+Download and extract the tarball with exercises
+-----------------------------------------------
+
+Learn how to download and extract the tarball with exercises
+at :ref:`common-use-tarball`.
+
+
