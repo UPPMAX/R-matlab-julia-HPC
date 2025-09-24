@@ -157,12 +157,15 @@ i.e. not directly by a user.
     Rscript integration2d.R 1 1
     ```
 
-Language|Script with calculation
---------|------------------------------------------
-Julia   |[do_2d_integration.jl](do_2d_integration.jl)
-MATLAB  |[do_2d_integration.m](do_2d_integration.m)
-R       |[do_2d_integration.R](do_2d_integration.R)
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
+Language|Script with calculation                      |Documentation used
+--------|---------------------------------------------|-------------------
+Julia   |[do_2d_integration.jl](do_2d_integration.jl) |[Julia documentation](https://docs.julialang.org/en/v1/manual/multi-threading)
+MATLAB  |[do_2d_integration.m](do_2d_integration.m)   |.
+R       |[do_2d_integration.R](do_2d_integration.R)   |.
+
+<!-- markdownlint-enable MD013 -->
 
 ## Script to collect the results
 
