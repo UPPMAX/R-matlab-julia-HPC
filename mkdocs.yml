@@ -5,10 +5,11 @@ edit_uri: blob/main/docs/
 
 nav:
     - Overview: index.md
-    - Prequisites: prereqs.md
+    - Prequisites:
+      - Pre-requirements: prereqs.md
+      - Preparations: preparations.md
     - Common:
       - Login: common/login.md
-      - Preparations: preparations.md
       - Use the tarball: common/use_tarball.md
       - Use a text editor: common/use_text_editor.md
       - HPC clusters: common/hpc_clusters.md
