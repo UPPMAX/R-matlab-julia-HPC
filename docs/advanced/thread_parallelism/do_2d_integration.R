@@ -32,14 +32,14 @@ if (length(args) == 0 || length(args) > 2) {
     "- the number of workers this calculation uses \n",
     "- (optionally) a grid size \n",
     " \n",
-    "General usage:",
+    "General usage: \n",
     " \n",
-    "  Rscript do_2d_integration [n_workers] [grid_size]\n",
+    "  Rscript do_2d_integration.R [n_workers] [grid_size]\n",
     " \n",
     "Examples: \n",
     " \n",
-    "  Rscript do_2d_integration 1\n",
-    "  Rscript do_2d_integration 1 16384\n",
+    "  Rscript do_2d_integration.R 1\n",
+    "  Rscript do_2d_integration.R 1 16384\n",
     " \n"
   )
 }

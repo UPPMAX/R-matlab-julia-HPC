@@ -1,22 +1,42 @@
 args = argv();
 
+% args = { "1", "1" }
+% disp(args)
+
+if length(args) == 0 || length(args) > 2
+  disp("ERROR: Incorrect number of arguments.");
+  disp(" ");
+  disp("Please specify:");
+  disp(" ");
+  disp("- the number of workers this calculation uses");
+  disp("- (optionally) a grid size");
+  disp(" ");
+  disp("General usage:");
+  disp(" ");
+  disp("  matlab do_2d_integration.m [n_workers] [grid_size]");
+  disp(" ");
+  disp("Examples: ");
+  disp(" ");
+  disp("  matlab do_2d_integration.m 1");
+  disp("  matlab do_2d_integration.m 1 16384");
+  disp(" ");
+  exit(42);
+end
+
 function [n_workers, grid_size] = parse_args(args)
-
-  if length(args) == 0
-      args = [1 1];
-  end
-
   n_workers = str2double(args{1});
-  assert(isnumeric(n_workers) && n_workers > 0 && n_workers < 256*256);
-
+  assert(isnumeric(n_workers));
+  assert(n_workers > 0);
+  assert(n_workers < 256 * 256);
   grid_size = 16384;
   if length(args) == 2
       grid_size = str2double(args{2});
   end
-  assert(isnumeric(grid_size) && grid_size > 0);
+  assert(isnumeric(grid_size));
+  assert(grid_size > 0);
 end
 
-[n_workers, grid_size] = parse_args(args)
+[n_workers, grid_size] = parse_args(args);
 disp(['Number of workers: ', num2str(n_workers)]);
 disp(['Grid size: ', num2str(grid_size)]);
 
@@ -52,36 +72,34 @@ function cluster = extract_hpc_cluster(hostname)
 end
 
 function s = integration2d(grid_size, n_workers, worker_index)
-    assert(grid_size > 0 && n_workers > 0 && worker_index > 0 && worker_index <= n_workers);
-    h = pi / grid_size;
-    mysum = 0.0;
-    workload = floor(grid_size / n_workers);
-    begin_index = workload * (worker_index - 1) + 1;
-    end_index = workload * worker_index;
+    assert(grid_size > 0);
+    assert(n_workers > 0);
+    assert(worker_index > 0);
+    assert(worker_index <= n_workers);
+    interval_size = pi / grid_size;
+    my_sum = 0.0;
+    grid_cells_per_worker = floor(grid_size / n_workers);
+    begin_index = grid_cells_per_worker * (worker_index - 1) + 1;
+    end_index = grid_cells_per_worker * worker_index;
     for i = begin_index:end_index
-        x = h * (i - 0.5);
+        x = interval_size * (i - 0.5);
         for j = 1:grid_size
-            y = h * (j - 0.5);
-            mysum = mysum + sin(x + y);
+            y = interval_size * (j - 0.5);
+            my_sum = my_sum + sin(x + y);
         end
     end
-    s = h^2 * mysum;
+    s = (interval_size^2) * my_sum;
 end
 
-if n_workers > 1
-    pool = gcp('nocreate');
-    if isempty(pool) || pool.NumWorkers ~= n_workers
-        if ~isempty(pool)
-            delete(pool);
-        end
-        parpool(n_workers);
-    end
-else
-    pool = [];
-end
+assert(abs(integration2d(100, 1, 1)) < 0.0001);
 
+% Start timer
 tic;
-partial_results = zeros(1, n_workers);
+
+partial_results = ones(n_workers);
+
+disp("BEFORE");
+disp(partial_results);
 
 parfor i = 1:n_workers
     partial_results(i) = integration2d(grid_size, n_workers, i);
@@ -89,6 +107,9 @@ end
 
 integral_value = sum(partial_results);
 duration_secs = toc;
+
+disp("AFTER");
+disp(partial_results);
 
 error_value = abs(integral_value - 0.0);
 core_secs = duration_secs * n_workers;
@@ -100,14 +121,7 @@ disp(['Time spent on all cores (seconds): ', num2str(core_secs)]);
 language = 'matlab';
 hpc_cluster = extract_hpc_cluster();
 disp('language,hpc_cluster,grid_size,n_workers,core_secs');
-disp([language ',', char(hpc_cluster) ',' num2str(grid_size) ',' num2str(n_workers) ',' num2str(core_secs)]);
-
-if ~isempty(pool)
-    delete(pool);
-end
-
-% For script execution, call the function if not loaded as a function
-% if ~isdeployed && isempty(getenv('MATLAB_TEST'))
-%     integration2d_main();
-% end
-
+disp([
+    language ',', char(hpc_cluster) ',' num2str(grid_size) ','
+    num2str(n_workers) ',' num2str(core_secs)
+  ]);
