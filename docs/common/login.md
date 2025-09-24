@@ -286,11 +286,9 @@ with the YouTube videos
         ```
 
 ## Test an editor
---------------
 
 Learn how to use an text editor at [Use a text editor](use_text_editor.md).
 
 ## Download and extract the tarball with exercises
------------------------------------------------
 
 Learn how to download and extract the tarball with exercises at [Use the tarball with exercises](use_tarball.md).
