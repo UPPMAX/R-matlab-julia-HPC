@@ -4,7 +4,7 @@
 
 #' Make the script more English
 is_package_installed <- function(package_name) {
-  required(package_name)
+  require(package_name)
 }
 
 if (!is_package_installed("testthat")) {
