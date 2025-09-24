@@ -1,5 +1,14 @@
 # Preparations of course project
 
+!!! info
+
+    Before the course, you must have done these three things:
+
+    - Prerequisite 1/3: You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
+    - Prerequisite 2/3: You are part of the course project and have a user account in a cluster and are able tro log in. **This material**
+    - Prerequisite 3/3: You have a good Zoom setup.
+    - Also, be a bit prepared about Linux environment and some basics of the languages we will cover. See the Prerequistes page](prereqs.md)
+
 ## Course project 
 
 As part of the hands-on, you will be given temporary access to a course project, which will be used for running the hands-on examples. There are some policies regarding this, that we ask that you follow:
