@@ -5,7 +5,7 @@
     Before the course, you must have done these three things:
 
     - Prerequisite 1/3: You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
-    - Prerequisite 2/3: You are part of the course project and have a user account in a cluster and are able tro log in. **This material**
+    - Prerequisite 2/3: You are part of the course project and have a user account in a cluster and are able to log in. **This material**
     - Prerequisite 3/3: You have a good Zoom setup.
     - Also, be a bit prepared about Linux environment and some basics of the languages we will cover. See the Prerequistes page](prereqs.md)
 
@@ -28,25 +28,15 @@ b.  The course project will be open 1-2 weeks after the course, giving the parti
     The process of getting an account can take several days,
     due to some waiting steps.
 
-## What to do
-
-Before the course, you must have done these three things:
-
-- Prerequisite 1/3: You have registered at our registration form.
-- Prerequisite 2/3: You are part of the course project and have a user account in a cluster and are able tro log in.
-- Prerequisite 3/3: You have a good Zoom setup.
-
-It is also of big value that you have basic knowledge in these topics
-
-
-
 ## Registration Form
 
-
+[registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
 
 ## I not already, register in SUPR
 
-## Ask for access to a NAISS course project
+Steps coming
+
+### Ask for access to a NAISS course project
 
 Choose a cluster where you already work today. 
 If you are a beginner and have no cluster resources yet, we recommend Tetralith at NSC.
