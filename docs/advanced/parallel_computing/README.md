@@ -125,7 +125,7 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
     The speedup, `S`, equals:
 
     ```text
-    S = t_enhanced / t_regular`
+    S = t_regular / t_enhanced`
     ```
 
     where:
@@ -135,6 +135,21 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
 
     In this context, the
     'enhanced process' is the calculation performed by multiple cores.
+
+    Do not be confused by another version of Amdahl's Law,
+    that is expressed and the calculation units used (and where the
+    numerator and denominator are swapped):
+
+    ```text
+    S =  n_used_enhanced / n_used_regular`
+    ```
+
+    where:
+
+    - `n_used_enhanced` is the number of calculation units (the 'work')
+      the enhanced process does
+    - `n_used_regular`  is the number of calculation units
+      the regular process has
 
 ??? hint "Isn't that Gustafson's Law?"
 
