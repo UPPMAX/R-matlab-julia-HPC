@@ -231,29 +231,51 @@ with the YouTube videos
 
 - **Directory names OK?**
 
-=== UPPMAX
+=== "NSC"
 
     - Create a working directory where you can code along.
 
-        - Example. If your username is "mrspock" and you are at UPPMAX, 
+        - Example. If your username is jlpicard and you are at NSC,
+        then we recommend you create this folder:
+
+        ``` console
+        mkdir /proj/hpc-python-spring-naiss/users/jlpicard
+        ```
+      
+=== "PDC"
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is sevenof9 and you are at PDC,
+        then we recommend you create this folder:
+
+        ``` console
+        mkdir /cfs/klemming/projects/supr/hpc-python-spring-naiss/sevenof9/
+        ```
+
+=== "UPPMAX"
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is "mrspock" and you are at UPPMAX,
     then we recommend you create this folder:
 
         ``` console
         mkdir /proj/hpc-python-pelle/mrspock/
         ```
 
-=== HPC2N
+=== "HPC2N"
 
     - Create a working directory where you can code along.
 
-        - Example. If your username is bbrydsoe and you are at HPC2N, 
+        - Example. If your username is bbrydsoe and you are at HPC2N,
         then we recommend you create this folder:
 
         ``` console
         mkdir /proj/nobackup/hpc-python-spring/bbrydsoe/
         ```
 
-=== LUNARC
+=== "LUNARC"
 
     - Create a working directory in your home space where you can code along.
 
@@ -263,37 +285,10 @@ with the YouTube videos
         mkdir $HOME/hpc-
         ```
 
-=== NSC
+## Test an editor
 
-    - Create a working directory where you can code along.
+Learn how to use an text editor at [Use a text editor](use_text_editor.md).
 
-        - Example. If your username is jlpicard and you are at NSC, 
-        then we recommend you create this folder:
+## Download and extract the tarball with exercises
 
-        ``` console
-        mkdir /proj/hpc-python-spring-naiss/users/jlpicard
-        ```
-      
-=== PDC
-
-    - Create a working directory where you can code along.
-
-        - Example. If your username is sevenof9 and you are at PDC, 
-        then we recommend you create this folder:
-
-        ``` console
-        mkdir /cfs/klemming/projects/supr/hpc-python-spring-naiss/sevenof9/
-        ```
-
-Test an editor
---------------
-
-Learn how to use an text editor at :ref:`common-use-text-editor`.
-
-Download and extract the tarball with exercises
------------------------------------------------
-
-Learn how to download and extract the tarball with exercises
-at :ref:`common-use-tarball`.
-
-
+Learn how to download and extract the tarball with exercises at [Use the tarball with exercises](use_tarball.md).

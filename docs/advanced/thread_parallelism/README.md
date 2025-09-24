@@ -47,7 +47,6 @@ Because it is one way to speedup (pun intended) the calculation.
 In this session, we are going to benchmark thread parallelism.
 
 
-
 ```mermaid
 flowchart TD
   user[User]
@@ -142,19 +141,19 @@ This calculation script is called by the Slurm script,
 i.e. not directly by a user.
 
 ???- hint "R: How do I run it anyways?"
-
-    You can run it as such:
-
-    ```bash
-    [interpreter] [script_name] [number_of_cores] [grid_size]
-    ```
-
-    On a login node, use 1 core and a grid size of 1 to start
-    the lightest calculation possible:
-
-    ```bash
-    Rscript integration2d.R 1 1
-    ```
+	
+	You can run it as such:
+	
+	```bash
+	[interpreter] [script_name] [number_of_cores] [grid_size]
+	```
+	
+	On a login node, use 1 core and a grid size of 1 to start
+	the lightest calculation possible:
+	
+	```bash
+	Rscript integration2d.R 1 1
+	```
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 

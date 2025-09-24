@@ -60,7 +60,8 @@ jobs:
       - name: unindent text
         run: ./scripts/unindent_text.sh
 
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      #- uses: gaurav-nelson/github-action-markdown-link-check@v1
+      - uses: tcort/github-action-markdown-link-check@v1
         with:
           config-file: 'mlc_config.json'
           use-quiet-mode: 'yes'

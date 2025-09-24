@@ -1,31 +1,51 @@
-# Pre-requirements
+# Prerequisites
 
 !!! info "Goal"
 
-    The goal of this page to make sure you can follow the course.
+    The goal of this page to make sure you can follow the course. There are 3 parts.
+
+    1. Needed knowledge of Linux environment (this page).
+    2. Preparing the technical settings on the [Course project preparation page](preparations_account.md).
+    3. [Actual logging in and preparation of the course folder](common/login.md).
 
 !!! warning "Start preparing early"
 
     Start preparing early!
 
-    The process of getting an account can take several days,
+    The process of getting an account (part 2 above) can take several days,
     due to some waiting steps.
 
-## Registration
+## Needed knowledge and suggested workshop/course material
 
-Before the course, you must have done these five things:
+- You are not a complete beginner of the Linux environment.
+    - To get familiar with the Linux/Bash command line,
+    we recommend the courses and material at [Linux101](https://hpc2n.github.io/linux-command-line-101/)
 
-- Prerequisite 1/5: You have registered at our registration form.
-- Prerequisite 2/5: You have registered at SUPR
-- Prerequisite 3/5: You have accepted access to the NAISS course project
-- Prerequisite 4/5: You are able to login (e.g. using SSH) to your HPC cluster
-- Prerequisite 5/5: You have a good Zoom setup
+- For the language you are interested in,
+you are welcome both as a user of the language and as an interested person.
+    - See our [other courses](./common/other_courses.md) to find some basic material.
+    
+## What to prepare
 
-## Working in Linux environment
+Before the course, you must have done these three things:
 
-- On your HPC cluster, you can:
-    - Use a text editor, for example, ``nano``
+### 1. You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia)
 
+### 2. You have done the steps in the [course project preparation page](preparations_account.md)
+
+### 3. [Actual logging in and preparation of the course folder](common/login.md)
+
+- If you have problems here there is a session at 9.00 every language day (Monday-Wednesday).
+
+### 4. You have a good Zoom setup
+
+- [Zoom application](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060928)
+- Working camera
+- Working microphone
+
+## Pro tip
+
+- [Learn about our clusters](common/hpc_clusters.md)
 
 <!-- 
 
