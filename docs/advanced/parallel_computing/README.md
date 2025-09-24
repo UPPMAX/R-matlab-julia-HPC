@@ -244,11 +244,25 @@ and, in a general form, is plotted like this:
     The length of the calculation that cannot be run in parallel,
     which is 4 time units.
 
-- In this example, what is the fastest relative speed?
+- In this example, what is the maximal possible speedup?
 
 ??? tip "Answer"
 
-    25%, as the calculation needs 4 time units to do 16 units of work.
+    400%, as the calculation takes 16 units of work on a single core,
+    and 4 time units on an infinite amount of cores.
+
+    In mathematical form, the speedup, `S`, equals:
+
+    ```text
+    S = t_regular / t_enhanced`
+    S = 16 / 4`
+    S = 4
+    S = 400%
+    ```
+    where:
+
+    - `t_enhanced` is the time the enhanced process takes
+    - `t_regular` is the time the regular/unenhanced process takes
 
 - For your research project, you need to run a lot of calculations.
   Each calculation takes 10 hours. How do you make optimal use
