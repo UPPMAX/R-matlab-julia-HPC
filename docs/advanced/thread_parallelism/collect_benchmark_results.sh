@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -EoRh ".*,.*" --include=*.out | sort | uniq
+grep -EoRh "^[jmlr].*,.*" --include=*.out | sort | uniq
