@@ -5,7 +5,7 @@
     The goal of this page to make sure you can follow the course. There are 3 parts.
 
     1. Needed knowledge of Linux environment (this page).
-    2. Preparing the technical settings on the [Course project preparation page](preparation_account.md).
+    2. Preparing the technical settings on the [Course project preparation page](preparations_account.md).
     3. [Actual logging in and preparation of the course folder](common/login.md).
 
 !!! warning "Start preparing early"
