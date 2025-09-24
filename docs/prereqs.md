@@ -4,11 +4,10 @@
 
     The goal of this page to make sure you can follow the course. There are 3 parts.
 
-    - One part is the needwd knowledge of Linux environment (this page).
-    - The second is preparing the technical settings on the
-[Course project preparation page](preparation_course.md).
-    - The third is the actual logging in and praparation of the course folder.
-If you have problems here there is a session at 9.00 every language day (Monday-Wednesday)
+    1. Needed knowledge of Linux environment (this page).
+    2. Preparing the technical settings on the [Course project preparation page](preparation_course.md).
+    3. Actual logging in and praparation of the course folder.
+        - If you have problems here there is a session at 9.00 every language day (Monday-Wednesday).
 
 !!! warning "Start preparing early"
 
