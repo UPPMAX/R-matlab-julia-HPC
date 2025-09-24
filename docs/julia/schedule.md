@@ -23,7 +23,7 @@ Time |Topic                                                      |Teacher
 12:00|LUNCH                                                      |.
 13:00|SLURM Batch scripts for Julia jobs                         |PO
 13.50|break                                                      |.
-14.05|Parallel and multithreaded functions                       |RB  (prev.PO)
+14.05|(used to be 'Parallel and multithreaded functions')        |.
 14.50|break                                                      |.
 15:00|Simultaneous session — UPPMAX: Jupyter and interactive work|BC
 .    |Simultaneous session — HPC2N: Jupyter                      |PO
