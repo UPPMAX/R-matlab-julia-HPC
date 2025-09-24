@@ -95,14 +95,9 @@ function main()
     @assert n_workers > 0 && n_workers < 256*256
     println("Grid size: $grid_size")
 
-    # Add workers for parallel computation
-    if n_workers > 1
-        addprocs(n_workers - 1)
-    end
-
     # Distribute integration2d to all workers
-    @everywhere function integration2d(grid_size::Int, n_workers::Int, worker_index::Int)
-        h = π / grid_size
+    function integration2d(grid_size::Int, n_workers::Int, worker_index::Int)
+        h = pi / grid_size
         mysum = 0.0
         workload = fld(grid_size, n_workers)
         begin_index = workload * (worker_index - 1) + 1
@@ -124,7 +119,7 @@ function main()
     results = ones(n_workers)
 
     Threads.@threads for worker_index = 1:n_workers
-       results[i] = integration2d(grid_size, n_workers, worker_index)
+       results[worker_index] = integration2d(grid_size, n_workers, worker_index)
     end
 
     integral_value = sum(results)
