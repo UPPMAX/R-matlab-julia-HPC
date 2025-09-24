@@ -103,8 +103,8 @@ Imagine a calculation that takes 16 time units, represented as this:
 > A calculation of 16 time units run on 1 core,
 > where square is a time unit of calculation.
 >
-> - Red square: a unit of calculation that cannot be run in parallel
-> - Green square: a unit of calculation that can be run in parallel
+> Red square: a unit of calculation that cannot be run in parallel.
+> Green square: a unit of calculation that can be run in parallel
 
 Using 2 calculation units, this results in:
 
@@ -113,23 +113,95 @@ Using 2 calculation units, this results in:
 > A calculation of 16 time units run on 2 cores,
 > where square is a time unit of calculation.
 >
-> - Red square: a unit of calculation that cannot be run in parallel
-> - Green square: a unit of calculation that can be run in parallel
-> - White square: a unit of calculation that is spent doing nothing
+> Red square: a unit of calculation that cannot be run in parallel.
+> Green square: a unit of calculation that can be run in parallel.
+> White square: a unit of calculation that is spent doing nothing
 
-This takes the calculation down to 10 time units. However, there
-are 4 units (out of 20) of calculation spent waiting, reducing
-efficiency to 80% (16 out of 20 units are spent on the calculation).
+This takes the calculation down from 16 to 10 time units.
+The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
+
+??? hint "How did you calculate the speedup exactly?"
+
+    The speedup, `S`, equals:
+
+    ```text
+    S = t_enhanced / t_regular`
+    ```
+
+    where:
+
+    - `t_enhanced` is the time the enhanced process takes
+    - `t_regular` is the time the regular/unenhanced process takes
+
+    In this context, the
+    'enhanced process' is the calculation performed by multiple cores.
+
+??? hint "Isn't that Gustafson's Law?"
+
+    Not directly. 
+
+    We do use the same term 'speedup' as is calculated in Gustafson's Law,
+    yet we apply it to compare between a single-core and a multi-core
+    process.
+
+    Gustafson's Law predict the maximum speedup, which is
+
+    ```text
+    S = s + (p * N) = N - ((N - 1) * s) = 1 + ((N - 1) * p)
+    ```
+
+    - `S` is the speedup
+    - `s` is fraction of the calculation that cannot be parallelized. The
+      's' stands 'serial'
+    - `p` is fraction of the calculation that can be parallelized
+    - `N` is the number of workers, in our case: cores
+
+However, 4 (out of 20) calculations units are spent waiting.
+This means that 16 / 20 = 80% of the calculation time
+is spent efficiently.
+
+??? hint "How did you calculate the efficiency exactly?"
+
+    The efficiency, `f`, equals:
+
+    ```text
+    f = t_used_effectively / t_total`
+    ```
+
+    where:
+
+    - `t_used_effectively` is the time spend on a calculation,
+      summed up over all cores
+    - `t_total` is the total time all spent by all cores
+
+    These two can be calculated as such:
+
+    ```text
+    t_used_effectively = (p + s) + (p * (N - 1))
+    t_total = time * N
+    ```
+
+    where:
+
+    - `s` is fraction of the calculation that cannot be parallelized. The
+      's' stands 'serial'
+    - `p` is fraction of the calculation that can be parallelized
+    - `N` is the number of workers, in our case: cores
+
 
 Here one can see this calculation for more cores:
 
-Program runtime                      |Number of cores|Time|Relative speed|Efficiency
--------------------------------------|---------------|----|--------------|----------
-![1 core](amdahls_law_example_1.png) |1              |16  |100%          |100%
-![2 cores](amdahls_law_example_2.png)|2              |10  |63%           |80%
-![3 cores](amdahls_law_example_3.png)|3              |8   |50%           |67%
-![4 cores](amdahls_law_example_4.png)|4              |7   |43%           |57%
-![6 cores](amdahls_law_example_6.png)|6              |6   |38%           |44%
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+Program runtime                      |Number of cores|Time|Speedup       |Efficiency
+-------------------------------------|---------------|----|--------------|-----------------------------------------------
+![1 core](amdahls_law_example_1.png) |1              |16  |16 / 16 = 100%|16 / 16 = 100%
+![2 cores](amdahls_law_example_2.png)|2              |10  |16 / 10 = 160%|(10 + 6) / (10 * 2) = 16 / 20 = 80%
+![3 cores](amdahls_law_example_3.png)|3              |8   |16 / 8 = 200% |(10 + 6 + 6) / (10 * 3) = 22 / 30 = 73%
+![4 cores](amdahls_law_example_4.png)|4              |7   |16 / 7 = 229% |(10 + 6 + 6 + 6) / (10 * 4) = 28 / 40 = 70%
+![6 cores](amdahls_law_example_6.png)|6              |6   |16 / 6 = 267% |(10 + 6 + 6 + 6 + 6) / (10 * 5) = 34 / 50 = 68%
+
+<!-- markdownlint-enable MD013 -->
 
 The best possible speed gain (as shown here) is called Amdahl's Law
 and, in a general form, is plotted like this:
