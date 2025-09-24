@@ -17,15 +17,12 @@ tags:
 | 11:05 | Slurm job scheduler and MATLAB                               | BB         |
 | 12:00 | LUNCH                                                        |            |
 | 13:00 | MATLAB GUI and Slurm                                         | PO, RP     |
-| 13:30 | Parallel and multithreaded functions                         | PO         |
-| 13:50 | break                                                        |            |
-| 14:00 | Cont’d Parallel and multithreaded functions                  | PO         |
-| 14:30 | Add-Ons                                                      | BC         |
-| 14:50 | Coffee break                                                 |            |
-| 15:05 | Simultaneous session — MATLAB in Jupyter                     | PO         |
+| 13:30 | Add-Ons                                                      | BC         |
+| 13:50 | Coffee break                                                 |            |
+| 14:05 | Simultaneous session — MATLAB in Jupyter                     | PO         |
 |   ... | Simultaneous session - LUNARC: MATLAB with Desktop On Demand | RP         |
 |   ... | (Simultaneous session - UPPMAX: Local desktop client)        | BC         |
-| 15:35 | Summary                                                      | Several    |
-| 15:40 | Evaluation                                                   | Several    |
-| 15:50 | Q&A on-demand                                                | Several    |
-| 16:00 | END                                                          |            |
+| 14:35 | Summary                                                      | Several    |
+| 14:40 | Evaluation                                                   | Several    |
+| 14:50 | Q&A on-demand                                                | Several    |
+| 15:00 | END                                                          |            |
