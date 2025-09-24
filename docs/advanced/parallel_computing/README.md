@@ -1,6 +1,6 @@
 # Parallel computation
 
-!!! info "Learning outcomes"
+!!! question "Learning outcomes"
 
     - Understand some types of parallel computation
     - Understand that the maximum effectiveness of parallelism depends
@@ -146,14 +146,12 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
 
     where:
 
-    - `n_used_enhanced` is the number of calculation units (the 'work')
-      the enhanced process does
-    - `n_used_regular`  is the number of calculation units
-      the regular process has
+    - `n_used_enhanced` is the number of calculation units (the 'work') the enhanced process does
+    - `n_used_regular` is the number of calculation units the regular process has
 
 ??? hint "Isn't that Gustafson's Law?"
 
-    Not directly. 
+    Not directly.
 
     We do use the same term 'speedup' as is calculated in Gustafson's Law,
     yet we apply it to compare between a single-core and a multi-core
@@ -166,8 +164,7 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
     ```
 
     - `S` is the speedup
-    - `s` is fraction of the calculation that cannot be parallelized. The
-      's' stands 'serial'
+    - `s` is fraction of the calculation that cannot be parallelized. The 's' stands 'serial'
     - `p` is fraction of the calculation that can be parallelized
     - `N` is the number of workers, in our case: cores
 
@@ -254,8 +251,8 @@ and, in a general form, is plotted like this:
     In mathematical form, the speedup, `S`, equals:
 
     ```text
-    S = t_regular / t_enhanced`
-    S = 16 / 4`
+    S = t_regular / t_enhanced
+    S = 16 / 4
     S = 4
     S = 400%
     ```
