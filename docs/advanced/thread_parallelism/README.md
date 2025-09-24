@@ -58,7 +58,7 @@ flowchart TD
   matlab_script[MATLAB script]
 
   user --> |Account, language| benchmark_script
-  benchmark_script --> |Language, number of cores| slurm_script
+  benchmark_script --> |Account, language, number of cores| slurm_script
   slurm_script --> julia_script
   slurm_script --> matlab_script
   slurm_script --> r_script
