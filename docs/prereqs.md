@@ -5,14 +5,16 @@
     The goal of this page to make sure you can follow the course. There are 3 parts.
 
     - One part is the needwd knowledge of Linux environment (this page).
-    - The second is preparing the technical settings on the [Course project preparation page](preparation_course.md).
-    - The third is the actual logging in and praparation of the course folder. If you have problems here there is a session at 9.00 every language day (Monday-Wednesday)
+    - The second is preparing the technical settings on the
+[Course project preparation page](preparation_course.md).
+    - The third is the actual logging in and praparation of the course folder.
+If you have problems here there is a session at 9.00 every language day (Monday-Wednesday)
 
 !!! warning "Start preparing early"
 
     Start preparing early!
 
-    The process of getting an account (part 2 above) can take several days, 
+    The process of getting an account (part 2 above) can take several days,
     due to some waiting steps.
 
 ## Needed knowledge and suggested workshop/course material
@@ -27,16 +29,18 @@
   To get familiar with HPC clusters,
   see :ref:`common-hpc-clusters`
 
-- For the language you are interested, you are welcome both as a user of the language and as a interested person.
+- For the language you are interested in,
+you are welcome both as a user of the language and as a interested person.
 See our [other courses](./common/other_courses.md) to find some basic material
     
-## What to prepare 
+## What to prepare
 
 Before the course, you must have done these three things:
 
 1. You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
-2. You are part of the course project and have a user account in a cluster and are able to log in. Go to [Course project preparation page](preparation_course.md).
-3. You have a good Zoom setup.
+2. You are part of the course project and have a user account in a cluster and are able to log in.
+Go to [Course project preparation page](preparation_course.md).
+4. You have a good Zoom setup.
 
 
 <!-- 
