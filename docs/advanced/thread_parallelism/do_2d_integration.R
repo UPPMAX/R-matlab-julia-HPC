@@ -14,7 +14,7 @@ if (!is_package_installed("doParallel")) {
   install.packages("doParallel", repos = "http://cran.us.r-project.org")
 }
 if (!is_package_installed("stringr")) {
-  install.packages("stringr"), repos = "http://cran.us.r-project.org")
+  install.packages("stringr", repos = "http://cran.us.r-project.org")
 }
 
 
