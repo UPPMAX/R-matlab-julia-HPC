@@ -1,20 +1,21 @@
 #!/bin/env Rscript
 
 # Step 1: install all packages
+if ("this" == "actually possible") {
+  #' Make the script more English
+  is_package_installed <- function(package_name) {
+    require(package_name)
+  }
 
-#' Make the script more English
-is_package_installed <- function(package_name) {
-  require(package_name)
-}
-
-if (!is_package_installed("testthat")) {
-  install.packages("testthat", repos = "http://cran.us.r-project.org")
-}
-if (!is_package_installed("doParallel")) {
-  install.packages("doParallel", repos = "http://cran.us.r-project.org")
-}
-if (!is_package_installed("stringr")) {
-  install.packages("stringr", repos = "http://cran.us.r-project.org")
+  if (!is_package_installed("testthat")) {
+    install.packages("testthat", repos = "http://cran.us.r-project.org")
+  }
+  if (!is_package_installed("doParallel")) {
+    install.packages("doParallel", repos = "http://cran.us.r-project.org")
+  }
+  if (!is_package_installed("stringr")) {
+    install.packages("stringr", repos = "http://cran.us.r-project.org")
+  }
 }
 
 
