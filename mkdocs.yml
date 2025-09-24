@@ -6,7 +6,7 @@ edit_uri: blob/main/docs/
 nav:
     - Overview: index.md
     - Prequisites:
-      - Prerequirements: prereqs.md
+      - Prerequisites: prereqs.md
       - Preparations with course project: preparations_account.md
       - Preparations on the cluster: preparations_cluster.md
     - Common:
