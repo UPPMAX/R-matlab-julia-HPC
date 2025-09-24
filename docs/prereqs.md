@@ -49,6 +49,10 @@ Before the course, you must have done these three things:
 - Working camera
 - Working microphone
 
+## Pro tip
+
+- [Learn about our clusters](common/hpc_clusters.md)
+
 <!-- 
 
 RJCB: I think this is misleading:
