@@ -141,7 +141,7 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
     numerator and denominator are swapped):
 
     ```text
-    S =  n_used_enhanced / n_used_regular`
+    S =  n_used_enhanced / n_used_regular
     ```
 
     where:
