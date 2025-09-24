@@ -205,6 +205,8 @@ install.packages(c("doParallel", "stringr", "testthat"), repos = "http://cran.us
 
 ![Benchmark results: efficiency](benchmark_results_efficiency.png)
 
+![Benchmark results: speedup](benchmark_results_speedup.png)
+
 ## Extra questions
 
 What went wrong here? Why is this a problem?
