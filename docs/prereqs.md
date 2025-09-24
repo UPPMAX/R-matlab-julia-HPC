@@ -6,7 +6,7 @@
 
     1. Needed knowledge of Linux environment (this page).
     2. Preparing the technical settings on the [Course project preparation page](preparation_course.md).
-    3. Actual logging in and praparation of the course folder.
+    3. Actual logging in and preparation of the course folder.
         - If you have problems here there is a session at 9.00 every language day (Monday-Wednesday).
 
 !!! warning "Start preparing early"
@@ -37,8 +37,11 @@ See our [other courses](./common/other_courses.md) to find some basic material
 Before the course, you must have done these three things:
 
 1. You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
-2. You have done the steps in the [Course project preparation page](preparation_course.md).
-3. You have a good Zoom setup.
+2. You have done the steps in the [Course project preparation page](preparations_course.md).
+3. [Actual logging in and preparation of the course folder](common/login.md).
+    - If you have problems here there is a session at 9.00 every language day (Monday-Wednesday).
+
+4. You have a good Zoom setup.
 
 
 <!-- 
