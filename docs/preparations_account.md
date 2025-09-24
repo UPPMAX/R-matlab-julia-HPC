@@ -11,7 +11,7 @@
     - Also, be a bit prepared about Linux environment and some basics
     of the languages we will cover. See the Prerequistes page](prereqs.md)
 
-## Course project 
+## Course project
 
 As part of the hands-on, you will be given temporary access to a course project, which will be used for running the hands-on examples. There are some policies regarding this, that we ask that you follow:
 
@@ -23,7 +23,7 @@ b.  The course project will be open 1-2 weeks after the course, giving the parti
 
     Anyone found to be misusing the course project, using up large amounts
     of the allocation for their own production runs,
-    will be removed from the course project. 
+    will be removed from the course project.
 
 !!! warning "Start preparing early"
 
@@ -45,10 +45,10 @@ You will get an email when being registered.
 
 ## Ask for access to a NAISS course project
 
-After registration, on [SUPR](https://supr.naiss.se/), 
+After registration, on [SUPR](https://supr.naiss.se/),
 ask for membership according to the list below.
 
-- Choose a cluster where you already work today. 
+- Choose a cluster where you already work today.
 - If you have no cluster resources yet, we recommend Tetralith at **NSC**.
 
 a. NSC: Course project: naiss2025/22-934
@@ -75,7 +75,7 @@ After having been granted membership [on SUPR, activate your user accounts](http
 
 !!! tip
 
-   [Log in to your HPC cluster](common/login.md#step-1-log-in).
+    [Log in to your HPC cluster](common/login.md#step-1-log-in).
 
 ## Be prepared and skip the first hour of workshop
 
