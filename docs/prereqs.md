@@ -18,13 +18,12 @@
 ## Needed knowledge and suggested workshop/course material
 
 - You are not a complete beginner of the Linux environment.
-  To get familiar with the Linux/Bash command line,
-  we recommend the courses and material at
-    - [Linux101](https://hpc2n.github.io/linux-command-line-101/)
+    - To get familiar with the Linux/Bash command line,
+    we recommend the courses and material at [Linux101](https://hpc2n.github.io/linux-command-line-101/)
 
 - For the language you are interested in,
-you are welcome both as a user of the language and as a interested person.
-    - See our [other courses](./common/other_courses.md) to find some basic material
+you are welcome both as a user of the language and as an interested person.
+    - See our [other courses](./common/other_courses.md) to find some basic material.
     
 ## What to prepare
 
