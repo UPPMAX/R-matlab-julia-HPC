@@ -27,6 +27,11 @@
     "maximum": 2
   },
 
+  "MD013": {
+    // Line length, CHANGED FROM 80 ('false' does not disable limit)
+    "line_length": 800
+  },
+
   // Standard markdown does not allow for valid indent code like this:
   //
   // ???- question "A question"
