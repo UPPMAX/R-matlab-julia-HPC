@@ -1,8 +1,9 @@
 #!/usr/bin/env julia
 
-using Distributed
+using Base.Threads
 using Printf
 using Dates
+
 
 # --- Helper for argument parsing ---
 function parse_args()
@@ -87,7 +88,10 @@ end
 # --- Main program ---
 function main()
     n_workers, grid_size = parse_args()
+    n_threads = Threads.nthreads()
     println("Number of workers: $n_workers")
+    println("Number of threads: $(n_threads)")
+    @assert n_workers == n_threads
     @assert n_workers > 0 && n_workers < 256*256
     println("Grid size: $grid_size")
 
@@ -115,7 +119,14 @@ function main()
 
     # Start timing
     starttime = now()
-    results = pmap(worker_index -> integration2d(grid_size, n_workers, worker_index), 1:n_workers)
+
+    # Use ones to detect an error
+    results = ones(n_workers)
+
+    Threads.@threads for worker_index = 1:n_workers
+       results[i] = integration2d(grid_size, n_workers, worker_index)
+    end
+
     integral_value = sum(results)
     endtime = now()
 

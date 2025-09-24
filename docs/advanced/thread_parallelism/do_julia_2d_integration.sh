@@ -114,6 +114,4 @@ fi
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
 
-julia do_2d_integration.jl "${SLURM_NPROCS}"
-
-
+julia --threads "${SLURM_NPROCS}" do_2d_integration.jl "${SLURM_NPROCS}"
