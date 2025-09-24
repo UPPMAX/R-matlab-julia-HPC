@@ -259,6 +259,7 @@ and, in a general form, is plotted like this:
     S = 4
     S = 400%
     ```
+    
     where:
 
     - `t_enhanced` is the time the enhanced process takes
