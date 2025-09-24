@@ -45,19 +45,19 @@ This table is not exhaustive, but lists the more popular libraries/packages and 
 
 | Package | NSC | PDC | C3SE | UPPMAX | HPC2N | LUNARC | 
 | ------- | --- | --- | ---- | ------ | ----- | ------ | 
-| dplyr | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
-| tidyr | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN |
-| caret | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN |
-| mlr | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN |
-| randomForest | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
+| dplyr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
+| tidyr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN |
+| caret | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN |
+| mlr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN |
+| randomForest | R | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
 | stringr | N/A | R | R | R_packages | R | R |
-| kernlab | N/A | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
+| kernlab | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
 
 Some centes have several packages installed with R, some have module "bundles" of R packages installed at the various centres: 
 
 - NSC (R/4.4.0): ~30 packages installed with R. You will have to install the rest yourself. 
 - PDC (R/4.4.2): ~1250 packages installed with R. In addition, there are many Bioconductor packages installed with the Rbio module 
-- C3SE: R(R/4.3.3): ~100 packages installed with R. You will have to install the rest yourself. 
+- C3SE: R(R/4.2.1): ~1340 packages installed with R. (The R/4.3.3 only has ~100 packages installed with R).  
 - HPC2N (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN, R-bundle-CRAN-extra, R-bundle-Bioconductor
 - UPPMAX (R/4.1.1): Almost all packages in CRAN and BioConductor are contained in the R_packages module, as is a small number of other R packages not in CRAN/BioConductor. Total of 23476 R packages are installed.  
 - LUNARC (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN and R-bundle-Bioconductor 
@@ -245,19 +245,19 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
         ```bash
         #!/bin/bash
         #SBATCH -A naiss2025-22-934 # Change to your own project ID
-            #SBATCH --time=00:10:00 # Asking for 10 minutes
-            #SBATCH -n 1 # Asking for 1 core
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
 
-            # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites
-            module load PDC/23.12 R/4.4.1-cpeGNU-23.12
+        # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites
+        module load PDC/23.12 R/4.4.1-cpeGNU-23.12
 
-            # Run your R script (here 'iris_ml.R')
-            R --no-save --quiet < iris_ml.R
+        # Run your R script (here 'iris_ml.R')
+        R --no-save --quiet < iris_ml.R
+        ```
 
+    === "UPPMAX" 
 
-      .. tab:: UPPMAX
-
-         Short serial example script for Rackham. Loading R/4.1.1 and R_packages/4.1.1
+        Short serial example script for Pelle. Loading R/4.1.1 and R_packages/4.1.1
 
          .. code-block:: sh
 
