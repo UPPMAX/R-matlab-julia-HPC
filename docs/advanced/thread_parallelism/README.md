@@ -66,15 +66,14 @@ flowchart TD
 
 ## Benchmark script
 
-This is the script that starts a benchmark,
+[`benchmark_2d_integration.sh`](benchmark_2d_integration.sh)
+is the script that starts a benchmark,
 by submitting multiple jobs to the Slurm queue,
 using the Slurm script below.
 
 The goal of the benchmark script is to
 do a fixed unit of work
 with increasingly more cores.
-
-The script is here: [benchmark_2d_integration.sh](benchmark_2d_integration.sh)
 
 As the script itself only does light calculations,
 you can run it directly. Here is how to call the script:
@@ -183,10 +182,116 @@ You will see the collected results.
 
 ## Exercises
 
+
 ## Exercise 1: start the benchmark on your HPC cluster
 
+The goal of this exercise is to start the benchmark script
+on your HPC cluster, as well as some troubleshooting.
+
+On your HPC cluster:
+
+- Download the benchmark script
+
+???- hint "How to do that?"
+
+    There are many ways to do so.
+
+    One way is to download it directly from
+    [this course's repository](https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/benchmark_2d_integration.sh):
+
+    ```bash
+    wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/benchmark_2d_integration.sh
+    ```
+
+- Download the Slurm script for your favorite language
+
+???- hint "How to do that?"
+
+    There are many ways to do so.
+
+    One way is to download it directly from
+    [this course's repository](https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/do_r_2d_integration.sh):
+
+    ```bash
+    wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/do_r_2d_integration.sh
+    ```
+
+- Download the calculation script of your favorite language
+
+???- hint "How to do that?"
+
+    There are many ways to do so.
+
+    One way is to download it directly from
+    [this course's repository](https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/do_2d_integration.R):
+
+    ```bash
+    wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/do_2d_integration.R
+    ```
+
+- Run the benchmark script
+
+???- hint "How to do that?"
+
+    [The 'Benchmark script' section](#benchmark-script) shows how:
+
+    ```bash
+    ./benchmark_2d_integration.sh staff r
+    ```
+
+- Check the Slurm output files for problems.
+  If there are problems: fix these, then run the benchmark script again
+
+???- hint "How to do that?"
+
+    There are many ways to do so.
+
+    One way is to show all files with the `.out` extension:
+
+    ```bash
+    cat *.out
+    ```
 
 ## Exercise 2: read the benchmark script
+
+Now that the benchmark script is running,
+we have the time to figure out what it is doing.
+
+- What is the most important single line in this script,
+  i.e. the line it is all about?
+
+???- hint "Answer"
+
+    For all HPC clusters except Dardel:
+
+    ```bash
+    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${script_name}"
+    ```
+
+    For the Dardel HPC cluster:
+
+    ```bash
+    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" -p main "${script_name}"
+    ```
+
+- In English, describe what the line does in general terms
+
+???- hint "Answer"
+
+    Schedule to run ...
+
+    - on some account
+    - with some amount of nodes
+    - with some amount of cores
+    - (on Dardel) on the `main` partition
+    - a script with some name
+
+- This line of code is part of a `for` loop.
+  In English, what does the `for` loop achieve?
+
+???- hint "Answer"
+
+    HIERO
 
 
 ## Exercise 3: read the Slurm script
@@ -223,15 +328,18 @@ What went wrong here? Why is this a problem?
 
 ## Troubleshooting
 
-### There is no package called ‘doParallel’
+## There is no package called ‘doParallel’
 
-Checking the log files:
+This is an R error.
+
+You can find it by checking the log files:
 
 ```bash
 cat *.out
 ```
 
-You see, for example:
+When you see, for example, the text below,
+it is clearly stated that there is no package called `doParallel`.
 
 ```text
 HPC cluster: tetralith
@@ -242,106 +350,93 @@ Error in library(doParallel, quietly = TRUE) :
 Execution halted
 ```
 
-Install that package from the terminal:
+To fix this, install that package from the terminal.
 
-- Load an R module
+First, load the R module(s) as loaded by the
+[`do_r_2d_integration.sh`](do_r_2d_integration.sh) script,
+for example:
 
 ```bash
 module load R/4.4.0-hpc1-gcc-11.3.0-bare
 ```
 
-Which gives output similar to:
+???- hint "Could you expand on that?"
 
-<!-- markdownlint-disable MD013 --><!-- Verbatim output cannot be split up over lines, hence will break 80 characters per line -->
+    Open the [`do_r_2d_integration.sh`](do_r_2d_integration.sh) script.
 
-```text
-Loading R module. Also loading a compatible "build environment"
-Setting environment variable OPENBLAS_NUM_THREADS=1. Increase this for
-parallel BLAS/LAPACK (linalg) execution, but don't run
-on a login node. The OMP_NUM_THREADS variable is also set to
-1, and you may increase this to control other aspects of R's threading. If
-using both types of parallelization in your R session, make sure
-OMP_NUM_THREADS * OPENBLAS_NUM_THREADS doesn't exceed 32 (the number of
-cores on the nodes)
+    Search for the part where modules are loaded, which is at the
+    bottom.
 
-Starting from R v. 3.6.3, NSC by default uses separate library
-directories for user installed packages down to bugfix versions, i.e.
-X.Y.Z, via the R_LIBS_USER environment variable. This is to avoid possible
-dependency mismatches between user installed packages from different R
-installations built differently. This has the effect that all
-user installed packages must be rebuilt when using different installed
-releases of R (following v. 3.6.3) at NSC. Setting the R_LIBS_USER
-environment variable to "${HOME}/R/%p-library/%v"
-(in your ~/.bashrc file for instance), restores the R standard default.
+    Find the lines where the modules are loaded for your favorite HPC cluster,
+    e.g.
 
-***************************************************
-You have loaded an gcc buildenv module
-***************************************************
-The buildenv-gcc module makes available:
- - Compilers: gcc, gfortran, etc.
- - MPI library with mpi-wrapped compilers: OpenMPI with mpicc, mpifort, etc.
- - Numerical libraries: OpenBLAS, LAPACK, ScaLAPACK, FFTW
+    ```bash
+    if [ ${hpc_cluster} == "rackham" ]
+    then
+      module load R_packages/4.1.1 >/dev/null 2>&1
+    fi
+    ```
 
-It also makes a set of dependency library modules available via
-the regular module command. Just do:
-  module avail
-to see what is available.
+    Copy the part that loads the modules, excluding the `>` and after,
+    and run these in a terminal on your favorite
+    HPC cluster:
 
-NOTE: You shoud never load build environments inside submitted jobs.
-(with the single exception of when using supercomputer time to compile code.)
-```
+    ```bash
+    module load R_packages/4.1.1
+    ```
 
-- Start R from the terminal
+    You have now loaded the packages needed for the calculation.
+
+
+With the correct modules loaded, start R from the terminal:
 
 ```bash
 R
 ```
 
-Output will be similar to:
+Within R, install all the packages needed:
 
-```text
-R version 4.4.0 (2024-04-24) -- "Puppy Cup"
-Copyright (C) 2024 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under certain conditions.
-Type 'license()' or 'licence()' for distribution details.
-
-R is a collaborative project with many contributors.
-Type 'contributors()' for more information and
-'citation()' on how to cite R or R packages in publications.
-
-Type 'demo()' for some demos, 'help()' for on-line help, or
-'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-```
-
-Within R, do:
+<!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
 ```r
-install.packages("doParallel")
+install.packages(c("testthat", "stringr", "doParallel"), repos = "http://cran.us.r-project.org")
 ```
 
-Output will be similar to:
+<!-- markdownlint-enable MD013 -->
 
-```text
-Warning in install.packages("doParallel") :
-  'lib = "/software/sse2/tetralith_el9/manual/R/4.4.0/g11/hpc1/lib64/R/library"' is not writable
-Would you like to use a personal library instead? (yes/No/cancel) yes
-Would you like to create a personal library
-‘/home/x_ricbi/R/x86_64-pc-linux-gnu-library/4.4.0’
-to install packages into? (yes/No/cancel) yes
---- Please select a CRAN mirror for use in this session ---
-also installing the dependencies ‘foreach’, ‘iterators’
+???- hint "Why those other packages too?"
 
-trying URL 'https://mirror.accum.se/mirror/CRAN/src/contrib/foreach_1.5.2.tar.gz'
-Content type 'application/x-gzip' length 89758 bytes (87 KB)
-==================================================
-downloaded 87 KB
+    Because you need those too: it saves you two more errors :-)
 
-[...]
-```
+???- hint "Why specify `repos`?"
+
+    To prevent you being prompted to select a so-called mirror.
+
+    If you really want to pick a mirror by hand, do:
+
+    ```r
+    install.packages(c("testthat", "stringr", "doParallel"))
+    ```
+
+???- hint "How does the output look like?"
+
+    Output will be similar to:
+
+    ```text
+    Warning in install.packages("doParallel") :
+      'lib = "/software/sse2/tetralith_el9/manual/R/4.4.0/g11/hpc1/lib64/R/library"' is not writable
+    Would you like to use a personal library instead? (yes/No/cancel) yes
+    Would you like to create a personal library
+    ‘/home/x_ricbi/R/x86_64-pc-linux-gnu-library/4.4.0’
+    to install packages into? (yes/No/cancel) yes
+
+    trying URL 'https://mirror.accum.se/mirror/CRAN/src/contrib/foreach_1.5.2.tar.gz'
+    Content type 'application/x-gzip' length 89758 bytes (87 KB)
+    ==================================================
+    downloaded 87 KB
+
+    [...]
+    ```
 
 <!-- markdownlint-enable MD013 -->
 
