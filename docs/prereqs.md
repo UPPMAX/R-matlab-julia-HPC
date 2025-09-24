@@ -35,11 +35,11 @@ See our [other courses](./common/other_courses.md) to find some basic material
 
 Before the course, you must have done these three things:
 
-### 1. You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
+### 1. You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia
 
-### 2. You have done the steps in the [course project preparation page](preparations_account.md).
+### 2. You have done the steps in the [course project preparation page](preparations_account.md)
 
-### 3. [Actual logging in and preparation of the course folder](common/login.md).
+### 3. [Actual logging in and preparation of the course folder](common/login.md)
 
 - If you have problems here there is a session at 9.00 every language day (Monday-Wednesday).
 
