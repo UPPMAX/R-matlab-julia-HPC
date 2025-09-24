@@ -20,16 +20,11 @@
 - You are not a complete beginner of the Linux environment.
   To get familiar with the Linux/Bash command line,
   we recommend the courses and material at
-
-- [Linux101](https://hpc2n.github.io/linux-command-line-101/)
-
-- You have a basic understanding of what an HPC cluster is.
-  To get familiar with HPC clusters,
-  see :ref:`common-hpc-clusters`
+    - [Linux101](https://hpc2n.github.io/linux-command-line-101/)
 
 - For the language you are interested in,
 you are welcome both as a user of the language and as a interested person.
-See our [other courses](./common/other_courses.md) to find some basic material
+    - See our [other courses](./common/other_courses.md) to find some basic material
     
 ## What to prepare
 
