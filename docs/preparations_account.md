@@ -15,9 +15,17 @@
 
 As part of the hands-on, you will be given temporary access to a course project, which will be used for running the hands-on examples. There are some policies regarding this, that we ask that you follow:
 
-a. You may be given access to the project before the course; please do not use the allocation for running your own codes in. Usage of the project before the course means the priority of jobs submitted to it goes down, diminishing the opportunity for you and your fellow participants to run the examples during the course.
+- You may be given access to the project before the course;
+    - please do not use the allocation for running your own codes in.
+    - Usage of the project before the course means the priority of jobs
+    submitted to it goes down, diminishing the opportunity for you and
+    your fellow participants to run the examples during the course.
 
-b.  The course project will be open 1-2 weeks after the course, giving the participants the opportunity to test run examples and shorter codes related to the course. During this time, we ask that you only use it for running course related jobs. Use your own discretion, but it could be: (modified) examples from the hands-on, short personal codes that have been modified to test things learned at the course, etc.
+- The course project will be open 1-2 weeks after the course,
+giving the participants the opportunity to test run examples and shorter codes related to the course.
+    - During this time, we ask that you only use it for running course related jobs.
+    Use your own discretion, but it could be: (modified) examples from the hands-on,
+    short personal codes that have been modified to test things learned at the course, etc.
 
 !!! info "Policies"
 
@@ -50,13 +58,12 @@ ask for membership according to the list below.
 
 - Choose a cluster where you already work today.
 - If you have no cluster resources yet, we recommend Tetralith at **NSC**.
-
-a. NSC: Course project: naiss2025/22-934
-b. C3SE: Course project: naiss2025/22-934
-c. UPPMAX: Course project: uppmax2025/2-360
-d. HPC2N: Course project: hpc2n2025/151
-e. LUNARC: Course project: lu2025/2-94
-f. PDC: Course project: naiss2025/22-934
+    - NSC: Course project: naiss2025/22-934
+    - C3SE: Course project: naiss2025/22-934
+    - UPPMAX: Course project: uppmax2025/2-360
+    - HPC2N: Course project: hpc2n2025/151
+    - LUNARC: Course project: lu2025/2-94
+    - PDC: Course project: naiss2025/22-934
 
 After doing so, it may take some days being granted membership.
 You will get an email when being granted access.
