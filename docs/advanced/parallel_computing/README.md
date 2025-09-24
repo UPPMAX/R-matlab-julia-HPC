@@ -213,6 +213,8 @@ and, in a general form, is plotted like this:
 - Which of the lines in the graph of Amdahl's Law corresponds
   with the worked-out example of 16 time units?
 
+??? tip "Answer"
+
     The red dotted line.
 
     Using a different unit (i.e. 'relative speed', instead of 'speedup')
@@ -227,13 +229,11 @@ and, in a general form, is plotted like this:
     The length of the calculation that cannot be run in parallel,
     which is 4 time units.
 
-
 - In this example, what is the fastest relative speed?
 
 ??? tip "Answer"
 
-  25%, as the calculation needs 4 time units to do 16 units of work.
-
+    25%, as the calculation needs 4 time units to do 16 units of work.
 
 - For your research project, you need to run a lot of calculations.
   Each calculation takes 10 hours. How do you make optimal use
@@ -278,8 +278,8 @@ and, in a general form, is plotted like this:
   What seemed to percentage of his/her code that could be run
   in parallel?
 
-![Benchmark of efficiency](benchmark_results_efficiency.png)
+![Benchmark of speedup](benchmark_results_speedup.png)
 
 ??? tip "Answer"
 
-    Around 50%.
+    TODO
