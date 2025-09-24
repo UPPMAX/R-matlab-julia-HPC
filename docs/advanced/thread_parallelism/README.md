@@ -1,11 +1,10 @@
 # Thread parallelism
 
-
 !!! info "Learning outcomes"
 
     - Understand how to schedule jobs with threaded parallelism
     - Understand how code achieves threaded parallelism
-    - Observe or conclude the costs of threaded parallelism
+    - Observe/conclude the costs/benefits of threaded parallelism
 
 ???- note "For teachers"
 
@@ -41,22 +40,56 @@
 
 ## Why thread parallelism is important
 
-<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+Because it is one way to speedup (pun intended) the calculation.
 
-Type of parallelism   |Number of cores|Number of nodes|Memory                      |Library
-----------------------|---------------|---------------|----------------------------|-------
-Single-threaded       |1              |1              |As given by operating system|None
-Threaded/shared memory|Multiple       |1              |Shared by all cores         |OpenMP
-Distributed           |Multiple       |Multiple       |Distributed                 |OpenMPI
+## Goal
 
-<!-- markdownlint-enable MD013 -->
+In this session, we are going to benchmark thread parallelism.
 
-## What is thread parallelism?
 
-- [ScienceDirect definition and overview of thread parallelism](https://www.sciencedirect.com/topics/computer-science/thread-parallelism)
 
-Calculations that can use multiple
-cores with a shared memory.
+```mermaid
+flowchart TD
+  user[User]
+  benchmark_script[Benchmark script]
+  slurm_script[Slurm script]
+  r_script[R script]
+  julia_script[Julia script]
+  matlab_script[MATLAB script]
+
+  user --> |Account, language| benchmark_script
+  benchmark_script --> |Language, number of cores| slurm_script
+  slurm_script --> julia_script
+  slurm_script --> matlab_script
+  slurm_script --> r_script
+```
+
+## Benchmark script
+
+This is the script that starts a benchmark,
+by submitting multiple jobs to the Slurm queue,
+using the Slurm script below.
+
+The goal of the benchmark script is to
+do a fixed unit of work
+with increasingly more cores.
+
+The script is here: [benchmark_2d_integration.sh](benchmark_2d_integration.sh)
+
+As the script itself only does light calculations,
+you can run it directly. Here is how to call the script:
+
+```bash
+./benchmark_2d_integration.sh [account] [language]
+```
+
+For example:
+
+```bash
+./benchmark_2d_integration.sh staff r
+```
+
+If you use the incorrect spelling, the script will help you.
 
 ## Slurm script
 
@@ -66,7 +99,10 @@ The goal of the script is to
 submit a calculation that uses threaded parallelism,
 with a custom amount of cores.
 
-???- hint "How do I run it?"
+This Slurm script is called by the benchmark script,
+i.e. not directly by a user.
+
+???- hint "How do I run it anyways?"
 
     You do not, instead you will run the benchmark script below.
 
@@ -85,11 +121,16 @@ with a custom amount of cores.
     sbatch -A staff -n 1 -p main do_r_2d_integration.sh
     ```
 
+There are 3 Slurm scripts, 1 per language:
+
 Language|Script with calculation
 --------|------------------------------------------
 Julia   |[do_julia_2d_integration.sh](do_julia_2d_integration.sh)
 MATLAB  |[do_matlab_2d_integration.sh](do_matlab_2d_integration.sh)
 R       |[do_r_2d_integration.sh](do_r_2d_integration.sh)
+
+Each of these Slurm scripts are called by the benchmark script,
+where the benchmark script supplies the desired number of cores.
 
 ## Calculation script
 
@@ -101,7 +142,7 @@ can be done by a custom amount of cores.
 This calculation script is called by the Slurm script,
 i.e. not directly by a user.
 
-???- hint "R: How do I run it?"
+???- hint "R: How do I run it anyways?"
 
     You can run it as such:
 
@@ -122,84 +163,36 @@ Julia   |[do_2d_integration.jl](do_2d_integration.jl)
 MATLAB  |[do_2d_integration.m](do_2d_integration.m)
 R       |[do_2d_integration.R](do_2d_integration.R)
 
-## Benchmark script
 
-This is the script that starts a benchmark,
-by submitting multiple jobs to the Slurm queue.
+## Script to collect the results
 
-The goal of the benchmark script is to
-do a fixed unit of work
-with increasingly more cores.
+The goal of the script to collect the benchmark results,
+[`collect_benchmark_results.sh`](collect_benchmark_results.sh),
+is to collect the output of the runs from the Slurm log files.
 
-The script is here: [benchmark_2d_integration.sh](benchmark_2d_integration.sh)
-
-As the script itself only does light calculations,
-you can run it directly.
-
-Here is how to call the script:
+Run [`collect_benchmark_results.sh`](collect_benchmark_results.sh) as such:
 
 ```bash
-./benchmark_2d_integration.sh [account] [language] [hpc_cluster]
+./collect_benchmark_results.sh
 ```
 
-For example:
-
-```bash
-./benchmark_2d_integration.sh staff r rackham
-```
-
-If you use the incorrect spelling, the script will help you.
-
-## Analysis script
-
-The goal of the analysis script is to
-observe the relation between
-the number of cores and core runtime.
+You will see the collected results.
 
 ## Exercises
 
-## Exercise 1: run the calculation script
-
-Our benchmark needs some libraries installed.
-
-The goal of this step is to find out if we are ready to go.
-
-Run the calculation script on the login node with a minimal sensible workload:
-
-<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
-
-Language|Script name                                 |How to run
---------|--------------------------------------------|---------------------------
-Julia   |[do_2d_integration.jl](do_2d_integration.jl)|`./do_2d_integration.jl 1 1`
-MATLAB  |[do_2d_integration.m](do_2d_integration.m)  |`./do_2d_integration.m 1 1`
-R       |[do_2d_integration.R](do_2d_integration.R)  |`./do_2d_integration.R 1 1`
-
-<!-- markdownlint-enable MD013 -->
-
-If there are errors about libraries missing, install these,
-for example, using the R command below:
-
-<!-- markdownlint-disable MD013 --><!-- Verbatim one-liners cannot be split up over lines, hence will break 80 characters per line -->
-
-```r
-install.packages(c("doParallel", "stringr", "testthat"), repos = "http://cran.us.r-project.org")
-```
-
-<!-- markdownlint-enable MD013 -->
-
-## Exercise 2: start the benchmark on your HPC cluster
+## Exercise 1: start the benchmark on your HPC cluster
 
 
-## Exercise 3: read the benchmark script
+## Exercise 2: read the benchmark script
 
 
-## Exercise 4: read the Slurm script
+## Exercise 3: read the Slurm script
 
-## Exercise 5: read the calculation script
+## Exercise 4: read the calculation script
 
-## Exercise 6: analyse the results
+## Exercise 5: analyse the results
 
-## Exercise 7: compare to others
+## Exercise 6: compare to others
 
 ![Benchmark results: core seconds](benchmark_results_core_seconds.png)
 

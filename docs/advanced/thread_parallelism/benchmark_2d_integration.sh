@@ -2,32 +2,34 @@
 #
 # Benchmark threaded parallelism.
 #
+# This scripr does by scheduling the same calculation
+# for a different number of cores.
+#
 # Usage:
 #
-#   ./benchmark_2d_integration.sh [account] [language] [hpc_cluster]
+#   ./benchmark_2d_integration.sh [account] [language]
 #
+# - [account]: your NAISS account
 # - [lanuage]: julia, matlab, r
-# - [hpc_cluster]: pelle, rackham
-#
 #
 # Example:
 #
-#   ./benchmark_2d_integration.sh staff r rackham
+#   ./benchmark_2d_integration.sh staff r
 #
 
 if [ "$#" -ne 2 ]; then
     echo "ERROR: Incorrect number of arguments"
-    echo "when calling 'benchmark_r_2d_integration_on_rackham.sh'."
+    echo "when calling 'benchmark_r_2d_integration.sh'."
     echo " "
     echo "Please supply all two arguments."
     echo " "
     echo "General usage:"
     echo " "
-    echo "  ./benchmark_r_2d_integration_on_rackham.sh [account] [language]"
+    echo "  ./benchmark_r_2d_integration.sh [account] [language]"
     echo " "
     echo "Examples:"
     echo " "
-    echo "  ./benchmark_r_2d_integration_on_rackham.sh staff r"
+    echo "  ./benchmark_r_2d_integration.sh staff r"
     echo " "
     exit 42
 fi
