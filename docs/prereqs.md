@@ -24,7 +24,7 @@
 - For the language you are interested in,
 you are welcome both as a user of the language and as an interested person.
     - See our [other courses](./common/other_courses.md) to find some basic material.
-    
+
 ## What to prepare
 
 Before the course, you must have done these three things:

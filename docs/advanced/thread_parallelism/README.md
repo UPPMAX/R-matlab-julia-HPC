@@ -141,19 +141,19 @@ This calculation script is called by the Slurm script,
 i.e. not directly by a user.
 
 ???- hint "R: How do I run it anyways?"
-	
-	You can run it as such:
-	
-	```bash
-	[interpreter] [script_name] [number_of_cores] [grid_size]
-	```
-	
-	On a login node, use 1 core and a grid size of 1 to start
-	the lightest calculation possible:
-	
-	```bash
-	Rscript integration2d.R 1 1
-	```
+
+    You can run it as such:
+    
+    ```bash
+    [interpreter] [script_name] [number_of_cores] [grid_size]
+    ```
+    
+    On a login node, use 1 core and a grid size of 1 to start
+    the lightest calculation possible:
+    
+    ```bash
+    Rscript integration2d.R 1 1
+    ```
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
@@ -1052,7 +1052,7 @@ Exercises
                             #SBATCH --time=00:20:00      # requested time
                             #SBATCH --error=job.%J.err   # error file
                             #SBATCH --output=job.%J.out  # output file
-			                   #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
+                               #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
 
                             ml purge > /dev/null 2>&1
                             ml GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1
@@ -1282,11 +1282,11 @@ Exercises
                        #!/bin/bash
                        #SBATCH -A lu202u-w-yz      # your project_ID
                        #SBATCH -J job-parallel      # name of the job
-                       #SBATCH -n 4	            # nr. tasks
+                       #SBATCH -n 4                # nr. tasks
                        #SBATCH --time=00:20:00      # requested time
                        #SBATCH --error=job.%J.err   # error file
                        #SBATCH --output=job.%J.out  # output file
-		                 #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
+                         #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
 
                        ml purge
                        ml Julia/1.9.3-linux-x86_64
@@ -1427,7 +1427,7 @@ Exercises
                        #SBATCH --time=00:20:00      # requested time
                        #SBATCH --error=job.%J.err   # error file
                        #SBATCH --output=job.%J.out  # output file
-		                 #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
+                         #SBATCH --reservation=RPJM-course*FIXME* # reservation (optional)
 
                        ml purge > /dev/null 2>&1
                        ml GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1
@@ -1475,7 +1475,7 @@ Exercises
       .. tab:: Matlab
 
             .. code-block:: matlab
-	
+    
                 % Create a table with two columns: ID and Value
                 ID = (1:10000)';  % Column for IDs
                 Value = (3:2:20001)'; % Column for values
@@ -1554,7 +1554,7 @@ Exercises
 
                 # Print the mean value
                 println(mean_value_parallel)
-	
+    
       .. tab:: R
 
             .. code-block:: r
@@ -1602,12 +1602,12 @@ Exercises
                 stopCluster(cl)
 
                 # Print the results
-                print(sum(result)/10000)	
+                print(sum(result)/10000)    
 
       .. tab:: Matlab
 
             .. code-block:: matlab
-	
+    
                 % Create a table with two columns: ID and Value
                 ID = (1:10000)';  % Column for IDs
                 Value = (3:2:20001)'; % Column for values
