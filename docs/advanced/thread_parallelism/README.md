@@ -47,7 +47,6 @@ Because it is one way to speedup (pun intended) the calculation.
 In this session, we are going to benchmark thread parallelism.
 
 
-
 ```mermaid
 flowchart TD
   user[User]
@@ -149,7 +148,7 @@ i.e. not directly by a user.
     ```bash
     [interpreter] [script_name] [number_of_cores] [grid_size]
     ```
-
+	
     On a login node, use 1 core and a grid size of 1 to start
     the lightest calculation possible:
 
