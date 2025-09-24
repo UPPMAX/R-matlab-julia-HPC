@@ -1,30 +1,42 @@
-# Pre-requirements
+# Prerequisites
 
 !!! info "Goal"
 
-    The goal of this page to make sure you can follow the course.
+    The goal of this page to make sure you can follow the course. There are 3 parts.
+
+    - One part is the needwd knowledge of Linux environment (this page).
+    - The second is preparing the technical settings on the [Course project preparation page](preparation_course.md).
+    - The third is the actual logging in and praparation of the course folder. If you have problems here there is a session at 9.00 every language day (Monday-Wednesday)
 
 !!! warning "Start preparing early"
 
     Start preparing early!
 
-    The process of getting an account can take several days,
+    The process of getting an account (part 2 above) can take several days, 
     due to some waiting steps.
 
-## Registration
+## Needed knowledge and suggested workshop/course material
 
-Before the course, you must have done these five things:
+- You are not a complete beginner of the Linux environment.
+  To get familiar with the Linux/Bash command line,
+  we recommend the courses and material at
 
-- Prerequisite 1/5: You have registered at our registration form.
-- Prerequisite 2/5: You have registered at SUPR
-- Prerequisite 3/5: You have accepted access to the NAISS course project
-- Prerequisite 4/5: You are able to login (e.g. using SSH) to your HPC cluster
-- Prerequisite 5/5: You have a good Zoom setup
+- [Linux101](https://hpc2n.github.io/linux-command-line-101/)
 
-## Working in Linux environment
+- You have a basic understanding of what an HPC cluster is.
+  To get familiar with HPC clusters,
+  see :ref:`common-hpc-clusters`
 
-- On your HPC cluster, you can:
-    - Use a text editor, for example, ``nano``
+- For the language you are interested, you are welcome both as a user of the language and as a interested person.
+See our [other courses](./common/other_courses.md) to find some basic material
+    
+## What to prepare 
+
+Before the course, you must have done these three things:
+
+1. You have registered at our [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
+2. You are part of the course project and have a user account in a cluster and are able to log in. Go to [Course project preparation page](preparation_course.md).
+3. You have a good Zoom setup.
 
 
 <!-- 
