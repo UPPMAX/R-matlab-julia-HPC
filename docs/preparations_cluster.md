@@ -18,9 +18,9 @@ These are the things you need to follow the course:
 
 ## The steps to make
 
-- Step 1: (Log in!](common/login.md)
-- Step 2: Make a work directory!
-- 
+- Step 1: [Log in!](common/login.md)
+- Step 2: [Make a work directory!](common/login.md#step-2-make-a-work-directory)
+- Step 3: [Test to work in the text editor ``nano``](common/use_text_editor.md)
 
 Need help? Contact support:
 
