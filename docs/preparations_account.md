@@ -32,63 +32,52 @@ b.  The course project will be open 1-2 weeks after the course, giving the parti
 
 [registration form](https://www.hpc2n.umu.se/events/courses/2025/fall/r-matlab-julia).
 
-## I not already, register in SUPR
+## Get access SUPR project management (first time user) 
 
-Steps coming
+Register at [SUPR](https://supr.naiss.se/person/register/).
 
-### Ask for access to a NAISS course project
+After doing so, it may take one evening before you are registered.
+You will get an email when being registered.
 
-Choose a cluster where you already work today. 
-If you are a beginner and have no cluster resources yet, we recommend Tetralith at NSC.
+## Ask for access to a NAISS course project
 
-e) NSC:
+After registration, on [SUPR](https://supr.naiss.se/), ask for membership according to the list below.
 
-i) Course project: naiss2025-22-934
+- Choose a cluster where you already work today. 
+- If you are a beginner and have no cluster resources yet, we recommend Tetralith at **NSC**.
 
-a) C3SE:
+e. NSC: Course project: naiss2025/22-934
+a. C3SE: Course project: naiss2025/22-934
+b. UPPMAX: Course project: uppmax2025/2-360
+c. HPC2N: Course project: hpc2n2025/151
+d. LUNARC: Course project: lu2025/2-94
+f. PDC: Course project: naiss2025/22-934
 
-i) Course project: naiss2025-22-934
+After doing so, it may take some days being granted membership.
+You will get an email when being granted access.
 
-b) UPPMAX:
+##  Activate you user account (first time user)
 
-i) Course project: uppmax2025-2-360
+After having been granted membership [on SUPR, activate your user accounts](https://supr.naiss.se/account/)
 
-c) HPC2N:
+- After doing so, it may take some hours before your user account is activated.
 
-i) Course project: hpc2n2025-151
+## First time log in
 
-d) LUNARC:
+- You will get an email when being granted access. Check trash bin if you don't find it after some time.
+- Follow the steps in the email about logging in and changing password.
 
-i) Course project: lu2025-2-94
+!!! tip
 
+   [Log in to your HPC cluster](common/login.md#step-1-log-in).
 
+## Be prepared and skip the first hour of workshop
 
+Follow the steps in [Log in to your HPC cluster](common/login.md#step-1-log-in) to
 
-f) PDC:
+- get used to different login methods (ssh and desktop environment/ThinLinc).
+- test an editor (``nano``)
 
-i) Course project: naiss2025-22-934
+!!! tip
 
-## Working in Linux environment
-
-- On your HPC cluster, you can:
-    - Use a text editor, for example, ``nano``
-
-
-<!-- 
-
-RJCB: I think this is misleading:
-learners perfectly get away with this,
-as we teachers tell all they need to know.
-I think these study prerequirements do more damage than good.
-
-These are the things you need to follow the course:
-
-- You have a basic understanding of what an HPC cluster is.
-  To get familiar with HPC clusters,
-  see [our material on HPC clusters](common/hpc_clusters.md)
-- You are not a complete beginner of the Linux environment.
-  To get familiar with the Linux/Bash command line,
-  we recommend the courses and material at
-  [our collection of other courses](common/other_courses.md)
-
--->
+    If you need help we have a login support session 9.00-9.45 each language days (the first 3 of the workshop).
