@@ -231,39 +231,7 @@ with the YouTube videos
 
 - **Directory names OK?**
 
-=== UPPMAX
-
-    - Create a working directory where you can code along.
-
-        - Example. If your username is "mrspock" and you are at UPPMAX,
-    then we recommend you create this folder:
-
-        ``` console
-        mkdir /proj/hpc-python-pelle/mrspock/
-        ```
-
-=== HPC2N
-
-    - Create a working directory where you can code along.
-
-        - Example. If your username is bbrydsoe and you are at HPC2N,
-        then we recommend you create this folder:
-
-        ``` console
-        mkdir /proj/nobackup/hpc-python-spring/bbrydsoe/
-        ```
-
-=== LUNARC
-
-    - Create a working directory in your home space where you can code along.
-
-        - Example. Create this folder:
-
-        ``` console
-        mkdir $HOME/hpc-
-        ```
-
-=== NSC
+=== "NSC"
 
     - Create a working directory where you can code along.
 
@@ -274,7 +242,7 @@ with the YouTube videos
         mkdir /proj/hpc-python-spring-naiss/users/jlpicard
         ```
       
-=== PDC
+=== "PDC"
 
     - Create a working directory where you can code along.
 
@@ -283,6 +251,38 @@ with the YouTube videos
 
         ``` console
         mkdir /cfs/klemming/projects/supr/hpc-python-spring-naiss/sevenof9/
+        ```
+
+=== "UPPMAX"
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is "mrspock" and you are at UPPMAX,
+    then we recommend you create this folder:
+
+        ``` console
+        mkdir /proj/hpc-python-pelle/mrspock/
+        ```
+
+=== "HPC2N"
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is bbrydsoe and you are at HPC2N,
+        then we recommend you create this folder:
+
+        ``` console
+        mkdir /proj/nobackup/hpc-python-spring/bbrydsoe/
+        ```
+
+=== "LUNARC"
+
+    - Create a working directory in your home space where you can code along.
+
+        - Example. Create this folder:
+
+        ``` console
+        mkdir $HOME/hpc-
         ```
 
 ## Test an editor
