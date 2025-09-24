@@ -235,7 +235,7 @@ with the YouTube videos
 
     - Create a working directory where you can code along.
 
-        - Example. If your username is "mrspock" and you are at UPPMAX, 
+        - Example. If your username is "mrspock" and you are at UPPMAX,
     then we recommend you create this folder:
 
         ``` console
@@ -246,7 +246,7 @@ with the YouTube videos
 
     - Create a working directory where you can code along.
 
-        - Example. If your username is bbrydsoe and you are at HPC2N, 
+        - Example. If your username is bbrydsoe and you are at HPC2N,
         then we recommend you create this folder:
 
         ``` console
@@ -267,7 +267,7 @@ with the YouTube videos
 
     - Create a working directory where you can code along.
 
-        - Example. If your username is jlpicard and you are at NSC, 
+        - Example. If your username is jlpicard and you are at NSC,
         then we recommend you create this folder:
 
         ``` console
@@ -278,22 +278,19 @@ with the YouTube videos
 
     - Create a working directory where you can code along.
 
-        - Example. If your username is sevenof9 and you are at PDC, 
+        - Example. If your username is sevenof9 and you are at PDC,
         then we recommend you create this folder:
 
         ``` console
         mkdir /cfs/klemming/projects/supr/hpc-python-spring-naiss/sevenof9/
         ```
 
-Test an editor
+## Test an editor
 --------------
 
-Learn how to use an text editor at :ref:`common-use-text-editor`.
+Learn how to use an text editor at [Use a text editor](use_text_editor.md).
 
-Download and extract the tarball with exercises
+## Download and extract the tarball with exercises
 -----------------------------------------------
 
-Learn how to download and extract the tarball with exercises
-at :ref:`common-use-tarball`.
-
-
+Learn how to download and extract the tarball with exercises at [Use the tarball with exercises](use_tarball.md).
