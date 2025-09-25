@@ -533,7 +533,7 @@ Then, when you get the allocation, do one of:
 
 In some centres (UPPMAX and NSC) this will start a Firefox session with the Jupyter notebook interface.
 
-![Jupyter Julia](../../img/Jupyter_julia.png)
+![Jupyter Julia](../img/Jupyter_julia.png)
 
 If not, see below.
 
@@ -671,7 +671,7 @@ In any case, IJulia is now installed!
 
     - Try out one or two of the scripts from the exercise folder ``batchJulia``.
     - First create an interactive session with the right Slurm commands to the ``interactive``/``salloc`` command.
-       - use the commands from the batch job script belonging to the julia script at `examples of batch scripts for julia <https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia.html#examples-of-batch-scripts-for-julia>`_
+       - use the commands from the batch job script belonging to the julia script at [examples of batch scripts for julia](https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia.html#examples-of-batch-scripts-for-julia){:target="_blank"}
 
 
 !!! summary
