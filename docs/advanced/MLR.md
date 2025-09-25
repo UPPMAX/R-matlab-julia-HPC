@@ -43,15 +43,15 @@ There are differences depending on the centre as well as minor differences depen
 
 This table is not exhaustive, but lists the more popular libraries/packages and what the module is called at the various centres. Please do ``module spider`` on them to see how to load them as well as which versions are available. 
 
-| Package | NSC | PDC | C3SE | UPPMAX | HPC2N | LUNARC | 
-| ------- | --- | --- | ---- | ------ | ----- | ------ | 
-| dplyr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
-| tidyr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN |
-| caret | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN |
-| mlr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN |
-| randomForest | R | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
-| stringr | N/A | R | R | R_packages | R | R |
-| kernlab | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | 
+| Package | NSC | PDC | C3SE | UPPMAX (Rackham) | UPPMAX (Pelle) | HPC2N | LUNARC | 
+| ------- | --- | --- | ---- | ------ | ------ | ----- | ------ | 
+| dplyr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN | 
+| tidyr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN |
+| caret | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN |
+| mlr   | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN |
+| randomForest | R | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN | 
+| stringr | N/A | R | R | R_packages | R | R | R |
+| kernlab | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN | 
 
 Some centes have several packages installed with R, some have module "bundles" of R packages installed at the various centres: 
 
@@ -59,7 +59,8 @@ Some centes have several packages installed with R, some have module "bundles" o
 - PDC (R/4.4.2): ~1250 packages installed with R. In addition, there are many Bioconductor packages installed with the Rbio module 
 - C3SE: R(R/4.2.1): ~1340 packages installed with R. (The R/4.3.3 only has ~100 packages installed with R).  
 - HPC2N (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN, R-bundle-CRAN-extra, R-bundle-Bioconductor
-- UPPMAX (R/4.1.1): Almost all packages in CRAN and BioConductor are contained in the R_packages module, as is a small number of other R packages not in CRAN/BioConductor. Total of 23476 R packages are installed.  
+- UPPMAX - Rackham (R/4.1.1): Almost all packages in CRAN and BioConductor are contained in the R_packages module, as is a small number of other R packages not in CRAN/BioConductor. Total of 23476 R packages are installed.  
+- UPPMAX - Pelle (R/4.4.2): ~100 packages installed with R. In addition many installed with R-bundle-CRAN, R-bundle-Bioconductor
 - LUNARC (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN and R-bundle-Bioconductor 
 
 ## Running your code
@@ -115,7 +116,7 @@ Some centes have several packages installed with R, some have module "bundles" o
         $ Rscript iris_ml.R 
         ```
 
-    === "UPPMAX"
+    === "UPPMAX (Rackham)"
 
         All the needed packages are part of the R_packages module. 
 
