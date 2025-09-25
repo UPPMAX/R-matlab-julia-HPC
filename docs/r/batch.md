@@ -406,11 +406,11 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
     === "UPPMAX"
 
-        Short parallel example (using package "Rmpi", so we need to load the module R_packages/4.1.1 instead of R/4.1.1 and we need to load a suitable openmpi module, openmpi/4.0.3)
+        Short parallel example (using package "Rmpi", so we need to load both the module R/4.4.2-gfbf-2024a and the module R-bundle-CRAN/2024.11-foss-2024a. A suitable openmpi module, OpenMPI/5.0.3-GCC-13.3.0, is loaded with these.)
 
         ```bash
         #!/bin/bash -l
-        #SBATCH -A uppmax2025-Y-ZZZ
+        #SBATCH -A uppmax2025-2-360
         #Asking for 10 min.
         #SBATCH -t 00:10:00
         #SBATCH -n 8
@@ -419,8 +419,8 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         export OMPI_MCA_btl_openib_allow_ib=1
             
         ml purge > /dev/null 2>&1
-        ml R_packages/4.1.1
-        ml openmpi/4.0.3
+        ml R/4.4.2-gfbf-2024a
+        ml OpenMPI/5.0.3-GCC-13.3.0,
             
         mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out 
         ```   
@@ -428,7 +428,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
     === "HPC2N"
 
-        Short parallel example (using packages "Rmpi"). Loading R/4.1.2 and its prerequisites. 
+        Short parallel example (using packages "Rmpi"). Loading R/4.4.1 and its prerequisites, as well as R-bundle-CRAN/2024.06 and its prerequisites. 
        
         ```bash
         #!/bin/bash
@@ -440,8 +440,8 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         export OMPI_MCA_mpi_warn_on_fork=0
             
         ml purge > /dev/null 2>&1
-        ml GCC/11.2.0  OpenMPI/4.1.1
-        ml R/4.1.2
+        ml GCC/13.2.0 R/4.4.1
+        ml OpenMPI/4.1.6 R-bundle-CRAN/2024.06
             
         mpirun -np 1 Rscript Rmpi.R 
         ``` 
@@ -592,14 +592,33 @@ There are generally either not GPUs on the login nodes or they cannot be accesse
 
 #### UPPMAX only
 
-Rackham’s compute nodes do not have GPUs. You need to use Snowy for that. 
+!!! note "Rackham/Snowy or Pelle"
 
-You need to use this batch command (for x being the number of cards, 1 or 2):
+    - Rackham’s compute nodes do not have GPUs. You need to use Snowy for that. 
+    - The new cluster Pelle has GPUs. 
+
+On Rackham, you need to use this batch command (for x being the number of cards, 1 or 2):
 
 ```bash
 #SBATCH -M snowy
 #SBATCH --gres=gpu:x
 ``` 
+
+On Pelle, you need to use this batch command 
+
+for L40s GPUs (up to 10 GPU cards) 
+
+```bash
+#SBATCH -p gpu
+#SBATCH --gpus:l40s:<number of GPUs>
+```
+
+or for H100 GPUs (up to 2 GPU cards) 
+
+```bash
+#SBATCH -p gpu
+#SBATCH --gpus=h100:<number of GPUs>
+```
 
 #### HPC2N
 
@@ -710,6 +729,8 @@ and ``x`` is number of GPU cards
 
 === "UPPMAX"
 
+    **Rackham/Snowy**:  
+
     ```bash 
     #!/bin/bash -l 
     #SBATCH -A uppmax2025-Y-ZZZ 
@@ -726,10 +747,31 @@ and ``x`` is number of GPU cards
     #SBATCH --error=error%J.error
             
     ml purge > /dev/null 2>&1
-    ml R/4.1.1 R_packages/4.1.1
+    ml uppmax R/4.1.1 R_packages/4.1.1
             
     R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
     ```           
+
+    **Pelle (1 L40s)**: 
+
+    ```bash 
+    #!/bin/bash -l
+    #SBATCH -A uppmax2025-Y-ZZZ
+    #Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH -t HHH:MM:SS
+    #SBATCH -p gpu
+    #SBATCH --gpus:l40s:1
+    #Writing output and error files
+    #SBATCH --output=output%J.out
+    #SBATCH --error=error%J.error
+
+    ml purge > /dev/null 2>&1
+    # Reloading a module that got removed with purge 
+    ml Java/17 
+    ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a 
+
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```
 
 === "HPC2N"
 
@@ -747,9 +789,9 @@ and ``x`` is number of GPU cards
     #SBATCH --error=error%J.error
             
     ml purge > /dev/null 2>&1
-    #R version 4.0.4 is the only one compiled for CUDA 
-    ml GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5
-    ml R/4.0.4
+    #R version 4.4.1 
+    ml GCC/13.2.0 R/4.4.1 OpenMPI/4.1.6 R-bundle-CRAN/2024.06
+    ml CUDA/12.6.0
             
     R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
     ``` 
@@ -841,7 +883,7 @@ and ``x`` is number of GPU cards
           
         ```bash
         #!/bin/bash -l
-        #SBATCH -A uppmax2025-Y-ZZZ # Change to your own after the course
+        #SBATCH -A uppmax2025-2-360 # Change to your own after the course
         #SBATCH --time=00:10:00 # Asking for 10 minutes
         #SBATCH -n 1 # Asking for 1 core
              
@@ -851,6 +893,8 @@ and ``x`` is number of GPU cards
         # Run your R script 
         Rscript add2.R 2 3 
         ```
+
+        Same for Pelle, except you should use R/4.4.2-gfbf-2024a 
 
 !!! note "Solution for HPC2N" 
 
