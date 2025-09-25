@@ -116,7 +116,9 @@ Some centes have several packages installed with R, some have module "bundles" o
         $ Rscript iris_ml.R 
         ```
 
-    === "UPPMAX (Rackham)"
+    === "UPPMAX"
+
+        **Rackham**: 
 
         All the needed packages are part of the R_packages module. 
 
@@ -124,6 +126,15 @@ Some centes have several packages installed with R, some have module "bundles" o
         $ module load R_packages/4.1.1
         $ Rscript iris_ml.R
         ```
+
+        **Pelle**: 
+
+        The needed packages are in R, R-bundle-CRAN modules, and R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2. 
+
+        ```bash
+        $ module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+        $ Rscript iris_ml.R 
+        ``` 
 
     === "HPC2N" 
 
@@ -266,7 +277,7 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
         #SBATCH --time=00:10:00 # Asking for 10 minutes
         #SBATCH -n 1 # Asking for 1 core
         # Load any modules you need, here R/4.4.2-gfbf-2024a and R-bundle-CRAN/2024.11-foss-2024a and R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
-        module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor 
+        module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2 
 
         # Run your R script (here 'iris_ml.R')
         R --no-save --quiet < iris_ml.R
@@ -274,7 +285,7 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
 
     === "HPC2N" 
 
-        Short serial example for running on Kebnekaise. Loading R/4.2.1 and prerequisites, also R-bundle-Bioconductor/3.15-R-4.2.1
+        Short serial example for running on Kebnekaise. Loading R/4.4.1 and prerequisites, also R-bundle-Bioconductor/3.19-R-4.4.1 and R-bundle-CRAN/2024.06 
 
         ```bash
         #!/bin/bash
@@ -282,133 +293,130 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
         #SBATCH --time=00:10:00 # Asking for 10 minutes
         #SBATCH -n 1 # Asking for 1 core
 
-        # Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor/3.15-R-4.2.1
-            module load GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
+        # Load any modules you need, here R/4.4.1 and prerequisites + R-bundle-CRAN/2024.06 and R-bundle-Bioconductor/3.19-R-4.4.1 
+        module load GCC/13.2.0 R/4.4.1 
+        module load OpenMPI/4.1.6 R-bundle-CRAN/2024.06 R-bundle-Bioconductor/3.19-R-4.4.1
 
-            # Run your R script (here 'iris_ml.R')
-            R --no-save --quiet < iris_ml.R
+        # Run your R script (here 'iris_ml.R')
+        R --no-save --quiet < iris_ml.R
+        ```
 
+    === "LUNARC" 
 
-      .. tab:: LUNARC
+        Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites, also a suitable R-bundle-Bioconductor
 
-         Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites, also a suitable R-bundle-Bioconductor
+        ```bash
+        #!/bin/bash
+        #SBATCH -A lu2025-2-94 # Change to your own project ID
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
 
-         .. code-block:: sh
+        # Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor
+        module load GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
 
-            #!/bin/bash
-            #SBATCH -A lu202w-x-yz # Change to your own project ID
-            #SBATCH --time=00:10:00 # Asking for 10 minutes
-            #SBATCH -n 1 # Asking for 1 core
+        # Run your R script (here 'iris_ml.R')
+        R --no-save --quiet < iris_ml.R
+        ```
 
-            # Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor
-            module load GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
+    === "NSC" 
 
-            # Run your R script (here 'iris_ml.R')
-            R --no-save --quiet < iris_ml.R
+        Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare
 
-      .. tab:: NSC
+        NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
 
-         Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss2025-22-934 # Change to your own project ID
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
 
-         NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
+        # Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare
+        module load R/4.4.0-hpc1-gcc-11.3.0-bare
 
-         .. code-block:: sh
+        # Run your R script (here 'iris_ml.R')
+        R --no-save --quiet < iris_ml.R
+        ```
 
-            #!/bin/bash
-            #SBATCH -A naiss202t-uw-xyz # Change to your own project ID
-            #SBATCH --time=00:10:00 # Asking for 10 minutes
-            #SBATCH -n 1 # Asking for 1 core
+    === "PDC"
 
-            # Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare
-            module load R/4.4.0-hpc1-gcc-11.3.0-bare
+        Short serial example for running on Dardel. Loading R/4.4.1-cpeGNU-23.12 and prerequisites
 
-            # Run your R script (here 'iris_ml.R')
-            R --no-save --quiet < iris_ml.R
+        NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
 
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss2025-23-934 # Change to your own project ID
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
 
-      .. tab:: PDC
+        # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites
+        module load PDC/23.12 R/4.4.1-cpeGNU-23.12
 
-         Short serial example for running on Dardel. Loading R/4.4.1-cpeGNU-23.12 and prerequisites
+        # Run your R script (here 'iris_ml.R')
+        R --no-save --quiet < iris_ml.R
+        ```
 
-         NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
+    Send the script to the batch:
 
-         .. code-block:: sh
+    ```bash
+    $ sbatch <batch script>
+    ```
 
-            #!/bin/bash
-            #SBATCH -A naiss202t-uw-xyz # Change to your own project ID
-            #SBATCH --time=00:10:00 # Asking for 10 minutes
-            #SBATCH -n 1 # Asking for 1 core
+    **NOTE** you could also run the R code inside the batch script with "Rscript program.R". 
 
-            # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites
-            module load PDC/23.12 R/4.4.1-cpeGNU-23.12
-
-            # Run your R script (here 'iris_ml.R')
-            R --no-save --quiet < iris_ml.R
-
-   Send the script to the batch:
-
-   .. code-block:: console
-
-      $ sbatch <batch script>
-
-
-
-Parallel jobs
-'''''''''''''
-
-.. type-along::
-
-   .. tabs::
-
-      .. tab:: UPPMAX
-
-         Short ML example for running on Snowy.
-
-         .. code-block:: sh
-
-            #!/bin/bash
-            #SBATCH -A uppmax202t-u-xyz
-            #Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH --exclusive
-            #SBATCH -p node
-            #SBATCH -n 1
-            #Writing output and error files
-            #SBATCH --output=output%J.out
-            #SBATCH --error=error%J.error
-
-            ml R_packages/4.1.1
-
-            R --no-save --no-restore -f Rscript.R
+### Parallel jobs
 
 
-      .. tab:: HPC2N
+!!! hint "Type-along" 
 
-         Short ML example for running on Kebnekaise.
+    === "UPPMAX" 
 
-         .. code-block:: sh
+        Short ML example for running on Pelle.
 
-            #!/bin/bash
-            #SBATCH -A hpc2n202u-xyz # Change to your own project ID
-            #Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH -n 1
-            #Writing output and error files
-            #SBATCH --output=output%J.out
-            #SBATCH --error=error%J.error
+        ```bash
+        #!/bin/bash
+        #SBATCH -A uppmax2025-2-360
+        #Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH --exclusive
+        #SBATCH -n 1
+        #Writing output and error files
+        #SBATCH --output=output%J.out
+        #SBATCH --error=error%J.error
 
-            ml purge > /dev/null 2>&1
-            module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
+        ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
 
-            R --no-save --no-restore -f Rscript.R
+        Rscript MyRscript.R
+        ```
 
-      .. tab:: LUNARC
+    === "HPC2N" 
 
-         Short ML example for running on Cosmos.
+        Short ML example for running on Kebnekaise.
 
-         .. code-block:: sh
+        ```bash 
+         #!/bin/bash
+         #SBATCH -A hpc2n2025-151 # Change to your own project ID
+         #Asking for 10 min.
+         #SBATCH -t 00:10:00
+         #SBATCH -n 1
+         #Writing output and error files
+         #SBATCH --output=output%J.out
+         #SBATCH --error=error%J.error
 
-            #!/bin/bash
+         ml purge > /dev/null 2>&1
+         module load GCC/13.2.0 R/4.4.1
+         module load OpenMPI/4.1.6 R-bundle-CRAN/2024.06
+         module load R-bundle-Bioconductor/3.19-R-4.4.1
+
+         Rscript MyRscript.R
+         ```
+
+    === "LUNARC"
+
+        Short ML example for running on Cosmos.
+
+        ```bash
+        #!/bin/bash
             #SBATCH -A lu202u-x-yz # Change to your own project ID
             #Asking for 10 min.
             #SBATCH -t 00:10:00

@@ -214,7 +214,7 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
         If you want, you can try loading the libraries inside R without loading either the R-bundle-CRAN or R-bundle-Bioconductor modules and see that almost nothing is installed. 
 
         ```bash 
-        $ module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a  
+        $ module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2  
         $ R
             
         R version 4.4.2 (2024-10-31) -- "Pile of Leaves"

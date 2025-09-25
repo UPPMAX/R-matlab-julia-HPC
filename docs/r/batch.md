@@ -420,7 +420,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
             
         ml purge > /dev/null 2>&1
         ml R/4.4.2-gfbf-2024a
-        ml OpenMPI/5.0.3-GCC-13.3.0,
+        ml OpenMPI/5.0.3-GCC-13.3.0 R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
             
         mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out 
         ```   
@@ -768,8 +768,7 @@ and ``x`` is number of GPU cards
     ml purge > /dev/null 2>&1
     # Reloading a module that got removed with purge 
     ml Java/17 
-    ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a 
-
+    ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
     R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
     ```
 
