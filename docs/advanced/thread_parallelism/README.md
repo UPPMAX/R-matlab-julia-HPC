@@ -141,7 +141,7 @@ This calculation script is called by the Slurm script,
 i.e. not directly by a user.
 
 ???- hint "R: How do I run it anyways?"
-
+    
     You can run it as such:
     
     ```bash
