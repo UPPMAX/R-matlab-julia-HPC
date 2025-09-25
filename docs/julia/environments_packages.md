@@ -389,7 +389,7 @@ UPPMAX Central library
 
 A selection of the Julia packages and libraries installed on UPPMAX and HPC2N are:
 
-=== UPPMAX
+=== "UPPMAX"
 
     The Julia application at UPPMAX comes with several preinstalled packages.
     A selection of the Julia packages and libraries installed on UPPMAX are:
@@ -407,7 +407,7 @@ A selection of the Julia packages and libraries installed on UPPMAX and HPC2N ar
     - DistributedArrays
     - PlotlyJS
 
-=== HPC2N/LUNARC/PDC
+=== "HPC2N/LUNARC/PDC"
 
     The Julia versions installed at these centers include only the Base and Standard library
         modules.
