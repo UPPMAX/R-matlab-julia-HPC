@@ -389,29 +389,27 @@ UPPMAX Central library
 
 A selection of the Julia packages and libraries installed on UPPMAX and HPC2N are:
 
-.. tabs::
+=== UPPMAX
 
-   .. tab:: UPPMAX
+    The Julia application at UPPMAX comes with several preinstalled packages.
+    A selection of the Julia packages and libraries installed on UPPMAX are:
 
- The Julia application at UPPMAX comes with several preinstalled packages.
- A selection of the Julia packages and libraries installed on UPPMAX are:
+    - BenchmarkTools
+    - CSV
+    - CUDA
+    - MPI
+    - Distributed
+    - IJulia
+    - Plots
+    - PyPlot
+    - Gadfly
+    - DataFrames
+    - DistributedArrays
+    - PlotlyJS
 
-          - BenchmarkTools
-          - CSV
-          - CUDA
-          - MPI
-          - Distributed
-          - IJulia
-          - Plots
-          - PyPlot
-          - Gadfly
-          - DataFrames
-          - DistributedArrays
-          - PlotlyJS
+=== HPC2N/LUNARC/PDC
 
-   .. tab:: HPC2N/LUNARC/PDC
-
-        The Julia versions installed at these centers include only the Base and Standard library
+    The Julia versions installed at these centers include only the Base and Standard library
         modules.
 
 Exercises
@@ -469,17 +467,17 @@ Exercises
                 (new_pack) pkg> activate
 
 
-.. keypoints::
+!!! summary
 
-- Installation of Julia packages can be done with Julia package manager.
-- You install packages with the ``add`` command
-- With a virtual environment you can tailor an environment with specific versions for Julia
+    - Installation of Julia packages can be done with Julia package manager.
+    - You install packages with the ``add`` command
+    - With a virtual environment you can tailor an environment with specific versions for Julia
      and packages, not interfering with other installed Julia versions and packages.
-- Make it for each project you have for reproducibility.
-- The environments in Julia are lightweight so it is recommended to start a new environment
+    - Make it for each project you have for reproducibility.
+    - The environments in Julia are lightweight so it is recommended to start a new environment
      for each project that you are developing.
-- Environments in Julia created by Julia itself so third party software are not required.
-- You can check for centrally installed packages at UPPMAX
-    - from the Julia shell
-    - from BASH shell with ``ml help julia/<version>``
+    - Environments in Julia created by Julia itself so third party software are not required.
+    - You can check for centrally installed packages at UPPMAX
+        - from the Julia shell
+       - from BASH shell with ``ml help julia/<version>``
 
