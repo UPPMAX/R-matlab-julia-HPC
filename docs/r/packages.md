@@ -83,19 +83,17 @@ We might want to know where the ``R`` interpreter will be searching for packages
 	
 === "HPC2N"
    
-    Load ``R``, e.g. version 4.1.2 and start the Interpreter
+    Load ``R``, e.g. version R/4.4.1 and start the Interpreter
 
     ```bash
-    $ ml GCC/11.2.0  OpenMPI/4.1.1  R/4.1.2
+    $ ml GCC/13.2.0 R/4.4.1 
     $ R
     ```
 
     Then check find the path of the library using the ``libPaths()`` function.
 
     ```R
-    > .libPaths()
-    [1] "/pfs/stor10/users/home/b/bbrydsoe/R-packages-4.1.2"                                     
-    [2] "/cvmfs/ebsw.hpc2n.umu.se/amd64_ubuntu2004_bdw/software/R/4.1.2-foss-2021b/lib/R/library"
+    > [1] "/cvmfs/ebsw.hpc2n.umu.se/amd64_ubuntu2004_bdw/software/R/4.4.1-gfbf-2023b/lib/R/library"
     ```
 
 === "LUNARC"
@@ -174,17 +172,11 @@ UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer larger or smaller amounts of prein
 
 !!! note "HPC2N"
 
-    - On HPC2N most of these (around 750 packages) come with the ``R`` module and additional ones in the ``R-bundle-Bioconductor``. However, for the newer versions of R, fewer packages are included with the core R module and the packages on CRAN can be found in the module ``R-bundle-CRAN``. Use ``module spider <module>/<version>`` to check for prerequisites, as usual. 
+    - On HPC2N it depends on the version, but for R/4.4.1 only a smaller number of these (around 110 packages) come with the ``R`` module, but additional ones are in the ``R-bundle-Bioconductor``. Most of the packages are in the module ``R-bundle-CRAN`` and a few more in ``R-bundle-CRAN-extra``. For older versions of R, most packages come with the R module (around 750 packages). Older versions of R also usually have OpenMPI as prerequisite. Use ``module spider <module>/<version>`` to check for prerequisites, as usual. 
 
 !!! note "UPPMAX"
 
-    On UPPMAX the module ``R_packages`` is a package library containing almost all packages in the CRAN and BioConductor repositories. As of 2023-10-11 there are a total of:
-
-    - A total of 23476 R packages are installed
-    - A total of 23535 packages are available in CRAN and BioConductor
-        - 19809 CRAN packages are installed, out of 19976 available
-        - 3544 BioConductor-specific packages are installed, out of 3559 available
-    - 121 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
+    On UPPMAX the module ``R`` contains only a smaller number of packages (110), but almost all packages in the CRAN and BioConductor repositories are in the ``R-bundle-CRAN`` respectively ``R-bundle-Bioconductor`` modules. 
 
 !!! note "LUNARC"
 
@@ -219,22 +211,15 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
 
     !!! note "Solution"
 
-        If you want, you can try loading the libraries inside R without loading the R_packages module and see almost nothing is installed. 
+        If you want, you can try loading the libraries inside R without loading either the R-bundle-CRAN or R-bundle-Bioconductor modules and see that almost nothing is installed. 
 
         ```bash 
-
-        $ module load R/4.1.1 
-        Nearly all CRAN and BioConductor packages are installed and available by
-        loading the module R_packages/4.1.1
-        $ module load R_packages/4.1.1
-        R_packages/4.1.1: The RStudio packages pane is disabled when loading this module, due to performance issues. All packages are still available.
-        R_packages/4.1.1: For more information and instructions to re-enable it, see 'module help R_packages/4.1.1'
-            
+        $ module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a  
         $ R
             
-        R version 4.1.1 (2021-08-10) -- "Kick Things"
-        Copyright (C) 2021 The R Foundation for Statistical Computing
-        Platform: x86_64-pc-linux-gnu (64-bit)
+        R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
+        Copyright (C) 2024 The R Foundation for Statistical Computing
+        Platform: x86_64-pc-linux-gnu
 
         R is free software and comes with ABSOLUTELY NO WARRANTY.
         You are welcome to redistribute it under certain conditions.
@@ -262,11 +247,12 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
     !!! note "Solution"
 
         ```bash
-        $ module load GCC/11.2.0  OpenMPI/4.1.1 R/4.1.2
+        $ module load GCC/13.2.0 R/4.4.1
+        $ module load OpenMPI/4.1.6 R-bundle-CRAN/2024.06 
         $ R
-        R version 4.1.2 (2021-11-01) -- "Bird Hippie"
-        Copyright (C) 2021 The R Foundation for Statistical Computing
-        Platform: x86_64-pc-linux-gnu (64-bit)
+        R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+        Copyright (C) 2024 The R Foundation for Statistical Computing
+        Platform: x86_64-pc-linux-gnu
 
         R is free software and comes with ABSOLUTELY NO WARRANTY.
         You are welcome to redistribute it under certain conditions.
@@ -281,8 +267,6 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
         Type 'demo()' for some demos, 'help()' for on-line help, or
         'help.start()' for an HTML browser interface to help.
         Type 'q()' to quit R.
-
-        [Previously saved workspace restored]
 
         > library(pillar)
         > library(caret)
@@ -551,27 +535,27 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
 
     OR (option if UPPMAX, HPC2N, NSC, PDC, or C3SE)
 
-    - UPPMAX: ``echo R_LIBS_USER="/proj/r-matlab-julia-uppmax/<yourdir>/R-packages-%V" > ~/.Renviron``
-    - HPC2N: ``echo R_LIBS_USER="/proj/nobackup/r-matlab-julia/<yourdir>/R-packages-%V" > ~/.Renviron``
-    - NSC: ``echo R_LIBS_USER="/proj/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
-    - PDC: ``echo R_LIBS_USER="/cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-%V" > ~/.Renviron``
+    - UPPMAX: ``echo R_LIBS_USER="/proj/r-matlab-julia-pelle/<yourdir>/R-packages-%V" > ~/.Renviron``
+    - HPC2N: ``echo R_LIBS_USER="/proj/nobackup/fall-courses/<yourdir>/R-packages-%V" > ~/.Renviron``
+    - NSC: ``echo R_LIBS_USER="/proj/courses-fall-2025/<yourdir>/R-packages-%V" > ~/.Renviron``
+    - PDC: ``echo R_LIBS_USER="/cfs/klemming/projects/supr/courses-fall-2025/<yourdir>/R-packages-%V" > ~/.Renviron``
     - C3SE: ``echo R_LIBS_USER=/mimer/NOBACKUP/groups/courses-fall-2025/<yourdir>/R-packages-%V" > ~/.Renviron``
 
     3) Create directory for R packages:
 
     - LUNARC: ``mkdir -p $HOME/R-packages-4.2.1``
     - UPPMAX:
-        - ``mkdir -p $HOME/R-packages-4.1.1``
-        - OR ``mkdir -p /proj/r-py-jl-m-rackham/<yourdir>/R-packages-4.1.1``
+        - ``mkdir -p $HOME/R-packages-4.4.2``
+        - OR ``mkdir -p /proj/r-matlab-julia-pelle/<yourdir>/R-packages-4.1.1``
     - HPC2N:
         - ``mkdir -p $HOME/R-packages-4.2.1``
-        - OR ``mkdir -p /proj/nobackup/r-py-jl-m/<yourdir>/R-packages-4.2.1``
+        - OR ``mkdir -p /proj/nobackup/fall-courses/<yourdir>/R-packages-4.2.1``
     - NSC: 
         - ``mkdir -p $HOME/R-packages-4.2.2``
-        - OR ``mkdir -p /proj/r-matlab-julia-naiss/users/<yourdir>/R-packages-4.2.2``
+        - OR ``mkdir -p /proj/courses-fall-2025/users/<yourdir>/R-packages-4.2.2``
     - PDC: 
         - ``mkdir -p $HOME/R-packages-4.4.1``
-        - OR ``mkdir -p /cfs/klemming/projects/snic/r-matlab-julia-naiss/<yourdir>/R-packages-4.4.1```
+        - OR ``mkdir -p /cfs/klemming/projects/supr/courses-fall-2025/<yourdir>/R-packages-4.4.1```
     - C3SE: 
         - ``mkdir -p $HOME/R-packages-4.2.1``
         - OR ``mkdir -p /mimer/NOBACKUP/groups/courses-fall-2025/<yourdir>/R-packages-4.2.1``
@@ -644,7 +628,7 @@ For PDC the package ``Rmpi`` does not work correctly, so we will instead use the
 
 !!! important "Install a package with automatic download"
 
-    1. First do the setup of `.Renviron` and create the directory for installing R packages (Recommended load R version 4.1.1 on Rackham, 4.1.2 on Kebnekaise, 4.2.1 on LUNARC, 4.2.2 on NSC, and 4.4.1 on PDC)
+    1. First do the setup of `.Renviron` and create the directory for installing R packages (Recommended load R version 4.4.1 on Pelle, 4.1.2 on Kebnekaise, 4.2.1 on LUNARC, 4.2.2 on NSC, and 4.4.1 on PDC)
     2. From the command line. Suggestion: ``anomalize``
     3. From inside R. Suggestion: ``BGLR``
     4. Start R and see if the library can be loaded. 
@@ -654,15 +638,15 @@ For PDC the package ``Rmpi`` does not work correctly, so we will instead use the
     Remember to pick a repo that is nearby, to install from: https://cran.r-project.org/mirrors.html 
 
 
-!!! important "Solution for 4.1.1 on Rackham (change <user>)" 
+!!! important "Solution for 4.4.2 on Pelle (change <user>)" 
 
-    Solution is very similar for the other centres - just change the R version (for instance to 4.2.1 for LUNARC and 4.1.2 for HPC2N and 4.2.2 for NSC and 4.4.1 for PDC).  
+    Solution is very similar for the other centres - just change the R version (for instance to 4.2.1 for LUNARC and 4.4.1 for HPC2N and 4.0.0 for NSC and 4.4.2 for PDC).  
 
     === "Setup"
       
         ```bash
         $ echo R_LIBS_USER="$HOME/R-packages-%V" > ~/.Renviron
-        $ mkdir -p $HOME/R-packages-4.1.1
+        $ mkdir -p $HOME/R-packages-4.4.2
         ```	    
 
     === "Command line"

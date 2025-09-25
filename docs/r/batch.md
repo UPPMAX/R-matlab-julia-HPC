@@ -15,7 +15,7 @@
 
 !!! note "Compute allocations in this workshop" 
 
-    - Pelle/Rackham: `` ``
+    - Pelle/Rackham: ``uppmax2025-2-360``
     - Kebnekaise: ``hpc2n2025-151``
     - Cosmos: ``lu2025-2-94``
     - Tetralith: ``naiss2025-22-934``
@@ -24,7 +24,7 @@
 
 !!! note "Storage space for this workshop" 
 
-    - Pelle/Rackham: ``/proj/????``
+    - Pelle/Rackham: ``/proj/r-matlab-julia-pelle``
     - Kebnekaise: ``/proj/nobackup/fall-courses``
     - Tetralith: ``/proj/courses-fall-2025/users/``
     - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
@@ -137,16 +137,16 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
     === "UPPMAX"
 
-         Short serial example script for Rackham. Loading R/4.1.1
+         Short serial example script for Pelle. Loading R/4.4.2
 
          ```bash
          #!/bin/bash -l
-         #SBATCH -A uppmax2025-Y-ZZZ # Course project id. Change to your own project ID after the course
+         #SBATCH -A uppmax2025-2-360 # Course project id. Change to your own project ID after the course
          #SBATCH --time=00:10:00 # Asking for 10 minutes
          #SBATCH -n 1 # Asking for 1 core
             
-         # Load any modules you need, here R/4.1.1
-         module load R/4.1.1
+         # Load any modules you need, here R/4.4.2  
+         module load R/4.4.2-gfbf-2024a 
             
          # Run your R script (here 'hello.R')
          R --no-save --quiet < hello.R
@@ -154,7 +154,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
       
     === "HPC2N"
 
-        Short serial example for running on Kebnekaise. Loading R/4.1.2 and prerequisites   
+        Short serial example for running on Kebnekaise. Loading R/4.4.1 and prerequisites   
        
         ```bash
         #!/bin/bash
@@ -162,8 +162,8 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         #SBATCH --time=00:10:00 # Asking for 10 minutes
         #SBATCH -n 1 # Asking for 1 core
        
-        # Load any modules you need, here R/4.1.2 and prerequisites 
-        module load GCC/11.2.0  OpenMPI/4.1.1  R/4.1.2
+        # Load any modules you need, here R/4.4.1 and prerequisites 
+        module load GCC/13.2.0 R/4.4.1
             
         # Run your R script (here 'hello.R')
         R --no-save --quiet < hello.R
@@ -250,17 +250,17 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
    
     === "UPPMAX"
 
-        Short parallel example (Since we are using packages "foreach" and "doParallel", you need to use module R_packages/4.1.1 instead of R/4.1.1. 
+        Short parallel example (Since we are using packages "foreach" and "doParallel", you need to use module R/4.4.2-gfbf-2024a and the R-bundle-CRAN/2024.11-foss-2024a module. 
 
         ```bash
         #!/bin/bash -l
-        #SBATCH -A uppmax2025-Y-ZZZ
+        #SBATCH -A uppmax2025-2-360
         #SBATCH -t 00:10:00
         #SBATCH -N 1
         #SBATCH -c 4
             
         ml purge > /dev/null 2>&1
-        ml R_packages/4.1.1
+        ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a
             
         # Batch script to submit the R program parallel_foreach.R 
         R -q --slave -f parallel_foreach.R
@@ -268,7 +268,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
     === "HPC2N" 
 
-        Short parallel example (using packages "foreach" and "doParallel" which are included in the R module) for running on Kebnekaise. Loading R/4.0.4 and its prerequisites. 
+        Short parallel example (using packages "foreach" and "doParallel" which are included in the R module) for running on Kebnekaise. Loading R/4.4.1 and its prerequisites, as well as R-bundle-CRAN/2024.06 and extra prerequisites for that. 
        
         ```bash
         #!/bin/bash
@@ -278,7 +278,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         #SBATCH -c 4
            
         ml purge > /dev/null 2>&1
-        ml GCC/10.2.0  OpenMPI/4.0.5  R/4.0.4
+        ml GCC/13.2.0 R/4.4.1 OpenMPI/4.1.6 R-bundle-CRAN/2024.06
             
         # Batch script to submit the R program parallel_foreach.R 
         R -q --slave -f parallel_foreach.R
