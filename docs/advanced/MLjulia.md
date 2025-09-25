@@ -17,8 +17,7 @@
         - How to write and optimize ML/DL code.
         - How to use multi-node setup for training models on CPU and GPU.
 
-
-### GPU code
+## GPU code
 
 In order to use the NVIDIA GPUs with Julia (UPPMAX, HPC2N, and LUNARC), you will need to load a CUDA toolkit module on the
 cluster and install the ``CUDA`` package in Julia.
@@ -76,6 +75,7 @@ cluster and install the ``AMDGPU`` package in Julia as in the next sequence of c
             Installed CEnum ───────── v0.4.2
             ...
         ```
+
     === "PDC"
 
         ```bash
@@ -329,7 +329,7 @@ we will use AMD GPUs.
         ml julia/1.8.5
 
         julia script-gpu.jl
-        ``` 
+        ```
 
         Output:
 
