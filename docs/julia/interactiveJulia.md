@@ -552,9 +552,10 @@ In any case, IJulia is now installed!
 
 - This may not always work
 
-   ```julia
-   julia> using IJulia
-   julia> notebook(dir=".",detached=true)
+```julia
+julia> using IJulia
+julia> notebook(dir=".",detached=true)
+```
 
 !!! important "Tip"
 
