@@ -239,7 +239,7 @@ with the YouTube videos
         then we recommend you create this folder:
 
         ``` console
-        mkdir /proj/hpc-python-spring-naiss/users/jlpicard
+        mkdir /proj/courses-fall-2025/users/jlpicard
         ```
       
 === "PDC"
@@ -250,7 +250,18 @@ with the YouTube videos
         then we recommend you create this folder:
 
         ``` console
-        mkdir /cfs/klemming/projects/supr/hpc-python-spring-naiss/sevenof9/
+        mkdir /cfs/klemming/projects/supr/courses-fall-2025/sevenof9/
+        ```
+
+=== "C3SE"
+
+    - Create a working directory where you can code along.
+
+        - Example. If your username is sevenof9 and you are at Alvis at C3SE,
+        then we recommend you create this folder:
+
+        ``` console
+        mkdir /mimer/NOBACKUP/groups/courses-fall-2025/sevenof9/
         ```
 
 === "UPPMAX"
@@ -261,7 +272,7 @@ with the YouTube videos
     then we recommend you create this folder:
 
         ``` console
-        mkdir /proj/hpc-python-pelle/mrspock/
+        mkdir /proj/r-matlab-julia-pelle/mrspock/
         ```
 
 === "HPC2N"
@@ -272,7 +283,7 @@ with the YouTube videos
         then we recommend you create this folder:
 
         ``` console
-        mkdir /proj/nobackup/hpc-python-spring/bbrydsoe/
+        mkdir /proj/nobackup/fall-courses/bbrydsoe/
         ```
 
 === "LUNARC"
@@ -282,7 +293,7 @@ with the YouTube videos
         - Example. Create this folder:
 
         ``` console
-        mkdir $HOME/hpc-
+        mkdir $HOME/r-matlab-julia
         ```
 
 ## Test an editor
