@@ -26,7 +26,6 @@ cluster and install the ``CUDA`` package in Julia.
 In the case of AMD GPUs for Julia (PDC and HPC2N), you will need to load a ROCM toolkit module on the
 cluster and install the ``AMDGPU`` package in Julia as in the next sequence of commands.
 
-
 !!! important "Using GPUs"
 
 
@@ -105,7 +104,6 @@ cluster and install the ``AMDGPU`` package in Julia as in the next sequence of c
             Resolving package versions...
             ...
         ```
-
 
 Once this initial setting is completed, you will be able to use the GPUs available on the
 cluster. Here, there is a simple example for computing a matrix-matrix multiplication. As a
@@ -221,7 +219,6 @@ for instance.
         @time A*B
         ```
 
-
     === "PDC"
 
         ```bash
@@ -242,8 +239,7 @@ for instance.
 
         julia script-gpu.jl
         ```
-
-
+        
     === "script-gpu.jl"
 
         Julia AMD GPU example code.
@@ -272,6 +268,7 @@ for instance.
         # Calculation on AMD GPU (again)
         @time A * B
         ```
+        
 ## Exercise 2. Run the GPU script
 
 Run the following script ``script-gpu.jl``. Why are we running each simulation
@@ -287,7 +284,6 @@ we will use AMD GPUs.
         in this way, the reported time is more reliable for the computing time as
         in the first simulation, data transfer and other settings could be added to
         the reported time.
-
 
         ```bash
         #!/bin/bash
@@ -344,6 +340,7 @@ we will use AMD GPUs.
             CUDA driver 12.0
 
             Libraries:
+            
             - CUBLAS: 11.10.1
             - CURAND: 10.2.10
             - CUFFT: 10.7.2
@@ -355,6 +352,7 @@ we will use AMD GPUs.
             - CUTENSOR: 1.4.0 (for CUDA 11.5.0)
 
             Toolchain:
+            
             - Julia: 1.8.5
             - LLVM: 13.0.1
             - PTX ISA support: 3.2, 4.0, 4.1, 4.2, 4.3, 5.0, 6.0, 6.1, 6.3, 6.4, 6.5, 7.0, 7.1, 7.2
@@ -470,11 +468,11 @@ we will use AMD GPUs.
 
 ## Exercise 3. Machine Learning job on GPUs
 
-Julia has already several packages for ML, one of them is ``Flux`` (https://fluxml.ai/). We will work with one of
+Julia has already several packages for ML, one of them is [``Flux``](https://fluxml.ai/). We will work with one of
 the test cases provided by ``Flux`` which deals with a data set of tiny images (CIFAR10). Follow this steps:
 
 - Create an environment called ``ML``, move to that environment directory and activate it
-- Fetch the ``vgg_cifar10.jl`` test case from ``Flux`` repo (wget https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl)
+- Fetch the ``vgg_cifar10.jl`` test case from ``Flux`` repo (``wget https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl``)
 - Load CUDA toolkit 11.4.1
 - Install (add) the following packages: CUDA, MLDatasets, MLUtils
 - The first time you use the data set CIFAR10, it will ask you to download it and accept. Do this in ``Julian`` mode:
@@ -550,8 +548,6 @@ julia <fix-activate-environment> <fix-name-script>.jl
         julia --project=. vgg_cifar10.jl
         ```
 
-
-
     === "HPC2N"
 
         ```bash
@@ -598,6 +594,3 @@ julia <fix-activate-environment> <fix-name-script>.jl
 
         This will give you a URL that you can paste on your local browser. It would display
         statistics after a couple of minutes the job started.
-
-
-
