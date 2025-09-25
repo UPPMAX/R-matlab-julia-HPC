@@ -258,35 +258,31 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
 
     === "UPPMAX" 
 
-        Short serial example script for Pelle. Loading R/4.1.1 and R_packages/4.1.1
+        Short serial example script for Pelle. Loading R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor 
 
-         .. code-block:: sh
+        ```bash
+        #!/bin/bash
+        #SBATCH -A uppmax2025-2-360 # Course project id. Change to your own project ID after the course
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
+        # Load any modules you need, here R/4.4.2-gfbf-2024a and R-bundle-CRAN/2024.11-foss-2024a and R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+        module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor 
 
-            #!/bin/bash
-            #SBATCH -A uppmax202u-w-xyz # Course project id. Change to your own project ID after the course
-            #SBATCH --time=00:10:00 # Asking for 10 minutes
-            #SBATCH -n 1 # Asking for 1 core
+        # Run your R script (here 'iris_ml.R')
+        R --no-save --quiet < iris_ml.R
+        ```
 
-            # Load any modules you need, here R_packages/4.1.1 (R/4.1.1 is loaded automatically)
-            module load R_packages/4.1.1
+    === "HPC2N" 
 
-            # Run your R script (here 'iris_ml.R')
-            R --no-save --quiet < iris_ml.R
+        Short serial example for running on Kebnekaise. Loading R/4.2.1 and prerequisites, also R-bundle-Bioconductor/3.15-R-4.2.1
 
+        ```bash
+        #!/bin/bash
+        #SBATCH -A hpc2n2025-151 # Change to your own project ID
+        #SBATCH --time=00:10:00 # Asking for 10 minutes
+        #SBATCH -n 1 # Asking for 1 core
 
-
-      .. tab:: HPC2N
-
-         Short serial example for running on Kebnekaise. Loading R/4.2.1 and prerequisites, also R-bundle-Bioconductor/3.15-R-4.2.1
-
-         .. code-block:: sh
-
-            #!/bin/bash
-            #SBATCH -A hpc2n202w-xyz # Change to your own project ID
-            #SBATCH --time=00:10:00 # Asking for 10 minutes
-            #SBATCH -n 1 # Asking for 1 core
-
-            # Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor/3.15-R-4.2.1
+        # Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor/3.15-R-4.2.1
             module load GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
 
             # Run your R script (here 'iris_ml.R')
