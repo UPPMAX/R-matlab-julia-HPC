@@ -508,40 +508,38 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
 Some packages are now able to use GPUs for ML jobs in R. One of them is `xgboost <https://xgboost.readthedocs.io/en/latest/install.html>`_.
 In the following demo you will find instructions to install this package and run a test case with GPUs.
 
-.. demo::
-   :class: dropdown
+!!! hint "Demo"
 
-   **Prerequisites**
+    ??? note "Prerequisites"
 
-   Choose an R version > 4.1 and a CUDA module:
+        Choose an R version > 4.1 and a CUDA module:
 
-   .. code-block:: bash
+        ```bash
+        ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+        ```
 
-      ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+        Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version:
 
-   Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version:
+        ```bash
+        cd /home/u/username/R-packages-4.4.1
+        wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
+        ```  
 
-   .. code-block:: bash
+        Then, install the package
 
-      cd /home/u/username/R-packages-4.4.1
-      wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
+        ```bash
+        R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
+        ```
 
-   Then, install the package
+        Download a data set like the <a href="https://archive.ics.uci.edu/dataset/280/higgs" target="blank">HIGGS</a> data set for detecting Higgs particles that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
 
-   .. code-block:: bash
+        ```bash
+        wget https://archive.ics.uci.edu/static/public/280/higgs.zip
+        unzip higgs.zip
+        gunzip HIGGS.csv.gz
+        ```
 
-      R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
-
-   Download a data set like the `HIGGS <https://archive.ics.uci.edu/dataset/280/higgs>`_ data set for detecting Higgs particles
-   that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
-
-   .. code-block:: bash
-
-      wget https://archive.ics.uci.edu/static/public/280/higgs.zip
-      unzip higgs.zip
-      gunzip HIGGS.csv.gz
-
-   Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
+        Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
 
    .. admonition:: gpu-script-db-higgs.R
       :class: dropdown
