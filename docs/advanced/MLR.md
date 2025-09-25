@@ -260,12 +260,16 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
         #SBATCH --time=00:10:00 # Asking for 10 minutes
         #SBATCH -n 1 # Asking for 1 core
 
-        # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites
-        module load PDC/23.12 R/4.4.1-cpeGNU-23.12
+        # Load any modules you need, here R/4.4.2-cpeGNU-24.11 and prerequisites
+        module load PDC/24.11 R/4.4.2-cpeGNU-24.11
 
         # Run your R script (here 'iris_ml.R')
         R --no-save --quiet < iris_ml.R
         ```
+
+    === "C3SE"
+
+        Alvis is only for running GPU jobs 
 
     === "UPPMAX" 
 
@@ -313,44 +317,6 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
 
         # Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor
         module load GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.1
-
-        # Run your R script (here 'iris_ml.R')
-        R --no-save --quiet < iris_ml.R
-        ```
-
-    === "NSC" 
-
-        Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare
-
-        NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
-
-        ```bash
-        #!/bin/bash
-        #SBATCH -A naiss2025-22-934 # Change to your own project ID
-        #SBATCH --time=00:10:00 # Asking for 10 minutes
-        #SBATCH -n 1 # Asking for 1 core
-
-        # Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare
-        module load R/4.4.0-hpc1-gcc-11.3.0-bare
-
-        # Run your R script (here 'iris_ml.R')
-        R --no-save --quiet < iris_ml.R
-        ```
-
-    === "PDC"
-
-        Short serial example for running on Dardel. Loading R/4.4.1-cpeGNU-23.12 and prerequisites
-
-        NOTE: if you did not install the packages ``caret``, ``kernlab``, and ``randomForest`` above, you have to do so now before running the script.
-
-        ```bash
-        #!/bin/bash
-        #SBATCH -A naiss2025-23-934 # Change to your own project ID
-        #SBATCH --time=00:10:00 # Asking for 10 minutes
-        #SBATCH -n 1 # Asking for 1 core
-
-        # Load any modules you need, here R/4.4.1-cpeGNU-23.12 and prerequisites
-        module load PDC/23.12 R/4.4.1-cpeGNU-23.12
 
         # Run your R script (here 'iris_ml.R')
         R --no-save --quiet < iris_ml.R
@@ -417,18 +383,18 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
 
         ```bash
         #!/bin/bash
-            #SBATCH -A lu202u-x-yz # Change to your own project ID
-            #Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH -n 1
-            #Writing output and error files
-            #SBATCH --output=output%J.out
-            #SBATCH --error=error%J.error
+        #SBATCH -A lu2025-2-94 # Change to your own project ID
+        #Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH -n 1
+        #Writing output and error files
+        #SBATCH --output=output%J.out
+        #SBATCH --error=error%J.error
 
-            ml purge > /dev/null 2>&1
-            module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
+        ml purge > /dev/null 2>&1
+        module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1
 
-            R --no-save --no-restore -f Rscript.R
+        Rscript MyRscript.R
 
       .. tab:: NSC
 
@@ -468,7 +434,7 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
             #SBATCH --error=error%J.error
 
             ml purge > /dev/null 2>&1
-            module load PDC/23.12 R/4.4.1-cpeGNU-23.12
+            module load PDC/24.11 R/4.4.2-cpeGNU-24.11
 
             R --no-save --no-restore -f Rscript.R
 
