@@ -440,10 +440,9 @@ Then, when you get the allocation, do one of:
 
         [~]$
         ```
-        
----->.  <-----
-Running Julia in Jupyter
-------------------------
+
+### Running Julia in Jupyter
+
 
 - Like for Python it is possible to run Julia in Jupyter, i.e. in a web interface with possibility of inline figures and debugging.
 - For this you need the ``IJulia package`` that you may have to install yourself.
@@ -451,128 +450,122 @@ Running Julia in Jupyter
 - For more interactiveness you can run IJulia which is Julia in Jupyter.
 - You benefit a lot if you are using ThinLinc
 
-Installation step
-#################
+!!! important "Installation step"
 
-- This is done only once, but for each combination of Julia you would like to use.
-- It may take 5-10 minutes or so.
-- This you can do in an ordinary terminal (book an interactive session, for safety)
+   - This is done only once, but for each combination of Julia you would like to use.
+   - It may take 5-10 minutes or so.
+   - This you can do in an ordinary terminal (book an interactive session, for safety)
+   
+   === "NSC"
 
-.. tabs::
-
-   .. tab:: NSC
-
-         .. code-block:: console
-
-            $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
-            $ ml julia/1.10.2-bdist
-            $ julia -p 4
+      ```bash
+      $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
+      $ ml julia/1.10.2-bdist
+      $ julia -p 4
+      ```
 
       In Julia:
 
-         .. code-block:: julia-repl
+      ```julia
+      julia> using Pkg
+      julia> Pkg.add("IJulia")
+      julia> Pkg.build("IJulia")
+      julia> using IJulia
+      julia> notebook(dir=".",detached=true)
+      ```
 
-            julia> using Pkg
-            julia> Pkg.add("IJulia")
-            julia> Pkg.build("IJulia")
-            julia> using IJulia
-            julia> notebook(dir=".",detached=true)
+   === "PDC (not fully tested successfully, but this step works)"
 
-   .. tab:: PDC (not fully tested successfully, but this step works)
-
-         .. code-block:: console
-
-            $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
-            $ ml cray-python/3.11.5
-            $ julia
-
-      In Julia:
-
-         .. code-block:: julia-repl
-
-            julia> using Pkg
-            julia> Pkg.add("IJulia")
-            julia> Pkg.build("IJulia")
-            julia> using IJulia
-            julia> notebook(dir=".",detached=true)
-
-         - The last command may not be able to start notebook, see further down how to do.
-
-   .. tab:: UPPMAX
-
-         .. code-block:: console
-
-            $ module load julia/1.8.5
-            $ module load python/3.9.5
-            $ julia -p 4
+      ```bash
+      $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+      $ ml cray-python/3.11.5
+      $ julia
+      ```
 
       In Julia:
 
-         .. code-block:: julia-repl
+      ```julia
+      julia> using Pkg
+      julia> Pkg.add("IJulia")
+      julia> Pkg.build("IJulia")
+      julia> using IJulia
+      julia> notebook(dir=".",detached=true)
+      ```
 
-            julia> using Pkg
-            julia> Pkg.add("IJulia")
-            julia> Pkg.build("IJulia")
-            julia> using IJulia
-            julia> notebook(dir=".",detached=true)
+      - The last command may not be able to start notebook, see further down how to do.
 
-   .. tab:: HPC2N & LUNARC
+   === "UPPMAX"
+
+      ```bash
+      $ module load julia/1.8.5
+      $ module load python/3.9.5
+      $ julia -p 4
+      ```
+
+      In Julia:
+
+      ```julia
+      julia> using Pkg
+      julia> Pkg.add("IJulia")
+      julia> Pkg.build("IJulia")
+      julia> using IJulia
+      julia> notebook(dir=".",detached=true)
+      ```
+
+   === "HPC2N & LUNARC"
 
       - Like for Python it is possible to run a Julia in a Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the *JupyterLab* and *Julia* modules. In shell:
 
-      .. code-block:: console
-
-         $ module load GCCcore/13.2.0  JupyterLab/4.2.0
-         $ module load Julia/1.8.5-linux-x86_64
-         $ julia
+      ```bash
+      $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+      $ module load Julia/1.8.5-linux-x86_64
+      $ julia
+      ```
 
       In Julia `package` mode:
 
-      .. code-block:: julia-repl
-
-         (v1.8) pkg>add IJulia
-         (v1.8) pkg>build IJulia
+      ```julia
+      (v1.8) pkg>add IJulia
+      (v1.8) pkg>build IJulia
+      ```
 
 In some centres (UPPMAX and NSC) this will start a Firefox session with the Jupyter notebook interface.
 
-      .. figure:: ../../img/Jupyter_julia.png
+![Jupyter Julia](../../img/Jupyter_julia.png)
 
 If not, see below.
 
 In any case, IJulia is now installed!
 
-Starting a Jupyter session with Julia Kernel
-############################################
+**Starting a Jupyter session with Julia Kernel**
+
 
 - You can start up Julia in Jupyter quickly, once ``IJulia`` is installed for the combinations of Julia and Python/Jupyter you want to use.
 - There are two ways
    - starting from within julia REPL (not for HPC2n or PDC)
    - starting jupyter session from terminal
 
-From Julia REPL
-'''''''''''''''
+**From Julia REPL**
+
 
 - This may not always work
 
-.. code-block:: julia-repl
-
+   ```julia
    julia> using IJulia
    julia> notebook(dir=".",detached=true)
 
-.. tip::
+!!! important "Tip"
 
    With ``notebook(dir="</path/to/work/dir/>", detached=true)`` the notebook will not be killed when you exit your REPL Julia session in the terminal.
 
-Jupyter session from terminal
-'''''''''''''''''''''''''''''
+**Jupyter session from terminal**
 
-Principle
-~~~~~~~~~
+*Principle*
 
 1. Load julia module (and prerequisites)
 2. Load Python or Jupyter module (and prerequisites) that is compatible with the python version used when building IJulia in the previous step
 
-.. admonition:: Running IJulia in Jupyter on compute nodes
+!!! important "Running IJulia in Jupyter on compute nodes"
 
    - Jupyter is rather slow graphically on the compute nodes.
    - This can be fixed by
@@ -580,106 +573,104 @@ Principle
         - then starting a web browser in ThinLinc and open the URL copied in previous step
    - One can even use the home computer, see https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
 
-.. tabs::
-
-   .. tab:: NSC
+   === "NSC"
 
       First start an interactive session
 
-      .. code-block:: console
-
-         $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
-         $ ml julia/1.10.2-bdist
-         $ jupyter-lab --ip=$HOSTNAME
+      ```bash
+      $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
+      $ ml julia/1.10.2-bdist
+      $ jupyter-lab --ip=$HOSTNAME
+      ```
 
       - Start the browser from the ThinLinc menu.
       - Copy-paste the address line containing the node name from the jupyter output
       - You can start the Julia kernel in the upper right corner!
 
 
-   .. tab:: PDC (not fully tested successfully)
+   === "PDC (not fully tested successfully)"
 
       - Since Jupyter and a web browser are missing on the compute nodes, we need to find another solution here.
       - Below are the steps that would be nice if we got working!
 
       First start an interactive session
 
-      .. code-block:: console
-
-         $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 cray-python/3.11.5
-         $ jupyter-lab --ip=$HOSTNAME
-
-      - Start the browser from the ThinLinc menu.
-      - Copy-paste the address line containing the node name from the jupyter output
-      - You can start the Julia kernel in the upper right corner!
-
-   .. tab:: UPPMAX
-
-       .. code-block:: console
-
-          $ module load julia/1.8.5
-          $ module load python/3.9.5
-          $ jupyter-lab --ip=$HOSTNAME
+      ```bash
+      $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 cray-python/3.11.5
+      $ jupyter-lab --ip=$HOSTNAME
+      ```
 
       - Start the browser from the ThinLinc menu.
       - Copy-paste the address line containing the node name from the jupyter output
       - You can start the Julia kernel in the upper right corner!
 
-   .. tab:: LUNARC
+   === "UPPMAX"
 
-      .. code-block:: console
-
-         $ module load GCCcore/13.2.0  JupyterLab/4.2.0
-         $ module load Julia/1.8.5-linux-x86_64
-         $ jupyter-lab --ip=$HOSTNAME
+      ```bash
+      $ module load julia/1.8.5
+      $ module load python/3.9.5
+      $ jupyter-lab --ip=$HOSTNAME
+      ```
 
       - Start the browser from the ThinLinc menu.
       - Copy-paste the address line containing the node name from the jupyter output
       - You can start the Julia kernel in the upper right corner!
 
-   .. tab:: HPC2N
+   === "LUNARC"
+
+      ```bash
+      $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+      $ module load Julia/1.8.5-linux-x86_64
+      $ jupyter-lab --ip=$HOSTNAME
+      ```
+
+      - Start the browser from the ThinLinc menu.
+      - Copy-paste the address line containing the node name from the jupyter output
+      - You can start the Julia kernel in the upper right corner!
+
+   === "HPC2N"
 
       Write a bash script similar  to this (call it `job_jupyter.sh`, for instance):
 
-      .. code-block:: bash
-
-         #!/bin/bash
-         # Here you should put your own project id
-         #SBATCH -A hpc2n2025-062
-         # This example asks for 1 core
-         #SBATCH -n 1
-         # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.
-         #SBATCH --time=00:10:00
-         # Clear the environment from any previously loaded modules
-         module purge > /dev/null 2>&1
-         # Load the module environment suitable for the job
-         module load GCCcore/13.2.0  JupyterLab/4.2.0
-         # Load the Julia module
-         ml Julia/1.8.5-linux-x86_64
-         # Start JupyterLab
-         jupyter lab --no-browser --ip $(hostname)
+      ```bash
+      #!/bin/bash
+      # Here you should put your own project id
+      #SBATCH -A hpc2n2025-062
+      # This example asks for 1 core
+      #SBATCH -n 1
+      # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.
+      #SBATCH --time=00:10:00
+      # Clear the environment from any previously loaded modules
+      module purge > /dev/null 2>&1
+      # Load the module environment suitable for the job
+      module load GCCcore/13.2.0  JupyterLab/4.2.0
+      # Load the Julia module
+      ml Julia/1.8.5-linux-x86_64
+      # Start JupyterLab
+      jupyter lab --no-browser --ip $(hostname)
+      ```
 
       Then, in the output file *slurm-<jobID>.out* file, copy the url that starts with *http://b-cn1403.hpc2n.umu.se:8888/lab* and
       paste it in a Firefox browser on Kebnekaise. When the Jupyter notebook interface starts, you can choose the Julia
       version from the module you loaded (in this case 1.8.5).
 
-      .. admonition:: Running Julia in Jupyter on compute nodes at HPC2N
-
-         - On Kebnekaise, you can run Jupyter notebooks with Julia kernels by using batch scripts
-         - https://docs.hpc2n.umu.se/tutorials/jupyter/#jupyterlab__with__julia
 
 
-Exercises
----------
+      - On Kebnekaise, you can run Jupyter notebooks with Julia kernels by using batch scripts
+      - https://docs.hpc2n.umu.se/tutorials/jupyter/#jupyterlab__with__julia
 
-.. challenge:: 1. Try to run scripts from an interactive session
+
+### Exercises
+
+
+!!! important "Run scripts from an interactive session"
 
    - Try out one or two of the scripts from the exercise folder ``batchJulia``.
    - First create an interactive session with the right Slurm commands to the ``interactive``/``salloc`` command.
        - use the commands from the batch job script belonging to the julia script at `examples of batch scripts for julia <https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia.html#examples-of-batch-scripts-for-julia>`_
 
 
-.. keypoints::
+!!! summary
 
    - Start an interactive session on a calculation node by a SLURM allocation
 
