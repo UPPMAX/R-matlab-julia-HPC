@@ -49,7 +49,7 @@ This table is not exhaustive, but lists the more popular libraries/packages and 
 | tidyr | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN |
 | caret | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN |
 | mlr   | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN |
-| randomForest | R | R | N/A | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN | 
+| randomForest | R | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN | 
 | stringr | N/A | R | R | R_packages | R | R | R |
 | kernlab | N/A | R | R | R_packages | R-bundle-CRAN | R-bundle-CRAN | R-bundle-CRAN | 
 
@@ -346,13 +346,14 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
         #SBATCH -t 00:10:00
         #SBATCH --exclusive
         #SBATCH -n 1
+        #SBATCH --cpus-per-task=8
         #Writing output and error files
         #SBATCH --output=output%J.out
         #SBATCH --error=error%J.error
 
         ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
 
-        Rscript MyRscript.R
+        srun Rscript MyRscript.R
         ```
 
     === "HPC2N" 
@@ -365,6 +366,7 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
          #Asking for 10 min.
          #SBATCH -t 00:10:00
          #SBATCH -n 1
+         #SBATCH --cpus-per-task=8
          #Writing output and error files
          #SBATCH --output=output%J.out
          #SBATCH --error=error%J.error
@@ -374,7 +376,7 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
          module load OpenMPI/4.1.6 R-bundle-CRAN/2024.06
          module load R-bundle-Bioconductor/3.19-R-4.4.1
 
-         Rscript MyRscript.R
+         srun Rscript MyRscript.R
          ```
 
     === "LUNARC"
@@ -387,6 +389,7 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
         #Asking for 10 min.
         #SBATCH -t 00:10:00
         #SBATCH -n 1
+        #SBATCH --cpus-per-task=8
         #Writing output and error files
         #SBATCH --output=output%J.out
         #SBATCH --error=error%J.error
@@ -394,110 +397,113 @@ Since most R codes for Machine Learning would run for a fairly long time, you wo
         ml purge > /dev/null 2>&1
         module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1
 
-        Rscript MyRscript.R
+        srun Rscript MyRscript.R
+        ```
 
-      .. tab:: NSC
+    === "NSC" 
 
-         Short ML example for running on Tetralith.
+        Short ML example for running on Tetralith.
 
-         .. code-block:: sh
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss2025-23-934 # Change to your own project ID
+        #Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH -n 1
+        #SBATCH --cpus-per-task=8 
+        #Writing output and error files
+        #SBATCH --output=output%J.out
+        #SBATCH --error=error%J.error
 
-            #!/bin/bash
-            #SBATCH -A naiss202t-uv-xyz # Change to your own project ID
-            #Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH -n 1
-            #Writing output and error files
-            #SBATCH --output=output%J.out
-            #SBATCH --error=error%J.error
+        ml purge > /dev/null 2>&1
+        module load R/4.4.0-hpc1-gcc-11.3.0-bare
 
-            ml purge > /dev/null 2>&1
-            module load R/4.4.0-hpc1-gcc-11.3.0-bare
+        srun Rscript MyRscript.R
+        ```
 
-            R --no-save --no-restore -f Rscript.R
+    === "PDC" 
 
-      .. tab:: PDC
+        Short ML example for running on Dardel.
 
-         Short ML example for running on Dardel.
+        ```bash
+        #!/bin/bash
+        #SBATCH -A naiss2025-22-934 # Change to your own project ID
+        #Asking for 10 min.
+        #SBATCH -t 00:10:00
+        #SBATCH -N 1
+        #SBATCH --ntasks-per-node=8
+        #SBATCH -p main
+        #Writing output and error files
+        #SBATCH --output=output%J.out
+        #SBATCH --error=error%J.error
 
-         .. code-block:: sh
+        ml purge > /dev/null 2>&1
+        module load PDC/24.11 R/4.4.2-cpeGNU-24.11
 
-            #!/bin/bash
-            #SBATCH -A naiss202u-vw-xyz # Change to your own project ID
-            #Asking for 10 min.
-            #SBATCH -t 00:10:00
-            #SBATCH -N 1
-            #SBATCH --ntasks-per-node=1
-            #SBATCH -p shared
-            #Writing output and error files
-            #SBATCH --output=output%J.out
-            #SBATCH --error=error%J.error
+        srun Rscript MyRscript.R
+        ```
 
-            ml purge > /dev/null 2>&1
-            module load PDC/24.11 R/4.4.2-cpeGNU-24.11
+    === "C3SE" 
 
-            R --no-save --no-restore -f Rscript.R
+        Alvis is only for running GPU jobs 
 
-      .. tab:: Rscript.R
+    === "MyRscript.R"
 
-         Short ML example.
+        Short ML example.
 
-         .. code-block:: sh
+        ```bash
+        #Example taken from https://github.com/lgreski/datasciencectacontent/blob/master/markdown/pml-randomForestPerformance.md
+        library(mlbench)
+        data(Sonar)
+        library(caret)
+        set.seed(95014)
 
-            #Example taken from https://github.com/lgreski/datasciencectacontent/blob/master/markdown/pml-randomForestPerformance.md
-            library(mlbench)
-            data(Sonar)
-            library(caret)
-            set.seed(95014)
+        # create training & testing data sets
+        inTraining <- createDataPartition(Sonar$Class, p = .75, list=FALSE)
+        training <- Sonar[inTraining,]
+        testing <- Sonar[-inTraining,]
 
-            # create training & testing data sets
-            inTraining <- createDataPartition(Sonar$Class, p = .75, list=FALSE)
-            training <- Sonar[inTraining,]
-            testing <- Sonar[-inTraining,]
+        # set up training run for x / y syntax because model format performs poorly
+        x <- training[,-61]
+        y <- training[,61]
 
-            # set up training run for x / y syntax because model format performs poorly
-            x <- training[,-61]
-            y <- training[,61]
+        #Serial mode
+        fitControl <- trainControl(method = "cv",
+                                   number = 25,
+                                   allowParallel = FALSE)
 
-            #Serial mode
-            fitControl <- trainControl(method = "cv",
-                                       number = 25,
-                                       allowParallel = FALSE)
-
-            stime <- system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
-
-
-            #Parallel mode
-            library(parallel)
-            library(doParallel)
-            cluster <- makeCluster(1)
-            registerDoParallel(cluster)
-
-            fitControl <- trainControl(method = "cv",
-                                       number = 25,
-                                       allowParallel = TRUE)
-
-            ptime <- system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
-
-            stopCluster(cluster)
-            registerDoSEQ()
-
-            fit
-            fit$resample
-            confusionMatrix.train(fit)
-
-            #Timings
-            timing <- rbind(sequential = stime, parallel = ptime)
-            timing
+        stime <- system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
 
 
-   .. code-block:: console
+        #Parallel mode
+        library(parallel)
+        library(doParallel)
+        cluster <- makeCluster(1)
+        registerDoParallel(cluster)
 
-      $ sbatch <batch script>
+        fitControl <- trainControl(method = "cv",
+                                   number = 25,
+                                   allowParallel = TRUE)
 
+        ptime <- system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
 
-GPU jobs
-''''''''
+        stopCluster(cluster)
+        registerDoSEQ()
+
+        fit
+        fit$resample
+        confusionMatrix.train(fit)
+
+        #Timings
+        timing <- rbind(sequential = stime, parallel = ptime)
+        timing
+        ```
+
+    ```bash
+    $ sbatch <batch script>
+    ```
+
+### GPU jobs
 
 Some packages are now able to use GPUs for ML jobs in R. One of them is `xgboost <https://xgboost.readthedocs.io/en/latest/install.html>`_.
 In the following demo you will find instructions to install this package and run a test case with GPUs.
