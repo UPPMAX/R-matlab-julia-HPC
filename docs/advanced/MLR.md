@@ -512,7 +512,7 @@ In the following demo you will find instructions to install this package and run
 
     ??? note "Prerequisites"
 
-        Choose an R version > 4.1 and a CUDA module:
+        Choose an R version > 4.1 and a CUDA module. This example is for HPC2N/Kebnekaise. Pick suitable ones for your computer (see example under the batch script example for instance):
 
         ```bash
         ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
@@ -539,65 +539,83 @@ In the following demo you will find instructions to install this package and run
         gunzip HIGGS.csv.gz
         ```
 
-        Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
+    Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
 
-   .. admonition:: gpu-script-db-higgs.R
-      :class: dropdown
+    ??? note "gpu-script-db-higgs.R"
 
-      .. code-block:: r
+        ```R
+        # Inspired by the benchmarking of Anatoly Tsyplenkov:
+        # https://anatolii.nz/posts/2024/xgboost-gpu-r
+        #     step 0: Install these packages if you haven't done it
+        #install.packages(c("xgboost", "data.table", "tictoc"))
+        library(xgboost)
+        library(data.table)
+        library(tictoc)
 
-         # Inspired by the benchmarking of Anatoly Tsyplenkov:
-         # https://anatolii.nz/posts/2024/xgboost-gpu-r
-         #     step 0: Install these packages if you haven't done it
-         #install.packages(c("xgboost", "data.table", "tictoc"))
-         library(xgboost)
-         library(data.table)
-         library(tictoc)
+        #     step 1: Extract the ZIP file (if not already extracted)
+        #unzip("higgs.zip")  # Extracts to the current working directory
 
-         #     step 1: Extract the ZIP file (if not already extracted)
-         #unzip("higgs.zip")  # Extracts to the current working directory
+        #     step 2: Read the CSV file
+        higgs_data <- fread("HIGGS.csv")  # Reads large datasets efficiently
 
-         #     step 2: Read the CSV file
-         higgs_data <- fread("HIGGS.csv")  # Reads large datasets efficiently
+        #     step 3: Preprocess Data
+        # The first column is the target (0 or 1), the rest are features
+        X <- as.matrix(higgs_data[, -1, with = FALSE])  # Remove first column
+        y <- as.integer(higgs_data$V1)  # Target column
 
-         #     step 3: Preprocess Data
-         # The first column is the target (0 or 1), the rest are features
-         X <- as.matrix(higgs_data[, -1, with = FALSE])  # Remove first column
-         y <- as.integer(higgs_data$V1)  # Target column
+        # Train-test split (75% train, 25% test)
+        set.seed(111)
+        N <- nrow(X)
+        train_idx <- sample.int(N, N * 0.75)
 
-         # Train-test split (75% train, 25% test)
-         set.seed(111)
-         N <- nrow(X)
-         train_idx <- sample.int(N, N * 0.75)
+        dtrain <- xgb.DMatrix(X[train_idx, ], label = y[train_idx])
+        dtest <- xgb.DMatrix(X[-train_idx, ], label = y[-train_idx])
+        evals <- list(train = dtrain, test = dtest)
 
-         dtrain <- xgb.DMatrix(X[train_idx, ], label = y[train_idx])
-         dtest <- xgb.DMatrix(X[-train_idx, ], label = y[-train_idx])
-         evals <- list(train = dtrain, test = dtest)
+        #     step 4: Define XGBoost Parameters
+        param <- list( objective = "binary:logistic", eval_metric = "error",
+           eval_metric = "logloss", max_depth = 6, eta = 0.1)
 
-         #     step 4: Define XGBoost Parameters
-         param <- list( objective = "binary:logistic", eval_metric = "error",
-            eval_metric = "logloss", max_depth = 6, eta = 0.1)
+        #     step 5: Train on CPU
+        tic()
+        xgb_cpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
+        nrounds = 10000, verbose = 0, tree_method = "hist")
+        toc()
 
-         #     step 5: Train on CPU
-         tic()
-         xgb_cpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
-         nrounds = 10000, verbose = 0, tree_method = "hist")
-         toc()
+        #     step 6: Train on GPU
+        tic()
+        xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
+        nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
+        toc()
 
-         #     step 6: Train on GPU
-         tic()
-         xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
-         nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
-         toc()
+        # Print models
+        print(xgb_cpu)
+        print(xgb_gpu)
+        ``` 
 
-         # Print models
-         print(xgb_cpu)
-         print(xgb_gpu)
+    You can use the following template for your batch script:
 
-   You can use the following template for your batch script:
+    ??? note "job-gpu.sh"
 
-   .. admonition:: job-gpu.sh
-      :class: dropdown
+        === "NSC" 
+
+            ```bash 
+            #!/bin/bash
+            # Remember to change this to your own project ID after the course!
+            #SBATCH -A naiss2025-22-934
+            # Asking for runtime: hours, minutes, seconds. At most 1 week
+            #SBATCH --time=12:00:00
+            # Ask for resources, including GPU resources
+            #SBATCH -n 1
+            #SBATCH -c 32
+            #SBATCH --gpus-per-task=1
+
+            # Remove any loaded modules and load the ones we need
+            module purge  > /dev/null 2>&1
+            ml R/4.2.2-hpc1-gcc-11.3.0-bare  
+
+            R --no-save --no-restore -f gpu-script-db-higgs.R
+
 
       .. tabs::
 
