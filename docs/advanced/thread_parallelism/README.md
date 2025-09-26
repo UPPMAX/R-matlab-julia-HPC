@@ -104,7 +104,8 @@ submit a calculation that uses thread parallelism,
 with a custom amount of cores.
 
 This Slurm script is called by the benchmark script,
-i.e. not directly by a user.
+i.e. not directly by a user. If the Slurm script is absent,
+the benchmark script will (try to) download it for you.
 
 ???- hint "How do I run it anyways?"
 
@@ -136,19 +137,23 @@ R       |[do_r_2d_integration.sh](do_r_2d_integration.sh)
 Each of these Slurm scripts are called by the benchmark script,
 where the benchmark script supplies the desired number of cores.
 
-## Calculation script
+## Language script
 
-This is the code that performs a job with thread parallelism.
+This is the code (in your favorite language)
+that performs a job with thread parallelism.
 
-The goal of the code is to have a fixed unit of work that
+The goal of the language script is to have a fixed unit of work that
 can be done by a custom amount of cores.
 
-This calculation script is called by the Slurm script,
-i.e. not directly by a user.
+This langauge script is called by the Slurm script,
+i.e. not directly by a user. If the calculation script is absent,
+the benchmark script will (try to) download it for you.
 
-???- hint "R: How do I run it anyways?"
+???- hint "How do I run it anyways?"
     
-    You can run it as such:
+    Check the Slurm script for your favorite language.
+
+    In general, you can run it as such:
     
     ```bash
     [interpreter] [script_name] [number_of_cores] [grid_size]
@@ -158,6 +163,7 @@ i.e. not directly by a user.
     the lightest calculation possible:
     
     ```bash
+    julia integration2d.jl 1 1
     Rscript integration2d.R 1 1
     ```
 
@@ -170,20 +176,6 @@ MATLAB  |[do_2d_integration.m](do_2d_integration.m)   |.
 R       |[do_2d_integration.R](do_2d_integration.R)   |.
 
 <!-- markdownlint-enable MD013 -->
-
-## Script to collect the results
-
-The goal of the script to collect the benchmark results,
-[`collect_benchmark_results.sh`](collect_benchmark_results.sh),
-is to collect the output of the runs from the Slurm log files.
-
-Run [`collect_benchmark_results.sh`](collect_benchmark_results.sh) as such:
-
-```bash
-./collect_benchmark_results.sh
-```
-
-You will see the collected results.
 
 ## Exercises
 
@@ -278,6 +270,12 @@ we have the time to figure out what it is doing.
 ## Exercise 4: read the calculation script
 
 ## Exercise 5: analyse the results
+
+```bash
+grep -EoRh "^[jmlr].*,.*" --include=*.out | sort | uniq
+```
+
+You will see the collected results.
 
 ## Exercise 6: compare to others
 
