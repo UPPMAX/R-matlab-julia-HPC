@@ -2,7 +2,7 @@
 
 # Step 1: check for all packages
 
-if (!require("doParallel")) {
+if (!require("doParallel", quietly = TRUE)) {
   stop(
     "Package 'doParallel' not installed. \n",
     "Install it, using, for example: \n",
@@ -11,7 +11,7 @@ if (!require("doParallel")) {
     " \n"
   )
 }
-if (!require("stringr")) {
+if (!require("stringr", quietly = TRUE)) {
   stop(
     "Package 'stringr' not installed. \n",
     "Install it, using, for example: \n",
@@ -20,7 +20,7 @@ if (!require("stringr")) {
     " \n"
   )
 }
-if (!require("testthat")) {
+if (!require("testthat", quietly = TRUE)) {
   stop(
     "Package 'testthat' not installed. \n",
     "Install it, using, for example: \n",
