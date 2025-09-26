@@ -69,7 +69,8 @@ function get_language_script_name()
   if [ "$1" == "julia" ]; then echo "do_2d_integration.jl"; return 0; fi
   if [ "$1" == "matlab" ]; then echo "do_2d_integration.m"; return 0; fi
   if [ "$1" == "r" ]; then echo "do_2d_integration.R"; return 0; fi
-  if ! is_valid_language "$1" ; then echo "ERROR: '"$1"' must be a valid language"; exit 41; fi
+  echo "ERROR: Unknown language: $1"
+  exit 41
 }
 
 if [ ! "$(get_language_script_name julia)" == "do_2d_integration.jl" ] ; then echo "Internal error: the Julia script is 'do_2d_integration.jl'"; exit 41; fi
