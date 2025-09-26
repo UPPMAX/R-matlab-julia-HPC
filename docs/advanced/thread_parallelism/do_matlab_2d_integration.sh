@@ -84,7 +84,7 @@ fi
 
 if [ ${hpc_cluster} == "dardel" ]
 then
-  module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0 >/dev/null 2>&1
+  module load PDC/24.11 matlab/r2023a
 fi
 
 if [ ${hpc_cluster} == "kebnekaise" ]
