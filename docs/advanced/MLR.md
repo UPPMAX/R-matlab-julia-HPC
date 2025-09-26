@@ -516,6 +516,21 @@ In the following demo you will find instructions to install this package and run
 
         === "NSC"
 
+            There is no compatible CUDA and R, so the best option seems to be to be to install your own R with conda. It will take quite some space, so do it in your project storage: 
+
+            ```bash 
+            $ ml buildenv-gcccuda/11.6.2-gcc9-hpc1 
+            $ ml buildtool-easybuild/4.9.4-hpc71cbb0050 
+            $ ml Miniforge/24.7.1-2-hpc1 
+            $ cd /proj/courses-fall-2025/users/<username> 
+            $ conda create -n myenv 
+            $ conda activate myenv
+            $ mamba create -n R -c conda-forge r-base -y
+            $ mamba activate R
+            $ mamba install -c conda-forge r-essentials
+            $ R --quiet --no-save --no-restore -e "install.packages('tictoc', repos='http://ftp.acc.umu.se/mirror/CRAN/')"
+            ```
+
         === "PDC"
 
         === "C3SE"
@@ -537,13 +552,20 @@ In the following demo you will find instructions to install this package and run
      wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
      ```  
 
+     NOTE: if on NSC, activate your newly created conda environment, if you are not already there. Create a suitable directory for installing (probably for R 4.5.1) and add to .bashrc if you have not already: 
+
+     ```bash
+     mkdir -p /proj/courses-fall-2025/users/<username>/R-packages-4.5.1
+     echo R_LIBS_USER="<path-to-your-space-on-proj-storage>/R-packages-%V" > ~/.Renviron
+     ```
+
      Then, install the package
 
      ```bash
      R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
      ```
 
-     Download a data set like the <a href="https://archive.ics.uci.edu/dataset/280/higgs" target="blank">HIGGS</a> data set for detecting Higgs particles that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
+     Download a data set like the <a href="https://archive.ics.uci.edu/dataset/280/higgs" target="blank">HIGGS</a> data set for detecting Higgs particles that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress). Do not put in the R-packages library:
 
      ```bash
      wget https://archive.ics.uci.edu/static/public/280/higgs.zip
@@ -551,58 +573,67 @@ In the following demo you will find instructions to install this package and run
      gunzip HIGGS.csv.gz
      ```
 
-    Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
+     !!! warning 
 
-    ??? note "gpu-script-db-higgs.R"
+         HIGGS.csv is a big file. If this is done during the course, you will find the HIGGS.csv file in the top of the project storage for the course. Use that instead of your own copy, and instead create a soft link for the file in your working directory: 
 
-        ```R
-        # Inspired by the benchmarking of Anatoly Tsyplenkov:
-        # https://anatolii.nz/posts/2024/xgboost-gpu-r
-        #     step 0: Install these packages if you haven't done it
-        #install.packages(c("xgboost", "data.table", "tictoc"))
-        library(xgboost)
-        library(data.table)
-        library(tictoc)
+         ```bash
+         $ cd /path/to/projdir/yourdir/workdir/
+         $ ln -s /path/to/projdir/HIGGS.csv HIGGS.csv
+         ```
 
-        #     step 1: Extract the ZIP file (if not already extracted)
-        #unzip("higgs.zip")  # Extracts to the current working directory
+     Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
 
-        #     step 2: Read the CSV file
-        higgs_data <- fread("HIGGS.csv")  # Reads large datasets efficiently
+     ??? note "gpu-script-db-higgs.R"
 
-        #     step 3: Preprocess Data
-        # The first column is the target (0 or 1), the rest are features
-        X <- as.matrix(higgs_data[, -1, with = FALSE])  # Remove first column
-        y <- as.integer(higgs_data$V1)  # Target column
+         ```R
+         # Inspired by the benchmarking of Anatoly Tsyplenkov:
+         # https://anatolii.nz/posts/2024/xgboost-gpu-r
+         #     step 0: Install these packages if you haven't done it
+         #install.packages(c("xgboost", "data.table", "tictoc"))
+         library(xgboost)
+         library(data.table)
+         library(tictoc)
 
-        # Train-test split (75% train, 25% test)
-        set.seed(111)
-        N <- nrow(X)
-        train_idx <- sample.int(N, N * 0.75)
+         #     step 1: Extract the ZIP file (if not already extracted)
+         #unzip("higgs.zip")  # Extracts to the current working directory
 
-        dtrain <- xgb.DMatrix(X[train_idx, ], label = y[train_idx])
-        dtest <- xgb.DMatrix(X[-train_idx, ], label = y[-train_idx])
-        evals <- list(train = dtrain, test = dtest)
+         #     step 2: Read the CSV file
+         higgs_data <- fread("HIGGS.csv")  # Reads large datasets efficiently
 
-        #     step 4: Define XGBoost Parameters
-        param <- list( objective = "binary:logistic", eval_metric = "error",
-           eval_metric = "logloss", max_depth = 6, eta = 0.1)
+         #     step 3: Preprocess Data
+         # The first column is the target (0 or 1), the rest are features
+         X <- as.matrix(higgs_data[, -1, with = FALSE])  # Remove first column
+         y <- as.integer(higgs_data$V1)  # Target column
 
-        #     step 5: Train on CPU
-        tic()
-        xgb_cpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
-        nrounds = 10000, verbose = 0, tree_method = "hist")
-        toc()
+         # Train-test split (75% train, 25% test)
+         set.seed(111)
+         N <- nrow(X)
+         train_idx <- sample.int(N, N * 0.75)
 
-        #     step 6: Train on GPU
-        tic()
-        xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
-        nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
-        toc()
+         dtrain <- xgb.DMatrix(X[train_idx, ], label = y[train_idx])
+         dtest <- xgb.DMatrix(X[-train_idx, ], label = y[-train_idx])
+         evals <- list(train = dtrain, test = dtest)
 
-        # Print models
-        print(xgb_cpu)
-        print(xgb_gpu)
+         #     step 4: Define XGBoost Parameters
+         param <- list( objective = "binary:logistic", eval_metric = "error",
+            eval_metric = "logloss", max_depth = 6, eta = 0.1)
+
+         #     step 5: Train on CPU
+         tic()
+         xgb_cpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
+         nrounds = 10000, verbose = 0, tree_method = "hist")
+         toc()
+
+         #     step 6: Train on GPU
+         tic()
+         xgb_gpu <- xgb.train( params = param, data = dtrain, watchlist = evals,
+         nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
+         toc()
+
+         # Print models
+         print(xgb_cpu)
+         print(xgb_gpu)
         ``` 
 
     You can use the following template for your batch script:
@@ -624,12 +655,18 @@ In the following demo you will find instructions to install this package and run
 
             # Remove any loaded modules and load the ones we need
             module purge  > /dev/null 2>&1
-            ml R/4.2.2-hpc1-gcc-11.3.0-bare  
+            ml buildenv-gcccuda/11.6.2-gcc9-hpc1
+            ml buildtool-easybuild/4.9.4-hpc71cbb0050
+            ml Miniforge/24.7.1-2-hpc1
+            conda activate myenv
+            mamba activate R  
 
             R --no-save --no-restore -f gpu-script-db-higgs.R
+            ```
 
-
-      .. tabs::
+        === "PDC"
+ 
+            
 
          .. tab:: UPPMAX
 
