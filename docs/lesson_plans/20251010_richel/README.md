@@ -362,3 +362,8 @@ Steps:
 Now I have more or less carved out the content,
 let's restart with learning outcomes...
 
+## 2025-09-26
+
+- [ ] Make first script download all others
+- [ ] Fix and run MATLAB script
+

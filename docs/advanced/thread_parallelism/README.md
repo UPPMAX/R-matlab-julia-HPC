@@ -145,7 +145,7 @@ that performs a job with thread parallelism.
 The goal of the language script is to have a fixed unit of work that
 can be done by a custom amount of cores.
 
-This langauge script is called by the Slurm script,
+This language script is called by the Slurm script,
 i.e. not directly by a user. If the calculation script is absent,
 the benchmark script will (try to) download it for you.
 
