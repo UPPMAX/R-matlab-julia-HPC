@@ -64,6 +64,18 @@ then
   exit 42
 fi
 
+function get_language_script_name() 
+{ 
+  if [ "$1" == "julia" ]; then echo "do_2d_integration.jl"; return 0; fi
+  if [ "$1" == "matlab" ]; then echo "do_2d_integration.m"; return 0; fi
+  if [ "$1" == "r" ]; then echo "do_2d_integration.R"; return 0; fi
+  if ! is_valid_language $1 ; then echo "ERROR: '$1' must be a valid language"; exit 41; fi
+}
+
+if [ ! $(get_language_script_name "julia") == "do_2d_integration.jl" ]  ; then echo "Internal error: the Julia script is 'do_2d_integration.jl'"; exit 41; fi
+if [ ! $(get_language_script_name "matlab") == "do_2d_integration.m" ]  ; then echo "Internal error: the MATLAB script is 'do_2d_integration.m'"; exit 41; fi
+if [ ! $(get_language_script_name "r") == "do_2d_integration.R" ]  ; then echo "Internal error: the R script is 'do_2d_integration.R'"; exit 41; fi
+
 # Detect HPC cluster
 hpc_cluster="unknown"
 
@@ -118,15 +130,61 @@ then
   exit 42
 fi
 
-# Script filename
-script_name="do_${language}_2d_integration.sh"
-echo "Script name: ${script_name}"
+# Script filenames and URLs
+slurm_script_name="do_${language}_2d_integration.sh"
+echo "Slurm script name: ${slurm_script_name}"
 
-if [ ! -f "${script_name}" ]; then
-  echo "ERROR: script with name '${script_name}' not found."
+base_url="https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/docs/advanced/thread_parallelism"
+slurm_script_url="${base_url}/${slurm_script_name}"
+echo "Slurm script URL: ${slurm_script_url}"
+
+language_script_name=$(get_language_script_name "${language}")
+echo "Language script name: ${language_script_name}"
+language_script_url="${base_url}/${language_script_name}"
+echo "Language script URL: ${language_script_url}"
+
+# Download Slurm script if absent, will do nothing on Bianca
+if [ ! -f "${slurm_script_name}" ]; then
+  echo "Script with name '${slurm_script_name}' not found."
   echo " "
-  echo "Add it :-)"
-  exit 42
+  echo "This script can be downloaded from URL:"
+  echo "${slurm_script_url}"
+  echo " "
+  echo "Attempting to download script:"
+  # The '|| true' means 'continue even when the download failed
+  wget "${slurm_script_url}" || true
+  echo " "
+
+  if [ ! -f "${slurm_script_name}" ]; then
+    echo "ERROR: Slurm script with name '${slurm_script_name}' not found,"
+    echo "even after attempting to download it from URL"
+    echo "${slurm_script_url}"
+    echo " "
+    echo "Please provide the script manually."
+    exit 42
+  fi
+
+fi
+
+# Download language script if absent, will do nothing on Bianca
+if [ ! -f "${language_script_name}" ]; then
+  echo "Language script with name '${language_script_name}' not found."
+  echo " "
+  echo "This script can be downloaded from URL:"
+  echo "${language_script_url}"
+  echo " "
+  echo "Attempting to download script:"
+  # The '|| true' means 'continue even when the download failed
+  wget "${language_script_url}" || true
+
+  if [ ! -f "${language_script_name}" ]; then
+    echo "ERROR: Language script with name '${language_script_name}' not found,"
+    echo "even after attempting to download it from URL"
+    echo "${language_script_url}"
+    echo " "
+    echo "Please provide the script manually."
+    exit 42
+  fi
 fi
 
 # Thread parallelism only makes sense on a single node
@@ -138,8 +196,8 @@ do
   if [ ${hpc_cluster} == "dardel" ] 
   then
     # Dardel needs to have a partition specified
-    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" -p main "${script_name}"
+    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" -p main "${slurm_script_name}"
   else
-    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${script_name}"
+    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${slurm_script_name}"
   fi
 done

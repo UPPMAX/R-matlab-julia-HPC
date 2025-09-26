@@ -307,7 +307,7 @@ we have the time to figure out what it is doing.
 
 ![Benchmark results: speedup](benchmark_results_speedup.png)
 
-## Extra questions
+## Exercise X1:
 
 What went wrong here? Why is this a problem?
 
@@ -324,6 +324,21 @@ What went wrong here? Why is this a problem?
 ```
 
 <!-- markdownlint-enable MD013 -->
+
+## Exercise X2:
+
+What went wrong here? Why is this a problem?
+
+```console
+Julia single-thread tuns
+```
+
+## Exercise X3: always program in Assembly?
+
+```
+Figure from paper
+```
+
 
 ## Troubleshooting
 
