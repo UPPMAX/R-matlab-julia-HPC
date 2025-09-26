@@ -1,34 +1,10 @@
 #!/bin/env Rscript
 
-# Step 1: check for all packages
-
-if (!require("doParallel", quietly = TRUE)) {
-  stop(
-    "Package 'doParallel' not installed. \n",
-    "Install it, using, for example: \n",
-    " \n",
-    "  install.packages(\"doParallel\")",
-    " \n"
-  )
-}
-if (!require("stringr", quietly = TRUE)) {
-  stop(
-    "Package 'stringr' not installed. \n",
-    "Install it, using, for example: \n",
-    " \n",
-    "  install.packages(\"stringr\")",
-    " \n"
-  )
-}
-if (!require("testthat", quietly = TRUE)) {
-  stop(
-    "Package 'testthat' not installed. \n",
-    "Install it, using, for example: \n",
-    " \n",
-    "  install.packages(\"testthat\")",
-    " \n"
-  )
-}
+# Step 1: load all libraries
+library(parallel, quietly = TRUE)
+library(doParallel, quietly = TRUE)
+library(stringr, quietly = TRUE)
+library(testthat, quietly = TRUE)
 
 # Step 2: process command-line arguments
 
@@ -122,9 +98,6 @@ testthat::expect_true(is.numeric(grid_size))
 message("Grid size: ", grid_size)
 
 # Step 3: prepare calculation
-
-library(parallel, quietly = TRUE)
-library(doParallel, quietly = TRUE)
 
 #' Function that integrates the function `sin(x + y)` in a threaded fashion.
 #' @param grid_size the grid size
