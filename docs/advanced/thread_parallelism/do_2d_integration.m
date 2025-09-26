@@ -1,4 +1,4 @@
-args = [ "2" "100" ];
+args = [ "1" "16384" ];
 
 if length(args) == 0 || length(args) > 2
   disp("ERROR: Incorrect number of arguments.");
