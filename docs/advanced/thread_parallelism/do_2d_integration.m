@@ -1,7 +1,11 @@
-args = argv();
 
+function args = do_2d_integration(args)
+  args
+end
+
+% args = argv();
 % args = { "1", "1" }
-% disp(args)
+disp(args)
 
 if length(args) == 0 || length(args) > 2
   disp("ERROR: Incorrect number of arguments.");
