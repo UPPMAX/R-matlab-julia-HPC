@@ -46,7 +46,7 @@ Jobs can be submitted to the SLURM queue directly from the the MATLAB GUI as an 
 to the standard bash scripts that are used with the command `sbatch my-script.sh`, for instance.
 
 <div align="center">
-  <img src="../../docs/img/matlab-gui.png" alt="Matlab GUI" width="500"/>
+  <img src="img/matlab-gui.png" alt="Matlab GUI" width="500"/>
 </div>
 MATLAB GUI
 
