@@ -196,10 +196,10 @@ On your HPC cluster:
     There are many ways to do so.
 
     One way is to download it directly from
-    [this course's repository](https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/benchmark_2d_integration.sh):
+    [this course's repository](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/docs/advanced/thread_parallelism/benchmark_2d_integration.sh):
 
     ```bash
-    wget https://raw.githubusercontent.com/UPPMAX/R-python-julia-HPC/main/exercises/advanced/thread_parallelism/benchmark_2d_integration.sh
+    wget https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/docs/advanced/thread_parallelism/benchmark_2d_integration.sh
     ```
 
 - Download the Slurm script for your favorite language
