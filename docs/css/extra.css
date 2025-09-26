@@ -199,10 +199,10 @@ div.tabbed-set.tabbed-alternate {
 .btn-clipboard {
     position: relative;
     top: .2rem;
-    right: 2rem;
+    right: 2.2em;
     z-index: 10;
     display: block;
-    padding: .15rem .2rem;
+    padding: .15rem .1rem;
     cursor: pointer;
     width: 2.5em;
     float: right;
