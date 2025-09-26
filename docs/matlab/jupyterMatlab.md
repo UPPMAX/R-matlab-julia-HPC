@@ -138,7 +138,6 @@ As with Python, it is possible to run Matlab in a notebook, i.e. in a web interf
 
         - On Kebnekaise, you can run Jupyter notebooks with Matlab kernels by using batch scripts
         - [Notebook example here](https://github.com/hpc2n/intro-course/blob/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb)
-        - [Tutorial here](https://docs.hpc2n.umu.se/tutorials/jupyter/)
 
 !!! summary
     
