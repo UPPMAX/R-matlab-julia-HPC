@@ -69,12 +69,12 @@ function get_language_script_name()
   if [ "$1" == "julia" ]; then echo "do_2d_integration.jl"; return 0; fi
   if [ "$1" == "matlab" ]; then echo "do_2d_integration.m"; return 0; fi
   if [ "$1" == "r" ]; then echo "do_2d_integration.R"; return 0; fi
-  if ! is_valid_language $1 ; then echo "ERROR: '$1' must be a valid language"; exit 41; fi
+  if ! is_valid_language "$1" ; then echo "ERROR: '"$1"' must be a valid language"; exit 41; fi
 }
 
-if [ ! $(get_language_script_name "julia") == "do_2d_integration.jl" ]  ; then echo "Internal error: the Julia script is 'do_2d_integration.jl'"; exit 41; fi
-if [ ! $(get_language_script_name "matlab") == "do_2d_integration.m" ]  ; then echo "Internal error: the MATLAB script is 'do_2d_integration.m'"; exit 41; fi
-if [ ! $(get_language_script_name "r") == "do_2d_integration.R" ]  ; then echo "Internal error: the R script is 'do_2d_integration.R'"; exit 41; fi
+if [ ! "$(get_language_script_name julia)" == "do_2d_integration.jl" ] ; then echo "Internal error: the Julia script is 'do_2d_integration.jl'"; exit 41; fi
+if [ ! "$(get_language_script_name matlab)" == "do_2d_integration.m" ] ; then echo "Internal error: the MATLAB script is 'do_2d_integration.m'"; exit 41; fi
+if [ ! "$(get_language_script_name r)" == "do_2d_integration.R" ] ; then echo "Internal error: the R script is 'do_2d_integration.R'"; exit 41; fi
 
 # Detect HPC cluster
 hpc_cluster="unknown"
