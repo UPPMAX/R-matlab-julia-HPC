@@ -2,9 +2,9 @@
 
 !!! info "Learning outcomes"
 
-    - Understand how to schedule jobs with threaded parallelism
-    - Understand how code achieves threaded parallelism
-    - Observe/conclude the costs/benefits of threaded parallelism
+    - Understand how to schedule jobs with thread parallelism
+    - Understand how code achieves thread parallelism
+    - Observe/conclude the costs/benefits of thread parallelism
 
 ???- note "For teachers"
 
@@ -91,10 +91,10 @@ If you use the incorrect spelling, the script will help you.
 
 ## Slurm script
 
-This is the script that schedules a job with threaded parallelism.
+This is the script that schedules a job with thread parallelism.
 
 The goal of the script is to
-submit a calculation that uses threaded parallelism,
+submit a calculation that uses thread parallelism,
 with a custom amount of cores.
 
 This Slurm script is called by the benchmark script,
@@ -132,7 +132,7 @@ where the benchmark script supplies the desired number of cores.
 
 ## Calculation script
 
-This is the code that performs a job with threaded parallelism.
+This is the code that performs a job with thread parallelism.
 
 The goal of the code is to have a fixed unit of work that
 can be done by a custom amount of cores.
@@ -339,6 +339,9 @@ Julia single-thread tuns
 Figure from paper
 ```
 
+## Where to go next?
+
+Distributed parallelism
 
 ## Troubleshooting
 
