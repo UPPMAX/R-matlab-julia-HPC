@@ -96,20 +96,14 @@ assert(abs(integration2d(100, 1, 1)) < 0.0001);
 % Start timer
 tic;
 
-partial_results = ones(n_workers);
-
-disp("BEFORE");
-disp(partial_results);
+partial_results = [];
 
 parfor worker_index = 1:n_workers
-    partial_results(i) = integration2d(grid_size, n_workers, worker_index);
+    partial_results(worker_index) = integration2d(grid_size, n_workers, worker_index);
 end
 
 integral_value = sum(partial_results);
 duration_secs = toc;
-
-disp("AFTER");
-disp(partial_results);
 
 error_value = abs(integral_value - 0.0);
 core_secs = duration_secs * n_workers;
@@ -122,6 +116,10 @@ language = 'matlab';
 hpc_cluster = extract_hpc_cluster();
 disp('language,hpc_cluster,grid_size,n_workers,core_secs');
 disp([
-    language ',', char(hpc_cluster) ',' num2str(grid_size) ','
-    num2str(n_workers) ',' num2str(core_secs)
+    char(language) char(',') ...
+    char(hpc_cluster) char(',') ...
+    num2str(grid_size) char(',') ...
+    num2str(n_workers) char(',') ...
+    num2str(core_secs)
   ]);
+
