@@ -413,7 +413,7 @@ Calls: <Anonymous> ... waldo_compare -> loadNamespace -> namespaceImport -> load
 Execution halted
 ```
 
-This is the same procedure as T2.
+This only happens on Rackham, since 2025-09-25.
 
 <!-- markdownlint-disable -->
 

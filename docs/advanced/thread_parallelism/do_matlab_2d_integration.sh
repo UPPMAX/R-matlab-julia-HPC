@@ -102,7 +102,7 @@ fi
 
 if [ ${hpc_cluster} == "pelle" ]
 then
-  module load matlab/R2023b >/dev/null 2>&1
+  module load matlab/1.0.4.1 >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "rackham" ]
