@@ -101,8 +101,8 @@ partial_results = ones(n_workers);
 disp("BEFORE");
 disp(partial_results);
 
-parfor i = 1:n_workers
-    partial_results(i) = integration2d(grid_size, n_workers, i);
+parfor worker_index = 1:n_workers
+    partial_results(i) = integration2d(grid_size, n_workers, worker_index);
 end
 
 integral_value = sum(partial_results);
