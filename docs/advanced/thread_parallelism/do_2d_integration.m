@@ -1,10 +1,10 @@
 
-function args = do_2d_integration(args)
-  args
-end
+%function args = do_2d_integration(args)
+%  args
+%end
 
 % args = argv();
-% args = { "1", "1" }
+args = { "2", "100" }
 disp(args)
 
 if length(args) == 0 || length(args) > 2
