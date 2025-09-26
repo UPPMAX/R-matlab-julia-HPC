@@ -1,0 +1,19 @@
+Learning outcome                                                                 |0  |1  |2  |3  |4  |NA 
+I can find the module to be able to run R                                        |0  |0  |1  |0  |7  |0  
+I can load the module to be able to run R                                        |0  |0  |1  |0  |7  |0  
+I can run the R interpreter                                                      |0  |0  |0  |2  |6  |0  
+I can run the R command to get the list of installed R packages                  |0  |0  |1  |2  |5  |0  
+I can run an R script from the command-line                                      |0  |0  |1  |2  |5  |0  
+I can find out if an R package is already installed                              |0  |0  |2  |2  |4  |0  
+I can load the pre-installed R packages                                          |0  |0  |1  |2  |5  |0  
+I can install an R package from CRAN                                             |0  |0  |2  |2  |4  |0  
+I can use renv to create, activate, use and deactivate a virtual environment     |0  |3  |1  |1  |3  |0  
+I can submit a job to the scheduler to run an R script with regular code         |0  |2  |0  |1  |5  |0  
+I can submit a job to the scheduler to run an R script that uses parallel code   |1  |1  |1  |1  |4  |0  
+I can submit a job to the scheduler to run an R script that uses a GPU           |1  |2  |2  |0  |3  |0  
+I can find and load the R machine learning modules                               |0  |2  |1  |0  |3  |2  
+I can submit a job to the scheduler to run an R script that uses machine learning|0  |2  |1  |0  |3  |2  
+I can start an interactive session                                               |0  |1  |1  |1  |5  |0  
+I can verify I am on the login node yes/no                                       |1  |0  |1  |1  |5  |0  
+I can start an interactive session with multiple cores                           |1  |0  |1  |1  |5  |0  
+I can start RStudio                                                              |0  |1  |0  |2  |5  |0  
