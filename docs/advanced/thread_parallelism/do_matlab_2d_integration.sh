@@ -91,8 +91,6 @@ if [ ${hpc_cluster} == "kebnekaise" ]
 then
   module purge >/dev/null 2>&1
   module load MATLAB/2023a.Update4 >/dev/null 2>&1
-
-
 fi
 
 if [ ${hpc_cluster} == "lumi" ]
@@ -107,8 +105,7 @@ fi
 
 if [ ${hpc_cluster} == "rackham" ]
 then
-  module load matlab/R2023b >/dev/null 2>&1
-
+  module load matlab/2023b >/dev/null 2>&1
 
   # Need this only once
   configCluster.sh "${SLURM_JOB_ACCOUNT}"
