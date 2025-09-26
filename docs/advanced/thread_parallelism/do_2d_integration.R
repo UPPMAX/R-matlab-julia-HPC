@@ -2,31 +2,28 @@
 
 # Step 1: check for all packages
 
-#' Make the script more English
-is_package_installed <- require
-
-if (!is_package_installed("doParallel")) {
+if (!require("doParallel")) {
   stop(
     "Package 'doParallel' not installed. \n",
-    "Install it using, for example: \n",
+    "Install it, using, for example: \n",
     " \n",
     "  install.packages(\"doParallel\")",
     " \n"
   )
 }
-if (!is_package_installed("stringr")) {
+if (!require("stringr")) {
   stop(
     "Package 'stringr' not installed. \n",
-    "Install it using, for example: \n",
+    "Install it, using, for example: \n",
     " \n",
     "  install.packages(\"stringr\")",
     " \n"
   )
 }
-if (!is_package_installed("testthat")) {
+if (!require("testthat")) {
   stop(
     "Package 'testthat' not installed. \n",
-    "Install it using, for example: \n",
+    "Install it, using, for example: \n",
     " \n",
     "  install.packages(\"testthat\")",
     " \n"
