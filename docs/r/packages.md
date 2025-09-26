@@ -467,7 +467,7 @@ $ mkdir -p $HOME/R-packages-4.1.1
     $ echo R_LIBS_USER="<path-to-your-space-on-proj-storage>/R-packages-%V" > ~/.Renviron
     ```
 
-    And then create directories for each R version you use there, like this, for R/4.1.1
+    And then create directories for each R version you use there, like this, for R/4.1.1. DO NOT JUST DO IT FOR R/4.1.1! Change to the version you will be using, depending on centre! See under [Package libraries](#package-libraries). 
 
     ```bash
     mkdir -p <path-to-your-space-on-proj-storage>/R-packages-4.1.1

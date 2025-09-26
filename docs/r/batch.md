@@ -28,7 +28,7 @@
     - Kebnekaise: ``/proj/nobackup/fall-courses``
     - Tetralith: ``/proj/courses-fall-2025/users/``
     - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
-    - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/
+    - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/``
 
 ## Overview of the UPPMAX systems
 
