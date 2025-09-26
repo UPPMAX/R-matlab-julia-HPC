@@ -119,9 +119,29 @@ fi
 echo "Slurm job account used: ${SLURM_JOB_ACCOUNT}"
 echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
 
+# Create a MATLAB file with the first line replaced by the desired values
+matlab_source_filename="do_2d_integration.m"
+matlab_target_filename="do_2d_integration_for_${SLURM_NPROCS}_cores.m"
+
+cp "${matlab_source_filename}" "${matlab_target_filename}"
+
+grid_size=16384
+echo "Grid size: ${grid_size}"
+first_line_text="args = [ \"${SLURM_NPROCS}\" \"${grid_size}\" ];"
+echo "New text for the first line: ${first_line_text}"
+# Replace the first line
+sed -i "1s/.*/${first_line_text}/" "${matlab_target_filename}"
+
+echo "Top lines of the MATLAB file:"
+head "${matlab_target_filename}"
+
+echo "Running the MATLAB file:"
+matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); exit;"
+
 # matlab -nodisplay -nosplash -nojvm -batch do_2d_integration.m "${SLURM_NPROCS}"
 
 # matlab -nodisplay -nosplash -nojvm -r "do_2d_integration.m ${SLURM_NPROCS}"
+
 
 # Use -batch
 # https://stackoverflow.com/a/58358304/3364162
@@ -129,4 +149,6 @@ echo "Number of cores booked in Slurm: ${SLURM_NPROCS}"
 
 # Put command in a text
 # https://stackoverflow.com/a/6717782/3364162
-matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration.m ${SLURM_NPROCS}\"); exit;"
+%matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration.m ${SLURM_NPROCS}\"); exit;"
+
+
