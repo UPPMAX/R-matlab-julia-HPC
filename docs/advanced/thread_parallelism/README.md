@@ -415,6 +415,20 @@ Execution halted
 
 This only happens on Rackham, since 2025-09-25.
 
+##
+
+```matlab
+Warning: Executing startup failed in matlabrc.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:undefinedVarOrClass
+Unable to resolve the name 'java.net.InetAddress.getLocalHost.getHostAddress'. 
+Error using run
+RUN cannot execute the file 'do_2d_integration.m 48'. RUN requires a valid
+MATLAB script
+```
+
+
 <!-- markdownlint-disable -->
 
 <!-- old stuff below 

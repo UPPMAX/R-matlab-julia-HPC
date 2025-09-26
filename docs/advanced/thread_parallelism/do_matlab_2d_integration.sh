@@ -102,7 +102,7 @@ fi
 
 if [ ${hpc_cluster} == "pelle" ]
 then
-  module load R-bundle-CRAN/2024.11-foss-2024a matlab/1.0.4.1 >/dev/null 2>&1
+  module load MATLAB/2024a >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "rackham" ]
