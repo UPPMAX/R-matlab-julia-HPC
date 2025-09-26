@@ -102,12 +102,13 @@ fi
 
 if [ ${hpc_cluster} == "pelle" ]
 then
-  module load matlab/1.0.4.1 >/dev/null 2>&1
+  module load R-bundle-CRAN/2024.11-foss-2024a matlab/1.0.4.1 >/dev/null 2>&1
 fi
 
 if [ ${hpc_cluster} == "rackham" ]
 then
   module load matlab/R2023b >/dev/null 2>&1
+
 
   # Need this only once
   configCluster.sh "${SLURM_JOB_ACCOUNT}"
