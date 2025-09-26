@@ -15,7 +15,6 @@
     - Intro 5 min
     - Lecture and 10 min
 
-
 !!! important "Notes"
 
     - It is possible to run Julia directly on the login (including ThinLinc) nodes.
@@ -35,7 +34,6 @@ In order to run interactively, you need to have compute nodes allocated to run o
 
 Because you will have to wait until the nodes are allocated, and because you cannot know when this happens, this is not usually a recommended way to run Julia, but it is possible.
 
-
 ## Interactive sessions at HPC2N, UPPMAX, LUNARC, and NSC
 
 Here we define an interactive session as a session with direct access to a compute node.
@@ -44,20 +42,19 @@ Or alternatively: an interactive session is a session, in which there is no queu
 This differs between HPC2N and UPPMAX :
 
 - HPC2N: the user remains on a login node.
-  All commands can be sent directly to the compute node using ``srun``
+  All commands can be sent directly to the compute node using `srun`
 - UPPMAX: the user is actually on a computer node.
   Whatever command is done, it is run on the compute node
 - LUNARC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node
-- NSC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node  - - PDC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node
+- NSC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node
+- PDC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node
 
 ### Start an interactive session
-
 
 To start an interactive session,
 one needs to allocate resources on the cluster first.
 
 The command to request an interactive node differs per HPC cluster:
-
 
 | Cluster | `interactive` | `salloc`     | GfxLauncher |
 |---------|:-------------:|--------------|-------------|
@@ -152,10 +149,8 @@ graph TD
         $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
         ```
 
-
 where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
 (maximum T168 hours), and then you give the id for your project.
-
 
 Then, when you get the allocation, do one of:
 
@@ -170,7 +165,6 @@ Then, when you get the allocation, do one of:
    - If you do not preface with ``srun`` the command is run on the login node!
    - You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.
    - This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.
-
 
 !!! important "Documentation at the centers"
 
@@ -443,7 +437,6 @@ Then, when you get the allocation, do one of:
 
 ### Running Julia in Jupyter
 
-
 - Like for Python it is possible to run Julia in Jupyter, i.e. in a web interface with possibility of inline figures and debugging.
 - For this you need the ``IJulia package`` that you may have to install yourself.
 - An easy way to do this is to load a python or Jupyter  module as well.
@@ -574,7 +567,7 @@ julia> notebook(dir=".",detached=true)
     - This can be fixed by
         - starting the jupyter server on the compute node, copying the URL containing the.
         - then starting a web browser in ThinLinc and open the URL copied in previous step
-    - One can even use the home computer, see https://uppmax.github.io/HPC-python/day1/IDEs.html#jupyter
+    - One can even use the home computer, see [here](https://uppmax.github.io/HPC-python/day2/IDEs.html#jupyter)
 
     === "NSC"
 
@@ -659,21 +652,17 @@ julia> notebook(dir=".",detached=true)
          paste it in a Firefox browser on Kebnekaise. When the Jupyter notebook interface starts, you can choose the Julia
          version from the module you loaded (in this case 1.8.5).
 
-
-
          - On Kebnekaise, you can run Jupyter notebooks with Julia kernels by using batch scripts
-         - https://docs.hpc2n.umu.se/tutorials/jupyter/#jupyterlab__with__julia
+         - See [HPC2N documentation on using Jupyter Lab with Julia](https://docs.hpc2n.umu.se/software/jupyter/#jupyterlab__with__julia)
 
 
 ### Exercises
-
 
 !!! important "Run scripts from an interactive session"
 
     - Try out one or two of the scripts from the exercise folder ``batchJulia``.
     - First create an interactive session with the right Slurm commands to the ``interactive``/``salloc`` command.
-       - use the commands from the batch job script belonging to the julia script at [examples of batch scripts for julia](https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia.html#examples-of-batch-scripts-for-julia){:target="_blank"}
-
+       - use the commands from the batch job script belonging to the julia script at [examples of batch scripts for julia](https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia/#examples-of-batch-scripts){:target="_blank"}
 
 !!! summary
 
@@ -681,6 +670,7 @@ julia> notebook(dir=".",detached=true)
 
       - At HPC2N: ``salloc`` ...
       - At UPPMAX/LUNARC: ``interactive`` ...
+      
     - Follow the same procedure as usual by loading the Julia module and possible prerequisites.
     - Run Julia in Jupyter lab/notebook
 
