@@ -25,39 +25,42 @@ Packages and isolated environments
         - You can remove the environment and create a new one, if not needed or with errors.
 
 
-Before going into installing packages let's have a background to the Julia environments and ecosystem!
+Before going into installing packages let's have a background to the Julia
+environments and ecosystem!
 
+In the Python's lesson on environments, we saw that there are different ways to
+deal with isolated environments in this language, for instance, `conda` and
+`pip`. This situation is simplified in Julia (if you are working with Julia code
+only) because environments are managed by Julia itself. Julia distinguishes
+between **project environments** and **package directories** ([Julia
+environments](https://docs.julialang.org/en/v1/manual/code-loading/#Environments)).
+In the former, only the Tom's Obvious Minimal Language (TOML) files
+(Project.toml, Manifest.toml) are present while in the latter also source files
+are included with some specific layout.
 
-In the Python's lesson on environments, we saw that there are different ways to deal with isolated
-environments in this language, for instance, ``conda`` and ``pip``. This situation is simplified
-in Julia (if you are working with Julia code only) because environments are managed by Julia
-itself. Julia distinguishes between **project environments** and **package directories**
-([Julia environments](https://docs.julialang.org/en/v1/manual/code-loading/#Environments)). In the former, only the
-Tom's Obvious Minimal Language (TOML) files (Project.toml, Manifest.toml) are present while in the
-latter also source files are included with some specific layout.
+Packages are imported or loaded by the commands `import` and `using`,
+respectively. The difference is (briefly):
 
-Packages are imported or loaded by the commands ``import`` and ``using``, respectively. The difference is (briefly):
-
-> To use "module" functions, use ``import <module>`` to import the "module", and ``Module.fn(x)`` to use the functions.
-> Alternatively, ``using <Module`` will import *all* exported Module functions into the *current namespace*, i.e. ``Module.fn(x)`` becomes ``fn(x)``.
+> To use "module" functions, use `import <module>` to import the "module", and
+> `Module.fn(x)` to use the functions. Alternatively, `using <Module>` will
+> import *all* exported Module functions into the *current namespace*, i.e.
+> `Module.fn(x)` becomes `fn(x)`.
 
 
 If you have started Julia previously, you will get the folders like this in the ~/.julia folder.
 
-``` console
-$ tree .julia/ -d -L 1
-.
-├── artifacts
-├── bin
-├── compiled
-├── conda
-├── environments
-├── logs
-├── packages
-├── prefs
-├── registries
-└── scratchspaces
-```
+    $ tree .julia/ -d -L 1
+    .
+    ├── artifacts
+    ├── bin
+    ├── compiled
+    ├── conda
+    ├── environments
+    ├── logs
+    ├── packages
+    ├── prefs
+    ├── registries
+    └── scratchspaces
 
 
 ??? note "Alternative to **tree** command"
@@ -65,42 +68,35 @@ $ tree .julia/ -d -L 1
     In case you don't have the **tree** command on your system you can use the
     **find** command which is more common on Linux:
 
-    ``` console
-    $ find .julia -mindepth 1 -maxdepth 1 -type d
-    .julia/registries
-    .julia/logs
-    .julia/packages
-    .julia/artifacts
-    .julia/conda
-    .julia/compiled
-    .julia/environments
-    .julia/prefs
-    .julia/scratchspaces
-    ```
+        $ find .julia -mindepth 1 -maxdepth 1 -type d
+        .julia/registries
+        .julia/logs
+        .julia/packages
+        .julia/artifacts
+        .julia/conda
+        .julia/compiled
+        .julia/environments
+        .julia/prefs
+        .julia/scratchspaces
 
 Packages in Julia work as decentralized units which can be connected through their
 universally unique identifiers (UUIDs) in the so-called federated package management.
 The active environments can be seen with the command:
 
-``` jlcon
-   julia>LOAD_PATH
-   3-element Vector{String}:
-   "@"
-   "@v#.#"
-   "@stdlib"
-```
+    julia>LOAD_PATH
+    3-element Vector{String}:
+    "@"
+    "@v#.#"
+    "@stdlib"
 
-where ``@`` is the current environment, ``@v#.#`` is the default environment for the
-Julia version that is being in use, and ``@stdlib`` is the standard library.
+where `@` is the current environment, `@v#.#` is the default environment for the
+Julia version that is being in use, and `@stdlib` is the standard library.
 
-.. admonition:: Site-installed packages in environments
-   :class: dropdown
+??? note "Site-installed packages in environments"
 
-   At UPPMAX the central environment adds to the list with the element:
+    At UPPMAX the central environment adds to the list with the element:
 
-   .. code-block:: bash
-
-      "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
+        "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
 
 Thus, by default in addition to the current environment other environments are present
 which can potentially create conflicts for reproducibility if you are not aware of what
@@ -109,264 +105,243 @@ situation.
 
 In a fresh Julia installation, we can see the following project information:
 
-.. code-block:: julia-repl
+    julia> using Pkg
 
-   julia> using Pkg
-
-   julia> Pkg.project()
-   Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}(), "/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml")
+    julia> Pkg.project()
+    Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}(), "/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml")
 
 Here, we can see among other things that nothing (any package) has been added to project,
 the UUID of the project, and the location of the *.toml* file.
-Let's install a package ``DFTK``, for instance, that performs Density Functional Theory
-routines (`DFTK <https://docs.dftk.org/stable/>`_):
+Let's install a package `DFTK`, for instance, that performs Density Functional Theory
+routines ([DFTK](https://docs.dftk.org/stable/)):
 
-.. code-block:: julia-repl
-
-   julia> using Pkg
-   julia> Pkg.add("DFTK")
-           Info Packages marked with ⌅ have new versions available but compatibility constraints restrict them from upgrading. To see why use `status --outdated -m`
-   Precompiling project...
-   104 dependencies successfully precompiled in 43 seconds
+    julia> using Pkg
+    julia> Pkg.add("DFTK")
+    Info Packages marked with ⌅ have new versions available but compatibility constraints restrict them from upgrading. To see why use `status --outdated -m`
+    Precompiling project...
+    104 dependencies successfully precompiled in 43 seconds
 
 Now, the project information tells us about the recently installed package:
 
-.. code-block:: julia-repl
-
-   julia> Pkg.project()
-   Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}("DFTK" => UUID("acf6eb54-70d9-11e9-0013-234b7a5f5337")), "/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml")
+    julia> Pkg.project()
+    Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}("DFTK" => UUID("acf6eb54-70d9-11e9-0013-234b7a5f5337")), "/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml")
 
 
 Create a project environment
 ----------------------------
 
-Let's now create a **project environment**, this can be done as follows (if typing along, you have to change the path to your environment, like ``/path-to-my-project/$USER/julia``):
+Let's now create a **project environment**, this can be done as follows (if
+typing along, you have to change the path to your environment, like
+`/path-to-my-project/$USER/julia`):
 
-.. type-along::
+    julia> using Pkg
+    julia>;
+    shell> mkdir my-first-env
+    shell> cd my-first-env
+     /path-to-my-project/$USER/julia/my-first-env
+    shell> #type backspace#
+    julia> ]
+    (v1.8) pkg> activate .
+     Activating new project at `/path-to-my-project/$USER/julia/my-first-env`
+    (my-first-env) pkg> #type backspace
+    julia> ;
+    shell> ls
 
-   .. code-block:: julia-repl
+We can see that our environment in parenthesis has been activated. At this stage
+nothing has been added in the folder *my-first-env* as you can see from the
+empty output of the `ls` command. Notice that now that we are in this new
+environment, the default and standard library environments are also present as
+before:
 
-      julia> using Pkg
-      julia>;
-      shell> mkdir my-first-env
-      shell> cd my-first-env
-         /path-to-my-project/$USER/julia/my-first-env
-      shell> #type backspace#
-      julia> ]
-      (v1.8) pkg> activate .
-         Activating new project at `/path-to-my-project/$USER/julia/my-first-env`
-      (my-first-env) pkg> #type backspace
-      julia> ;
-      shell> ls
+    julia> LOAD_PATH
+    3-element Vector{String}:
+    "@"
+    "@v#.#"
+    "@stdlib"
 
-   We can see that our environment in parenthesis has been activated. At this stage nothing has been added in the folder *my-first-env* as you can see from the empty output of the ``ls`` command.
-   Notice that now that we are in this new environment, the default and standard library environments are also present as before:
+This can be confirmed if we try to load the `DFTK` package that we installed
+previously as the command `using DFTK` will execute without any complaints. If
+we install the `DFTK` package we will notice some differences w.r.t. the
+previous installation:
 
-   .. code-block:: julia-repl
+    (my-first-env) pkg> add DFTK
+    Resolving package versions...
+    Updating `/path-to-my-project/$USER/julia/my-first-env/Project.toml`
+    [acf6eb54] + DFTK v0.6.2
+    Updating `/path-to-my-project/$USER/julia/my-first-env/Manifest.toml`
 
-      julia> LOAD_PATH
-      3-element Vector{String}:
-      "@"
-      "@v#.#"
-      "@stdlib"
+First, we notice that installation was much faster than before. This is because
+**Pkg** did not do a new installation but it just updated our environment with
+information of the available `DFTK` package. Specifically, if you take a look
+at the content of the current directory you will see the new files
+`Project.toml` and `Manifest.toml`, the `more` command can display the
+content of these files:
 
-   This can be confirmed if we try to load the ``DFTK`` package that we installed previously as the command ``using DFTK`` will execute without any complaints. If we install the ``DFTK`` package we will notice some differences w.r.t. the previous installation:
+    shell> ls
+    Manifest.toml  Project.toml
 
-   .. code-block:: julia
+    shell> more Project.toml
+    [deps]
+    DFTK = "acf6eb54-70d9-11e9-0013-234b7a5f5337"
 
-      (my-first-env) pkg> add DFTK
-      Resolving package versions...
-      Updating `/path-to-my-project/$USER/julia/my-first-env/Project.toml`
-      [acf6eb54] + DFTK v0.6.2
-       Updating `/path-to-my-project/$USER/julia/my-first-env/Manifest.toml`
+    shell> more Manifest.toml
+    # This file is machine-generated - editing it directly is not advised
 
-   First, we notice that installation was much faster than before. This is because **Pkg** did not do a new installation but it just updated our environment with information of the available ``DFTK`` package. Specifically, if you take a look at the content of the current directory you will see the new files ``Project.toml`` and ``Manifest.toml``, the ``more`` command can display the content of these files:
+    julia_version = "1.8.5"
+    manifest_format = "2.0"
+    project_hash = "48bbaa26b07ee1ca85ad746dc9b2f772ba10b675"
 
-   .. code-block:: julia-repl
+    [[deps.AbstractFFTs]]
+    deps = ["ChainRulesCore", "LinearAlgebra"]
+    git-tree-sha1 = "69f7020bd72f069c219b5e8c236c1fa90d2cb409"
+    uuid = "621f4979-c628-5d54-868e-fcf4e3e8185c"
+    version = "1.2.1"
 
-      shell> ls
-      Manifest.toml  Project.toml
+    [[deps.Adapt]]
+    deps = ["LinearAlgebra"]
+    git-tree-sha1 = "195c5505521008abea5aee4f96930717958eac6f"
+    uuid = "79e6a3ab-5dfb-504d-930d-738a2a938a0e"
+    version = "3.4.0"
 
-      shell> more Project.toml
-      [deps]
-      DFTK = "acf6eb54-70d9-11e9-0013-234b7a5f5337"
+    ...
 
-      shell> more Manifest.toml
-      # This file is machine-generated - editing it directly is not advised
-
-      julia_version = "1.8.5"
-      manifest_format = "2.0"
-      project_hash = "48bbaa26b07ee1ca85ad746dc9b2f772ba10b675"
-
-      [[deps.AbstractFFTs]]
-      deps = ["ChainRulesCore", "LinearAlgebra"]
-      git-tree-sha1 = "69f7020bd72f069c219b5e8c236c1fa90d2cb409"
-      uuid = "621f4979-c628-5d54-868e-fcf4e3e8185c"
-      version = "1.2.1"
-
-      [[deps.Adapt]]
-      deps = ["LinearAlgebra"]
-      git-tree-sha1 = "195c5505521008abea5aee4f96930717958eac6f"
-      uuid = "79e6a3ab-5dfb-504d-930d-738a2a938a0e"
-      version = "3.4.0"
-
-      ...
-
-   Here, we notice that the ``Project.toml`` only gives us the UUID of the project while the ``Manifest.toml`` file contains the full information about the dependencies versions and organization layout. Notice the message regarding editing for the latter. Let's leave this environment:
+Here, we notice that the ``Project.toml`` only gives us the UUID of the project
+while the ``Manifest.toml`` file contains the full information about the
+dependencies versions and organization layout. Notice the message regarding
+editing for the latter. Let's leave this environment:
 
 
-   .. code-block:: julia
+    (my-first-env) pkg> activate
+      Activating project at `~/.julia/environments/v1.8`
 
-      (my-first-env) pkg> activate
-          Activating project at `~/.julia/environments/v1.8`
+    (v1.8) pkg>
 
-      (v1.8) pkg>
+Once you have created an environment, it can be activated in several manners.
+The one we saw before is by activating it in `package` mode with the command
+`activate .`. You may also be able to activate the environment inside the
+Julia script by calling these lines in your `.jl` file:
 
-   Once you have created an environment, it can be activated in several manners. The one we saw before is by activating it in ``package`` mode with the command ``activate .``. You may also be able to activate the environment inside the Julia script by calling these lines in your ``.jl`` file:
+    julia> using Pkg
+    julia> Pkg.activate(".")
 
-   .. code-block:: julia-repl
+Besides the previous two options for activating an environment, you can also
+activate it on the Linux command line (assuming that you are located in the
+environment directory):
 
-      julia> using Pkg
-      julia> Pkg.activate(".")
+    julia --project=.
 
-   Besides the previous two options for activating an environment, you can also activate it on the Linux command line (assuming that you are located in the environment directory):
-
-   .. code-block:: console
-
-      julia --project=.
 
 Create a package environment
 ----------------------------
 
-A package environment can be created by using the ``generate`` function in ``package mode``
-or ``Pkg.generate()`` in ``Julian`` mode:
+A package environment can be created by using the `generate` function in
+`package mode` or `Pkg.generate()` in `Julian` mode:
 
-.. code-block:: julia
-
-   (v1.8) pkg> generate myfirstpackage
+    (v1.8) pkg> generate myfirstpackage
      Generating  project myfirstpackage:
      myfirstpackage/Project.toml
      myfirstpackage/src/myfirstpackage.jl
 
-In contrast to the ``project environment``, the ``package environment`` has a default file
-structure, see for instance the **src** directory that is created.
+In contrast to the project environment, the package environment has a
+default file structure, see for instance the **src** directory that is created.
 One can activate this environment in the following way:
 
-.. code-block:: julia
+    shell> cd myfirstpackage
+    (v1.8) pkg> activate .
+    Activating project at `/path-to-my-project/$USER/julia/my-first-env/myfirstpackage`
+    (myfirstpackage) pkg>
 
-   shell> cd myfirstpackage
-   (v1.8) pkg> activate .
-   Activating project at `/path-to-my-project/$USER/julia/my-first-env/myfirstpackage`
-   (myfirstpackage) pkg>
+The `project` function tells us that the current project has an UUID assigned to
+it:
 
+    julia> Pkg.project()
+    Pkg.API.ProjectInfo("myfirstpackage", UUID("ca799254-944c-4043-b9e3-b70b93409f34"), v"0.1.0", true, Dict{String, Base.UUID}(), "/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml")
 
-The ``project`` function tells us that the current project has an UUID assigned to it:
-
-.. code-block:: julia-repl
-
-   julia> Pkg.project()
-   Pkg.API.ProjectInfo("myfirstpackage", UUID("ca799254-944c-4043-b9e3-b70b93409f34"), v"0.1.0", true, Dict{String, Base.UUID}(), "/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml")
-
-As in the ``project environment``, the ``package environment`` can see the default and
+As in the project environment, the package environment can see the default and
 the standard library environments.
 
-Let's add the package ``Flux`` for Machine Learning routines:
+Let's add the package `Flux` for Machine Learning routines:
 
-.. code-block:: julia
-
-   (myfirstpackage) pkg> add Flux
+    (myfirstpackage) pkg> add Flux
      Precompiling project...
      49 dependencies successfully precompiled in 92 seconds. 43 already precompiled.
-   (myfirstpackage) pkg> status
+    (myfirstpackage) pkg> status
      Project myfirstpackage v0.1.0
      Status `/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml`
      [587475ba] Flux v0.13.11
 
-where the status function tells us information about the packages that are installed
-in the current environment, for instance the ``Flux`` version that we just installed.
+where the status function tells us information about the packages that are
+installed in the current environment, for instance the `Flux` version that we
+just installed.
 
 
 Customizing the set of visible environments
 -------------------------------------------
 
-We saw previously that by default some environments are visible to new environments.
-One can customize this setting with the variable ``JULIA_LOAD_PATH``, this can be
-done on the Linux command line:
+We saw previously that by default some environments are visible to new
+environments. One can customize this setting with the variable
+`JULIA_LOAD_PATH`, this can be done on the Linux command line:
 
-
-.. code-block:: console
-
-   $ export JULIA_LOAD_PATH="path1:path2:..."
+    $ export JULIA_LOAD_PATH="path1:path2:..."
 
 For instance, for including just the current environment we can set the value of
 this variable as:
 
-.. code-block:: console
-
-   $ export JULIA_LOAD_PATH="@"
+    $ export JULIA_LOAD_PATH="@"
 
 Then, when we start a Julia session the default option will be the current
 environment:
 
-.. code-block:: julia-repl
+    julia> LOAD_PATH
+    1-element Vector{String}:
+    "@"
 
-   julia> LOAD_PATH
-   1-element Vector{String}:
-   "@"
+One can also modify the `LOAD_PATH` directly on the julian prompt with the
+following functions:
 
-One can also modify the ``LOAD_PATH`` directly on the julian prompt with the following
-functions:
-
-
-.. code-block:: julia-repl
-
-   julia> empty!(LOAD_PATH)        # this will clean out the path
-   julia> push!(LOAD_PATH, "@")    # it will add the current environment
+    julia> empty!(LOAD_PATH)        # this will clean out the path
+    julia> push!(LOAD_PATH, "@")    # it will add the current environment
 
 
 Environment stacks
 ------------------
 
-As we saw before, ``LOAD_PATH`` shows that environments can be stacked and we can place
-the environments we want in the path so that they are visible in our current environment.
-To illustrate this concept, let's create a second environment and first we can remove the
-content of ``LOAD_PATH`` (which path will be different for you):
+As we saw before, `LOAD_PATH` shows that environments can be stacked and we can
+place the environments we want in the path so that they are visible in our
+current environment. To illustrate this concept, let's create a second
+environment and first we can remove the content of `LOAD_PATH` (which path will
+be different for you):
 
-.. code-block:: julia-repl
-
-   julia> empty!(LOAD_PATH)
-   shell> pwd
+    julia> empty!(LOAD_PATH)
+    shell> pwd
       /path-to-my-project/$USER/julia
 
-   shell> mkdir my-second-env
+    shell> mkdir my-second-env
 
-   shell> cd my-second-env
-   pkg> activate .
+    shell> cd my-second-env
+    pkg> activate .
 
-If we try to use the ``DFTK`` package we will see the error message:
+If we try to use the `DFTK` package we will see the error message:
 
-.. code-block:: julia-repl
-
-   julia> using DFTK
+    julia> using DFTK
       │ Package DFTK not found, but a package named DFTK is available from a registry.
       │ Install package?
       │   (my-second-env) pkg> add DFTK
       └ (y/n/o) [y]: n
        ERROR: ArgumentError: Package DFTK not found in current path.
 
-If you remember this package was installed in the first environment (``my-first-env``). In order
-to make this package available in our second environment we can push the corresponding folder's
-path to ``LOAD_PATH``:
+If you remember this package was installed in the first environment
+(`my-first-env`). In order to make this package available in our second
+environment we can push the corresponding folder's path to `LOAD_PATH`:
 
-.. code-block:: julia-repl
-
-   julia> push!(LOAD_PATH, "/path-to-my-project/$USER/julia/my-first-env/")
+    julia> push!(LOAD_PATH, "/path-to-my-project/$USER/julia/my-first-env/")
       1-element Vector{String}:
       "/path-to-my-project/$USER/julia/my-first-env/"
 
-   julia> using DFTK
+    julia> using DFTK
 
 and now the package can be loaded from the first environment without errors.
+
 
 UPPMAX Central library
 ######################
