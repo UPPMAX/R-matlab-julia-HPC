@@ -516,7 +516,7 @@ In the following demo you will find instructions to install this package and run
 
         ```bash
         ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
-        ```
+        ``` 
 
         Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version:
 
