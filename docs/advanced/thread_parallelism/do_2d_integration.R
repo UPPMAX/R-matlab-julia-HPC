@@ -3,13 +3,11 @@
 # Step 1: check for all packages
 
 #' Make the script more English
-is_package_installed <- function(package_name) {
-  require(package_name)
-}
+is_package_installed <- require
 
 if (!is_package_installed("doParallel")) {
   stop(
-    "Package 'testthat' not installed. \n",
+    "Package 'doParallel' not installed. \n",
     "Install it using, for example: \n",
     " \n",
     "  install.packages(\"doParallel\")",
@@ -18,7 +16,7 @@ if (!is_package_installed("doParallel")) {
 }
 if (!is_package_installed("stringr")) {
   stop(
-    "Package 'testthat' not installed. \n",
+    "Package 'stringr' not installed. \n",
     "Install it using, for example: \n",
     " \n",
     "  install.packages(\"stringr\")",
