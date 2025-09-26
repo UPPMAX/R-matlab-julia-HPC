@@ -150,7 +150,7 @@ i.e. not directly by a user. If the calculation script is absent,
 the benchmark script will (try to) download it for you.
 
 ???- hint "How do I run it anyways?"
-    
+
     Check the Slurm script for your favorite language.
 
     In general, you can run it as such:
@@ -285,7 +285,7 @@ You will see the collected results.
 
 ![Benchmark results: speedup](benchmark_results_speedup.png)
 
-## Exercise X1:
+## Exercise X1
 
 What went wrong here? Why is this a problem?
 
@@ -303,7 +303,7 @@ What went wrong here? Why is this a problem?
 
 <!-- markdownlint-enable MD013 -->
 
-## Exercise X2:
+## Exercise X2
 
 What went wrong here? Why is this a problem?
 
@@ -313,7 +313,7 @@ Julia single-thread tuns
 
 ## Exercise X3: always program in Assembly?
 
-```
+```text
 Figure from paper
 ```
 
