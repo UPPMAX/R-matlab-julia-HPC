@@ -553,7 +553,7 @@ In the following demo you will find instructions to install this package and run
 
             ```bash
             module load GCC/12.3.0 OpenMPI/4.1.5 R/4.4.1 
-            module load R-bundle-CRAN/2023.12-R-4.4.1    
+            module load R-bundle-CRAN/2023.12-R-4.4.1 CUDA 
             ```
 
         === "UPPMAX"  
@@ -741,7 +741,7 @@ In the following demo you will find instructions to install this package and run
             # Remove any loaded modules and load the ones we need
             module purge  > /dev/null 2>&1
             module load GCC/12.3.0 OpenMPI/4.1.5 R/4.4.1 
-            module load R-bundle-CRAN/2023.12-R-4.4.1
+            module load R-bundle-CRAN/2023.12-R-4.4.1 CUDA
 
             R --no-save --no-restore -f gpu-script-db-higgs.R
             ```
