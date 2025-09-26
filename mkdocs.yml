@@ -42,6 +42,7 @@ nav:
       - Batch jobs: julia/batchJulia.md  
       - Interactive jobs: julia/interactiveJulia.md     
       - The notebook Pluto: julia/notebook_pluto.md
+      - Summary: julia/summaryJulia.md
     - Advanced: 
       - Schedule: advanced/schedule.md
       - Parallel computing: advanced/parallel_computing/README.md
