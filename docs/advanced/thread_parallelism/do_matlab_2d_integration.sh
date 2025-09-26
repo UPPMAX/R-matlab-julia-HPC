@@ -101,11 +101,14 @@ fi
 if [ ${hpc_cluster} == "pelle" ]
 then
   module load MATLAB/2024a >/dev/null 2>&1
+
+  # Need this only once
+  configCluster.sh "${SLURM_JOB_ACCOUNT}"
 fi
 
 if [ ${hpc_cluster} == "rackham" ]
 then
-  module load matlab/2023b >/dev/null 2>&1
+  module load matlab/R2023b >/dev/null 2>&1
 
   # Need this only once
   configCluster.sh "${SLURM_JOB_ACCOUNT}"
@@ -137,6 +140,8 @@ head "${matlab_target_filename}"
 
 echo "Running the MATLAB file:"
 matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); exit;"
+
+# matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration_for_1_cores.m\"); exit;"
 
 # matlab -nodisplay -nosplash -nojvm -batch do_2d_integration.m "${SLURM_NPROCS}"
 

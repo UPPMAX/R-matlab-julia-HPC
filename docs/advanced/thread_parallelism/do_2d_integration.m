@@ -20,6 +20,46 @@ if length(args) == 0 || length(args) > 2
   exit(42);
 end
 
+[n_workers, grid_size] = parse_args(args);
+disp(['Number of workers: ', num2str(n_workers)]);
+disp(['Grid size: ', num2str(grid_size)]);
+
+assert(abs(integration2d(100, 1, 1)) < 0.0001);
+
+% Start timer
+tic;
+
+partial_results = [];
+
+parfor worker_index = 1:n_workers
+    partial_results(worker_index) = integration2d(grid_size, n_workers, worker_index);
+end
+
+integral_value = sum(partial_results);
+duration_secs = toc;
+
+error_value = abs(integral_value - 0.0);
+core_secs = duration_secs * n_workers;
+disp(['Integral value: ', num2str(integral_value)]);
+disp(['Integral error: ', num2str(error_value)]);
+disp(['Time spent on 1 core (seconds): ', num2str(duration_secs)]);
+disp(['Time spent on all cores (seconds): ', num2str(core_secs)]);
+
+language = 'matlab';
+hpc_cluster = extract_hpc_cluster();
+disp('language,hpc_cluster,grid_size,n_workers,core_secs');
+disp([
+    char(language) char(',') ...
+    char(hpc_cluster) char(',') ...
+    num2str(grid_size) char(',') ...
+    num2str(n_workers) char(',') ...
+    num2str(core_secs)
+  ]);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Functions must be at the bottom of the script
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [n_workers, grid_size] = parse_args(args)
   n_workers = str2double(args{1});
   assert(isnumeric(n_workers));
@@ -32,10 +72,6 @@ function [n_workers, grid_size] = parse_args(args)
   assert(isnumeric(grid_size));
   assert(grid_size > 0);
 end
-
-[n_workers, grid_size] = parse_args(args);
-disp(['Number of workers: ', num2str(n_workers)]);
-disp(['Grid size: ', num2str(grid_size)]);
 
 function cluster = extract_hpc_cluster(hostname)
     if nargin == 0 || isempty(hostname)
@@ -87,36 +123,3 @@ function s = integration2d(grid_size, n_workers, worker_index)
     end
     s = (interval_size^2) * my_sum;
 end
-
-assert(abs(integration2d(100, 1, 1)) < 0.0001);
-
-% Start timer
-tic;
-
-partial_results = [];
-
-parfor worker_index = 1:n_workers
-    partial_results(worker_index) = integration2d(grid_size, n_workers, worker_index);
-end
-
-integral_value = sum(partial_results);
-duration_secs = toc;
-
-error_value = abs(integral_value - 0.0);
-core_secs = duration_secs * n_workers;
-disp(['Integral value: ', num2str(integral_value)]);
-disp(['Integral error: ', num2str(error_value)]);
-disp(['Time spent on 1 core (seconds): ', num2str(duration_secs)]);
-disp(['Time spent on all cores (seconds): ', num2str(core_secs)]);
-
-language = 'matlab';
-hpc_cluster = extract_hpc_cluster();
-disp('language,hpc_cluster,grid_size,n_workers,core_secs');
-disp([
-    char(language) char(',') ...
-    char(hpc_cluster) char(',') ...
-    num2str(grid_size) char(',') ...
-    num2str(n_workers) char(',') ...
-    num2str(core_secs)
-  ]);
-

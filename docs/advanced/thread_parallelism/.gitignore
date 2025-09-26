@@ -1,1 +1,5 @@
 Rplots.pdf
+*.asv
+octave-workspace
+do_2d_integration_for_*_cores.m
+*.out
