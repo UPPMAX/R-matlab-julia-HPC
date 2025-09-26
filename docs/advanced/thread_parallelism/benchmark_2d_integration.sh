@@ -7,14 +7,14 @@
 #
 # Usage:
 #
-#   ./benchmark_2d_integration.sh [account] [language]
+#   bash benchmark_2d_integration.sh [account] [language]
 #
 # - [account]: your NAISS account
 # - [lanuage]: julia, matlab, r
 #
 # Example:
 #
-#   ./benchmark_2d_integration.sh staff r
+#   bash benchmark_2d_integration.sh staff r
 #
 
 if [ "$#" -ne 2 ]; then
@@ -25,11 +25,11 @@ if [ "$#" -ne 2 ]; then
     echo " "
     echo "General usage:"
     echo " "
-    echo "  ./benchmark_r_2d_integration.sh [account] [language]"
+    echo "  bash benchmark_r_2d_integration.sh [account] [language]"
     echo " "
     echo "Examples:"
     echo " "
-    echo "  ./benchmark_r_2d_integration.sh staff r"
+    echo "  bash benchmark_r_2d_integration.sh staff r"
     echo " "
     exit 42
 fi
