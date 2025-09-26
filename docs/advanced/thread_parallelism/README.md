@@ -78,13 +78,19 @@ As the script itself only does light calculations,
 you can run it directly. Here is how to call the script:
 
 ```bash
-./benchmark_2d_integration.sh [account] [language]
+bash benchmark_2d_integration.sh [account] [language]
 ```
+
+???- hint "Why not call the script with `./benchmark_2d_integration.sh`?"
+
+    Because that would require one extra step:
+    to make the script executable.
+
 
 For example:
 
 ```bash
-./benchmark_2d_integration.sh staff r
+bash benchmark_2d_integration.sh staff r
 ```
 
 If you use the incorrect spelling, the script will help you.
@@ -319,7 +325,21 @@ Distributed parallelism
 
 ## Troubleshooting
 
-## There is no package called ‘doParallel’
+### T1. Invalid account or account/partition combination specified
+
+<!-- markdownlint-disable MD013 --><!-- Verbatim error message cannot be split up over lines, hence will break 80 characters per line -->
+
+```bash
+sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
+```
+
+<!-- markdownlint-enable MD013 -->
+
+You've specified the wrong account.
+
+Run `projinfo`.
+
+## T2. There is no package called ‘doParallel’
 
 This is an R error.
 
@@ -341,9 +361,12 @@ Error in library(doParallel, quietly = TRUE) :
 Execution halted
 ```
 
-To fix this, install that package from the terminal.
+To fix this:
 
-First, load the R module(s) as loaded by the
+- load the correct module
+- install that package from the terminal.
+
+To load the correct module, load the R module(s) as loaded by the
 [`do_r_2d_integration.sh`](do_r_2d_integration.sh) script,
 for example:
 
@@ -379,71 +402,20 @@ module load R/4.4.0-hpc1-gcc-11.3.0-bare
     You have now loaded the packages needed for the calculation.
 
 
-With the correct modules loaded, start R from the terminal:
+To install that package from the terminal,
+[check this course's material on how to do so](../../r/packages.md).
+  
+
+## T3. 'namespace ‘rlang’ 0.4.12 is already loaded, but >= 1.1.0 is required'
 
 ```bash
-R
+Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
+  namespace ‘rlang’ 0.4.12 is already loaded, but >= 1.1.0 is required
+Calls: <Anonymous> ... waldo_compare -> loadNamespace -> namespaceImport -> loadNamespace
+Execution halted
 ```
 
-Within R, install all the packages needed:
-
-<!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
-
-```r
-install.packages(c("testthat", "stringr", "doParallel"), repos = "http://cran.us.r-project.org")
-```
-
-<!-- markdownlint-enable MD013 -->
-
-???- hint "Why those other packages too?"
-
-    Because you need those too: it saves you two more errors :-)
-
-???- hint "Why specify `repos`?"
-
-    To prevent you being prompted to select a so-called mirror.
-
-    If you really want to pick a mirror by hand, do:
-
-    ```r
-    install.packages(c("testthat", "stringr", "doParallel"))
-    ```
-
-???- hint "How does the output look like?"
-
-    Output will be similar to:
-
-    ```text
-    Warning in install.packages("doParallel") :
-      'lib = "/software/sse2/tetralith_el9/manual/R/4.4.0/g11/hpc1/lib64/R/library"' is not writable
-    Would you like to use a personal library instead? (yes/No/cancel) yes
-    Would you like to create a personal library
-    ‘/home/x_ricbi/R/x86_64-pc-linux-gnu-library/4.4.0’
-    to install packages into? (yes/No/cancel) yes
-
-    trying URL 'https://mirror.accum.se/mirror/CRAN/src/contrib/foreach_1.5.2.tar.gz'
-    Content type 'application/x-gzip' length 89758 bytes (87 KB)
-    ==================================================
-    downloaded 87 KB
-
-    [...]
-    ```
-
-<!-- markdownlint-enable MD013 -->
-
-### Invalid account or account/partition combination specified
-
-<!-- markdownlint-disable MD013 --><!-- Verbatim error message cannot be split up over lines, hence will break 80 characters per line -->
-
-```bash
-sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
-```
-
-<!-- markdownlint-enable MD013 -->
-
-You've specified the wrong account.
-
-Run `projinfo`.
+This is the same procedure as T2.
 
 <!-- markdownlint-disable -->
 
