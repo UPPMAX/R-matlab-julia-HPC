@@ -138,6 +138,8 @@ head "${matlab_target_filename}"
 echo "Running the MATLAB file:"
 matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); exit;"
 
+# matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration_for_1_cores.m\"); exit;"
+
 # matlab -nodisplay -nosplash -nojvm -batch do_2d_integration.m "${SLURM_NPROCS}"
 
 # matlab -nodisplay -nosplash -nojvm -r "do_2d_integration.m ${SLURM_NPROCS}"
