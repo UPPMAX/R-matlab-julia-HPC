@@ -512,32 +512,44 @@ In the following demo you will find instructions to install this package and run
 
     ??? note "Prerequisites"
 
-        Choose an R version > 4.1 and a CUDA module. This example is for HPC2N/Kebnekaise. Pick suitable ones for your computer (see example under the batch script example for instance):
+        Choose an R version > 4.1 and a CUDA module. 
 
-        ```bash
-        ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
-        ``` 
+        === "NSC"
 
-        Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version:
+        === "PDC"
 
-        ```bash
-        cd /home/u/username/R-packages-4.4.1
-        wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
-        ```  
+        === "C3SE"
 
-        Then, install the package
+        === "HPC2N"
 
-        ```bash
-        R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
-        ```
+            ```bash
+            ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+            ``` 
+ 
+        === "LUNARC"
 
-        Download a data set like the <a href="https://archive.ics.uci.edu/dataset/280/higgs" target="blank">HIGGS</a> data set for detecting Higgs particles that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
+        === "UPPMAX"  
 
-        ```bash
-        wget https://archive.ics.uci.edu/static/public/280/higgs.zip
-        unzip higgs.zip
-        gunzip HIGGS.csv.gz
-        ```
+     Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version (if you are using the project storage, change to that):
+
+     ```bash
+     cd /home/u/username/R-packages-4.4.1
+     wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
+     ```  
+
+     Then, install the package
+
+     ```bash
+     R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
+     ```
+
+     Download a data set like the <a href="https://archive.ics.uci.edu/dataset/280/higgs" target="blank">HIGGS</a> data set for detecting Higgs particles that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress):
+
+     ```bash
+     wget https://archive.ics.uci.edu/static/public/280/higgs.zip
+     unzip higgs.zip
+     gunzip HIGGS.csv.gz
+     ```
 
     Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:
 
