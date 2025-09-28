@@ -47,6 +47,7 @@ nav:
       - Schedule: advanced/schedule.md
       - Parallel computing: advanced/parallel_computing/README.md
       - Thread parallelism: advanced/thread_parallelism/README.md
+      - Distributed parallelism: advanced/distributed_parallelism/README.md
       - Machine Learning: 
         - With R: advanced/MLR.md
       - Evaluation: advanced/evaluation.md
