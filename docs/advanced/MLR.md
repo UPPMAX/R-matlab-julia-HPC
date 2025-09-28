@@ -537,29 +537,48 @@ In the following demo you will find instructions to install this package and run
 
         === "C3SE" 
 
+            ```bash 
+            $ ml R/4.2.1-foss-2022a
+            $ ml CUDA/12.9.1
+            ```
+
         === "HPC2N"
 
             ```bash
-            ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+            ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1 
+            ml OpenMPI/4.1.6 R-bundle-CRAN/2024.06 
             ``` 
  
         === "LUNARC"
 
+            ```bash
+            module load GCC/12.3.0 OpenMPI/4.1.5 R/4.4.1 
+            module load R-bundle-CRAN/2023.12-R-4.4.1 CUDA 
+            ```
+
         === "UPPMAX"  
 
-    Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version (if you are using the project storage, change to that):
+            ```bash 
+            ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+            ``` 
+
+    Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version 
+    - if you are using the project storage, change to that
+    - If you have not created a package directory for the version of R you will use here, then follow the steps under [setup](../../r/packages/#setup)
 
     ```bash
      cd /home/u/username/R-packages-4.4.1
      wget https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
     ```  
 
-    NOTE: if on NSC, activate your newly created conda environment, if you are not already there. Create a suitable directory for installing (probably for R 4.5.1) and add to .bashrc if you have not already: 
+    !!! NOTE
 
-    ```bash
-    mkdir -p /proj/courses-fall-2025/users/<username>/R-packages-4.5.1
-    echo R_LIBS_USER="<path-to-your-space-on-proj-storage>/R-packages-%V" > ~/.Renviron
-    ```
+        If on NSC, activate your newly created conda environment, if you are not already there. Create a suitable directory for installing (probably for R 4.5.1) and add to .bashrc if you have not already: 
+
+        ```bash
+        mkdir -p /proj/courses-fall-2025/users/<username>/R-packages-4.5.1
+        echo R_LIBS_USER="<path-to-your-space-on-proj-storage>/R-packages-%V" > ~/.Renviron
+        ```
 
     Then, install the package
 
@@ -668,57 +687,86 @@ In the following demo you will find instructions to install this package and run
 
         === "PDC"
  
+            Dardel has AMD GPUs so we cannot run the xgboost R package.     
+
+        === "C3SE" 
+
+            ```bash
+            #!/bin/bash
+            # Remember to change this to your own project ID after the course!
+            #SBATCH -A NAISS2025-22-934
+            #SBATCH -t 02:00:00
+            #SBATCH -p alvis
+            #SBATCH -N 1 --gpus-per-node=T4:4
+
+            ml purge > /dev/null 2>&1
+            module load R/4.2.1-foss-2022a CUDA/12.9.1 
+
+            R --no-save --no-restore -f gpu-script-db-higgs.R
+            ```
             
+        === "HPC2N" 
 
-         .. tab:: UPPMAX
+            ```bash
+            #!/bin/bash
+            #SBATCH -A hpc2n2025-151 # Change to your own project ID
+            #Asking for 1 hour.
+            #SBATCH -t 00:30:00
+            #SBATCH -n 1
+            #SBATCH --gpus=1
+            #SBATCH -C l40s
+            #Writing output and error files
+            #SBATCH --output=output%J.out
+            #SBATCH --error=error%J.error
 
-            .. code-block:: sh
+            ml purge > /dev/null 2>&1
+            ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+            ml OpenMPI/4.1.6 R-bundle-CRAN/2024.06
 
-               #!/bin/bash
-               #SBATCH -A testappl # Change to your own project ID
-               #Asking for 70 min.
-               #SBATCH -t 12:00:00
-               #SBATCH -p node
-               #SBATCH -N 1
-               ##SBATCH -n 1
-               #SBATCH -M snowy
-               #SBATCH --gres=gpu:1
-               #Writing output and error files
-               #SBATCH --output=output%J.out
-               #SBATCH --error=error%J.error
+            R --no-save --no-restore -f gpu-script-db-higgs.R
+            ```
 
-               ml purge > /dev/null 2>&1
-               #module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
-               ml R_packages
+        === "LUNARC" 
 
-               R --no-save --no-restore -f gpu-script-db-higgs.R
+            ```bash
+            #!/bin/bash
+            # Remember to change this to your own project ID after the course!
+            #SBATCH -A lu2025-2-94
+            # Asking for runtime: hours, minutes, seconds. At most 1 week
+            #SBATCH --time=01:00:00
+            # Ask for GPU resources - x is how many cards, 1 or 2 
+            #SBATCH -p gpua100
+            #SBATCH --gres=gpu:x
+        
+            # Remove any loaded modules and load the ones we need
+            module purge  > /dev/null 2>&1
+            module load GCC/12.3.0 OpenMPI/4.1.5 R/4.4.1 
+            module load R-bundle-CRAN/2023.12-R-4.4.1 CUDA
 
-         .. tab:: HPC2N
+            R --no-save --no-restore -f gpu-script-db-higgs.R
+            ```
 
-            .. code-block:: sh
+        === "UPPMAX" 
 
-               #!/bin/bash
-               #SBATCH -A hpc2n202w-xyz # Change to your own project ID
-               #Asking for 10 min.
-               #SBATCH -t 30:50:00
-               #SBATCH -n 1
-               #SBATCH --gpus=1
-               #SBATCH -C l40s
-               #Writing output and error files
-               #SBATCH --output=output%J.out
-               #SBATCH --error=error%J.error
+            ```bash
+            #!/bin/bash -l
+            #SBATCH -A uppmax2025-2-360 # Change to your own project ID
+            #Asking for 70 min.
+            #SBATCH -t 01:10:00
+            #SBATCH -p gpu 
+            #SBATCH --gpus:l40s:1
+            #Writing output and error files
+            #SBATCH --output=output%J.out
+            #SBATCH --error=error%J.error
 
-               ml purge > /dev/null 2>&1
-               #module load GCC/11.3.0 OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
-               ml GCC/13.2.0 R/4.4.1 CUDA/12.1.1
+            ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2 
 
-               R --no-save --no-restore -f gpu-script-db-higgs.R
+            R --no-save --no-restore -f gpu-script-db-higgs.R
+            ```
 
+    ??? note "Timings"
 
-   .. admonition:: Timings
-      :class: dropdown
-
-      .. code-block:: r
+        ```R
 
          > #     step 5: Train on CPU
          > tic()
