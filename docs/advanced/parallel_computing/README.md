@@ -2,10 +2,10 @@
 
 !!! question "Learning outcomes"
 
-    - Understand some types of parallel computation
-    - Understand that the maximum effectiveness of parallelism depends
-      on the portion that can be parallelised
-    - Understand when to use threaded parallelism
+    - I can name and describe three types of parallel computation
+    - I can explain at least 1 advantage of parallel computation
+    - I can explain at least 2 disadvantages of parallel computation
+    - I can explain how to use my computational resources effectively
 
 ???- info "For teachers"
 

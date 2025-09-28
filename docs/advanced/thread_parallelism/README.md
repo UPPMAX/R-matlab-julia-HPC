@@ -2,9 +2,11 @@
 
 !!! info "Learning outcomes"
 
-    - Understand how to schedule jobs with thread parallelism
-    - Understand how code achieves thread parallelism
-    - Observe/conclude the costs/benefits of thread parallelism
+    - I can schedule jobs with thread parallelism
+    - I can explain how jobs with thread parallelism are scheduled
+    - I can explain how Julia/MATLAB/R code makes use of thread parallelism
+    - I can explain the results of a correct benchmark
+    - I can explain the results of an incorrect benchmark
 
 ???- note "For teachers"
 

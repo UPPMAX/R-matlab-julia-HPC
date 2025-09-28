@@ -49,6 +49,7 @@ nav:
       - Thread parallelism: advanced/thread_parallelism/README.md
       - Machine Learning: 
         - With R: advanced/MLR.md
+      - Evaluation: advanced/evaluation.md
     - Misc: 
       - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
