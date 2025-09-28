@@ -564,7 +564,7 @@ In the following demo you will find instructions to install this package and run
 
     Get a release ``xgboost`` version with GPU support and place it in the package directory for your R version 
     - if you are using the project storage, change to that
-    - If you have not created a package directory for the version of R you will use here, then follow the steps under [setup](../../r/packages/#setup)
+    - If you have not created a package directory for the version of R you will use here, then follow the steps under [setup](../r/packages.md#setup)
 
     ```bash
      cd /home/u/username/R-packages-4.4.1
