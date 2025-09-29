@@ -197,7 +197,7 @@ do
   if [ ${hpc_cluster} == "dardel" ] 
   then
     # Dardel needs to have a partition specified
-    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" -p main "${slurm_script_name}"
+    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" -p shared "${n_cores}" "${slurm_script_name}"
   else
     sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${slurm_script_name}"
   fi
