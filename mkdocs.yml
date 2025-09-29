@@ -57,6 +57,7 @@ nav:
       - Reflections: reflections/README.md
     - Extra reading: 
       - More about R packages: r/morepackages.md
+      - More about Julia: julia/extra.md
 
 
 not_in_nav: |
