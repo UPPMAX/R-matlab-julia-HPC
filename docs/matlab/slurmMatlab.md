@@ -1049,7 +1049,7 @@ This is how you add GPUs to use in batch jobs submitted inside MATLAB:
     2. Load MATLAB: ``module load MATLAB/2024b``
     3. Start MATLAB: ``matlab -singleCompThread -nodisplay -nosplash -nodesktop``
 
-!!! example "**Challenge 5.** Add/remove GPUs in your cluster profile.
+!!! example "**Challenge 5.** Add/remove GPUs in your cluster profile"
 
     Try to add GPUs to your cluster profile and save it. Run `c.AdditionalProperties` to see what was added. Then do `c.AdditionalProperties.GpusPerNode = '';` to remove it. See that it was removed.
 
@@ -1139,7 +1139,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     # Executing a GPU matlab program
     matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
     
-=== NSC
+=== "NSC"
 
     ```bash
     #!/bin/bash
