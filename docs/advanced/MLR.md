@@ -668,7 +668,7 @@ In the following demo you will find instructions to install this package and run
             # Remember to change this to your own project ID after the course!
             #SBATCH -A naiss2025-22-934
             # Asking for runtime: hours, minutes, seconds. At most 1 week
-            #SBATCH --time=12:00:00
+            #SBATCH --time=03:00:00
             # Ask for resources, including GPU resources
             #SBATCH -n 1
             #SBATCH -c 32
@@ -695,7 +695,7 @@ In the following demo you will find instructions to install this package and run
             #!/bin/bash
             # Remember to change this to your own project ID after the course!
             #SBATCH -A NAISS2025-22-934
-            #SBATCH -t 02:00:00
+            #SBATCH -t 03:00:00
             #SBATCH -p alvis
             #SBATCH -N 1 --gpus-per-node=T4:4
 
@@ -711,7 +711,7 @@ In the following demo you will find instructions to install this package and run
             #!/bin/bash
             #SBATCH -A hpc2n2025-151 # Change to your own project ID
             #Asking for 1 hour.
-            #SBATCH -t 00:30:00
+            #SBATCH -t 03:00:00
             #SBATCH -n 1
             #SBATCH --gpus=1
             #SBATCH -C l40s
@@ -733,7 +733,7 @@ In the following demo you will find instructions to install this package and run
             # Remember to change this to your own project ID after the course!
             #SBATCH -A lu2025-2-94
             # Asking for runtime: hours, minutes, seconds. At most 1 week
-            #SBATCH --time=01:00:00
+            #SBATCH --time=03:00:00
             # Ask for GPU resources - x is how many cards, 1 or 2 
             #SBATCH -p gpua100
             #SBATCH --gres=gpu:x
@@ -751,8 +751,8 @@ In the following demo you will find instructions to install this package and run
             ```bash
             #!/bin/bash -l
             #SBATCH -A uppmax2025-2-360 # Change to your own project ID
-            #Asking for 70 min.
-            #SBATCH -t 01:10:00
+            #Asking for 3 hours.
+            #SBATCH -t 03:00:00
             #SBATCH -p gpu 
             #SBATCH --gpus:l40s:1
             #Writing output and error files

@@ -10,17 +10,19 @@
 !!! important
 
     **Compute allocations in this workshop**
-    - Rackham: ``uppmax2025-2-272``
-    - Kebnekaise: ``hpc2n2025-062``
-    - Cosmos: ``lu2025-7-24``
-    - Tetralith: ``naiss2025-22-262``
-    - Dardel: ``naiss2025-22-262``
+    - Pelle/Rackham: ``uppmax2025-2-360``
+    - Kebnekaise: ``hpc2n2025-151``
+    - Cosmos: ``lu2025-2-94``
+    - Tetralith: ``naiss2025-22-934``
+    - Dardel: ``naiss2025-22-934``
+    - Alvis: ``naiss2025-22-934`` 
      
     **Storage space for this workshop**
-    - Rackham: ``/proj/r-matlab-julia-uppmax``
-    - Kebnekaise: ``/proj/nobackup/r-matlab-julia``
-    - Tetralith: ``/proj/r-matlab-julia-naiss/users``
-    - Dardel: ``/cfs/klemming/projects/snic/r-matlab-julia-naiss``
+    - Rackham: ``/proj/r-matlab-julia-pelle``
+    - Kebnekaise: ``/proj/nobackup/fall-courses``
+    - Tetralith: ``/proj/courses-fall-2025/users/``
+    - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
+    - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/``
 
 !!! warning
 
@@ -42,6 +44,7 @@ Users ask for compute resources via the `sbatch` command (as those who attended 
     - <a href="https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/" target="_blank">https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/</a> 
     - <a href="https://www.nsc.liu.se/support/batch-jobs/introduction/" target="_blank">https://www.nsc.liu.se/support/batch-jobs/introduction/</a> 
     - <a href="https://support.pdc.kth.se/doc/run_jobs/job_scheduling/" target="_blank">https://support.pdc.kth.se/doc/run_jobs/job_scheduling/</a>
+    - <a href="https://www.c3se.chalmers.se/documentation/submitting_jobs/running_jobs/" target="_blank">https://www.c3se.chalmers.se/documentation/submitting_jobs/running_jobs/</a> 
 
 MATLAB is well integrated with SLURM, so there are several ways to run these jobs:
 
@@ -76,7 +79,7 @@ The instructions for each facility are linked below:
 - [LUNARC: Configuration at the command line](https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line)
 - [NSC: MATLAB (scroll down to "Before submitting your first job")](https://www.nsc.liu.se/software/installed/tetralith/matlab/).
 - PDC: no need to configure
-- C3SE: 
+- C3SE: no need to configure 
 
 !!! warning
 
@@ -162,9 +165,9 @@ The tabs below demonstrate the preferred method for each cluster where configura
 
 !!! example "**Challenge 1.** Log in and Configure MATLAB."
 
-    #. Log into your chosen HPC cluster if you have not already.
-    #. Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
-    #. On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC. You do not do ``configCluster`` at PDC.
+    1. Log into your chosen HPC cluster if you have not already.
+    2. Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
+    3. On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC. You do not do ``configCluster`` at PDC. You also do not run ``configCluster`` at C3SE. 
 
 ## MATLAB terminal interface
 
