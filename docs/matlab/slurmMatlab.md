@@ -322,6 +322,7 @@ $ srun --account=naiss2025-22-934 --gpus-per-node=T4:1 --time=01:00:00 --pty /bi
 Then on the compute node: 
 
 ```bash
+$ ml MATLAB/2024b
 $ matlab -singleCompThread -nodisplay -nosplash -nodesktop
 Opening log file:  /cephyr/users/brydso/Alvis/java.log.65485
 
@@ -957,18 +958,16 @@ This is how you add GPUs to use in batch jobs submitted inside MATLAB:
 
     !!! important
     
-        You have to first do an interactive session to Snowy, asking for GPUs, since there are no GPUs on Rackham. You should ask for at least 2 cores so MATLAB will start.
-        
     Ask for a GPU and enough time to do what you need.
 
     ```bash
-    interactive -A uppmax2025-2-272 -n 2 -M snowy --gres=gpu:1  -t 2:00:00
+    interactive -A uppmax2025-2-360 -p gpu --gpus:l40s:1 -t 2:00:00
     ```
 
     Load MATLAB
 
     ```bash
-    ml matlab/R2023b
+    ml MATLAB/2024a
     ```
 
     Then run MATLAB either as GUI...
@@ -1046,7 +1045,9 @@ This is how you add GPUs to use in batch jobs submitted inside MATLAB:
 
     Remember, here you cannot set `AdditionalProperties`. Instead, you do the following: 
 
-    1. 
+    1. Start am interactive sesson asking for a GPU: ``srun --account=naiss2025-22-934 --gpus-per-node=T4:1 --time=01:00:00 --pty /bin/bash``  
+    2. Load MATLAB: ``module load MATLAB/2024b``
+    3. Start MATLAB: ``matlab -singleCompThread -nodisplay -nosplash -nodesktop``
 
 !!! example "**Challenge 5.** Add/remove GPUs in your cluster profile.
 
@@ -1061,21 +1062,17 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     ```bash
     #!/bin/bash
     # Change to your actual project number
-    #SBATCH -A naiss20224-22-1202
-    #SBATCH -n 2
-    #SBATCH -M snowy
-    #SBATCH --gres=gpu:1
+    #SBATCH -A naiss2025-22-360
+    #SBATCH -p gpu
+    #SBATCH --gpus:l40s:1
     # Asking for 30 min (change as you want)
     #SBATCH -t 00:30:00
     #SBATCH --error=matlab_%J.err
     #SBATCH --output=matlab_%J.out
     
-    # Clean the environment
-    module purge > /dev/null 2>&1
-    
     # Change depending on resource and MATLAB version
-    # to find out available versions: module spider matlab
-    module add matlab/R2023b
+    # to find out available versions: module spider MATLAB
+    module add MATLAB/2024a
     
     # Executing a GPU matlab program
     matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
@@ -1086,7 +1083,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     ```bash
     #!/bin/bash
     # Change to your actual project number
-    #SBATCH -A hpc2n2025-062
+    #SBATCH -A hpc2n2025-151
     #SBATCH -n 1
     #SBATCH --gpus=<#gpus>
     #SBATCH -C <gpu-type>
@@ -1121,7 +1118,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     ```bash
     #!/bin/bash
     # Change to your actual project number
-    #SBATCH -A lu2025-7-24
+    #SBATCH -A lu2025-7-94
     #SBATCH -n 1
     #SBATCH -p gpua100
     # The number of GPUs.#gpus, can be 1 or 2
@@ -1147,7 +1144,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     ```bash
     #!/bin/bash
     # Change to your actual project number
-    #SBATCH -A naiss2025-22-262
+    #SBATCH -A naiss2025-22-934
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=1
     #SBATCH --ntasks-per-core=1
@@ -1174,7 +1171,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     ```bash
     #!/bin/bash
     # Change to your actual project number
-    #SBATCH -A naiss2025-22-262
+    #SBATCH -A naiss2025-22-934
     #SBATCH --ntasks-per-node=1
     #SBATCH -N 1
     # Ask for GPUs
@@ -1195,7 +1192,11 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     # Executing a GPU matlab program
     matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
     ```
+
+=== "C3SE" 
+
     
+
 !!! summary
 
     - The SLURM scheduler handles allocations to the calculation/compute nodes
