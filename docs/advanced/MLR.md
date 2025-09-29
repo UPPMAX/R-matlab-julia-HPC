@@ -785,7 +785,7 @@ In the following demo you will find instructions to install this package and run
 
 ## Exercises 
 
-!!! note "<img src="../img/shell-logo_small.png"> Exercise"
+!!! note "<img src="../../img/shell-logo_small.png"> Exercise"
 
     Run validation.R with Rscript
 
@@ -838,7 +838,7 @@ In the following demo you will find instructions to install this package and run
     ```bash 
     $ Rscript validation.R
 
-!!! note "<img src="../img/shell-logo_small.png"> Exercise"
+!!! note "<img src="../../img/shell-logo_small.png"> Exercise"
 
     Create a batch script to run ``validation.R``
 
