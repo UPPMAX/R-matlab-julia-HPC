@@ -305,4 +305,4 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     - MATLAB has good integration with SLURM and because of that one can submit jobs to the
      queue directly from the GUI.
     - MATLAB has several tools to parallelize your code and we have explored here ``parfor``, ``spmd``,
-     and ``parfeval``, but there are other `tools available <https://se.mathworks.com/help/overview/parallel-computing.html?s_tid=hc_product_group_bc>`_.
+     and ``parfeval``, but there are other [tools available](https://se.mathworks.com/help/overview/parallel-computing.html?s_tid=hc_product_group_bc){:target="_blank"}.
