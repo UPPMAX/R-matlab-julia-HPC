@@ -10,6 +10,7 @@
 !!! important
 
     **Compute allocations in this workshop**
+
     - Pelle/Rackham: ``uppmax2025-2-360``
     - Kebnekaise: ``hpc2n2025-151``
     - Cosmos: ``lu2025-2-94``
@@ -18,6 +19,7 @@
     - Alvis: ``naiss2025-22-934`` 
      
     **Storage space for this workshop**
+
     - Rackham: ``/proj/r-matlab-julia-pelle``
     - Kebnekaise: ``/proj/nobackup/fall-courses``
     - Tetralith: ``/proj/courses-fall-2025/users/``
@@ -167,7 +169,14 @@ The tabs below demonstrate the preferred method for each cluster where configura
 
     1. Log into your chosen HPC cluster if you have not already.
     2. Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
-    3. On the command line, run ``configCluster.sh`` on HPC2N or ``configCluster.sh <project-id>`` on UPPMAX/LUNARC. Run configCluster inside MATLAB on the terminal at NSC. You do not do ``configCluster`` at PDC. You also do not run ``configCluster`` at C3SE. 
+    3. Depending on cluster, now do 
+        - NSC: Run configCluster inside MATLAB on the terminal (start with ``matlab -singleCompThread -nodisplay -nosplash -nodesktop
+``).
+        - PDC: You do not do ``configCluster``
+        - C3SE: You do not do ``configCluster``
+        - HPC2N. Run ``configCluster.sh`` on the terminal
+        - UPPMAX: Run ``configCluster.sh <project-id>`` on the terminal
+        - LUNARC. Run ``configCluster.sh <project-id> on the terminl  
 
 ## MATLAB terminal interface
 
