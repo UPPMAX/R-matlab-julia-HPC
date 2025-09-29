@@ -260,25 +260,48 @@ Now going to look at running in batch on the compute nodes.
 
 If you want to run a MATLAB program on the cluster with batch, you have to set some things for the job. Start MATLAB and input the following:
 
-```matlab
->> c=parcluster('CLUSTER');
->> c.AdditionalProperties.AccountName = 'PROJECT-ID';
->> c.AdditionalProperties.WallTime = 'HHH1:MM:SS';
->> c.saveProfile
-```
+!!! note "NSC, HPC2N, LUNARC, UPPMAX"
 
-To list the content of your profile, enter `c.AdditionalProperties` at the prompt.
+    ```matlab
+    >> c=parcluster('CLUSTER');
+    >> c.AdditionalProperties.AccountName = 'PROJECT-ID';
+    >> c.AdditionalProperties.WallTime = 'HHH1:MM:SS';
+    >> c.saveProfile
+    ```
+
+    To list the content of your profile, enter `c.AdditionalProperties` at the prompt.
 
 !!! important
 
     On UPPMAX and PDC you should use `c=parcluster;` instead of `c=parcluster('CLUSTER')`. On UPPMAX you also need to add ``c.AdditionalProperties.ProcsPerNode=20;``.
 
+!!! info "C3SE" 
+
+    The parallel toolbox does not allow multi-node jobs. You should run an interactive job on a compute node, so do this first: 
+
+    ```bash
+    srun --account=naiss2025-22-934 --gpus-per-node=T4:1 --time=01:00:00 --pty /bin/bash
+    ```
+
+    Now start Matlab on the compute node: 
+
+    ```bash 
+    matlab -singleCompThread -nodisplay -nosplash -nodesktop
+    ```
+
+    And do the example (we already set account and walltime when allocating the compute node): 
+
+    ```matlab
+    >> c=parcluster('local');
+    ```
+
 !!! info "Additional instructions specific to Dardel"
 
     The process at PDC (Dardel) is more involved than at other facilities:
+
     - At PDC, you do **NOT** set any ``AdditionalProperties``. You instead work in an interactive session.
     - To start an interactive session at **PDC**...
-       - ...on a full node: use `salloc -N 1 -t 00:30:00 -A naiss2025-22-262 -p main`
+       - ...on a full node: use `salloc -N 1 -t 00:30:00 -A naiss2025-22-934 -p main`
        - ...on a subset of the cores on a node (here 24): use `salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared`
     - When the job is allocated, start an SSH connection to the compute node.
 
@@ -288,6 +311,32 @@ To list the content of your profile, enter `c.AdditionalProperties` at the promp
     ml PDC/23.12 matlab/r2024a-ps
     matlab -nodisplay -nodesktop -nosplash
     ```
+
+**Example, for C3SE** 
+
+Asking for one hour. Starting from the login node. 
+
+```bash
+$ srun --account=naiss2025-22-934 --gpus-per-node=T4:1 --time=01:00:00 --pty /bin/bash
+```
+
+Then on the compute node: 
+
+```bash
+$ matlab -singleCompThread -nodisplay -nosplash -nodesktop
+Opening log file:  /cephyr/users/brydso/Alvis/java.log.65485
+
+                              < M A T L A B (R) >
+                    Copyright 1984-2024 The MathWorks, Inc.
+                   R2024b (24.2.0.2712019) 64-bit (glnxa64)
+                                August 22, 2024
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+>> c=parcluster('local');
+```
 
 **Example, for HPC2N**
 
@@ -315,7 +364,7 @@ System maintenance done, Dardel is running jobs since a few hours.
  --== Welcome to Dardel! ==--
 bbrydsoe@login1:~>
 
-bbrydsoe@login1:~> salloc -c 24 -t 1:00:00 -A naiss2025-22-262 -p shared
+bbrydsoe@login1:~> salloc -c 24 -t 1:00:00 -A naiss2025-22-934 -p shared
 salloc: Pending job allocation 9050479
 salloc: job 9050479 queued and waiting for resources
 salloc: job 9050479 has been allocated resources
@@ -342,15 +391,17 @@ For product information, visit www.mathworks.com.
 !!! example "**Challenge 2.** Set MATLAB job settings."
 
     Fill in the job settings on one of:
+
     - **HPC2N:** `CLUSTER=kebnekaise`
     - **UPPMAX:** no CLUSTER, as said above - i.e. just ``c=parcluster;``
     - **LUNARC:** `CLUSTER=cosmos R2023b`
     - **NSC:** `CLUSTER=tetralith`
+    - **C3SE:** `c=parcluster('local');` NO OTHER JOB SETTINGS! Here you start an interactive session first, as shown above! 
     - **PDC:** no `CLUSTER`, as said above - i.e. just ``c=parcluster;`` NO OTHER JOB SETTINGS! Here you instead start an interactive session first!
     
     Remember, the `project-id` is the compute allocation number given for your choice of cluster at the top of this webpage.
     
-    Since we are just doing a short test, you can use 15 min instead of 1 hour. Also remember the `c.AdditionalProperties.ProcsPerNode=20` if you are on UPPMAX. Test that the settings were added by viewing `c.AdditionalProperties`.
+    Since we are just doing a short test, you can use 15 min instead of 1 hour. Also remember the `c.AdditionalProperties.ProcsPerNode=20` if you are on UPPMAX. Test that the settings were added by viewing `c.AdditionalProperties` (not PDC or C3SE).
 
 
 ### Running a job from within the MATLAB terminal interface
@@ -394,7 +445,7 @@ job.fetchOutputs{:}
 
 #### Serial
 
-After starting MATLAB, you can get a handle to the cluster (remember, on Rackham and Dardel, just use ``c=parcluster;``) like this:
+After starting MATLAB, you can get a handle to the cluster (remember, on Rackham/Pelle and Dardel, just use ``c=parcluster;``) like this:
 
 ```matlab
 >> c=parcluster('CLUSTER')
@@ -437,9 +488,10 @@ output = j2.fetchOutputs{:}
     
     After doing the job settings further up, let us try running an example. We will use the example ``add2.m`` which adds two numbers. This example uses 1 and 2, but you can pick any numbers you want. You can find the ``add2.m`` script in the exercises/matlab directory or you can [download it from here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/add2.m).
 
-    #. Set up the job with `job = c.batch(@add2, 1, {1,2})`
-    #. Check if it has finished with `job.State`
-    #. When it has finished, retrieve the result with `job.fetchOutputs{:}`
+    1. Create a parcluster (`c=parcluster;` or `c=parcluster('CLUSTER');`or `c=parcluster('local'=;`
+    1. Set up the job with `job = c.batch(@add2, 1, {1,2})`
+    2. Check if it has finished with `job.State`
+    3. When it has finished, retrieve the result with `job.fetchOutputs{:}`
 
 #### Parallel
 
@@ -530,19 +582,19 @@ The difference here is that when the batch script has been submitted, you cannot
 
 !!! warning
 
-    `parpool` can only be used on UPPMAX, Cosmos, Dardel, and Kebnekaise.
+    `parpool` can only be used on UPPMAX, Cosmos, Dardel, Kebnekaise, and Alvis.
 
 
 ### Serial batch jobs
 
-Here is an example of a serial batch job formatted for each of the 5 facilities covered.
+Here is an example of a serial batch job formatted for each of the 6 facilities covered.
 
 === "UPPMAX"
 
      ```bash
      #!/bin/bash
      # Change to your actual project number later
-     #SBATCH -A uppmax2025-2-272
+     #SBATCH -A uppmax2025-2-360
      # Asking for 1 core
      #SBATCH -n 1
      # Asking for 30 min (change as you want)
@@ -554,8 +606,8 @@ Here is an example of a serial batch job formatted for each of the 5 facilities 
      module purge > /dev/null 2>&1
 
      # Change depending on resource and MATLAB version
-     # to find out available versions: module spider matlab
-     module add matlab/R2023b
+     # to find out available versions: module spider MATLAB 
+     module add MATLAB/2024a
 
      # Executing the matlab program monte_carlo_pi.m for the value n=100000
      # (n is number of steps - see program).
@@ -568,7 +620,7 @@ Here is an example of a serial batch job formatted for each of the 5 facilities 
      ```bash 
      #!/bin/bash
      # Change to your actual project number later
-     #SBATCH -A hpc2n2025-062
+     #SBATCH -A hpc2n2025-151
      # Asking for 1 core
      #SBATCH -n 1
      # Asking for 30 min (change as you want)
@@ -594,7 +646,7 @@ Here is an example of a serial batch job formatted for each of the 5 facilities 
      ```bash
      #!/bin/bash
      # Change to your actual project number later
-     #SBATCH -A lu2025-7-24
+     #SBATCH -A lu2025-7-94
      # Asking for 1 core
      #SBATCH -n 1
      # Asking for 30 min (change as you want)
@@ -620,7 +672,7 @@ Here is an example of a serial batch job formatted for each of the 5 facilities 
      ```bash
      #!/bin/bash
      # Change to your actual project number later
-     #SBATCH -A naiss2025-22-262
+     #SBATCH -A naiss2025-22-934
      #SBATCH --ntasks=1
      #SBATCH --cpus-per-task=1
      #SBATCH --ntasks-per-core=1
@@ -644,7 +696,7 @@ Here is an example of a serial batch job formatted for each of the 5 facilities 
      ```bash
      #!/bin/bash
      # Change to your actual project number later
-     #SBATCH -A naiss2025-22-262
+     #SBATCH -A naiss2025-22-934
      #SBATCH -n 1
      # Asking for 15 min (change as you want)
      #SBATCH -t 00:15:00
@@ -661,6 +713,22 @@ Here is an example of a serial batch job formatted for each of the 5 facilities 
      # The command 'time' is timing the execution
      time matlab -singleCompThread -nojvm -nodisplay -r "monte_carlo_pi(100000)"
      ```
+
+=== "C3SE" 
+
+    ```bash
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A NAISS2025-22-934
+    #SBATCH -t 00:05:00
+    #SBATCH -p alvis
+    #SBATCH -N 1 --gpus-per-node=T4:1
+
+    ml purge > /dev/null 2>&1
+    module load MATLAB/2024b 
+
+    time matlab -singleCompThread -nojvm -nodisplay -r "monte_carlo_pi(100000)" 
+    ```
 
 You can download [monte_carlo_pi.m here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/monte_carlo_pi.m) here or find it under `matlab` in the exercises directory.
 
@@ -721,7 +789,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
           ```bash
           #!/bin/bash
           # Change to your actual project number
-          #SBATCH -A uppmax2025-2-272
+          #SBATCH -A uppmax2025-2-360
           # Remember, there are 4 workers and 1 master!
           #SBATCH --ntasks=5
           #SBATCH --cpus-per-task=1
@@ -736,8 +804,8 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
           module purge > /dev/null 2>&1
           
           # Change depending on resource and MATLAB version
-          # to find out available versions: module spider matlab
-          module add matlab/R2023b
+          # to find out available versions: module spider MATLAB
+          module add MATLAB/2024a
           
           # Executing a parallel matlab program
           srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
@@ -748,7 +816,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
           ```bash
           #!/bin/bash
           # Change to your actual project number
-          #SBATCH -A hpc2n2025-062
+          #SBATCH -A hpc2n2025-151
           # Remember, there are 4 workers and 1 master!
           #SBATCH --ntasks=5
           #SBATCH --cpus-per-task=1
@@ -775,7 +843,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
           ```bash
           #!/bin/bash
           # Change to your actual project number
-          #SBATCH -A lu2025-7-24
+          #SBATCH -A lu2025-7-94
           # Remember, there are 4 workers and 1 master!
           #SBATCH --ntasks=5
           #SBATCH --cpus-per-task=1
@@ -802,7 +870,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
           ```bash
           #!/bin/bash
           # Change to your actual project number
-          #SBATCH -A naiss2025-22-262
+          #SBATCH -A naiss2025-22-934
           # Remember, there are 4 workers and 1 master!
           #SBATCH --ntasks=5
           #SBATCH --cpus-per-task=1
@@ -828,7 +896,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
           ```bash
           #!/bin/bash
           # Change to your actual project number
-          #SBATCH -A naiss2025-22-262
+          #SBATCH -A naiss2025-22-934
           # Remember, there are 4 workers and 1 master!
           #SBATCH -p shared
           #SBATCH -n 5
@@ -847,6 +915,23 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
           # Executing a parallel matlab program
           matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
           ```
+
+      === "C3SE" 
+
+          ```bash
+          #!/bin/bash
+         # Remember to change this to your own project ID after the course!
+         #SBATCH -A NAISS2025-22-934
+         #SBATCH -t 00:05:00
+         #SBATCH -p alvis
+         #You always need to ask for GPUs on Alvis! And you should not use it for anything but GPU jobs! 
+         #SBATCH -N 1 --gpus-per-node=T4:1
+
+         ml purge > /dev/null 2>&1
+         module load MATLAB/2024b
+
+         time matlab -singleCompThread -nojvm -nodisplay -r "parallel_example(16)"
+         ```
 
 ## GPU code
 
@@ -952,11 +1037,17 @@ This is how you add GPUs to use in batch jobs submitted inside MATLAB:
 
     Remember, here you cannot set `AdditionalProperties`. Instead, you do the following: 
 
-    #. Start an interactive session on the GPU partition: `salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu`
-    #. Load MATLAB: `module load PDC/23.12 matlab/r2024a-ps`
-    #. Start MATLAB: `matlab -nodisplay -nodesktop -nosplash`
+    1. Start an interactive session on the GPU partition: `salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu`
+    2. Load MATLAB: `module load PDC/23.12 matlab/r2024a-ps`
+    3. Start MATLAB: `matlab -nodisplay -nodesktop -nosplash`
 
     You are now ready to run your GPU MATLAB scripts.
+
+=== "C3SE" 
+
+    Remember, here you cannot set `AdditionalProperties`. Instead, you do the following: 
+
+    1. 
 
 !!! example "**Challenge 5.** Add/remove GPUs in your cluster profile.
 
