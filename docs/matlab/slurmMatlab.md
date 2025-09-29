@@ -782,156 +782,156 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
      
      Try making a batch script to run the ``parallel_example.m`` in the example from inside MATLAB above. You can use the above batch script as template.
 
-??? Solutions
+??? note "Solutions"
 
-      === "UPPMAX"
+    === "UPPMAX"
             
-          ```bash
-          #!/bin/bash
-          # Change to your actual project number
-          #SBATCH -A uppmax2025-2-360
-          # Remember, there are 4 workers and 1 master!
-          #SBATCH --ntasks=5
-          #SBATCH --cpus-per-task=1
-          #SBATCH --ntasks-per-node=5
-          #SBATCH --ntasks-per-core=1
-          # Asking for 30 min (change as you want)
-          #SBATCH -t 00:30:00
-          #SBATCH --error=matlab_%J.err
-          #SBATCH --output=matlab_%J.out
+        ```bash
+        #!/bin/bash
+        # Change to your actual project number
+        #SBATCH -A uppmax2025-2-360
+        # Remember, there are 4 workers and 1 master!
+        #SBATCH --ntasks=5
+        #SBATCH --cpus-per-task=1
+        #SBATCH --ntasks-per-node=5
+        #SBATCH --ntasks-per-core=1
+        # Asking for 30 min (change as you want)
+        #SBATCH -t 00:30:00
+        #SBATCH --error=matlab_%J.err
+        #SBATCH --output=matlab_%J.out
           
-          # Clean the environment
-          module purge > /dev/null 2>&1
+        # Clean the environment
+        module purge > /dev/null 2>&1
           
-          # Change depending on resource and MATLAB version
-          # to find out available versions: module spider MATLAB
-          module add MATLAB/2024a
+        # Change depending on resource and MATLAB version
+        # to find out available versions: module spider MATLAB
+        module add MATLAB/2024a
           
-          # Executing a parallel matlab program
-          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
-          ```
+        # Executing a parallel matlab program
+        srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+        ```
         
-      === "HPC2N"
+    === "HPC2N"
 
-          ```bash
-          #!/bin/bash
-          # Change to your actual project number
-          #SBATCH -A hpc2n2025-151
-          # Remember, there are 4 workers and 1 master!
-          #SBATCH --ntasks=5
-          #SBATCH --cpus-per-task=1
-          #SBATCH --ntasks-per-node=5
-          #SBATCH --ntasks-per-core=1
-          # Asking for 30 min (change as you want)
-          #SBATCH -t 00:30:00
-          #SBATCH --error=matlab_%J.err
-          #SBATCH --output=matlab_%J.out
+        ```bash
+        #!/bin/bash
+        # Change to your actual project number
+        #SBATCH -A hpc2n2025-151
+        # Remember, there are 4 workers and 1 master!
+        #SBATCH --ntasks=5
+        #SBATCH --cpus-per-task=1
+        #SBATCH --ntasks-per-node=5
+        #SBATCH --ntasks-per-core=1
+        # Asking for 30 min (change as you want)
+        #SBATCH -t 00:30:00
+        #SBATCH --error=matlab_%J.err
+        #SBATCH --output=matlab_%J.out
 
-          # Clean the environment
-          module purge > /dev/null 2>&1
+        # Clean the environment
+        module purge > /dev/null 2>&1
 
-          # Change depending on resource and MATLAB version
-          # to find out available versions: module spider matlab
-          module add MATLAB/2023a.Update4
+        # Change depending on resource and MATLAB version
+        # to find out available versions: module spider matlab
+        module add MATLAB/2023a.Update4
 
-          # Executing a parallel matlab program
-          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
-          ```
+        # Executing a parallel matlab program
+        srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+        ```
 
-      === "LUNARC"
+    === "LUNARC"
 
-          ```bash
-          #!/bin/bash
-          # Change to your actual project number
-          #SBATCH -A lu2025-7-94
-          # Remember, there are 4 workers and 1 master!
-          #SBATCH --ntasks=5
-          #SBATCH --cpus-per-task=1
-          #SBATCH --ntasks-per-node=5
-          #SBATCH --ntasks-per-core=1
-          # Asking for 30 min (change as you want)
-          #SBATCH -t 00:30:00
-          #SBATCH --error=matlab_%J.err
-          #SBATCH --output=matlab_%J.out
+        ```bash
+        #!/bin/bash
+        # Change to your actual project number
+        #SBATCH -A lu2025-7-94
+        # Remember, there are 4 workers and 1 master!
+        #SBATCH --ntasks=5
+        #SBATCH --cpus-per-task=1
+        #SBATCH --ntasks-per-node=5
+        #SBATCH --ntasks-per-core=1
+        # Asking for 30 min (change as you want)
+        #SBATCH -t 00:30:00
+        #SBATCH --error=matlab_%J.err
+        #SBATCH --output=matlab_%J.out
 
-          # Clean the environment
-          module purge > /dev/null 2>&1
+        # Clean the environment
+        module purge > /dev/null 2>&1
 
-          # Change depending on resource and MATLAB version
-          # to find out available versions: module spider matlab
-          module add matlab/2023b
+        # Change depending on resource and MATLAB version
+        # to find out available versions: module spider matlab
+        module add matlab/2023b
 
-          # Executing a parallel matlab program
-          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
-          ```
+        # Executing a parallel matlab program
+        srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+        ```
 
-      === "NSC"
+    === "NSC"
 
-          ```bash
-          #!/bin/bash
-          # Change to your actual project number
-          #SBATCH -A naiss2025-22-934
-          # Remember, there are 4 workers and 1 master!
-          #SBATCH --ntasks=5
-          #SBATCH --cpus-per-task=1
-          #SBATCH --ntasks-per-core=1
-          # Asking for 30 min (change as you want)
-          #SBATCH -t 00:30:00
-          #SBATCH --error=matlab_%J.err
-          #SBATCH --output=matlab_%J.out
+        ```bash
+        #!/bin/bash
+        # Change to your actual project number
+        #SBATCH -A naiss2025-22-934
+        # Remember, there are 4 workers and 1 master!
+        #SBATCH --ntasks=5
+        #SBATCH --cpus-per-task=1
+        #SBATCH --ntasks-per-core=1
+        # Asking for 30 min (change as you want)
+        #SBATCH -t 00:30:00
+        #SBATCH --error=matlab_%J.err
+        #SBATCH --output=matlab_%J.out
 
-          # Clean the environment
-          module purge > /dev/null 2>&1
+        # Clean the environment
+        module purge > /dev/null 2>&1
 
-          # Change depending on resource and MATLAB version
-          # to find out available versions: module spider matlab
-          module add MATLAB/2024a-hpc1-bdist
+        # Change depending on resource and MATLAB version
+        # to find out available versions: module spider matlab
+        module add MATLAB/2024a-hpc1-bdist
 
-          # Executing a parallel matlab program
-          srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
-          ```
+        # Executing a parallel matlab program
+        srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+        ```
 
-      === "PDC"
+    === "PDC"
 
-          ```bash
-          #!/bin/bash
-          # Change to your actual project number
-          #SBATCH -A naiss2025-22-934
-          # Remember, there are 4 workers and 1 master!
-          #SBATCH -p shared
-          #SBATCH -n 5
-          # Asking for 30 min (change as you want)
-          #SBATCH -t 00:30:00
-          #SBATCH --error=matlab_%J.err
-          #SBATCH --output=matlab_%J.out
+        ```bash
+        #!/bin/bash
+        # Change to your actual project number
+        #SBATCH -A naiss2025-22-934
+        # Remember, there are 4 workers and 1 master!
+        #SBATCH -p shared
+        #SBATCH -n 5
+        # Asking for 30 min (change as you want)
+        #SBATCH -t 00:30:00
+        #SBATCH --error=matlab_%J.err
+        #SBATCH --output=matlab_%J.out
 
-          # Clean the environment
-          module purge > /dev/null 2>&1
+        # Clean the environment
+        module purge > /dev/null 2>&1
 
-          # Change depending on resource and MATLAB version
-          # to find out available versions: module spider matlab
-          module add PDC/23.12 matlab/r2024a-ps
+        # Change depending on resource and MATLAB version
+        # to find out available versions: module spider matlab
+        module add PDC/23.12 matlab/r2024a-ps
 
-          # Executing a parallel matlab program
-          matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
-          ```
+        # Executing a parallel matlab program
+        matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
+        ```
 
-      === "C3SE" 
+    === "C3SE" 
 
-          ```bash
-          #!/bin/bash
-         # Remember to change this to your own project ID after the course!
-         #SBATCH -A NAISS2025-22-934
-         #SBATCH -t 00:05:00
-         #SBATCH -p alvis
-         #You always need to ask for GPUs on Alvis! And you should not use it for anything but GPU jobs! 
-         #SBATCH -N 1 --gpus-per-node=T4:1
+        ```bash
+        #!/bin/bash
+        # Remember to change this to your own project ID after the course!
+        #SBATCH -A NAISS2025-22-934
+        #SBATCH -t 00:05:00
+        #SBATCH -p alvis
+        #You always need to ask for GPUs on Alvis! And you should not use it for anything but GPU jobs! 
+        #SBATCH -N 1 --gpus-per-node=T4:1
 
-         ml purge > /dev/null 2>&1
-         module load MATLAB/2024b
+        ml purge > /dev/null 2>&1
+        module load MATLAB/2024b
 
-         time matlab -singleCompThread -nojvm -nodisplay -r "parallel_example(16)"
-         ```
+        time matlab -singleCompThread -nojvm -nodisplay -r "parallel_example(16)"
+        ```
 
 ## GPU code
 
@@ -1195,7 +1195,20 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
 
 === "C3SE" 
 
-    
+    ```bash
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A NAISS2025-22-934
+    #SBATCH -t 00:30:00
+    #SBATCH -p alvis
+    #You always need to ask for GPUs on Alvis! And you should not use it for anything but GPU jobs! 
+    #SBATCH -N 1 --gpus-per-node=T4:1
+
+    ml purge > /dev/null 2>&1
+    module load MATLAB/2024b
+
+    matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
+    ```
 
 !!! summary
 
