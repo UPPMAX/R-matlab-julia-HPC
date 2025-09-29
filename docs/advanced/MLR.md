@@ -781,67 +781,66 @@ In the following demo you will find instructions to install this package and run
          + nrounds = 10000, verbose = 0, tree_method = "hist", device = "cuda")
          > toc()
          199.416 sec elapsed
-
+         ```
 
 ## Exercises 
 
 !!! note "<img src="../img/shell-logo_small.png"> Exercise"
 
+    Run validation.R with Rscript
 
-.. challenge:: Run validation.R with Rscript
+    This example is taken from <a href="https://www.geeksforgeeks.org/cross-validation-in-r-programming/" target="_blank">https://www.geeksforgeeks.org/cross-validation-in-r-programming/</a>. 
 
-   This example is taken from https://www.geeksforgeeks.org/cross-validation-in-r-programming/
+    ??? note "``validation.R``"
 
-.. admonition:: ``validation.R``
-   :class: dropdown
+        ```R
+        # R program to implement
+        # validation set approach
+        # Taken from https://www.geeksforgeeks.org/cross-validation-in-r-programming/
+        library(tidyverse)
+        library(caret)
+        library(datarium)
 
-      .. code-block:: R
+        # setting seed to generate a
+        # reproducible random sampling
+        set.seed(123)
 
-         # R program to implement
-         # validation set approach
-         # Taken from https://www.geeksforgeeks.org/cross-validation-in-r-programming/
-         library(tidyverse)
-         library(caret)
-         library(datarium)
+        # creating training data as 80% of the dataset
+        random_sample <- createDataPartition(marketing $ sales, p = 0.8, list = FALSE)
 
-         # setting seed to generate a
-         # reproducible random sampling
-         set.seed(123)
+        # generating training dataset
+        # from the random_sample
+        training_dataset <- marketing[random_sample, ]
 
-         # creating training data as 80% of the dataset
-         random_sample <- createDataPartition(marketing $ sales, p = 0.8, list = FALSE)
+        # generating testing dataset
+        # from rows which are not
+        # included in random_sample
+        testing_dataset <- marketing[-random_sample, ]
 
-         # generating training dataset
-         # from the random_sample
-         training_dataset <- marketing[random_sample, ]
+        # Building the model
 
-         # generating testing dataset
-         # from rows which are not
-         # included in random_sample
-         testing_dataset <- marketing[-random_sample, ]
+        # training the model by assigning sales column
+        # as target variable and rest other columns
+        # as independent variables
+        model <- lm(sales ~., data = training_dataset)
 
-         # Building the model
+        # predicting the target variable
+        predictions <- predict(model, testing_dataset)
 
-         # training the model by assigning sales column
-         # as target variable and rest other columns
-         # as independent variables
-         model <- lm(sales ~., data = training_dataset)
+        # computing model performance metrics
+        data.frame( R2 = R2(predictions, testing_dataset $ sales), RMSE = RMSE(predictions, testing_dataset $ sales), MAE = MAE(predictions, testing_dataset $ sales))
+        ```
 
-         # predicting the target variable
-         predictions <- predict(model, testing_dataset)
+??? note "Solution"
 
-         # computing model performance metrics
-         data.frame( R2 = R2(predictions, testing_dataset $ sales), RMSE = RMSE(predictions, testing_dataset $ sales), MAE = MAE(predictions, testing_dataset $ sales))
+    NOTE: you may or may not have to install the "datarium" package. Check! Load R, R-bundle-CRAN, R-bundle-Bioconductor, etc. and test!
 
+    ```bash 
+    $ Rscript validation.R
 
+!!! note "<img src="../img/shell-logo_small.png"> Exercise"
 
-.. solution:: Solution
+    Create a batch script to run ``validation.R``
 
-   .. code-block:: console
-
-      $ Rscript validation.R
-
-.. challenge:: Create a batch script to run ``validation.R``
-
-   You can find example batch scripts in the ``exercises/r`` directory.
+    You can find example batch scripts in the ``exercises/r`` directory and you can also look at the examples on this page.
 
