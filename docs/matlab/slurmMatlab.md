@@ -1138,7 +1138,8 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     
     # Executing a GPU matlab program
     matlab -nodisplay -nosplash -r "gpu-matlab-script.m"
-    
+    ```
+ 
 === "NSC"
 
     ```bash
@@ -1165,6 +1166,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     
     # Executing a GPU matlab program
     matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
+    ```
 
 === "PDC"
 
