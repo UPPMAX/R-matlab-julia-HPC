@@ -954,12 +954,12 @@ c.AdditionalProperties.GpusPerNode = '';
 
 This is how you add GPUs to use in batch jobs submitted inside MATLAB:
 
-=== "UPPMAX"
-
-    !!! important
+!!! important
     
     Ask for a GPU and enough time to do what you need.
 
+=== "UPPMAX"
+    
     ```bash
     interactive -A uppmax2025-2-360 -p gpu --gpus:l40s:1 -t 2:00:00
     ```
