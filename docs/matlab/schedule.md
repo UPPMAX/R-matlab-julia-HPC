@@ -19,8 +19,7 @@ tags:
 | 13:00 | MATLAB GUI and Slurm                                         | PO, RP     |
 | 13:30 | Add-Ons                                                      | BC         |
 | 13:50 | Coffee break                                                 |            |
-| 14:05 | Simultaneous session — MATLAB in Jupyter                     | PO         |
-|   ... | Simultaneous session - LUNARC: MATLAB with Desktop On Demand | RP         |
+| 14:05 | Simultaneous session - LUNARC: MATLAB with Desktop On Demand | RP         |
 |   ... | (Simultaneous session - UPPMAX: Local desktop client)        | BC         |
 | 14:35 | Summary                                                      | Several    |
 | 14:40 | Evaluation                                                   | Several    |

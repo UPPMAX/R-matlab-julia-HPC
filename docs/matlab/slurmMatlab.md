@@ -34,14 +34,21 @@ SLURM is an Open Source job scheduler, which provides three key functions:
 - Manages a job queue, distributing work across resources according to policies
 
 Users ask for compute resources via the `sbatch` command (as those who attended yesterday's R session will already know).
- - To run a batch job, you must create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
- - Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/run_jobs/job_scheduling/
+
+- To run a batch job, you must create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
+- Guides and documentation at: 
+    - <a href="https://docs.hpc2n.umu.se/documentation/batchsystem/intro/" target="_blank">https://docs.hpc2n.umu.se/documentation/batchsystem/intro/</a> 
+    - <a href="https://docs.uppmax.uu.se/cluster_guides/slurm/" target="_blank">https://docs.uppmax.uu.se/cluster_guides/slurm/</a> 
+    - <a href="https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/" target="_blank">https://lunarc-documentation.readthedocs.io/en/latest/manual/submitting_jobs/manual_basic_job/</a> 
+    - <a href="https://www.nsc.liu.se/support/batch-jobs/introduction/" target="_blank">https://www.nsc.liu.se/support/batch-jobs/introduction/</a> 
+    - <a href="https://support.pdc.kth.se/doc/run_jobs/job_scheduling/" target="_blank">https://support.pdc.kth.se/doc/run_jobs/job_scheduling/</a>
 
 MATLAB is well integrated with SLURM, so there are several ways to run these jobs:
- - Using the job scheduler (``batch`` command) in MATLAB Desktop/graphical interface (This is the Recommended Use).
- - Starting a ``parpool`` with a predefined cluster (This allows for more interactivity).
- - Writing a batch script as for any other software and submitting the job with the ``sbatch`` command from SLURM
-   (This could be useful if you want to run long jobs and you don't need to modify the code in the meantime).
+
+- Using the job scheduler (``batch`` command) in MATLAB Desktop/graphical interface (This is the Recommended Use).
+- Starting a ``parpool`` with a predefined cluster (This allows for more interactivity).
+- Writing a batch script as for any other software and submitting the job with the ``sbatch`` command from SLURM
+    - (This could be particularly useful if you want to run long jobs and you don't need to modify the code in the meantime).
 
 In the following sections we will extend these concepts.
 
@@ -62,12 +69,14 @@ In order to be able to submit jobs to the SLURM queue, you usually need to confi
 
 Configuration only needs to be run once per version of MATLAB on each cluster. These specifications can be changed or added to at runtime, and it is possible to have more than one profile for a single release.
 
-The instructions for each facility are linked below:
+The instructions for each facility are linked below: 
+
 - [HPC2N: Configure MATLAB](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018)
 - [UPPMAX: MATLAB configuration](https://docs.uppmax.uu.se/software/matlab_conf/)
 - [LUNARC: Configuration at the command line](https://lunarc-documentation.readthedocs.io/en/latest/guides/applications/MATLAB/#configuration-at-the-command-line)
 - [NSC: MATLAB (scroll down to "Before submitting your first job")](https://www.nsc.liu.se/software/installed/tetralith/matlab/).
 - PDC: no need to configure
+- C3SE: 
 
 !!! warning
 

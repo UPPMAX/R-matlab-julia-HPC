@@ -39,10 +39,10 @@ nav:
       - Intro: julia/intro.md
       - Load and run: julia/load_run.md
       - Environments and packages: julia/environments_packages.md
-      - Batch jobs: julia/batchJulia.md  
-      - Interactive jobs: julia/interactiveJulia.md     
+      - Batch jobs: julia/batch.md  
+      - Interactive jobs: julia/interactive.md     
       - The notebook Pluto: julia/notebook_pluto.md
-      - Summary: julia/summaryJulia.md
+      - Summary: julia/summary.md
     - Advanced: 
       - Schedule: advanced/schedule.md
       - Parallel computing: advanced/parallel_computing/README.md
@@ -57,6 +57,7 @@ nav:
       - Reflections: reflections/README.md
     - Extra reading: 
       - More about R packages: r/morepackages.md
+      - More about Julia: julia/extra.md
 
 
 not_in_nav: |

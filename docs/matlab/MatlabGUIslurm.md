@@ -141,9 +141,9 @@ Jobs can be parallelized in MATLAB using functionalities such as ``parfor``, ``s
 
 This function will assist you if you want to parallelize a *for loop*. Although it will be performant, it imposes some constraints on the loops:
 
-#. The number of iterations must be well-defined,
-#. There can be no control over the individual workers, and
-#. There must be no data dependencies between the iterations.
+- The number of iterations must be well-defined,
+- There can be no control over the individual workers, and
+- There must be no data dependencies between the iterations.
 
 In the following example the name of the host machine will be printed `n` number of times  and this number will be divided across the available number of workers:
 
@@ -305,4 +305,4 @@ All parallel functionalities in MATLAB can be executed inside a ``parpool``.
     - MATLAB has good integration with SLURM and because of that one can submit jobs to the
      queue directly from the GUI.
     - MATLAB has several tools to parallelize your code and we have explored here ``parfor``, ``spmd``,
-     and ``parfeval``, but there are other `tools available <https://se.mathworks.com/help/overview/parallel-computing.html?s_tid=hc_product_group_bc>`_.
+     and ``parfeval``, but there are other [tools available](https://se.mathworks.com/help/overview/parallel-computing.html?s_tid=hc_product_group_bc){:target="_blank"}.
