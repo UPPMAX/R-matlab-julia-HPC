@@ -170,8 +170,7 @@ The tabs below demonstrate the preferred method for each cluster where configura
     1. Log into your chosen HPC cluster if you have not already.
     2. Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
     3. Depending on cluster, now do 
-        - NSC: Run configCluster inside MATLAB on the terminal (start with ``matlab -singleCompThread -nodisplay -nosplash -nodesktop
-``).
+        - NSC: Run configCluster inside MATLAB on the terminal (start with ``matlab -singleCompThread -nodisplay -nosplash -nodesktop ``).
         - PDC: You do not do ``configCluster``
         - C3SE: You do not do ``configCluster``
         - HPC2N. Run ``configCluster.sh`` on the terminal
