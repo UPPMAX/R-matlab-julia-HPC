@@ -32,7 +32,6 @@ nav:
       - MATLAB terminal and Slurm: matlab/slurmMatlab.md
       - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
       - MATLAB Add-Ons: matlab/matlab-addons.md
-      - matlab/matlab-local-desktop.md
       - matlab/matlab-summary.md
     - Julia:
       - Schedule: julia/schedule.md
