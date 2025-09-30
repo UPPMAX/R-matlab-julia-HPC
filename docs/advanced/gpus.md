@@ -16,7 +16,7 @@
 
 In order to understand the capabilities of a GPU, it is instructive to compare a pure CPU architecture with a GPU based architecture. Here, there is a schemematics of the former:
  
-[AMD Zen4 CPU](../img/AMD-Zen4-CPU-b-cn1701.png)
+![AMD Zen4 CPU](../img/AMD-Zen4-CPU-b-cn1701.png)
 
    Pure CPU architecture (single node). In the present case there are 256 cores, each with its own cache memory (LX). There is a shared memory (~378 GB/NUMA node) for all these cores. This is an AMD Zen4 node. 
    The base frequency is 2.25 GHz, but it can boost up to 3.1 GHz. 
