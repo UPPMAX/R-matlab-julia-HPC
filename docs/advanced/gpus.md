@@ -3,26 +3,26 @@
 !!! note "Questions"
 
     - What is GPU acceleration?
-    - How to enable GPUs? 
+    - How to enable GPUs?
     - How to deploy GPUs at HPC2N, UPPMAX, LUNARC, NSC, PDC and C3SE?
-   
+
 !!! note "Objectives"
 
     - Get an intro to common schemes for GPU code acceleration
-    - Learn about the GPU nodes at HPC2N, UPPMAX, LUNARC, NSC, PDC, and C3SE 
-    - Learn how to make a batch script asking for GPU nodes at HPC2N, UPPMAX, LUNARC, NSC, PDC, and C3SE  
+    - Learn about the GPU nodes at HPC2N, UPPMAX, LUNARC, NSC, PDC, and C3SE
+    - Learn how to make a batch script asking for GPU nodes at HPC2N, UPPMAX, LUNARC, NSC, PDC, and C3SE
 
 ## Introduction
 
 In order to understand the capabilities of a GPU, it is instructive to compare a pure CPU architecture with a GPU based architecture. Here, there is a schemematics of the former:
- 
+
 !!! note " "
  
     ![AMD Zen4 CPU](../img/AMD-Zen4-CPU-b-cn1701.png)
 
-    Pure CPU architecture (single node). In the present case there are 256 cores, each with its own cache memory (LX). There is a shared memory (~378 GB/NUMA node) for all these cores. This is an AMD Zen4 node. 
- 
-    The base frequency is 2.25 GHz, but it can boost up to 3.1 GHz. 
+    Pure CPU architecture (single node). In the present case there are 256 cores, each with its own cache memory (LX). There is a shared memory (~378 GB/NUMA node) for all these cores. This is an AMD Zen4 node.
+
+    The base frequency is 2.25 GHz, but it can boost up to 3.1 GHz.
 
 As for the GPU architecture, a GPU card of type Ada Lovelace (like the L40s) looks like this:
 
@@ -30,8 +30,8 @@ As for the GPU architecture, a GPU card of type Ada Lovelace (like the L40s) loo
 
     ![Ada Lovelace GPU](../img/lovelace-diagram.png){:align: center}
 
-    Note: The AD102 GPU also includes 288 FP64 Cores (2 per SM) which are not depicted in the above diagram. The FP64 TFLOP rate is 1/64th the TFLOP rate of FP32 operations. The small number of FP64 Cores are included to ensure any programs with FP64 code operate correctly, including FP64 Tensor Core code. 
- 
+    Note: The AD102 GPU also includes 288 FP64 Cores (2 per SM) which are not depicted in the above diagram. The FP64 TFLOP rate is 1/64th the TFLOP rate of FP32 operations. The small number of FP64 Cores are included to ensure any programs with FP64 code operate correctly, including FP64 Tensor Core code.
+
     This is a single GPU engine of a L40s card. There are 12 Graphics Processing Clusters (GPCs), 72 Texture Processing Clusters (TPCs), 144 Streaming Multiprocessors (SMs), and a 384-bit memory interface with 12 32-bit memory controllers).
 
     On the diagram, each green dot represents a CUDA core (single precision), while the yellow are RT cores and blue Tensor cores. The cores are arranged in the slots called SMs in the figure. Cores in the same SM share some local and fast cache memory.
@@ -42,8 +42,8 @@ GPCs
 
     ![GPC](../img/GPC-with-raster-engine.png)
 
-    The GPC is the dominant high-level hardware block. Each GPC includes a dedicated Raster Engine, two Raster Operations (ROPs) partitions, with each partition containing eight individual ROP units, and six TPCs. Each TPC includes one PolyMorph Engine and two SMs. 
- 
+    The GPC is the dominant high-level hardware block. Each GPC includes a dedicated Raster Engine, two Raster Operations (ROPs) partitions, with each partition containing eight individual ROP units, and six TPCs. Each TPC includes one PolyMorph Engine and two SMs.
+
     Each SM contain 128 CUDA Cores, one Ada Third-Generation RT Core, four Ada Fourth-Generation Tensor Cores, four Texture Units, a 256 KB Register File, and 128 KB of L1/Shared Memory, which can be configured for different memory sizes depending on the needs of the graphics or compute workload.
 
 In a typical cluster, some GPUs are attached to a single node resulting in a CPU-GPU hybrid architecture. The CPU component is called the host and the GPU part the device.
@@ -70,10 +70,10 @@ Cars and roads analogy for the CPU and GPU behavior. The compact road is analogo
 Not every program is suitable for GPU acceleration. GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks. GPUs were originally designed to render high-resolution images and video concurrently and fast, but since they can perform parallel operations on multiple sets of data, they are also often used for other, non-graphical tasks. Common uses are machine learning and scientific computation were the GPUs can take advantage of massive parallelism.
 
 - Many R packages are not CUDA aware, but some have been written specifically with GPUs in mind.
-- Many Julia packages are not CUDA aware. The CUDA.jl package is the main programming interface for working with Nvidia GPUs. 
-- Matlab does have support for computing on GPUs, but you need to write functions that support GPU execution. Many functions in Matlab run automatically on a GPU if you supply a gpuArray data argument. GPU computing in MATLAB requires Parallel Computing Toolbox. Information here: <a href="https://www.mathworks.com/help/parallel-computing/run-matlab-functions-on-a-gpu.html" target="_blank">Run MATLAB Functions on a GPU</a>. 
+- Many Julia packages are not CUDA aware. The CUDA.jl package is the main programming interface for working with Nvidia GPUs.
+- Matlab does have support for computing on GPUs, but you need to write functions that support GPU execution. Many functions in Matlab run automatically on a GPU if you supply a gpuArray data argument. GPU computing in MATLAB requires Parallel Computing Toolbox. Information here: <a href="https://www.mathworks.com/help/parallel-computing/run-matlab-functions-on-a-gpu.html" target="_blank">Run MATLAB Functions on a GPU</a>.
 
-One of the most common use of GPUs with and Julia is for machine learning or deep learning. 
+One of the most common use of GPUs with and Julia is for machine learning or deep learning.
 
 ## GPUs on C3SE, UPPMAX, HPC2N, LUNARC, NSC, and PDC systems
 
@@ -82,18 +82,18 @@ To use them you need to either launch an interactive job or submit a batch job.
 
 === "C3SE"
 
-    Alvis is meant for GPU jobs. There is no node-sharing on multi-node jobs (`--exclusive` is automatic). 
+    Alvis is meant for GPU jobs. There is no node-sharing on multi-node jobs (`--exclusive` is automatic).
 
     NOTE: Requesting -N 1 does not mean 1 full node
 
-    You would need to add this to your batch script: 
+    You would need to add this to your batch script:
 
     ```bash
     #SBATCH -p alvis
     #SBATCH -N <nodes>
     #SBATCH --gpus-per-node=<type>:x
     ```
- 
+
     where ``<type>`` is one of
 
     - V100
@@ -106,36 +106,36 @@ To use them you need to either launch an interactive job or submit a batch job.
     - 1-8 for T4
     - 1-4 for A100
 
-=== "NSC" 
+=== "NSC"
 
     Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch script or interactive job:
-     
+    
     ```bash
     #SBATCH -n 1
     #SBATCH -c 32
     #SBATCH --gpus-per-task=1
     ```
-   
-=== "PDC" 
+
+=== "PDC"
 
     Dardel has AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job:
-
-    You need to add this to your batch script (or interactive job) in order to use them: 
+    
+    You need to add this to your batch script (or interactive job) in order to use them:
 
     ```bash
     #SBATCH -N 1
     #SBATCH --ntasks-per-node=1
-    #SBATCH -p gpu  
+    #SBATCH -p gpu
     ```
 
-    NOTE: the fact that Dardel has AMD GPUs means that CUDA-enabled packages will not run! You need something like hip. 
+    NOTE: the fact that Dardel has AMD GPUs means that CUDA-enabled packages will not run! You need something like hip.
 
-=== "UPPMAX" 
+=== "UPPMAX"
 
     Rackham’s compute nodes do not have GPUs. You need to use Snowy for that.
     The new cluster Pelle has GPUs.
 
-    On Pelle, you need to use this batch command: 
+    On Pelle, you need to use this batch command:
 
     - for L40s GPUs (up to 10 GPU cards)
 
@@ -181,7 +181,7 @@ To use them you need to either launch an interactive job or submit a batch job.
 
     where type is
 
-    - v100 
+    - v100
     - a40
     - a6000
     - l40s
@@ -200,7 +200,7 @@ To use them you need to either launch an interactive job or submit a batch job.
 
     A100 GPUs on AMD nodes:
 
-    ```bash  
+    ```bash
     #SBATCH -p gpua100
     #SBATCH --gres=gpu:1
     ``` 
@@ -212,15 +212,15 @@ To use them you need to either launch an interactive job or submit a batch job.
     ```bash
     #SBATCH -p gpua100i
     #SBATCH --gres=gpu:<number>
-    ``` 
+    ```
 
     where ``<number>`` is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).
 
-## Example batch script 
+## Example batch script
 
-As mentioned, you need a batch job or an interactive job (could also be through Open OnDemand or from inside MATLAB) to use the GPUs. 
+As mentioned, you need a batch job or an interactive job (could also be through Open OnDemand or from inside MATLAB) to use the GPUs.
 
-Here follows an example of a batch script that allocates GPUs. This is for an R job, but it is done similarly for Julia and Matlab. 
+Here follows an example of a batch script that allocates GPUs. This is for an R job, but it is done similarly for Julia and Matlab.
 
 === "NSC"
 
@@ -282,7 +282,7 @@ Here follows an example of a batch script that allocates GPUs. This is for an R 
     
     **Rackham/Snowy**:  
     
-    ```bash 
+    ```bash
     #!/bin/bash -l 
     #SBATCH -A uppmax2025-Y-ZZZ
     #Asking for runtime: hours, minutes, seconds. At most 1 week
@@ -301,11 +301,11 @@ Here follows an example of a batch script that allocates GPUs. This is for an R 
     ml uppmax R/4.1.1 R_packages/4.1.1
             
     R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
-    ```           
+    ```
     
-    **Pelle (1 L40s)**: 
+    **Pelle (1 L40s)**:
 
-    ```bash 
+    ```bash
     #!/bin/bash -l
     #SBATCH -A uppmax2025-Y-ZZZ 
     #Asking for runtime: hours, minutes, seconds. At most 1 week
@@ -365,10 +365,10 @@ Here follows an example of a batch script that allocates GPUs. This is for an R 
     R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
     ```
 
-!!! note "Summary" 
+!!! note "Summary"
 
-    - GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks 
+    - GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks
     - There are GPUs on NSC/Tetralith, PDC/Dardel, C3SE/Alvis, HPC2N/Kebnekaise, LUNARC/Cosmos, UPPMAX/Pelle, but they are different
     - It varies between centres how you allocate a GPU
-    - You need to use either batch or interactive/OpenOnDemand to use GPUs 
+    - You need to use either batch or interactive/OpenOnDemand to use GPUs
 
