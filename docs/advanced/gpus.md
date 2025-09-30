@@ -177,7 +177,7 @@ To use them you need to either launch an interactive job or submit a batch job.
 
     ```bash
     #SBATCH -C <type>
-    ´´´
+    ```
 
     where type is
 
