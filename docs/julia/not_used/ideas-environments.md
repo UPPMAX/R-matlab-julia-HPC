@@ -1,12 +1,12 @@
 # Ideas for future teaching of environments
 
-### Environments first
+## Environments first
 
 Like, project environments first, then stacked environments, don't install a
 package without knowing where you install it and why you choose to install it
 there.
 
-### Demonstrate a package getting updated
+## Demonstrate a package getting updated
 
 To demonstrate the utility and functionality of version controlled environments.
 
