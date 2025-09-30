@@ -40,7 +40,9 @@
       "a",
       "figure",
       "figcaption",
-      "br"
+      "br",
+      "div",
+      "img"
     ]
   },
 
