@@ -41,7 +41,6 @@ nav:
       - Environments and packages: julia/environments_packages.md
       - Batch jobs: julia/batch.md  
       - Interactive jobs: julia/interactive.md     
-      - The notebook Pluto: julia/notebook_pluto.md
       - Summary: julia/summary.md
     - Advanced: 
       - Schedule: advanced/schedule.md
