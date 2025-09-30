@@ -216,4 +216,159 @@ To use them you need to either launch an interactive job or submit a batch job.
 
     where ``<number>`` is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).
 
+### Example batch script 
+
+As mentioned, you need a batch job or an interactive job (could also be through Open OnDemand or from inside MATLAB) to use the GPUs. 
+
+Here follows an example of a batch script that allocates GPUs. This is for an R job, but it is done similarly for Julia and Matlab. 
+
+=== "NSC"
+
+    ```bash
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A naiss2025-22-934
+    # Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH --time=HHH:MM:SS
+    # Ask for resources, including GPU resources
+    #SBATCH -n 1
+    #SBATCH -c 32
+    #SBATCH --gpus-per-task=1
+
+    # Remove any loaded modules and load the ones we need
+    module purge  > /dev/null 2>&1
+    module load R/4.4.0-hpc1-gcc-11.3.0-bare
+
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```
+
+=== "PDC"
+
+    ```bash
+    #!/bin/bash -l
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A naiss2025-22-934
+    # Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH --time=HHH:MM:SS
+    # Ask for resources, including GPU resources
+    #SBATCH -N 1
+    #SBATCH --ntasks-per-node=1
+    #SBATCH -p gpu
+
+    module load PDC/23.12 R/4.4.1-cpeGNU-23.12
+    module load rocm/5.7.0
+    #module load craype-accel-amd-gfx90a
+    #module load cpeGNU/23.12
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```
+
+=== "C3SE"
+
+    ```bash
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A NAISS2025-22-934
+    #SBATCH -t HHH:MM:SS
+    #SBATCH -p alvis
+    #SBATCH -N 1 --gpus-per-node=T4:4
+
+    ml purge > /dev/null 2>&1
+    module load R/4.2.1-foss-2022a CUDA/12.9.1
+
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```
+
+=== "UPPMAX"
+    
+    **Rackham/Snowy**:  
+    
+    ```bash 
+    #!/bin/bash -l 
+    #SBATCH -A uppmax2025-Y-ZZZ
+    #Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH -t HHH:MM:SS
+    #SBATCH --exclusive
+    #SBATCH -p node
+    #SBATCH -N 1
+    #SBATCH -M snowy
+    #SBATCH --gpus=1
+    #SBATCH --gpus-per-node=1
+    #Writing output and error files
+    #SBATCH --output=output%J.out
+    #SBATCH --error=error%J.error
+            
+    ml purge > /dev/null 2>&1
+    ml uppmax R/4.1.1 R_packages/4.1.1
+            
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```           
+    
+    **Pelle (1 L40s)**: 
+
+    ```bash 
+    #!/bin/bash -l
+    #SBATCH -A uppmax2025-Y-ZZZ 
+    #Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH -t HHH:MM:SS
+    #SBATCH -p gpu
+    #SBATCH --gpus:l40s:1
+    #Writing output and error files
+    #SBATCH --output=output%J.out
+    #SBATCH --error=error%J.error
+
+    ml purge > /dev/null 2>&1
+    # Reloading a module that got removed with purge
+    ml Java/17
+    ml R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```
+
+=== "HPC2N"
+
+    ```bash
+    #!/bin/bash
+    #SBATCH -A hpc2n2025-151 # Change to your own project ID
+    #Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH -t HHH:MM:SS
+    #Ask for GPU resources. You pick type as one of the ones shown above
+    #x is how many cards you want, at most as many as shown above
+    #SBATCH --gpus:x
+    #SBATCH -C type
+    #Writing output and error files
+    #SBATCH --output=output%J.out
+    #SBATCH --error=error%J.error
+
+    ml purge > /dev/null 2>&1
+    #R version 4.4.1
+    ml GCC/13.2.0 R/4.4.1 OpenMPI/4.1.6 R-bundle-CRAN/2024.06
+    ml CUDA/12.6.0
+
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```
+
+=== "LUNARC"
+
+    ```bash
+    #!/bin/bash
+    # Remember to change this to your own project ID after the course!
+    #SBATCH -A lu2025-2-94
+    # Asking for runtime: hours, minutes, seconds. At most 1 week
+    #SBATCH --time=HHH:MM:SS
+    # Ask for GPU resources - x is how many cards, 1 or 2
+    #SBATCH -p gpua100
+    #SBATCH --gres=gpu:x
+
+    # Remove any loaded modules and load the ones we need
+    module purge  > /dev/null 2>&1
+    module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1 CUDA/12.1.1
+
+    R --no-save --no-restore -f MY-R-GPU-SCRIPT.R
+    ```
+
+!!! note "Summary" 
+
+    - GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks 
+    - There are GPUs on NSC/Tetralith, PDC/Dardel, C3SE/Alvis, HPC2N/Kebnekaise, LUNARC/Cosmos, UPPMAX/Pelle, but they are different
+    - It varies between centres how you allocate a GPU
+    - You need to use either batch or interactive/OpenOnDemand to use GPUs 
 
