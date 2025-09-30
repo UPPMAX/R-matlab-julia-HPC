@@ -9,6 +9,9 @@
   // That markdownlint has a different default is the error of markdownlint
   "MD007": { "indent": 4 },
 
+  // Standard markdown allows a line to have 0 or 2 trailing white spaces
+  "MD009": false,
+
   // Standard markdown does not allow for two correct consecutive blank lines 
   // i an admonitions (a.o. the 'question' admonition):
   //
@@ -30,6 +33,15 @@
   "MD013": {
     // Line length, CHANGED FROM 80 ('false' does not disable limit)
     "line_length": 800
+  },
+
+  "MD033": {
+    "allowed_elements": [
+      "a",
+      "figure",
+      "figcaption",
+      "br"
+    ]
   },
 
   // Standard markdown does not allow for valid indent code like this:
