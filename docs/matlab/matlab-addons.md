@@ -48,9 +48,7 @@ In the GUI, the Add-Ons manager can be selected from the menu at the top. The dr
 
 ???- tip "What does that look like?"
    
-    <div align="center">
-        <img src="./img/Add-On_manager.PNG" alt="Add-on Manager" width="500"/>
-    </div>
+     ![Add-on manager](./img/Add-On_manager.PNG)
 
 - Package user-generated code as a Toolbox or App
 
@@ -62,9 +60,7 @@ Here we will only focus on the first two options.
 
     Note that very many packages are already included in the Academic installation and license. You can go to the Add-On explorer and select "View My Products" to see what is available.
 
-    <div align="center">
-      <img src="./img/my_products.PNG" alt="View My Products" width="500"/>
-    </div>
+    ![View my products](./img/my_products.PNG)
 
 !!! info "See also" 
 
@@ -153,9 +149,7 @@ Here we will only focus on the first two options.
 
 - Search in Add-Ons explorer and install.
 
-<div align="center">
-  <img src="./img/searchforaddons.PNG" alt="Search for Add-ons" width="500"/>
-</div>
+![Search for Add-ons](./img/searchforaddons.PNG)
 
 - Installation goes in local folder, `~/MATLAB Add-Ons`, and should be accessible wherever you are in the file tree.
 - It's in the path so it should be possible to run directly if you don't need to run an installation file.
