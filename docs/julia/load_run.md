@@ -222,28 +222,27 @@ this will allow you to use Linux commands. Notice that the availability of these
 depend on the OS, for instance, on Windows it will depend on the terminal that you have
 installed and if it is visible to the Julia installation.
 
-Package manage mode
-...................
+### Package manage mode
 
 Another mode available in Julia is the ``package manager`` mode, it can be accessed by typing
 ``]`` in the ``Julian`` mode:
 
-.. code-block:: julia-repl
+``` { .julia-repl }
 
    julia>]
    (v1.8) pkg>
+```
 
 this will make your interaction with the package manager **Pkg** easier, for instance,
 instead of typing the complete name of **Pkg** commands such as ``Pkg.status()`` in the
 ``Julian`` mode, you can just type ``status`` in the ``package`` mode.
 
-Help mode
-.........
+### Help mode
 
 The last mode is the ``help`` mode, you can enter this mode from the ``Julian`` one by
 typing ``?``, then you may type some string from which you need more information:
 
-.. code-block:: julia
+``` { .julia}
 
    julia>?
 
@@ -254,36 +253,38 @@ typing ``?``, then you may type some string from which you need more information
    ans
 
    A variable referring to the last computed value, automatically set at the interactive prompt.
+```
 
-Exiting
-.......
+### Exiting
 
 Exit with
 
-.. code-block:: julia-repl
+``` { .julia-repl }
 
    julia> <Ctrl-D>
+```
 
 or
 
-.. code-block:: julia-repl
+``` { .julia-repl }
 
    julia> exit()
+```
 
-.. admonition:: The Julian modes summary
+!!! The Julian modes summary
 
     - enter the *shell mode* by typing ``;``
     - go back to *Julian* mode by ``<backspace>``
     - access the *package manager* mode by typing ``]`` in the *Julian* mode
     - use the *help mode* by typing ``?`` in the *Julian mode*
 
-.. seealso::
+!!! seealso
 
-   `More detailed information about the modes in Julia can be found <https://docs.julialang.org/en/v1/stdlib/REPL/>`_.
+    [More detailed information about the modes in Julia can be found](https://docs.julialang.org/en/v1/stdlib/REPL).
 
 
-Run a Julia script
-##################
+### Run a Julia script
+
 
 You can run a Julia script on the Linux shell as follows:
 
@@ -298,8 +299,8 @@ where the script is a text file could contain these lines:
    println("hello world")
 
 
-Exercises
----------
+## Exercises
+
 
 .. challenge:: 1a. Find out which versions are on your cluster from documentation
 
@@ -733,16 +734,16 @@ Exercises
     - to the ``help`` mode?
     - to the ``shell`` mode?
 
-.. keypoints::
+!!! summary 
 
-- Before you can run Julia scripts or work in a Julia shell, first load a Julia module with ``module load <julia module>``
-- Start a Julia shell session with ``julia``
-- It offers several modes that can make your workflow easier, i.e.
+    - Before you can run Julia scripts or work in a Julia shell, first load a Julia module with ``module load <julia module>``
+    - Start a Julia shell session with ``julia``
+    - It offers several modes that can make your workflow easier, i.e.
 
-    - ``Julian``
-    - ``shell``
-    - ``package manager``
-    - ``help``
+        - ``Julian``
+        - ``shell``
+        - ``package manager``
+        - ``help``
 
-- Run scripts with ``julia <script.jl>``
+    - Run scripts with ``julia <script.jl>``
 

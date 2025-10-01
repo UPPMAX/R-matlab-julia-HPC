@@ -26,13 +26,12 @@ nav:
       - Summary: r/summary.md
       - Evaluation: r/evaluation.md
     - MATLAB: 
-      - Schedule: matlab/schedule.md
+      - Schedule: matlab/scheduleMatlab.md
       - Intro: matlab/intro-matlab.md
       - Load and run: matlab/load_runMatlab.md
       - MATLAB terminal and Slurm: matlab/slurmMatlab.md
       - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
       - MATLAB Add-Ons: matlab/matlab-addons.md
-      - matlab/matlab-local-desktop.md
       - matlab/matlab-summary.md
     - Julia:
       - Schedule: julia/schedule.md
@@ -41,13 +40,13 @@ nav:
       - Environments and packages: julia/environments_packages.md
       - Batch jobs: julia/batch.md  
       - Interactive jobs: julia/interactive.md     
-      - The notebook Pluto: julia/notebook_pluto.md
       - Summary: julia/summary.md
     - Advanced: 
       - Schedule: advanced/schedule.md
       - Parallel computing: advanced/parallel_computing/README.md
       - Thread parallelism: advanced/thread_parallelism/README.md
       - Distributed parallelism: advanced/distributed_parallelism/README.md
+      - Introduction to GPUs: advanced/gpus.md
       - Machine Learning: 
         - With R: advanced/MLR.md
       - Evaluation: advanced/evaluation.md

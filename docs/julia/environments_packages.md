@@ -1,42 +1,66 @@
-Packages and isolated environments
-==================================
+# Managing environments and packages
 
 
-!!! info "Questions:"
+!!! info "Learning outcomes for this session"
 
-    - How to install packages?
-    - How to work with isolated environments?
-    - How to check for and use the pre-installed packages?
-
-
-!!! info "objectives"
-
-    - Give a general *theoretical* introduction to isolated environments
-    - Show how to install own packages
-    - Show how to check for site-installed Julia packages
-
-!!! info "Julia packages and environments"
-
-    - Julia **packages** significantly expand Julia's usability!
-    - Instead of writing code yourself there may be others that have done the same!
-    - Isolated environments solve a couple of problems:
-        - You can install specific, also older, versions into them.
-        - You can create one for each project and no problem if the two projects require different versions.
-        - You can remove the environment and create a new one, if not needed or with errors.
+    - How to work with Julias environment and package management.
+    - How to check for and use site-installed packages, if any.
 
 
-Before going into installing packages let's have a background to the Julia
-environments and ecosystem!
+!!! info "Your background?"
 
-In the Python's lesson on environments, we saw that there are different ways to
-deal with isolated environments in this language, for instance, `conda` and
-`pip`. This situation is simplified in Julia (if you are working with Julia code
-only) because environments are managed by Julia itself. Julia distinguishes
-between **project environments** and **package directories** ([Julia
-environments](https://docs.julialang.org/en/v1/manual/code-loading/#Environments)).
-In the former, only the Tom's Obvious Minimal Language (TOML) files
-(Project.toml, Manifest.toml) are present while in the latter also source files
-are included with some specific layout.
+    - Have you used Python?
+    - Have you used Matlab? Were you at yesterdays Matlab sessions?
+    - Have you used Git?
+    - Are you completely new to this, code packages and version control?
+
+!!! info "Key points"
+
+    - Environments
+        - Project
+        - Version control
+        - Nested, base, tools not part of the project, use with caution
+    - Packages
+
+
+## Introduction
+
+Packages are pieces of software to be used by your scripts or interactive
+sessions as-is or modified, stand-alone or---most often---in combinations to
+make a full toolkit customized to your task. Such a toolkit may itself become a
+new package. Packages allow us to cooperate on code that can be useful in
+several places.
+
+Environments are sets of packages that are available for use simultaneously and,
+if all is right, work together.
+
+If you come from Python, you have likely seen that there are several different
+ways to deal with environments and package management in this language, for
+instance, `conda` and `pip`. The situation can be described as several
+ecosystems of packages. You may have come across the term "dependency hell" or
+even had a taste (or perhaps far more than you could stomach) of this yourself.
+
+Julia comes with a great system for environments and packages included. As a
+result there is essentially a single ecosystem of packages and "dependency hell"
+is as close to eliminated as it can be.
+
+Julia environments are defined by two TOML (Tom's Obvious Minimal Language)
+files, `Project.toml` and `Manifest.toml`. The former specifies which packages
+you've asked for, the latter specifies all packages loaded including their exact
+versions. Include both of these files in your version control and you get
+traceable, reproducible environments with minimal effort!
+
+## Getting started
+
+To get started we will go to the Julia documentation and make use of the
+official tutorial on the Julia package manager:
+<https://docs.julialang.org/en/v1/stdlib/Pkg/#Pkg>
+
+---
+
+## Below is old stuff some of which should be retained
+
+---
 
 Packages are imported or loaded by the commands `import` and `using`,
 respectively. The difference is (briefly):
@@ -47,40 +71,6 @@ respectively. The difference is (briefly):
 > `Module.fn(x)` becomes `fn(x)`.
 
 
-If you have started Julia previously, you will get the folders like this in the ~/.julia folder.
-
-    $ tree .julia/ -d -L 1
-    .
-    ├── artifacts
-    ├── bin
-    ├── compiled
-    ├── conda
-    ├── environments
-    ├── logs
-    ├── packages
-    ├── prefs
-    ├── registries
-    └── scratchspaces
-
-
-??? note "Alternative to **tree** command"
-
-    In case you don't have the **tree** command on your system you can use the
-    **find** command which is more common on Linux:
-
-        $ find .julia -mindepth 1 -maxdepth 1 -type d
-        .julia/registries
-        .julia/logs
-        .julia/packages
-        .julia/artifacts
-        .julia/conda
-        .julia/compiled
-        .julia/environments
-        .julia/prefs
-        .julia/scratchspaces
-
-Packages in Julia work as decentralized units which can be connected through their
-universally unique identifiers (UUIDs) in the so-called federated package management.
 The active environments can be seen with the command:
 
     julia>LOAD_PATH
@@ -103,32 +93,6 @@ which can potentially create conflicts for reproducibility if you are not aware 
 Julia is doing under the hood. Later on, we will see possible strategies to avoid this
 situation.
 
-In a fresh Julia installation, we can see the following project information:
-
-    julia> using Pkg
-
-    julia> Pkg.project()
-    Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}(), "/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml")
-
-Here, we can see among other things that nothing (any package) has been added to project,
-the UUID of the project, and the location of the *.toml* file.
-Let's install a package `DFTK`, for instance, that performs Density Functional Theory
-routines ([DFTK](https://docs.dftk.org/stable/)):
-
-    julia> using Pkg
-    julia> Pkg.add("DFTK")
-    Info Packages marked with ⌅ have new versions available but compatibility constraints restrict them from upgrading. To see why use `status --outdated -m`
-    Precompiling project...
-    104 dependencies successfully precompiled in 43 seconds
-
-Now, the project information tells us about the recently installed package:
-
-    julia> Pkg.project()
-    Pkg.API.ProjectInfo(nothing, nothing, nothing, false, Dict{String, Base.UUID}("DFTK" => UUID("acf6eb54-70d9-11e9-0013-234b7a5f5337")), "/pfs/stor10/users/home/p/pojedama/.julia/environments/v1.8/Project.toml")
-
-
-Create a project environment
-----------------------------
 
 Let's now create a **project environment**, this can be done as follows (if
 typing along, you have to change the path to your environment, like
@@ -158,24 +122,6 @@ before:
     "@"
     "@v#.#"
     "@stdlib"
-
-This can be confirmed if we try to load the `DFTK` package that we installed
-previously as the command `using DFTK` will execute without any complaints. If
-we install the `DFTK` package we will notice some differences w.r.t. the
-previous installation:
-
-    (my-first-env) pkg> add DFTK
-    Resolving package versions...
-    Updating `/path-to-my-project/$USER/julia/my-first-env/Project.toml`
-    [acf6eb54] + DFTK v0.6.2
-    Updating `/path-to-my-project/$USER/julia/my-first-env/Manifest.toml`
-
-First, we notice that installation was much faster than before. This is because
-**Pkg** did not do a new installation but it just updated our environment with
-information of the available `DFTK` package. Specifically, if you take a look
-at the content of the current directory you will see the new files
-`Project.toml` and `Manifest.toml`, the `more` command can display the
-content of these files:
 
     shell> ls
     Manifest.toml  Project.toml
@@ -229,50 +175,6 @@ activate it on the Linux command line (assuming that you are located in the
 environment directory):
 
     julia --project=.
-
-
-Create a package environment
-----------------------------
-
-A package environment can be created by using the `generate` function in
-`package mode` or `Pkg.generate()` in `Julian` mode:
-
-    (v1.8) pkg> generate myfirstpackage
-     Generating  project myfirstpackage:
-     myfirstpackage/Project.toml
-     myfirstpackage/src/myfirstpackage.jl
-
-In contrast to the project environment, the package environment has a
-default file structure, see for instance the **src** directory that is created.
-One can activate this environment in the following way:
-
-    shell> cd myfirstpackage
-    (v1.8) pkg> activate .
-    Activating project at `/path-to-my-project/$USER/julia/my-first-env/myfirstpackage`
-    (myfirstpackage) pkg>
-
-The `project` function tells us that the current project has an UUID assigned to
-it:
-
-    julia> Pkg.project()
-    Pkg.API.ProjectInfo("myfirstpackage", UUID("ca799254-944c-4043-b9e3-b70b93409f34"), v"0.1.0", true, Dict{String, Base.UUID}(), "/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml")
-
-As in the project environment, the package environment can see the default and
-the standard library environments.
-
-Let's add the package `Flux` for Machine Learning routines:
-
-    (myfirstpackage) pkg> add Flux
-     Precompiling project...
-     49 dependencies successfully precompiled in 92 seconds. 43 already precompiled.
-    (myfirstpackage) pkg> status
-     Project myfirstpackage v0.1.0
-     Status `/path-to-my-project/$USER/julia/my-first-env/myfirstpackage/Project.toml`
-     [587475ba] Flux v0.13.11
-
-where the status function tells us information about the packages that are
-installed in the current environment, for instance the `Flux` version that we
-just installed.
 
 
 Customizing the set of visible environments
@@ -456,3 +358,6 @@ Exercises
         - from the Julia shell
        - from BASH shell with ``ml help julia/<version>``
 
+!!! info "Extra reading"
+
+    - [Julia environments](https://docs.julialang.org/en/v1/manual/code-loading/#Environments)
