@@ -12,6 +12,8 @@ Pluto, like Jupyter, is a programming notebook.
 
 ### Why is it a good tool?
 
+Reproducible (even without Pluto), gittable, extraordinarily interactive programming notebooks
+
 ### (Possible) use cases when Jupyter might be better.
 
 ## How to run
