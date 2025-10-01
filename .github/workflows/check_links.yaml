@@ -41,7 +41,7 @@ jobs:
           rm sphinx-myst_test/docs/index.md
           rm sphinx-myst_test/docs/julia/introJulia.md
           rm sphinx-myst_test/docs/julia/interactiveJulia.md
-          rm HPC2N-openondemand-docco
+          rm -r HPC2N-openondemand-docco
 
       # The link checker will only work if mlc_config.json is a valid JSON
       - name: Validate JSON
