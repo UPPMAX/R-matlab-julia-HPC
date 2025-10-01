@@ -165,7 +165,7 @@ You can install some Add-Ons manually using an installation file. This is useful
 - You downloaded the add-on from the Add-On Explorer without installing it.
 - You downloaded the add-on from the File Exchange at MATLAB Central™.
 
-!!! seealso
+!!! note "See also"
 
     [MathWorks page on getting Add-Ons](https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html)
 
@@ -229,7 +229,6 @@ You can install some Add-Ons manually using an installation file. This is useful
 ## Exercises
 
 !!! note "<img src="../img/shell-logo_small.png"> Exercise"
-
 
     Find the **kalmanf** add-on, install it, and run a test command. Use the Demo as instruction.
 
