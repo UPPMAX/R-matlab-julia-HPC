@@ -40,6 +40,7 @@ Before going into installing Add-Ons, let's have a background to the MATLAB envi
   <figcaption>Toolbar of Add-Ons.</figcaption>
 </figure>
 
+![Toolbar add-ons](./img/Toolbar_Add-Ons.PNG){ width="400" }
 
 In the GUI, the Add-Ons manager can be selected from the menu at the top. The drop-down menu options allow users to:
 
