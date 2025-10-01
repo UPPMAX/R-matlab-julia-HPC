@@ -14,7 +14,7 @@
 
 ## Introduction
 
-In order to understand the capabilities of a GPU, it is instructive to compare a pure CPU architecture with a GPU based architecture. Here, there is a schemematics of the former:
+In order to understand the capabilities of a GPU, it is instructive to compare a pure CPU architecture with a GPU based architecture. Here, there is a schematics of the former:
 
 !!! note " "
  
