@@ -3,23 +3,23 @@
 ## Documentation
 
 - Documentation at the HPC centres
-   - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
-   - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
-   - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_
-   - `NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
-   - `PDC <https://support.pdc.kth.se/doc/applications/>`_
+   - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
+   - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
+   - [LUNARC](The user demand on Julia has been low, so there is currently no site-specific documentation.)
+   - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
+   - [PDC](https://support.pdc.kth.se/doc/applications/)
 
-- Official Julia documentation is found `here <https://docs.julialang.org/en/v1/>`_
-- Slack channel for Julia and instructions for joining it are found here: https://julialang.org/slack/
-- `HPC2N YouTube video on Julia in HPC <https://www.youtube.com/watch?v=bXHe7Kj3Xxg>`_
+- Official Julia documentation](https://docs.julialang.org/en/v1/)
+- [Slack channel for Julia and instructions for joining it](https://julialang.org/slack/)
+- [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
 
 ## Courses - Material for improving your programming skills
 
 ### First level
 
-`The Carpentries <https://carpentries.org/>`_  teaches basic lab skills for research computing.
+- [The Carpentries](https://carpentries.org/)  teaches basic lab skills for research computing.
 
-- `Programming with Julia  <https://carpentries-incubator.github.io/julia-novice/>`_ (alpha)
+- [Programming with Julia](https://carpentries-incubator.github.io/julia-novice/) (alpha)
 
 ### Second level
 
@@ -28,12 +28,12 @@ write code. Their material addresses all academic disciplines and tries to be as
 
 - Not yet anything Julia specific
 
-`ENCCS (EuroCC National Competence Centre Sweden) <https://enccs.se/>`_ is a national centre that supports
+[ENCCS (EuroCC National Competence Centre Sweden)](https://enccs.se/) is a national centre that supports
 industry, public administration and academia accessing and using European supercomputers. They give higher-level
 training of programming and specific software.
 
-- `Julia for high-performance Computing <https://enccs.github.io/julia-for-hpc/>`_
-- `Julia for High-performance data analytics <https://enccs.github.io/julia-for-hpda/>`_
+- [Julia for high-performance Computing](https://enccs.github.io/julia-for-hpc/)
+- [Julia for High-performance data analytics](https://enccs.github.io/julia-for-hpda/)
 
 ## IDEs
 
@@ -43,6 +43,6 @@ training of programming and specific software.
 
 ## Packages
 
-- `List ecosystems <https://enccs.github.io/julia-intro/scientific-computing/>`_
+- [List ecosystems](https://enccs.github.io/julia-intro/scientific-computing/)
 
 
