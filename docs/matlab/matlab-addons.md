@@ -74,9 +74,10 @@ Here we will only focus on the first two options.
       <img src="./img/my_products.PNG" alt="View My Products" width="500"/>
     </div>
 
-!!! "See also" 
+!!! info "See also" 
 
     Some typical toolboxes include:
+    
     - Parallel Computing
     - Simulink
     - Symbolic Math
