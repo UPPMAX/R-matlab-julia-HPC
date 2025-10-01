@@ -493,7 +493,8 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
         Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
 
-        Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). 
+        Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work).
+
         - You can find the tarball in ``/cfs/klemming/projects/supr/courses-fall-2025/pbdMPI_0.5-4.tar.gz``. 
         - Copy it to your own subdirectory under the project directory and then do: 
             - ``module load PDC/24.11 R/4.4.2-cpeGNU-24.11``
