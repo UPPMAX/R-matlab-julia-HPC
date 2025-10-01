@@ -662,7 +662,7 @@ julia> notebook(dir=".",detached=true)
 
     - Try out one or two of the scripts from the exercise folder ``batchJulia``.
     - First create an interactive session with the right Slurm commands to the ``interactive``/``salloc`` command.
-       - use the commands from the batch job script belonging to the julia script at [examples of batch scripts for julia](https://uppmax.github.io/R-matlab-julia-HPC/julia/batchJulia/#examples-of-batch-scripts){:target="_blank"}
+       - use the commands from the batch job script belonging to the julia script at [examples of batch scripts for julia](https://uppmax.github.io/R-matlab-julia-HPC/julia/batch/#examples-of-batch-scripts){:target="_blank"}
 
 !!! summary
 
