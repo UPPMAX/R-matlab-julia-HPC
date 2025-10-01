@@ -34,6 +34,8 @@ Before going into installing Add-Ons, let's have a background to the MATLAB envi
 
 ## MATLAB Add-Ons manager
 
+<img src="./img/Toolbar_Add-Ons.PNG" alt="drawing" width="400"/>
+
 <div align="center">
   <img src="./img/Toolbar_Add-Ons.PNG" alt="Toolbar add-ons" width="400"/>
 </div>
