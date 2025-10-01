@@ -86,6 +86,72 @@ Here we will only focus on the first two options.
 
     We won't cover the usage of most toolboxes here!
 
+!!! tip
+
+    Check which toolboxes are installed by the MATLAB command “ver” at a MATLAB prompt.
+
+    ???- "Example output from Pelle"
+
+        ```{ .matlab }
+        >> ver
+        ---------------------------------------------------------------------------------------------------------------
+        MATLAB Version: 24.1.0.2689473 (R2024a) Update 6
+        MATLAB License Number: 863987
+        Operating System: Linux 5.14.0-570.42.2.el9_6.x86_64 #1 SMP PREEMPT_DYNAMIC Sun Sep 14 13:59:34 UTC 2025 x86_64
+        Java Version: Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+        ---------------------------------------------------------------------------------------------------------------
+        MATLAB                                                Version 24.1        (R2024a)
+        Simulink                                              Version 24.1        (R2024a)
+        5G Toolbox                                            Version 24.1        (R2024a)
+        AUTOSAR Blockset                                      Version 24.1        (R2024a)
+        Aerospace Blockset                                    Version 24.1        (R2024a)
+        Aerospace Toolbox                                     Version 24.1        (R2024a)
+        Antenna Toolbox                                       Version 24.1        (R2024a)
+        Audio Toolbox                                         Version 24.1        (R2024a)
+        Automated Driving Toolbox                             Version 24.1        (R2024a)
+        Bioinformatics Toolbox                                Version 24.1        (R2024a)
+        Bluetooth Toolbox                                     Version 24.1        (R2024a)
+        C2000 Microcontroller Blockset                        Version 24.1        (R2024a)
+        Communications Toolbox                                Version 24.1        (R2024a)
+        Computer Vision Toolbox                               Version 24.1        (R2024a)
+        Control System Toolbox                                Version 24.1        (R2024a)
+        Curve Fitting Toolbox                                 Version 24.1        (R2024a)
+        DDS Blockset                                          Version 24.1        (R2024a)
+        DSP HDL Toolbox                                       Version 24.1        (R2024a)
+        DSP System Toolbox                                    Version 24.1        (R2024a)
+        Database Toolbox                                      Version 24.1        (R2024a)
+        Datafeed Toolbox                                      Version 24.1        (R2024a)
+        Deep Learning Toolbox                                 Version 24.1        (R2024a)
+        Econometrics Toolbox                                  Version 24.1        (R2024a)
+        Embedded Coder                                        Version 24.1        (R2024a)
+        Filter Design HDL Coder                               Version 24.1        (R2024a)
+        Financial Instruments Toolbox                         Version 24.1        (R2024a)
+        Financial Toolbox                                     Version 24.1        (R2024a)
+        Fixed-Point Designer                                  Version 24.1        (R2024a)
+        Fuzzy Logic Toolbox                                   Version 24.1        (R2024a)
+        GPU Coder                                             Version 24.1        (R2024a)
+        Global Optimization Toolbox                           Version 24.1        (R2024a)
+        HDL Coder                                             Version 24.1        (R2024a)
+        HDL Verifier                                          Version 24.1        (R2024a)
+        Image Acquisition Toolbox                             Version 24.1        (R2024a)
+        Image Processing Toolbox                              Version 24.1        (R2024a)
+        Industrial Communication Toolbox                      Version 24.1        (R2024a)
+        Instrument Control Toolbox                            Version 24.1        (R2024a)
+        LTE Toolbox                                           Version 24.1        (R2024a)
+        Lidar Toolbox                                         Version 24.1        (R2024a)
+        MATLAB Coder                                          Version 24.1        (R2024a)
+        MATLAB Parallel Server                                Version 24.1        (R2024a)
+        MATLAB Report Generator                               Version 24.1        (R2024a)
+        MATLAB Test                                           Version 24.1        (R2024a)
+        Mapping Toolbox                                       Version 24.1        (R2024a)
+        Medical Imaging Toolbox                               Version 24.1        (R2024a)
+        Mixed-Signal Blockset                                 Version 24.1        (R2024a)
+        Model Predictive Control Toolbox                      Version 24.1        (R2024a)
+        ...
+        ```
+
+    
+
 ### Install Add-Ons
 
 - Search in Add-Ons explorer and install.
