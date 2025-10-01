@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A lu2025-7-24 # Change to your own project ID
+#SBATCH -A lu2025-2-94 # Change to your own project ID
 #SBATCH --time=00:10:00 # Asking for 10 minutes
 #SBATCH -n 1 # Asking for 1 core
 
@@ -8,3 +8,4 @@ module load GCC/11.3.0  OpenMPI/4.1.4  R/4.2.1 R-bundle-Bioconductor/3.15-R-4.2.
 
 # Run your R script (here 'iris_ml.R')
 R --no-save --quiet < iris_ml.R
+

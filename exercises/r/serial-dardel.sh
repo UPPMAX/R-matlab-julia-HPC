@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH -A naiss2025-22-262
+#SBATCH -A naiss2025-22-934
 #SBATCH --time=00:10:00 # Asking for 10 minutes
 #SBATCH -n 1 # Asking for 1 core
 #SBATCH -p main
