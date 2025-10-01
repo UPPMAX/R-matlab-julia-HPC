@@ -2,16 +2,16 @@
 
 !!! important "Learning Objectives"
 
-   - What are On-Demand applications and when to use it
-   - Which interface to use on each resource and how to start them
-   - How to set the job parameters for your application
+    - What are On-Demand applications and when to use it
+    - Which interface to use on each resource and how to start them
+    - How to set the job parameters for your application
 
 ## What is Desktop On Demand? Is it right for my job?
 
 On Cosmos (LUNARC), Kebnekaise (HPC2N), and Dardel (PDC), some applications are available through one of several On Demand services. On Demand applications provide an interactive environment to schedule jobs on compute nodes using a graphic user interface (GUI) instead of the typical batch submission script. How you reach this interface is dependent on the system you use and their choice of On Demand client.
 
-* **Cosmos** and **Dardel** use the On-Demand Desktop developed at LUNARC, which is accessible via Thinlinc.
-* **Kebnekaise** uses Open OnDemand[^1] via a dedicated web portal at [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se).
+- **Cosmos** and **Dardel** use the On-Demand Desktop developed at LUNARC, which is accessible via Thinlinc.
+- **Kebnekaise** uses Open OnDemand[^1] via a dedicated web portal at [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se).
 
 !!! important
 
@@ -38,7 +38,7 @@ RStudio and MATLAB are available as On-Demand applications. On Cosmos, there is 
 For most programs, the start-up process is roughly the same:
 
 1. Log into COSMOS (or Dardel) via your usual Thinlinc client to start an HPC Desktop session.
-2. Click `Applications` in the top left corner and hover over the items prefixed with `Applications -` until you find your desired application (on Dardel, On-Demand applications are prefixed with `PDC-`). The menu on Cosmos looks like this: 
+2. Click `Applications` in the top left corner and hover over the items prefixed with `Applications -` until you find your desired application (on Dardel, On-Demand applications are prefixed with `PDC-`). The menu on Cosmos looks like this:
  <div align="center">
    <img src="../../img/Cosmos-AppMenu.png" alt="Cosmos app menu" width="500"/>
  </div>
@@ -82,9 +82,11 @@ If an app fails to start, the first step of troubleshooting will always be to ch
 To start an Open OnDemand session on Kebnekaise,
 
 1. Open [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se) in your browser. The page looks like this:
+
 <div align="center">
   <img src="../../img/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
 </div>
+
 2. Click the blue button labeled "Login to HPC2N OnDemand".
 3. A login window should open with boxes for your login credentials. Enter your HPC2N username and password, then click "Sign In".
 4. You will now be on the HPC2N Open OnDemand dashboard. The top of it looks like this:
