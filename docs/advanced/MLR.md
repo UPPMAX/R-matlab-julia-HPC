@@ -837,6 +837,7 @@ In the following demo you will find instructions to install this package and run
 
     ```bash 
     $ Rscript validation.R
+    ``` 
 
 !!! note "<img src="../../img/shell-logo_small.png"> Exercise"
 

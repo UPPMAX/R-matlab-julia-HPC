@@ -1,17 +1,16 @@
 #!/bin/bash
-#SBATCH -A uppmax2025-2-272
+#SBATCH -A naiss2025-22-934 # Change to your own project ID
 #Asking for 10 min.
 #SBATCH -t 00:10:00
-#SBATCH --exclusive
-#SBATCH -p node
 #SBATCH -N 1
-#SBATCH -M snowy
-#SBATCH --gres=gpu:1
+#SBATCH --ntasks-per-node=8
+#SBATCH -p main
 #Writing output and error files
 #SBATCH --output=output%J.out
 #SBATCH --error=error%J.error
 
 ml purge > /dev/null 2>&1
-ml R_packages/4.1.1
+module load PDC/24.11 R/4.4.2-cpeGNU-24.11
 
-R --no-save --no-restore -f Rscript.R
+srun Rscript MyRscript.R
+

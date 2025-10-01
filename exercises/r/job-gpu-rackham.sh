@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A uppmax2025-2-272 # Change to your own project ID
+#SBATCH -A uppmax2025-2-360 # Change to your own project ID
 #Asking for 70 min.
 #SBATCH -t 12:00:00
 #SBATCH -p node
