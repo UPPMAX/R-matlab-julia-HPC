@@ -447,11 +447,11 @@ $ R_LIBS_USER="/home/u/user/R-packages-%V"
 
 **NOTE** The ``%V`` should be written as-is, it's substituted at runtime with the active R version.
 
-**NOTE** At Dardel (NSC) the path is ``/cfs/klemming/home/u/user`` but you can see it with ``echo $HOME``. 
+**NOTE** At Dardel (PDC) the path is ``/cfs/klemming/home/u/user`` but you can see it with ``echo $HOME``. 
 
 For each version of R you are using, create a directory matching the pattern
 used in ``.Renviron`` to store your packages in. This example is shown for R
-version 4.1.1:
+version 4.1.1 (change to version suitable for your centre):
 
 ```bash
 $ mkdir -p $HOME/R-packages-4.1.1
@@ -605,7 +605,7 @@ For NSC you need to install ``doParallel`` and ``foreach``, and ``pbdMPI`` (sinc
 
 #### Extra example, PDC
 
-For PDC the package ``Rmpi`` does not work correctly, so we will instead use the package ``pbdMPI``, which you need to install yourself to one of the exercises in the section about batch. You can either do that now, or you do it later today, during the batch session.
+For PDC the package ``Rmpi`` does not work correctly, so we will instead use the package ``pbdMPI``, which you need to install yourself to do one of the exercises in the advanced section about parallelism. You can either do that now, or you can do it that day, during the parallel session.
 
 - If you have the setup done, and the R module loaded, then (on the command line, not inside R):
     - First copy the tarball: ``cp /cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz .`` while standing in your own directory that you are running R scripts from.  
