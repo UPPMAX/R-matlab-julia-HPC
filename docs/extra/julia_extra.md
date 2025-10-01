@@ -9,7 +9,7 @@
    - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
    - [PDC](https://support.pdc.kth.se/doc/applications/)
 
-- Official Julia documentation](https://docs.julialang.org/en/v1/)
+- [Official Julia documentation](https://docs.julialang.org/en/v1/)
 - [Slack channel for Julia and instructions for joining it](https://julialang.org/slack/)
 - [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
 
@@ -17,7 +17,7 @@
 
 ### First level
 
-- [The Carpentries](https://carpentries.org/)  teaches basic lab skills for research computing.
+- [The Carpentries](https://carpentries.org/) teaches basic lab skills for research computing.
 
 - [Programming with Julia](https://carpentries-incubator.github.io/julia-novice/) (alpha)
 
@@ -32,8 +32,8 @@ write code. Their material addresses all academic disciplines and tries to be as
 industry, public administration and academia accessing and using European supercomputers. They give higher-level
 training of programming and specific software.
 
-- [Julia for high-performance Computing](https://enccs.github.io/julia-for-hpc/)
-- [Julia for High-performance data analytics](https://enccs.github.io/julia-for-hpda/)
+- [Julia for High-Performance Computing](https://enccs.github.io/julia-for-hpc/)
+- [Julia for High-Performance Data Analytics](https://enccs.github.io/julia-for-hpda/)
 
 ## IDEs
 
