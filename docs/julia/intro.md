@@ -13,7 +13,7 @@
 
 !!! info "Your expectations?"
 
-    - Find best practices for using Julia at UPPMAX and HPC2N
+    - Find best practices for using Julia at Swedish academic clusters
     - Get the hang of packages functioning
     - Use the HPC performance with Julia
 
@@ -21,13 +21,7 @@
 
     - Improve Julia *coding* skills
     - Other clusters
-
-??? note "Instructor note"
-
-    - Intro 5 min
-    - Lecture and 10 min
-
-
+    
 ## Why it was created
 
 Quoting from the [2012 blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/)
@@ -116,12 +110,10 @@ Python, Fortran, C) are very useful.
 ## More on Julia
 
 Almost everything you could ask for can be found from or on the official website
-https://julialang.org. Some shortcuts:
+<https://julialang.org>. Some shortcuts:
 
-- Official Julia documentation is found
-  [here](https://docs.julialang.org/en/v1/)
-- Official Julia discussion/support forum is
-  [here](https://discourse.julialang.org)
+- [Official Julia documentation](https://docs.julialang.org/en/v1/)
+- [Official Julia discussion/support forum](https://discourse.julialang.org)
 - Many other channels, e.g. Slack, Zulip, Discord are found [in this
   list](https://julialang.org/community/otherchannels/)
 - The list of [GitHub
@@ -139,8 +131,7 @@ And a few other extra resources:
 
 - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
 - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
-- LUNARC has no specific Julia documentation, but you can find installed versions
-[here](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/)
+- LUNARC has no specific Julia documentation, but here you can find [installed versions](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/)
 - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
 - [PDC](https://support.pdc.kth.se/doc/applications/julia/)
 
