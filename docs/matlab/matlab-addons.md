@@ -36,6 +36,8 @@ Before going into installing Add-Ons, let's have a background to the MATLAB envi
 
 <img src="./img/Toolbar_Add-Ons.PNG" alt="drawing" width="400"/>
 
+<img src="./img/Toolbar_Add-Ons.PNG" alt="Alt Text" style="width:50%; height:auto;">
+
 <div align="center">
   <img src="./img/Toolbar_Add-Ons.PNG" alt="Toolbar add-ons" width="400"/>
 </div>
@@ -72,7 +74,7 @@ Here we will only focus on the first two options.
       <img src="./img/my_products.PNG" alt="View My Products" width="500"/>
     </div>
 
-!!! seealso 
+!!! "See also" 
 
     Some typical toolboxes include:
     - Parallel Computing
@@ -82,13 +84,15 @@ Here we will only focus on the first two options.
     - Machine Learning
     
     Some toolboxes provide a **GUI** for their tools/Apps
-    - :ref:`Read more <matlab-extra-addons>`
-
+    
     We won't cover the usage of most toolboxes here!
+
+    - [Read more](../extra/matlab_extra.md#add-ons)
+
 
 !!! tip
 
-    Check which toolboxes are installed by the MATLAB command “ver” at a MATLAB prompt.
+    Check which toolboxes are installed by the MATLAB command ``ver`` at a MATLAB prompt.
 
     ???- "Example output from Pelle"
 
