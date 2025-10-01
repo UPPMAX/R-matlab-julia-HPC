@@ -39,7 +39,7 @@ training of programming and specific software.
 
 - Jupyter: Jupyter notebooks are familiar to many Python and R users.
 - Pluto.jl: Offers a similar notebook experience to Jupyter, but understands global references between cells, and reactively re-evaluates cells affected by a code change.
-- A text editor like nano, emacs, vim, etc., followed by running your code with julia filename.jl. There are also plugins for Julia for major text editors - do an internet search on e.g. “emacs julia” or “vim julia” to find out more.
+- A text editor like ``nano``, ``emacs``, ``vim``, etc., followed by running your code with julia filename.jl. There are also plugins for Julia for major text editors - do an internet search on e.g. “emacs julia” or “vim julia” to find out more.
 
 ## Packages
 
