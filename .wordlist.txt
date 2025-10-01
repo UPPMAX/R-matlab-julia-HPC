@@ -1053,3 +1053,9 @@ Zulip
 vgg
 namespace
 rlang
+OpenOndemand
+SuperComputing
+TBC
+gpuArray
+chalmers
+GPCs
