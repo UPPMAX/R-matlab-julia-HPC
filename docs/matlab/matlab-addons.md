@@ -36,7 +36,7 @@ Before going into installing Add-Ons, let's have a background to the MATLAB envi
 
 
 <figure markdown="span">
-  !![Toolbar add-ons](./img/Toolbar_Add-Ons.PNG){ width="700" }
+  ![Toolbar add-ons](./img/Toolbar_Add-Ons.PNG){ width="700" }
   <figcaption>Toolbar of Add-Ons.</figcaption>
 </figure>
 
