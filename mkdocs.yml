@@ -27,7 +27,7 @@ nav:
       - Summary: r/summary.md
       - Evaluation: r/evaluation.md
     - MATLAB: 
-      - Schedule: matlab/scheduleMatlab.md
+      - Schedule: matlab/schedule.md
       - Intro: matlab/intro-matlab.md
       - Load and run: matlab/load_runMatlab.md
       - MATLAB terminal and Slurm: matlab/slurmMatlab.md
