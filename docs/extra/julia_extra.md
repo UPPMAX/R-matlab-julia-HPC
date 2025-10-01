@@ -5,7 +5,7 @@
 - Documentation at the HPC centres
    - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
    - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
-   - [LUNARC](The user demand on Julia has been low, so there is currently no site-specific documentation.)
+   - LUNARC has no specific Julia documentation, but here you can find [installed versions](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/) (The user demand on Julia has been low).
    - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
    - [PDC](https://support.pdc.kth.se/doc/applications/)
 
