@@ -15,6 +15,7 @@ nav:
       - Use a text editor: common/use_text_editor.md
       - HPC clusters: common/hpc_clusters.md
       - Other courses: common/other_courses.md
+      - Desktop on demand: common/on-demand.md
     - R: 
       - Schedule: r/schedule.md
       - Intro: r/intro/README.md
