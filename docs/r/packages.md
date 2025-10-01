@@ -203,7 +203,7 @@ library(package-name)
 To learn about other ways, see the page "More about R packages" under "Extra reading" in the left menu. 
 
 
-!!! note "Exercise"
+!!! note "<img src="../img/shell-logo_small.png"> Exercise"
 
     Start R (remember to load a module + prerequisites if you have not already). Check if the packages ``pillar`` and ``caret`` are installed, as shown above. 
 
