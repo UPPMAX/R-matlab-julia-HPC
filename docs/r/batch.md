@@ -306,7 +306,10 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
     === "NSC" 
 
         Short parallel example (using packages "foreach" and "doParallel" which you at Tetralith need to install first) for running on Tetralith. Loading R/4.2.2.   
-        Installing ``foreach`` and ``doParallel`` (with R module ``R/4.4.0-hpc1-gcc-11.3.0-bare`` loaded but not inside R): ``R --quiet --no-save --no-restore -e "install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` and ``R --quiet --no-save --no-restore -e "install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` 
+        Installing ``foreach`` and ``doParallel`` (with R module ``R/4.2.2-hpc1-gcc-11.3.0-bare`` loaded but not inside R): 
+
+        - ``R --quiet --no-save --no-restore -e "install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` 
+        - and ``R --quiet --no-save --no-restore -e "install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')"`` 
 
         ```bash 
         #!/bin/bash
@@ -337,9 +340,9 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         #SBATCH -p main
 
         # If you do ml purge you also need to restore the preloaded modules which you should have saved 
-        # when you logged in. Otherwise comment out the two following lines. 
-        ml purge > /dev/null 2>&1
-        ml restore preload
+        # when you logged in. Otherwise uncomment the two following lines. 
+        #ml purge > /dev/null 2>&1
+        #ml restore preload
         module load PDC/23.12 
         module load R/4.4.1-cpeGNU-23.12 
 
@@ -470,7 +473,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
         Short parallel example (using packages "pbdMPI as "Rmpi" does not work correctly on NSC). Loading R/4.2.2. 
 
-        Note: for NSC you first need to install "pdbMPI" (``module load R/4.4.0-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('pbdMPI')``) 
+        Note: for NSC you first need to install "pdbMPI" (``module load R/4.2.2-hpc1-gcc-11.3.0-bare``, start ``R``, ``install.packages('pbdMPI')``, pick CRAN mirror (Denmark, Finland, Sweden or other closeby)) 
 
         ```bash  
         #!/bin/bash
@@ -491,10 +494,10 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         Short parallel example (using packages "pbdMPI"). Loading R/4.4.1. 
 
         Note: for PDC you first need to install "pbdMPI" ("Rmpi" does not work). 
-        - You can find the tarball in ``/cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz``. 
+        - You can find the tarball in ``/cfs/klemming/projects/supr/courses-fall-2025/pbdMPI_0.5-4.tar.gz``. 
         - Copy it to your own subdirectory under the project directory and then do: 
-            - ``module load PDC/23.12 R/4.4.1-cpeGNU-23.12``
-            - ``R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
+            - ``module load PDC/24.11 R/4.4.2-cpeGNU-24.11``
+            - ``R CMD INSTALL pbdMPI_0.5-4.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load``
 
         ```bash 
         #!/bin/bash -l 
@@ -507,11 +510,11 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         #SBATCH --output=pbdMPI-test_%J.out 
 
         # If you do ml purge you also need to restore the preloaded modules which you should have saved 
-        # when you logged in. Otherwise comment out the two following lines. 
-        ml purge > /dev/null 2>&1
-        ml restore preload
-        ml PDC/23.12
-        ml R/4.4.1-cpeGNU-23.12
+        # when you logged in. Otherwise leave the two following lines outcommented. 
+        #ml purge > /dev/null 2>&1
+        #ml restore preload
+        ml PDC/24.11
+        ml R/4.4.2-cpeGNU-24.11
 
         srun -n 4 Rscript pbdMPI.R
         ```

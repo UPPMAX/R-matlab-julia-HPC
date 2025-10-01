@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A lu2025-7-24 # Change to your own project ID
+#SBATCH -A lu2025-2-94 # Change to your own project ID
 # Asking for 10 min.
 #SBATCH -t 00:10:00
 #SBATCH -n 8
@@ -11,3 +11,4 @@ ml GCC/11.3.0  OpenMPI/4.1.4
 ml R/4.2.1
 
 mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi.R output.out
+

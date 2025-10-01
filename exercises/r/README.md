@@ -2,11 +2,11 @@
 
 Batch scripts can be recognized from the ending .sh
 
-In many cases there are batch scripts for both Kebnekaise and Rackham (or Snowy).
+In many cases there are batch scripts for both Kebnekaise, Pelle/Rackham (or Snowy), Cosmos, Tetralith, Dardel, and Alvis.
 
-The batch scripts that do not have "kebnekaise-", "-rackham", or "-snowy" in their name should have a description inside that tells what they are for.
+Any batch scripts that do not have a machine name (i.e. "kebnekaise-", "-rackham", "-snowy", etc. etc.) in their name should have a description inside that tells what they are for.
 
-You could try creating a batch job for Rackham if only one for Kebnekaise exist! Or try running different R codes.
+You could try creating a batch job for your centre if only one for one of the other centres exist! Or try running different R codes.
 
 You can also try run the R codes directly, with Rscript (after loading R modules)
 
