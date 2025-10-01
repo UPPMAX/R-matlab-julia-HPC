@@ -18,10 +18,10 @@ tags:
 | 12:00 | LUNCH                                                        |            |
 | 13:00 | [MATLAB with Desktop On Demand (not available in all clusters but soon?)] | RP         |   
 | 13:30 | [MATLAB GUI and Slurm](./MatlabGUIslurm.md)                    | PO, RP     |
-| 13:50 | Coffee break                                                 |            |
+| 13:50 | Break                                                 |            |
 | 14:05 | [MATLAB GUI and Slurm](./MatlabGUIslurm.md)                    | PO, RP     |      
 | 14:30 | [Add-Ons](./matlab-addons.md)                                  | BC         |
-| 14:55 | Coffe break | |
+| 14:55 | Coffee break | |
 | 15:10 | [Summary](./matlab-summary.md)                                 | Several    |
 | 15:20 | Evaluation                                                   | Several    |
 | 15:35 | Q&A on-demand                                                | Several    |
