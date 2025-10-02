@@ -56,6 +56,21 @@ To get started we will go to the Julia documentation and make use of the
 official tutorial on the Julia package manager:
 <https://docs.julialang.org/en/v1/stdlib/Pkg/#Pkg>
 
+### Summary of what we've seen so far
+
+- Get to the Pkg REPL by pressing `]` in the Julia REPL
+- In the Pkg REPL, use the following commands:
+    - `?` to get help
+    - `activate` to activate an existing or new environment
+    - `st` (alias for `status`) to see which packages have been added to the active environment
+    - `add` to add packages to the active environment, this may or may not have download and precompilation steps that take a bit of time
+    - `rm` (alias for `remove`) to remove packages from the active environment
+    - `up` (alias for `update`) to update packages in the active environment
+- `Project.toml` stores what packages you've asked for
+- `Manifest.toml` stores what packages that Pkg found and installed for you
+
+
+
 ---
 
 ## Below is old stuff some of which should be retained
