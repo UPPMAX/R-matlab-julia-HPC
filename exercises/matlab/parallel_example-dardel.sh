@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A naiss2025-22-262
+#SBATCH -A naiss2025-22-934
 # Remember, there are 4 workers and 1 master!
 #SBATCH -p shared
 #SBATCH -n 5
@@ -14,7 +14,7 @@ module purge > /dev/null 2>&1
 
 # Change depending on resource and MATLAB version
 # to find out available versions: module spider matlab
-module add PDC/23.12 matlab/r2024a-ps
+module add PDC/24.11 matlab/r2024b 
 
 # Executing a parallel matlab program
 matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"

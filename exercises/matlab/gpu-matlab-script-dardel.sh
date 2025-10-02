@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A naiss2025-22-262
+#SBATCH -A naiss2025-22-934
 #SBATCH --ntasks-per-node=1
 #SBATCH -N 1
 # Ask for GPUs
@@ -16,7 +16,7 @@ module purge > /dev/null 2>&1
 
 # Change depending on resource and MATLAB version
 # to find out available versions: module spider matlab
-module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0
+module load PDC/24.11 matlab/r2024b rocm/6.3.3
 
 # Executing a GPU matlab program
 matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"

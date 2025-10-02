@@ -1,9 +1,9 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A hpc2n2025-062
+#SBATCH -A hpc2n2025-151
 #SBATCH -n 1
-#SBATCH --gpus=<#gpus>
-#SBATCH -C <gpu-type>
+#SBATCH --gpus=1
+#SBATCH -C l40s
 # Asking for 30 min (change as you want)
 #SBATCH -t 00:30:00
 #SBATCH --error=matlab_%J.err

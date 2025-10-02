@@ -1,6 +1,6 @@
 #!/bin/bash 
 # Change to your actual project number later 
-#SBATCH -A hpc2n2025-062 
+#SBATCH -A hpc2n2025-151 
 # Asking for 1 core 
 #SBATCH -n 1 
 # Asking for 30 min (change as you want) 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A naiss2025-22-262
+#SBATCH -A naiss2025-22-934
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --ntasks-per-core=1

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number later
-#SBATCH -A lu2025-7-24
+#SBATCH -A lu2025-7-94
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for 30 min (change as you want)

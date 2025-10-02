@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A uppmax2025-2-934
+#SBATCH -A uppmax2025-2-360
 # Remember, there are 4 workers and 1 master!
 #SBATCH --ntasks=5
 #SBATCH --cpus-per-task=1
@@ -15,8 +15,8 @@
 module purge > /dev/null 2>&1
 
 # Change depending on resource and MATLAB version
-# to find out available versions: module spider matlab
-module add matlab/R2023b
+# to find out available versions: module spider MATLAB
+module add MATLAB/2024a
 
 # Executing a parallel matlab program
 srun matlab -nojvm -nodisplay -nodesktop -nosplash -r "parallel_example(16)"

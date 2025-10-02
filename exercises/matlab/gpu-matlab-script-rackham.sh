@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A naiss20224-22-1202
+#SBATCH -A uppmax2025-2-360
 #SBATCH -n 2
 #SBATCH -M snowy
 #SBATCH --gres=gpu:1

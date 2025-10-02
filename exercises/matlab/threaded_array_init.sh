@@ -1,6 +1,6 @@
 #!/bin/bash
 #Change to your local project number
-#SBATCH -A lu2025-7-34
+#SBATCH -A <PROJ-ID>
 #SBATCH --output=matlab_threads_%J.out  # Output file
 #SBATCH --error=matlab_threads_%J.err   # Error file
 #Change time as needed
@@ -14,7 +14,7 @@ module purge > /dev/null 2>&1
 
 # Change depending on resource and MATLAB version
 # to find out available versions: module spider matlab
-module load matlab/R2023b
+module load <MATLABMODULE>
 
 ## Run your program or script
 matlab -nodisplay  -nosplash -nodesktop -r "threaded_arrinit"

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your actual project number
-#SBATCH -A naiss2025-22-262
+#SBATCH -A naiss2025-22-934
 # Remember, there are 4 workers and 1 master!
 #SBATCH --ntasks=5
 #SBATCH --cpus-per-task=1
