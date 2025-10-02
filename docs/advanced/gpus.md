@@ -216,7 +216,7 @@ To use them you need to either launch an interactive job or submit a batch job.
 
     where ``<number>`` is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).
 
-## Example batch script
+## Deploying GPUs
 
 As mentioned, you need a batch job or an interactive job (could also be through Open OnDemand or from inside MATLAB) to use the GPUs.
 
