@@ -50,6 +50,7 @@ you've asked for, the latter specifies all packages loaded including their exact
 versions. Include both of these files in your version control and you get
 traceable, reproducible environments with minimal effort!
 
+
 ## Getting started
 
 To get started we will go to the Julia documentation and make use of the
@@ -67,24 +68,13 @@ official tutorial on the Julia package manager:
     - `rm` (alias for `remove`) to remove packages from the active environment
     - `up` (alias for `update`) to update packages in the active environment
 - `Project.toml` stores what packages you've asked for
-- `Manifest.toml` stores what packages that Pkg found and installed for you
+- `Manifest.toml` stores how Pkg resolved this, with all dependencies and exact versions
 
 
+## But where are the packages installed?
 
----
 
-## Below is old stuff some of which should be retained
-
----
-
-Packages are imported or loaded by the commands `import` and `using`,
-respectively. The difference is (briefly):
-
-> To use "module" functions, use `import <module>` to import the "module", and
-> `Module.fn(x)` to use the functions. Alternatively, `using <Module>` will
-> import *all* exported Module functions into the *current namespace*, i.e.
-> `Module.fn(x)` becomes `fn(x)`.
-
+## Nested environments
 
 The active environments can be seen with the command:
 
@@ -108,92 +98,7 @@ which can potentially create conflicts for reproducibility if you are not aware 
 Julia is doing under the hood. Later on, we will see possible strategies to avoid this
 situation.
 
-
-Let's now create a **project environment**, this can be done as follows (if
-typing along, you have to change the path to your environment, like
-`/path-to-my-project/$USER/julia`):
-
-    julia> using Pkg
-    julia>;
-    shell> mkdir my-first-env
-    shell> cd my-first-env
-     /path-to-my-project/$USER/julia/my-first-env
-    shell> #type backspace#
-    julia> ]
-    (v1.8) pkg> activate .
-     Activating new project at `/path-to-my-project/$USER/julia/my-first-env`
-    (my-first-env) pkg> #type backspace
-    julia> ;
-    shell> ls
-
-We can see that our environment in parenthesis has been activated. At this stage
-nothing has been added in the folder *my-first-env* as you can see from the
-empty output of the `ls` command. Notice that now that we are in this new
-environment, the default and standard library environments are also present as
-before:
-
-    julia> LOAD_PATH
-    3-element Vector{String}:
-    "@"
-    "@v#.#"
-    "@stdlib"
-
-    shell> ls
-    Manifest.toml  Project.toml
-
-    shell> more Project.toml
-    [deps]
-    DFTK = "acf6eb54-70d9-11e9-0013-234b7a5f5337"
-
-    shell> more Manifest.toml
-    # This file is machine-generated - editing it directly is not advised
-
-    julia_version = "1.8.5"
-    manifest_format = "2.0"
-    project_hash = "48bbaa26b07ee1ca85ad746dc9b2f772ba10b675"
-
-    [[deps.AbstractFFTs]]
-    deps = ["ChainRulesCore", "LinearAlgebra"]
-    git-tree-sha1 = "69f7020bd72f069c219b5e8c236c1fa90d2cb409"
-    uuid = "621f4979-c628-5d54-868e-fcf4e3e8185c"
-    version = "1.2.1"
-
-    [[deps.Adapt]]
-    deps = ["LinearAlgebra"]
-    git-tree-sha1 = "195c5505521008abea5aee4f96930717958eac6f"
-    uuid = "79e6a3ab-5dfb-504d-930d-738a2a938a0e"
-    version = "3.4.0"
-
-    ...
-
-Here, we notice that the ``Project.toml`` only gives us the UUID of the project
-while the ``Manifest.toml`` file contains the full information about the
-dependencies versions and organization layout. Notice the message regarding
-editing for the latter. Let's leave this environment:
-
-
-    (my-first-env) pkg> activate
-      Activating project at `~/.julia/environments/v1.8`
-
-    (v1.8) pkg>
-
-Once you have created an environment, it can be activated in several manners.
-The one we saw before is by activating it in `package` mode with the command
-`activate .`. You may also be able to activate the environment inside the
-Julia script by calling these lines in your `.jl` file:
-
-    julia> using Pkg
-    julia> Pkg.activate(".")
-
-Besides the previous two options for activating an environment, you can also
-activate it on the Linux command line (assuming that you are located in the
-environment directory):
-
-    julia --project=.
-
-
-Customizing the set of visible environments
--------------------------------------------
+### Customizing the set of visible environments
 
 We saw previously that by default some environments are visible to new
 environments. One can customize this setting with the variable
@@ -220,8 +125,7 @@ following functions:
     julia> push!(LOAD_PATH, "@")    # it will add the current environment
 
 
-Environment stacks
-------------------
+### Environment stacks
 
 As we saw before, `LOAD_PATH` shows that environments can be stacked and we can
 place the environments we want in the path so that they are visible in our
@@ -260,31 +164,47 @@ environment we can push the corresponding folder's path to `LOAD_PATH`:
 and now the package can be loaded from the first environment without errors.
 
 
-UPPMAX Central library
-######################
+## Using packages
 
-.. admonition:: Please notice
+Packages are imported or loaded by the commands `import` and `using`,
+respectively. The difference is (briefly):
 
-- At UPPMAX there is a central library with installed packages.
-- This is good, especially when working on Bianca, since you don't need to install via the Wharf.
-- If you work on Rackham you can actually ignore it and do all installations by yourself. The reason is that you need some more steps.
+> To use "module" functions, use `import <module>` to import the "module", and
+> `Module.fn(x)` to use the functions. Alternatively, `using <Module>` will
+> import *all* exported Module functions into the *current namespace*, i.e.
+> `Module.fn(x)` becomes `fn(x)`.
+
+
+## Non-interactive use of Pkg
+
+Once you have created an environment, it can be activated in several manners.
+The one we saw before is by activating it in `package` mode with the command
+`activate .`. You may also be able to activate the environment inside the
+Julia script by calling these lines in your `.jl` file:
+
+    julia> using Pkg
+    julia> Pkg.activate(".")
+
+Besides the previous two options for activating an environment, you can also
+activate it on the Linux command line (assuming that you are located in the
+environment directory):
+
+    julia --project=.
+
+
+## Bianca
+
+- At Bianca there is a central library with installed packages.
 
 - You may control the present "central library" by typing ``ml help julia/<version>`` in the BASH shell.
 - A possibly more up-to-date status can be found from the Julia shell:
 
-.. code-block:: julia-repl
+    julia> using Pkg
+    julia> Pkg.activate(DEPOT_PATH[2]*"/environments/v1.8");     #change version (1.8) accordingly if you have another main version of Julia
+    julia> Pkg.status()
+    julia> Pkg.activate(DEPOT_PATH[1]*"/environments/v1.8");     #to return to user library
 
-   julia> using Pkg
-   julia> Pkg.activate(DEPOT_PATH[2]*"/environments/v1.8");     #change version (1.8) accordingly if you have another main version of Julia
-   julia> Pkg.status()
-   julia> Pkg.activate(DEPOT_PATH[1]*"/environments/v1.8");     #to return to user library
-
-A selection of the Julia packages and libraries installed on UPPMAX and HPC2N are:
-
-=== "UPPMAX"
-
-    The Julia application at UPPMAX comes with several preinstalled packages.
-    A selection of the Julia packages and libraries installed on UPPMAX are:
+A selection of the Julia packages and libraries installed on Bianca are:
 
     - BenchmarkTools
     - CSV
@@ -299,14 +219,11 @@ A selection of the Julia packages and libraries installed on UPPMAX and HPC2N ar
     - DistributedArrays
     - PlotlyJS
 
-=== "HPC2N/LUNARC/PDC"
 
-    The Julia versions installed at these centers include only the Base and Standard library
-        modules.
+## Exercises
 
-Exercises
----------
-
+TODO: Make these exercises be the installation of the packages that we will later use.
+It might be advisable to install IJulia and Pluto in separate environments.
 
 .. challenge:: 1. Project environment
 
@@ -361,17 +278,13 @@ Exercises
 
 !!! summary
 
-    - Installation of Julia packages can be done with Julia package manager.
-    - You install packages with the ``add`` command
+    - Environments in Julia created by Julia itself so third party software are not required.
     - With a virtual environment you can tailor an environment with specific versions for Julia
      and packages, not interfering with other installed Julia versions and packages.
     - Make it for each project you have for reproducibility.
     - The environments in Julia are lightweight so it is recommended to start a new environment
      for each project that you are developing.
-    - Environments in Julia created by Julia itself so third party software are not required.
-    - You can check for centrally installed packages at UPPMAX
-        - from the Julia shell
-       - from BASH shell with ``ml help julia/<version>``
+    - Bianca
 
 !!! info "Extra reading"
 
