@@ -1,0 +1,2 @@
+machine learning/deep learning/ai-releated training
+A more detailed overview of how to setup everything to work with the gpus.
