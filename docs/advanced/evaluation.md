@@ -8,6 +8,9 @@ tags:
 
 This is the page for evaluating the current iteration of the course.
 
+The evaluation form for the Julia part can be found [here](https://forms.office.com/e/GveW41SeXR).
+It takes into account that one may need to leave early too.
+
 ???- hint "Where can I find the results of earlier evaluations?"
 
     At [the 'Evaluations' page](../evaluations/README.md).
@@ -64,6 +67,12 @@ This is the page for evaluating the current iteration of the course.
         - I can explain how Julia/MATLAB/R code makes use of thread parallelism
         - I can explain the results of a correct benchmark
         - I can explain the results of an incorrect benchmark
+        - I can explain the difference between a CPU and a GPU
+        - I can use GPUs with R
+        - I can use GPUs with MATLAB
+        - I can use GPUs with Julia
+        - I can check if an ML package is installed with a module
+        - I can run an ML code with R
 
     Coding scheme:
 

@@ -64,8 +64,6 @@ This is the page for evaluating the current iteration of the course.
           with regular code
         - I can submit a job to the scheduler to run an R script
           that uses parallel code
-        - I can submit a job to the scheduler to run an R script
-          that uses a GPU
         - I can start an interactive session
         - I can verify I am on the login node yes/no
         - I can start an interactive session with multiple cores

@@ -117,8 +117,6 @@ It takes into account that one may need to leave early too.
       - I can start run Matlab in Jupyter
       - I can view add-ons and toolboxes
       - I can install add-ons
-      - I can use GPUs with Matlab
-
 
     13.Did today's course meet your expectation?
 
