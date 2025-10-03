@@ -73,6 +73,21 @@ official tutorial on the Julia package manager:
 
 ## But where are the packages installed?
 
+Each environment only consists of two files, the code is not here. Packages will
+be installed to and loaded from paths defined by the global Julia variable
+[`DEPOT_PATH`](https://docs.julialang.org/en/v1/base/constants/#Base.DEPOT_PATH).
+In a default Julia installation this will include:
+
+1. `~/.julia` where `~` is the user home as appropriate on the system;
+1. an architecture-specific shared system directory, e.g. `/usr/local/share/julia`;
+1. an architecture-independent shared system directory, e.g. `/usr/share/julia`.
+
+You may want to take a look at what it contains on your cluster.
+
+Packages can consist of relatively many files and some clusters have a limit on
+the number of files you can have in your home directory. If this becomes a
+problem, talk to us and we will find a way.
+
 
 ## Nested environments
 
