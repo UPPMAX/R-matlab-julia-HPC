@@ -118,8 +118,8 @@ You can now run R scripts on the allocated resources directly instead of waiting
     === "HPC2N"
 
         - ThinLinc: kebnekaise-tl.hpc2n.umu.se
-        - From webbrowser: https://kebnekaise-tl.hpc2n.umu.se:300/
-        - OpenOnDemand: https://portal.hpc2n.umu.se
+        - From web browser: https://kebnekaise-tl.hpc2n.umu.se:300/
+        - OpenOnDemand: https://portal.hpc2n.umu.se (click [https://docs.hpc2n.umu.se/tutorials/connections/#interactive__apps__-__rstudio__server](here for documentation on RStudio with Open OnDemand))
 
     === "LUNARC"
 
