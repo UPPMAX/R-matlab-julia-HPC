@@ -648,6 +648,11 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
     ```
 
+### Julia 
+
+** JULIA GPU MATERIAL HERE **
+
+
 !!! note "Summary"
 
     - GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks
