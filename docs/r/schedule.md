@@ -19,8 +19,9 @@ Time  | Topic                                        | Teacher(s)
 13:00 | Batch                                        | B
 14:00 | Break                                        | .
 14:15 | [RStudio](rstudio.md)                        | R
-14:45 | [Summary](summary.md)                        | R
+14:45 | RStudio On-Demand                            | RP
+15:15 | [Summary](summary.md)                        | R
 .     | [Evaluation](evaluation.md)                  | R
-15:00 | Done                                         | .
+15:30 | Done                                         | .
 
-- Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek
+- Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek, `RP`: Rebecca Pitts
