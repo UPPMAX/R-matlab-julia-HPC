@@ -45,10 +45,8 @@ In the following sections we will extend the last two options.
 Jobs can be submitted to the SLURM queue directly from the the MATLAB GUI as an alternative
 to the standard bash scripts that are used with the command `sbatch my-script.sh`, for instance.
 
-<div align="center">
-  <img src="./img/matlab-gui.png" alt="Matlab GUI" width="500"/>
-</div>
-MATLAB GUI
+![Matlab GUI](./img/matlab-gui.png){width="500"}
+>MATLAB GUI
 
 To submit a job from the GUI, you will need to create a handle for the cluster and then use this
 handle to send the job and control the outputs:
@@ -80,15 +78,11 @@ Note that `batch` also accepts script names in place of function names, but thes
 If you run MATLAB in the GUI after having configured the cluster, MATLAB will start with a default cluster profile, typically something that includes the name of the cluster. This is just the set of configurations that were set by `configCluster`. You can view, edit, and/or add to this profile by clicking the ``Parallel`` menu icon and selecting ``Create and Manage Clusters``.
 
 
-<div align="center">
-  <img src="./img/Rackham-matlab-parallel.png" alt="Rackham Matlab Parallel" width="500"/>
-</div>
-Location of Parallel Menu in GUI.
+![Rackham Matlab Parallel](./img/Rackham-matlab-parallel.png){width="500"}
+>Location of Parallel Menu in GUI.
 
-<div align="center">
-  <img src="./img/Rackham-matlab-cluster-profile-mgr.png" alt="Rackham Cluster Profile Manager" width="500"/>
-</div>
-Cluster Profile Manager.
+![Rackham Matlab Parallel](./img/Rackham-matlab-cluster-profile-mgr.png){width="500"}
+>Cluster Profile Manager.
 
 If you scroll down in the window that appears when you select the right cluster, you will see a box titled ``Scheduler Plugin``. This box lets you set SBATCH parameters like
 
@@ -101,12 +95,10 @@ If you scroll down in the window that appears when you select the right cluster,
 - The name of your reservation, and most importantly,
 - The wall time for your job.
 
-<div align="center">
-  <img src="../../img/Rackham-matlab-cluster-profile-mgr2.png" alt="Rackham Matlab Scheduler Plugin" width="550"/>
-</div>
-Editing parameters of Scheduler Plugin in Cluster Profile Manager.
+![Rackham Matlab Scheduler Plugin](./img/Rackham-matlab-cluster-profile-mgr2.png){ width="550"}
+> Editing parameters of Scheduler Plugin in Cluster Profile Manager.
 
-In other words, almost anything you might otherwise set by calling ``c.AdditionalProperties.<insert_property>=...`` can be set in the GUI in this scheduler plugin. Just keep in mind that these settings are saved between sessions.
+In other words, almost anything you might otherwise set by calling `c.AdditionalProperties.<insert_property>=...` can be set in the GUI in this scheduler plugin. Just keep in mind that these settings are saved between sessions.
 
 If you are on Desktop On Demand on LUNARC, these settings do not override the parameters set in the GfxLauncher for the MATLAB GUI session itself, but rather to any batch jobs you submit from *within* the GUI.
 
