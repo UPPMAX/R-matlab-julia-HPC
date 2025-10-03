@@ -22,7 +22,7 @@
 
 !!! note "Compute allocations in this workshop" 
 
-   - Rackham/Pelle: ``uppmaxXXXX-YY-ZZZ``
+   - Rackham/Pelle: ``uppmax2025-2-360``
    - Kebnekaise: ``hpc2n2025-151``
    - Cosmos: ``lu2025-2-94``
    - Tetralith: ``naiss2025-22-934``
@@ -65,7 +65,7 @@ To run interactively, you need to allocate resources on the cluster first. You c
 === "UPPMAX (interactive)"
 
     ```bash
-    $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-YY-ZZZ 
+    $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-360 
     ``` 
   
 === "HPC2N (salloc)" 
@@ -113,6 +113,7 @@ You can now run R scripts on the allocated resources directly instead of waiting
         - ThinLinc app: ``<user>@rackham-gui.uppmax.uu.se``
         - ThinLinc in web browser: ``https://rackham-gui.uppmax.uu.se``   This requires 2FA!
         - ThinLinc (Pelle): ``<user>@pelle-gui.uppmax.uu.se``
+        - ThinLinc (Pelle) in web browser: ``https://pelle-gui.uppmax.uu.se``   This requires 2FA!
 
     === "HPC2N"
 
@@ -199,23 +200,26 @@ You can now run R scripts on the allocated resources directly instead of waiting
 === "UPPMAX"
 
     ```bash
-    [bjornc@rackham2 ~]$ interactive -A naiss2024-22-107 -p devcore -n 4 -t 10:00
-    You receive the high interactive priority.
-    There are free cores, so your job is expected to start at once.
-    
-    Please, use no more than 6.4 GB of RAM.
-    Waiting for job 29556505 to start...
-    Starting job now -- you waited for 1 second.
+    [bjornc@pelle2 ~]$ interactive -A uppmax2025-2-360 -n 4 -t 10:00
+    This is a temporary version of interactive-script for Pelle
+    Most interactive-script functionality is removed
+    salloc: Pending job allocation 82050
+    salloc: job 82050 queued and waiting for resources
+    salloc: job 82050 has been allocated resources
+    salloc: Granted job allocation 82050
+    salloc: Waiting for resource configuration
+    salloc: Nodes p102 are ready for job
+    [bjornc@p102 ~]$
     ```      
 
     Let us check that we actually run on the compute node: 
 
     ```bash
-    [bjornc@r483 ~]$ srun hostname
-    r483.uppmax.uu.se
-    r483.uppmax.uu.se
-    r483.uppmax.uu.se
-    r483.uppmax.uu.se
+    [bjornc@p102 ~]$ srun hostname
+    p102.uppmax.uu.se
+    p102.uppmax.uu.se
+    p102.uppmax.uu.se
+    p102.uppmax.uu.se
     ```
         
     We are! Notice that we got a response from all four cores we have allocated.   
@@ -313,13 +317,13 @@ When you have finished using the allocation, either wait for it to end, or close
 === "UPPMAX"
    
     ```bash        
-    [bjornc@r483 ~]$ exit
+    [bjornc@p102 ~]$ exit
     
     exit
     [screen is terminating]
-    Connection to r483 closed.
+    Connection to p102 closed.
       
-    [bjornc@rackham2 ~]$
+    [bjornc@pelle2 ~]$
     ```
     
 === "HPC2N"
