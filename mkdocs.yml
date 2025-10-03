@@ -127,7 +127,7 @@ markdown_extensions:
   - md_in_html
   - smarty
   - tables
-  - codehilite
+    #  - codehilite
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
