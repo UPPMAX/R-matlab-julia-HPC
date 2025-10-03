@@ -207,14 +207,15 @@ To learn about other ways, see the page "More about R packages" under "Extra rea
 
     Start R (remember to load a module + prerequisites if you have not already). Check if the packages ``pillar`` and ``caret`` are installed, as shown above. 
 
-=== "UPPMAX"
+=== "UPPMAX (Pelle)"
 
     !!! note "Solution"
 
         If you want, you can try loading the libraries inside R without loading either the R-bundle-CRAN or R-bundle-Bioconductor modules and see that almost nothing is installed. 
 
         ```bash 
-        $ module load R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2  
+        $ module load R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2  
+		# You'll get R/4.4.2-gfbf-2024a on the fly!
         $ R
             
         R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
@@ -522,7 +523,8 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
 
     1)
 
-    - UPPMAX: ``module load R_packages/4.1.1``
+    - UPPMAX (Pelle): ``module load R/4.4.2-gfbf-2024a``
+    - UPPMAX (Rackham): ``module load R_packages/4.1.1``
     - HPC2N: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
     - LUNARC: ``module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1``
     - NSC: ``module load R/4.2.2-hpc1-gcc-11.3.0-bare`` 
@@ -544,8 +546,11 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
     3) Create directory for R packages:
 
     - LUNARC: ``mkdir -p $HOME/R-packages-4.2.1``
-    - UPPMAX:
+    - UPPMAX (Pelle):
         - ``mkdir -p $HOME/R-packages-4.4.2``
+        - OR ``mkdir -p /proj/r-matlab-julia-pelle/<yourdir>/R-packages-4.4.2``
+    - UPPMAX (Rackham):
+        - ``mkdir -p $HOME/R-packages-4.1.1``
         - OR ``mkdir -p /proj/r-matlab-julia-pelle/<yourdir>/R-packages-4.1.1``
     - HPC2N:
         - ``mkdir -p $HOME/R-packages-4.2.1``
