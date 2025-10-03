@@ -56,17 +56,17 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     
     1. Open [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se) in your browser. The page looks like this:
     
-        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="95%"/>
+        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="1200"/>
     
     2. Click the blue button labeled "Login to HPC2N OnDemand".
     3. A login window should open with boxes for your login credentials. Enter your HPC2N username and password, then click "Sign In".
     4. You will now be on the HPC2N Open OnDemand dashboard. The top of it looks like this:
     
-        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="600"/>
+        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="1200"/>
     
     5. Find the `Interactive Apps` tab in the menu bar along the top and click it to open a drop-down menu of available apps. The menu currently looks like this:
     
-        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-apps.png" alt="HPC2N Open On-Demand dashboard" width="600"/>
+        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-apps.png" alt="HPC2N Open On-Demand dashboard" width="1200"/>
     
     !!! warning
     
@@ -117,7 +117,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
 
     If you select any of the options under "Interactive apps", a page will open that looks like this (using RStudio as an example):
 
-    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio.png" alt="Open OnDemand RStudio options" width="500"/>
+    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio.png" alt="Open OnDemand RStudio options" width="1200"/>
 
     Most of the options you have to set will be the same whether you choose RStudio Server, MATLAB Proxy, Jupyter Notebook, or even the Kebnekaise desktop. The parameters required for all apps include:
     
@@ -132,11 +132,11 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
 
     Once you enter your desired parameters, click **Launch**. If the parameters are all valid, the page will reload and looks something like this for as long as your job is in the queue (using RStudio as an example):
     
-    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio-waiting.png" alt="Open OnDemand RStudio waiting" width="500"/>
+    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio-waiting.png" alt="Open OnDemand RStudio waiting" width="1200"/>
 
     When the job starts, the title bar of the box containing your job will turn from blue to green, the status message will change from "Queued" to "Running", and the number of nodes and cores with appear in the title bar. You can have more than one OnDemand job running or queued. Running jobs will look like these:
 
-    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-sessions.png" alt="Open OnDemand jobs ready" width="500"/>
+    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-sessions.png" alt="Open OnDemand jobs ready" width="1200"/>
     </div>
 
     For all apps, the equivalent of a start button will be a bright blue rectangle near the bottom of the job box, though the words on the button may vary. When you click this button, your app should launch in a new window.
