@@ -8,7 +8,7 @@
      same!
     - Many **scientific tools** are distributed as **R packages**. This makes it possible to just run a script from the prompt. You can define files to be analysed and use arguments to define exactly what to do.
     - For more details about packages and in particular developing your own,
-     see: `R packages <https://r-pkgs.org>`_
+     see: [R packages](https://r-pkgs.org)
 
 !!! note "Questions"
    
