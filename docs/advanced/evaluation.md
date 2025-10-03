@@ -8,7 +8,7 @@ tags:
 
 This is the page for evaluating the current iteration of the course.
 
-The evaluation form for the Julia part can be found [here](https://forms.office.com/e/GveW41SeXR).
+The evaluation form for the Advanced part can be found [here](https://forms.office.com/e/GveW41SeXR).
 It takes into account that one may need to leave early too.
 
 ???- hint "Where can I find the results of earlier evaluations?"
