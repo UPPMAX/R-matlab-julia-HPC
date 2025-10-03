@@ -52,7 +52,7 @@ nav:
       - Introduction to GPUs: advanced/gpus.md
       - Machine Learning: 
         - With R: advanced/MLR.md
-        - With Jula: advanced/MLjulia.md
+        - With Julia: advanced/MLjulia.md
         - With MATLAB: advanced/MLmatlab.md
       - Evaluation: advanced/evaluation.md
     - Misc: 
