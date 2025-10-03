@@ -22,7 +22,7 @@ In the following sections we will extend the last two options.
 
     **Compute allocations in this workshop**
     
-    - Rackham: ``uppmax2025-2-272``
+    - Rackham: ``uppmax2025-2-360``
     - Kebnekaise: ``hpc2n2025-062``
     - Cosmos: ``lu2025-7-37``
     - Tetralith: ``naiss-2025-22-262``
