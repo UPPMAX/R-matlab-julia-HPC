@@ -57,7 +57,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     1. Open [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se) in your browser. The page looks like this:
     
         <div align="center">
-          <img src="open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
+          <img src="https://docs.hpc2n.umu.se/images/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
         </div>
     
     2. Click the blue button labeled "Login to HPC2N OnDemand".
@@ -65,13 +65,13 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     4. You will now be on the HPC2N Open OnDemand dashboard. The top of it looks like this:
     
         <div align="center">
-            <img src="open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="500"/>
+            <img src="https://docs.hpc2n.umu.se/images/open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="500"/>
         </div>
     
     5. Find the `Interactive Apps` tab in the menu bar along the top and click it to open a drop-down menu of available apps. The menu currently looks like this:
     
         <div align="center">
-            <img src="open-ondemand-apps.png" alt="HPC2N Open On-Demand Apps" width="500"/>
+            <img src="https://docs.hpc2n.umu.se/images/open-ondemand-apps.png" alt="HPC2N Open On-Demand dashboard" width="500"/>
         </div>
     
     !!! warning
@@ -95,9 +95,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
       #. **Resource** - which kind of node you want in terms of the architecture (AMD or Intel) and number of cores in the CPU (or GPU). Options and defaults vary by program.
       #. **Project** - choose from a drop-down menu the project with which your work is associated. This is mainly to keep your usage in line with your licenses and permissions, and to send any applicable invoices to the correct PI. Licensed software will only work for projects whose group members are covered by the license.
 
-    <div align="center">
-        <img src="Cosmos-OnDemand-Matlab23b-advreqs.png" alt="Cosmos Matlab On-Demand options" width="500"/>
-    </div>
+    <img src="Cosmos-OnDemand-Matlab23b-advreqs.png" alt="Cosmos On-Demand options for MATLAB" width="500"/>
     
     > The GfxLauncher GUI (here used to launch MATLAB). The box on the left is the basic menu and the box on the right is what pops up when the gear icon next to `Requirements` is clicked.  
 
