@@ -44,7 +44,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     1. Log into COSMOS (or Dardel) via your usual Thinlinc client or browser interface to start an HPC Desktop session.
     2. Click `Applications` in the top left corner, hover over the items prefixed with `Applications -` until you find your desired application (on Dardel, On-Demand applications are prefixed with `PDC-`), and click it. The top-level Applications menu on Cosmos looks like this:
     
-        <img src="Cosmos-AppMenu.png" alt="Cosmos On-Demand applications menu" width="500"/>
+        <img src="./Cosmos-AppMenu.png" alt="Cosmos On-Demand applications menu" width="500"/>
     
     !!! warning
     
