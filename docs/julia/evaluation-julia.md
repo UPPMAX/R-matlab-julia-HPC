@@ -1,14 +1,15 @@
 ---
 tags:
   - evaluation
+  - advanced
 ---
 
 # Evaluation
 
-The evaluation form for the R part can be found [here](https://forms.office.com/e/jDAQWiPbgs).
-It takes into account that one may need to leave early too.
-
 This is the page for evaluating the current iteration of the course.
+
+The evaluation form for the Julia part can be found [here](https://forms.office.com/e/BU2YfesBn4).
+It takes into account that one may need to leave early too.
 
 ???- hint "Where can I find the results of earlier evaluations?"
 
@@ -52,24 +53,16 @@ This is the page for evaluating the current iteration of the course.
 
     - Question 3: Confidences
 
-        - I can find the module to be able to run R
-        - I can load the module to be able to run R
-        - I can run the R interpreter
-        - I can run the R command to get the list of installed R packages
-        - I can run an R script from the command-line
-        - I can find out if an R package is already installed
-        - I can load the pre-installed R packages
-        - I can install an R package from CRAN
-        - I can submit a job to the scheduler to run an R script
-          with regular code
-        - I can submit a job to the scheduler to run an R script
-          that uses parallel code
-        - I can submit a job to the scheduler to run an R script
-          that uses a GPU
-        - I can start an interactive session
-        - I can verify I am on the login node yes/no
-        - I can start an interactive session with multiple cores
-        - I can start RStudio
+        - I can use the module system to load a specific verison of Julia
+        - I can run Julia
+        - I can use the Julia interpreter
+        - I can run a Julia script
+        - I can install a Julia package
+        - I can work with Julia project environments
+        - I can write a batch script 
+        - I can submit a batch script to the job scheduler
+        - I can work with Julia on Jupyter notebooks
+        - I can work with Julia on Pluto notebooks 
 
     Coding scheme:
 

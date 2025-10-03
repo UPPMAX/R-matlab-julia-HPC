@@ -33,7 +33,8 @@ nav:
       - MATLAB terminal and Slurm: matlab/slurmMatlab.md
       - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
       - MATLAB Add-Ons: matlab/matlab-addons.md
-      - matlab/matlab-summary.md
+      - Summary: matlab/matlab-summary.md
+      - Evaluation: matlab/evaluation-matlab.md
     - Julia:
       - Schedule: julia/schedule.md
       - Intro: julia/intro.md
@@ -42,6 +43,7 @@ nav:
       - Batch jobs: julia/batch.md  
       - Interactive jobs: julia/interactive.md     
       - Summary: julia/summary.md
+      - Evaluation: julia/evaluation-julia.md
     - Advanced: 
       - Schedule: advanced/schedule.md
       - Parallel computing: advanced/parallel_computing/README.md
