@@ -43,10 +43,10 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
 
     1. Log into COSMOS (or Dardel) via your usual Thinlinc client or browser interface to start an HPC Desktop session.
     2. Click `Applications` in the top left corner, hover over the items prefixed with `Applications -` until you find your desired application (on Dardel, On-Demand applications are prefixed with `PDC-`), and click it. The top-level Applications menu on Cosmos looks like this:
-
-    <div align="center">
-      <img src="Cosmos-AppMenu.png" alt="Cosmos On-Demand applications menu" width="500"/>
-    </div
+    
+        <div align="center">
+          <img src="Cosmos-AppMenu.png" alt="Cosmos On-Demand applications menu" width="500"/>
+        </div>
     
     !!! warning
     
@@ -58,23 +58,23 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     
     1. Open [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se) in your browser. The page looks like this:
     
-    <div align="center">
-      <img src="open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
-    </div>
+        <div align="center">
+          <img src="open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
+        </div>
     
     2. Click the blue button labeled "Login to HPC2N OnDemand".
     3. A login window should open with boxes for your login credentials. Enter your HPC2N username and password, then click "Sign In".
     4. You will now be on the HPC2N Open OnDemand dashboard. The top of it looks like this:
     
-      <div align="center">
-        <img src="open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="500"/>
-      </div>
+        <div align="center">
+            <img src="open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="500"/>
+        </div>
     
     5. Find the `Interactive Apps` tab in the menu bar along the top and click it to open a drop-down menu of available apps. The menu currently looks like this:
     
-      <div align="center">
-        <img src="open-ondemand-apps.png" alt="HPC2N Open On-Demand Apps" width="500"/>
-      </div>
+        <div align="center">
+            <img src="open-ondemand-apps.png" alt="HPC2N Open On-Demand Apps" width="500"/>
+        </div>
     
     !!! warning
     
