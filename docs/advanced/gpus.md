@@ -370,6 +370,7 @@ Here follows an example of a batch script that allocates GPUs. This is for an R 
 ### MATLAB
 
 Here we cover how to use GPUs with MATLAB
+
 - Inside MATLAB
 - In a batch script
 
@@ -437,13 +438,13 @@ This is how you add GPUs to use in batch jobs submitted from inside MATLAB:
 
     where `card-type` is one of `v100`, `a40`, `a6000`, `l40s`, `a100`, `h100`, or `mi100`, and `#gpus` depends on the card-type:
 
-     - V100 (2 cards/node)
-     - A40 (8 cards/node)
-     - A6000 (2 cards/node)
-     - L40s (2 or 6 cards/node)
-     - A100 (2 cards/node)
-     - H100 (4 cards/node)
-     - MI100 (2 cards/node)
+    - V100 (2 cards/node)
+    - A40 (8 cards/node)
+    - A6000 (2 cards/node)
+    - L40s (2 or 6 cards/node)
+    - A100 (2 cards/node)
+    - H100 (4 cards/node)
+    - MI100 (2 cards/node)
 
 === "LUNARC"
 
@@ -848,9 +849,8 @@ for instance.
         # Calculation on GPU
         @time A*B
         ```
-                 
 
-!!! important "Runnng on AMD GPUs"
+!!! important "Running on AMD GPUs"
         
     === "PDC"
 
@@ -863,7 +863,7 @@ for instance.
         #SBATCH --cpus-per-task=1    # nr. of cores per-task
         #SBATCH --time=00:03:00      # requested time
         #SBATCH --error=job.%J.err   # error file
-        #SBATCH --output=job.%J.out  # output file                                                                                                                                                                         
+        #SBATCH --output=job.%J.out  # output file                                                                                             
         # Load dependencies and Julia version
         ml PDC/23.12 julia/1.10.2-cpeGNU-23.12 
         # ROCM toolkit module
