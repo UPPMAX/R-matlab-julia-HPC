@@ -46,7 +46,7 @@ Jobs can be submitted to the SLURM queue directly from the the MATLAB GUI as an 
 to the standard bash scripts that are used with the command `sbatch my-script.sh`, for instance.
 
 <div align="center">
-  <img src="img/matlab-gui.png" alt="Matlab GUI" width="500"/>
+  <img src="./img/matlab-gui.png" alt="Matlab GUI" width="500"/>
 </div>
 MATLAB GUI
 
@@ -81,12 +81,12 @@ If you run MATLAB in the GUI after having configured the cluster, MATLAB will st
 
 
 <div align="center">
-  <img src="../../img/Rackham-matlab-parallel.png" alt="Rackham Matlab Parallel" width="500"/>
+  <img src="./img/Rackham-matlab-parallel.png" alt="Rackham Matlab Parallel" width="500"/>
 </div>
 Location of Parallel Menu in GUI.
 
 <div align="center">
-  <img src="../../img/Rackham-matlab-cluster-profile-mgr.png" alt="Rackham Cluster Profile Manager" width="500"/>
+  <img src="./img/Rackham-matlab-cluster-profile-mgr.png" alt="Rackham Cluster Profile Manager" width="500"/>
 </div>
 Cluster Profile Manager.
 
