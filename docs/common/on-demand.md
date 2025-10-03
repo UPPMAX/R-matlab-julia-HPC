@@ -44,7 +44,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     1. Log into COSMOS (or Dardel) via your usual Thinlinc client or browser interface to start an HPC Desktop session.
     2. Click `Applications` in the top left corner, hover over the items prefixed with `Applications -` until you find your desired application (on Dardel, On-Demand applications are prefixed with `PDC-`), and click it. The top-level Applications menu on Cosmos looks like this:
     
-        ![Cosmos On-Demand apps menu](Cosmos-AppMenu.png)
+        ![Cosmos On-Demand apps menu](Cosmos-AppMenu.png) {width=400px}
     
     !!! warning
     
@@ -56,23 +56,17 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     
     1. Open [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se) in your browser. The page looks like this:
     
-        <div align="center">
-          <img src="https://docs.hpc2n.umu.se/images/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
-        </div>
+        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="600"/>
     
     2. Click the blue button labeled "Login to HPC2N OnDemand".
     3. A login window should open with boxes for your login credentials. Enter your HPC2N username and password, then click "Sign In".
     4. You will now be on the HPC2N Open OnDemand dashboard. The top of it looks like this:
     
-        <div align="center">
-            <img src="https://docs.hpc2n.umu.se/images/open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="500"/>
-        </div>
+        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="600"/>
     
     5. Find the `Interactive Apps` tab in the menu bar along the top and click it to open a drop-down menu of available apps. The menu currently looks like this:
     
-        <div align="center">
-            <img src="https://docs.hpc2n.umu.se/images/open-ondemand-apps.png" alt="HPC2N Open On-Demand dashboard" width="500"/>
-        </div>
+        <img src="https://docs.hpc2n.umu.se/images/open-ondemand-apps.png" alt="HPC2N Open On-Demand dashboard" width="600"/>
     
     !!! warning
     
@@ -95,7 +89,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
       #. **Resource** - which kind of node you want in terms of the architecture (AMD or Intel) and number of cores in the CPU (or GPU). Options and defaults vary by program.
       #. **Project** - choose from a drop-down menu the project with which your work is associated. This is mainly to keep your usage in line with your licenses and permissions, and to send any applicable invoices to the correct PI. Licensed software will only work for projects whose group members are covered by the license.
 
-    <img src="Cosmos-OnDemand-Matlab23b-advreqs.png" alt="Cosmos On-Demand options for MATLAB" width="500"/>
+    ![Cosmos On-Demand options for MATLAB](Cosmos-OnDemand-Matlab23b-advreqs.png){width=500px}
     
     > The GfxLauncher GUI (here used to launch MATLAB). The box on the left is the basic menu and the box on the right is what pops up when the gear icon next to `Requirements` is clicked.  
 
@@ -106,10 +100,8 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
         Closing the GfxLauncher popup after your application starts will kill the application immediately!
 
     If you want, you can also look at the associated SLURM scripts by clicking the "More" button at the bottom of the GfxLauncher menu and clicking the "Script" tab (example below), or view the logs under the "Logg" tab.
-    
-    <div align="center">
-      <img src="Cosmos-OnDemand-Matlab23b-more-script.png" alt="Cosmos Matlab On-Demand more script details" width="500"/>
-    </div>
+
+    ![Cosmos On-Demand MATLAB more script](Cosmos-OnDemand-Matlab23b-more-script.png){width=500px}
     
     If an app fails to start, the first step of troubleshooting will always be to check the "Logg" tab.
     
@@ -125,9 +117,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
 
     If you select any of the options under "Interactive apps", a page will open that looks like this (using RStudio as an example):
 
-    <div align="center">
-      <img src="open-ondemand-Rstudio-options.png" alt="Open OnDemand RStudio options" width="500"/>
-    </div>
+    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio.png" alt="Open OnDemand RStudio options" width="500"/>
 
     Most of the options you have to set will be the same whether you choose RStudio Server, MATLAB Proxy, Jupyter Notebook, or even the Kebnekaise desktop. The parameters required for all apps include:
     
@@ -142,14 +132,11 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
 
     Once you enter your desired parameters, click **Launch**. If the parameters are all valid, the page will reload and looks something like this for as long as your job is in the queue (using RStudio as an example):
     
-    <div align="center">
-      <img src="open-ondemand-Rstudio-waiting.png" alt="Open OnDemand RStudio waiting" width="500"/>
-    </div>
+    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio-waiting.png" alt="Open OnDemand RStudio waiting" width="500"/>
 
     When the job starts, the title bar of the box containing your job will turn from blue to green, the status message will change from "Queued" to "Running", and the number of nodes and cores with appear in the title bar. You can have more than one OnDemand job running or queued. Running jobs will look like these:
 
-    <div align="center">
-      <img src="open-ondemand-sessions.png" alt="Open OnDemand jobs ready" width="500"/>
+    <img src="https://docs.hpc2n.umu.se/images/open-ondemand-sessions.png" alt="Open OnDemand jobs ready" width="500"/>
     </div>
 
     For all apps, the equivalent of a start button will be a bright blue rectangle near the bottom of the job box, though the words on the button may vary. When you click this button, your app should launch in a new window.
