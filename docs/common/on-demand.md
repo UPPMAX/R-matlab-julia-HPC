@@ -13,11 +13,9 @@ On Cosmos (LUNARC), Kebnekaise (HPC2N), and Dardel (PDC), some applications are 
 - **Cosmos** and **Dardel** use the On-Demand Desktop developed at LUNARC, which is accessible via Thinlinc.
 - **Kebnekaise** uses Open OnDemand[^1] via a dedicated web portal at [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se).
 
-Desktop On-Demand is most appropriate for *interactive* work requiring small-to-medium amounts of computing resources. Non-interactive jobs and jobs that take more than a day or so should generally be submitted as batch jobs. If you have a longer job that requires an interactive interface to submit, make sure you keep track of the wall time limits for your facility
+Desktop On-Demand is most appropriate for *interactive* work requiring small-to-medium amounts of computing resources. Non-interactive jobs and jobs that take more than a day or so should generally be submitted as batch jobs. If you have a longer job that requires an interactive interface to submit, make sure you keep track of the wall time limits for your facility.
 
-!!! important
-
-    On-Demand applications are *not* accessible via SSH; you must use either Thinlinc (Cosmos and Dardel) or the dedicated web portal (Kebnekaise).
+On-Demand applications are *not* accessible via SSH; you must use either Thinlinc (Cosmos and Dardel) or the dedicated web portal (Kebnekaise).
 
 [^1]: Open OnDemand is a web service that allows HPC users to schedule jobs, run notebooks and work interactively on a remote cluster from any device that supports a modern browser. The Open OnDemand project was funded by NSF and is currently maintained by the Ohio SuperComputing Centre. Read more about [OpenOndemand.org](https://openondemand.org/).
 
@@ -46,9 +44,7 @@ Desktop On-Demand is most appropriate for *interactive* work requiring small-to-
     1. Log into COSMOS (or Dardel) via your usual Thinlinc client or browser interface to start an HPC Desktop session.
     2. Click `Applications` in the top left corner, hover over the items prefixed with `Applications -` until you find your desired application (on Dardel, On-Demand applications are prefixed with `PDC-`), and click it. The top-level Applications menu on Cosmos looks like this:
     
-      <div align="center">
-        <img src="../../img/Cosmos-AppMenu.png" alt="Cosmos app menu" width="400"/>
-      </div>
+    ![Cosmos app menu](../../img/Cosmos-AppMenu.png) {width="400"}
 
     !!! warning
     
