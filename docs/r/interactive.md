@@ -121,7 +121,7 @@ You can now run R scripts on the allocated resources directly instead of waiting
         - From webbrowser: https://kebnekaise-tl.hpc2n.umu.se:300/
         - OpenOnDemand: https://portal.hpc2n.umu.se
 
-    == "LUNARC"
+    === "LUNARC"
 
         - ThinLinc: ``cosmos-dt.lunarc.lu.se``
             - Note that you need to setup <a href="https://lunarc-documentation.readthedocs.io/en/latest/getting_started/login_howto/" target="_blank">TFA (PocketPass)</a> to use LUNARC!
