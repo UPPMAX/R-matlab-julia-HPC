@@ -21,6 +21,7 @@ In the following sections we will extend the last two options.
 !!! important
 
     **Compute allocations in this workshop**
+    
     - Rackham: ``uppmax2025-2-272``
     - Kebnekaise: ``hpc2n2025-062``
     - Cosmos: ``lu2025-7-37``
@@ -28,6 +29,7 @@ In the following sections we will extend the last two options.
     - Dardel: ``naiss-2025-22-262``
     
     **Storage space for this workshop**
+    
     - Rackham: ``/proj/r-py-jl-m-rackham``
     - Kebnekaise: ``/proj/nobackup/r-py-jl-m``
     - Cosmos: your home directory should have plenty of space
