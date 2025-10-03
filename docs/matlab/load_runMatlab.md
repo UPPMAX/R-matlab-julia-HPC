@@ -9,6 +9,7 @@
 !!! important
 
     Different recommended procedures for each HPC center:
+    
     - **UPPMAX, NSC, and HPC2N**: use module system to load at command line
     - **LUNARC**: recommended to use Desktop On-Demand menu, but interactive and non-interactive command lines available
     - **PDC**: recommended to load at command line; can run interactively on a compute node with X-forwarding and `salloc`. ThinLinc access is restricted to 30 users for the whole Dardel cluster.
