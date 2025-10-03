@@ -41,9 +41,6 @@ It takes into account that one may need to leave early too.
 
     !!! warning "This is not yet decided"
 
-        This is just a copy-paste from the R day
-
-
     - Question 1: Overall, how would you rate today's training event?
 
     ```text
