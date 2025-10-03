@@ -44,8 +44,8 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     1. Log into COSMOS (or Dardel) via your usual Thinlinc client or browser interface to start an HPC Desktop session.
     2. Click `Applications` in the top left corner, hover over the items prefixed with `Applications -` until you find your desired application (on Dardel, On-Demand applications are prefixed with `PDC-`), and click it. The top-level Applications menu on Cosmos looks like this:
     
-    ![Cosmos app menu](../../img/Cosmos-AppMenu.png) {width="400"}
-
+    ![Cosmos app menu](/img/Cosmos-AppMenu.png)
+    
     !!! warning
     
         If you start a terminal session or another application from `Favorites`, `System Tools`, or other menu headings not prefixed with `Applications -` or `PDC-`, and launch an interactive program from that, it will run on a login node. Do not run intensive programs this way!
@@ -56,9 +56,7 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
     
     1. Open [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se) in your browser. The page looks like this:
     
-      <div align="center">
-        <img src="../../img/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
-      </div>
+      <img src="https://docs.hpc2n.umu.se/images/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="500"/>
     
     2. Click the blue button labeled "Login to HPC2N OnDemand".
     3. A login window should open with boxes for your login credentials. Enter your HPC2N username and password, then click "Sign In".
