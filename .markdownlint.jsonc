@@ -35,6 +35,9 @@
     "line_length": 800
   },
 
+  // This rule is triggered for ordered lists that do not either start with '1.'
+  "MD029": false,
+
   "MD033": {
     "allowed_elements": [
       "a",
