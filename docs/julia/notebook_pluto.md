@@ -24,4 +24,10 @@ Pluto, like Jupyter, is a programming notebook.
 - packages and environments
 - Start Pluto
 
+![Pluto start](../img/Pluto_start.png)
+![Pluto getting_started](../img/Pluto_getting_started.png)
+![Pluto cells](../img/Pluto_cells.png)
+![Pluto cells2](../img/Pluto_cells2.png)
+
+
 ## Exercises
