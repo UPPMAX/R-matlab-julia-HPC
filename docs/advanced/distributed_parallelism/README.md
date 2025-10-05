@@ -222,8 +222,8 @@ available for each language.
     \int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
 	```
 
-   One way to perform the integration is by creating a grid in the ``x`` and ``y`` directions.
-   More specifically, one divides the integration range in both directions into ``n`` bins.
+    One way to perform the integration is by creating a grid in the ``x`` and ``y`` directions.
+    More specifically, one divides the integration range in both directions into ``n`` bins.
 
 
     === "Julia"
