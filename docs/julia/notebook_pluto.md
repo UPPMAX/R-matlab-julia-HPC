@@ -22,6 +22,14 @@ Pluto, like Jupyter, is a programming notebook.
 - Graphics
 - Interactive session?
 - packages and environments
+
+``` { .julia-repl }
+(@v1.11) pkg> activate pluto-env
+(@v1.11) pkg> add pluto
+julia> using Pluto
+julia> Pluto.run()
+```
+
 - Start Pluto
 
 ![Pluto start](../img/Pluto_start.png)
