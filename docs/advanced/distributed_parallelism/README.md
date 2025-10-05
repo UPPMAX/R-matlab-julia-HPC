@@ -637,6 +637,6 @@ available for each language.
 !!! info "More info"
 
     - [HPC2N Julia documentation](https://www.hpc2n.umu.se/resources/software/julia).
-    - [White paper on Julia parallel computing](https://juliahub.com/assets/pdf/Parallel-Computing-Guide-for-Julia-byJuliaHub.pdf).
+    - [White paper on Julia parallel computing](https://info.juliacomputing.com/hubfs/JuliaHub-Parallel%20Computing%20Guide.pdf).
     - [HPC2N R documentation](https://www.hpc2n.umu.se/resources/software/r).
     - [Wikipedias' article on Parallel Computing](https://en.wikipedia.org/wiki/Parallel_computing).
