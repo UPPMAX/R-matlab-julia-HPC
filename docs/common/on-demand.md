@@ -8,7 +8,7 @@
 
 ## What is Desktop On Demand? Is it right for my job?
 
-On Cosmos (LUNARC), Kebnekaise (HPC2N), and Dardel (PDC), some applications are available through one of several On Demand services. On Demand applications provide an interactive environment to schedule jobs on compute nodes using a graphic user interface (GUI) instead of the typical batch submission script. How you reach this interface is dependent on the system you use and their choice of On Demand client.
+On Cosmos (LUNARC), Kebnekaise (HPC2N), and Dardel (PDC), some applications are available through one of a couple of On Demand services. On Demand applications provide an interactive environment to schedule jobs on compute nodes using a graphic user interface (GUI) instead of the typical batch submission script. How you reach this interface is dependent on the system you use and their choice of On Demand client.
 
 - **Cosmos** and **Dardel** use the On-Demand Desktop developed at LUNARC, which is accessible via Thinlinc.
 - **Kebnekaise** uses Open OnDemand[^1] via a dedicated web portal at [https://portal.hpc2n.umu.se](https://portal.hpc2n.umu.se).
@@ -22,7 +22,6 @@ On-Demand applications are *not* accessible via SSH; you must use either Thinlin
 !!! info "On-Demand App Availability for this Course"
 
     - RStudio and MATLAB are both available as On-Demand applications at all 3 facilities covered on this page.
-    - The same facilities also provide Jupyter Notebook and/or Jupyter Lab On-Demand if you wish to use IJulia.
     - On Cosmos, there are also interactive On-Demand command lines (for CPUs and GPUs) under `Applications - General` that you may want to use with Julia, or that may still let you use RStudio or MATLAB if for some reason those apps fail to start with the more direct methods described below.
 
 !!! tip
