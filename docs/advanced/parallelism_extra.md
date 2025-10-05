@@ -1,4 +1,6 @@
-# Threaded programming
+# Extra reading about parallelism
+
+## Threaded programming
 
 To take advantage of the shared memory of the cores, **threaded** mechanisms can be used.
 Low-level programming languages, such as Fortran/C/C++, use OpenMP as the standard
@@ -206,3 +208,13 @@ different threads write on the same memory address.
 
          You can run this code directly in the Matlab GUI.
 
+## Distributed programming
+
+Although threaded programming is convenient because one can achieve considerable initial speedups
+with little code modifications, this approach does not scale for more than hundreds of
+cores. Scalability can be achieved with distributed programming. Here, there is not
+a common shared memory but the individual `processes` (notice the different terminology
+with `threads` in shared memory) have their own memory space. Then, if a process requires
+data from or should transfer data to another process, it can do that by using `send` and
+`receive` to transfer messages. A standard API for distributed computing is the Message
+Passing Interface (MPI). In general, MPI requires refactoring of your code.
