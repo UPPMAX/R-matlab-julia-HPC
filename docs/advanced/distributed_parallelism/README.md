@@ -2,7 +2,10 @@
 
 !!! info "Learning outcomes"
 
-    - .
+    - I can schedule jobs with distributed parallelism
+	- I know the basic difference between threads and distributed memory in terms of memory share
+    - I can explain how jobs with distributed parallelism are scheduled
+    - I can explain how Julia/MATLAB/R code makes use of distributed parallelism
 
 ???- info "For teachers"
 
@@ -12,7 +15,7 @@
 
     Prior:
 
-    - .
+    - Parallelism.
 
     Feedback:
 
@@ -30,7 +33,7 @@ Type of parallelism   |Number of cores|Number of nodes|Memory                   
 ----------------------|---------------|---------------|----------------------------|-------
 Single-threaded       |1              |1              |As given by operating system|None
 Threaded/shared memory|Multiple       |1              |Shared by all cores         |OpenMP
-Distributed           |Multiple       |Multiple       |Distributed                 |OpenMPI
+Distributed           |Multiple       |1 or Multiple  |Distributed                 |MPI (Example OpenMPI/MPICH)
 
 <!-- markdownlint-enable MD013 -->
 
