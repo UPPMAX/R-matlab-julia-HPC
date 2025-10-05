@@ -3,7 +3,7 @@
 !!! info "Learning outcomes"
 
     - I can schedule jobs with distributed parallelism
-	- I know the basic difference between threads and distributed memory in terms of memory share
+    - I know the basic difference between threads and distributed memory in terms of memory share
     - I can explain how jobs with distributed parallelism are scheduled
     - I can explain how Julia/MATLAB/R code makes use of distributed parallelism
 
@@ -104,20 +104,6 @@ mpirun Rscript do_2d_integration.R 1 1
 - [Older explanation](https://youtu.be/GHbrpg75qbQ)
 - [Newer explanation](https://youtu.be/c7pVEBhPohk)
 
-=== "Julia"
-
-    Julia stuff here
-
-=== "MATLAB"
-
-    MATLAB stuff here
-
-=== "R"
-
-    R stuff here
-
-
-
 !!! warning
 
     - Check if the resources that you allocated are being used properly.
@@ -136,9 +122,7 @@ mpirun Rscript do_2d_integration.R 1 1
          If you are in a interactive node session the ``top`` command will give you information
          of the resources usage.
 
-
-
-## Distributed programming
+## Distributed programming (rm or merge)
 
 Although threaded programming is convenient because one can achieve considerable initial speedups
 with little code modifications, this approach does not scale for more than hundreds of
@@ -184,8 +168,6 @@ available for each language.
 
     === "Julia"
 
-        **Dagger**
-
         According to the developers of this framework, [Dagger](https://juliaparallel.org/Dagger.jl/dev/)
          is heavily inspired on Dask. It support distributed arrays so that they could fit the memory and
          also the possibility of parallelizing the computations on these arrays.
@@ -213,7 +195,7 @@ available for each language.
 
     ```math
     \int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
-	```
+    ```
 
     One way to perform the integration is by creating a grid in the ``x`` and ``y`` directions.
     More specifically, one divides the integration range in both directions into ``n`` bins.
@@ -650,8 +632,6 @@ available for each language.
         Monitor the usage of resources with tools available at your center, for instance ``top`` (UPPMAX),
         ``job-usage`` (HPC2N), or if you're working in the GUI (e.g. on LUNARC), you can click ``Parallel``
         and then ``Monitor Jobs``. For ``job-usage``, you can see the job ID if you type ``squeue --me`` on a terminal on Kebnekaise.
-
-
 
 
 !!! info "More info"
