@@ -179,7 +179,7 @@ Then, when you get the allocation, do one of:
         salloc: Waiting for resource configuration
         salloc: Nodes n760 are ready for job
 
-        [bjornc@n760 ~]$ module load julia/1.10.2-bdist
+        [bjornc@n760 ~]$ module load MATLAB/2023b-bdist
         ```
 
         Let us check that we actually run on the compute node:
@@ -205,7 +205,7 @@ Then, when you get the allocation, do one of:
         salloc: Waiting for resource configuration
         salloc: Nodes nid001057 are ready for job
 
-        claremar@login1:~> module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+        claremar@login1:~> module load PDC/23.12 matlab/r2024b
         ```
 
         Let us check that we actually run on the compute node. This has to be done differently
@@ -246,7 +246,7 @@ Then, when you get the allocation, do one of:
         Waiting for job 29556505 to start...
         Starting job now -- you waited for 1 second.
 
-        [bjornc@p102 ~]$ module load julia/1.8.5
+        [bjornc@p102 ~]$ module load MATLAB/2023b-update4
         ```
 
         Let us check that we actually run on the compute node:
@@ -271,7 +271,7 @@ Then, when you get the allocation, do one of:
         salloc: Granted job allocation 20174806
         salloc: Waiting for resource configuration
         salloc: Nodes b-cn0241 are ready for job
-        [~]$ module load GCC/11.2.0 OpenMPI/4.1.1 julia/1.8.5
+        [~]$ module load MATLAB/2023b
         [~]$
         ```
 
@@ -294,7 +294,7 @@ Then, when you get the allocation, do one of:
         Cluster name: COSMOS
         Waiting for JOBID 930844 to start
 
-        [bjornc@cn050 ~]$ module load Julia/1.8.5-linux-x86_64
+        [bjornc@cn050 ~]$ module load matlab/2024b
         ```
 
         Let us check that we actually run on the compute node:
