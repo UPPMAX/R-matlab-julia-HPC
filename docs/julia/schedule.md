@@ -11,7 +11,7 @@ Time |Topic                                                      |Teacher
 9:00 |[Log in](../common/login.md)                              |BC, LS, PO
 9.45 |Coffee break                                               |.
 10:00|Syllabus                                                   |BC
-10.10|[Introduction, Julia in general](intro.md)                             |LS
+10.10|[Introduction, Julia in general](./intro.md)                             |LS
 10.25|[Loading modules and running Julia codes](load_run.md)                    |BC
 10.55|Break                                                      |.
 11.10|[Packages and environments](environments_packages.md)                                  |LS
