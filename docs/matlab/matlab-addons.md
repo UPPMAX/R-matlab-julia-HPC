@@ -18,7 +18,7 @@ Available from:
 - MathWorks®
 - the global MATLAB user community
 
-For more information, [click here](https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ).
+For more information about Add-Ons, [Mathworks](https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ).
 
 !!! info "Objectives"
 
@@ -80,7 +80,7 @@ Here we will only focus on the first two options.
     
     We won't cover the usage of most toolboxes here!
 
-    - [Read more](../extra/matlab_extra.md#add-ons)
+    - [Read more about Add-Ons](extra.md#add-ons)
 
 
 !!! tip
