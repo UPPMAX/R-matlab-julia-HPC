@@ -74,12 +74,15 @@ to start R.
 
 HPC cluster name |Main breakout room
 -----------------|------------------
-COSMOS           |Room 1
-Dardel           |Room 2
-Kebnekaise       |Room 3
-Pelle            |Room 4
-Rackham          |Room 5
-Tetralith        |Room 6
+Alvis            |Room 1
+Bianca           |Room 2
+COSMOS           |Room 3
+Dardel           |Room 4
+Kebnekaise       |Room 5
+LUMI             |Room 6
+Pelle            |Room 7
+Rackham          |Room 8
+Tetralith        |Room 9
 
 ## Exercise 1: start the R interpreter
 
