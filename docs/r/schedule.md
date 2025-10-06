@@ -8,20 +8,20 @@ tags:
 
 Time  | Topic                                        | Teacher(s)
 ------|----------------------------------------------|-----------
-9:00  | (optional) [First login](../common/login.md) | B + R
+9:00  | (optional) [First login](../common/login.md) | BB + RB
 9:45  | Break                                        | .
-10:00 | [Introduction](intro/README.md)              | R
-.     | [Syllabus](intro/README.md)                  | R
-10:20 | [Load modules and run](load_run.md)          | R
+10:00 | [Introduction](intro/README.md)              | RB
+.     | [Syllabus](intro/README.md)                  | RB
+10:20 | [Load modules and run](load_run.md)          | RB
 11:00 | Break                                        | .
-11:15 | Packages                                     | B
+11:15 | Packages                                     | BB
 12:00 | Lunch                                        | .
-13:00 | Batch                                        | B
+13:00 | Batch                                        | BB
 14:00 | Break                                        | .
-14:15 | [RStudio](rstudio.md)                        | R
-14:45 | RStudio On-Demand                            | RP
-15:15 | [Summary](summary.md)                        | R
-.     | [Evaluation](evaluation.md)                  | R
-15:30 | Done                                         | .
+14:15 | Simulatenous session: [RStudio](rstudio.md)  | RB
+.     | Simulatenous session: RStudio On-Demand      | RP
+14:45 | [Summary](summary.md)                        | RB
+.     | [Evaluation](evaluation.md)                  | RB
+15:00 | Done                                         | .
 
-- Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek, `RP`: Rebecca Pitts
+- Teachers: `BB`: Birgitte Brydsö, `RB`: Richèl Bilderbeek, `RP`: Rebecca Pitts

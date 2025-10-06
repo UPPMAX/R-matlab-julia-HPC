@@ -161,8 +161,8 @@ with the YouTube videos
             then we recommend you create this folder:
 
             ``` console
-
-               $ mkdir /proj/r-matlab-julia-uppmax/mrspock/
+            mkdir /proj/r-matlab-julia-uppmax/mrspock/
+            ```
 
     === "HPC2N"
 
