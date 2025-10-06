@@ -16,7 +16,8 @@ tags:
 | 10:50 | Break                                                        |            |
 | 11:05 | [Slurm job scheduler and MATLAB](./slurmMatlab.md)             | BB         |
 | 12:00 | LUNCH                                                        |            |
-| 13:00 | [MATLAB with Desktop On Demand (not available in all clusters but soon?)](../common/on-demand.md) | RP         |   
+| 13:00 | Room 1 [MATLAB with Desktop On Demand](../common/on-demand.md) | RP         |   
+| 13:00 | Room 2 [MATLAB from interactive session](interactive.md) | BC         |   
 | 13:30 | [MATLAB GUI and Slurm](./MatlabGUIslurm.md)                    | PO, RP     |
 | 13:50 | Break                                                 |            |
 | 14:05 | [MATLAB GUI and Slurm](./MatlabGUIslurm.md)                    | PO, RP     |      
