@@ -774,7 +774,7 @@ srun matlab -nojvm -nodisplay -nodesktop -nosplash -r parallel-matlab-script.m
 ```
 
 Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminology) can be specified when creating the parallel pool, for example, with 8 processes:
-111111111111111111111111111111111111
+
 ```matlab
 >> poolobj = parpool('local', 8);
 ```
