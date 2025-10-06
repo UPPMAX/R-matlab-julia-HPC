@@ -18,8 +18,8 @@ Time  | Topic                                        | Teacher(s)
 12:00 | Lunch                                        | .
 13:00 | Batch                                        | BB
 14:00 | Break                                        | .
-14:15 | Simulatenous session: [RStudio](rstudio.md)  | RB
-.     | Simulatenous session: RStudio On-Demand      | RP
+14:15 | Simultaneous session: [RStudio](rstudio.md)  | RB
+.     | Simultaneous session: RStudio On-Demand      | RP
 14:45 | [Summary](summary.md)                        | RB
 .     | [Evaluation](evaluation.md)                  | RB
 15:00 | Done                                         | .
