@@ -31,6 +31,7 @@ nav:
       - Intro: matlab/intro-matlab.md
       - Load and run: matlab/load_runMatlab.md
       - MATLAB terminal and Slurm: matlab/slurmMatlab.md
+      - Interactive jobs: matlab/interactive.md     
       - MATLAB GUI and batch jobs: matlab/MatlabGUIslurm.md
       - MATLAB Add-Ons: matlab/matlab-addons.md
       - Summary: matlab/matlab-summary.md
