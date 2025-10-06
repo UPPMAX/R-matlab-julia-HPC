@@ -105,13 +105,13 @@ graph TD
     === "NSC"
 
         ```bash
-        $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2025-22-262
+        $ interactive -n <tasks> --time=HHH:MM:SS -A naiss2025-22-934
         ```
 
     === "PDC"
 
         ```bash
-        $ salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-262 -p <partition>
+        $ salloc -n <ntasks> --time=HHH:MM:SS -A naiss2025-22-934 -p <partition>
         ```
 
         Where <partition> is ``shared``, ``main`` or ``gpu``
@@ -128,19 +128,19 @@ graph TD
     === "UPPMAX" 
 
         ```bash
-        $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-272
+        $ interactive -n <tasks> --time=HHH:MM:SS -A uppmax2025-2-360
         ```
 
     === "LUNARC"
 
         ```bash
-        $ interactive -n <tasks> --time=HHH:MM:SS -A lu2025-7-24
+        $ interactive -n <tasks> --time=HHH:MM:SS -A lu2025-2-94
         ```
 
     === "HPC2N"
 
         ```bash
-        $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2023-114
+        $ salloc -n <tasks> --time=HHH:MM:SS -A hpc2n2025-151
         ```
 
 where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
