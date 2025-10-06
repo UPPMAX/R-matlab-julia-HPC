@@ -14,6 +14,8 @@ This is the page for evaluating the current iteration of the course.
 
     At [the 'Evaluations' page](../evaluations/README.md).
 
+<!-- Not today
+
 ## Any feedback during the day
 
 - `Form to submit any feedback during the day`
@@ -26,9 +28,11 @@ This is the page for evaluating the current iteration of the course.
     in the feedback.
     Do mention the teachers, assistants, etc by name!
 
+-->
+
 ## Evaluation questions
 
-- `Evaluation questions form`
+- [Evaluation questions form](https://forms.office.com/e/jDAQWiPbgs)
 
 ???- hint "Why do you evaluate under lesson hours?"
 
