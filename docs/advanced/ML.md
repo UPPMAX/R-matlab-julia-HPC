@@ -71,5 +71,3 @@ Python, R, and MATLAB have several installed packages that will help you do mach
 In this course, we will give you some information about how to find R packages for ML, as well as give an example on using MATLAB with ML, and some examples for Julia. We will only cover most of these briefly.
 
 If you are interested in how to use Python for ML at the Swedish HPC centres, then there will be some material about that in the course "Introduction to Python and using Python in an HPC environment" which will be given later this year (27 Nov, 28 Nov, Dec 1, Dec 2).
- 
-
