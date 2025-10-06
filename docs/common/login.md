@@ -1,9 +1,5 @@
 # Log in and other preparations
 
-!!! warning
-
-    Under production. Details are not updated for this course instance yet!
-
 !!! info "Learning outcomes"
 
     This is an optional session.
