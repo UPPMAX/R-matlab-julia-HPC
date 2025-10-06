@@ -21,7 +21,7 @@
 
 In order to run interactively with more memory or more threads/processes, you need to have compute nodes allocated to run on, and this is done through the Slurm system.
 
-## Interactive sessions at NSC, Dardel, HPC2N, UPPMAX and LUNARC
+## Interactive sessions at NSC, PDC, HPC2N, UPPMAX and LUNARC
 
 Here we define an interactive session as a session with direct access to a compute node.
 Or alternatively: an interactive session is a session, in which there is no queue before a command is run on a compute node.
