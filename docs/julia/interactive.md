@@ -24,17 +24,11 @@
 
 There are several ways to run Julia interactively
 
-- Directly on the login nodes: **only** do this for short jobs that do not take a lot of resources
-- As an interactive job on the computer nodes, launched via the batch system
-- Jupyter notebooks on compute node.
-
 ## General
 
 In order to run interactively, you need to have compute nodes allocated to run on, and this is done through the Slurm system.
 
-Because you will have to wait until the nodes are allocated, and because you cannot know when this happens, this is not usually a recommended way to run Julia, but it is possible.
-
-## Interactive sessions at HPC2N, UPPMAX, LUNARC, and NSC
+## Interactive sessions at NSC, PDC, HPC2N, UPPMAX and LUNARC
 
 Here we define an interactive session as a session with direct access to a compute node.
 Or alternatively: an interactive session is a session, in which there is no queue before a command is run on a compute node.
@@ -56,13 +50,13 @@ one needs to allocate resources on the cluster first.
 
 The command to request an interactive node differs per HPC cluster:
 
-| Cluster | `interactive` | `salloc`     | GfxLauncher |
-|---------|:-------------:|--------------|-------------|
-| HPC2N   | Works         | Recommended  | N/A         |
-| UPPMAX  | Recommended   | Works        | N/A         |
-| LUNARC  | Works         | N/A          | Recommended |
-| NSC     | Recommended   | N/A          | N/A         |
-| PDC     | N/A           | Recommended  | Possible    |
+| Cluster | `interactive` | `salloc`     | GfxLauncher | Open OnDemand |
+|---------|:-------------:|--------------|-------------|---------------|
+| HPC2N   | Works         | Recommended  | N/A         |  Recommended  |
+| UPPMAX  | Recommended   | Works        | N/A         |  N/A  
+| LUNARC  | Works         | N/A          | Recommended |  N/A  
+| NSC     | Recommended   | N/A          | N/A         |  N/A  
+| PDC     | N/A           | Recommended  | Possible    |  N/A  
 
 Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):
 
@@ -184,7 +178,7 @@ Then, when you get the allocation, do one of:
     === "NSC"
 
         ```bash
-        [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 0:30:0 -A naiss2025-22-262
+        [sm_bcarl@tetralith3 ~]$ interactive -n 4 -t 0:30:0 -A naiss2025-22-934
         salloc: Pending job allocation 43071298
         salloc: job 43071298 queued and waiting for resources
         salloc: job 43071298 has been allocated resources
@@ -210,7 +204,7 @@ Then, when you get the allocation, do one of:
     === "PDC"
 
         ```bash
-        claremar@login1:~> salloc --ntasks=4 -t 0:30:00 -p shared --qos=normal -A naiss2025-22-262
+        claremar@login1:~> salloc --ntasks=4 -t 0:30:00 -p shared --qos=normal -A naiss2025-22-934
         salloc: Pending job allocation 9102757
         salloc: job 9102757 queued and waiting for resources
         salloc: job 9102757 has been allocated resources
@@ -250,7 +244,7 @@ Then, when you get the allocation, do one of:
     === "UPPMAX"
 
         ```bash
-        [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-272 -p core -n 4 -t 0:30:00
+        [bjornc@pelle2 ~]$ interactive -A uppmax2025-2-360 -p core -n 4 -t 0:30:00
         You receive the high interactive priority.
         There are free cores, so your job is expected to start at once.
 
@@ -259,17 +253,17 @@ Then, when you get the allocation, do one of:
         Waiting for job 29556505 to start...
         Starting job now -- you waited for 1 second.
 
-        [bjornc@r483 ~]$ module load julia/1.8.5
+        [bjornc@p102 ~]$ module load julia/1.8.5
         ```
 
         Let us check that we actually run on the compute node:
 
         ```bash
-        [bjornc@r483 ~]$ srun hostname
-        r483.uppmax.uu.se
-        r483.uppmax.uu.se
-        r483.uppmax.uu.se
-        r483.uppmax.uu.se
+        [bjornc@p102 ~]$ srun hostname
+        p102.uppmax.uu.se
+        p102.uppmax.uu.se
+        p102.uppmax.uu.se
+        p102.uppmax.uu.se
         ```
 
         We are. Notice that we got a response from all four cores we have allocated.
@@ -277,7 +271,7 @@ Then, when you get the allocation, do one of:
     === "HPC2N"
 
         ```bash
-        [~]$ salloc -n 4 --time=00:30:00 -A hpc2n2025-062
+        [~]$ salloc -n 4 --time=00:30:00 -A hpc2n2025-151
         salloc: Pending job allocation 20174806
         salloc: job 20174806 queued and waiting for resources
         salloc: job 20174806 has been allocated resources
@@ -303,7 +297,7 @@ Then, when you get the allocation, do one of:
     === "LUNARC"
 
         ```bash
-        [bjornc@cosmos1 ~]$ interactive -A lu2025-7-24 -n 4 -t 30:00
+        [bjornc@cosmos1 ~]$ interactive -A lu2025-2-94 -n 4 -t 30:00
         Cluster name: COSMOS
         Waiting for JOBID 930844 to start
 
@@ -317,7 +311,7 @@ Then, when you get the allocation, do one of:
         4
         ```
 
-        We are, because the *$SLURM* environment variable gves an output. Notice that we got 4, whihc is nt the size of the physcial node bt the allocation size.
+        We are, because the *$SLURM* environment variable gves an output. Notice that we got 4, which is not the size of the physcial node bt the allocation size.
 
 
 
