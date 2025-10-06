@@ -3,11 +3,11 @@
 !!! info "Learning outcomes for today"
 
     - Be able to start interactive sessions
-    - Be able to run Julia in Jupyter notebook
+    - Be able to run Julia in Jupyter notebook or Pluto
 
 !!! info "Your expectations?"
 
-    - How to reach the calculation nodes
+    - How to reach the calculation nodes interactivey
     - How do I proceed to work interactively?
 
 ??? note "Instructor note"
@@ -434,6 +434,25 @@ Then, when you get the allocation, do one of:
 
         [~]$
         ```
+## Notebooks
+
+### Jupyter
+
+### Pluto 
+
+- Pluto, like Jupyter, is a programming notebook.
+
+#### Why is Pluto a good tool?
+
+- Reproducible (even without Pluto), gittable, extraordinarily interactive programming notebooks
+- Offers a similar notebook experience to Jupyter, but understands global references between cells, and reactively re-evaluates cells affected by a code change.
+
+#### (Possible) use cases when Jupyter might be better.
+
+
+### [Running Pluto](notebook_pluto.md)
+
+Break-out room
 
 ### Running Julia in Jupyter
 

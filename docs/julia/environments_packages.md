@@ -70,6 +70,39 @@ official tutorial on the Julia package manager:
 - `Project.toml` stores what packages you've asked for
 - `Manifest.toml` stores how Pkg resolved this, with all dependencies and exact versions
 
+!!! note "Environment stacking"
+
+    When you have not activated any specific environment, the active environment
+    is your personal base environment for the Julia version you're currently
+    running (called e.g. @v1.11). This is normally reachable in addition to your
+    active environment. This can be a convenient way to access development
+    tools that you want active but your project *does not depend on*.
+
+    If you have tools available through your base environment and you need to
+    check that your project can be reproduced properly without your base
+    environment, you'll want to read this:
+
+    ??? note "Loading project environment *only*"
+
+        The full stack of reachable environments are defined by the global Julia variable
+        [`LOAD_PATH`](https://docs.julialang.org/en/v1/base/constants/#Base.LOAD_PATH):
+
+            julia>LOAD_PATH
+            3-element Vector{String}:
+            "@"
+            "@v#.#"
+            "@stdlib"
+
+        where `@` is the active environment, `@v#.#` is your base environment for the
+        Julia version in use, and `@stdlib` is the standard library.
+
+        To include just the current environment we can modify the `LOAD_PATH`
+        variable from the julian prompt with the following functions:
+
+            julia> empty!(LOAD_PATH)        # this will clean out the path
+            julia> push!(LOAD_PATH, "@")    # this will add the current environment
+
+
 
 ## But where are the packages installed?
 
@@ -87,96 +120,6 @@ You may want to take a look at what it contains on your cluster.
 Packages can consist of relatively many files and some clusters have a limit on
 the number of files you can have in your home directory. If this becomes a
 problem, talk to us and we will find a way.
-
-
-## Nested environments
-
-The active environments can be seen with the command:
-
-    julia>LOAD_PATH
-    3-element Vector{String}:
-    "@"
-    "@v#.#"
-    "@stdlib"
-
-where `@` is the current environment, `@v#.#` is the default environment for the
-Julia version that is being in use, and `@stdlib` is the standard library.
-
-??? note "Site-installed packages in environments"
-
-    At UPPMAX the central environment adds to the list with the element:
-
-        "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
-
-Thus, by default in addition to the current environment other environments are present
-which can potentially create conflicts for reproducibility if you are not aware of what
-Julia is doing under the hood. Later on, we will see possible strategies to avoid this
-situation.
-
-### Customizing the set of visible environments
-
-We saw previously that by default some environments are visible to new
-environments. One can customize this setting with the variable
-`JULIA_LOAD_PATH`, this can be done on the Linux command line:
-
-    $ export JULIA_LOAD_PATH="path1:path2:..."
-
-For instance, for including just the current environment we can set the value of
-this variable as:
-
-    $ export JULIA_LOAD_PATH="@"
-
-Then, when we start a Julia session the default option will be the current
-environment:
-
-    julia> LOAD_PATH
-    1-element Vector{String}:
-    "@"
-
-One can also modify the `LOAD_PATH` directly on the julian prompt with the
-following functions:
-
-    julia> empty!(LOAD_PATH)        # this will clean out the path
-    julia> push!(LOAD_PATH, "@")    # it will add the current environment
-
-
-### Environment stacks
-
-As we saw before, `LOAD_PATH` shows that environments can be stacked and we can
-place the environments we want in the path so that they are visible in our
-current environment. To illustrate this concept, let's create a second
-environment and first we can remove the content of `LOAD_PATH` (which path will
-be different for you):
-
-    julia> empty!(LOAD_PATH)
-    shell> pwd
-      /path-to-my-project/$USER/julia
-
-    shell> mkdir my-second-env
-
-    shell> cd my-second-env
-    pkg> activate .
-
-If we try to use the `DFTK` package we will see the error message:
-
-    julia> using DFTK
-      │ Package DFTK not found, but a package named DFTK is available from a registry.
-      │ Install package?
-      │   (my-second-env) pkg> add DFTK
-      └ (y/n/o) [y]: n
-       ERROR: ArgumentError: Package DFTK not found in current path.
-
-If you remember this package was installed in the first environment
-(`my-first-env`). In order to make this package available in our second
-environment we can push the corresponding folder's path to `LOAD_PATH`:
-
-    julia> push!(LOAD_PATH, "/path-to-my-project/$USER/julia/my-first-env/")
-      1-element Vector{String}:
-      "/path-to-my-project/$USER/julia/my-first-env/"
-
-    julia> using DFTK
-
-and now the package can be loaded from the first environment without errors.
 
 
 ## Using packages
@@ -233,6 +176,17 @@ A selection of the Julia packages and libraries installed on Bianca are:
     - DataFrames
     - DistributedArrays
     - PlotlyJS
+
+!!! note "Site-installed packages in environments"
+
+    At Bianca the central environment adds to the environment stack:
+
+        julia> LOAD_PATH
+        4-element Vector{String}:
+         "@"
+         "@v#.#"
+         "@stdlib"
+         "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
 
 
 ## Exercises

@@ -2,33 +2,25 @@
 
 ## Documentation
 
-- Documentation at the HPC centres  
+- Documentation at the HPC centres
     - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
     - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
-    - [LUNARC](The user demand on Julia has been low, so there is currently no site-specific documentation.)
+    - LUNARC has no specific Julia documentation, but here you can find [installed versions](https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/) (The user demand on Julia has been low).
     - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
     - [PDC](https://support.pdc.kth.se/doc/applications/)
 
-- Official Julia documentation is found
-  [here](https://docs.julialang.org/en/v1/)
+- [Official Julia documentation](https://docs.julialang.org/en/v1/)
+- [Slack channel for Julia and instructions for joining it](https://julialang.org/slack/)
+- [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
 
-- Slack channel for Julia and instructions for joining it are found
-  here: <https://julialang.org/slack/>
+## Courses - Material for improving your programming skills
 
-- [HPC2N YouTube video on Julia in
-  HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
-
-## Courses
-
-### Material for improving your programming skills
-
-#### First level
+### First level
 
 [The Carpentries](https://carpentries.org/) teaches basic lab skills for
 research computing.
 
-- [Programming with
-  Julia](https://carpentries-incubator.github.io/julia-novice/) (alpha)
+- [Programming with Julia](https://carpentries-incubator.github.io/julia-novice/) (alpha)
 
 ### Second level
 
@@ -44,23 +36,30 @@ a national centre that supports industry, public administration and
 academia accessing and using European supercomputers. They give
 higher-level training of programming and specific software.
 
-- [Julia for high-performance
-  Computing](https://enccs.github.io/julia-for-hpc/)
-- [Julia for High-performance data
-  analytics](https://enccs.github.io/julia-for-hpda/)
+- [Julia for High-Performance Computing](https://enccs.github.io/julia-for-hpc/)
+- [Julia for High-Performance Data Analytics](https://enccs.github.io/julia-for-hpda/)
 
-## IDEs
+
+## Tools for coding
+
+A website called Modern Julia Workflows has a good page about tools for [Writing
+your code](https://modernjuliaworkflows.org/writing).
+
+### Notebooks
 
 - Jupyter: Jupyter notebooks are familiar to many Python and R users.
 - Pluto.jl: Offers a similar notebook experience to Jupyter, but
   understands global references between cells, and reactively
   re-evaluates cells affected by a code change.
-- A text editor like nano, emacs, vim, etc., followed by running your
-  code with julia filename.jl. There are also plugins for Julia for
-  major text editors - do an internet search on e.g. “emacs julia” or
-  “vim julia” to find out more.
+
+### IDEs
+
+- While arguably a text editor with extensions, VSCode has a Julia extension that
+  is considered the best-supported IDE for Julia.
+- A text editor like `nano`, `emacs`, `vim`, and a Julia REPL in a second window
+  also creates a good experience. There are Julia plugins for Emacs and Vim and
+  probably more editors.
 
 ## Packages
 
-- [List
-  ecosystems](https://enccs.github.io/julia-intro/scientific-computing/)
+- [List ecosystems](https://enccs.github.io/julia-intro/scientific-computing/)
