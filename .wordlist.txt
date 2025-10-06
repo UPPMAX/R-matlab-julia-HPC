@@ -1004,6 +1004,7 @@ nid
 
 ABySS
 ai
+AI
 Amdahl's
 arg
 BEDTools
@@ -1064,3 +1065,7 @@ Bj
 optimise
 parallelisation
 onDemand
+ML
+DL
+LLM
+LLMs
