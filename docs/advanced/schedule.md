@@ -13,10 +13,11 @@ Time  | Topic                                                                   
 10:00 | Break                                                                            | .
 10:15 | [Parallel computing: Thread parallelism](thread_parallelism/README.md)           | R
 11:00 | Break                                                                            | .
-11:15 | .                                                                                | .
+11:15 | [Parallel computing: Distributed parallelism](distributed_parallelism/README.md) | Bj
 12:00 | Break                                                                            | .
-13:00 | Machine learning                                                                 | B
+13:00 | Introduction to GPUs                                                             | B 
+13:30 | Machine learning (R, MATLAB, Julia)                                              | B+?
 
 <!-- markdownlint-enable MD013 -->
 
-- Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek
+- Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek, `Bj`: Björn Claremar
