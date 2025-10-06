@@ -36,9 +36,7 @@ As for the GPU architecture, a GPU card of type Ada Lovelace (like the L40s) loo
 
     On the diagram, each green dot represents a CUDA core (single precision), while the yellow are RT cores and blue Tensor cores. The cores are arranged in the slots called SMs in the figure. Cores in the same SM share some local and fast cache memory.
 
-GPCs
-
-!!! note " "
+!!! note "GPCs"
 
     ![GPC](../img/GPC-with-raster-engine.png)
 
@@ -902,15 +900,14 @@ for instance.
         ```
 
 
-# Exercises
+## Exercises
 
-## Exercise 1. Run the GPU script
-
-Run the following script ``script-gpu.jl``. Why are we running the simulations
-twice?
-Note that at UPPMAX you will need a project will access to Snowy. Remember that at PDC
-we will use AMD GPUs.
-
+!!! example "**Exercise 1.** Run the GPU script"
+    
+    Run the following script ``script-gpu.jl``. Why are we running the simulations
+    twice?
+    Note that at UPPMAX you will need a project will access to Snowy. Remember that at PDC
+    we will use AMD GPUs.
 
 ??? hint "Answer"
 
@@ -1100,11 +1097,9 @@ we will use AMD GPUs.
         julia script-gpu.jl     
         ``` 
 
-
 !!! Summary
 
     - GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks
     - There are GPUs on NSC/Tetralith, PDC/Dardel, C3SE/Alvis, HPC2N/Kebnekaise, LUNARC/Cosmos, UPPMAX/Pelle, but they are different
     - It varies between centres how you allocate a GPU
     - You need to use either batch or interactive/OpenOnDemand to use GPUs
-
