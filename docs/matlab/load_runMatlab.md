@@ -409,7 +409,7 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
      It is also possible to start the MATLAB GUI on the login node, but even if you are already logged into Rackham, you must use Snowy for any interactive work. Fortunately, the ``interactive`` command takes care of this for you without requiring SSH, as long as you specify ``-M snowy``. A MATLAB GUI session can be run with the following commands (again, edit time, resources, project ID, and MATLAB version as needed):
 
      ```bash
-     interactive -M snowy -n 4 -t 00:30:00 -A uppmax20YY-X-XXX
+     interactive  -n 4 -t 00:30:00 -A uppmax20YY-X-XXX
      module load matlab/R2023b
      matlab
      ```
