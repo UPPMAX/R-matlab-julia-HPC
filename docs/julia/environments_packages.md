@@ -150,43 +150,45 @@ environment directory):
     julia --project=.
 
 
-## Bianca
+???- note "Bianca"
 
-- At Bianca there is a central library with installed packages.
+    - At Bianca there is a central library with installed packages.
 
-- You may control the present "central library" by typing ``ml help julia/<version>`` in the BASH shell.
-- A possibly more up-to-date status can be found from the Julia shell:
+    - You may control the present "central library" by typing ``ml help julia/<version>`` in the BASH shell.
+    - A possibly more up-to-date status can be found from the Julia shell:
 
+    ```{ .julia-repl }
     julia> using Pkg
     julia> Pkg.activate(DEPOT_PATH[2]*"/environments/v1.8");     #change version (1.8) accordingly if you have another main version of Julia
     julia> Pkg.status()
     julia> Pkg.activate(DEPOT_PATH[1]*"/environments/v1.8");     #to return to user library
+    ```
+    
+    A selection of the Julia packages and libraries installed on Bianca are:
 
-A selection of the Julia packages and libraries installed on Bianca are:
+        - BenchmarkTools
+        - CSV
+        - CUDA
+        - MPI
+        - Distributed
+        - IJulia
+        - Plots
+        - PyPlot
+        - Gadfly
+        - DataFrames
+        - DistributedArrays
+        - PlotlyJS
 
-    - BenchmarkTools
-    - CSV
-    - CUDA
-    - MPI
-    - Distributed
-    - IJulia
-    - Plots
-    - PyPlot
-    - Gadfly
-    - DataFrames
-    - DistributedArrays
-    - PlotlyJS
+    !!! note "Site-installed packages in environments"
 
-!!! note "Site-installed packages in environments"
+        At Bianca the central environment adds to the environment stack:
 
-    At Bianca the central environment adds to the environment stack:
-
-        julia> LOAD_PATH
-        4-element Vector{String}:
-         "@"
-         "@v#.#"
-         "@stdlib"
-         "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
+            julia> LOAD_PATH
+            4-element Vector{String}:
+              "@"
+              "@v#.#"
+              "@stdlib"
+              "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
 
 
 ## Exercises
@@ -194,7 +196,7 @@ A selection of the Julia packages and libraries installed on Bianca are:
 TODO: Make these exercises be the installation of the packages that we will later use.
 It might be advisable to install IJulia and Pluto in separate environments.
 
-.. challenge:: 1. Project environment
+!!! challenge "1. Project environment"
 
     Create a project environment called ``new-env`` and activate it. Then, install the
     package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
@@ -216,7 +218,7 @@ It might be advisable to install IJulia and Pluto in separate environments.
                       [336ed68f] CSV v0.10.9
                 (new-env) pkg> activate
 
-.. challenge:: 2. Package environment
+!!! challenge "2. Package environment"
 
     Create a package environment called ``new_pack`` and activate it. Then, install the
     package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
