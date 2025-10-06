@@ -4,6 +4,9 @@
 ###############################################################
 # Confidences
 ###############################################################
+setwd("GitHubs/R-matlab-julia-HPC/docs/evaluations/20250324_r")
+t <- readr::read_csv("learning_outcomes.csv")
+
 t <- readr::read_delim("learning_outcomes.csv", delim = "|")
 names(t)
 names(t) <- c(
@@ -42,7 +45,7 @@ readr::write_csv(
 t <- t |> dplyr::arrange(average_confidence)
 t$learning_outcome <- as.factor(t$learning_outcome)
 t$learning_outcome <- reorder(
-  x = t$learning_outcome, 
+  x = t$learning_outcome,
   X = order(t$average_confidence),
   decreasing = TRUE
 )

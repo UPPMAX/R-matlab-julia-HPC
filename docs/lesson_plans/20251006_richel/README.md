@@ -54,4 +54,8 @@ Those videos will make it easy to write that user documentation.
 
 All is done, except:
 
-- [ ] RStudio video Pelle, reported at UPPMAX that ThinLinc cannot connect
+- [x] RStudio video Pelle, reported at UPPMAX that ThinLinc cannot connect
+
+## 2025-09-24
+
+Done!
