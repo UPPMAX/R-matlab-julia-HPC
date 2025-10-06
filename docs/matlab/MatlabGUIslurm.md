@@ -40,7 +40,7 @@ In the following sections we will extend the last two options.
 
     - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
     - On login nodes, MATLAB should be started with the option ``-singleCompThread`` to stop it from using more than one thread (a couple of the clusters detect if the user is on a login node and restrict MATLAB to 1 thread automatically, but it's better to include it to be safe than forget and have your job killed by angry admins).
-    - On some clusters (e.g. COSMOS, Dardel, Kebnekaise), it is possible, and therefore recommended, to start the MATLAB GUI itself on a compute node.
+    - On some clusters (e.g. COSMOS, Kebnekaise, Dardel), it is possible, and therefore recommended, to start the MATLAB GUI itself on a compute node.
 
 ## MATLAB Desktop/graphical interface
 
@@ -100,10 +100,13 @@ If you scroll down in the window that appears when you select the right cluster,
 ![Rackham Matlab Scheduler Plugin](./img/Rackham-matlab-cluster-profile-mgr2.png){ width="550"}
 > Editing parameters of Scheduler Plugin in Cluster Profile Manager.
 
-In other words, almost anything you might otherwise set by calling `c.AdditionalProperties.<insert_property>=...` can be set in the GUI in this scheduler plugin. Just keep in mind that these settings are saved between sessions.
+In other words, almost anything you might otherwise set by calling `c.AdditionalProperties.<insert_property>=...` can be set in the GUI in this scheduler plugin.
+
+!!! note
+
+    The settings in the Scheduler Plugin for any given cluster profile are saved between sessions. Always check them before running.
 
 If you are on Desktop On Demand on LUNARC, these settings do not override the parameters set in the GfxLauncher for the MATLAB GUI session itself, but rather to any batch jobs you submit from *within* the GUI.
-
 
 ## Serial jobs
 
