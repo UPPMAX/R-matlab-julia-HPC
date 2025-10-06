@@ -51,6 +51,7 @@ nav:
       - Distributed parallelism: advanced/distributed_parallelism/README.md
       - Introduction to GPUs: advanced/gpus.md
       - Machine Learning: 
+        - Introduction: advanced/ML.md 
         - With R: advanced/MLR.md
         - With Julia: advanced/MLjulia.md
         - With MATLAB: advanced/MLmatlab.md
