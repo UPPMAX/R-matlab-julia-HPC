@@ -400,21 +400,21 @@ Running the MATLAB GUI requires that users be logged into a ThinLinc session. Re
      srun matlab
      ```
 
-=== "UPPMAX (Rackham and Pelle?)"
+=== "UPPMAX (Pelle)"
 
      For UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the ``-nodisplay`` flag is omitted (as are ``-nodesktop -nosplash`` if applicable). You should still include ``-singleCompThread``!
 
      ![MATLAB GUI, Rackham](../img/Rackham-Matlab.png)
 
-     It is also possible to start the MATLAB GUI on the login node, but even if you are already logged into Rackham, you must use Snowy for any interactive work. Fortunately, the ``interactive`` command takes care of this for you without requiring SSH, as long as you specify ``-M snowy``. A MATLAB GUI session can be run with the following commands (again, edit time, resources, project ID, and MATLAB version as needed):
+     It is also possible to start the MATLAB GUI on the login node. A MATLAB GUI session on a compute node can be run with the following commands (again, edit time, resources, project ID, and MATLAB version as needed):
 
      ```bash
-     interactive -M snowy -n 4 -t 00:30:00 -A uppmax20YY-X-XXX
-     module load matlab/R2023b
+     interactive  -n 4 -t 00:30:00 -A uppmax2025-2-360
+     module load MATLAB/2023b-update4
      matlab
      ```
 
-     In the above example, ``-n 4`` means the job will run on 4 cores. Snowy nodes have 16 cores. The default partition, ``core``, is for jobs requiring up to 15 cores, and they cannot be exclusive. If you need a full node, or more cores than one node contains, you should change the partition with ``-p node``. Please refer to `this link <https://docs.uppmax.uu.se/cluster_guides/snowy/#using-the-batch-system>`_ for allowed combinations of ``interactive`` parameters.
+     In the above example, ``-n 4`` means the job will run on 4 cores. Pelle nodes have 96 cores. Please refer to [this link](https://docs.uppmax.uu.se/cluster_guides/snowy/#using-the-batch-system) for allowed combinations of ``interactive`` parameters.
 
 
 === "NSC (Tetralith)"

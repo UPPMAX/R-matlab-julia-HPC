@@ -6,8 +6,7 @@
 #SBATCH -c 4
 #SBATCH -p main
 
-module load PDC/23.12 
-module load R/4.4.1-cpeGNU-23.12 
+module load PDC/24.11 R/4.4.2-cpeGNU-24.11 
 
 # Batch script to submit the R program parallel_foreach.R
 R -q --slave -f parallel_foreach.R

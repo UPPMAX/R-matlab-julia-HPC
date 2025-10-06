@@ -1,3 +1,6 @@
+# Batch system
+
+
 !!! info "Learning outcomes for today"
 
     - Short introduction to SLURM scheduler
@@ -18,8 +21,6 @@
 
 !!! warning
     - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
-
-# Batch system
 
 The batch system used at HPC clusters in Sweden is called SLURM.
 

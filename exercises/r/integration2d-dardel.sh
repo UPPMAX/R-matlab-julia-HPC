@@ -10,7 +10,7 @@
 
 
 # Load dependencies and R version
-ml PDC/23.12 R/4.4.1-cpeGNU-23.12
+ml PDC/24.11 R/4.4.2-cpeGNU-24.11
 
 Rscript --no-save --no-restore integration2d.R
 
