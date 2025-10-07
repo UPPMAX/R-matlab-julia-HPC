@@ -491,7 +491,7 @@ where the script is a text file could contain these lines:
            ------------------------------------------------------------------------------------------------
         ```
 
-    ??? note "Output at LUNARC as of Oct 2024"
+    ??? note "Output at LUNARC as of Oct 2025"
 
         ```console
 
