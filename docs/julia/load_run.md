@@ -4,11 +4,11 @@
 
     At the Swedish HPC centers we call the applications available via the *module system* **modules**:
 
-    - [NSC](<https://www.nsc.liu.se/software/modules/>)
-    - [PDC](<https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/>)
-    - [UPPMAX](<https://docs.uppmax.uu.se/cluster_guides/modules/>)
-    - [HPC2N](<https://docs.hpc2n.umu.se/software/modules/>)
-    - [LUNARC](<https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept>)
+    - [NSC](https://www.nsc.liu.se/software/modules/)
+    - [PDC](https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/)
+    - [UPPMAX](https://docs.uppmax.uu.se/cluster_guides/modules/)
+    - [HPC2N](https://docs.hpc2n.umu.se/software/modules/)
+    - [LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept)
 
 
 !!! info "Objectives"
@@ -549,10 +549,12 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution"
 
-      ```console
+       ```console
 
          $ julia
-      ```
+       ```
+
+       It doesn't work! The Julia interpreter is not found.
 
 !!! example "Challenge 3.  Load and start ``julia`` the right way from the command line"
 
@@ -631,7 +633,8 @@ where the script is a text file could contain these lines:
             ```console
 
                $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
-
+            ```
+            
 !!! example "Challenge 4. Getting familiar with Julia REPL"
 
     - It is important that you know how to navigate on the Julia command line. Here is where you work live with data and test aout things and you may install packages.
@@ -658,7 +661,7 @@ where the script is a text file could contain these lines:
         ```
 !!! example "Challenge 5. Load another module and run a script"
 
-    - Load the latest version and run
+    - Load the latest version
     - Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input:
 
     ```julia
@@ -668,6 +671,8 @@ where the script is a text file could contain these lines:
     summ = x + y
     println("The sum of the two numbers is ", summ)
     ```
+
+    - Enter two numbers, like 2 & 3.
     
     ??? note "Solution for HPC2N"
 
@@ -681,19 +686,15 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution for UPPMAX"
 
-       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
-       ```console
+        ```console
 
             $ ml julia/1.8.5                   # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
-       ```
+        ```
 
     ??? note "Solution for LUNARC"
-
-
-       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
         ```console
 
@@ -704,8 +705,6 @@ where the script is a text file could contain these lines:
         
     ??? note "Solution for NSC"
 
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
-
         ```console
 
             $ ml julia/1.10.2-bdist           # Julia module
@@ -715,9 +714,7 @@ where the script is a text file could contain these lines:
         
     ??? note "Solution for PDC"
 
-       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
-
-       ```console
+        ```console
 
             $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12           # Julia module
 
