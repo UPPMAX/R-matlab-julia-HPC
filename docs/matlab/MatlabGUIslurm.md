@@ -112,12 +112,12 @@ If you are on Desktop On Demand on LUNARC, these settings do not override the pa
 
 Extensive jobs must be run through SLURM. There are different manners to run MATLAB jobs with SLURM, for instance using:
 
-    - using the MATLAB GUI
-        - ThinLinc (LUNARC, UPPMAX, HPC2N)
-            - interactive (``salloc``/``interactive``) sessions
-        - Desktop On Demand (LUNARC)
-        - [Open onDemand](https://portal.hpc2n.umu.se/public/landing_page.html){:target="_blank"} (HPC2N). 
-    - batch scripts in a SSH session submitted with ``sbatch`` (less recommended)
+- using the MATLAB GUI
+    - ThinLinc (LUNARC, UPPMAX, HPC2N)
+        - interactive (``salloc``/``interactive``) sessions
+    - Desktop On Demand (LUNARC)
+    - [Open onDemand](https://portal.hpc2n.umu.se/public/landing_page.html){:target="_blank"} (HPC2N). 
+- batch scripts in a SSH session submitted with ``sbatch`` (less recommended)
 
 ## Serial jobs
 
