@@ -458,10 +458,17 @@ Break-out room
 
 !!! important "Installation step"
 
-    - This is done only once, but for each combination of Julia you would like to use.
+    - This was done in Exercise 2 in the [Managing environments and packages section](environments_packages.md)
     - It may take 5-10 minutes or so.
-    - This you can do in an ordinary terminal (book an interactive session, for safety)
-   
+
+!!! important "Use ThinLinc and interactive session"
+
+    - Use thinLinc
+    - Allocate resources like above with salloc/interactive
+    - When these steps are ready continue below!
+
+!!! example "Start Jupyter"
+
     === "NSC"
 
         ```bash
