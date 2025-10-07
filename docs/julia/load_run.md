@@ -304,7 +304,7 @@ where the script is a text file could contain these lines:
 
     - Find/search for that documentation!
 
-??? note "Solutions"
+    ??? note "Solutions"
 
     - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
     - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
@@ -319,10 +319,7 @@ where the script is a text file could contain these lines:
 
     ??? note "Solutions"
 
-
-      .. tabs::
-
-         .. tab:: UPPMAX
+         === UPPMAX
 
            Check all available Julia versions with:
 
@@ -331,7 +328,7 @@ where the script is a text file could contain these lines:
                 $ module avail julia
             ```
 
-         .. tab:: HPC2N
+         === HPC2N
 
             Check all available version Julia versions with:
 
@@ -358,7 +355,7 @@ where the script is a text file could contain these lines:
                $ module spider Julia/1.8.5-linux-x86_64
             ```
 
-         .. tab:: LUNARC
+         === LUNARC
 
             Check all available version Julia versions with:
 
@@ -381,7 +378,7 @@ where the script is a text file could contain these lines:
                $ module spider Julia/1.8.5-linux-x86_64
             ```
 
-         .. tab:: Tetralith
+         === Tetralith
 
             Check all available version Julia versions with:
 
@@ -397,7 +394,7 @@ where the script is a text file could contain these lines:
                $ module spider julia/1.8.5-nsc1-bdist
             ```
 
-         .. tab:: Dardel
+         === Dardel
 
             Check all available version Julia versions with:
 
@@ -560,9 +557,9 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution"
 
-      .. tabs::
+      
 
-         .. tab:: UPPMAX
+         === UPPMAX
 
             Go back and check which Julia modules were available. To load version 1.8.5, do:
 
@@ -578,7 +575,7 @@ where the script is a text file could contain these lines:
 
                $ ml julia/1.8.5
 
-         .. tab:: HPC2N
+         === HPC2N
 
             ```console
 
@@ -592,7 +589,7 @@ where the script is a text file could contain these lines:
 
                $ ml Julia/1.8.5-linux-x86_64
 
-         .. tab:: LUNARC
+         === LUNARC
 
             ```console
 
@@ -606,7 +603,7 @@ where the script is a text file could contain these lines:
 
                $ ml Julia/1.8.5-linux-x86_64
 
-         .. tab:: NSC
+         === NSC
 
             ```console
 
@@ -620,7 +617,7 @@ where the script is a text file could contain these lines:
 
                $ ml julia/1.10.2-bdist
 
-         .. tab:: PDC
+         === PDC
 
             ```console
 
