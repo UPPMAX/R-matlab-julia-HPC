@@ -271,14 +271,14 @@ or
    julia> exit()
 ```
 
-!!! The Julian modes summary
+!!! note "The Julian modes summary"
 
     - enter the *shell mode* by typing ``;``
     - go back to *Julian* mode by ``<backspace>``
     - access the *package manager* mode by typing ``]`` in the *Julian* mode
     - use the *help mode* by typing ``?`` in the *Julian mode*
 
-!!! seealso
+!!! note "See also"
 
     [More detailed information about the modes in Julia can be found](https://docs.julialang.org/en/v1/stdlib/REPL).
 
@@ -288,16 +288,15 @@ or
 
 You can run a Julia script on the Linux shell as follows:
 
-.. code-block:: console
-
+```console
    $ julia example.jl
+```
 
 where the script is a text file could contain these lines:
 
-.. code-block:: bash
-
+```bash
    println("hello world")
-
+```
 
 ## Exercises
 
@@ -318,7 +317,7 @@ where the script is a text file could contain these lines:
 
     - Use the ``spider`` or ``avail`` module commands
 
-??? note "Solutions"
+    ??? note "Solutions"
 
 
       .. tabs::
@@ -327,18 +326,19 @@ where the script is a text file could contain these lines:
 
            Check all available Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                 $ module avail julia
-
+            ```
 
          .. tab:: HPC2N
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module spider julia
+            ```
 
             Notice that the output if you are working on the Intel (*kebnekaise.hpc2n.umu.se*) or AMD
             (*kebnekaise-amd.hpc2n.umu.se*) login nodes is different. In the former, you will see more
@@ -346,73 +346,83 @@ where the script is a text file could contain these lines:
 
             To see how to load a specific version of Julia, including the prerequisites, do
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/<version>
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/1.8.5-linux-x86_64
+            ```
 
          .. tab:: LUNARC
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia
+            ```
 
             To see how to load a specific version of Julia, including the prerequisites, do
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/<version>
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/1.8.5-linux-x86_64
+            ```
 
          .. tab:: Tetralith
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module avail Julia
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
                $ module spider julia/1.8.5-nsc1-bdist
+            ```
 
          .. tab:: Dardel
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia
+            ```
 
             To see how to load a specific version of Julia, including the prerequisites, do
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/<version>
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
+            ```
                $ module spider Julia/1.8.5-linux-x86_64
 
     ??? note "Output at UPPMAX as of Oct 2024"
 
-       .. code-block::  console
+        ``` console
 
           $ module avail julia
           ----------------------------- /sw/mf/rackham/compilers -----------------------------
@@ -425,11 +435,12 @@ where the script is a text file could contain these lines:
 
           Use "module spider" to find all possible modules and extensions.
           Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+        ```
 
 
     ??? note "Output at HPC2N as of Oct 2024"
 
-        .. code-block:: console
+        ```console
 
            $ module spider julia  # Assuming you are working on the Intel login nodes
            ------------------------------------------------------------------------------------------------
@@ -451,10 +462,11 @@ where the script is a text file could contain these lines:
 
                 $ module spider Julia/1.8.5-linux-x86_64
            ------------------------------------------------------------------------------------------------
+        ```
 
     ??? note "Output at LUNARC as of Oct 2024"
 
-        .. code-block:: console
+        ```console
 
            $ module spider julia
            -----------------------------------------------------------------------------------------------------
@@ -469,10 +481,11 @@ where the script is a text file could contain these lines:
                    Julia/1.9.2-linux-x86_64
                    Julia/1.9.3-linux-x86_64
                    Julia/1.10.4-linux-x86_64
+        ```
 
     ??? note "Output at NSC as of Mar 2025"
 
-        .. code-block:: console
+        ```console
 
            $ module avail julia
 
@@ -480,10 +493,11 @@ where the script is a text file could contain these lines:
               julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist
               julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
               julia/1.4.1                          julia/1.8.5-nsc1-bdist
+        ```
 
     ??? note "Output at PDC as of Mar 2025"
 
-        .. code-block:: console
+        ```console
 
            $ module spider julia
            -------------------------------------------------------------------------------------------------------
@@ -515,6 +529,7 @@ where the script is a text file could contain these lines:
 
            -------------------------------------------------------------------------------------------------------
              For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
+        ```
 
 
 !!! example "Challenge 1c. Which method to trust?"
@@ -534,10 +549,10 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution"
 
-      .. code-block:: console
+      ```console
 
          $ julia
-
+      ```
 
 !!! example "Challenge 3.  Load and start ``julia`` the right way from the command line"
 
@@ -549,21 +564,21 @@ where the script is a text file could contain these lines:
 
             Go back and check which Julia modules were available. To load version 1.8.5, do:
 
-            .. code-block:: console
+            ```console
 
               $ module load julia/1.8.5
-
+            ```
             Note: Lowercase ``j``.
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml julia/1.8.5
 
          .. tab:: HPC2N
 
-            .. code-block:: console
+            ```console
 
                $ module load Julia/1.8.5-linux-x86_64
 
@@ -571,13 +586,13 @@ where the script is a text file could contain these lines:
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml Julia/1.8.5-linux-x86_64
 
          .. tab:: LUNARC
 
-            .. code-block:: console
+            ```console
 
                $ module load Julia/1.8.5-linux-x86_64
 
@@ -585,13 +600,13 @@ where the script is a text file could contain these lines:
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml Julia/1.8.5-linux-x86_64
 
          .. tab:: NSC
 
-            .. code-block:: console
+            ```console
 
                $ module load julia/1.10.2-bdist
 
@@ -599,13 +614,13 @@ where the script is a text file could contain these lines:
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml julia/1.10.2-bdist
 
          .. tab:: PDC
 
-            .. code-block:: console
+            ```console
 
                $ module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
@@ -613,7 +628,7 @@ where the script is a text file could contain these lines:
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
@@ -630,7 +645,7 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution"
 
-       .. code-block:: julia
+        ```julia
 
             $ julia
             julia> 5 + 6
@@ -640,72 +655,74 @@ where the script is a text file could contain these lines:
             pkg> status
             julia>?
             help?> println
-
+        ```
 !!! example "Challenge 5. Load another module and run a script"
 
     - Load the latest version and run
     - Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input:
 
-            .. code-block:: julia
+    ```julia
 
-                x = parse( Int32, ARGS[1] )
-                y = parse( Int32, ARGS[2] )
-                summ = x + y
-                println("The sum of the two numbers is ", summ)
-
+    x = parse( Int32, ARGS[1] )
+    y = parse( Int32, ARGS[2] )
+    summ = x + y
+    println("The sum of the two numbers is ", summ)
+    ```
+    
     ??? note "Solution for HPC2N"
 
-
-      .. code-block:: console
+        ```console
 
             $ ml purge  > /dev/null 2>&1       # recommended purge
             $ ml Julia/1.8.5-linux-x86_64      # Julia module
 
             $ julia serial-sum.jl Arg1 Arg2    # run the serial script
+        ```
 
     ??? note "Solution for UPPMAX"
 
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
+       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
-      .. code-block:: console
+       ```console
 
             $ ml julia/1.8.5                   # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
-
+       ```
 
     ??? note "Solution for LUNARC"
-      :class: dropdown
 
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
-      .. code-block:: console
+       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
+
+        ```console
 
             $ ml Julia/1.8.5-linux-x86_64           # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
-
+        ```
+        
     ??? note "Solution for NSC"
 
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
-      .. code-block:: console
+        ```console
 
             $ ml julia/1.10.2-bdist           # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
-
+        ```
+        
     ??? note "Solution for PDC"
 
+       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
-
-      .. code-block:: console
+       ```console
 
             $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12           # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
-
+        ```
 
 !!! example "Challenge 6. Check your understanding"
 
@@ -721,6 +738,14 @@ where the script is a text file could contain these lines:
         - back to the ``Julia`` mode?
         - to the ``help`` mode?
         - to the ``shell`` mode?
+
+    ??? note "Solution"
+
+        - to the ``package`` mode? ``]``
+        - back to the ``Julia`` mode? ``<backspace>``
+        - to the ``help`` mode? ``?``
+        - to the ``shell`` mode? ``;``
+         
 
 !!! summary 
 
