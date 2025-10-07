@@ -319,16 +319,16 @@ where the script is a text file could contain these lines:
 
     ??? note "Solutions"
 
-         === UPPMAX
+        === UPPMAX
 
-           Check all available Julia versions with:
+            Check all available Julia versions with:
 
             ```console
 
                 $ module avail julia
             ```
 
-         === HPC2N
+        === HPC2N
 
             Check all available version Julia versions with:
 
@@ -355,7 +355,7 @@ where the script is a text file could contain these lines:
                $ module spider Julia/1.8.5-linux-x86_64
             ```
 
-         === LUNARC
+        === LUNARC
 
             Check all available version Julia versions with:
 
@@ -378,7 +378,7 @@ where the script is a text file could contain these lines:
                $ module spider Julia/1.8.5-linux-x86_64
             ```
 
-         === Tetralith
+        === Tetralith
 
             Check all available version Julia versions with:
 
@@ -394,7 +394,7 @@ where the script is a text file could contain these lines:
                $ module spider julia/1.8.5-nsc1-bdist
             ```
 
-         === Dardel
+        === Dardel
 
             Check all available version Julia versions with:
 
@@ -414,9 +414,9 @@ where the script is a text file could contain these lines:
 
             ```console
 
-            ```
                $ module spider Julia/1.8.5-linux-x86_64
-
+            ```
+               
     ??? note "Output at UPPMAX as of Oct 2024"
 
         ``` console
@@ -546,20 +546,18 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution"
 
-       ```console
+        ```console
 
          $ julia
-       ```
+        ```
 
-       It doesn't work! The Julia interpreter is not found.
+        It doesn't work! The Julia interpreter is not found.
 
 !!! example "Challenge 3.  Load and start ``julia`` the right way from the command line"
 
     ??? note "Solution"
 
-      
-
-         === UPPMAX
+        === UPPMAX
 
             Go back and check which Julia modules were available. To load version 1.8.5, do:
 
@@ -574,22 +572,9 @@ where the script is a text file could contain these lines:
             ```console
 
                $ ml julia/1.8.5
+            ```
 
-         === HPC2N
-
-            ```console
-
-               $ module load Julia/1.8.5-linux-x86_64
-
-            Note: Uppercase ``J``.
-
-            For short, you can also use:
-
-            ```console
-
-               $ ml Julia/1.8.5-linux-x86_64
-
-         === LUNARC
+        === HPC2N
 
             ```console
 
@@ -602,8 +587,25 @@ where the script is a text file could contain these lines:
             ```console
 
                $ ml Julia/1.8.5-linux-x86_64
+            ```
 
-         === NSC
+        === LUNARC
+
+            ```console
+
+               $ module load Julia/1.8.5-linux-x86_64
+            ```
+
+            Note: Uppercase ``J``.
+
+            For short, you can also use:
+
+            ```console
+
+               $ ml Julia/1.8.5-linux-x86_64
+            ```
+
+        === NSC
 
             ```console
 
@@ -616,12 +618,14 @@ where the script is a text file could contain these lines:
             ```console
 
                $ ml julia/1.10.2-bdist
+            ```
 
-         === PDC
+        === PDC
 
             ```console
 
                $ module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+            ```
 
             Note: lowercase ``j``.
 
