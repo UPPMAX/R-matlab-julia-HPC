@@ -175,8 +175,7 @@ logout
 
 !!! important "Interactive session"
     
-    Requesting 4 cores for 10 minutes, and load Julia
-    Short serial example for running on different clusters.
+    Requesting 4 cores for 10 minutes, and load Matlab
 
     === "NSC"
 
