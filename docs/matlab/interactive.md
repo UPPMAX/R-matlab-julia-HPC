@@ -352,8 +352,9 @@ logout
     - In MATLAB test how big parpool you can make (should be limited by the allocated resources above)
 
      ```matlab
-     p=parpool(4)
+     p=parpool(<number of processes>)
      ```
+     
 !!! important "Quit MATLAB"
 
     End Matlab by closing the GUI.
