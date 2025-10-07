@@ -471,7 +471,7 @@ This is how you add GPUs to use in batch jobs submitted from inside MATLAB:
     Remember, here you cannot set `AdditionalProperties`. Instead, you do the following: 
 
     1. Start an interactive session on the GPU partition: `salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu`
-    2. Load MATLAB: `module load PDC/23.12 matlab/r2024a-ps`
+    2. Load MATLAB: `module load PDCOLD/23.12 matlab/r2024a-ps`
     3. Start MATLAB: `matlab -nodisplay -nodesktop -nosplash`
 
     You are now ready to run your GPU MATLAB scripts.
@@ -624,7 +624,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     
     # Change depending on resource and MATLAB version
     # to find out available versions: module spider matlab
-    module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0
+    module load PDC/24.11 matlab/r2024b rocm/5.7.0
     
     # Executing a GPU matlab program
     matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
