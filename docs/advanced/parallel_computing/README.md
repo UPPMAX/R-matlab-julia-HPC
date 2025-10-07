@@ -296,14 +296,12 @@ and, in a general form, is plotted like this:
 ??? tip "Answer"
 
     The colleague used up (or: 'wasted') all his/her computational resources
-    (commonly 10,000 core hours per month).
+    (commonly 10,000 core hours per month on UPPMAX).
 
-    Due to this, his/her jobs are only run when the HPC cluster has
-    a low workload and activates the so-called 'bonus queue'.
+    Due to this, his/her jobs are only run when the HPC cluster has a low workload and activates the so-called 'bonus queue' (UPPMAX) or generally have to wait for their priority to go up again.
 
 - Your colleague has done a benchmark and concluded the plot below.
-  What seemed to percentage of his/her code that could be run
-  in parallel?
+  What seemed to be the percentage of his/her code that could be run in parallel?
 
 ![Benchmark of speedup](benchmark_results_speedup.png)
 
