@@ -240,7 +240,7 @@ which will display the host name:
 ```matlab
 % Use parallel pool with 'parfor'
 parpool('name-of-your-cluster',n);  % Start parallel pool with nworkers = n workers
-
+p = gcp;
 parfor i=1:n
     disp(getenv("HOSTNAME"))
 end
@@ -250,7 +250,9 @@ delete(gcp('nocreate'));
 ```
 
 Notice that the host name displayed is the one where the job ran not where the MATLAB GUI is running.
-All parallel functionalities in MATLAB can be executed inside a ``parpool``.
+All parallel functionalities in MATLAB can be executed inside a ``parpool``. If you are running the 
+MATLAB GUI in an Open onDemand session you can use ``Processes`` as the ``name-of-your-cluster``, as
+this cluster profile is used for running jobs locally.
 
 -------------------
 
