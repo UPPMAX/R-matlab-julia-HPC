@@ -351,9 +351,31 @@ logout
 
     - In MATLAB test how big parpool you can make (should be limited by the allocated resources above)
 
-     ```matlab
-     p=parpool(<number of processes>)
-     ```
+    ```matlab
+    p=parpool("local")
+    ```
+
+    ???- Output
+
+        ```matlab
+        Starting parallel pool (parpool) using the 'Processes' profile ...
+        Connected to parallel pool with 4 workers.
+
+        p =
+
+         ProcessPool with properties:
+
+                    Connected: true
+                    NumWorkers: 4
+                    Busy: false
+              Cluster: Processes (Local Cluster)
+               AttachedFiles: {}
+            AutoAddClientPath: true
+            FileStore: [1x1 parallel.FileStore]
+           ValueStore: [1x1 parallel.ValueStore]
+          IdleTimeout: 30 minutes (30 minutes remaining)
+          SpmdEnabled: true
+        ```
      
 !!! important "Quit MATLAB"
 
