@@ -301,27 +301,25 @@ where the script is a text file could contain these lines:
 
 ## Exercises
 
-
 !!! example "Challenge 1a. Find out which versions are on your cluster from documentation"
 
-- Find/search for that documentation!
+    - Find/search for that documentation!
 
-   .. solution:: Solution
-      :class: dropdown
+??? note "Solutions"
 
-      - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
-      - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
-      - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_
-      - `NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
-      - `PDC <https://support.pdc.kth.se/doc/applications/>`_
+    - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
+    - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
+    - [LUNARC](The user demand on Julia has been low, so there is currently no site-specific documentation.)
+    - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
+    - [PDC](https://support.pdc.kth.se/doc/applications/)
 
 
 !!! example "Challenge 1b. Find out which versions are on your cluster from command line"
 
-- Use the ``spider`` or ``avail`` module commands
+    - Use the ``spider`` or ``avail`` module commands
 
-   .. solution:: Solution
-      :class: dropdown
+??? note "Solutions"
+
 
       .. tabs::
 
@@ -412,8 +410,7 @@ where the script is a text file could contain these lines:
 
                $ module spider Julia/1.8.5-linux-x86_64
 
-.. admonition:: Output at UPPMAX as of Oct 2024
-   :class: dropdown
+    ??? note "Output at UPPMAX as of Oct 2024"
 
        .. code-block::  console
 
@@ -430,8 +427,7 @@ where the script is a text file could contain these lines:
           Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 
-.. admonition:: Output at HPC2N as of Oct 2024
-    :class: dropdown
+    ??? note "Output at HPC2N as of Oct 2024"
 
         .. code-block:: console
 
@@ -456,8 +452,7 @@ where the script is a text file could contain these lines:
                 $ module spider Julia/1.8.5-linux-x86_64
            ------------------------------------------------------------------------------------------------
 
-.. admonition:: Output at LUNARC as of Oct 2024
-    :class: dropdown
+    ??? note "Output at LUNARC as of Oct 2024"
 
         .. code-block:: console
 
@@ -475,8 +470,7 @@ where the script is a text file could contain these lines:
                    Julia/1.9.3-linux-x86_64
                    Julia/1.10.4-linux-x86_64
 
-.. admonition:: Output at NSC as of Mar 2025
-    :class: dropdown
+    ??? note "Output at NSC as of Mar 2025"
 
         .. code-block:: console
 
@@ -487,8 +481,7 @@ where the script is a text file could contain these lines:
               julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
               julia/1.4.1                          julia/1.8.5-nsc1-bdist
 
-.. admonition:: Output at PDC as of Mar 2025
-    :class: dropdown
+    ??? note "Output at PDC as of Mar 2025"
 
         .. code-block:: console
 
@@ -526,30 +519,29 @@ where the script is a text file could contain these lines:
 
 !!! example "Challenge 1c. Which method to trust?"
 
-   .. solution:: Solution
-      :class: dropdown
+    Shall one trust the documentation or the commandline on the cluster more?
+    
+    ??? note "Solution"
 
-      Looking for modules in a session on the cluster is closer to the truth
+        Looking for modules in a session on the cluster is closer to the truth
 
 
 !!! example "Challenge 2. Try to start julia without having loaded julia module"
 
-- If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command.
+    - If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command.
 
     - **Tip:** Type: ``unload julia`` and press ``<tab>`` until the full module name is shown, then press ``<enter>``. (If the Julia module starts with an uppercase, use that instead!)
 
-   .. solution:: Solution
-      :class: dropdown
+    ??? note "Solution"
 
       .. code-block:: console
 
          $ julia
 
 
-!!! example "Challenge 5. Write a batch script." 3.  Load and start ``julia`` from the command line
+!!! example "Challenge 3.  Load and start ``julia`` the right way from the command line"
 
-   .. solution:: Solution
-      :class: dropdown
+    ??? note "Solution"
 
       .. tabs::
 
@@ -625,7 +617,7 @@ where the script is a text file could contain these lines:
 
                $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
-!!! example "Challenge 5. Write a batch script." 4. Getting familiar with Julia REPL
+!!! example "Challenge 4. Getting familiar with Julia REPL"
 
     - It is important that you know how to navigate on the Julia command line. Here is where you work live with data and test aout things and you may install packages.
     - This exercise will help you to become more familiar with the REPL. Do the following steps:
@@ -636,8 +628,7 @@ where the script is a text file could contain these lines:
        * Now, go to the ``package`` mode and list the currently installed packages
        * Finally, display help information of the function ``println`` in ``help`` mode.
 
-   .. solution:: Solution
-      :class: dropdown
+    ??? note "Solution"
 
        .. code-block:: julia
 
@@ -662,8 +653,7 @@ where the script is a text file could contain these lines:
                 summ = x + y
                 println("The sum of the two numbers is ", summ)
 
-   .. solution:: Solution for HPC2N
-      :class: dropdown
+    ??? note "Solution for HPC2N"
 
 
       .. code-block:: console
@@ -673,8 +663,7 @@ where the script is a text file could contain these lines:
 
             $ julia serial-sum.jl Arg1 Arg2    # run the serial script
 
-   .. solution:: Solution for UPPMAX
-      :class: dropdown
+    ??? note "Solution for UPPMAX"
 
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
@@ -685,7 +674,7 @@ where the script is a text file could contain these lines:
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
 
-   .. solution:: Solution for LUNARC
+    ??? note "Solution for LUNARC"
       :class: dropdown
 
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
@@ -696,8 +685,7 @@ where the script is a text file could contain these lines:
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
-   .. solution:: Solution for NSC
-      :class: dropdown
+    ??? note "Solution for NSC"
 
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
@@ -707,8 +695,8 @@ where the script is a text file could contain these lines:
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
-   .. solution:: Solution for PDC
-      :class: dropdown
+    ??? note "Solution for PDC"
+
 
       This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
 
