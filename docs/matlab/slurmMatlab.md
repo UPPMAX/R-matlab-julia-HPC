@@ -86,7 +86,6 @@ The instructions for each facility are linked below:
 !!! warning
 
     - On Dardel you need to either have your own Mathworks account, or contact them ahead of time and ask for access to run MATLAB there!
-    - We have added access for those participants who had PDC accounts on (INSERT DATE)
     - **Do NOT run configCluster(.sh) on Dardel!**
 
 For most clusters, configuration can be done at the regular terminal using a shell script called `configCluster.sh`.
@@ -99,7 +98,7 @@ The tabs below demonstrate the preferred method for each cluster where configura
      configCluster.sh <project-id>
      ```
 
-     On Pelle, `configCluster` does not work inside the MATLAB GUI. It will raise the error `unable to create directory '/run/user/xxxxxxx/dconf': Permission denied.  dconf will not work properly.` where xxxxxxx is a 7-digit number associated with your user account.
+     On Pelle, `configCluster` does not work properly inside the MATLAB GUI.
             
 === "HPC2N"
 
