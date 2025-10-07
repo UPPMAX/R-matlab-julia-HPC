@@ -90,7 +90,7 @@ The instructions for each facility are linked below:
     - **Do NOT run configCluster(.sh) on Dardel!**
 
 For most clusters, configuration can be done at the regular terminal using a shell script called `configCluster.sh`.
-It is also possible to run `configCluster` (without ".sh") on the MATLAB command line; for NSC, this is the only way to run the configuration program.
+At most clusters, it is possible to run `configCluster` (without ".sh") on the MATLAB command line; for NSC, this is the only way to run the configuration program.
 The tabs below demonstrate the preferred method for each cluster where configuration is required the first time you use a given version of MATLAB.
 
 === "UPPMAX"
@@ -98,6 +98,8 @@ The tabs below demonstrate the preferred method for each cluster where configura
      ```bash
      configCluster.sh <project-id>
      ```
+
+     On Pelle, `configCluster` does not work inside the MATLAB GUI. It will raise the error `unable to create directory '/run/user/xxxxxxx/dconf': Permission denied.  dconf will not work properly.` where xxxxxxx is a 7-digit number associated with your user account.
             
 === "HPC2N"
 
