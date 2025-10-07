@@ -353,10 +353,12 @@ logout
 
     ```matlab
     p=parpool("local")
+    p.NumWorkers
     ```
 
-    ???- Output
+    ???- info "Output of parpool command on UPPMAX"
 
+        According to the below output 
         ```matlab
         Starting parallel pool (parpool) using the 'Processes' profile ...
         Connected to parallel pool with 4 workers.
