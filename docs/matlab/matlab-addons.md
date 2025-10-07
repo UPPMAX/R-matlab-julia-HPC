@@ -147,8 +147,6 @@ Here we will only focus on the first two options.
         ...
         ```
 
-    
-
 ### Install Add-Ons
 
 - Search in Add-Ons explorer and install.
@@ -169,7 +167,7 @@ You can install some Add-Ons manually using an installation file. This is useful
 - You downloaded the add-on from the Add-On Explorer without installing it.
 - You downloaded the add-on from the File Exchange at MATLAB Central™.
 
-???- info "Bianca"
+???- note "Bianca"
 
     - One way to get a MATLAB package to Bianca is to download it on your working computer without installing it.
     - Then you use the wharf to get the (tared) file(s) on Bianca.
