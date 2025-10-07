@@ -272,7 +272,7 @@ and, in a general form, is plotted like this:
 
 - For your research project, you also have a calculation that takes 11 days.
   Your HPC cluster allows a calculation of at most 10 days.
-  Assume your HPC center will not extend your job (they will when asked!).
+  Assume your HPC center will not extend your job (they will sometimes do so when asked!).
   How do you make optimal use of your time?
 
 ??? tip "Answer"
