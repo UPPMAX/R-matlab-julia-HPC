@@ -124,7 +124,7 @@ And a few other extra resources:
 
 - A big list of [AI tools](https://github.com/svilupp/awesome-generative-ai-meets-julia-language)
 - [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
-- [Extra materials in these course pages](https://uppmax.github.io/R-matlab-julia-HPC/julia/extra.html)
+- [Extra materials in these course pages](extra.md)
 
 
 ## Julia documentation at the centers
