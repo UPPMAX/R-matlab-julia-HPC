@@ -147,8 +147,8 @@ where <tasks> is the number of tasks (or cores, for default 1 task per core), ti
 !!! important "On HPC2N"
 
    - If you do not preface with ``srun`` the command is run on the login node!
-   - You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.
-   - This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.
+   - You can now run Matlab scripts on the allocated resources directly instead of waiting for your batch job to return a result.
+   - This is an advantage if you want to test your Matlab script or perhaps figure out which parameters are best.
 
 ### End an interactive session
 
@@ -169,11 +169,13 @@ logout
 
 ## Exercise
 
-!!! important "Run from ThinLinc!"
+!!! important "Run from ThinLinc (web or client!"
+
+     - [Log in page](../common/login.md#step-1-log-in)
 
 !!! important "Interactive session"
     
-    Requesting 4 cores for 10 minutes, then running Julia
+    Requesting 4 cores for 10 minutes, and load Julia
     Short serial example for running on different clusters.
 
     === "NSC"
