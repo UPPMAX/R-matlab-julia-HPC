@@ -610,7 +610,7 @@ where the script is a text file could contain these lines:
 
             Pelle
             
-            Go back and check which Julia modules were available. To load version 1.10.6, do:
+            Go back and check which Julia modules were available. To load version 1.10.9, do:
 
             ```console
 
