@@ -59,7 +59,7 @@ c=parcluster('name-of-your-cluster')
 % Run the job on CPU
 j = c.batch(@myfunction, N_out_values, {input1, input2, ...}, 'pool', N_workers')
 % alternatively, j=batch(c, @myfunction, N_out_values, {input1, input2, ...}, 'pool', N_workers')
-% Wait till the job has finished. Use j.State if you just want to poll the
+% Wait until the job has finished. Use j.State if you just want to poll the
 % status and be able to do other things while waiting for the job to finish.
 j.wait
 % Fetch the result after the job has finished
@@ -68,6 +68,7 @@ j.fetchOutputs{:}
 
 Note that `batch` also accepts script names in place of function names, but these must be given in single quotes, with no ``@`` or ``.m``. This is useful if your script is a job farm.
 
+In the [earlier session on using MATLAB with Slurm at the command line](https://uppmax.github.io/R-matlab-julia-HPC/matlab/slurmMatlab/#running-matlab-code-with-batch), you learned how to set/edit slurm parameters for jobs on a given cluster, after defining a handle for the cluster, by calling the `AdditionalProperties` attribute. Below we will discuss an alternative way to do that graphically.
 
 ### Job settings in the Cluster Profile Manager
 
