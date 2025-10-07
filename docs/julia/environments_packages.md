@@ -3,7 +3,7 @@
 
 !!! info "Learning outcomes for this session"
 
-    - How to work with Julias environment and package management.
+    - How to work with Julia's environment and package management.
     - How to check for and use site-installed packages, if any.
 
 
@@ -193,20 +193,204 @@ environment directory):
 
 ## Exercises
 
-TODO: Make these exercises be the installation of the packages that we will later use.
-It might be advisable to install IJulia and Pluto in separate environments.
+- We nee the packages ``IJulia`` and ``Pluto`` for running the integrated development environments (IDEs) Jupyter and Pluto.
 
-!!! challenge "1. Project environment"
+- Make these exercises be the installation of the packages that we will later use.
+- It might be advisable to install IJulia and Pluto in separate environments.
+
+!!! challenge "1. Install Pluto"
+
+    - It may take 5-10 minutes or so.
+    - This you can do in an ordinary terminal
+
+    === "NSC"
+
+        ```bash
+        $ ml julia/1.10.2-bdist
+        ```
+
+        In Julia:
+
+        ```julia
+        julia> using Pkg
+        julia> Pkg.add("IJulia")
+        julia> Pkg.build("IJulia")
+        julia> using IJulia
+        ```
+
+    === "PDC"
+
+         Note: not fully tested successfully, but this step works
+
+         ```bash
+         $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+         $ julia
+         ```
+
+         In Julia:
+
+         ```julia
+         julia> using Pkg
+         julia> Pkg.add("IJulia")
+         julia> Pkg.build("IJulia")
+         julia> using IJulia
+         ```
+
+         - The last command may not be able to start notebook, see further down how to do.
+
+    === "UPPMAX (Bianca/Rackham)"
+
+         ```bash
+         $ module load julia/1.8.5
+         $ julia -p 4
+         ```
+
+         In Julia:
+
+         ```julia
+         julia> using Pkg
+         julia> Pkg.add("IJulia")
+         julia> Pkg.build("IJulia")
+         julia> using IJulia
+         ```
+
+    === "UPPMAX (Pelle)"
+
+         ```bash
+         $ module load julia/1.8.5
+         $ julia -p 4
+         ```
+
+         In Julia:
+
+         ```julia
+         julia> using Pkg
+         julia> Pkg.add("IJulia")
+         julia> Pkg.build("IJulia")
+         julia> using IJulia
+         ```
+
+    === "HPC2N & LUNARC"
+
+         - Like for Python it is possible to run a Julia in a Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the *JupyterLab* and *Julia* modules. In shell:
+
+         ```bash
+         $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+         $ julia
+         ```
+
+         In Julia `package` mode:
+
+         ```julia
+         (v1.8) pkg>add IJulia
+         (v1.8) pkg>build IJulia
+         ```
+
+!!! challenge "2. Install IJulia"
+
+    - This is done only once, but for each combination of Julia you would like to use.
+    - It may take 5-10 minutes or so.
+    - This you can do in an ordinary terminal (book an interactive session, for safety)
+   
+    === "NSC"
+
+        ```bash
+        $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
+        $ ml julia/1.10.2-bdist
+        $ julia -p 4
+        ```
+
+        In Julia:
+
+        ```julia
+        julia> using Pkg
+        julia> Pkg.add("IJulia")
+        julia> Pkg.build("IJulia")
+        julia> using IJulia
+        ```
+
+    === "PDC"
+
+         Note: not fully tested successfully, but this step works
+
+         ```bash
+         $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+         $ ml cray-python/3.11.5
+         $ julia
+         ```
+
+         In Julia:
+
+         ```julia
+         julia> using Pkg
+         julia> Pkg.add("IJulia")
+         julia> Pkg.build("IJulia")
+         julia> using IJulia
+         ```
+
+         - The last command may not be able to start notebook, see further down how to do.
+
+    === "UPPMAX (Bianca/Rackham)"
+
+         ```bash
+         $ module load julia/1.8.5
+         $ module load python/3.9.5
+         $ julia -p 4
+         ```
+
+         In Julia:
+
+         ```julia
+         julia> using Pkg
+         julia> Pkg.add("IJulia")
+         julia> Pkg.build("IJulia")
+         julia> using IJulia
+         ```
+
+    === "UPPMAX (Pelle)"
+
+         ```bash
+         $ module load julia/1.8.5
+         $ module load python/3.9.5
+         $ julia -p 4
+         ```
+
+         In Julia:
+
+         ```julia
+         julia> using Pkg
+         julia> Pkg.add("IJulia")
+         julia> Pkg.build("IJulia")
+         julia> using IJulia
+         ```
+
+    === "HPC2N & LUNARC"
+
+         - Like for Python it is possible to run a Julia in a Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the *JupyterLab* and *Julia* modules. In shell:
+
+         ```bash
+         $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+         $ module load Julia/1.8.5-linux-x86_64
+         $ julia
+         ```
+
+         In Julia `package` mode:
+
+         ```julia
+         (v1.8) pkg>add IJulia
+         (v1.8) pkg>build IJulia
+         ```
+
+!!! example "Extra Challenge. Project environment with csv"
 
     Create a project environment called ``new-env`` and activate it. Then, install the
     package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
     offers tools for dealing with ``.csv`` files. After this, check that this package
     was installed. Finally, deactivate the environment.
 
-    .. solution:: Solution for all centres
-        :class: dropdown
+    ??? note "Solution for all centres"
 
-            .. code-block:: julia
+       ``` julia
 
                 shell> mkdir new-env
                 shell> cd new-env
@@ -217,34 +401,9 @@ It might be advisable to install IJulia and Pluto in separate environments.
                       Status `path-to-folder\new-env\Project.toml`
                       [336ed68f] CSV v0.10.9
                 (new-env) pkg> activate
+        ```
 
-!!! challenge "2. Package environment"
 
-    Create a package environment called ``new_pack`` and activate it. Then, install the
-    package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
-    offers tools for dealing with ``.csv`` files. After this, check that this package
-    was installed. Finally, deactivate the environment.
-
-    .. solution:: Solution for all centres
-        :class: dropdown
-
-            .. code-block:: julia
-
-                shell> pwd            #Check were you are currently located
-                (@v1.8) pkg> generate new_pack
-                     Generating  project new_pack:
-                     new_pack\Project.toml
-                     new_pack\src\new_pack.jl
-                shell> cd new_pack
-                     `path-to-folder\new_pack`
-                (@v1.8) pkg> activate .
-                       Activating project at `path-to-folder\new_pack`
-                (new_pack) pkg> add CSV
-                (new_pack) pkg> status
-                       Project new_pack v0.1.0
-                       Status `path-to-folder\new_pack\Project.toml`
-                       [336ed68f] CSV v0.10.9
-                (new_pack) pkg> activate
 
 
 !!! summary
