@@ -26,8 +26,7 @@ Please find the **exercise files** [at this link](../../exercises/exercises.tar.
 
 ## Schedule
 
-[Schedule](https://uppmax.github.io/R-matlab-julia-HPC/matlab/scheduleMatlab.html)
-
+[See schedule here.](schedule.md)
 
 ## What is MATLAB?
 
@@ -63,7 +62,7 @@ MATLAB also has some drawbacks:
 
 !!! tip "Material for improving your programming skills"
 
-    - [Extra material](https://uppmax.github.io/R-matlab-julia-HPC/extra/matlab_extra.html)
+    - [Extra material](extra.md)
 
 !!! summary
 
