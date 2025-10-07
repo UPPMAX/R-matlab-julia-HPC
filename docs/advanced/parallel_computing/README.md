@@ -38,7 +38,7 @@
 
 ## Why parallel computing is important
 
-Most HPC clusters use 10 days as a maximum duration for a job.
+Most HPC clusters use 7-10 days as a maximum duration for a job.
 Your calculation may take longer than that.
 One technique that may work is to use parallel computing,
 where one uses multiple CPU cores to work together on a same calculation
