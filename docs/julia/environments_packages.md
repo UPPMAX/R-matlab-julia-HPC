@@ -207,15 +207,7 @@ environment directory):
 
         ```bash
         $ ml julia/1.10.2-bdist
-        ```
-
-        In Julia:
-
-        ```julia
-        julia> using Pkg
-        julia> Pkg.add("IJulia")
-        julia> Pkg.build("IJulia")
-        julia> using IJulia
+        $ julia
         ```
 
     === "PDC"
@@ -227,68 +219,44 @@ environment directory):
          $ julia
          ```
 
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
-         ```
-
-         - The last command may not be able to start notebook, see further down how to do.
-
     === "UPPMAX (Bianca/Rackham)"
 
-         ```bash
+        ```bash
          $ module load julia/1.8.5
-         $ julia -p 4
-         ```
-
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
-         ```
+        ```
 
     === "UPPMAX (Pelle)"
 
          ```bash
-         $ module load julia/1.8.5
-         $ julia -p 4
-         ```
-
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
+         $ module load Julia/1.10.9-LTS-linux-x86_64
          ```
 
     === "HPC2N & LUNARC"
 
-         - Like for Python it is possible to run a Julia in a Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the *JupyterLab* and *Julia* modules. In shell:
-
          ```bash
-         $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+         $ module load GCCcore/13.2.0  Julia/1.9.3-linux-x86_64
          $ julia
          ```
 
-         In Julia `package` mode:
+    In Julia for all clusters (output may differ for different clusters and Julia versions):
 
-         ```julia
-         (v1.8) pkg>add IJulia
-         (v1.8) pkg>build IJulia
-         ```
+    ```julia
+        shell> mkdir pluto-env
+        shell> cd pluto-env
+        (@v1.10) pkg> activate .
+          Activating new project at `path-to-folder\new-env`
+        (new-env) pkg> add Pluto
+        (new-env) pkg> status
+                Status `path-to-folder\new-env\Project.toml`
+                [c3e4b0f8] Pluto v0.20.19
+        (new-env) pkg> deactivate
+    ```
+ 
 
 !!! challenge "2. Install IJulia"
 
     - This is done only once, but for each combination of Julia you would like to use.
+    - Also Python must be loaded
     - It may take 5-10 minutes or so.
     - This you can do in an ordinary terminal (book an interactive session, for safety)
    
@@ -297,21 +265,10 @@ environment directory):
         ```bash
         $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
         $ ml julia/1.10.2-bdist
-        $ julia -p 4
-        ```
-
-        In Julia:
-
-        ```julia
-        julia> using Pkg
-        julia> Pkg.add("IJulia")
-        julia> Pkg.build("IJulia")
-        julia> using IJulia
+        $ julia
         ```
 
     === "PDC"
-
-         Note: not fully tested successfully, but this step works
 
          ```bash
          $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
@@ -319,67 +276,43 @@ environment directory):
          $ julia
          ```
 
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
-         ```
-
-         - The last command may not be able to start notebook, see further down how to do.
-
     === "UPPMAX (Bianca/Rackham)"
 
-         ```bash
-         $ module load julia/1.8.5
-         $ module load python/3.9.5
-         $ julia -p 4
-         ```
-
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
-         ```
+        ```bash
+        $ module load julia/1.8.5
+        $ module load python/3.9.5
+        $ julia
+        ```
 
     === "UPPMAX (Pelle)"
 
-         ```bash
-         $ module load julia/1.8.5
-         $ module load python/3.9.5
-         $ julia -p 4
-         ```
-
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
-         ```
+        ```bash
+        $ module load julia/1.8.5
+        $ module load python/3.9.5
+        $ julia
+        ```
 
     === "HPC2N & LUNARC"
 
-         - Like for Python it is possible to run a Julia in a Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the *JupyterLab* and *Julia* modules. In shell:
+        ```bash
+        $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+        $ module load Julia/1.8.5-linux-x86_64
+        $ julia
+        ```
 
-         ```bash
-         $ module load GCCcore/13.2.0  JupyterLab/4.2.0
-         $ module load Julia/1.8.5-linux-x86_64
-         $ julia
-         ```
+    In Julia for all clusters (output may differ for different clusters and Julia versions):
 
-         In Julia `package` mode:
-
-         ```julia
-         (v1.8) pkg>add IJulia
-         (v1.8) pkg>build IJulia
-         ```
+    ```julia
+        shell> mkdir jupyter-env
+        shell> cd jupyter-env
+        (@v1.10) pkg> activate .
+          Activating new project at `path-to-folder\new-env`
+        (new-env) pkg> add Pluto
+        (new-env) pkg> status
+                Status `path-to-folder\new-env\Project.toml`
+                [7073ff75] IJulia v1.27.0
+        (new-env) pkg> deactivate
+    ```
 
 !!! example "Extra Challenge. Project environment with csv"
 
@@ -400,11 +333,8 @@ environment directory):
                 (new-env) pkg> status
                       Status `path-to-folder\new-env\Project.toml`
                       [336ed68f] CSV v0.10.9
-                (new-env) pkg> activate
+                (new-env) pkg> deactivate
         ```
-
-
-
 
 !!! summary
 
