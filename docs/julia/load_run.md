@@ -302,7 +302,7 @@ where the script is a text file could contain these lines:
 ## Exercises
 
 
-.. challenge:: 1a. Find out which versions are on your cluster from documentation
+!!! example "Challenge 1a. Find out which versions are on your cluster from documentation"
 
 - Find/search for that documentation!
 
@@ -316,7 +316,7 @@ where the script is a text file could contain these lines:
       - `PDC <https://support.pdc.kth.se/doc/applications/>`_
 
 
-.. challenge:: 1b. Find out which versions are on your cluster from command line
+!!! example "Challenge 1b. Find out which versions are on your cluster from command line"
 
 - Use the ``spider`` or ``avail`` module commands
 
@@ -524,7 +524,7 @@ where the script is a text file could contain these lines:
              For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
 
 
-.. challenge:: 1c. Which method to trust?
+!!! example "Challenge 1c. Which method to trust?"
 
    .. solution:: Solution
       :class: dropdown
@@ -532,7 +532,7 @@ where the script is a text file could contain these lines:
       Looking for modules in a session on the cluster is closer to the truth
 
 
-.. challenge:: 2. Try to start julia without having loaded julia module
+!!! example "Challenge 2. Try to start julia without having loaded julia module"
 
 - If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command.
 
@@ -546,7 +546,7 @@ where the script is a text file could contain these lines:
          $ julia
 
 
-.. challenge:: 3.  Load and start ``julia`` from the command line
+!!! example "Challenge 5. Write a batch script." 3.  Load and start ``julia`` from the command line
 
    .. solution:: Solution
       :class: dropdown
@@ -625,7 +625,7 @@ where the script is a text file could contain these lines:
 
                $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
 
-.. challenge:: 4. Getting familiar with Julia REPL
+!!! example "Challenge 5. Write a batch script." 4. Getting familiar with Julia REPL
 
     - It is important that you know how to navigate on the Julia command line. Here is where you work live with data and test aout things and you may install packages.
     - This exercise will help you to become more familiar with the REPL. Do the following steps:
@@ -650,7 +650,7 @@ where the script is a text file could contain these lines:
             julia>?
             help?> println
 
-.. challenge:: 5. Load another module and run a script
+!!! example "Challenge 5. Load another module and run a script"
 
     - Load the latest version and run
     - Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input:
@@ -719,20 +719,20 @@ where the script is a text file could contain these lines:
             julia serial-sum.jl Arg1 Arg2      # run the serial script
 
 
-.. challenge:: 6. Check your understanding
+!!! example "Challenge 6. Check your understanding"
 
-- Check your understanding and answer in the shared document
-- Can you start Julia without loading a Julia module?
+    - Check your understanding and answer in the shared document
+    - Can you start Julia without loading a Julia module?
 
-    - Yes?
-    - No?
+        - Yes?
+        - No?
 
-- Which character to use to toggle
+    - Which character to use to toggle
 
-    - to the ``package`` mode?
-    - back to the ``Julia`` mode?
-    - to the ``help`` mode?
-    - to the ``shell`` mode?
+        - to the ``package`` mode?
+        - back to the ``Julia`` mode?
+        - to the ``help`` mode?
+        - to the ``shell`` mode?
 
 !!! summary 
 
