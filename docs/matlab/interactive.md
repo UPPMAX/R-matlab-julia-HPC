@@ -139,9 +139,6 @@ graph TD
 where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
 (maximum T168 hours), and then you give the id for your project.
 
-Then, when you get the allocation, do one of:
-
-- ``srun -n <ntasks> ./program``
 
 - Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources.
 - When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with ``srun``.
@@ -153,6 +150,15 @@ Then, when you get the allocation, do one of:
    - You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.
    - This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.
 
+### End an interactive session
+
+When you have finished using the allocation, either wait for it to end, or close it with ``exit``
+
+```bash
+$ exit
+logout
+```
+
 !!! important "Documentation at the centers"
 
    - [Interactive allocation on PDC](https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/){:target="_blank"}
@@ -161,9 +167,11 @@ Then, when you get the allocation, do one of:
    - [Interactive allocation on HPC2N](https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive){:target="_blank"}
    - [Interactive allocation on LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session){:target="_blank"}
 
-### Example 
+## Exercise
 
-!!! important "Interactive jobs"
+!!! important "Run from ThinLinc!"
+
+!!! important "Interactive session"
     
     Requesting 4 cores for 10 minutes, then running Julia
     Short serial example for running on different clusters.
@@ -234,10 +242,37 @@ Then, when you get the allocation, do one of:
 
         We are. Notice that we got a response from all four cores we have allocated.
 
-    === "UPPMAX"
+    === "UPPMAX (Pelle)"
 
         ```bash
-        [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-360 -p core -n 4 -t 0:30:00
+        [bjornc@pelle ~]$ interactive -A uppmax2025-2-360 -n 4 -t 0:30:00
+        You receive the high interactive priority.
+        There are free cores, so your job is expected to start at once.
+
+        Please, use no more than 6.4 GB of RAM.
+
+        Waiting for job 29556505 to start...
+        Starting job now -- you waited for 1 second.
+
+        [bjornc@p102 ~]$ module load MATLAB/2023b-update4
+        ```
+
+        Let us check that we actually run on the compute node:
+
+        ```bash
+        [bjornc@p102 ~]$ srun hostname
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        ```
+
+        We are. Notice that we got a response from all four cores we have allocated.
+
+    === "UPPMAX (Bianca)"
+
+        ```bash
+        [bjornc@sens2017625-bianca ~]$ interactive -A sensXXXX -p core -n 4 -t 0:30:00
         You receive the high interactive priority.
         There are free cores, so your job is expected to start at once.
 
@@ -304,6 +339,82 @@ Then, when you get the allocation, do one of:
         4
         ```
 
-        We are, because the *$SLURM* environment variable gves an output. Notice that we got 4, whihc is nt the size of the physcial node bt the allocation size.
+        We are, because the *$SLURM* environment variable gives an output. Notice that we got 4, which is not the size of the physcial node but the allocation size.
 
+!!! important "Check from Matlab"
 
+    - Start matlab (same for all clusters)
+
+    ```bash
+    matlab &
+    ```
+
+    - In MATLAB test how big parpool you can make (should be limited by the allocated resources above)
+
+     ```matlab
+     p=parpool(4)
+     ```
+!!! important "Quit MATLAB"
+
+    End Matlab by closing the GUI.
+
+!!! important "Exit interactive session"
+
+    When you have finished using the allocation, either wait for it to end, or close it with ``exit``
+
+    === "NSC"
+
+        ```bash
+        [sm_bcarl@n134 ~]$ exit
+        logout
+        srun: error: n134: task 0: Exited with exit code 130
+        srun: Terminating StepId=43071803.interactive
+        salloc: Relinquishing job allocation 43071803
+        salloc: Job allocation 43071803 has been revoked.
+        [sm_bcarl@tetralith3 ~]$
+        ```
+
+    === "PDC"
+
+        ```bash
+        claremar@login1:~> exit
+        exit
+        salloc: Relinquishing job allocation 9103056
+        claremar@login1:~>
+        ```
+
+    === "UPPMAX"
+
+        ```bash
+        [bjornc@r483 ~]$ exit
+
+        exit
+        [screen is terminating]
+        Connection to r483 closed.
+
+        [bjornc@rackham2 ~]$
+        ```
+
+    === "HPC2N"
+
+        ```bash
+        [~]$ exit
+        exit
+        salloc: Relinquishing job allocation 20174806
+        salloc: Job allocation 20174806 has been revoked.
+        [~]$
+        ```
+
+    === "LUNARC"
+
+        ```bash
+        [~]$ exit
+        exit
+        [screen is terminating]
+        Connection to cn050 closed.
+
+        [~]$
+        ```
+
+     
+     
