@@ -104,6 +104,9 @@ mpirun Rscript do_2d_integration.R 1 1
 - [Older explanation](https://youtu.be/GHbrpg75qbQ)
 - [Newer explanation](https://youtu.be/c7pVEBhPohk)
 
+- [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
+
+
 !!! warning
 
     - Check if the resources that you allocated are being used properly.
@@ -633,14 +636,9 @@ available for each language.
         ``job-usage`` (HPC2N), or if you're working in the GUI (e.g. on LUNARC), you can click ``Parallel``
         and then ``Monitor Jobs``. For ``job-usage``, you can see the job ID if you type ``squeue --me`` on a terminal on Kebnekaise.
 
-
 !!! info "More info"
 
     - [HPC2N Julia documentation](https://www.hpc2n.umu.se/resources/software/julia).
     - [White paper on Julia parallel computing](https://info.juliacomputing.com/hubfs/JuliaHub-Parallel%20Computing%20Guide.pdf).
     - [HPC2N R documentation](https://www.hpc2n.umu.se/resources/software/r).
     - [Wikipedias' article on Parallel Computing](https://en.wikipedia.org/wiki/Parallel_computing).
-
-
-
-https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html
