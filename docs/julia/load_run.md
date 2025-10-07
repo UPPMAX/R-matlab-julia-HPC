@@ -46,6 +46,15 @@ The module activates paths to a specific version of the julia interpreter and it
 
 ## Check for Julia versions
 
+!!! info "Long-term support versions"
+
+    So far Julia has Long-term support (LTS) for
+
+    - 1.6.7 
+    - 1.10.X (high X is better)
+
+    It might good to try to stick with such a version for future compatibility and support.
+
 ### Principle
 
 - For some clusters
@@ -83,6 +92,7 @@ module spider julia
 ??? note "Example output"
 
     From Dardel:
+    
     ``` { .console data-copy="module spider julia" }
     $ module spider julia
     -------------------------------------------------------------------------------------------------------
@@ -415,15 +425,17 @@ where the script is a text file could contain these lines:
                $ module spider Julia/1.8.5-linux-x86_64
             ```
                
-    ??? note "Output at UPPMAX as of Oct 2024"
+    ??? note "Output at UPPMAX as of Oct 2025"
+
+        Rackham/(Bianca)
 
         ``` console
 
           $ module avail julia
           ----------------------------- /sw/mf/rackham/compilers -----------------------------
-             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
-             julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
-             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
+             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2    julia/1.9.3
+             julia/1.1.1        julia/1.6.3        julia/1.8.5    julia/1.10.10_LTS
+             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1    julia/1.11.6      (D)
 
            Where:
             D:  Default Module
@@ -432,8 +444,28 @@ where the script is a text file could contain these lines:
           Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
         ```
 
+        Pelle 
 
-    ??? note "Output at HPC2N as of Oct 2024"
+        ``` console
+
+        $ ml av Julia
+
+        ---------------------------------------------------- /sw/arch/eb/modules/all --------------------
+           Julia/1.10.9-LTS-linux-x86_64    Julia/1.11.3-linux-x86_64 (D)
+
+          Where:
+           D:  Default Module
+
+        If the avail list is too long consider trying:
+
+        "module --default avail" or "ml -d av" to just list the default modules.
+        "module overview" or "ml ov" to display the number of modules for each name.
+        
+        Use "module spider" to find all possible modules and extensions.
+        Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+        ```
+
+    ??? note "Output at HPC2N as of Oct 2025"
 
         ```console
 
@@ -490,7 +522,7 @@ where the script is a text file could contain these lines:
               julia/1.4.1                          julia/1.8.5-nsc1-bdist
         ```
 
-    ??? note "Output at PDC as of Mar 2025"
+    ??? note "Output at PDC as of Oct 2025"
 
         ```console
 
@@ -514,6 +546,7 @@ where the script is a text file could contain these lines:
                    julia/1.9.3-cpeGNU-23.03
                    julia/1.10.2-cpeGNU-23.03
                    julia/1.10.2-cpeGNU-23.12
+                   julia/1.11.4-cpeAMD-24.11
                 Other possible modules matches:
                    Julia  libuv-julia
 
@@ -557,12 +590,15 @@ where the script is a text file could contain these lines:
 
         === "UPPMAX"
 
+            Rackham/Bianca
+            
             Go back and check which Julia modules were available. To load version 1.8.5, do:
 
             ```console
 
               $ module load julia/1.8.5
             ```
+ 
             Note: Lowercase ``j``.
 
             For short, you can also use:
@@ -570,6 +606,23 @@ where the script is a text file could contain these lines:
             ```console
 
                $ ml julia/1.8.5
+            ```
+
+            Pelle
+            
+            Go back and check which Julia modules were available. To load version 1.10.6, do:
+
+            ```console
+
+              $ module load Julia/1.10.9-LTS-linux-x86_64
+            ```
+            Note: Uppercase ``j``.
+
+            For short, you can also use:
+
+            ```console
+
+               $ ml Julia/1.10.9-LTS-linux-x86_64
             ```
 
         === "HPC2N"
@@ -686,12 +739,22 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution for UPPMAX"
 
+        Rackham/Bianca
 
         ```console
 
             $ ml julia/1.8.5                   # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
+        ```
+
+        Pelle
+
+        ```console
+
+            $ ml Julia/1.10.9-LTS-linux-x86_64  # Julia module
+
+            julia serial-sum.jl Arg1 Arg2       # run the serial script
         ```
 
     ??? note "Solution for LUNARC"
