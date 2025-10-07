@@ -640,3 +640,7 @@ available for each language.
     - [White paper on Julia parallel computing](https://info.juliacomputing.com/hubfs/JuliaHub-Parallel%20Computing%20Guide.pdf).
     - [HPC2N R documentation](https://www.hpc2n.umu.se/resources/software/r).
     - [Wikipedias' article on Parallel Computing](https://en.wikipedia.org/wiki/Parallel_computing).
+
+
+
+https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html
