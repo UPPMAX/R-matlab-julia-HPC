@@ -222,7 +222,7 @@ this will allow you to use Linux commands. Notice that the availability of these
 depend on the OS, for instance, on Windows it will depend on the terminal that you have
 installed and if it is visible to the Julia installation.
 
-### Package manage mode
+### Package manager mode
 
 Another mode available in Julia is the ``package manager`` mode, it can be accessed by typing
 ``]`` in the ``Julian`` mode:
@@ -285,7 +285,6 @@ or
 
 ### Run a Julia script
 
-
 You can run a Julia script on the Linux shell as follows:
 
 ```console
@@ -306,12 +305,11 @@ where the script is a text file could contain these lines:
 
     ??? note "Solutions"
 
-    - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
-    - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
-    - [LUNARC](The user demand on Julia has been low, so there is currently no site-specific documentation.)
-    - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
-    - [PDC](https://support.pdc.kth.se/doc/applications/)
-
+        - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
+        - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
+        - [LUNARC](The user demand on Julia has been low, so there is currently no site-specific documentation.)
+        - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
+        - [PDC](https://support.pdc.kth.se/doc/applications/)
 
 !!! example "Challenge 1b. Find out which versions are on your cluster from command line"
 
@@ -319,7 +317,7 @@ where the script is a text file could contain these lines:
 
     ??? note "Solutions"
 
-        === UPPMAX
+        === "UPPMAX"
 
             Check all available Julia versions with:
 
@@ -328,7 +326,7 @@ where the script is a text file could contain these lines:
                 $ module avail julia
             ```
 
-        === HPC2N
+        === "HPC2N"
 
             Check all available version Julia versions with:
 
@@ -355,7 +353,7 @@ where the script is a text file could contain these lines:
                $ module spider Julia/1.8.5-linux-x86_64
             ```
 
-        === LUNARC
+        === "LUNARC"
 
             Check all available version Julia versions with:
 
@@ -378,7 +376,7 @@ where the script is a text file could contain these lines:
                $ module spider Julia/1.8.5-linux-x86_64
             ```
 
-        === Tetralith
+        === "Tetralith"
 
             Check all available version Julia versions with:
 
@@ -394,7 +392,7 @@ where the script is a text file could contain these lines:
                $ module spider julia/1.8.5-nsc1-bdist
             ```
 
-        === Dardel
+        === "Dardel"
 
             Check all available version Julia versions with:
 
@@ -557,7 +555,7 @@ where the script is a text file could contain these lines:
 
     ??? note "Solution"
 
-        === UPPMAX
+        === "UPPMAX"
 
             Go back and check which Julia modules were available. To load version 1.8.5, do:
 
@@ -574,7 +572,7 @@ where the script is a text file could contain these lines:
                $ ml julia/1.8.5
             ```
 
-        === HPC2N
+        === "HPC2N"
 
             ```console
 
@@ -589,7 +587,7 @@ where the script is a text file could contain these lines:
                $ ml Julia/1.8.5-linux-x86_64
             ```
 
-        === LUNARC
+        === "LUNARC"
 
             ```console
 
@@ -605,7 +603,7 @@ where the script is a text file could contain these lines:
                $ ml Julia/1.8.5-linux-x86_64
             ```
 
-        === NSC
+        === "NSC"
 
             ```console
 
@@ -620,7 +618,7 @@ where the script is a text file could contain these lines:
                $ ml julia/1.10.2-bdist
             ```
 
-        === PDC
+        === "PDC"
 
             ```console
 
@@ -660,6 +658,7 @@ where the script is a text file could contain these lines:
             julia>?
             help?> println
         ```
+        
 !!! example "Challenge 5. Load another module and run a script"
 
     - Load the latest version
