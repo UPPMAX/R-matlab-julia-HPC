@@ -21,7 +21,7 @@ Time  | Topic                                                                   
 14:15 | [Machine learning (R, MATLAB, Julia)](ML.md)                                     | B+?
 15:00 | Break                                                                            | .
 15:15 | [Machine learning cont'd (R, MATLAB, Julia)](ML.md)                              | B+?
-c. 15:30  | Wrap-up + Q&A
+c. 15:30  | Wrap-up + Q&A                                                                | Several
 
 
 <!-- markdownlint-enable MD013 -->
