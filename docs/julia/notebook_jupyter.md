@@ -82,7 +82,7 @@
          - Like for Python it is possible to run a Julia in a Jupyter, i.e. in a web interface with possibility of inline figures and debugging. An easy way to do this is to load the *JupyterLab* and *Julia* modules. In shell:
 
          ```bash
-         $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+         $ module load GCC/13.2.0  JupyterLab/4.2.0
          $ module load Julia/1.8.5-linux-x86_64
          $ julia
          ```
