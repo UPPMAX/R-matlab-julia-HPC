@@ -47,7 +47,7 @@ is as close to eliminated as it can be.
 Julia environments are defined by two TOML (Tom's Obvious Minimal Language)
 files, `Project.toml` and `Manifest.toml`. The former specifies which packages
 you've asked for, the latter specifies all packages loaded including their exact
-versions. Include both of these files in your version control and you get
+versions. Include both of these files (`Project.toml` all the time, `Manifest.toml` at points for which you want exact reproducibility) in your version control and you get
 traceable, reproducible environments with minimal effort!
 
 
