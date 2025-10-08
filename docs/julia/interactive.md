@@ -423,8 +423,8 @@ logout
 
 **JuPyteR** was written for serving notebooks for Julia, Python and R
 
-![Jupyter-started](../img/jupyterlab_started.png)
 ![Jupyter-Julia](../img/Jupyter_julia.png)
+![Jupyter-started](../img/jupyter_rackham_thinlinc.png)
 
 ### Pluto 
 
@@ -503,8 +503,6 @@ logout
 
         [~]$
         ```
-
-
 
 
 ### Exercises run scripts
