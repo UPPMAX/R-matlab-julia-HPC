@@ -37,20 +37,43 @@ Distributed           |Multiple       |1 or Multiple  |Distributed              
 
 <!-- markdownlint-enable MD013 -->
 
-## Notes
+## What is distributed parallelism
 
 - Distributed programming.
   Uses a Message Passing Interface.
   For a job that use many different nodes,
   for example, a weather prediction.
 
-## Test the R script
+### How it is used in our program languages
+
+#### R
+
+#### MATLAB
+
+- Processes
+
+#### Julia
+
+- Distributed
+-  MPI
+
+!!! note "Read more"
+
+    - [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
+    - [Older explanation](https://youtu.be/GHbrpg75qbQ)
+    - [Newer explanation](https://youtu.be/c7pVEBhPohk)
+
+    - [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
+
+
+## Example with R
+
+Test the R script
 
 ```bash
 mpirun Rscript do_2d_integration.R 1 1
 ```
 
-## Output
 
 === "Using 1 MPI processes"
 
@@ -100,11 +123,6 @@ mpirun Rscript do_2d_integration.R 1 1
 
 ## Links
 
-- [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
-- [Older explanation](https://youtu.be/GHbrpg75qbQ)
-- [Newer explanation](https://youtu.be/c7pVEBhPohk)
-
-- [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
 
 
 !!! warning
@@ -648,7 +666,6 @@ available for each language.
 
 
 ### Parallel code
-
 
 !!! important "Julia scripts"
 
