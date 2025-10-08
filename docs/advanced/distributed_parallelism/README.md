@@ -39,32 +39,80 @@ Distributed           |Multiple       |1 or Multiple  |Distributed              
 
 ## What is distributed parallelism
 
+- Although threaded programming is convenient because one can achieve considerable initial speedups
+with little code modifications, this approach does not scale for more than hundreds of
+cores.
+- Scalability can be achieved with distributed programming.
+- Here, there is not a common shared memory but the individual `processes` (notice the different terminology
+with `threads` in shared memory) have their own memory space.
+- Then, if a process requires data from or should transfer data to another process, it can do that by using `send` and
+`receive` to transfer messages.
+- A standard API for distributed computing is the Message
+Passing Interface (MPI). In general, MPI requires refactoring of your code.
+
+- In the distributed parallelization scheme the workers (processes) can share some common memory but they can also exchange information by sending and receiving messages for instance.
+
 - Distributed programming.
   Uses a Message Passing Interface.
   For a job that use many different nodes,
   for example, a weather prediction.
 
-### How it is used in our program languages
-
-#### R
-
-#### MATLAB
-
-- Processes
-
-#### Julia
-
-- Distributed
--  MPI
-
+- Distributed memory
+    - Tasks doing individual work
+    - Memory sent "on-demand" between the tasks with rather small "packages" 
+    - Suitable for not very memory-dependent tasks
+ 
+- Key words
+    - tasks
+    - processes
+    - workers     
+ 
 !!! note "Read more"
 
     - [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
     - [Older explanation](https://youtu.be/GHbrpg75qbQ)
     - [Newer explanation](https://youtu.be/c7pVEBhPohk)
 
+
+### How it is used in programming languages of this course?
+
+Packages called Distributed or MPI.
+
+To get use of MPI library (in C) you need to load a MPI module.
+- There are two common versions
+    - OpenMPI
+    - MPICH (on Dardel)
+
+#### R
+
+- foreach
+- parallel
+- doParallel
+- Rmpi
+    pdbMPI on Dardel
+
+#### MATLAB
+
+- Processes (native to MATLAB)
+
     - [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
 
+- Keywords
+    - parpool
+    - parfor
+    - pareval
+    - spmd
+    - workers
+
+
+#### Julia
+
+- Distributed (native to Julia)
+    - Convenient
+    - Not difficult to code
+- MPI (wrapper around a C-library)
+    - More efficient
+    - More difficult to code     
 
 ## Example with R
 
@@ -73,7 +121,6 @@ Test the R script
 ```bash
 mpirun Rscript do_2d_integration.R 1 1
 ```
-
 
 === "Using 1 MPI processes"
 
@@ -122,8 +169,6 @@ mpirun Rscript do_2d_integration.R 1 1
   a 'regular' non-MPI version will never work!
 
 ## Links
-
-
 
 !!! warning
 
@@ -176,34 +221,6 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
          [documentation for parpool](https://se.mathworks.com/help/parallel-computing/parpool.html) from MatWorks.
          Matlab doesn't support MPI function calls in Matlab code, it could be used indirectly through
          [mex](https://se.mathworks.com/help/matlab/ref/mex.html) functions though.
-
-## Big data
-
-Sometimes the workflow you are targeting doesn't require extensive computations but mainly dealing with
-big pieces of data. An example can be, reading a column-structured file and doing some transformation per-column.
-Fortunately, all languages covered in this course have already several tools to deal with big data.
-We list some of these tools in what follows but notice that other tools doing similar jobs can be
-available for each language.
-
-!!! admonition "Language-specific tools for big data"
-
-    === "Julia"
-
-        According to the developers of this framework, [Dagger](https://juliaparallel.org/Dagger.jl/dev/)
-         is heavily inspired on Dask. It support distributed arrays so that they could fit the memory and
-         also the possibility of parallelizing the computations on these arrays.
-
-    === "R"
-
-        [Arrow](https://arrow.apache.org/docs/r/index.html) (previously *disk.frame*) can deal with
-         big arrays. Other tools include [data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)
-         and [bigmemory](https://cran.r-project.org/web/packages/bigmemory/index.html).
-
-    === "Matlab"
-
-        In Matlab [Tall Arrays](https://se.mathworks.com/help/matlab/tall-arrays.html) and
-         [Distributed Arrays](https://se.mathworks.com/help/parallel-computing/distributed-arrays.html)
-         will assist you when dealing with large arrays.
 
 -------------------
 
