@@ -245,12 +245,11 @@ environment directory):
         shell> mkdir pluto-env
         shell> cd pluto-env
         (@v1.10) pkg> activate .
-          Activating new project at `path-to-folder\new-env`
-        (new-env) pkg> add Pluto
-        (new-env) pkg> status
-                Status `path-to-folder\new-env\Project.toml`
+          Activating new project at `path-to-folder\pluto-env`
+        (pluto-env) pkg> add Pluto
+        (pluto-env) pkg> status
+                Status `path-to-folder\pluto-env\Project.toml`
                 [c3e4b0f8] Pluto v0.20.19
-        (new-env) pkg> deactivate
     ```
  
 
@@ -307,12 +306,11 @@ environment directory):
         shell> mkdir jupyter-env
         shell> cd jupyter-env
         (@v1.10) pkg> activate .
-          Activating new project at `path-to-folder\new-env`
-        (new-env) pkg> add Pluto
-        (new-env) pkg> status
-                Status `path-to-folder\new-env\Project.toml`
+          Activating new project at `path-to-folder\jupyter-env`
+        (jupyter-env) pkg> add IJulia
+        (jupyter-env) pkg> status
+                Status `path-to-folder\jupyter-env\Project.toml`
                 [7073ff75] IJulia v1.27.0
-        (new-env) pkg> deactivate
     ```
 
 !!! example "Challenge 3. Required package for parallel jobs"
@@ -331,20 +329,6 @@ environment directory):
         # Change to ``package mode`` and add the ``MPI`` package
         ```
 
-        ```julia
-        (v1.8) pkg> add MPI
-        # In the ``julian`` mode run these commands:
-        julia> using MPI
-        julia> MPI.install_mpiexecjl()
-                [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
-                [ Info: Done!
-        ```
-
-        ```bash
-        # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
-        $ export PATH=~/.julia/bin:$PATH
-        # Now the wrapper should be available on the command line
-        ```
 
     === "UPPMAX (Pelle)"
 
@@ -479,6 +463,29 @@ environment directory):
         # Now the wrapper should be available on the command line
         ```
 
+                shell> mkdir jupyter-env
+        shell> cd jupyter-env
+        (@v1.10) pkg> activate .
+          Activating new project at `path-to-folder\jupyter-env`
+
+    ```julia
+    shell> mkdir MPI-env
+    shell> cd MPI-env
+    (@v1.10) pkg> activate .
+          Activating new project at `path-to-folder\MPI-env`
+    (MPI-env) pkg> add MPI
+    # In the ``julian`` mode run these commands:
+     (MPI-env)julia> using MPI
+     (MPI-env)julia> MPI.install_mpiexecjl()
+            [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
+            [ Info: Done!
+     ```
+
+     ```bash
+     # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+     $ export PATH=~/.julia/bin:$PATH
+     # Now the wrapper should be available on the command line
+     ```
 
 !!! example "Extra Challenge. Project environment with csv"
 
