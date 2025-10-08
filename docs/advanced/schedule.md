@@ -16,11 +16,11 @@ Time  | Topic                                                                   
 11:15 | [Parallel computing: Distributed parallelism](distributed_parallelism/README.md) | Bj
 12:00 | Break                                                                            | .
 13:00 | [Parallel computing: Distributed parallelism](distributed_parallelism/README.md) | Bj
-13:20 | [Introduction to GPUs](gpus.md)                                                              | B 
+13:20 | [Introduction to GPUs](gpus.md)                                                  | B 
 14:00 | Break
-14:15 | [Machine learning (R, MATLAB, Julia)](ML.md)                                              | B+?
+14:15 | [Machine learning (R, MATLAB, Julia)](ML.md)                                     | B+?
 15:00 | Break
-15:15 | [Machine learning cont'd (R, MATLAB, Julia)](ML.md)                                  | B+?
+15:15 | [Machine learning cont'd (R, MATLAB, Julia)](ML.md)                              | B+?
 c. 15:30  | Wrap-up + Q&A
 
 
