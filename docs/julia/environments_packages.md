@@ -193,7 +193,7 @@ environment directory):
 
 ## Exercises
 
-- We nee the packages ``IJulia`` and ``Pluto`` for running the integrated development environments (IDEs) Jupyter and Pluto.
+- We need the packages ``IJulia`` and ``Pluto`` for running the integrated development environments (IDEs) Jupyter and Pluto.
 
 - Make these exercises be the installation of the packages that we will later use.
 - It might be advisable to install IJulia and Pluto in separate environments.
