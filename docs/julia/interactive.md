@@ -143,7 +143,7 @@ graph TD
 where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
 (maximum T168 hours), and then you give the id for your project.
 
-Then, when you get the allocation, one can run programms in parallel by:
+Then, when you get the allocation, one can run programs in parallel by:
 
 - ``srun -n <ntasks> ./program``
 
