@@ -444,7 +444,7 @@ logout
     - See [last exercise](#exercise-interactive-session)
 
 - [Start Jupyter](notebook_jupyter.md)
-- [Start Pluto](notebook_Pluto.md)
+- [Start Pluto](notebook_pluto.md)
 
     **Exit**
 
