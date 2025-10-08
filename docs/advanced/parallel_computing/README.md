@@ -125,7 +125,7 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
     The speedup, `S`, equals:
 
     ```text
-    S = t_regular / t_enhanced`
+    S = t_regular / t_enhanced
     ```
 
     where:
