@@ -3,7 +3,7 @@
 !!! info "Learning outcomes"
 
     - I understand how I can work with big data
-    - I know where to find more information about Big data
+    - I know where to find more information about big data
     - I understand how cluster managers work
     - I know where to find more information about cluster managers
 
@@ -45,8 +45,8 @@ available for each language.
 
 !!! important
 
-   - Allocate many cores or a full node!
-   - You do not have to explicitely run threads or other parallelism.
+    - Allocate many cores or a full node!
+    - You do not have to explicitely run threads or other parallelism.
 
 - Note that shared memory among the cores works within node only.
 
@@ -58,7 +58,7 @@ available for each language.
 ??? note "Table of hardware"
 
    
-   .. list-table:: Hardware
+    .. list-table:: Hardware
       :widths: 25 25 25 25 25 25 25 25
       :header-rows: 1
 
@@ -97,24 +97,24 @@ available for each language.
 
 ??? example "How much memory do I get per core?"
 
-   - Divide GB RAM of the booked node with number of cores.
-
-   - Example: 128 GB node with 20 cores
-       - ~6.4 GB per core
+    - Divide GB RAM of the booked node with number of cores.
+    - Example: 128 GB node with 20 cores
+        - ~6.4 GB per core
 
 ??? example "How much memory do I get with 5 cores?"
 
-   - Multiply the RAM per core with number of allocated cores..
-
-   - Example: 6.4 GB per core 
-       - ~32 GB 
+    - Multiply the RAM per core with number of allocated cores..
+    - Example: 6.4 GB per core 
+        - ~32 GB 
 
 ??? example "Do you remember how to allocate several cores?"
 
-   - Slurm flag ``-n <number of cores>``
+    - Slurm flag ``-n <number of cores>``
 
-- Choose, if necessary a node with more RAM
-   - See local HPC center documentation in how to do so!
+!!! tip
+
+    - Choose, if necessary a node with more RAM
+    - See local HPC center documentation in how to do so!
 
 ## Cluster Managers
 
