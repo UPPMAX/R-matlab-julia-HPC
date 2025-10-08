@@ -19,6 +19,23 @@
     - Intro 5 min
     - Lecture and 10 min
 
+!!! note "Compute allocations in this workshop" 
+
+    - Pelle/Rackham: ``uppmax2025-2-360``
+    - Kebnekaise: ``hpc2n2025-151``
+    - Cosmos: ``lu2025-2-94``
+    - Tetralith: ``naiss2025-22-934``
+    - Dardel: ``naiss2025-22-934`` 
+    - Alvis: ``naiss2025-22-934``
+
+!!! note "Storage space for this workshop" 
+
+    - Pelle/Rackham: ``/proj/r-matlab-julia-pelle``
+    - Kebnekaise: ``/proj/nobackup/fall-courses``
+    - Tetralith: ``/proj/courses-fall-2025/users/``
+    - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
+    - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/``
+
 !!! warning
     - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
 
