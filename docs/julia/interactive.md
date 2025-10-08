@@ -282,7 +282,7 @@ logout
 
         We are. Notice that we got a response from all four cores we have allocated.
 
-  === "UPPMAX (Rackham/Bianca)"
+    === "UPPMAX (Rackham/Bianca)"
 
         ```bash
         [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-360 -p core -n 4 -t 0:30:00
