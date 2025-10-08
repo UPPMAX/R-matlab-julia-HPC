@@ -1,6 +1,6 @@
 # A Julia notebook: Pluto
 
-## Activate the pluto environment we installed earlier
+## Activate the Pluto environment we installed earlier
 
 ``` { .julia-repl }
 (@v1.11) pkg> activate pluto-env
