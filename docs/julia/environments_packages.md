@@ -388,6 +388,9 @@ environment directory):
         # Change to ``package mode``
         ```
 
+    In Julia for all clusters (output may differ for different clusters and Julia versions):
+   
+
     ```julia
     shell> mkdir MPI-env
     shell> cd MPI-env
@@ -395,11 +398,14 @@ environment directory):
           Activating new project at `path-to-folder\MPI-env`
     (MPI-env) pkg> add MPI
     # In the ``julian`` mode run these commands:
-     (MPI-env)julia> using MPI
-     (MPI-env)julia> MPI.install_mpiexecjl()
+    (MPI-env)julia> using MPI
+    (MPI-env)julia> MPI.install_mpiexecjl()
             [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
             [ Info: Done!
     ```
+
+    - End Julia with ``<CTRL>+D``
+    - In **terminal shell** for all clusters (output may differ for different clusters and Julia versions):
 
     ```bash
     # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
