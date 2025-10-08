@@ -58,12 +58,12 @@
 
     In Julia `package` mode:
 
-        ```julia
+    ```julia
         (@v1.11) pkg> activate jupyter-env
         (jupyter-env) julia> Pkg.build("IJulia")
         (jupyter-env) julia> using IJulia
         (jupyter-env) julia> notebook(dir=".",detached=true)
-        ```
+    ```
 
 - In some centres (UPPMAX and NSC) this will start a Firefox session with the Jupyter notebook interface.
 - The last command may not be able to start notebook, see further down how to do.
