@@ -228,6 +228,27 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
 
 ## Exercises
 
+!!! important
+
+    **Compute allocations in this workshop**
+
+    - Pelle/Rackham: ``uppmax2025-2-360``
+    - Kebnekaise: ``hpc2n2025-151``
+    - Cosmos: ``lu2025-2-94``
+    - Tetralith: ``naiss2025-22-934``
+    - Dardel: ``naiss2025-22-934``
+    - Alvis: ``naiss2025-22-934`` 
+     
+    **Storage space for this workshop**
+
+    - Rackham: ``/proj/r-matlab-julia-pelle``
+    - Kebnekaise: ``/proj/nobackup/fall-courses``
+    - Tetralith: ``/proj/courses-fall-2025/users/``
+    - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
+    - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/``
+
+
+
 
 !!! example "Running a parallel code efficiently"
 
