@@ -47,13 +47,12 @@ available for each language.
 
     - Allocate many cores or a full node!
     - You do not have to explicitely run threads or other parallelism.
-
-- Note that shared memory among the cores works within node only.
+    - Note that shared memory among the cores works within node only.
 
 !!! discussion
 
-   - Take some time to find out the answers on the questions below, using the table of hardware
-   - I'll ask around in a few minutes
+    - Take some time to find out the answers on the questions below, using the table of hardware
+    - I'll ask around in a few minutes
 
 ??? note "Table of hardware"
 
