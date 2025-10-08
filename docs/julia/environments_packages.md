@@ -369,8 +369,8 @@ environment directory):
     === "PDC"
 
         ```bash
-        # Load the tool chain for Julia which already contains a MPI library
-        $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+        # Load the tool chain for Julia which already contains a MPI library (cray-mpich)
+        $ ml PDCOLD/23.12 julia/1.10.2-cpeGNU-23.12
         # Start Julia on the command line
         $ julia
         # Change to ``package mode``
