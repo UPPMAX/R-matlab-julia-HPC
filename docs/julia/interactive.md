@@ -443,8 +443,8 @@ logout
     - And from the terminal have started a interactive session
     - See [last exercise](#exercise-interactive-session)
 
-- !Start Jupyter](notebook_jupyter.md)
-- !Start Pluto](notebook_Pluto.md)
+- [Start Jupyter](notebook_jupyter.md)
+- [Start Pluto](notebook_Pluto.md)
 
     **Exit**
 
