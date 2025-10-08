@@ -228,6 +228,8 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
 
 ## Exercises
 
+<!-- markdownlint-disable MD036 --><!-- Ignore "no-emphasis-as-heading Emphasis used instead of a heading" -->
+
 !!! important
 
     **Compute allocations in this workshop**
@@ -246,9 +248,6 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
     - Tetralith: ``/proj/courses-fall-2025/users/``
     - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
     - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/``
-
-
-
 
 !!! example "Running a parallel code efficiently"
 
