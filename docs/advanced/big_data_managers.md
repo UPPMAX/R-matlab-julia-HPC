@@ -7,8 +7,6 @@
     - I understand how cluster managers work
     - I know where to find more information about cluster managers
 
-
-
 ## Big data
 
 Sometimes the workflow you are targeting doesn't require extensive computations but mainly dealing with
@@ -18,12 +16,6 @@ We list some of these tools in what follows but notice that other tools doing si
 available for each language.
 
 !!! admonition "Language-specific tools for big data"
-
-    === "Julia"
-
-        According to the developers of this framework, [Dagger](https://juliaparallel.org/Dagger.jl/dev/)
-         is heavily inspired on Dask. It support distributed arrays so that they could fit the memory and
-         also the possibility of parallelizing the computations on these arrays.
 
     === "R"
 
@@ -37,6 +29,92 @@ available for each language.
          [Distributed Arrays](https://se.mathworks.com/help/parallel-computing/distributed-arrays.html)
          will assist you when dealing with large arrays.
 
+    === "Julia"
+
+        According to the developers of this framework, [Dagger](https://juliaparallel.org/Dagger.jl/dev/)
+         is heavily inspired on Dask. It support distributed arrays so that they could fit the memory and
+         also the possibility of parallelizing the computations on these arrays.
+
+### Allocating memory (RAM)
+
+- Storing the data in an efficient way is one thing!
+
+- Using the data in a program is another. 
+- How much is actually loaded into the working memory (RAM)
+- Is more data in variables created during the run or work?
+
+!!! important
+
+   - Allocate many cores or a full node!
+   - You do not have to explicitely run threads or other parallelism.
+
+- Note that shared memory among the cores works within node only.
+
+!!! discussion
+
+   - Take some time to find out the answers on the questions below, using the table of hardware
+   - I'll ask around in a few minutes
+
+??? note "Table of hardware"
+
+   
+   .. list-table:: Hardware
+      :widths: 25 25 25 25 25 25 25 25
+      :header-rows: 1
+
+      * - Technology
+        - Kebnekaise
+        - Rackham
+        - Snowy
+        - Bianca
+        - Cosmos  
+        - Tetralith   
+        - Dardel
+      * - Cores/compute node
+        - 28 (72 for largemem, 128/256 for AMD Zen3/Zen4)
+        - 20
+        - 16
+        - 16
+        - 48  
+        - 32  
+        - 128
+      * - Memory/compute node
+        - 128-3072 GB 
+        - 128-1024 GB
+        - 128-4096 GB
+        - 128-512 GB
+        - 256-512 GB  
+        - 96-384 GB   
+        - 256-2048 GB
+      * - GPU
+        - NVidia V100, A100, A6000, L40s, H100, A40, AMD MI100 
+        - None
+        - NVidia T4 
+        - NVidia A100
+        - NVidia A100 
+        - NVidia T4   
+        - 4 AMD Instinct™ MI250X á 2 GCDs
+
+??? example "How much memory do I get per core?"
+
+   - Divide GB RAM of the booked node with number of cores.
+
+   - Example: 128 GB node with 20 cores
+       - ~6.4 GB per core
+
+??? example "How much memory do I get with 5 cores?"
+
+   - Multiply the RAM per core with number of allocated cores..
+
+   - Example: 6.4 GB per core 
+       - ~32 GB 
+
+??? example "Do you remember how to allocate several cores?"
+
+   - Slurm flag ``-n <number of cores>``
+
+- Choose, if necessary a node with more RAM
+   - See local HPC center documentation in how to do so!
 
 ## Cluster Managers
 
