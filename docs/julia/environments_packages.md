@@ -296,7 +296,7 @@ environment directory):
     === "HPC2N & LUNARC"
 
         ```bash
-        $ module load GCCcore/13.2.0  JupyterLab/4.2.0
+        $ module load GCC/13.2.0  JupyterLab/4.2.0
         $ module load Julia/1.8.5-linux-x86_64
         $ julia
         ```
