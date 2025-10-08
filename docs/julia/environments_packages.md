@@ -463,11 +463,6 @@ environment directory):
         # Now the wrapper should be available on the command line
         ```
 
-                shell> mkdir jupyter-env
-        shell> cd jupyter-env
-        (@v1.10) pkg> activate .
-          Activating new project at `path-to-folder\jupyter-env`
-
     ```julia
     shell> mkdir MPI-env
     shell> cd MPI-env
@@ -496,7 +491,7 @@ environment directory):
 
     ??? note "Solution for all centres"
 
-       ``` julia
+        ``` julia
 
                 shell> mkdir new-env
                 shell> cd new-env
@@ -507,7 +502,7 @@ environment directory):
                       Status `path-to-folder\new-env\Project.toml`
                       [336ed68f] CSV v0.10.9
                 (new-env) pkg> deactivate
-        ```
+         ```
 
 !!! summary
 
