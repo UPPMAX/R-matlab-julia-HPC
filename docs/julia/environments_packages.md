@@ -194,11 +194,12 @@ environment directory):
 ## Exercises
 
 - We need the packages ``IJulia`` and ``Pluto`` for running the integrated development environments (IDEs) Jupyter and Pluto.
+- We also need the MPI package on Friday.
 
 - Make these exercises be the installation of the packages that we will later use.
 - It might be advisable to install IJulia and Pluto in separate environments.
 
-!!! challenge "1. Install Pluto"
+!!! example "Challenge 1. Install Pluto"
 
     - It may take 5-10 minutes or so.
     - This you can do in an ordinary terminal
@@ -313,6 +314,144 @@ environment directory):
                 [7073ff75] IJulia v1.27.0
         (new-env) pkg> deactivate
     ```
+
+!!! example "Challenge 3. Required package for parallel jobs"
+
+    In order to use MPI with Julia you will need to follow the next steps (only the first time):
+
+    === "UPPMAX"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml gcc/11.3.0 openmpi/4.1.3
+        # Load Julia
+        $ ml Julia/1.8.5
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode`` and add the ``MPI`` package
+        ```
+
+        ```julia
+        (v1.8) pkg> add MPI
+        # In the ``julian`` mode run these commands:
+        julia> using MPI
+        julia> MPI.install_mpiexecjl()
+                [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
+                [ Info: Done!
+        ```
+
+        ```bash
+        # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+        $ export PATH=~/.julia/bin:$PATH
+        # Now the wrapper should be available on the command line
+        ```
+
+    === "HPC2N"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml foss/2021b
+        # Load Julia
+        $ ml Julia/1.8.5-linux-x86_64
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode`` and add the ``MPI`` package
+        ```
+
+        ```julia
+        (v1.8) pkg> add MPI
+        # In the ``julian`` mode run these commands:
+        $ julia> using MPI
+        $ julia> MPI.install_mpiexecjl()
+                [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
+                [ Info: Done!
+        ```
+
+        ```bash
+        # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+        $ export PATH=/home/u/username/.julia/bin:$PATH
+        # Now the wrapper should be available on the command line
+        ```
+
+    === "LUNARC"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml foss/2021b
+        # Load Julia
+        $ ml Julia/1.8.5-linux-x86_64
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode`` and add the ``MPI`` package
+        ```
+
+        ```julia
+        (v1.8) pkg> add MPI
+        # In the ``julian`` mode run these commands:
+        julia> using MPI
+        julia> MPI.install_mpiexecjl()
+                [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
+                [ Info: Done!
+        ```
+
+        ```bash
+        # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+        $ export PATH=/home/u/username/.julia/bin:$PATH
+        # Now the wrapper should be available on the command line
+        ```
+
+    === "PDC"
+
+        ```bash
+        # Load the tool chain for Julia which already contains a MPI library
+        $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode`` and add the ``MPI`` package
+        ```
+
+        ```julia
+        (v1.10) pkg> add MPI
+        # In the ``julian`` mode run these commands:
+        $ julia> using MPI
+        $ julia> MPI.install_mpiexecjl()
+                [ Info: Installing `mpiexecjl` to `/cfs/klemming/home/u/username/.julia/bin`...
+                [ Info: Done!
+        ```
+
+        ```bash
+        # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+        $ export PATH=/cfs/klemming/home/u/username/.julia/bin:$PATH
+        # Now the wrapper should be available on the command line
+        ```
+
+    === "NSC"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml buildtool-easybuild/4.8.0-hpce082752a2 foss/2023b
+        # Load Julia
+        $ ml julia/1.9.4-bdist
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode`` and add the ``MPI`` package
+        ```
+
+        ```julia
+        (v1.9) pkg> add MPI
+        # In the ``julian`` mode run these commands:
+        $ julia> using MPI
+        $ julia> MPI.install_mpiexecjl()
+                [ Info: Installing `mpiexecjl` to `/home/username/.julia/bin`...
+                [ Info: Done!
+        ```
+
+        ```bash
+        # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+        $ export PATH=/home/username/.julia/bin:$PATH
+        # Now the wrapper should be available on the command line
+        ```
+
 
 !!! example "Extra Challenge. Project environment with csv"
 
