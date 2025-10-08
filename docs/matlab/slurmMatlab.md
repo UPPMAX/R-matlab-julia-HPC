@@ -546,7 +546,7 @@ ans =
 
     This exercise assumes you did the previous ones on this page; loading MATLAB, doing the configCluster.sh, adding the job settings. It should work on all the clusters.
     
-    You can download [parallel_example.m here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m>).
+    You can download [parallel_example.m here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m).
 
 ##### `parpool`
 
