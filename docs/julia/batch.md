@@ -82,16 +82,30 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
 
     Short serial example for running on different clusters.
 
-    === "UPPMAX"
+    === "UPPMAX (Bianca)"
 
         ```bash
         #!/bin/bash -l  # -l cleans the environment in the batch job, recommended at UPPMAX
-        #SBATCH -A naiss202t-uv-wxyz    # your project_ID
+        #SBATCH -A sens202t-uv-wxyz    # your project_ID
         #SBATCH --time=00:10:00        # Asking for 10 minutes
         #SBATCH -n 1                   # Asking for 1 core
         #SBATCH --error=job.%J.err     # error file
         #SBATCH --output=job.%J.out    # output file
         ml julia/1.8.5 # Julia module
+
+        julia script.jl              # run the serial script
+        ```
+
+    === "UPPMAX (Pelle)"
+
+        ```bash
+        #!/bin/bash -l  # -l cleans the environment in the batch job, recommended at UPPMAX
+        #SBATCH -A uppmax202t-uv-wxyz    # your project_ID
+        #SBATCH --time=00:10:00        # Asking for 10 minutes
+        #SBATCH -n 1                   # Asking for 1 core
+        #SBATCH --error=job.%J.err     # error file
+        #SBATCH --output=job.%J.out    # output file
+        ml Julia/1.10.9-LTS-linux-x86_64  # Julia module
 
         julia script.jl              # run the serial script
         ```
@@ -190,7 +204,7 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
     and install the package ``DFTK``. Here, there are batch scripts for using this environment (it is assumed that
     the batch scripts are in the ``my-third-env`` folder):
 
-    === "UPPMAX"
+    === "UPPMAX (Bianca/Rackham))"
 
         ```bash
         #!/bin/bash -l     # -l cleans the environment in the batch job, recommended at UPPMAX
@@ -201,6 +215,23 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
         #SBATCH --output=job.%J.out   # output file
 
         ml julia/1.8.5                # Julia module
+
+        # Move to the directory where the ".toml" files for the environment are located
+        julia --project=. serial-env.jl  # run the script
+        ```
+
+
+    === "UPPMAX (Pelle)"
+
+        ```bash
+        #!/bin/bash -l     # -l cleans the environment in the batch job, recommended at UPPMAX
+        #SBATCH -A uppmax202t-uv-wxyz  # Change to your own after the course
+        #SBATCH --time=00:10:00       # Asking for 10 minutes
+        #SBATCH -n 1                  # Asking for 1 core
+        #SBATCH --error=job.%J.err    # error file
+        #SBATCH --output=job.%J.out   # output file
+
+        ml Julia/1.10.9-LTS-linux-x86_64       # Julia module
 
         # Move to the directory where the ".toml" files for the environment are located
         julia --project=. serial-env.jl  # run the script
@@ -339,9 +370,9 @@ This scripts accepts two integers as command line arguments.
         julia serial-sum.jl Arg1 Arg2    # run the serial script
         ```
 
-    === "UPPMAX"
+    === "UPPMAX (Bianca/Rackham)"
 
-        This batch script is for UPPMAX.
+        This batch script is for Bianca/Rackham.
 
         ```bash
         #!/bin/bash -l
@@ -352,6 +383,23 @@ This scripts accepts two integers as command line arguments.
         #SBATCH --error=job.%J.err   # error file
         #SBATCH --output=job.%J.out  # output file
         module load julia/1.8.5
+
+        julia serial-sum.jl Arg1 Arg2    # run the serial script
+        ```
+
+    === "UPPMAX (Pelle)"
+
+        This batch script is for Pelle.
+
+        ```bash
+        #!/bin/bash -l
+        #SBATCH -A uppmax202t-uv-wxyz # Change to your own after the course
+        #SBATCH -J job-serial        # name of the job
+        #SBATCH -n 1                 # nr. tasks
+        #SBATCH --time=00:05:00 # Asking for 5 minutes
+        #SBATCH --error=job.%J.err   # error file
+        #SBATCH --output=job.%J.out  # output file
+        module load Julia/1.10.9-LTS-linux-x86_64 
 
         julia serial-sum.jl Arg1 Arg2    # run the serial script
         ```
