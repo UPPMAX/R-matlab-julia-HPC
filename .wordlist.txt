@@ -1066,6 +1066,7 @@ optimise
 parallelisation
 onDemand
 ML
+JuPyteR
 DL
 LLM
 LLMs
