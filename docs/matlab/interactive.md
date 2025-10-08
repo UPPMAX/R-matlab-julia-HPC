@@ -169,7 +169,7 @@ logout
 
 ## Exercise
 
-!!! important "Run from ThinLinc (web or client!"
+!!! important "Run from ThinLinc (web or client!)"
 
      - [Log in page](../common/login.md#step-1-log-in)
 
