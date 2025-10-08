@@ -31,9 +31,4 @@ https://se.mathworks.com/help/matlab/add-ons.html.*
 https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ 
 https://www.mathworks.com/mwa/otp
 http://www.mathworks.com/*
-rackham-gui.uppmax.uu.se
-./intro-matlab.md
-./load_runMatlab.md
-./slurmMatlab.md
-./intro.md
-
+https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m%3E
