@@ -937,7 +937,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
 
 !!! note "GPU code"
 
-    Using MATLAB with GPUs will be covered in the [Introduction to GPUs](../../advanced/gpus.md) section on the fourth day ("Advanced material"). 
+    Using MATLAB with GPUs will be covered in the [Introduction to GPUs](../advanced/gpus.md) section on the fourth day ("Advanced material"). 
 
 !!! summary
 
