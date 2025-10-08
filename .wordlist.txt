@@ -1071,3 +1071,5 @@ JuPyteR
 DL
 LLM
 LLMs
+pdbMPI
+pareval
