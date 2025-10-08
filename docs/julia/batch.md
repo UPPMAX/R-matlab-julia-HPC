@@ -204,11 +204,11 @@ Common file extensions for batch scripts are ``.sh`` or ``.batch``, but they are
     and install the package ``DFTK``. Here, there are batch scripts for using this environment (it is assumed that
     the batch scripts are in the ``my-third-env`` folder):
 
-    === "UPPMAX (Bianca/Rackham))"
+    === "UPPMAX (Bianca)"
 
         ```bash
         #!/bin/bash -l     # -l cleans the environment in the batch job, recommended at UPPMAX
-        #SBATCH -A naiss202t-uv-wxyz  # Change to your own after the course
+        #SBATCH -A sens202t-uv-wxyz  # Change to your own after the course
         #SBATCH --time=00:10:00       # Asking for 10 minutes
         #SBATCH -n 1                  # Asking for 1 core
         #SBATCH --error=job.%J.err    # error file
