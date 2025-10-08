@@ -390,7 +390,7 @@ Try starting MATLAB at the command line. We will use the same versions as in the
 
 ## Start the MATLAB GUI
 
-Running the MATLAB GUI requires that users be logged into a ThinLinc session. Refer to [the login section](https://uppmax.github.io/R-matlab-julia-HPC/common/login.html#log-in) for help.
+Running the MATLAB GUI requires that users be logged into a ThinLinc session. Refer to [the login section](../common/login.md##step-1-log-in) for help.
 
 === "HPC2N (Kebnekaise)"
   
