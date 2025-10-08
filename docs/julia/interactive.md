@@ -3,12 +3,9 @@
 !!! info "Learning outcomes for today"
 
     - Be able to start interactive sessions
-    - Be able to run Julia in Jupyter notebook or Pluto
+    - Use the Julia REPL in the interactive session
+    - Be able to run Julia in Jupyter notebook OR Pluto
 
-!!! info "Your expectations?"
-
-    - How to reach the calculation nodes interactivey
-    - How do I proceed to work interactively?
 
 ??? note "Instructor note"
 
@@ -146,7 +143,7 @@ graph TD
 where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
 (maximum T168 hours), and then you give the id for your project.
 
-Then, when you get the allocation, do one of:
+Then, when you get the allocation, one can run programms in parallel by:
 
 - ``srun -n <ntasks> ./program``
 
@@ -160,6 +157,15 @@ Then, when you get the allocation, do one of:
    - You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.
    - This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.
 
+### End an interactive session
+
+When you have finished using the allocation, either wait for it to end, or close it with ``exit``
+
+```bash
+$ exit
+logout
+```
+
 !!! important "Documentation at the centers"
 
    - [Interactive allocation on PDC](https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/){:target="_blank"}
@@ -168,7 +174,11 @@ Then, when you get the allocation, do one of:
    - [Interactive allocation on HPC2N](https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive){:target="_blank"}
    - [Interactive allocation on LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session){:target="_blank"}
 
-### Example 
+### Exercise
+
+!!! important "Run from ThinLinc (web or client!)"
+
+     - [Log in page](../common/login.md#step-1-log-in)
 
 !!! important "Interactive jobs"
     
@@ -241,10 +251,10 @@ Then, when you get the allocation, do one of:
 
         We are. Notice that we got a response from all four cores we have allocated.
 
-    === "UPPMAX"
+    === "UPPMAX (Pelle)"
 
         ```bash
-        [bjornc@pelle2 ~]$ interactive -A uppmax2025-2-360 -p core -n 4 -t 0:30:00
+        [bjornc@pelle ~]$ interactive -A uppmax2025-2-360 -n 4 -t 0:30:00
         You receive the high interactive priority.
         There are free cores, so your job is expected to start at once.
 
@@ -253,7 +263,7 @@ Then, when you get the allocation, do one of:
         Waiting for job 29556505 to start...
         Starting job now -- you waited for 1 second.
 
-        [bjornc@p102 ~]$ module load julia/1.8.5
+        [bjornc@p102 ~]$ module load Julia/1.10.9-LTS-linux-x86_64
         ```
 
         Let us check that we actually run on the compute node:
@@ -264,6 +274,33 @@ Then, when you get the allocation, do one of:
         p102.uppmax.uu.se
         p102.uppmax.uu.se
         p102.uppmax.uu.se
+        ```
+
+        We are. Notice that we got a response from all four cores we have allocated.
+
+  === "UPPMAX (Rackham/Bianca)"
+
+        ```bash
+        [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-360 -p core -n 4 -t 0:30:00
+        You receive the high interactive priority.
+        There are free cores, so your job is expected to start at once.
+
+        Please, use no more than 6.4 GB of RAM.
+
+        Waiting for job 29556505 to start...
+        Starting job now -- you waited for 1 second.
+
+        [bjornc@r102 ~]$ module load julia/1.8.5
+        ```
+
+        Let us check that we actually run on the compute node:
+
+        ```bash
+        [bjornc@r102 ~]$ srun hostname
+        r102.uppmax.uu.se
+        r102.uppmax.uu.se
+        r102.uppmax.uu.se
+        r102.uppmax.uu.se
         ```
 
         We are. Notice that we got a response from all four cores we have allocated.
@@ -328,10 +365,9 @@ Then, when you get the allocation, do one of:
         println("The sum of the two numbers is ", summ)
     ```
 
-
     **Running the script**
 
-    - Note that the commands are the same for both HPC2N and UPPMAX!
+    - Note that the commands should be the same for all clusters
 
     Running a Julia script in the allocation we made further up. Notice that since we asked for 4 cores, the script is run 4 times, since it is a serial script
 
@@ -371,63 +407,12 @@ Then, when you get the allocation, do one of:
     4
     ```
 
-    **Exit**
+    **Do not exit yet!**
 
-    When you have finished using the allocation, either wait for it to end, or close it with ``exit``
+!!! info 
 
-    === "NSC"
-
-        ```bash
-        [sm_bcarl@n134 ~]$ exit
-        logout
-        srun: error: n134: task 0: Exited with exit code 130
-        srun: Terminating StepId=43071803.interactive
-        salloc: Relinquishing job allocation 43071803
-        salloc: Job allocation 43071803 has been revoked.
-        [sm_bcarl@tetralith3 ~]$
-        ```
-
-    === "PDC"
-
-        ```bash
-        claremar@login1:~> exit
-        exit
-        salloc: Relinquishing job allocation 9103056
-        claremar@login1:~>
-        ```
-
-    === "UPPMAX"
-
-        ```bash
-        [bjornc@r483 ~]$ exit
-
-        exit
-        [screen is terminating]
-        Connection to r483 closed.
-
-        [bjornc@rackham2 ~]$
-        ```
-
-    === "HPC2N"
-
-        ```bash
-        [~]$ exit
-        exit
-        salloc: Relinquishing job allocation 20174806
-        salloc: Job allocation 20174806 has been revoked.
-        [~]$
-        ```
-
-    === "LUNARC"
-
-        ```bash
-        [~]$ exit
-        exit
-        [screen is terminating]
-        Connection to cn050 closed.
-
-        [~]$
-        ```
+    Meanwhile waiting let's talk about notebooks!
+    
 ## Notebooks
 
 ### Jupyter
@@ -674,6 +659,66 @@ julia> notebook(dir=".",detached=true)
 
          - On Kebnekaise, you can run Jupyter notebooks with Julia kernels by using batch scripts
          - See [HPC2N documentation on using Jupyter Lab with Julia](https://docs.hpc2n.umu.se/software/jupyter/#jupyterlab__with__julia)
+
+    **Exit**
+
+    When you have finished using the allocation, either wait for it to end, or close it with ``exit``
+
+    === "NSC"
+
+        ```bash
+        [sm_bcarl@n134 ~]$ exit
+        logout
+        srun: error: n134: task 0: Exited with exit code 130
+        srun: Terminating StepId=43071803.interactive
+        salloc: Relinquishing job allocation 43071803
+        salloc: Job allocation 43071803 has been revoked.
+        [sm_bcarl@tetralith3 ~]$
+        ```
+
+    === "PDC"
+
+        ```bash
+        claremar@login1:~> exit
+        exit
+        salloc: Relinquishing job allocation 9103056
+        claremar@login1:~>
+        ```
+
+    === "UPPMAX"
+
+        ```bash
+        [bjornc@r483 ~]$ exit
+
+        exit
+        [screen is terminating]
+        Connection to r483 closed.
+
+        [bjornc@rackham2 ~]$
+        ```
+
+    === "HPC2N"
+
+        ```bash
+        [~]$ exit
+        exit
+        salloc: Relinquishing job allocation 20174806
+        salloc: Job allocation 20174806 has been revoked.
+        [~]$
+        ```
+
+    === "LUNARC"
+
+        ```bash
+        [~]$ exit
+        exit
+        [screen is terminating]
+        Connection to cn050 closed.
+
+        [~]$
+        ```
+
+
 
 
 ### Exercises
