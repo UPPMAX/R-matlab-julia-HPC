@@ -423,13 +423,14 @@ logout
 
 **JuPyteR** was written for serving notebooks for Julia, Python and R
 
+![Jupyter-started](../img/jupyterlab_started.png)
 ![Jupyter-Julia](../img/Jupyter_julia.png)
 
 ### Pluto 
 
 - Pluto, like Jupyter, is a programming notebook.
 
-![Pluto cells](../img/Pluto_cells.png)
+![Pluto cells](../img/Pluto_cells2.png)
 
 - Reproducible (even without Pluto), gittable, extraordinarily interactive programming notebooks
 - Offers a similar notebook experience to Jupyter, but understands global references between cells, and reactively re-evaluates cells affected by a code change.
@@ -442,8 +443,8 @@ logout
     - And from the terminal have started a interactive session
     - See [last exercise](#exercise-interactive-session)
 
-- [Start Jupyter](notebook_jupyter.md)
-- [Start Pluto](notebook_Pluto.md)
+- !Start Jupyter](notebook_jupyter.md)
+- !Start Pluto](notebook_Pluto.md)
 
     **Exit**
 
@@ -506,7 +507,7 @@ logout
 
 
 
-### Exercises
+### Exercises run scripts
 
 !!! important "Run scripts from an interactive session"
 
