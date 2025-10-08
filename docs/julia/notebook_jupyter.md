@@ -27,16 +27,7 @@
         $ julia -p 4
         ```
 
-        In Julia:
-
-        ```julia
-        julia> using Pkg
-        julia> Pkg.add("IJulia")
-        julia> Pkg.build("IJulia")
-        julia> using IJulia
-        julia> notebook(dir=".",detached=true)
-        ```
-
+ 
     === "PDC"
 
          Note: not fully tested successfully, but this step works
@@ -47,34 +38,12 @@
          $ julia
          ```
 
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
-         julia> notebook(dir=".",detached=true)
-         ```
-
-         - The last command may not be able to start notebook, see further down how to do.
-
     === "UPPMAX"
 
          ```bash
          $ module load julia/1.8.5
          $ module load python/3.9.5
          $ julia -p 4
-         ```
-
-         In Julia:
-
-         ```julia
-         julia> using Pkg
-         julia> Pkg.add("IJulia")
-         julia> Pkg.build("IJulia")
-         julia> using IJulia
-         julia> notebook(dir=".",detached=true)
          ```
 
     === "HPC2N & LUNARC"
@@ -87,14 +56,17 @@
          $ julia
          ```
 
-         In Julia `package` mode:
+    In Julia `package` mode:
 
-         ```julia
-         (v1.8) pkg>add IJulia
-         (v1.8) pkg>build IJulia
-         ```
+        ```julia
+        (@v1.11) pkg> activate jupyter-env
+        (jupyter-env) julia> Pkg.build("IJulia")
+        (jupyter-env) julia> using IJulia
+        (jupyter-env) julia> notebook(dir=".",detached=true)
+        ```
 
-In some centres (UPPMAX and NSC) this will start a Firefox session with the Jupyter notebook interface.
+- In some centres (UPPMAX and NSC) this will start a Firefox session with the Jupyter notebook interface.
+- The last command may not be able to start notebook, see further down how to do.
 
 ![Jupyter Julia](../img/Jupyter_julia.png)
 
@@ -128,7 +100,7 @@ julia> notebook(dir=".",detached=true)
 
 *Principle*
 
-1. Load julia module (and prerequisites)
+1. Load Julia module (and prerequisites)
 2. Load Python or Jupyter module (and prerequisites) that is compatible with the python version used when building IJulia in the previous step
 
 !!! important "Running IJulia in Jupyter on compute nodes"
