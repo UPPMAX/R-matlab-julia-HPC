@@ -73,12 +73,14 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
     - [Older explanation](https://youtu.be/GHbrpg75qbQ)
     - [Newer explanation](https://youtu.be/c7pVEBhPohk)
 
+More details for the MPI parallelization scheme in Python can be found in a previous [MPI course](https://github.com/MPI-course-collaboration/MPI-course) offered by some of us.
 
 ### How it is used in programming languages of this course?
 
 Packages called Distributed or MPI.
 
 To get use of MPI library (in C) you need to load a MPI module.
+
 - There are two common versions
     - OpenMPI
     - MPICH (on Dardel)
