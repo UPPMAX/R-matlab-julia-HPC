@@ -152,7 +152,7 @@ The goal of the language script is to have a fixed unit of work that
 can be done by a custom amount of cores.
 
 This language script is called by the Slurm script,
-i.e. not directly by a user. If the calculation script is absent,
+i.e. not directly by a user. If the language script is absent,
 the benchmark script will (try to) download it for you.
 
 ???- hint "How do I run it anyways?"
@@ -305,10 +305,10 @@ multiple times to the queue: once with 1 cores, once with 2 cores, etc.
     without doing anything else (e.g. showing a splash screen or restoring a
     computational environment).
 
-## Exercise 4: read the calculation script
+## Exercise 4: read the language script
 
 The Slurm script runs 
-[a calculation script of your favorite language](#calculation-script)
+[a script of your favorite language](#language-script)
 for a specified number of cores.
 
 - Locate the lines of code that make the calculation perform in parallel.
