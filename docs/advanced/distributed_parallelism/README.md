@@ -699,7 +699,7 @@ mpirun Rscript do_2d_integration.R 1 1
     \int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
     ```
 
-### Julia: Find the difference in coding!
+### Julia: Find the difference in coding
 
 ??? important "Julia scripts"
 
@@ -1281,7 +1281,7 @@ mpirun Rscript do_2d_integration.R 1 1
             time mpiexecjl -np 8 julia mpi.jl
             ```
 
-#### R
+#### R: RMPI
 
 ??? important "RMPI"
 
@@ -1467,10 +1467,10 @@ mpirun Rscript do_2d_integration.R 1 1
         Send the script to the batch system: 
 
         ```bash
-        $ sbatch <batch script>
+        sbatch <batch script>
         ```
 
-#### MATLAB
+#### MATLAB: parfor and parfevel
 
 ??? example "**Challenge 1.** Create and run a parallel code"
     
@@ -1480,6 +1480,7 @@ mpirun Rscript do_2d_integration.R 1 1
     r = rand(1,10000);
     s = sum(r);
     ```
+    
     We want now to repeat these steps (generating the numbers and taking the sum) 6 times so that the steps are run at the same time. Use `parfor` to parallelize these steps. Once your code is parallelized enclose it in a `parpool` section and send the job to the queue.
 
 ??? check "Solution"
@@ -1513,6 +1514,7 @@ mpirun Rscript do_2d_integration.R 1 1
        results = parfeval(@mean, 1, rand(nsize))
     end
     ```
+    
     Place this function in a file called **parfeval_mean.m** and submit this function with the MATLAB `batch` command.
 
 ??? check "Solution"
