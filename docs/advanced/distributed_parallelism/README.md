@@ -239,11 +239,11 @@ mpirun Rscript do_2d_integration.R 1 1
     - Dardel: ``/cfs/klemming/projects/snic/courses-fall-2025``
     - Alvis: ``/mimer/NOBACKUP/groups/courses-fall-2025/``
 
-!!! example "Running a parallel code efficiently"
+!!! example "Running parallel with distributed libraries"
 
     In this exercise we will run a parallelized code that performs a 2D integration:
 
-    ```math
+    ```{ .math }
     \int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
     ```
 
@@ -691,12 +691,17 @@ mpirun Rscript do_2d_integration.R 1 1
     - [Wikipedias' article on Parallel Computing](https://en.wikipedia.org/wiki/Parallel_computing).
 
 
-## Julia Dump
+!!! example "Running parallel with MPI"
 
+    In this exercise we will run a parallelized code that performs a 2D integration:
 
-### Parallel code
+    ```{ .math }
+    \int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
+    ```
 
-!!! important "Julia scripts"
+### Find the difference in coding!
+
+??? important "Julia scripts"
 
     === "serial.jl"
 
