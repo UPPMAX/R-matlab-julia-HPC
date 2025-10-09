@@ -44,6 +44,11 @@
     Pelle      |Yes
     Tetralith  |Yes
 
+???- hint "Prefer this session as a video?"
+
+    The watch the YouTube video
+    [R-Julia-MATLAB course, advanced day: Thread parallelism](https://youtu.be/zSu-MWvM0Us)
+
 ## Why thread parallelism is important
 
 Because it is one way to speedup (pun intended) the calculation.
