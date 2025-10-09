@@ -38,8 +38,10 @@
 
 ![CoRA, the robotic platform for Arnold](cora.jpg)
 
-> CoRA, a robotic platform in which all computers sent messages to one
-> receiving computer: an example of distributed parallelism
+> Figure 1: CoRA, a robotic platform in which all computers
+> (e.g. the one connected to the camera, another connected to the gripper, etc)
+> sent messages to one receiving computer:
+> an example of distributed parallelism
 
 ## Why parallel computing is important
 
@@ -105,10 +107,10 @@ Imagine a calculation that takes 16 time units, represented as this:
 
 ![1 core](amdahls_law_example_1.png)
 
-> Figure 1: a calculation of 16 time units run on 1 core,
+> Figure 2: a calculation of 16 time units run on 1 core,
 > where square is a time unit of calculation.
-> - Red square: a unit of calculation that cannot be run in parallel.
-> - Green square: a unit of calculation that can be run in parallel
+> :red_square:: a unit of calculation that cannot be run in parallel.
+> Green square: a unit of calculation that can be run in parallel
 
 Using 2 calculation units, this results in:
 
@@ -116,7 +118,7 @@ Using 2 calculation units, this results in:
 
 > Figure 2: a calculation of 16 time units run on 2 cores,
 > where square is a time unit of calculation.
-> - Red square: a unit of calculation that cannot be run in parallel.
+> :red_square:: a unit of calculation that cannot be run in parallel.
 > - Green square: a unit of calculation that can be run in parallel.
 > - White square: a unit of calculation that is spent doing nothing
 
