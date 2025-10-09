@@ -128,32 +128,36 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
 
 ??? hint "How did you calculate the speedup exactly?"
 
-    The speedup, `S`, equals:
+    Following `[Hennessy and Patterson, 2011]` (section 1.8),
+    the speedup `n` (as in the sentence 'X is `n` times faster than Y')
+    equals:
 
     ```text
-    S = t_regular / t_enhanced
+    n = t_y / t_x
     ```
 
     where:
 
-    - `t_enhanced` is the time the enhanced process takes
-    - `t_regular` is the time the regular/unenhanced process takes
+    - `t_x` is the time the new/enhanced process takes
+    - `t_y` is the time the regular/unenhanced process takes
 
     In this context, the
-    'enhanced process' is the calculation performed by multiple cores.
+    'new/enhanced process' is the calculation performed by multiple cores.
 
     Do not be confused by another version of Amdahl's Law,
     that is expressed and the calculation units used (and where the
     numerator and denominator are swapped):
 
     ```text
-    S =  n_used_enhanced / n_used_regular
+    n =  performance_x / performance_y
     ```
 
     where:
 
-    - `n_used_enhanced` is the number of calculation units (the 'work') the enhanced process does
-    - `n_used_regular` is the number of calculation units the regular process has
+    - `performance_x` is the performance (e.g. tasks completed per time unit)
+      the new/enhanced process does
+    - `performance_y` is the performance of the regular process
+
 
 ??? hint "Isn't that Gustafson's Law?"
 
@@ -222,15 +226,19 @@ Program runtime                      |Number of cores|Time|Speedup       |Effici
 <!-- markdownlint-enable MD013 -->
 
 The best possible speed gain (as shown here) is called Amdahl's Law
-(`[Amdahl, 1967]`)
+(inspired by `[Amdahl, 1967]`)
 and, in a general form, is plotted like this:
 
 ![Amdahl's law](amdahls_law.png)
 
-## Question
+<!-- Note that this was not the plot as in the original paper -->
 
-- Which of the lines in the graph of Amdahl's Law corresponds
-  with the worked-out example of 16 time units?
+## Exercises
+
+## Question 1
+
+Which of the lines in the graph of Amdahl's Law corresponds
+with the worked-out example of 16 time units?
 
 ??? tip "Answer"
 
@@ -240,15 +248,19 @@ and, in a general form, is plotted like this:
     was done on purpose. It is easy to convert between the two: just
     take the inverse (i.e. divide 1 by the value you have)
 
-- In the example of 16 time units, what is the shortest amount of time that
-  can be spent on the calculation, given infinite resources?
+## Question 2
+
+In the example of 16 time units, what is the shortest amount of time that
+can be spent on the calculation, given infinite resources?
 
 ??? tip "Answer"
 
     The length of the calculation that cannot be run in parallel,
     which is 4 time units.
 
-- In this example, what is the maximal possible speedup?
+## Question 3
+
+In the example of 16 time units, what is the maximal possible speedup?
 
 ??? tip "Answer"
 
@@ -269,18 +281,22 @@ and, in a general form, is plotted like this:
     - `t_enhanced` is the time the enhanced process takes
     - `t_regular` is the time the regular/unenhanced process takes
 
-- For your research project, you need to run a lot of calculations.
-  Each calculation takes 10 hours. How do you make optimal use
-  of your computational resources?
+## Question 4
+
+For your research project, you need to run a lot of calculations.
+Each calculation takes 10 hours. How do you make optimal use
+of your computational resources?
 
 ??? tip "Answer"
 
     Run the calculation on a single core for 100% efficiency
 
-- For your research project, you also have a calculation that takes 11 days.
-  Your HPC cluster allows a calculation of at most 10 days.
-  Assume your HPC center will not extend your job (they will sometimes do so when asked!).
-  How do you make optimal use of your time?
+## Question 5
+
+For your research project, you also have a calculation that takes 11 days.
+Your HPC cluster allows a calculation of at most 10 days.
+Assume your HPC center will not extend your job (they will sometimes do so when asked!).
+How do you make optimal use of your time?
 
 ??? tip "Answer"
 
@@ -295,10 +311,12 @@ and, in a general form, is plotted like this:
     Alternatively, you can added thread parallelism to allow running
     with multiple cores.
 
-- Your colleague runs many jobs with a lot of cores. 'It is way faster!',
-  he/she states. That same colleague, however, also complains about long
-  waiting times before his/her jobs start. How would you explain this
-  situation?
+## Question 6
+
+Your colleague runs many jobs with a lot of cores. 'It is way faster!',
+he/she states. That same colleague, however, also complains about long
+waiting times before his/her jobs start. How would you explain this
+situation?
 
 ??? tip "Answer"
 
@@ -307,11 +325,13 @@ and, in a general form, is plotted like this:
 
     Due to this, his/her jobs are only run when the HPC cluster has a low workload and activates the so-called 'bonus queue' (UPPMAX) or generally have to wait for their priority to go up again.
 
-- Your colleague has also done the exercises in this session
-  and decided to measure here code.
-  Below you can see the plots produced by this benchmark.
-  What seemed to be the percentage of his/her code
-  that could be run in parallel?
+## Question 7
+
+Your colleague has also done the exercises in this session
+and decided to measure the same features of her code.
+Below you can see the plots produced by this benchmark.
+What seemed to be the percentage of his/her code
+that could be run in parallel?
 
 === "Total core seconds"
 
@@ -356,7 +376,6 @@ been very nearly constant for about ten years, and
 accounts for 40% of the executed instructions in
 production runs.
 
-
 ## References
 
 - `[Amdahl, 1967]` Amdahl, Gene M. 
@@ -364,3 +383,5 @@ production runs.
   computing capabilities." Proceedings of the April 18-20, 1967,
   spring joint computer conference. 1967.
   Fun facts: it contains a single hand-drawn plot and no equations
+- `[Hennessy and Patterson, 2011]` Hennessy, John L., and David A. Patterson.
+  Computer architecture: a quantitative approach. Elsevier, 2011.
