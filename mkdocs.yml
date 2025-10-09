@@ -24,7 +24,7 @@ nav:
       - Batch: r/batch.md
       - r/interactive.md
       - RStudio: r/rstudio.md
-      - Summary: r/summary.md
+      - Summary: r/summary/README.md
       - Evaluation: r/evaluation.md
     - MATLAB: 
       - Schedule: matlab/schedule.md
