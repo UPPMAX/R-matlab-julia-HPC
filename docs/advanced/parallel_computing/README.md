@@ -82,6 +82,17 @@ The universe|A collection of HPC clusters                    |One <!-- yes, I th
 
 <!-- markdownlint-enable MD013 -->
 
+!!! warning "Simplifications used"
+
+    1 core is 1 worker is 1 thread
+
+??? tip "Why do we use this simplification?"
+
+    Because we start from the assumption that we
+    are reasonably smart, i.e.
+    we will run as much threads as we have cores.
+
+    There is an exercise where this assumption is broken.
 
 ## Types of 'doing more things at the same time'
 
