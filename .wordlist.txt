@@ -1078,3 +1078,4 @@ Prechelt
 REXX
 CoRA
 Amdahl
+Elsevier
