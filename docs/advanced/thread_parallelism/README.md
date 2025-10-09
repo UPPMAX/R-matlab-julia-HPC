@@ -433,11 +433,11 @@ for a specified number of cores.
     ------------------------------|----------------------------
     `grid_size`                   |3
     `n_workers`                   |2
-    `grid_cells_per_worker`       |`3 / 2 (rounded down) = ` 1
-    `begin_index` for first worker|`1 * (1 - 1) + 1 = ` 1
-    `end_index`   for first worker|`1 * 1 = ` 1
-    `begin_index` for second worker|`1 * (2 - 1) + 1 = ` 2
-    `end_index`   for second worker|`1 * 2 = ` 2
+    `grid_cells_per_worker`       |`3 / 2 (rounded down) =` 1
+    `begin_index` for first worker|`1 * (1 - 1) + 1 =` 1
+    `end_index`   for first worker|`1 * 1 =` 1
+    `begin_index` for second worker|`1 * (2 - 1) + 1 =` 2
+    `end_index`   for second worker|`1 * 2 =` 2
 
     This means that, although the calculation is split in 3 parts,
     only 2 of these are performed.
