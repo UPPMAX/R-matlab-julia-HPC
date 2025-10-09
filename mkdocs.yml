@@ -153,12 +153,14 @@ markdown_extensions:
           format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.blocks.caption
   #- pymdownx.keys
-  #- pymdownx.emoji:
-  #    emoji_index: !!python/name:materialx.emoji.twemoji
-  #    emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.mark
   - pymdownx.caret
   - pymdownx.tilde
+
+
 
 plugins:
   - search
