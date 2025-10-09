@@ -185,7 +185,6 @@ R       |[do_2d_integration.R](do_2d_integration.R)   |.
 
 ## Exercises
 
-
 ## Exercise 1: start the benchmark on your HPC cluster
 
 The goal of this exercise is to start the benchmark script
@@ -206,7 +205,8 @@ On your HPC cluster:
     wget https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/docs/advanced/thread_parallelism/benchmark_2d_integration.sh
     ```
 
-- Run the benchmark script
+- Run the benchmark script. 
+  Tip: see [the 'Benchmark script' section](#benchmark-script).
 
 ???- hint "How to do that?"
 
@@ -231,24 +231,25 @@ On your HPC cluster:
 
 ## Exercise 2: read the benchmark script
 
-Now that the benchmark script is running,
+Now that [the benchmark script](benchmark_2d_integration.sh) is running,
 we have the time to figure out what it is doing.
 
 - What is the most important single line in this script,
   i.e. the line it is all about?
+  Tip: start looking from the bottom of the script
 
 ???- hint "Answer"
 
     For all HPC clusters except Dardel:
 
     ```bash
-    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${script_name}"
+    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" "${slurm_script_name}"
     ```
 
     For the Dardel HPC cluster:
 
     ```bash
-    sbatch -A "${slurm_job_account}" -N "${n_nodes}" -n "${n_cores}" -p main "${script_name}"
+    sbatch -A "${slurm_job_account}" -N "${n_nodes}" --ntasks "${n_cores}" -p shared "${slurm_script_name}"
     ```
 
 - In English, describe what the line does in general terms
@@ -268,12 +269,102 @@ we have the time to figure out what it is doing.
 
 ???- hint "Answer"
 
-    HIERO
-
+    The `for` loop achieves that the same calculation is scheduled
+    to be done with 1 core, then with 2 cores, then with 3 cores, etc.,
+    to 64 cores.
 
 ## Exercise 3: read the Slurm script
 
+The benchmark script submits
+[a Slurm script of your favorite language](#slurm-script)
+multiple times to the queue: once with 1 cores, once with 2 cores, etc.
+
+- What is the most important single line in this script,
+  i.e. the line it is all about?
+  Tip: start looking from the bottom of the script
+
+???- hint "Answer"
+
+    The last line.
+
+    Language|Most important line
+    --------|---------------------------------------------------------------------------------------
+    Julia   |`julia --threads "${SLURM_NPROCS}" do_2d_integration.jl "${SLURM_NPROCS}"`
+    MATLAB  |`matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); exit;"`
+    R       |`Rscript --no-save --no-restore do_2d_integration.R "${SLURM_NPROCS}"`
+
+
+- In English, describe what the line does in general terms.
+  Tip: this is the same answer for all programming languages.
+  Tip 2: assume 'procedure' is synononymn for 'core'. 
+  Tip 3: the Julia line is closest to English.
+
+???- hint "Answer"
+
+    Run a Julia/MATLAB/R script for the booked number of cores,
+    without doing anything else (e.g. showing a splash screen or restoring a
+    computational environment).
+
 ## Exercise 4: read the calculation script
+
+The Slurm script runs 
+[a calculation script of your favorite language](#calculation-script)
+for a specified number of cores.
+
+- Locate the lines of code that make the calculation perform in parallel.
+
+???- hint "Answer"
+
+    === "Julia"
+
+        ```julia
+        Threads.@threads for worker_index = 1:n_workers
+           results[worker_index] = integration2d(grid_size, n_workers, worker_index)
+        end
+        ```
+
+    === "MATLAB"
+
+        ```matlab
+        parfor worker_index = 1:n_workers
+            partial_results(worker_index) = integration2d(grid_size, n_workers, worker_index);
+        end
+        ```
+
+    === "R"
+
+        ```r
+        results_of_workers <- foreach(worker_index = 1:n_workers, .combine = c) %dopar% {
+          integration2d(grid_size, n_workers, worker_index)
+        }
+        ```
+
+- In English, describe what these lines does in general terms.
+
+???- hint "Answer"
+
+    For each available worker: per worker, do part of a calculation
+    and combine the results
+
+- Locate the keyword that make the calculation perform in parallel. Or:
+  locate the word that, when removed, would 'downgrade' the calculation
+  to be single-threaded.
+
+???- hint "Answer"
+
+    The last line.
+
+    Language|Keyword to indicate a parallel calculation
+    --------|------------------------------------------
+    Julia   |`Threads.@threads`
+    MATLAB  |`parfor`
+    R       |`%dopar%`
+
+- The function that is run in parallel (i.e. `integration2d`) is
+  **made suitable** to be run in parallel. In English, describe
+  which changes are made to make it suitable.
+  when it would be 
+
 
 ## Exercise 5: analyse the results
 
@@ -352,9 +443,11 @@ programming language. What do you think the advice is?
 
     There are many reasons why to use a 'slower' programming language:
 
-    - access to specific libraries/packages
-    - access to peers that can teach
-    - need to to work from code that has been written earlier
+    - you already know the 'slower' programming language
+    - you need access to specific libraries/packages
+    - you have colleagues that are willing to teach you
+    - you need to to work from code that has been written
+      someone else
 
 ## Where to go next?
 

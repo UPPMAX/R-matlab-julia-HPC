@@ -84,7 +84,7 @@ The universe|A collection of HPC clusters                    |One <!-- yes, I th
 
 !!! warning "Simplifications used"
 
-    1 core is 1 worker is 1 thread
+    1 core is 1 worker is 1 thread is 1 procedure is 1 task
 
 ??? tip "Why do we use this simplification?"
 

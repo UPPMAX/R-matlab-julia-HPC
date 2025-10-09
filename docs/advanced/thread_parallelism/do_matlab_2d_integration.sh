@@ -135,9 +135,6 @@ echo "New text for the first line: ${first_line_text}"
 # Replace the first line
 sed -i "1s/.*/${first_line_text}/" "${matlab_target_filename}"
 
-echo "Running the MATLAB file:"
-matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); exit;"
-
 # matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration_for_1_cores.m\"); exit;"
 
 # matlab -nodisplay -nosplash -nojvm -batch do_2d_integration.m "${SLURM_NPROCS}"
@@ -150,6 +147,7 @@ matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); e
 
 # Put command in a text
 # https://stackoverflow.com/a/6717782/3364162
-%matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration.m ${SLURM_NPROCS}\"); exit;"
+#matlab -nodisplay -nosplash -nojvm -batch "run(\"do_2d_integration.m ${SLURM_NPROCS}\"); exit;"
 
-
+echo "Running the MATLAB file:"
+matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); exit;"
