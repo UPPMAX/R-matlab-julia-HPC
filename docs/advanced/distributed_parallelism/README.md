@@ -191,15 +191,6 @@ mpirun Rscript do_2d_integration.R 1 1
 
 ## Distributed programming (rm or merge)
 
-Although threaded programming is convenient because one can achieve considerable initial speedups
-with little code modifications, this approach does not scale for more than hundreds of
-cores. Scalability can be achieved with distributed programming. Here, there is not
-a common shared memory but the individual `processes` (notice the different terminology
-with `threads` in shared memory) have their own memory space. Then, if a process requires
-data from or should transfer data to another process, it can do that by using `send` and
-`receive` to transfer messages. A standard API for distributed computing is the Message
-Passing Interface (MPI). In general, MPI requires refactoring of your code.
-
 !!! admonition "Language-specific nuances for distributed programming"
 
     === "Julia"
@@ -1284,54 +1275,3 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
 
             time mpiexecjl -np 8 julia mpi.jl
             ```
-
-### Cluster Managers
-
-The package *ClusterManagers.jl* allows you to submit expensive parts of your simulation
-to the batch queue in a more *interactive* manner than by using batch scripts. *ClusterManagers.jl*
-needs to be installed through **Pkg**. This can useful, for instance if you are developing some
-code where just specific parts are computationally heavy while the rest is related to data analysis
-or visualization. In order to use this package, you should add it in a Julia session.
-
-```julia
-using Distributed, ClusterManagers
-# Adapted from: https://github.com/JuliaParallel/ClusterManagers.jl
-# Arguments to the Slurm srun(1) command can be given as keyword
-# arguments to addprocs.  The argument name and value is translated to
-# a srun(1) command line argument as follows:
-# 1) If the length of the argument is 1 => "-arg value",
-#    e.g. t="0:1:0" => "-t 0:1:0"
-# 2) If the length of the argument is > 1 => "--arg=value"
-#    e.g. time="0:1:0" => "--time=0:1:0"
-# 3) If the value is the empty string, it becomes a flag value,
-#    e.g. exclusive="" => "--exclusive"
-# 4) If the argument contains "_", they are replaced with "-",
-#    e.g. mem_per_cpu=100 => "--mem-per-cpu=100"
-# Example: add 2 processes, with your project ID, allocated 5 min, and 2 cores
-addprocs(SlurmManager(2), A="project_ID", partition="name-of-partition", t="00:05:00", c="2")
-
-# Define a function that computes the square of a number
-@everywhere function square(x)
-    return x^2
-end
-
-hosts = []
-result = []
-for i in workers()
-        println(i)
-    host = fetch(@spawnat i gethostname())
-    push!(hosts, host)
-    result_partial = fetch(@spawnat i square(i))
-    push!(result, result_partial)
-end
-
-println(hosts)
-println(result)
-
-# The Slurm resource allocation is released when all the workers have
-# exited
-for i in workers()
-    rmprocs(i)
-end
-```
-
