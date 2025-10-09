@@ -26,4 +26,4 @@ c. 15:30  | Wrap-up + Q&A                                                       
 
 <!-- markdownlint-enable MD013 -->
 
-- Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek, `Bj`: Björn Claremar
+- Teachers: `B`: Birgitte Brydsö, `Bj`: Björn Claremar, `R`: Richèl Bilderbeek
