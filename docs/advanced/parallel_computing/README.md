@@ -36,6 +36,11 @@
       What does 'ideal' mean in this context?
       What could make parallelism less ideal?
 
+???- hint "Prefer this session as a video?"
+
+    The watch the YouTube video
+    [R-Julia-MATLAB course, advanced day: Parallel computation](https://youtu.be/3OTMgBche74)
+
 ![CoRA, the robotic platform for Arnold](cora.jpg)
 
 > Figure 1: CoRA, a robotic platform in which all computers
