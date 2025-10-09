@@ -4,7 +4,6 @@
 
     - I can schedule jobs with distributed parallelism
     - I know the basic difference between threads and distributed memory in terms of memory share
-    - I can explain how jobs with distributed parallelism are scheduled
     - I can explain how Julia/MATLAB/R code makes use of distributed parallelism
 
 ???- info "For teachers"
