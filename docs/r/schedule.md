@@ -20,7 +20,7 @@ Time  | Topic                                        | Teacher(s)
 14:00 | Break                                        | .
 14:15 | Simultaneous session: [RStudio](rstudio.md)  | RB
 .     | Simultaneous session: RStudio On-Demand      | RP
-14:45 | [Summary](summary.md)                        | RB
+14:45 | [Summary](summary/README.md)                 | RB
 .     | [Evaluation](evaluation.md)                  | RB
 15:00 | Done                                         | .
 
