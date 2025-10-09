@@ -7,6 +7,8 @@
     - I can explain how Julia/MATLAB/R code makes use of thread parallelism
     - I can explain the results of a correct benchmark
     - I can explain the results of an incorrect benchmark
+    - I can argue why I should stick to my programming language,
+      even if it is not the fastest
 
 ???- note "For teachers"
 
@@ -18,6 +20,8 @@
       with a calculation in their favorite language
     - Learners understand when it is possible/impossible
       and/or useful/useless to run a job with multiple cores
+    - Learners can argue why they should stick to their programming languages,
+      even if it is not the fastest
 
     Prior:
 
@@ -46,8 +50,8 @@ Because it is one way to speedup (pun intended) the calculation.
 
 ## Goal
 
-In this session, we are going to benchmark thread parallelism.
-
+In this session, we are going to benchmark thread parallelism,
+as we should not make claims about performance without measurements `[CppCore Per.6]`.
 
 ```mermaid
 flowchart TD
@@ -313,15 +317,58 @@ What went wrong here? Why is this a problem?
 Julia single-thread tuns
 ```
 
-## Exercise X3: always program in Assembly?
+## Exercise X3: learns a faster programming language?
 
-```text
-Figure from paper
-```
+As can be seen in the benchmark, some programming languages
+are faster than others. This warrants the question:
+should you learn to program in the programming language
+that does calculations fastest?
+
+The theoretically fastests programming languages
+allow you to write machine code.
+Assembler lets you do so directly.
+Some other languages (most notably C, C++ and Rust)
+allow you to insert machine code.
+Hence, these are the theoretically fastest
+languages.
+
+To write fast code, should one learn those languages instead?
+
+Below is a figure from `[Prechelt, 2000]`.
+It shows the distribution of runtime speeds of a certain problem
+(called `z1000`), for different programming languages.
+
+![Figure 2, from Prechelt, 2000](prechelt_fig_2.png)
+
+- Take a close look at the figure.
+  The paper has an advice to yes/no learn a 'faster'
+  programming language. What do you think the advice is?
+
+???- question "Answer"
+
+    The variance within a programming
+    language is bigger than variance between
+    languages (adapted fig 2, from `[Prechelt, 2000]`).
+
+    Instead of learning a faster language, learn how to be fast in
+    your language.
+
+- Are there other factors that decide which programming language to use?
+  If yes, name some.
+
+???- question "Answer"
+
+    There are many reasons why to use a 'slower' programming language:
+
+    - access to specific libraries/packages
+    - access to peers that can teach
+    - need to to work from code that has been written earlier
 
 ## Where to go next?
 
-Distributed parallelism
+If you want to scale up,
+distributed parallelism allows you to
+do a calculation on many computers.
 
 ## Troubleshooting
 
@@ -417,7 +464,7 @@ Execution halted
 
 This only happens on Rackham, since 2025-09-25.
 
-##
+## MATLAB error
 
 ```matlab
 Warning: Executing startup failed in matlabrc.
@@ -430,6 +477,11 @@ RUN cannot execute the file 'do_2d_integration.m 48'. RUN requires a valid
 MATLAB script
 ```
 
+## References
+
+- `[CppCore Per.6]`
+  [C++ Core Guidelines: Per.6: Don't make claims about performance without measurements](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#per6-dont-make-claims-about-performance-without-measurements)
+- `[Prechelt, 2000]` Prechelt, Lutz. "An empirical comparison of C, C++, Java, Perl, Python, REXX and TCL." IEEE Computer 33.10 (2000): 23-29.
 
 <!-- markdownlint-disable -->
 

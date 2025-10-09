@@ -367,3 +367,15 @@ let's restart with learning outcomes...
 - [ ] Make first script download all others
 - [ ] Fix and run MATLAB script
 
+## 2025-10-09
+
+I've been ill, removing 3 full days of preparation.
+
+I will reduce my goals and prepare as such:
+
+- Current exercises in draft form
+
+- Fix MATLAB if possible and if at least 1 participant
+
+
+
