@@ -900,7 +900,7 @@ for instance.
         ```
 
 
-## Exercises
+#### Julia Exercises
 
 !!! example "**Exercise 1.** Run the GPU script"
     
