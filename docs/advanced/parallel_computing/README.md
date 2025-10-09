@@ -1,13 +1,13 @@
 # Parallel computation
 
-!!! question "Learning outcomes"
+!!! info "Learning outcomes"
 
     - I can name and describe 3 types of parallel computation
     - I can explain at least 1 advantage of parallel computation
     - I can explain at least 2 disadvantages of parallel computation
     - I can explain how to use my computational resources effectively
 
-???- info "For teachers"
+???- note "For teachers"
 
     Teaching goals are:
 
