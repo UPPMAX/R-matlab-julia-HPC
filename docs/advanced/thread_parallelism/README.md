@@ -309,15 +309,7 @@ What went wrong here? Why is this a problem?
 
 <!-- markdownlint-enable MD013 -->
 
-## Exercise X2
-
-What went wrong here? Why is this a problem?
-
-```console
-Julia single-thread tuns
-```
-
-## Exercise X3: learns a faster programming language?
+## Exercise X2: learns a faster programming language?
 
 As can be seen in the benchmark, some programming languages
 are faster than others. This warrants the question:
@@ -340,11 +332,11 @@ It shows the distribution of runtime speeds of a certain problem
 
 ![Figure 2, from Prechelt, 2000](prechelt_fig_2.png)
 
-- Take a close look at the figure.
-  The paper has an advice to yes/no learn a 'faster'
-  programming language. What do you think the advice is?
+Take a close look at the figure.
+The paper has an advice to yes/no learn a 'faster'
+programming language. What do you think the advice is?
 
-???- question "Answer"
+???- hint "Answer"
 
     The variance within a programming
     language is bigger than variance between
@@ -356,7 +348,7 @@ It shows the distribution of runtime speeds of a certain problem
 - Are there other factors that decide which programming language to use?
   If yes, name some.
 
-???- question "Answer"
+???- hint "Answer"
 
     There are many reasons why to use a 'slower' programming language:
 

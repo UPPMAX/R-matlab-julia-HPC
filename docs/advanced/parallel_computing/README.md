@@ -119,7 +119,7 @@ Using 2 calculation units, this results in:
 > Figure 2: a calculation of 16 time units run on 2 cores,
 > where square is a time unit of calculation.
 > :red_square:: a unit of calculation that cannot be run in parallel.
-> - Green square: a unit of calculation that can be run in parallel.
+> :green_square: = a unit of calculation that can be run in parallel.
 > - White square: a unit of calculation that is spent doing nothing
 
 This takes the calculation down from 16 to 10 time units.
@@ -315,13 +315,19 @@ and, in a general form, is plotted like this:
 
     ![Benchmark core seconds](benchmark_results_core_seconds.png)
 
+    > Benchmark: the total core seconds per number of workers
+
 === "Efficiency"
 
     ![Benchmark efficiency](benchmark_results_efficiency.png)
 
+    > Benchmark: Efficiency per number of workers
+
 === "Speedup"
 
     ![Benchmark speedup](benchmark_results_speedup.png)
+
+    > Benchmark: Speedup per number of workers
 
 ??? tip "Answer"
 
