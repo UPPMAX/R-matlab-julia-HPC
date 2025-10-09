@@ -16,3 +16,4 @@ graphviz
 pydot 
 mkdocs-mermaid2-plugin
 mkdocs-unused-files
+mkdocs-material-extensions

@@ -222,6 +222,7 @@ Program runtime                      |Number of cores|Time|Speedup       |Effici
 <!-- markdownlint-enable MD013 -->
 
 The best possible speed gain (as shown here) is called Amdahl's Law
+(`[Amdahl, 1967]`)
 and, in a general form, is plotted like this:
 
 ![Amdahl's law](amdahls_law.png)
@@ -346,3 +347,20 @@ and, in a general form, is plotted like this:
 
     It may be unexpected that also in computer science,
     results can be messier than you would expect :-)
+
+
+The first characteristic of interest is the fraction
+of the computational load which is associated with
+data management housekeeping. This fraction has
+been very nearly constant for about ten years, and
+accounts for 40% of the executed instructions in
+production runs.
+
+
+## References
+
+- `[Amdahl, 1967]` Amdahl, Gene M. 
+  "Validity of the single processor approach to achieving large scale
+  computing capabilities." Proceedings of the April 18-20, 1967,
+  spring joint computer conference. 1967.
+  Fun facts: it contains a single hand-drawn plot and no equations
