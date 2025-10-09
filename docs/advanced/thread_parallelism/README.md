@@ -472,7 +472,7 @@ grep -EoRh "^[jmlr].*,.*" --include=*.out | sort | uniq
 
     If not, you are encouraged to use:
 
-    - [This spreadsheet](analyse.odt)
+    - [This spreadsheet](analysis.ods)
     - [This R script](plot_benchmark_results.R)
 
 - Copy-paste the results of the previous exercise
