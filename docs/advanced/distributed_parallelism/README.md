@@ -71,8 +71,7 @@ Passing Interface (MPI). In general, MPI requires refactoring of your code.
     - [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
     - [Older explanation](https://youtu.be/GHbrpg75qbQ)
     - [Newer explanation](https://youtu.be/c7pVEBhPohk)
-
-More details for the MPI parallelization scheme in Python can be found in a previous [MPI course](https://github.com/MPI-course-collaboration/MPI-course) offered by some of us.
+    - More details for the MPI parallelization scheme in Python can be found in a previous [MPI course](https://github.com/MPI-course-collaboration/MPI-course) offered by some of us.
 
 ### How it is used in programming languages of this course?
 
@@ -192,11 +191,10 @@ mpirun Rscript do_2d_integration.R 1 1
 ## Allocating distributed jobs
 
 - Use `--ntasks=N` or `-n=N`
-- Use `srun`
-- Use an MPI version of your software:
+- Use `srun` if you run a script
+- Use an MPI or "distributed" version of your software:
   a 'regular' non-MPI version will never work!
-
-
+- Use `mpirun` if it is real MPI.
 
 !!! warning
 
