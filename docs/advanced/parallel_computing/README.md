@@ -36,6 +36,11 @@
       What does 'ideal' mean in this context?
       What could make parallelism less ideal?
 
+![CoRA, the robotic platform for Arnold](cora.jpg)
+
+> CoRA, a robotic platform in which all computers sent messages to one
+> receiving computer: an example of distributed parallelism
+
 ## Why parallel computing is important
 
 Most HPC clusters use 7-10 days as a maximum duration for a job.
@@ -100,22 +105,20 @@ Imagine a calculation that takes 16 time units, represented as this:
 
 ![1 core](amdahls_law_example_1.png)
 
-> A calculation of 16 time units run on 1 core,
+> Figure 1: a calculation of 16 time units run on 1 core,
 > where square is a time unit of calculation.
->
-> Red square: a unit of calculation that cannot be run in parallel.
-> Green square: a unit of calculation that can be run in parallel
+> - Red square: a unit of calculation that cannot be run in parallel.
+> - Green square: a unit of calculation that can be run in parallel
 
 Using 2 calculation units, this results in:
 
 ![2 cores](amdahls_law_example_2.png)
 
-> A calculation of 16 time units run on 2 cores,
+> Figure 2: a calculation of 16 time units run on 2 cores,
 > where square is a time unit of calculation.
->
-> Red square: a unit of calculation that cannot be run in parallel.
-> Green square: a unit of calculation that can be run in parallel.
-> White square: a unit of calculation that is spent doing nothing
+> - Red square: a unit of calculation that cannot be run in parallel.
+> - Green square: a unit of calculation that can be run in parallel.
+> - White square: a unit of calculation that is spent doing nothing
 
 This takes the calculation down from 16 to 10 time units.
 The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
