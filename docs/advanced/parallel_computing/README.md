@@ -85,10 +85,10 @@ One way to distinguish these, is to separate these on
 the extent of the parallelism:
 
 Extent       |Parallelism
--------------|-------------------------------------
+-------------|--------------------------------------
 Core         |Single-threaded (you already do this)
-Node         |Thread parallelism (today's session)
-HPC cluster  |Distributed parallelism
+Node         |Thread parallelism (this session)
+HPC cluster  |Distributed parallelism (next session)
 The universe |Distributed parallelism
 
 Today, we will extend your toolkit from a single-threaded
