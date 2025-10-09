@@ -469,10 +469,15 @@ Parameter    |Value
 `hpc_cluster`|Your HPC cluster
 `grid_size`  |Accuracy
 `n_workers`  |Number of cores used
-`core_secs`  |Time that the total calculation took
+`core_secs`  |Core seconds used, i.e. the time used by all cores together
 
-- Create a plot of the speedup you have achieved, in any language
-  or tool
+- Put these values in somewhere you can analyse them, e.g.
+  work on them as a comma-separated file or load these in a spreadsheet
+- Add a column called `single_core_sec`, which equals
+  `core_secs` divided by `n_workers`. `single_core_sec` is a synonymn
+  for 'wall clock time', which is the time it took the calculation to complete
+
+
 
 ## Exercise 6: compare to others
 
