@@ -888,7 +888,7 @@ mpirun Rscript do_2d_integration.R 1 1
         MPI.Finalize()
         ```
 
-!!! important "batch scripts"
+??? important "batch scripts"
 
     The corresponding batch scripts for these examples are given here:
 
@@ -1472,7 +1472,7 @@ mpirun Rscript do_2d_integration.R 1 1
 
 ### MATLAB: parfor and parfeval
 
-??? example "**Challenge 1.** Create and run a parallel code"
+??? important "**Challenge 1.** Create and run a parallel code"
     
     We have the following code in MATLAB that generates an array of 10000 random numbers and then the sum of all elements is stored in a variable called **s**:
     
@@ -1505,7 +1505,7 @@ mpirun Rscript do_2d_integration.R 1 1
     delete(gcp('nocreate'));
     ```
     
-??? example "**Challenge 2.** Run a parallel code with `batch` MATLAB function"
+??? important "**Challenge 2.** Run a parallel code with `batch` MATLAB function"
 
     The following function uses ``parfeval`` to do some computation (specifically it takes the average per-column of a matrix with a size ``nsize`` equal to 1000):
     
