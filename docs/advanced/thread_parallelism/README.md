@@ -443,7 +443,7 @@ for a specified number of cores.
 ## Exercise 5: share the results
 
 By now, some of the calculations in exercise 1 will be finished.
-If not: no worries, just continue :+1: .
+If not: no worries, just continue!
  
 - In the terminal on your favorite HPC cluster, run the
   following command to collect all results:
