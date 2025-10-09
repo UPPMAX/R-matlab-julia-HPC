@@ -64,7 +64,7 @@ Not sure|0
 - More on parallelizing in R
 - It would be nice to perhaps have a little module on transferring
   files to and from the server: while I feel pretty confident about
-  using R, I'm not completelt sure how to get files to and from
+  using R, I'm not completely sure how to get files to and from
   he server. And secondly, I'm 99% sure it should be reasonably
   straightforward, but it might be nice for there to be a little
   extra note on best practices for installing and using STAN

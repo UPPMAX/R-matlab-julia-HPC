@@ -296,7 +296,7 @@ multiple times to the queue: once with 1 cores, once with 2 cores, etc.
 
 - In English, describe what the line does in general terms.
   Tip: this is the same answer for all programming languages.
-  Tip 2: assume 'procedure' is synononymn for 'core'. 
+  Tip 2: assume 'procedure' is synonym for 'core'. 
   Tip 3: the Julia line is closest to English.
 
 ???- hint "Answer"
@@ -453,7 +453,7 @@ grep -EoRh "^[jmlr].*,.*" --include=*.out | sort | uniq
 ```
 
 - Copy-paste these results to 
-  [our shared HackMD documentated](https://hackmd.io/@qfRrKmbUR9-jszg-SvdO9A/rk3j1XB6eg/edit).
+  [our shared HackMD document](https://hackmd.io/@qfRrKmbUR9-jszg-SvdO9A/rk3j1XB6eg/edit).
 
 ## Exercise 6: analyse the results
 
@@ -468,7 +468,7 @@ grep -EoRh "^[jmlr].*,.*" --include=*.out | sort | uniq
     - [This R script](plot_benchmark_results.R)
 
 - Copy-paste the results of the previous exercise
-  into a comma-seperated file called `my_results.csv`.
+  into a comma-separated file called `my_results.csv`.
   Add the following text as a first line:
 
 ```text

@@ -20,12 +20,12 @@
 ## [Question 2: What do you think about the pace of teaching overall?](pace.txt)
 
 - teaching was excellent
-- It was good. However, some parts were redundant if you hade attended another day.
+- It was good. However, some parts were redundant if you had attended another day.
 - ok
 
 ## [Question 5: Which future training topics would you like to be provided by the training host(s)?](future_topics.txt)
 
-- machine learning/deep learning/ai-releated training
+- machine learning/deep learning/ai-related training
 - A more detailed overview of how to setup everything to work with the gpus.
 
 ## [Question 6: Do you have any additional comments?](comments.txt)
