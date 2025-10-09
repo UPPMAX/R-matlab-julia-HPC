@@ -337,3 +337,12 @@ and, in a general form, is plotted like this:
     Instead, this benchmark shows how it looks if code is run in single-thread
     mode. In this case, the colleague forgot that the number of threads used
     must be specified when calling Julia.
+
+    Note that these plots are less clear than you may have expected:
+
+    - The total core seconds is expected to increase linearily
+    - The efficiency is expected to follow the dashed line
+    - The speedup is expected to be at 100%
+
+    It may be unexpected that also in computer science,
+    results can be messier than you would expect :-)

@@ -1,8 +1,8 @@
 mkdocs>=1.4.2
 mkdocs-material>=8.5.9
+mkdocs-material-extensions
 pymdown-extensions>=9.8
 markdown-fenced-code-tabs
-
 sphinx>=7.2.6
 sphinx_rtd_theme>=2.0.0
 readthedocs-sphinx-search>=0.3.2
