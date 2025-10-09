@@ -674,7 +674,7 @@ mpirun Rscript do_2d_integration.R 1 1
         
         You can run directly this script from the Matlab GUI.
         Try different number of cores for this batch script (*FIXME* string) using the sequence:
-        1,2,4,8,12, and 14. Collect the timings that are printed out in the Matlab command window.
+        1, 2, 4, 8, 12, and 14. Collect the timings that are printed out in the Matlab command window.
         According to these execution times what would be
         the number of cores that gives the optimal (fastest) simulation?
 
@@ -683,23 +683,19 @@ mpirun Rscript do_2d_integration.R 1 1
         ``job-usage`` (HPC2N), or if you're working in the GUI (e.g. on LUNARC), you can click ``Parallel``
         and then ``Monitor Jobs``. For ``job-usage``, you can see the job ID if you type ``squeue --me`` on a terminal on Kebnekaise.
 
-!!! info "More info"
 
-    - [HPC2N Julia documentation](https://www.hpc2n.umu.se/resources/software/julia).
-    - [White paper on Julia parallel computing](https://info.juliacomputing.com/hubfs/JuliaHub-Parallel%20Computing%20Guide.pdf).
-    - [HPC2N R documentation](https://www.hpc2n.umu.se/resources/software/r).
-    - [Wikipedias' article on Parallel Computing](https://en.wikipedia.org/wiki/Parallel_computing).
+## Extra exercises covering MPI
 
+### Julia: Find the difference in coding 
 
-!!! example "Running parallel with MPI"
+In this exercise we will run a parallelized code that performs the 2D integration used above:
 
-    In this exercise we will run a parallelized code that performs a 2D integration:
+```{ .math }
+\int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
+```
 
-    ```{ .math }
-    \int^{\pi}_{0}\int^{\pi}_{0}\sin(x+y)dxdy = 0
-    ```
-
-### Julia: Find the difference in coding
+- Note the differences in writing the code
+- MPI usualy needs more rewriting
 
 ??? important "Julia scripts"
 
@@ -888,7 +884,7 @@ mpirun Rscript do_2d_integration.R 1 1
         MPI.Finalize()
         ```
 
-??? important "batch scripts"
+??? important "Batch scripts"
 
     The corresponding batch scripts for these examples are given here:
 
@@ -1527,3 +1523,9 @@ mpirun Rscript do_2d_integration.R 1 1
         fprintf('Name of host: %.5f \n', t);    % Print out the results
         ```
 
+!!! info "More info"
+
+    - [HPC2N Julia documentation](https://www.hpc2n.umu.se/resources/software/julia).
+    - [White paper on Julia parallel computing](https://info.juliacomputing.com/hubfs/JuliaHub-Parallel%20Computing%20Guide.pdf).
+    - [HPC2N R documentation](https://www.hpc2n.umu.se/resources/software/r).
+    - [Wikipedias' article on Parallel Computing](https://en.wikipedia.org/wiki/Parallel_computing).
