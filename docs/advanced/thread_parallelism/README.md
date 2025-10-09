@@ -221,7 +221,7 @@ On your HPC cluster:
     bash benchmark_2d_integration.sh staff r
     ```
 
-    You can use [our account preparations page](../..HPC/preparations_account.md#ask-for-access-to-a-naiss-course-project)
+    You can use [our account preparations page](../../common/preparations_account.md#ask-for-access-to-a-naiss-course-project)
     to find the course NAISS project for your HPC cluster.
 
 - Check the Slurm output files for problems.
