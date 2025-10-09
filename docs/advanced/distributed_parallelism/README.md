@@ -139,6 +139,8 @@ To get use of MPI library (in C) you need to load a MPI module.
     - More efficient
     - More difficult to code     
 
+<!---
+
 ## Example with R
 
 Test the R script
@@ -150,7 +152,6 @@ mpirun Rscript do_2d_integration.R 1 1
 === "Using 1 MPI processes"
 
     ```text
-    Using 2 OpenMP threads 
 
                    Core t (s)   Wall t (s)        (%)
            Time:       86.902       43.452      200.0
@@ -186,14 +187,16 @@ mpirun Rscript do_2d_integration.R 1 1
     Performance:        6.446        3.723
     ```
 
-## Remember
+-->
 
-- Use `--ntasks=N`
+## Allocating distributed jobs
+
+- Use `--ntasks=N` or `-n=N`
 - Use `srun`
 - Use an MPI version of your software:
   a 'regular' non-MPI version will never work!
 
-## Links
+
 
 !!! warning
 
