@@ -363,16 +363,116 @@ for a specified number of cores.
 - The function that is run in parallel (i.e. `integration2d`) is
   **made suitable** to be run in parallel. In English, describe
   which changes are made to make it suitable.
-  when it would be 
 
+???- hint "Answer"
+
+    The function has three (instead of one) arguments:
+
+    Language|Function signature
+    --------|---------------------------------------------------------------------------
+    Julia   |`function integration2d(grid_size::Int, n_workers::Int, worker_index::Int)`
+    MATLAB  |`function integration2d(grid_size, n_workers, worker_index)`
+    R       |`integration2d <- function(grid_size, n_workers, worker_index)`
+
+    The extra arguments are `n_workers` and `worker_index`.
+
+    These allow the `worker_index`-th worker to know which share of the
+    calculation it must do. 
+
+- What do these changes achieve?
+
+???- hint "Answer"
+
+    These changes allow each thread to know what it needs to know to
+    run its part of the calculation.
+
+- Bonus: do you spot the bug in `integrate2d`?
+  Is this a problem? Why would someone keep
+  it in anyways?
+
+???- hint "Answer"
+
+    The calculation of `begin_index` and `end_index`:
+
+    === "Julia"
+
+        ```julia
+        workload = fld(grid_size, n_workers)
+        begin_index = workload * (worker_index - 1) + 1
+        end_index = workload * worker_index
+        ```
+
+    === "MATLAB"
+
+        ```matlab
+        grid_cells_per_worker = floor(grid_size / n_workers);
+        begin_index = grid_cells_per_worker * (worker_index - 1) + 1;
+        end_index = grid_cells_per_worker * worker_index;
+        ```
+
+    === "R"
+
+        ```r
+        grid_cells_per_worker <- floor(grid_size / n_workers)
+        begin_index <- grid_cells_per_worker * (worker_index - 1) + 1
+        end_index <- grid_cells_per_worker * worker_index
+        ```
+
+    To most clearly demonstrate this, imagine a `grid_size` of 3
+    for an `n_workers` of 2:
+
+    Variable name                 |Value
+    ------------------------------|----------------------------
+    `grid_size`                   |3
+    `n_workers`                   |2
+    `grid_cells_per_worker`       |`3 / 2 (rounded down) = ` 1
+    `begin_index` for first worker|`1 * (1 - 1) + 1 = ` 1
+    `end_index`   for first worker|`1 * 1 = ` 1
+    `begin_index` for second worker|`1 * (2 - 1) + 1 = ` 2
+    `end_index`   for second worker|`1 * 2 = ` 2
+
+    This means that, although the calculation is split in 3 parts,
+    only 2 of these are performed.
+
+    For bigger grid sizes, however, this problem gets less.
+
+    One would keep such a bug in for readability:
+    this session is about thread parallelism, not about the extensive
+    calculation of these indices.
 
 ## Exercise 5: analyse the results
+
+By now, some of the calculations in exercise 1 will be finished.
+If not: no worries, just continue :+1: .
+ 
+- In the terminal on your favorite HPC cluster, run the
+  following command to collect all results:
 
 ```bash
 grep -EoRh "^[jmlr].*,.*" --include=*.out | sort | uniq
 ```
 
-You will see the collected results.
+- Copy-paste these results to 
+  [our shared HackMD documentated](https://hackmd.io/@qfRrKmbUR9-jszg-SvdO9A/rk3j1XB6eg/edit).
+- Copy-paste these results to a comma-seperated file,
+  with, as a first line:
+
+```text
+language,hpc_cluster,grid_size,n_workers,core_secs
+```
+
+These are the descriptions of the variables:
+
+Parameter    |Value
+-------------|----------------------------
+`language`   |Your programming language
+`hpc_cluster`|Your HPC cluster
+`grid_size`  |Accuracy
+`n_workers`  |Number of cores used
+`core_secs`  |Time that the total calculation took
+
+- Create a plot of the speedup you have achieved, in any language
+  or tool
 
 ## Exercise 6: compare to others
 
