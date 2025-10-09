@@ -316,7 +316,7 @@ are faster than others. This warrants the question:
 should you learn to program in the programming language
 that does calculations fastest?
 
-The theoretically fastests programming languages
+The theoretically fastest programming languages
 allow you to write machine code.
 Assembler lets you do so directly.
 Some other languages (most notably C, C++ and Rust)
