@@ -2,7 +2,7 @@
 
 !!! question "Learning outcomes"
 
-    - I can name and describe three types of parallel computation
+    - I can name and describe 3 types of parallel computation
     - I can explain at least 1 advantage of parallel computation
     - I can explain at least 2 disadvantages of parallel computation
     - I can explain how to use my computational resources effectively
