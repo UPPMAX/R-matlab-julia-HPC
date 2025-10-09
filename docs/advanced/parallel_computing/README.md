@@ -303,11 +303,28 @@ and, in a general form, is plotted like this:
 
     Due to this, his/her jobs are only run when the HPC cluster has a low workload and activates the so-called 'bonus queue' (UPPMAX) or generally have to wait for their priority to go up again.
 
-- Your colleague has done a benchmark and concluded the plot below.
-  What seemed to be the percentage of his/her code that could be run in parallel?
+- Your colleague has also done the exercises in this session
+  and decided to measure here code.
+  Below you can see the plots produced by this benchmark.
+  What seemed to be the percentage of his/her code
+  that could be run in parallel?
 
-![Benchmark of speedup](benchmark_results_speedup.png)
+=== "Total core seconds"
+
+    ![Benchmark core seconds](benchmark_results_core_seconds.png)
+
+=== "Efficiency"
+
+    ![Benchmark efficiency](benchmark_results_efficiency.png)
+
+=== "Speedup"
+
+    ![Benchmark speedup](benchmark_results_speedup.png)
 
 ??? tip "Answer"
 
-    TODO
+    It is **unknown** what portion of the code can be run in parallel.
+
+    Instead, this benchmark shows how it looks if code is run in single-thread
+    mode. In this case, the colleague forgot that the number of threads used
+    must be specified when calling Julia.
