@@ -1281,7 +1281,7 @@ mpirun Rscript do_2d_integration.R 1 1
             time mpiexecjl -np 8 julia mpi.jl
             ```
 
-#### R: RMPI
+### R: RMPI
 
 ??? important "RMPI"
 
@@ -1470,7 +1470,7 @@ mpirun Rscript do_2d_integration.R 1 1
         sbatch <batch script>
         ```
 
-#### MATLAB: parfor and parfevel
+### MATLAB: parfor and parfeval
 
 ??? example "**Challenge 1.** Create and run a parallel code"
     
