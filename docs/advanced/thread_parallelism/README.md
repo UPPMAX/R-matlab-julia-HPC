@@ -536,7 +536,7 @@ and other programming languages:
     - R works best at being efficient in parallel
     - HPC clusters differ
 
-## Exercise X1
+## Exercise X1: job scheduling problem?
 
 You have just submitted some multithreaded jobs to the queue.
 What went wrong here? Why is this a problem?
@@ -626,7 +626,6 @@ programming language. What do you think the advice is?
     - you need to to work from code that has been written
       someone else
 
-
 ## Where to go next?
 
 If you want to scale up,
@@ -647,7 +646,11 @@ sbatch: error: Batch job submission failed: Invalid account or account/partition
 
 You've specified the wrong account.
 
-Run `projinfo`.
+Run:
+
+```bash
+projinfo
+```
 
 ## T2. There is no package called ‘doParallel’
 
