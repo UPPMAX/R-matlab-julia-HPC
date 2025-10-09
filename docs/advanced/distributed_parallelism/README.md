@@ -1483,27 +1483,27 @@ mpirun Rscript do_2d_integration.R 1 1
     
     We want now to repeat these steps (generating the numbers and taking the sum) 6 times so that the steps are run at the same time. Use `parfor` to parallelize these steps. Once your code is parallelized enclose it in a `parpool` section and send the job to the queue.
 
-??? check "Solution"
+    ??? check "Solution"
 
-    ```matlab
-    % Nr. of workers
-    nworkers = 6;
+        ```matlab
+        % Nr. of workers
+        nworkers = 6;
+    
+        % Use parallel pool with 'parfor'
+        parpool('name-of-your-cluster',nworkers);  % Start parallel pool with nworkers workers
 
-    % Use parallel pool with 'parfor'
-    parpool('name-of-your-cluster',nworkers);  % Start parallel pool with nworkers workers
-
-    myarray = []; % Optional in this exercise to store partial results
-    parfor i=1:nworkers
-       r = rand(1,10000);
-       s = sum(r);
-       myarray = [myarray,s];
-    end
-
-    myarray  % print out the results from the workers
-
-    % Clean up the parallel pool
-    delete(gcp('nocreate'));
-    ```
+        myarray = []; % Optional in this exercise to store partial results
+        parfor i=1:nworkers
+           r = rand(1,10000);
+           s = sum(r);
+           myarray = [myarray,s];
+        end
+    
+        myarray  % print out the results from the workers
+    
+        % Clean up the parallel pool
+        delete(gcp('nocreate'));
+        ```
     
 ??? important "**Challenge 2.** Run a parallel code with `batch` MATLAB function"
 
@@ -1517,13 +1517,13 @@ mpirun Rscript do_2d_integration.R 1 1
     
     Place this function in a file called **parfeval_mean.m** and submit this function with the MATLAB `batch` command.
 
-??? check "Solution"
+    ??? check "Solution"
 
-    ```matlab
-    c=parcluster('name-of-your-cluster');
-    j = c.batch(@parfeval_mean,1,{1000},'pool',1);
-    j.wait;                               % wait for the results
-    t = j.fetchOutputs{:};                % fetch the results
-    fprintf('Name of host: %.5f \n', t);    % Print out the results
-    ```
+        ```matlab
+        c=parcluster('name-of-your-cluster');
+        j = c.batch(@parfeval_mean,1,{1000},'pool',1);
+        j.wait;                               % wait for the results
+        t = j.fetchOutputs{:};                % fetch the results
+        fprintf('Name of host: %.5f \n', t);    % Print out the results
+        ```
 
