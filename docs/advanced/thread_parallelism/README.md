@@ -175,11 +175,11 @@ the benchmark script will (try to) download it for you.
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
-Language|Script with calculation                      |Documentation used
---------|---------------------------------------------|-------------------
-Julia   |[do_2d_integration.jl](do_2d_integration.jl) |[Julia documentation](https://docs.julialang.org/en/v1/manual/multi-threading)
-MATLAB  |[do_2d_integration.m](do_2d_integration.m)   |.
-R       |[do_2d_integration.R](do_2d_integration.R)   |.
+Language|Script with calculation
+--------|---------------------------------------------
+Julia   |[do_2d_integration.jl](do_2d_integration.jl)
+MATLAB  |[do_2d_integration.m](do_2d_integration.m)
+R       |[do_2d_integration.R](do_2d_integration.R)
 
 <!-- markdownlint-enable MD013 -->
 
