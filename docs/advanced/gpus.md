@@ -36,9 +36,7 @@ As for the GPU architecture, a GPU card of type Ada Lovelace (like the L40s) loo
 
     On the diagram, each green dot represents a CUDA core (single precision), while the yellow are RT cores and blue Tensor cores. The cores are arranged in the slots called SMs in the figure. Cores in the same SM share some local and fast cache memory.
 
-GPCs
-
-!!! note " "
+!!! note "GPCs"
 
     ![GPC](../img/GPC-with-raster-engine.png)
 
@@ -473,7 +471,7 @@ This is how you add GPUs to use in batch jobs submitted from inside MATLAB:
     Remember, here you cannot set `AdditionalProperties`. Instead, you do the following: 
 
     1. Start an interactive session on the GPU partition: `salloc -N 1 --ntasks-per-node=1 --t 1:00:00 -A naiss2025-22-262 -p gpu`
-    2. Load MATLAB: `module load PDC/23.12 matlab/r2024a-ps`
+    2. Load MATLAB: `module load PDCOLD/23.12 matlab/r2024a-ps`
     3. Start MATLAB: `matlab -nodisplay -nodesktop -nosplash`
 
     You are now ready to run your GPU MATLAB scripts.
@@ -626,7 +624,7 @@ How to request a GPU node varies somewhat between clusters. Refer to the followi
     
     # Change depending on resource and MATLAB version
     # to find out available versions: module spider matlab
-    module load PDC/23.12 R/4.4.1-cpeGNU-23.12 rocm/5.7.0
+    module load PDC/24.11 matlab/r2024b rocm/5.7.0
     
     # Executing a GPU matlab program
     matlab -singleCompThread -nodisplay -nosplash -r "gpu-matlab-script.m"
@@ -902,15 +900,14 @@ for instance.
         ```
 
 
-# Exercises
+## Exercises
 
-## Exercise 1. Run the GPU script
-
-Run the following script ``script-gpu.jl``. Why are we running the simulations
-twice?
-Note that at UPPMAX you will need a project will access to Snowy. Remember that at PDC
-we will use AMD GPUs.
-
+!!! example "**Exercise 1.** Run the GPU script"
+    
+    Run the following script ``script-gpu.jl``. Why are we running the simulations
+    twice?
+    Note that at UPPMAX you will need a project will access to Snowy. Remember that at PDC
+    we will use AMD GPUs.
 
 ??? hint "Answer"
 
@@ -1100,11 +1097,9 @@ we will use AMD GPUs.
         julia script-gpu.jl     
         ``` 
 
-
 !!! Summary
 
     - GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks
     - There are GPUs on NSC/Tetralith, PDC/Dardel, C3SE/Alvis, HPC2N/Kebnekaise, LUNARC/Cosmos, UPPMAX/Pelle, but they are different
     - It varies between centres how you allocate a GPU
     - You need to use either batch or interactive/OpenOnDemand to use GPUs
-

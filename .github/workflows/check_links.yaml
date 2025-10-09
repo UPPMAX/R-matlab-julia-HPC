@@ -31,11 +31,7 @@ jobs:
 
       - name: Remove files that want no link checking (yet)
         run: |
-          rm docs/julia/intro.md
           rm docs/matlab/matlab-local-desktop.md
-          rm docs/matlab/slurmMatlab.md
-          rm docs/matlab/intro-matlab.md
-          rm docs/matlab/load_runMatlab.md
           rm docs/r/interactive.md
           rm docs/r/batch.md
           rm sphinx-myst_test/docs/index.md

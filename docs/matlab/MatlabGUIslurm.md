@@ -40,7 +40,7 @@ In the following sections we will extend the last two options.
 
     - Any longer, resource-intensive, or parallel jobs must be run through a **batch script**.
     - On login nodes, MATLAB should be started with the option ``-singleCompThread`` to stop it from using more than one thread (a couple of the clusters detect if the user is on a login node and restrict MATLAB to 1 thread automatically, but it's better to include it to be safe than forget and have your job killed by angry admins).
-    - On some clusters (e.g. COSMOS, Dardel, Kebnekaise), it is possible, and therefore recommended, to start the MATLAB GUI itself on a compute node.
+    - On some clusters (e.g. COSMOS, Kebnekaise, Dardel), it is possible, and therefore recommended, to start the MATLAB GUI itself on a compute node.
 
 ## MATLAB Desktop/graphical interface
 
@@ -59,7 +59,7 @@ c=parcluster('name-of-your-cluster')
 % Run the job on CPU
 j = c.batch(@myfunction, N_out_values, {input1, input2, ...}, 'pool', N_workers')
 % alternatively, j=batch(c, @myfunction, N_out_values, {input1, input2, ...}, 'pool', N_workers')
-% Wait till the job has finished. Use j.State if you just want to poll the
+% Wait until the job has finished. Use j.State if you just want to poll the
 % status and be able to do other things while waiting for the job to finish.
 j.wait
 % Fetch the result after the job has finished
@@ -68,6 +68,7 @@ j.fetchOutputs{:}
 
 Note that `batch` also accepts script names in place of function names, but these must be given in single quotes, with no ``@`` or ``.m``. This is useful if your script is a job farm.
 
+In the [earlier session on using MATLAB with Slurm at the command line](https://uppmax.github.io/R-matlab-julia-HPC/matlab/slurmMatlab/#running-matlab-code-with-batch), you learned how to set/edit slurm parameters for jobs on a given cluster, after defining a handle for the cluster, by calling the `AdditionalProperties` attribute. Below we will discuss an alternative way to do that graphically.
 
 ### Job settings in the Cluster Profile Manager
 
@@ -100,10 +101,24 @@ If you scroll down in the window that appears when you select the right cluster,
 ![Rackham Matlab Scheduler Plugin](./img/Rackham-matlab-cluster-profile-mgr2.png){ width="550"}
 > Editing parameters of Scheduler Plugin in Cluster Profile Manager.
 
-In other words, almost anything you might otherwise set by calling `c.AdditionalProperties.<insert_property>=...` can be set in the GUI in this scheduler plugin. Just keep in mind that these settings are saved between sessions.
+In other words, almost anything you might otherwise set by calling `c.AdditionalProperties.<insert_property>=...` can be set in the GUI in this scheduler plugin.
+
+!!! note
+
+    The settings in the Scheduler Plugin for any given cluster profile are saved between sessions. Always check them before running.
 
 If you are on Desktop On Demand on LUNARC, these settings do not override the parameters set in the GfxLauncher for the MATLAB GUI session itself, but rather to any batch jobs you submit from *within* the GUI.
 
+# MATLAB and SLURM 
+
+Extensive jobs must be run through SLURM. There are different manners to run MATLAB jobs with SLURM, for instance using:
+
+- using the MATLAB GUI
+    - ThinLinc (LUNARC, UPPMAX, HPC2N)
+        - interactive (``salloc``/``interactive``) sessions
+    - Desktop On Demand (LUNARC)
+    - [Open onDemand](https://portal.hpc2n.umu.se/public/landing_page.html){:target="_blank"} (HPC2N). 
+- batch scripts in a SSH session submitted with ``sbatch`` (less recommended)
 
 ## Serial jobs
 
@@ -180,10 +195,10 @@ in the MATLAB GUI, either by using the `batch` command (we mentioned above for s
 ### Using `batch`
 
 It is recommended that you enclose the parallel code into a function and place it into a MATLAB script. In
-the `parfor` example mentioned above, we can write a script called `hostnm.m` containing this code:
+the `parfor` example mentioned above, we can write a script called `hostnmp.m` containing this code:
 
 ```matlab
-function hn_all = hostnm(n)
+function hn_all = hostnmp(n)
     hn_all = [];
     parfor i=1:n
        hn = (getenv('HOSTNAME'));
@@ -196,7 +211,7 @@ Then, in the MATLAB GUI I can execute this function and retrieve/print out the r
 
 ```matlab
 c=parcluster('name-of-your-cluster');
-j = c.batch(@hostnm,'nr. outputs',{'list of input args'},'pool','nr. workers');
+j = c.batch(@hostnmp,'nr. outputs',{'list of input args'},'pool','nr. workers');
 j.wait;                               % wait for the results
 t = j.fetchOutputs{:};                % fetch the results
 fprintf('Name of host: %s \n', t);    % Print out the results
@@ -207,6 +222,8 @@ a MATLAB script so that next time you have these commands at hand.
 
 ### Creating a `parpool`
 
+This option is especially useful if you are working in an Open onDemand session because you are already
+working on the computing node.
 If you are doing continuous modifications to your code and running it to make sure that it works,
 using a `parpool` could be a better option than the `batch` command. Here, you create a
 pool of workers with the `parpool` function that are available to run parallel functions such
@@ -224,7 +241,7 @@ which will display the host name:
 ```matlab
 % Use parallel pool with 'parfor'
 parpool('name-of-your-cluster',n);  % Start parallel pool with nworkers = n workers
-
+p = gcp;
 parfor i=1:n
     disp(getenv("HOSTNAME"))
 end
@@ -234,7 +251,9 @@ delete(gcp('nocreate'));
 ```
 
 Notice that the host name displayed is the one where the job ran not where the MATLAB GUI is running.
-All parallel functionalities in MATLAB can be executed inside a ``parpool``.
+All parallel functionalities in MATLAB can be executed inside a ``parpool``. If you are running the 
+MATLAB GUI in an Open onDemand session you can use ``Processes`` as the ``name-of-your-cluster``, as
+this cluster profile is used for running jobs locally.
 
 -------------------
 

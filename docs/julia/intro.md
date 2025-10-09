@@ -2,11 +2,14 @@
 
 !!! info "Learning outcomes for today"
 
-    - Learn how to load Julia modules and access site-installed Julia packages
-    - Grasp the concept of Julia environments
+    - When Julia is and isn't the right tool
+    - How to load Julia modules
+    - How to use Julia environments, and why
     - Familiarize with Julia packages installation with `Pkg`
     - Acquire the knowledge of writing batch scripts for running Julia
     - Discover and explore the different Julia parallelization tools
+
+!!! info "This will be on Friday"
     - Learn how Julia supports GPU computing
     - Gain knowledge on how to run ML jobs in Julia
 
@@ -124,7 +127,7 @@ And a few other extra resources:
 
 - A big list of [AI tools](https://github.com/svilupp/awesome-generative-ai-meets-julia-language)
 - [HPC2N YouTube video on Julia in HPC](https://www.youtube.com/watch?v=bXHe7Kj3Xxg)
-- [Extra materials in these course pages](https://uppmax.github.io/R-matlab-julia-HPC/extra/julia_extra.html)
+- [Extra materials in these course pages](extra.md)
 
 
 ## Julia documentation at the centers

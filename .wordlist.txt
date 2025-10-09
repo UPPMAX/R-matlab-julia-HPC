@@ -901,6 +901,7 @@ GpusPerNode
 myfunction
 spmd
 Kalman
+cont'd
 previewImage
 xml
 addons
@@ -1004,6 +1005,7 @@ nid
 
 ABySS
 ai
+AI
 Amdahl's
 arg
 BEDTools
@@ -1060,3 +1062,14 @@ gpuArray
 chalmers
 GPCs
 VSCode
+Bj
+optimise
+parallelisation
+onDemand
+ML
+JuPyteR
+DL
+LLM
+LLMs
+pdbMPI
+pareval

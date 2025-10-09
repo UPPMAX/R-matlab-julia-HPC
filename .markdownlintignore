@@ -19,7 +19,7 @@ docs/julia/*.md
 docs/evaluations/20250326_julia/README.md
 docs/evaluations/20250325_matlab/README.md
 docs/lesson_plans/20251010_richel/4_lumi_course/README.md
-
+docs/julia/not_used/*.md
 docs-sphinx/python/not_used/*.md
 
 exercises/*.md

@@ -38,7 +38,7 @@
 
 ## Why parallel computing is important
 
-Most HPC clusters use 10 days as a maximum duration for a job.
+Most HPC clusters use 7-10 days as a maximum duration for a job.
 Your calculation may take longer than that.
 One technique that may work is to use parallel computing,
 where one uses multiple CPU cores to work together on a same calculation
@@ -125,7 +125,7 @@ The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
     The speedup, `S`, equals:
 
     ```text
-    S = t_regular / t_enhanced`
+    S = t_regular / t_enhanced
     ```
 
     where:
@@ -272,7 +272,7 @@ and, in a general form, is plotted like this:
 
 - For your research project, you also have a calculation that takes 11 days.
   Your HPC cluster allows a calculation of at most 10 days.
-  Assume your HPC center will not extend your job (they will when asked!).
+  Assume your HPC center will not extend your job (they will sometimes do so when asked!).
   How do you make optimal use of your time?
 
 ??? tip "Answer"
@@ -296,14 +296,12 @@ and, in a general form, is plotted like this:
 ??? tip "Answer"
 
     The colleague used up (or: 'wasted') all his/her computational resources
-    (commonly 10,000 core hours per month).
+    (commonly 10,000 core hours per month on UPPMAX).
 
-    Due to this, his/her jobs are only run when the HPC cluster has
-    a low workload and activates the so-called 'bonus queue'.
+    Due to this, his/her jobs are only run when the HPC cluster has a low workload and activates the so-called 'bonus queue' (UPPMAX) or generally have to wait for their priority to go up again.
 
 - Your colleague has done a benchmark and concluded the plot below.
-  What seemed to percentage of his/her code that could be run
-  in parallel?
+  What seemed to be the percentage of his/her code that could be run in parallel?
 
 ![Benchmark of speedup](benchmark_results_speedup.png)
 

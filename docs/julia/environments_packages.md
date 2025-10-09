@@ -3,7 +3,7 @@
 
 !!! info "Learning outcomes for this session"
 
-    - How to work with Julias environment and package management.
+    - How to work with Julia's environment and package management.
     - How to check for and use site-installed packages, if any.
 
 
@@ -47,7 +47,7 @@ is as close to eliminated as it can be.
 Julia environments are defined by two TOML (Tom's Obvious Minimal Language)
 files, `Project.toml` and `Manifest.toml`. The former specifies which packages
 you've asked for, the latter specifies all packages loaded including their exact
-versions. Include both of these files in your version control and you get
+versions. Include both of these files (`Project.toml` all the time, `Manifest.toml` at points for which you want exact reproducibility) in your version control and you get
 traceable, reproducible environments with minimal effort!
 
 
@@ -150,61 +150,279 @@ environment directory):
     julia --project=.
 
 
-## Bianca
+???- note "Bianca"
 
-- At Bianca there is a central library with installed packages.
+    - At Bianca there is a central library with installed packages.
 
-- You may control the present "central library" by typing ``ml help julia/<version>`` in the BASH shell.
-- A possibly more up-to-date status can be found from the Julia shell:
+    - You may control the present "central library" by typing ``ml help julia/<version>`` in the BASH shell.
+    - A possibly more up-to-date status can be found from the Julia shell:
 
+    ```{ .julia-repl }
     julia> using Pkg
     julia> Pkg.activate(DEPOT_PATH[2]*"/environments/v1.8");     #change version (1.8) accordingly if you have another main version of Julia
     julia> Pkg.status()
     julia> Pkg.activate(DEPOT_PATH[1]*"/environments/v1.8");     #to return to user library
+    ```
+    
+    A selection of the Julia packages and libraries installed on Bianca are:
 
-A selection of the Julia packages and libraries installed on Bianca are:
+        - BenchmarkTools
+        - CSV
+        - CUDA
+        - MPI
+        - Distributed
+        - IJulia
+        - Plots
+        - PyPlot
+        - Gadfly
+        - DataFrames
+        - DistributedArrays
+        - PlotlyJS
 
-    - BenchmarkTools
-    - CSV
-    - CUDA
-    - MPI
-    - Distributed
-    - IJulia
-    - Plots
-    - PyPlot
-    - Gadfly
-    - DataFrames
-    - DistributedArrays
-    - PlotlyJS
+    !!! note "Site-installed packages in environments"
 
-!!! note "Site-installed packages in environments"
+        At Bianca the central environment adds to the environment stack:
 
-    At Bianca the central environment adds to the environment stack:
-
-        julia> LOAD_PATH
-        4-element Vector{String}:
-         "@"
-         "@v#.#"
-         "@stdlib"
-         "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
+            julia> LOAD_PATH
+            4-element Vector{String}:
+              "@"
+              "@v#.#"
+              "@stdlib"
+              "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
 
 
 ## Exercises
 
-TODO: Make these exercises be the installation of the packages that we will later use.
-It might be advisable to install IJulia and Pluto in separate environments.
+- We need the packages ``IJulia`` and ``Pluto`` for running the integrated development environments (IDEs) Jupyter and Pluto.
+- We also need the MPI package on Friday.
 
-.. challenge:: 1. Project environment
+- Make these exercises be the installation of the packages that we will later use.
+- It might be advisable to install IJulia and Pluto in separate environments.
+
+!!! example "Challenge 1. Install Pluto"
+
+    - It may take 5-10 minutes or so.
+    - This you can do in an ordinary terminal
+
+    === "NSC"
+
+        ```bash
+        $ ml julia/1.10.2-bdist
+        $ julia
+        ```
+
+    === "PDC"
+
+         Note: not fully tested successfully, but this step works
+
+         ```bash
+         $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+         $ julia
+         ```
+
+    === "UPPMAX (Bianca/Rackham)"
+
+        ```bash
+         $ module load julia/1.8.5
+        ```
+
+    === "UPPMAX (Pelle)"
+
+         ```bash
+         $ module load Julia/1.10.9-LTS-linux-x86_64
+         ```
+
+    === "HPC2N & LUNARC"
+
+         ```bash
+         $ module load GCCcore/13.2.0  Julia/1.9.3-linux-x86_64
+         $ julia
+         ```
+
+    In Julia for all clusters (output may differ for different clusters and Julia versions):
+
+    ```julia
+        shell> mkdir pluto-env
+        shell> cd pluto-env
+        (@v1.10) pkg> activate .
+          Activating new project at `path-to-folder\pluto-env`
+        (pluto-env) pkg> add Pluto
+        (pluto-env) pkg> status
+                Status `path-to-folder\pluto-env\Project.toml`
+                [c3e4b0f8] Pluto v0.20.19
+    ```
+ 
+
+!!! challenge "2. Install IJulia"
+
+    - This is done only once, but for each combination of Julia you would like to use.
+    - Also Python must be loaded
+    - It may take 5-10 minutes or so.
+    - This you can do in an ordinary terminal (book an interactive session, for safety)
+   
+    === "NSC"
+
+        ```bash
+        $ ml Python/3.11.5-env-hpc1-gcc-2023b-eb
+        $ ml julia/1.10.2-bdist
+        $ julia
+        ```
+
+    === "PDC"
+
+         ```bash
+         $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
+         $ ml cray-python/3.11.5
+         $ julia
+         ```
+
+    === "UPPMAX (Bianca/Rackham)"
+
+        ```bash
+        $ module load julia/1.8.5
+        $ module load python/3.9.5
+        $ julia
+        ```
+
+    === "UPPMAX (Pelle)"
+
+        ```bash
+        $ module load Julia/1.10.9-LTS-linux-x86_64
+        $ module load JupyterLab/4.2.5-GCCcore-13.3.0
+        $ julia
+        ```
+
+    === "HPC2N & LUNARC"
+
+        ```bash
+        $ module load GCC/13.2.0  JupyterLab/4.2.0
+        $ module load Julia/1.8.5-linux-x86_64
+        $ julia
+        ```
+
+    In Julia for all clusters (output may differ for different clusters and Julia versions):
+
+    ```julia
+        shell> mkdir jupyter-env
+        shell> cd jupyter-env
+        (@v1.10) pkg> activate .
+          Activating new project at `path-to-folder\jupyter-env`
+        (jupyter-env) pkg> add IJulia
+        (jupyter-env) pkg> status
+                Status `path-to-folder\jupyter-env\Project.toml`
+                [7073ff75] IJulia v1.27.0
+    ```
+
+!!! example "Challenge 3. Required package for parallel jobs"
+
+    In order to use MPI with Julia you will need to follow the next steps (only the first time):
+
+    === "UPPMAX (Bianca/Rackham)"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml gcc/11.3.0 openmpi/4.1.3
+        # Load Julia
+        $ ml Julia/1.8.5
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode`` and add the ``MPI`` package
+        ```
+
+
+    === "UPPMAX (Pelle)"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml OpenMPI/5.0.3-GCC-13.3.0
+        # Load Julia
+        $ ml Julia/1.10.9-LTS-linux-x86_64 
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode``
+        ```
+
+    === "HPC2N"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml foss/2021b
+        # Load Julia
+        $ ml Julia/1.8.5-linux-x86_64
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode``
+        ```
+
+    === "LUNARC"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml foss/2021b
+        # Load Julia
+        $ ml Julia/1.8.5-linux-x86_64
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode``
+        ```
+
+    === "PDC"
+
+        ```bash
+        # Load the tool chain for Julia which already contains a MPI library (cray-mpich)
+        $ ml PDCOLD/23.12 julia/1.10.2-cpeGNU-23.12
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode``
+        ```
+
+    === "NSC"
+
+        ```bash
+        # Load the tool chain which contains a MPI library
+        $ ml buildtool-easybuild/4.8.0-hpce082752a2 foss/2023b
+        # Load Julia
+        $ ml julia/1.9.4-bdist
+        # Start Julia on the command line
+        $ julia
+        # Change to ``package mode``
+        ```
+
+    In Julia for all clusters (output may differ for different clusters and Julia versions):
+   
+
+    ```julia
+    shell> mkdir MPI-env
+    shell> cd MPI-env
+    (@v1.10) pkg> activate .
+          Activating new project at `path-to-folder\MPI-env`
+    (MPI-env) pkg> add MPI
+    # In the ``julian`` mode run these commands:
+    (MPI-env)julia> using MPI
+    (MPI-env)julia> MPI.install_mpiexecjl()
+            [ Info: Installing `mpiexecjl` to `/home/u/username/.julia/bin`...
+            [ Info: Done!
+    ```
+
+    - End Julia with ``<CTRL>+D``
+    - In **terminal shell** for all clusters (output may differ for different clusters and Julia versions):
+
+    ```bash
+    # Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line
+    $ export PATH=~/.julia/bin:$PATH
+    # Now the wrapper should be available on the command line
+    ```
+
+!!! example "Extra Challenge. Project environment with csv"
 
     Create a project environment called ``new-env`` and activate it. Then, install the
     package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
     offers tools for dealing with ``.csv`` files. After this, check that this package
     was installed. Finally, deactivate the environment.
 
-    .. solution:: Solution for all centres
-        :class: dropdown
+    ??? note "Solution for all centres"
 
-            .. code-block:: julia
+        ``` julia
 
                 shell> mkdir new-env
                 shell> cd new-env
@@ -214,36 +432,8 @@ It might be advisable to install IJulia and Pluto in separate environments.
                 (new-env) pkg> status
                       Status `path-to-folder\new-env\Project.toml`
                       [336ed68f] CSV v0.10.9
-                (new-env) pkg> activate
-
-.. challenge:: 2. Package environment
-
-    Create a package environment called ``new_pack`` and activate it. Then, install the
-    package ``CSV`` in this environment. For your knowledge, ``CSV`` is a package that
-    offers tools for dealing with ``.csv`` files. After this, check that this package
-    was installed. Finally, deactivate the environment.
-
-    .. solution:: Solution for all centres
-        :class: dropdown
-
-            .. code-block:: julia
-
-                shell> pwd            #Check were you are currently located
-                (@v1.8) pkg> generate new_pack
-                     Generating  project new_pack:
-                     new_pack\Project.toml
-                     new_pack\src\new_pack.jl
-                shell> cd new_pack
-                     `path-to-folder\new_pack`
-                (@v1.8) pkg> activate .
-                       Activating project at `path-to-folder\new_pack`
-                (new_pack) pkg> add CSV
-                (new_pack) pkg> status
-                       Project new_pack v0.1.0
-                       Status `path-to-folder\new_pack\Project.toml`
-                       [336ed68f] CSV v0.10.9
-                (new_pack) pkg> activate
-
+                (new-env) pkg> deactivate
+         ```
 
 !!! summary
 

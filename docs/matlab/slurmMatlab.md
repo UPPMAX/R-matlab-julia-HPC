@@ -86,11 +86,10 @@ The instructions for each facility are linked below:
 !!! warning
 
     - On Dardel you need to either have your own Mathworks account, or contact them ahead of time and ask for access to run MATLAB there!
-    - We have added access for those participants who had PDC accounts on (INSERT DATE)
     - **Do NOT run configCluster(.sh) on Dardel!**
 
 For most clusters, configuration can be done at the regular terminal using a shell script called `configCluster.sh`.
-It is also possible to run `configCluster` (without ".sh") on the MATLAB command line; for NSC, this is the only way to run the configuration program.
+At most clusters, it is possible to run `configCluster` (without ".sh") on the MATLAB command line; for NSC, this is the only way to run the configuration program.
 The tabs below demonstrate the preferred method for each cluster where configuration is required the first time you use a given version of MATLAB.
 
 === "UPPMAX"
@@ -98,6 +97,8 @@ The tabs below demonstrate the preferred method for each cluster where configura
      ```bash
      configCluster.sh <project-id>
      ```
+
+     On Pelle, `configCluster` does not work properly inside the MATLAB GUI.
             
 === "HPC2N"
 
@@ -168,7 +169,7 @@ The tabs below demonstrate the preferred method for each cluster where configura
 !!! example "**Challenge 1.** Log in and Configure MATLAB."
 
     1. Log into your chosen HPC cluster if you have not already.
-    2. Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDC/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
+    2. Load the newest version of MATLAB (find with ``ml spider MATLAB``). Note that on Dardel it has a prerequisite which you must load first, and that only the matlab/r2024a-ps (prerequisite PDCOLD/23.12) allows access from the shell/terminal without you having to give your own Mathworks credentials.
     3. Depending on cluster, now do 
         - NSC: Run configCluster inside MATLAB on the terminal (start with ``matlab -singleCompThread -nodisplay -nosplash -nodesktop ``).
         - PDC: You do not do ``configCluster``
@@ -307,7 +308,7 @@ If you want to run a MATLAB program on the cluster with batch, you have to set s
     If you need the GUI on Dardel, you need to start both the SSH connection to the Dardel login node and to the compute node with `ssh -X` (i.e. use `ssh -X <node-allocated-to-you>`). Then, you can load MATLAB and start it (on shell) as usual with
 
     ```bash
-    ml PDC/23.12 matlab/r2024a-ps
+    ml PDCOLD/23.12 matlab/r2024a-ps
     matlab -nodisplay -nodesktop -nosplash
     ```
 
@@ -372,7 +373,7 @@ salloc: Granted job allocation 9050479
 salloc: Waiting for resource configuration
 salloc: Nodes nid002585 are ready for job
 bbrydsoe@login1:~> ssh nid002585
-bbrydsoe@nid002585:~> ml PDC/23.12 matlab/r2024a-ps
+bbrydsoe@nid002585:~> ml PDCOLD/23.12 matlab/r2024a-ps
 bbrydsoe@nid002585:~> matlab -nodisplay -nodesktop -nosplash
 
                                     < M A T L A B (R) >
@@ -545,7 +546,7 @@ ans =
 
     This exercise assumes you did the previous ones on this page; loading MATLAB, doing the configCluster.sh, adding the job settings. It should work on all the clusters.
     
-    You can download [parallel_example.m here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m>).
+    You can download [parallel_example.m here](https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/exercises/matlab/parallel_example.m).
 
 ##### `parpool`
 
@@ -707,7 +708,7 @@ Here is an example of a serial batch job formatted for each of the 6 facilities 
 
      # Clean the environment
      module purge > /dev/null 2>&1
-     module load  PDC/23.12 matlab/r2024a-ps
+     module load  PDCOLD/23.12 matlab/r2024a-ps
 
      # Executing the matlab program monte_carlo_pi.m for the value n=100000
      # (n is number of steps - see program).
@@ -911,7 +912,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
 
         # Change depending on resource and MATLAB version
         # to find out available versions: module spider matlab
-        module add PDC/23.12 matlab/r2024a-ps
+        module add PDCOLD/23.12 matlab/r2024a-ps
 
         # Executing a parallel matlab program
         matlab -nodisplay -nodesktop -nosplash -r "parallel_example(16)"
@@ -936,7 +937,7 @@ Inside the MATLAB code, the number of CPU-cores (`NumWorkers` in MATLAB terminol
 
 !!! note "GPU code"
 
-    Using MATLAB with GPUs will be covered in the [Introduction to GPUs](../../advanced/gpus) section on the fourth day ("Advanced material"). 
+    Using MATLAB with GPUs will be covered in the [Introduction to GPUs](../advanced/gpus.md) section on the fourth day ("Advanced material"). 
 
 !!! summary
 

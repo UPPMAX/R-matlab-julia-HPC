@@ -18,7 +18,7 @@ Available from:
 - MathWorks®
 - the global MATLAB user community
 
-For more information, [click here](https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ).
+For more information about Add-Ons, [Mathworks](https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ).
 
 !!! info "Objectives"
 
@@ -80,7 +80,7 @@ Here we will only focus on the first two options.
     
     We won't cover the usage of most toolboxes here!
 
-    - [Read more](../extra/matlab_extra.md#add-ons)
+    - [Read more about Add-Ons](extra.md#add-ons)
 
 
 !!! tip
@@ -147,8 +147,6 @@ Here we will only focus on the first two options.
         ...
         ```
 
-    
-
 ### Install Add-Ons
 
 - Search in Add-Ons explorer and install.
@@ -168,6 +166,13 @@ You can install some Add-Ons manually using an installation file. This is useful
 - The add-on is not available for installation through the Add-On Explorer, for example, if you create a custom add-on yourself or receive one from someone else.
 - You downloaded the add-on from the Add-On Explorer without installing it.
 - You downloaded the add-on from the File Exchange at MATLAB Central™.
+
+???- note "Bianca"
+
+    - One way to get a MATLAB package to Bianca is to download it on your working computer without installing it.
+    - Then you use the wharf to get the (tared) file(s) on Bianca.
+    - Then move it to the `~/MATLAB Add-Ons` folder on Bianca.
+
 
 !!! note "See also"
 

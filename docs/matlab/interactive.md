@@ -1,11 +1,9 @@
-# Julia interactively
+# Matlab interactively
 
 !!! info "Learning outcomes for today"
 
-    - Be able to start interactive sessions
-    - Use the Julia REPL in the interactive session
-    - Be able to run Julia in Jupyter notebook OR Pluto
-
+    - Be able to start interactive sessions with several cores
+    - Be able to run MATLAB and seae the available workers
 
 ??? note "Instructor note"
 
@@ -14,16 +12,14 @@
 
 !!! important "Notes"
 
-    - It is possible to run Julia directly on the login (including ThinLinc) nodes.
+    - It is possible to run MATLAB directly on the login (including ThinLinc) nodes.
     - But this should *only* be done for shorter jobs or jobs that do not use a lot of resources, as the login nodes can otherwise become slow for all users.
     - If you want to work interactively with your code or data, you should start an interactive session.
     - If you rather will run a script which won't use any interactive user input while running, you can instead start a batch job, see next session.
 
-There are several ways to run Julia interactively
-
 ## General
 
-In order to run interactively, you need to have compute nodes allocated to run on, and this is done through the Slurm system.
+In order to run interactively with more memory or more threads/processes, you need to have compute nodes allocated to run on, and this is done through the Slurm system.
 
 ## Interactive sessions at NSC, PDC, HPC2N, UPPMAX and LUNARC
 
@@ -143,9 +139,6 @@ graph TD
 where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
 (maximum T168 hours), and then you give the id for your project.
 
-Then, when you get the allocation, one can run programs in parallel by:
-
-- ``srun -n <ntasks> ./program``
 
 - Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources.
 - When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with ``srun``.
@@ -154,8 +147,8 @@ Then, when you get the allocation, one can run programs in parallel by:
 !!! important "On HPC2N"
 
    - If you do not preface with ``srun`` the command is run on the login node!
-   - You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.
-   - This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.
+   - You can now run Matlab scripts on the allocated resources directly instead of waiting for your batch job to return a result.
+   - This is an advantage if you want to test your Matlab script or perhaps figure out which parameters are best.
 
 ### End an interactive session
 
@@ -174,20 +167,15 @@ logout
    - [Interactive allocation on HPC2N](https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive){:target="_blank"}
    - [Interactive allocation on LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session){:target="_blank"}
 
-## Exercise interactive session
+## Exercise
 
 !!! important "Run from ThinLinc (web or client!)"
 
      - [Log in page](../common/login.md#step-1-log-in)
 
-     - We will need it later for the notebooks!
-
-     - Start a terminal shell from ThinLinc.
-
-!!! important "Interactive jobs"
+!!! important "Interactive session"
     
-    Requesting 4 cores for 10 minutes, then running Julia
-    Short serial example for running on different clusters.
+    Requesting 4 cores for 10 minutes, and load Matlab
 
     === "NSC"
 
@@ -200,7 +188,7 @@ logout
         salloc: Waiting for resource configuration
         salloc: Nodes n760 are ready for job
 
-        [bjornc@r483 ~]$ module load julia/1.10.2-bdist
+        [bjornc@n760 ~]$ module load MATLAB/2023b-bdist
         ```
 
         Let us check that we actually run on the compute node:
@@ -226,7 +214,7 @@ logout
         salloc: Waiting for resource configuration
         salloc: Nodes nid001057 are ready for job
 
-        claremar@login1:~> module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+        claremar@login1:~> module load PDC/23.12 matlab/r2024b
         ```
 
         Let us check that we actually run on the compute node. This has to be done differently
@@ -267,25 +255,25 @@ logout
         Waiting for job 29556505 to start...
         Starting job now -- you waited for 1 second.
 
-        [bjornc@p102 ~]$ module load Julia/1.10.9-LTS-linux-x86_64
+        [bjornc@p102 ~]$ module load MATLAB/2023b-update4
         ```
 
         Let us check that we actually run on the compute node:
 
         ```bash
         [bjornc@p102 ~]$ srun hostname
-        p102.uppmax.uu.se
-        p102.uppmax.uu.se
-        p102.uppmax.uu.se
-        p102.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
         ```
 
         We are. Notice that we got a response from all four cores we have allocated.
 
-    === "UPPMAX (Rackham/Bianca)"
+    === "UPPMAX (Bianca)"
 
         ```bash
-        [bjornc@rackham2 ~]$ interactive -A uppmax2025-2-360 -p core -n 4 -t 0:30:00
+        [bjornc@sens2017625-bianca ~]$ interactive -A sensXXXX -p core -n 4 -t 0:30:00
         You receive the high interactive priority.
         There are free cores, so your job is expected to start at once.
 
@@ -294,17 +282,17 @@ logout
         Waiting for job 29556505 to start...
         Starting job now -- you waited for 1 second.
 
-        [bjornc@r102 ~]$ module load julia/1.8.5
+        [bjornc@p102 ~]$ module load MATLAB/2023b-update4
         ```
 
         Let us check that we actually run on the compute node:
 
         ```bash
-        [bjornc@r102 ~]$ srun hostname
-        r102.uppmax.uu.se
-        r102.uppmax.uu.se
-        r102.uppmax.uu.se
-        r102.uppmax.uu.se
+        [bjornc@p102 ~]$ srun hostname
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
+        r483.uppmax.uu.se
         ```
 
         We are. Notice that we got a response from all four cores we have allocated.
@@ -319,7 +307,7 @@ logout
         salloc: Granted job allocation 20174806
         salloc: Waiting for resource configuration
         salloc: Nodes b-cn0241 are ready for job
-        [~]$ module load GCC/11.2.0 OpenMPI/4.1.1 julia/1.8.5
+        [~]$ module load MATLAB/2023b
         [~]$
         ```
 
@@ -342,7 +330,7 @@ logout
         Cluster name: COSMOS
         Waiting for JOBID 930844 to start
 
-        [bjornc@cn050 ~]$ module load Julia/1.8.5-linux-x86_64
+        [bjornc@cn050 ~]$ module load matlab/2024b
         ```
 
         Let us check that we actually run on the compute node:
@@ -352,101 +340,51 @@ logout
         4
         ```
 
-        We are, because the *$SLURM* environment variable gves an output. Notice that we got 4, which is not the size of the physcial node bt the allocation size.
+        We are, because the *$SLURM* environment variable gives an output. Notice that we got 4, which is not the size of the physcial node but the allocation size.
 
+!!! important "Check from Matlab"
 
-
-    **Test script**: adding two numbers from user input (``serial-sum.jl``)
-
-    ```julia
-        # This program will add two numbers that are provided by the user
-
-        # Get the numbers
-        x = parse( Int32, ARGS[1] )
-        y = parse( Int32, ARGS[2] )
-        # Add the two numbers together
-        summ = x + y
-        println("The sum of the two numbers is ", summ)
-    ```
-
-    **Running the script**
-
-    - Note that the commands should be the same for all clusters
-
-    Running a Julia script in the allocation we made further up. Notice that since we asked for 4 cores, the script is run 4 times, since it is a serial script
+    - Start matlab (same for all clusters)
 
     ```bash
-    [~]$ srun julia serial-sum.jl 3 4
-    The sum of the two numbers is: 7
-    The sum of the two numbers is: 7
-    The sum of the two numbers is: 7
-    The sum of the two numbers is: 7
-    [~]$
+    matlab &
     ```
 
-    Without the ``srun`` command, Julia won't understand that it can use several cores. Therefore the program is run only once.
+    - In MATLAB test how big parpool you can make (should be limited by the allocated resources above)
 
-    ```bash
-    [~]$ julia serial-sum.jl 3 4
-    The sum of the two numbers is: 7
+    ```matlab
+    p=parpool("local")
+    p.NumWorkers
     ```
 
-    **Running Julia REPL**
+    ???- info "Output of parpool command on UPPMAX"
 
-    - First start Julia using the 4 cores and check if workers are available
+        According to the below output 
+        ```matlab
+        Starting parallel pool (parpool) using the 'Processes' profile ...
+        Connected to parallel pool with 4 workers.
 
-    ```bash
-    $ julia -p 4
-    ```
+        p =
 
-    ```julia
-    julia> nworkers()
-    4
-    ```
+         ProcessPool with properties:
 
-    Exit Julia
+                    Connected: true
+                    NumWorkers: 4
+                    Busy: false
+              Cluster: Processes (Local Cluster)
+               AttachedFiles: {}
+            AutoAddClientPath: true
+            FileStore: [1x1 parallel.FileStore]
+           ValueStore: [1x1 parallel.ValueStore]
+          IdleTimeout: 30 minutes (30 minutes remaining)
+          SpmdEnabled: true
+        ```
+     
+!!! important "Quit MATLAB"
 
-    ```julia
-    julia> <CTRL-D>
-    4
-    ```
+    End Matlab by closing the GUI.
 
-    **Do not exit yet!**
-
-!!! info 
-
-    Meanwhile waiting let's talk about notebooks!
-    
-## Notebooks
-
-### Jupyter
-
-**JuPyteR** was written for serving notebooks for Julia, Python and R
-
-![Jupyter-Julia](../img/Jupyter_julia.png)
-![Jupyter-started](../img/jupyter_rackham_thinlinc.png)
-
-### Pluto 
-
-- Pluto, like Jupyter, is a programming notebook.
-
-![Pluto cells](../img/Pluto_cells2.png)
-
-- Reproducible (even without Pluto), gittable, extraordinarily interactive programming notebooks
-- Offers a similar notebook experience to Jupyter, but understands global references between cells, and reactively re-evaluates cells affected by a code change.
-
-## Exercise: Choose to start Jupyter OR Pluto 
-
-!!! important
-
-    - You should be using ThinLinc.
-    - And from the terminal have started a interactive session
-    - See [last exercise](#exercise-interactive-session)
-
-- [Start Jupyter](notebook_jupyter.md)
-- [Start Pluto](notebook_pluto.md)
-
-    **Exit**
+!!! important "Exit interactive session"
 
     When you have finished using the allocation, either wait for it to end, or close it with ``exit``
 
@@ -504,23 +442,5 @@ logout
         [~]$
         ```
 
-
-### Exercises run scripts
-
-!!! important "Run scripts from an interactive session"
-
-    - Try out one or two of the scripts from the exercise folder ``batchJulia``.
-    - First create an interactive session with the right Slurm commands to the ``interactive``/``salloc`` command.
-       - use the commands from the batch job script belonging to the julia script at [examples of batch scripts for julia](https://uppmax.github.io/R-matlab-julia-HPC/julia/batch/#examples-of-batch-scripts){:target="_blank"}
-
-!!! summary
-
-    - Start an interactive session on a calculation node by a SLURM allocation
-
-      - At HPC2N: ``salloc`` ...
-      - At UPPMAX/LUNARC: ``interactive`` ...
-      
-    - Follow the same procedure as usual by loading the Julia module and possible prerequisites.
-    - Run Julia in Jupyter lab/notebook
-
-      - Procedure is to use the IJulia package and start a jupyter notebook from the julia command line.
+     
+     

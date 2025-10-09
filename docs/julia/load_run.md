@@ -4,11 +4,11 @@
 
     At the Swedish HPC centers we call the applications available via the *module system* **modules**:
 
-    - [NSC](<https://www.nsc.liu.se/software/modules/>)
-    - [PDC](<https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/>)
-    - [UPPMAX](<https://docs.uppmax.uu.se/cluster_guides/modules/>)
-    - [HPC2N](<https://docs.hpc2n.umu.se/software/modules/>)
-    - [LUNARC](<https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept>)
+    - [NSC](https://www.nsc.liu.se/software/modules/)
+    - [PDC](https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/)
+    - [UPPMAX](https://docs.uppmax.uu.se/cluster_guides/modules/)
+    - [HPC2N](https://docs.hpc2n.umu.se/software/modules/)
+    - [LUNARC](https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept)
 
 
 !!! info "Objectives"
@@ -45,6 +45,15 @@ The module activates paths to a specific version of the julia interpreter and it
 
 
 ## Check for Julia versions
+
+!!! info "Long-term support versions"
+
+    So far Julia has Long-term support (LTS) for
+
+    - 1.6.7 
+    - 1.10.X (high X is better)
+
+    It might good to try to stick with such a version for future compatibility and support.
 
 ### Principle
 
@@ -83,6 +92,7 @@ module spider julia
 ??? note "Example output"
 
     From Dardel:
+    
     ``` { .console data-copy="module spider julia" }
     $ module spider julia
     -------------------------------------------------------------------------------------------------------
@@ -222,7 +232,7 @@ this will allow you to use Linux commands. Notice that the availability of these
 depend on the OS, for instance, on Windows it will depend on the terminal that you have
 installed and if it is visible to the Julia installation.
 
-### Package manage mode
+### Package manager mode
 
 Another mode available in Julia is the ``package manager`` mode, it can be accessed by typing
 ``]`` in the ``Julian`` mode:
@@ -271,76 +281,69 @@ or
    julia> exit()
 ```
 
-!!! The Julian modes summary
+!!! note "The Julian modes summary"
 
     - enter the *shell mode* by typing ``;``
     - go back to *Julian* mode by ``<backspace>``
     - access the *package manager* mode by typing ``]`` in the *Julian* mode
     - use the *help mode* by typing ``?`` in the *Julian mode*
 
-!!! seealso
+!!! note "See also"
 
     [More detailed information about the modes in Julia can be found](https://docs.julialang.org/en/v1/stdlib/REPL).
 
 
 ### Run a Julia script
 
-
 You can run a Julia script on the Linux shell as follows:
 
-.. code-block:: console
-
+```console
    $ julia example.jl
+```
 
 where the script is a text file could contain these lines:
 
-.. code-block:: bash
-
+```bash
    println("hello world")
-
+```
 
 ## Exercises
 
+!!! example "Challenge 1a. Find out which versions are on your cluster from documentation"
 
-.. challenge:: 1a. Find out which versions are on your cluster from documentation
+    - Find/search for that documentation!
 
-- Find/search for that documentation!
+    ??? note "Solutions"
 
-   .. solution:: Solution
-      :class: dropdown
+        - [UPPMAX](http://docs.uppmax.uu.se/software/julia/)
+        - [HPC2N](https://www.hpc2n.umu.se/resources/software/julia)
+        - [LUNARC](The user demand on Julia has been low, so there is currently no site-specific documentation.)
+        - [NSC](https://www.nsc.liu.se/software/installed/tetralith/julia/)
+        - [PDC](https://support.pdc.kth.se/doc/applications/)
 
-      - `UPPMAX <http://docs.uppmax.uu.se/software/julia/>`_
-      - `HPC2N <https://www.hpc2n.umu.se/resources/software/julia>`_
-      - `LUNARC <The user demand on Julia has been low, so there is currently no site-specific documentation.>`_
-      - `NSC <https://www.nsc.liu.se/software/installed/tetralith/julia/>`_
-      - `PDC <https://support.pdc.kth.se/doc/applications/>`_
+!!! example "Challenge 1b. Find out which versions are on your cluster from command line"
 
+    - Use the ``spider`` or ``avail`` module commands
 
-.. challenge:: 1b. Find out which versions are on your cluster from command line
+    ??? note "Solutions"
 
-- Use the ``spider`` or ``avail`` module commands
+        === "UPPMAX"
 
-   .. solution:: Solution
-      :class: dropdown
+            Check all available Julia versions with:
 
-      .. tabs::
-
-         .. tab:: UPPMAX
-
-           Check all available Julia versions with:
-
-            .. code-block:: console
+            ```console
 
                 $ module avail julia
+            ```
 
-
-         .. tab:: HPC2N
+        === "HPC2N"
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module spider julia
+            ```
 
             Notice that the output if you are working on the Intel (*kebnekaise.hpc2n.umu.se*) or AMD
             (*kebnekaise-amd.hpc2n.umu.se*) login nodes is different. In the former, you will see more
@@ -348,92 +351,123 @@ where the script is a text file could contain these lines:
 
             To see how to load a specific version of Julia, including the prerequisites, do
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/<version>
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/1.8.5-linux-x86_64
+            ```
 
-         .. tab:: LUNARC
+        === "LUNARC"
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia
+            ```
 
             To see how to load a specific version of Julia, including the prerequisites, do
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/<version>
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/1.8.5-linux-x86_64
+            ```
 
-         .. tab:: Tetralith
+        === "Tetralith"
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module avail Julia
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
                $ module spider julia/1.8.5-nsc1-bdist
+            ```
 
-         .. tab:: Dardel
+        === "Dardel"
 
             Check all available version Julia versions with:
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia
+            ```
 
             To see how to load a specific version of Julia, including the prerequisites, do
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/<version>
+            ```
 
             Example for Julia 1.8.5
 
-            .. code-block:: console
+            ```console
 
                $ module spider Julia/1.8.5-linux-x86_64
+            ```
+               
+    ??? note "Output at UPPMAX as of Oct 2025"
 
-.. admonition:: Output at UPPMAX as of Oct 2024
-   :class: dropdown
+        Rackham/(Bianca)
 
-       .. code-block::  console
+        ``` console
 
           $ module avail julia
           ----------------------------- /sw/mf/rackham/compilers -----------------------------
-             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2        julia/1.9.3 (D)
-             julia/1.1.1        julia/1.6.3        julia/1.8.5 (L)
-             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1
+             julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2    julia/1.9.3
+             julia/1.1.1        julia/1.6.3        julia/1.8.5    julia/1.10.10_LTS
+             julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1    julia/1.11.6      (D)
 
            Where:
             D:  Default Module
 
           Use "module spider" to find all possible modules and extensions.
           Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+        ```
 
+        Pelle 
 
-.. admonition:: Output at HPC2N as of Oct 2024
-    :class: dropdown
+        ``` console
 
-        .. code-block:: console
+        $ ml av Julia
+
+        ---------------------------------------------------- /sw/arch/eb/modules/all --------------------
+           Julia/1.10.9-LTS-linux-x86_64    Julia/1.11.3-linux-x86_64 (D)
+
+          Where:
+           D:  Default Module
+
+        If the avail list is too long consider trying:
+
+        "module --default avail" or "ml -d av" to just list the default modules.
+        "module overview" or "ml ov" to display the number of modules for each name.
+        
+        Use "module spider" to find all possible modules and extensions.
+        Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+        ```
+
+    ??? note "Output at HPC2N as of Oct 2025"
+
+        ```console
 
            $ module spider julia  # Assuming you are working on the Intel login nodes
            ------------------------------------------------------------------------------------------------
@@ -455,11 +489,11 @@ where the script is a text file could contain these lines:
 
                 $ module spider Julia/1.8.5-linux-x86_64
            ------------------------------------------------------------------------------------------------
+        ```
 
-.. admonition:: Output at LUNARC as of Oct 2024
-    :class: dropdown
+    ??? note "Output at LUNARC as of Oct 2025"
 
-        .. code-block:: console
+        ```console
 
            $ module spider julia
            -----------------------------------------------------------------------------------------------------
@@ -474,11 +508,11 @@ where the script is a text file could contain these lines:
                    Julia/1.9.2-linux-x86_64
                    Julia/1.9.3-linux-x86_64
                    Julia/1.10.4-linux-x86_64
+        ```
 
-.. admonition:: Output at NSC as of Mar 2025
-    :class: dropdown
+    ??? note "Output at NSC as of Mar 2025"
 
-        .. code-block:: console
+        ```console
 
            $ module avail julia
 
@@ -486,11 +520,11 @@ where the script is a text file could contain these lines:
               julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist
               julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist
               julia/1.4.1                          julia/1.8.5-nsc1-bdist
+        ```
 
-.. admonition:: Output at PDC as of Mar 2025
-    :class: dropdown
+    ??? note "Output at PDC as of Oct 2025"
 
-        .. code-block:: console
+        ```console
 
            $ module spider julia
            -------------------------------------------------------------------------------------------------------
@@ -512,6 +546,7 @@ where the script is a text file could contain these lines:
                    julia/1.9.3-cpeGNU-23.03
                    julia/1.10.2-cpeGNU-23.03
                    julia/1.10.2-cpeGNU-23.12
+                   julia/1.11.4-cpeAMD-24.11
                 Other possible modules matches:
                    Julia  libuv-julia
 
@@ -522,56 +557,77 @@ where the script is a text file could contain these lines:
 
            -------------------------------------------------------------------------------------------------------
              For detailed information about a specific "julia" package (including how to load the modules) use the module's full name.
+        ```
 
 
-.. challenge:: 1c. Which method to trust?
+!!! example "Challenge 1c. Which method to trust?"
 
-   .. solution:: Solution
-      :class: dropdown
+    Shall one trust the documentation or the commandline on the cluster more?
+    
+    ??? note "Solution"
 
-      Looking for modules in a session on the cluster is closer to the truth
+        Looking for modules in a session on the cluster is closer to the truth
 
 
-.. challenge:: 2. Try to start julia without having loaded julia module
+!!! example "Challenge 2. Try to start julia without having loaded julia module"
 
-- If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command.
+    - If you have a ``julia`` module loaded already, you may unload it with the ``unload`` command.
 
     - **Tip:** Type: ``unload julia`` and press ``<tab>`` until the full module name is shown, then press ``<enter>``. (If the Julia module starts with an uppercase, use that instead!)
 
-   .. solution:: Solution
-      :class: dropdown
+    ??? note "Solution"
 
-      .. code-block:: console
+        ```console
 
          $ julia
+        ```
 
+        It doesn't work! The Julia interpreter is not found.
 
-.. challenge:: 3.  Load and start ``julia`` from the command line
+!!! example "Challenge 3.  Load and start ``julia`` the right way from the command line"
 
-   .. solution:: Solution
-      :class: dropdown
+    ??? note "Solution"
 
-      .. tabs::
+        === "UPPMAX"
 
-         .. tab:: UPPMAX
-
+            Rackham/Bianca
+            
             Go back and check which Julia modules were available. To load version 1.8.5, do:
 
-            .. code-block:: console
+            ```console
 
               $ module load julia/1.8.5
-
+            ```
+ 
             Note: Lowercase ``j``.
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml julia/1.8.5
+            ```
 
-         .. tab:: HPC2N
+            Pelle
+            
+            Go back and check which Julia modules were available. To load version 1.10.9, do:
 
-            .. code-block:: console
+            ```console
+
+              $ module load Julia/1.10.9-LTS-linux-x86_64
+            ```
+            Note: Uppercase ``j``.
+
+            For short, you can also use:
+
+            ```console
+
+               $ ml Julia/1.10.9-LTS-linux-x86_64
+            ```
+
+        === "HPC2N"
+
+            ```console
 
                $ module load Julia/1.8.5-linux-x86_64
 
@@ -579,27 +635,30 @@ where the script is a text file could contain these lines:
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml Julia/1.8.5-linux-x86_64
+            ```
 
-         .. tab:: LUNARC
+        === "LUNARC"
 
-            .. code-block:: console
+            ```console
 
                $ module load Julia/1.8.5-linux-x86_64
+            ```
 
             Note: Uppercase ``J``.
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml Julia/1.8.5-linux-x86_64
+            ```
 
-         .. tab:: NSC
+        === "NSC"
 
-            .. code-block:: console
+            ```console
 
                $ module load julia/1.10.2-bdist
 
@@ -607,25 +666,28 @@ where the script is a text file could contain these lines:
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml julia/1.10.2-bdist
+            ```
 
-         .. tab:: PDC
+        === "PDC"
 
-            .. code-block:: console
+            ```console
 
                $ module load PDC/23.12 julia/1.10.2-cpeGNU-23.12
+            ```
 
             Note: lowercase ``j``.
 
             For short, you can also use:
 
-            .. code-block:: console
+            ```console
 
                $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12
-
-.. challenge:: 4. Getting familiar with Julia REPL
+            ```
+            
+!!! example "Challenge 4. Getting familiar with Julia REPL"
 
     - It is important that you know how to navigate on the Julia command line. Here is where you work live with data and test aout things and you may install packages.
     - This exercise will help you to become more familiar with the REPL. Do the following steps:
@@ -636,10 +698,9 @@ where the script is a text file could contain these lines:
        * Now, go to the ``package`` mode and list the currently installed packages
        * Finally, display help information of the function ``println`` in ``help`` mode.
 
-   .. solution:: Solution
-      :class: dropdown
+    ??? note "Solution"
 
-       .. code-block:: julia
+        ```julia
 
             $ julia
             julia> 5 + 6
@@ -649,90 +710,102 @@ where the script is a text file could contain these lines:
             pkg> status
             julia>?
             help?> println
+        ```
+        
+!!! example "Challenge 5. Load another module and run a script"
 
-.. challenge:: 5. Load another module and run a script
-
-    - Load the latest version and run
+    - Load the latest version
     - Run the following serial script (``serial-sum.jl``) which accepts two integer arguments as input:
 
-            .. code-block:: julia
+    ```julia
 
-                x = parse( Int32, ARGS[1] )
-                y = parse( Int32, ARGS[2] )
-                summ = x + y
-                println("The sum of the two numbers is ", summ)
+    x = parse( Int32, ARGS[1] )
+    y = parse( Int32, ARGS[2] )
+    summ = x + y
+    println("The sum of the two numbers is ", summ)
+    ```
 
-   .. solution:: Solution for HPC2N
-      :class: dropdown
+    - Enter two numbers, like 2 & 3.
+    
+    ??? note "Solution for HPC2N"
 
-
-      .. code-block:: console
+        ```console
 
             $ ml purge  > /dev/null 2>&1       # recommended purge
             $ ml Julia/1.8.5-linux-x86_64      # Julia module
 
             $ julia serial-sum.jl Arg1 Arg2    # run the serial script
+        ```
 
-   .. solution:: Solution for UPPMAX
-      :class: dropdown
+    ??? note "Solution for UPPMAX"
 
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
+        Rackham/Bianca
 
-      .. code-block:: console
+        ```console
 
             $ ml julia/1.8.5                   # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
+        ```
 
+        Pelle
 
-   .. solution:: Solution for LUNARC
-      :class: dropdown
+        ```console
 
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
+            $ ml Julia/1.10.9-LTS-linux-x86_64  # Julia module
 
-      .. code-block:: console
+            julia serial-sum.jl Arg1 Arg2       # run the serial script
+        ```
+
+    ??? note "Solution for LUNARC"
+
+        ```console
 
             $ ml Julia/1.8.5-linux-x86_64           # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
+        ```
+        
+    ??? note "Solution for NSC"
 
-   .. solution:: Solution for NSC
-      :class: dropdown
-
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
-
-      .. code-block:: console
+        ```console
 
             $ ml julia/1.10.2-bdist           # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
+        ```
+        
+    ??? note "Solution for PDC"
 
-   .. solution:: Solution for PDC
-      :class: dropdown
-
-      This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)
-
-      .. code-block:: console
+        ```console
 
             $ ml PDC/23.12 julia/1.10.2-cpeGNU-23.12           # Julia module
 
             julia serial-sum.jl Arg1 Arg2      # run the serial script
+        ```
 
+!!! example "Challenge 6. Check your understanding"
 
-.. challenge:: 6. Check your understanding
+    - Check your understanding and answer in the shared document
+    - Can you start Julia without loading a Julia module?
 
-- Check your understanding and answer in the shared document
-- Can you start Julia without loading a Julia module?
+        - Yes?
+        - No?
 
-    - Yes?
-    - No?
+    - Which character to use to toggle
 
-- Which character to use to toggle
+        - to the ``package`` mode?
+        - back to the ``Julia`` mode?
+        - to the ``help`` mode?
+        - to the ``shell`` mode?
 
-    - to the ``package`` mode?
-    - back to the ``Julia`` mode?
-    - to the ``help`` mode?
-    - to the ``shell`` mode?
+    ??? note "Solution"
+
+        - to the ``package`` mode? ``]``
+        - back to the ``Julia`` mode? ``<backspace>``
+        - to the ``help`` mode? ``?``
+        - to the ``shell`` mode? ``;``
+         
 
 !!! summary 
 
