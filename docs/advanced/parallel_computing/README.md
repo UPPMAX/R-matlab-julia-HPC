@@ -108,9 +108,13 @@ Imagine a calculation that takes 16 time units, represented as this:
 ![1 core](amdahls_law_example_1.png)
 
 > Figure 2: a calculation of 16 time units run on 1 core,
-> where square is a time unit of calculation.
-> :red_square:: a unit of calculation that cannot be run in parallel.
-> Green square: a unit of calculation that can be run in parallel
+> following the legend below:
+
+Square                      | A unit of calculation time that ...
+----------------------------|------------------------------------
+:red_square: Red            | cannot be run in parallel
+:green_square: Green        | can be run in parallel
+:white_medium_square: White | is spent doing nothing
 
 Using 2 calculation units, this results in:
 
@@ -118,9 +122,6 @@ Using 2 calculation units, this results in:
 
 > Figure 2: a calculation of 16 time units run on 2 cores,
 > where square is a time unit of calculation.
-> :red_square:: a unit of calculation that cannot be run in parallel.
-> :green_square: = a unit of calculation that can be run in parallel.
-> - White square: a unit of calculation that is spent doing nothing
 
 This takes the calculation down from 16 to 10 time units.
 The so-called 'speedup' of using two workers is 16 / 10 = 1.6.
