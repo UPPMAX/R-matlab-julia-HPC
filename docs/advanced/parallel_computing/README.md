@@ -110,11 +110,11 @@ Imagine a calculation that takes 16 time units, represented as this:
 > Figure 2: a calculation of 16 time units run on 1 core,
 > following the legend below:
 
-Square                      | A unit of calculation time that ...
-----------------------------|------------------------------------
-:red_square: Red            | cannot be run in parallel
-:green_square: Green        | can be run in parallel
-:white_medium_square: White | is spent doing nothing
+Square                | A unit of calculation time that ...
+----------------------|------------------------------------
+:red_square:          | cannot be run in parallel
+:green_square:        | can be run in parallel
+:white_medium_square: | is spent doing nothing
 
 Using 2 calculation units, this results in:
 
