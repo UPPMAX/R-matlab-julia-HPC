@@ -41,17 +41,19 @@ tags:
     - When to use parallel computing?
     - When not to use parallel computing?
 
-    HPC cluster|Tested
-    -----------|--------
-    Alvis      |Not, maybe never
-    Bianca     |Need certicate
-    COSMOS     |Yes
-    Dardel     |Yes
-    Kebnekaise |Running
-    LUMI       |Not, maybe never
-    Rackham    |Yes
-    Pelle      |Yes
-    Tetralith  |Yes
+???- info "Status overview"
+
+    HPC cluster|Julia   |MATLAB  |R
+    -----------|--------|--------|--------
+    Alvis      |Unknown |Unknown |Unknown 
+    Bianca     |Unknown |Unknown |Unknown 
+    COSMOS     |Yes     |No      |Yes
+    Dardel     |Yes     |No      |Yes
+    Kebnekaise |Yes     |No      |Yes
+    LUMI       |Unknown |Unknown |Unknown 
+    Rackham    |Yes     |No      |Yes
+    Pelle      |Yes     |No      |Yes
+    Tetralith  |Yes     |No      |Yes
 
 ???- hint "Prefer this session as a video?"
 
