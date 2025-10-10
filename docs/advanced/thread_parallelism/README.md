@@ -36,7 +36,10 @@ tags:
     Prior:
 
     - What is thread parallelism?
-
+    - Why use thread parallelism?
+    - Are there other ways to make your code run faster?
+    - What is a benchmark?
+    - Why do a benchmark?
 
     Feedback:
 

@@ -36,6 +36,7 @@ tags:
 
     - In an HPC context, what is a core?
     - In an HPC context, what is a node?
+    - In an HPC context, what are computational resources?
     - What is parallel computing?
     - How does parallel computing work?
     - When to use parallel computing?
