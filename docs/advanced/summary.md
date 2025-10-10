@@ -2,7 +2,24 @@
 
 ## Parallel computing
 
+!!! info "Learning outcomes"
+
+    - I can name and describe 3 types of parallel computation
+    - I can explain at least 1 advantage of parallel computation
+    - I can explain at least 2 disadvantages of parallel computation
+    - I can explain how to use my computational resources effectively
+
 ## Thread parallelism
+
+!!! info "Learning outcomes"
+
+    - I can schedule jobs with thread parallelism
+    - I can explain how jobs with thread parallelism are scheduled
+    - I can explain how Julia/MATLAB/R code makes use of thread parallelism
+    - I can explain the results of a correct benchmark
+    - I can explain the results of an incorrect benchmark
+    - I can argue why I should stick to my programming language,
+      even if it is not the fastest
 
 ## Distributed parallelism
 
