@@ -70,9 +70,31 @@
     - I can explain the difference between a CPU and a GPU
     - I can use GPUs with my language
 
+!!! info "Summary"
+
+    - GPUs process simple functions rapidly, and are best suited for repetitive and highly-parallel computing tasks
+    - There are GPUs on NSC/Tetralith, PDC/Dardel, C3SE/Alvis, HPC2N/Kebnekaise, LUNARC/Cosmos, UPPMAX/Pelle, but they are different
+    - It varies between centres how you allocate a GPU
+    - You need to use either batch or interactive/OpenOnDemand to use GPUs
+
 ## Machine Learning
 
 !!! important "Learning outcomes"
 
     - I can check if an ML package is installed with a module
     - I can run ML code with my language
+
+!!! info "Summary"
+
+    - ML approaches
+        - Supervised learning
+        - Unsupervised learning
+        - Reinforcement learning
+    - When to use
+        - When tasks are too complex or dynamic for a traditional algorithm
+        - When you cannot define a set of rules to solve a problem
+            - image recognition
+            - spam detection
+            - etc.    
+        - When you have tasks involving large amounts of unstructured data (images, audio, etc.)
+        - When you need to be able to easily adapt to new information over time 
