@@ -56,7 +56,7 @@ with `threads` in shared memory) have their own memory space.
 Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
     - External libraries (loaded as modules on the cluster)
     - There are two common versions 
-        - OpenMPI (loada
+        - OpenMPI
         - MPICH (on Dardel)
 
 - In the **distributed parallelization scheme** the workers (processes) can **share some common memory** but they can also exchange information by sending and receiving messages for instance.
@@ -72,7 +72,7 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
  
 - Distributed programming, 2 implementations
     - Native language, packages called "distributed" or "parallel" (or similar)
-    - Message Passing Interface (MPI) relying on extarnal libraries
+    - Message Passing Interface (MPI) relying on external libraries
 
 - Key words
     - tasks
@@ -86,7 +86,6 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
     - [Newer explanation](https://youtu.be/c7pVEBhPohk)
     - More details for the MPI parallelization scheme in Python can be found in a previous [MPI course](https://github.com/MPI-course-collaboration/MPI-course) offered by some of us.
     - [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
-
 
 ### How it is used in programming languages of this course?
 
@@ -118,30 +117,31 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
 
 #### R 
 
-##### packages
+##### Packages
 
-- foreach
 - parallel
 - doParallel
 - Rmpi
     - pdbMPI on Dardel
  
-##### Syntax  
+##### Some syntax for parallel/doParallel
 
+- makeCluster
+- registerDoParallel
+- foreach
+- stopCluster
 
+##### Some syntax for MPI
+
+- mpi.universe
 
 #### MATLAB syntax
 
-- Processes (native to MATLAB)
-
-
-- Keywords
-    - parpool
-    - parfor
-    - pareval
-    - spmd
-    - workers
-
+- parpool
+- parcluster
+- parfor
+- parfeval
+- spmdd
 
 #### Julia 
 
@@ -150,9 +150,13 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
 - Distributed (native to Julia)
     - Convenient
     - Not difficult to code
-- MPI (wrapper around a C-library)
-    - More efficient
-    - More difficult to code     
+- SharedArrays
+- MPI
+ 
+##### Syntax for distributed/shared arrays
+
+- addprocs(nworkers)
+- SharedVector
 
 <!---
 
