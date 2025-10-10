@@ -57,6 +57,8 @@ R       |`%dopar%`
 - Singlethreaded code makes the best use of your computational resources
 - HPC clusters differ
 - Languages differ
+- MATLAB does not use multithreading at all: it shows how a misconfigured
+  job looks like
 
 ![Figure 2, from Prechelt, 2000](thread_parallelism/prechelt_fig_2.png)
 
