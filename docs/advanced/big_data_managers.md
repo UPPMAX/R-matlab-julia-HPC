@@ -38,7 +38,15 @@ available for each language.
         - Memory-mapping [with Mmap](https://docs.julialang.org/en/v1/stdlib/Mmap)
         - [Big-Arrays](https://github.com/seung-lab/BigArrays.jl)
 
-### Allocating memory (RAM)
+## Effective storage
+
+Under construction
+
+!!! note "See Python material for inspiration"
+
+    [https://uppmax.github.io/HPC-python/day3/big_data.html#high-performance-data-analytics-hpda](https://uppmax.github.io/HPC-python/day3/big_data.html#high-performance-data-analytics-hpda)
+
+## Allocating memory (RAM)
 
 - Storing the data in an efficient way is one thing!
 
