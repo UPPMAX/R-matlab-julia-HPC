@@ -2,29 +2,67 @@
 
 ## Parallel computing
 
-!!! important "Learning outcomes"
+```mermaid
+flowchart TD
+  subgraph hpc_cluster[HPC cluster]
+    subgraph node_1[Node]
+      subgraph cpu_1_1[CPU]
+      core_1_1_1[Core]
+      end
+    end
+  end
+```
 
-    - I can name and describe 3 types of parallel computation
-    - I can explain at least 1 advantage of parallel computation
-    - I can explain at least 2 disadvantages of parallel computation
-    - I can explain how to use my computational resources effectively
+> Simplified HPC cluster architecture
+
+Extent       |Parallelism
+-------------|--------------------------------------
+Core         |Single-threaded
+Node         |Thread parallelism
+HPC cluster  |Distributed parallelism
+
+> Types of parallelism, relevant to this courses
+
+![Amdahl's law](parallel_computing/amdahls_law.png)
+
+> Amdahl's law: the maximum speedup of code by parallelization is constrained
+> by the code that cannot be run in parallel.
 
 ## Thread parallelism
 
-!!! important "Learning outcomes"
+Language|Keyword to indicate a parallel calculation
+--------|------------------------------------------
+Julia   |`Threads.@threads`
+MATLAB  |`parfor`
+R       |`%dopar%`
 
-    - I can schedule jobs with thread parallelism
-    - I can explain how jobs with thread parallelism are scheduled
-    - I can explain how Julia/MATLAB/R code makes use of thread parallelism
-    - I can explain the results of a correct benchmark
-    - I can explain the results of an incorrect benchmark
-    - I can argue why I should stick to my programming language,
-      even if it is not the fastest
+=== "Total core seconds"
 
-!!! info "Summary"
+    ![Benchmark results: core seconds](thread_parallelism/benchmark_results_core_seconds.png)
 
-    - Threads are sharing memory with each-other
-    - One thread per core
+    > Benchmark: the total core seconds per number of workers
+
+=== "Efficiency"
+
+    ![Benchmark results: efficiency](thread_parallelism/benchmark_results_efficiency.png)
+
+    > Benchmark: Efficiency per number of workers
+
+=== "Speedup"
+
+    ![Benchmark results: speedup](thread_parallelism/benchmark_results_speedup.png)
+
+    > Benchmark: Speedup per number of workers
+
+- Singlethreaded code makes the best use of your computational resources
+
+![Figure 2, from Prechelt, 2000](thread_parallelism/prechelt_fig_2.png)
+
+- No need to learn a different 'faster' programming language,
+  as the variance within a programming
+  language is bigger than variance between
+  languages (adapted fig 2, from `[Prechelt, 2000]`).
+  Instead, get good in the one you already know
 
 ## Distributed parallelism
 

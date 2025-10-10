@@ -75,9 +75,9 @@ Here is a simplified picture of HPC cluster architecture:
 ```mermaid
 flowchart TD
   subgraph hpc_cluster[HPC cluster]
-    subgraph node_1[Node 1]
-      subgraph cpu_1_1[CPU 1]
-      core_1_1_1[Core 1]
+    subgraph node_1[Node]
+      subgraph cpu_1_1[CPU]
+      core_1_1_1[Core]
       end
     end
   end
