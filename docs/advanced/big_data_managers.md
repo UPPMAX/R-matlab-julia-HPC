@@ -9,10 +9,11 @@
 
 ## Big data
 
-Sometimes the workflow you are targeting doesn't require extensive computations but mainly dealing with
-big pieces of data. An example can be, reading a column-structured file and doing some transformation per-column.
-Fortunately, all languages covered in this course have already several tools to deal with big data.
-We list some of these tools in what follows but notice that other tools doing similar jobs can be
+- Sometimes the workflow you are targeting doesn't require extensive computations but mainly dealing with
+big pieces of data. 
+- An example can be, reading a column-structured file and doing some transformation per-column.
+- Fortunately, all languages covered in this course have already several tools to deal with big data.
+- We list some of these tools in what follows but notice that other tools doing similar jobs can be
 available for each language.
 
 !!! admonition "Language-specific tools for big data"
@@ -25,17 +26,27 @@ available for each language.
 
     === "Matlab"
 
-        In Matlab [Tall Arrays](https://se.mathworks.com/help/matlab/tall-arrays.html) and
-         [Distributed Arrays](https://se.mathworks.com/help/parallel-computing/distributed-arrays.html)
+        - [Tall Arrays](https://se.mathworks.com/help/matlab/tall-arrays.html) and
+        - [Distributed Arrays](https://se.mathworks.com/help/parallel-computing/distributed-arrays.html)
          will assist you when dealing with large arrays.
 
     === "Julia"
 
-        According to the developers of this framework, [Dagger](https://juliaparallel.org/Dagger.jl/dev/)
+        - According to the developers of this framework, [Dagger](https://juliaparallel.org/Dagger.jl/dev/)
          is heavily inspired on Dask. It support distributed arrays so that they could fit the memory and
          also the possibility of parallelizing the computations on these arrays.
+        - Memory-mapping [with Mmap](https://docs.julialang.org/en/v1/stdlib/Mmap)
+        - [Big-Arrays](https://github.com/seung-lab/BigArrays.jl)
 
-### Allocating memory (RAM)
+## Effective storage
+
+Under construction
+
+!!! note "See Python material for inspiration"
+
+    [https://uppmax.github.io/HPC-python/day3/big_data.html#high-performance-data-analytics-hpda](https://uppmax.github.io/HPC-python/day3/big_data.html#high-performance-data-analytics-hpda)
+
+## Allocating memory (RAM)
 
 - Storing the data in an efficient way is one thing!
 
@@ -48,6 +59,13 @@ available for each language.
     - Allocate many cores or a full node!
     - You do not have to explicitely run threads or other parallelism.
     - Note that shared memory among the cores works within node only.
+
+!!! tip
+
+    - On some clusters you do not have to request additional CPUs to get additional memory.
+    - You can use the Slurm options
+        - ``--mem`` or 
+        - ``--mem-per-cpu``
 
 !!! discussion
 
@@ -120,7 +138,8 @@ available for each language.
     - Choose, if necessary a node with more RAM
     - See local HPC center documentation in how to do so!
 
-## Cluster Managers
+
+## Extra: Cluster Managers
 
 ### Julia
 
