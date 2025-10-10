@@ -354,6 +354,20 @@ for a specified number of cores.
     For each available worker: per worker, do part of a calculation
     and combine the results
 
+- Optional: what is `grid_size`? What does it do? What would be a better
+  variable name?
+
+???- hint "Answer"
+
+    `grid_size` determines the accuracy of the calculation: the bigger
+    `grid_size`, the smaller intervals will be integrated.
+
+    A better variable name could be `accuracy`. However, with such a
+    variable name, there is no natural understanding that the range
+    of its value goes from 1 to infinity. For the name `grid_size`,
+    this range is easier to feel right, as sizes are non-zero
+    positive values by nature
+
 - Locate the keyword that make the calculation perform in parallel. Or:
   locate the word that, when removed, would 'downgrade' the calculation
   to be single-threaded.
@@ -477,11 +491,6 @@ grep -EoRh "^[jmlr].*,.*" --include=*.out | sort | uniq
 
 - Copy-paste the results of the previous exercise
   into a comma-separated file called `my_results.csv`.
-  Add the following text as a first line:
-
-```text
-language,hpc_cluster,grid_size,n_workers,core_secs
-```
 
 These are the descriptions of the variables:
 
@@ -493,6 +502,8 @@ Parameter    |Value
 `n_workers`  |Number of cores used
 `core_secs`  |Core seconds used, i.e. the time used by all cores together
 
+- Load the comma-separated file (`my_results.csv`)
+  in a spreadsheet or read it in your favorite programming language
 - Add a column called `wall_clock_sec`, which equals
   `core_secs` divided by `n_workers`. `wall_clock_sec` 
   is the time it took the calculation to complete
