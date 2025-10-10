@@ -1,9 +1,5 @@
 # Schedule
 
-!!! warning
-
-    work in progress
-
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
 Time  | Topic                                                                            | Teacher(s)
