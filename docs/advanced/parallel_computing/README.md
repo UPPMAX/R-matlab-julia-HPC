@@ -264,6 +264,29 @@ and, in a general form, is plotted like this:
 
 ## Exercises
 
+## Question -1: change your Zoom name
+
+Change your Zoom name, to include your HPC cluster and favorite
+programming language, e.g. make `Sven` into `Sven [Alvis, R]`.
+
+You can do so by right-click on the video of yourself,
+then click 'Rename' to change your Zoom name.
+
+## Question 0: remember your Zoom room
+
+HPC cluster name |Main breakout room
+-----------------|------------------
+Alvis            |Room 1
+Bianca           |Room 2
+COSMOS           |Room 3
+Dardel           |Room 4
+Kebnekaise       |Room 5
+LUMI             |Room 6
+Pelle            |Room 7
+Rackham          |Room 8
+Tetralith        |Room 9
+
+
 ## Question 1
 
 Which of the lines in the graph of Amdahl's Law corresponds
