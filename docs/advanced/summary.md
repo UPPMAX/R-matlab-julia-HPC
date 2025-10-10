@@ -55,6 +55,8 @@ R       |`%dopar%`
     > Benchmark: Speedup per number of workers
 
 - Singlethreaded code makes the best use of your computational resources
+- HPC clusters differ
+- Languages differ
 
 ![Figure 2, from Prechelt, 2000](thread_parallelism/prechelt_fig_2.png)
 
