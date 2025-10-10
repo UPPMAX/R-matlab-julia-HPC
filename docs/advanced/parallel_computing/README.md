@@ -26,7 +26,8 @@
     Prior:
 
     - What is parallel computing?
-    - When to use parallel computing
+    - How does parallel computing work?
+    - When to use parallel computing?
 
     Feedback:
 

@@ -34,7 +34,10 @@ tags:
 
     Prior:
 
-    - What is parallel computing?
+    - In an HPC context, what is a core?
+    - In an HPC context, what is a node?
+    - What is thread parallelism?
+
 
     Feedback:
 
@@ -43,17 +46,17 @@ tags:
 
 ???- info "Status overview"
 
-    HPC cluster|Julia   |MATLAB  |R
-    -----------|--------|--------|--------
-    Alvis      |Unknown |Unknown |Unknown 
-    Bianca     |Unknown |Unknown |Unknown 
-    COSMOS     |Yes     |No      |Yes
-    Dardel     |Yes     |No      |Yes
-    Kebnekaise |Yes     |No      |Yes
-    LUMI       |Unknown |Unknown |Unknown 
-    Rackham    |Yes     |No      |Yes
-    Pelle      |Yes     |No      |Yes
-    Tetralith  |Yes     |No      |Yes
+    HPC cluster|Julia   |MATLAB  |R       |Other comments
+    -----------|--------|--------|--------|--------------
+    Alvis      |Unknown |Unknown |Unknown |.
+    Bianca     |Unknown |Unknown |Unknown |.
+    COSMOS     |Yes     |No      |Yes     |.
+    Dardel     |Yes     |No      |Yes     |.
+    Kebnekaise |Yes     |No      |Yes     |.
+    LUMI       |Unknown |Unknown |Unknown |. 
+    Rackham    |Yes     |No      |Yes     |.
+    Pelle      |Yes     |No      |Yes     |.
+    Tetralith  |Yes     |No      |Yes     |Seems to eat up jobs
 
 ???- hint "Prefer this session as a video?"
 
@@ -232,7 +235,7 @@ On your HPC cluster:
     bash benchmark_2d_integration.sh staff r
     ```
     
-    You can use [our account preparations page](../../preparations_account.md#ask-for-access-to-a-naiss-course-project)
+    You can use [our projects overview page](../../projects.md)
     to find the course NAISS project for your HPC cluster.
 
 - Check the Slurm output files for problems.
