@@ -600,7 +600,7 @@ What went wrong here? Why is this a problem?
     be shared by sending data between nodes.
 
 
-## Exercise X2: learns a faster programming language?
+## Exercise X2: learn a faster programming language?
 
 As can be seen in the benchmark, some programming languages
 are faster than others. This warrants the question:
