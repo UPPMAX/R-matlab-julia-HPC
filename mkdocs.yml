@@ -51,12 +51,14 @@ nav:
       - Parallel computing: advanced/parallel_computing/README.md
       - Thread parallelism: advanced/thread_parallelism/README.md
       - Distributed parallelism: advanced/distributed_parallelism/README.md
+      - Big data: advanced/big_data_managers.md
       - Introduction to GPUs: advanced/gpus.md
       - Machine Learning: 
         - Introduction: advanced/ML.md 
         - With R: advanced/MLR.md
         - With Julia: advanced/MLjulia.md
         - With MATLAB: advanced/MLmatlab.md
+      - Summary: advanced/summary.md
       - Evaluation: advanced/evaluation.md
     - Misc: 
       - Evaluations: evaluations/README.md
