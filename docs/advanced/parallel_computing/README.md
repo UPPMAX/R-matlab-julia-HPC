@@ -421,13 +421,6 @@ that could be run in parallel?
     results can be messier than you would expect :-)
 
 
-The first characteristic of interest is the fraction
-of the computational load which is associated with
-data management housekeeping. This fraction has
-been very nearly constant for about ten years, and
-accounts for 40% of the executed instructions in
-production runs.
-
 ## References
 
 - `[Amdahl, 1967]` Amdahl, Gene M. 
