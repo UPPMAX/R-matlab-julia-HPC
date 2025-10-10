@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>October 2023 Python Day by Richel - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "October 2023 Python Day by Richel";
+        var mkdocs_page_input_path = "reflections/20231017_richel/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">October 2023 Python Day by Richel</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/reflections/20231017_richel/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="october-2023-python-day-by-richel">October 2023 Python Day by Richel<a class="headerlink" href="#october-2023-python-day-by-richel" title="Anchor link to this section for reference">&para;</a></h1>
+<ul>
+<li>Teaching day: 2023-10-17</li>
+<li>Topic: Python</li>
+<li>Written on 2023-10-18</li>
+</ul>
+<p>This was the original course schedule:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>9.00</strong></td>
+<td>Syllabus</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>9.10</strong></td>
+<td>Python in general</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>9.20</strong></td>
+<td>Load modules and run</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>9.45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10:00</strong></td>
+<td>Packages</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>10.45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>11.00</strong></td>
+<td>Isolated environments</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>11:45</strong></td>
+<td>Break or informal chat</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>12.00</strong></td>
+<td>Lunch</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>13.00</strong></td>
+<td>Batch</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13:20</strong></td>
+<td>GPU</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13.30</strong></td>
+<td>Kebnekaise: Jupyter</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Rackham: Jupyter</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>13.45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>14.00</strong></td>
+<td>Parallel and multithreaded functions</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Bianca: Conda, interactive</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>14.25</strong></td>
+<td>Conclusion &amp; Q/A</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>14.45</strong></td>
+<td>Evaluation</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>15.00</strong></td>
+<td>END</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<p>What went well:</p>
+<ul>
+<li>[W1] Working as a team</li>
+<li>[W2] All students (that could log in) completed their exercises within time</li>
+<li>[W3] We tried out something new: a new format for the evaluation</li>
+<li>[W4] Collecting feedback during the lessons</li>
+<li>[W5] Using a shared document</li>
+</ul>
+<p>What could be improved:</p>
+<ul>
+<li>[I1] Lengths of the course parts</li>
+<li>[I2] Remember to schedule a moment for all students to help them log in</li>
+<li>[I3] Evaluation before Q&amp;A</li>
+<li>[I4] Install Python package: actually install something in the demo</li>
+<li>[I5] Me being a good team member</li>
+<li>[I6] Tell students clearly what to do: observe or type along or do an exercise</li>
+<li>[I7] No questions in Zoom chat, use shared doc only</li>
+</ul>
+<p>To discuss:</p>
+<ul>
+<li>[D1] Allow students that have not logged in yet?</li>
+<li>[D2] Shouldn&rsquo;t this material be at the regular UPPMAX website?</li>
+</ul>
+<h2 id="w1-working-as-a-team">[W1] Working as a team<a class="headerlink" href="#w1-working-as-a-team" title="Anchor link to this section for reference">&para;</a></h2>
+<p>I was very happy to be part of this team of Birgitte, Björn and Pedro,
+as its members seems quite diverse:</p>
+<ul>
+<li>Birgitte: most knowledge of general things</li>
+<li>Björn: the most all-around-nice-guy</li>
+<li>Pedro: most knowledgeable in parallel computing</li>
+</ul>
+<p>As Björn was the only one to have sysadmin rights,
+he was the one to get learners to login, which he did as much as he could.</p>
+<p>Both Birgitte and Björn impressed me by answering complex questions
+during lectures!</p>
+<p>Also, already after the lecture, me and Björn discussed how to improve
+the course next time. We especially discussed learners that could not
+log in. Björn stated there are good reasons to allow these learners
+to participate in the course, so we chose not to disallow these.
+Instead, we think it would be a good idea to have a moment scheduled
+for the learners before the course, for those that could not log in yet.</p>
+<h2 id="w2-all-students-that-could-log-in-completed-their-exercises-within-time">[W2] All students (that could log in) completed their exercises within time<a class="headerlink" href="#w2-all-students-that-could-log-in-completed-their-exercises-within-time" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Between 10:00-10:45, all students (that could log in)
+had completed their exercises at 10:15.</p>
+<p>Between 11:00-11:45, all students (that could log in)
+had completed their exercises at 11:30. Due to a request by Birgitte,
+they had to create another venv, which they then all did within a
+couple of minutes too.</p>
+<p>At 13:30-13:45, I&rsquo;d have had 15 mins to do Jupyter notebook on Rackham,
+which was moved to 13:45-13:55. I felt 15 mins would have been enough,
+10 mins was too short.</p>
+<p>At 14:00-14:25, I and the Rackham learners did an exercises on <code>interactive</code>
+and conda.
+I think it was enough time. Note that creating a new conda environment
+takes 13 minutes, which I used to talk about Python things with the learners.</p>
+<h2 id="w3-we-tried-out-something-new-a-new-format-for-the-evaluation">[W3] We tried out something new: a new format for the evaluation<a class="headerlink" href="#w3-we-tried-out-something-new-a-new-format-for-the-evaluation" title="Anchor link to this section for reference">&para;</a></h2>
+<p>I am happy that the team tried out a new format for the evaluation.
+Already at the end of the day, we discussed already the pros and
+cons of it and we&rsquo;ll try out another format directly the
+day after!</p>
+<h2 id="w4-collecting-feedback-during-the-lessons">[W4] Collecting feedback during the lessons<a class="headerlink" href="#w4-collecting-feedback-during-the-lessons" title="Anchor link to this section for reference">&para;</a></h2>
+<p>During the exercises, I went through the Zoom rooms to check
+that all students knew what to do, had questions and/or have remarks.</p>
+<p>Also the shared document helped to collect feedback during the lesson.</p>
+<h2 id="w5-using-a-shared-document">[W5] Using a shared document<a class="headerlink" href="#w5-using-a-shared-document" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The shared document helped to collect questions and feedback during the lesson.</p>
+<h2 id="i1-lengths-of-the-course-parts">[I1] Lengths of the course parts<a class="headerlink" href="#i1-lengths-of-the-course-parts" title="Anchor link to this section for reference">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Was scheduled</th>
+<th>Actual time used</th>
+<th>Suggested time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>packages</td>
+<td>45 mins</td>
+<td>15 mins</td>
+<td>30 mins</td>
+</tr>
+<tr>
+<td>venv</td>
+<td>45 mins</td>
+<td>15 mins</td>
+<td>30 mins</td>
+</tr>
+<tr>
+<td>Jupyter</td>
+<td>15 mins</td>
+<td>15 mins</td>
+<td>15 mins</td>
+</tr>
+<tr>
+<td>conda</td>
+<td>25 mins</td>
+<td>25 mins</td>
+<td>30 mins</td>
+</tr>
+</tbody>
+</table>
+<p>I/we could not predict the lengths of the topics.
+For &lsquo;packages&rsquo; and &lsquo;venv&rsquo;, the learners had much time left.
+It is unsure if that is due to (1) me having too simple
+exercises, (2) my way of teaching compared to the previous
+time (but it is unclear in which way it differed) (3) the learners were
+quicker too learn this time. Maybe next time, we&rsquo;ll find out :-)</p>
+<h2 id="i2-remember-to-schedule-a-moment-for-all-students-to-help-them-log-in">[I2] Remember to schedule a moment for all students to help them log in<a class="headerlink" href="#i2-remember-to-schedule-a-moment-for-all-students-to-help-them-log-in" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There were 4 students out of 28 that could not log in yet.
+Although they behaved well,
+it took away time of other students.
+Björn stated there are good reasons to allow these learners
+to participate in the course.
+However, we forgot to schedule a moment for the learners
+to log in before the course.</p>
+<h2 id="i3-evaluation-before-qa">[I3] Evaluation before Q&amp;A<a class="headerlink" href="#i3-evaluation-before-qa" title="Anchor link to this section for reference">&para;</a></h2>
+<p>During the Q&amp;A, which was before the evaluation, a third of the students
+left, as there was only 1 person talking at the same time.</p>
+<p>Note that at the end of the day, we discussed this and we would
+change the order the day after.</p>
+<h2 id="i4-install-python-package-actually-install-something-in-the-demo">[I4] Install Python package: actually install something in the demo<a class="headerlink" href="#i4-install-python-package-actually-install-something-in-the-demo" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In the YouTube video, the install failed, due to package version conflicts.
+Make a new video where something is actually installed</p>
+<h2 id="i5-me-being-a-good-team-member">[I5] Me being a good team member<a class="headerlink" href="#i5-me-being-a-good-team-member" title="Anchor link to this section for reference">&para;</a></h2>
+<p>I was doing so much teaching, that I only had a third of the time needed
+to prepare. I decided to prepare ruthlessly, ignoring email and other comms
+for some weeks. I knew this would be annoying to the team,
+yet I trusted the team would make the right decisions without me.</p>
+<!-- markdownlint-disable MD013 -->
+<h2 id="i6-tell-students-clearly-what-to-do-observe-or-type-along-or-do-an-exercise">[I6] Tell students clearly what to do: observe or type along or do an exercise<a class="headerlink" href="#i6-tell-students-clearly-what-to-do-observe-or-type-along-or-do-an-exercise" title="Anchor link to this section for reference">&para;</a></h2>
+<!-- markdownlint-enable MD013 -->
+
+<p>There was this feedback given during the lesson: a student asked
+to another instructor: &lsquo;Should we watch or type along?&rsquo;.
+I agree with her that this always should be clear.
+I thanked her in a breakout room for this.
+I know I am imperfect on this too.</p>
+<h2 id="i7-no-questions-in-zoom-chat-use-shared-doc-only">[I7] No questions in Zoom chat, use shared doc only<a class="headerlink" href="#i7-no-questions-in-zoom-chat-use-shared-doc-only" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The course used two communication channels: the Zoom chat and the shared
+doc. This was needlessly confusing.
+Next time, only use the shared doc.</p>
+<h2 id="feedback">Feedback<a class="headerlink" href="#feedback" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="spoken-evaluation-2023-10-19">Spoken evaluation 2023-10-19<a class="headerlink" href="#spoken-evaluation-2023-10-19" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Number of learners: 12</li>
+</ul>
+<p>Feedback:</p>
+<ul>
+<li>2x The course is well organized!</li>
+<li>Teachers do not distinguish enough between the different UPPMAX
+   clusters on the first day, however, this was fixed on day 3 :-)</li>
+<li>Day 3 was slightly better than Day 1 (both were good!),
+   with the advice: on Day 1, take more for ThinLinc and interactive</li>
+<li>Everything was quite good, especially SLURM,
+   better than some other UPPMAX course.
+   This was mostly due to, today, doing exercises step by step and having
+   enough time to follow</li>
+<li>ThinLinc was of correct length today, on Day 1 indeed a little bit too short</li>
+<li>All the instructors should use the same R version, because
+   else you need to load a different R module</li>
+</ul>
+<h2 id="google-form-evaluations">Google Form evaluations<a class="headerlink" href="#google-form-evaluations" title="Anchor link to this section for reference">&para;</a></h2>
+<p>These are the results of the Google Forms evaluation.
+The responses are sorted alphabetically or in other ways that make sense.</p>
+<p>Note that the anonymous evaluation overlaps quite well with the anonymous
+Google Form.</p>
+<h3 id="overall-how-would-you-rate-todays-training-event">Overall, how would you rate today&rsquo;s training event?<a class="headerlink" href="#overall-how-would-you-rate-todays-training-event" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>5: 1x</li>
+<li>6: 3x</li>
+<li>7: 5x</li>
+<li>8: 1x</li>
+<li>9: 2x</li>
+</ul>
+<p>Hmmm that is quite some variation there&hellip;</p>
+<!-- markdownlint-disable MD013 -->
+<h3 id="todays-content-and-feedback-to-the-lecturers-eg-materials-exercises-structure-what-did-you-like-best">Today&rsquo;s content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?<a class="headerlink" href="#todays-content-and-feedback-to-the-lecturers-eg-materials-exercises-structure-what-did-you-like-best" title="Anchor link to this section for reference">&para;</a></h3>
+<!-- markdownlint-enable MD013 -->
+
+<ul>
+<li>Cou[r]se materials are really nicely put together</li>
+<li>Formatted ReadTheDocs</li>
+<li>Good material</li>
+<li>I liked how easy it was to ask questions,
+  how friendly the lecturers / organizers were
+  and that there was time for trying it yourself.
+  The course material is really nice to read and helpful.</li>
+</ul>
+<p>This is nice to hear!</p>
+<ul>
+<li>I liked the &lsquo;code along&rsquo; parts,
+  when it worked and was an appropriate pace one could actually follow.</li>
+</ul>
+<p>Unsure if this about mine or Birgittes parts :-|</p>
+<ul>
+<li>Materials</li>
+<li>That materials were extensive and provided (both in advance and during the day).
+  The break-out session was good to let me ask the stupid questions
+  to fellows that could help out or make me catch up.</li>
+</ul>
+<p>The goal of the break-out sessions has been achieved :-)</p>
+<ul>
+<li>The instructions and code given in the course material on GitHub</li>
+<li>Very good material, but a bit chaotic</li>
+</ul>
+<p>Unsure what this is about. I assume it is about my course material
+that was not embedded in the existing course material.
+I will fix this in the future.</p>
+<ul>
+<li>materials</li>
+<li>structure</li>
+</ul>
+<!-- markdownlint-disable MD013 -->
+<h3 id="todays-content-and-feedback-to-the-lecturers-eg-materials-exercises-structure-where-should-we-improve">Today&rsquo;s content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?<a class="headerlink" href="#todays-content-and-feedback-to-the-lecturers-eg-materials-exercises-structure-where-should-we-improve" title="Anchor link to this section for reference">&para;</a></h3>
+<!-- markdownlint-enable MD013 -->
+
+<ul>
+<li>Create one single entrance point for all the material
+  where links to the rest are to be found.
+  I got lost with five or more different links, folders and the information
+  overflow as it got started.
+  I also missed the big picture of the super computer
+  (no previous experience), how the different systems are related,
+  the main difference of Rackham and hp2cn/kebnekaise and so on.
+  I felt I have too little information to make informed choices.
+  For example, it would be easier if everybody used the same server,
+  and only one&hellip;</li>
+</ul>
+<p>I agree I should harmonize the course material more.</p>
+<ul>
+<li>For some tasks, there was too much time allocated,
+  for example for the pip installs at the start.
+  I would suggest checking in with students more frequently
+  about if they are done or not, and then continuing.
+  Or students could be instructed to join the main room again
+  when they are done. This way, if someone takes longer,
+  you could see who is left in the breakout rooms and check in with them.</li>
+</ul>
+<p>I agree that we mistimed some sessions and we already plan to change that.
+The Zoom breakout room setup is intentional: we do checkup regularly with
+the students and we do not call the students back when all are done earlier.
+I feel this gives rest and clarity to the course.</p>
+<ul>
+<li>It looked like everything was rushed up and it was not clear what we were
+  supposed to do in the breakout rooms</li>
+</ul>
+<p>After each exercise, the instructors always checked if the learners understood
+what to do. Most students usually knew what to do.</p>
+<ul>
+<li>It will be good if you give a small introduction about different uppmax
+  servers and what are the differences at the beginning of the course.</li>
+</ul>
+<p>Maybe.</p>
+<ul>
+<li>
+<p>Lectures should be given more time (or the contents reduced).
+  Unfortunately it was at times a hard to follow.
+  Perhaps, also, make it a bit more clear what is expected from the exercises.</p>
+</li>
+<li>
+<p>Maybe actually follow the material that is there.
+  It&rsquo;s hard for us to do exercises and go back and check later
+  when one of the presenters just had his own material.
+  Also, maybe make actual parallel sessions instead of going break rooms.
+  Too much time in break rooms in general, and then other sections got rushed.</p>
+</li>
+</ul>
+<p>I agree, I should harmonize the materials.</p>
+<ul>
+<li>Maybe have two streams, since most Python programmers
+  already know about venv, etc.</li>
+</ul>
+<p>We cannot. There are plans to teach other courses at two different levels,
+so that we split absolute beginners from the more advanced students.</p>
+<ul>
+<li>Much more time spent on code along and instructions, this would improve
+  the course a lot I think!
+  I understand and respect that for you this is very clear
+  and it flows really easily.
+  But for us who is watching over zoom: scrolling up and down fast
+  while screen sharing makes it impossible to follow;
+  as it is over zoom the instructions for the exercise part
+  needs to be much clearer in my view, also do this - BEFORE - entering
+  breakout rooms; additional thought about exercises is what really
+  are the exercises, the ones stated at the end of each lecture part or
+  the text/instructions embedded in the ‘slides’ in the instruction pages;
+  the ‘messages’ that can be sent out to the breakout rooms are hard
+  to notice sometimes while working on exercise,
+  perhaps paste this in chat and/or document so one can re-read;
+  please specify clearly how long a task &lsquo;should&rsquo; take approx.
+  (is the whole time in breakout rooms dedicated to the assigned task,
+  or is the time also there for break); specify in start of each
+  part/‘lecture’ what the plan is maybe?; ‘slides’ can be a bit clearer
+  I would say. Thank you, though! I understand that this is no easy feat to
+  lecture and teach HPC over zoom.
+  You didi a great job, but these are things I wish for at least.</li>
+</ul>
+<p>I like this extensive feedback! To compensate for unclear instructions (to some)
+for a breakout-room exercise, we teachers always visited the break-out rooms
+directly after the exercise started. I remember being unclear with the
+time on purpose (or was that another course?) and I felt it was preferred
+to be vague over setting a time that would possible be changed, to add
+to the tranquility.</p>
+<p>Comment from 2024-01-24: I am happy to see I took this feedback seriously,
+practiced this and forgot it was based on this! Now I always show the
+exercise before sending the learners to a breakout room :-)</p>
+<ul>
+<li>The first should be how to run a simple script.
+  &ldquo;batch mode&rdquo; should come before &ldquo;virtual environments&rdquo;.
+  Also, avoid &ldquo;pip&rdquo; at the start,
+  take that later since modules are enough for standard tasks</li>
+</ul>
+<p>I like this suggestion!</p>
+<ul>
+<li>a little bit too much information too fast during the zoom call.
+  It&rsquo;s not possible to fit in all your superb infos
+  from the material in the course itself</li>
+<li>materials</li>
+</ul>
+<h3 id="length-of-teaching-today-was">Length of teaching today was<a class="headerlink" href="#length-of-teaching-today-was" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Too short: 2x</li>
+<li>Adequate: 9x</li>
+<li>Too long: 1x</li>
+</ul>
+<h3 id="depth-of-content-was">Depth of content was<a class="headerlink" href="#depth-of-content-was" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Too superficial: 2x</li>
+<li>Adequate: 10x</li>
+</ul>
+<h3 id="the-pace-of-teaching-was">The pace of teaching was<a class="headerlink" href="#the-pace-of-teaching-was" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Too slow: 3x</li>
+<li>Adequate: 3x</li>
+<li>Too fast: 6x</li>
+</ul>
+<h3 id="teaching-aids-used-eg-slides-were-well-prepared">Teaching aids used (e.g. slides) were well prepared<a class="headerlink" href="#teaching-aids-used-eg-slides-were-well-prepared" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Disagree: 1x</li>
+<li>No strong feelings: 1x</li>
+<li>Agree: 5x</li>
+<li>Agree completely: 5x</li>
+</ul>
+<h3 id="hands-on-exercises-and-demonstrations-were">Hands-on exercises and demonstrations were<a class="headerlink" href="#hands-on-exercises-and-demonstrations-were" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Too few: 6x</li>
+<li>Adequate: 6x</li>
+</ul>
+<h3 id="hands-on-exercises-and-demonstrations-were-well-prepared">Hands-on exercises and demonstrations were well prepared<a class="headerlink" href="#hands-on-exercises-and-demonstrations-were-well-prepared" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Disagree: 1x</li>
+<li>No strong feelings: 2x</li>
+<li>Agree: 8x</li>
+<li>Agree completely: 1x</li>
+</ul>
+<h3 id="how-would-you-rate-the-instructors-overall-teaching-performances">How would you rate the instructors overall teaching performances?<a class="headerlink" href="#how-would-you-rate-the-instructors-overall-teaching-performances" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Grade|Python (Day 1)(today)|R (Day 3)
+5    |1x                   |1x
+6    |3x                   |2x
+7    |3x                   |1x
+8    |4x                   |3x
+9    |1x                   |2x
+10   |0x                   |2x
+Avg  |7.1                  |7.8</p>
+<p>Quite a variation here too, like at Day 3. However, Day 3 rated the average
+instructor performance 10% higher.</p>
+<h3 id="do-you-feel-you-achieved-your-desired-learning-outcome">Do you feel you achieved your desired learning outcome?<a class="headerlink" href="#do-you-feel-you-achieved-your-desired-learning-outcome" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Yes: 8x</li>
+<li>Not sure: 4x</li>
+</ul>
+<h3 id="did-todays-course-meet-your-expectation">Did today&rsquo;s course meet your expectation?<a class="headerlink" href="#did-todays-course-meet-your-expectation" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Yes: 8x</li>
+<li>Not sure: 4x</li>
+</ul>
+<h3 id="do-you-have-any-additional-comments">Do you have any additional comments?<a class="headerlink" href="#do-you-have-any-additional-comments" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Confusing with different setups for Umeå and Uppsala</li>
+</ul>
+<p>I agree. This is unavoidable.</p>
+<ul>
+<li>Drop the break out rooms and having people go there for exercises.
+  Or just make a silent room for those that don&rsquo;t want to discuss
+  and rest can stay in main room. Wastes time.</li>
+</ul>
+<p>Assuming this was about me putting people in breakout rooms:
+I will not do this. I think it is very important to put people in different
+smaller groups, so that people can discuss and a teacher can check.</p>
+<ul>
+<li>NA</li>
+<li>No</li>
+<li>Overall nicely put together course</li>
+<li>Thanks!</li>
+<li>generally, the teaching speed was a bit high and then lots of waiting time
+  in-between, but if you get lost, it&rsquo;s hard to catch up later
+  when all is presented in a serial way.
+  If the entire chain is provided
+  (and I as participant know the path we are following),
+  I could potentially use the breaks to catch up later and jump back in.</li>
+</ul>
+<p>My parts indeed needed less time. We&rsquo;ll adept :-)</p>
+<h2 id="post-course-meeting-of-2023-11-08">Post-course meeting of 2023-11-08<a class="headerlink" href="#post-course-meeting-of-2023-11-08" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Suggest different lengths:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Was scheduled</th>
+<th>Actual time used</th>
+<th>Suggested time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>packages</td>
+<td>45 mins</td>
+<td>15 mins</td>
+<td>30 mins</td>
+</tr>
+<tr>
+<td>venv</td>
+<td>45 mins</td>
+<td>15 mins</td>
+<td>30 mins</td>
+</tr>
+<tr>
+<td>Jupyter</td>
+<td>15 mins</td>
+<td>15 mins</td>
+<td>15 mins</td>
+</tr>
+<tr>
+<td>conda</td>
+<td>25 mins</td>
+<td>25 mins</td>
+<td>30 mins</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Have a pre-course login session for those that need it</li>
+<li>No Zoom chat, only use shared document</li>
+<li>No anonymous evaluation needed if the Google Form is so good</li>
+<li>Suggest to follow this students&rsquo; suggestion:
+  &lsquo;The first should be how to run a simple script. &ldquo;batch mode&rdquo; should come
+  before &ldquo;virtual environments&rdquo;.
+  Also, avoid &ldquo;pip&rdquo; at the start, take that later since modules
+  are enough for standard tasks&rsquo;</li>
+<li>I will: schedule more time to prepare,
+  due to that have the time to communicate with the team more
+  and merge/harmonize course materials</li>
+</ul>
+<!-- Headers cannot be split up over lines, hence will break 80 characters per line --><!-- Headers cannot be split up over lines, hence will break 80 characters per line --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

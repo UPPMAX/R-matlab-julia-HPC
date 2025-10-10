@@ -1,0 +1,19 @@
+learning_outcome,teacher,content_type
+I can find the module to be able to run R,richel,core
+I can load the module to be able to run R,richel,core
+I can run the R interpreter,richel,core
+I can run the R command to get the list of installed R packages,richel,core
+I can run an R script from the command-line,richel,core
+I can find out if an R package is already installed,richel,optional
+I can load the pre-installed R packages,richel,core
+I can install an R package from CRAN ,other,core
+"I can use renv to create, activate, use and deactivate a virtual environment",other,core
+I can submit a job to the scheduler to run an R script with regular code,other,core
+I can submit a job to the scheduler to run an R script that uses parallel code,other,core
+I can submit a job to the scheduler to run an R script that uses a GPU,other,core
+I can find and load the R machine learning modules,other,core
+I can submit a job to the scheduler to run an R script that uses machine learning,other,core
+I can start an interactive session ,multiple,core
+I can verify I am on the login node yes/no,richel,core
+I can start an interactive session with multiple cores,richel,optional
+I can start RStudio,multiple,core
