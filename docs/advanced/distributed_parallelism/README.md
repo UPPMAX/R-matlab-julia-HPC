@@ -76,7 +76,16 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
 - Key words
     - tasks
     - processes
-    - workers     
+    - workers
+ 
+!!! important
+
+    - Cores are physical units on a node.
+        - In some clusters where with "hyperthreading" is activated one can have 2 threads per core
+        - In theses cases Slurm counts these "sub-cores"
+    - On a core (physical or hyper) you can define 1 thread (shared memory) or 1 task (distributed memory)
+    - Hybrid parallelism combines threading and distributed (not covered here)
+        - Example: One node with 20 cores uses 5 tasks á 4 threads, each thread occupying 1 core.
  
 !!! note "Read more"
 
@@ -123,23 +132,23 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
             - pdbMPI on Dardel
         - Syntax for parallel/doParallel
  
-            - makeCluster
-            - registerDoParallel
-            - foreach
-            - stopCluster
+            - ``makeCluster``
+            - ``registerDoParallel``
+            - ``foreach``
+            - ``stopCluster``
 
         - Some syntax for MPI
 
-            - mpi.universe
+            - ``mpi.universe``
 
     === "MATLAB"
     
         - Syntax
-            - parpool
-            - parcluster
-            - parfor
-            - parfeval
-            - spmd
+            - ``parpool``
+            - ``parcluster``
+            - ``parfor``
+            - ``parfeval``
+            - ``spmd``
 
     === "Julia"
 
@@ -153,6 +162,10 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
         - Syntax for distributed/shared arrays
             - addprocs(nworkers)
             - sharedVector
+            - ``@everywhere``
+            - ``@sync``
+            - ``@distributed``
+            - ``@spawn``
 
 <!---
 
@@ -206,10 +219,11 @@ mpirun Rscript do_2d_integration.R 1 1
 
 ## Allocating distributed jobs
 
-- Use `--ntasks=N` or `-n=N`
-- Use `srun` if you run a script
+- Use `--ntasks=<number>` or `-n=<number>`
+- Use `srun` if you run a script.
+- Use `-p <number of processes>` together with ``julia`` or `R` to start a language shell using having access to several cores.  
 - Use an MPI or "distributed" version of your software:
-  a 'regular' non-MPI version will never work!
+  a 'regular' non-MPI/distributed version will just run the same command serially but perhaps many times at once!
 - Use `mpirun` if it is real MPI.
 
 !!! warning
@@ -446,7 +460,7 @@ mpirun Rscript do_2d_integration.R 1 1
                  ```
                  
         Try different number of cores for this batch script (*FIXME* string) using the sequence:
-        1,2,4,8,12, and 14. Note: this number should match the number of processes
+        1, 2, 4, 8, 12, and 14. Note: this number should match the number of processes
         (also a *FIXME* string) in the Julia script. Collect the timings that are
         printed out in the **job.*.out**. According to these execution times what would be
         the number of cores that gives the optimal (fastest) simulation?
