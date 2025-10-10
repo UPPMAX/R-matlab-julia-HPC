@@ -87,14 +87,18 @@
 !!! info "Summary"
 
     - ML approaches
-        - Supervised learning
-        - Unsupervised learning
-        - Reinforcement learning
+        - Supervised learning (with training examples)
+            - classification
+            - regression
+        - Unsupervised learning (find structures in data))
+            - clustering
+            - dimensionality reduction
+        - Reinforcement learning (take actions in different environment)
+            - real-time decisions
+            - game AIs
+            - Robot navigation
     - When to use
         - When tasks are too complex or dynamic for a traditional algorithm
-        - When you cannot define a set of rules to solve a problem
-            - image recognition
-            - spam detection
-            - etc.    
+        - When you cannot define a set of rules to solve a problem, like image recognition and spam detection   
         - When you have tasks involving large amounts of unstructured data (images, audio, etc.)
         - When you need to be able to easily adapt to new information over time 
