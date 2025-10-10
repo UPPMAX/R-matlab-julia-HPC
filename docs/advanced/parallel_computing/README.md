@@ -1,3 +1,12 @@
+---
+tags:
+  - parallel
+  - computation
+  - parallelism
+  - advanced
+  - session
+---
+
 # Parallel computation
 
 !!! info "Learning outcomes"
@@ -25,6 +34,8 @@
 
     Prior:
 
+    - In an HPC context, what is a core?
+    - In an HPC context, what is a node?
     - What is parallel computing?
     - How does parallel computing work?
     - When to use parallel computing?

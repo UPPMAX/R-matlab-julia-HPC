@@ -5,6 +5,7 @@ tags:
   - thread
   - threaded
   - parallelism
+  - multithreading
 ---
 
 # Thread parallelism
@@ -34,8 +35,6 @@ tags:
 
     Prior:
 
-    - In an HPC context, what is a core?
-    - In an HPC context, what is a node?
     - What is thread parallelism?
 
 
@@ -44,7 +43,8 @@ tags:
     - When to use parallel computing?
     - When not to use parallel computing?
 
-???- info "Status overview"
+
+???- note "Status overview"
 
     HPC cluster|Julia   |MATLAB  |R       |Other comments
     -----------|--------|--------|--------|--------------
@@ -57,6 +57,7 @@ tags:
     Rackham    |Yes     |No      |Yes     |.
     Pelle      |Yes     |No      |Yes     |.
     Tetralith  |Yes     |No      |Yes     |Seems to eat up jobs
+
 
 ???- hint "Prefer this session as a video?"
 
