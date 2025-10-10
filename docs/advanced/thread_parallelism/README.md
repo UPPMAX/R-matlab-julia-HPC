@@ -568,10 +568,13 @@ and other programming languages:
     there are many things going on here and many answers are correct:
 
     - Measurements are messier than you may have thought
-    - Julia is 100x faster than R
+    - Julia is 30x faster than R
     - The MATLAB code is single-threaded
     - R works best at being efficient in parallel
     - HPC clusters differ
+    - The points on Kebnekaise differ more than other HPC clusters:
+      this is because Kebnekaise is the most heterogeneous (i.e. has
+      the highest number of different hardware)
 
 ## Exercise X1: job scheduling problem?
 
@@ -636,7 +639,7 @@ programming language. What do you think the advice is?
     Instead of learning a faster language, learn how to be fast in
     your language.
 
-- Still, the Julia code is 100x faster than the R code.
+- Still, the Julia code is 30x faster than the R code.
   Why would this advice still hold?
 
 ???- hint "Answer"

@@ -85,15 +85,17 @@ flowchart TD
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
-Term        |What it loosely is                              |Amount
-------------|------------------------------------------------|---------------
-Core        |Something that does a calculation               |One or more per CPU
-CPU         |A collection of cores that share the same memory|One or more per node
-Node        |A collection of CPUs that share the same memory |One or more per HPC cluster
-HPC cluster |A collection of nodes                           |One or more per universe
-The universe|A collection of HPC clusters                    |One <!-- yes, I think this is funny :-) -->
+Term               |What it loosely is                              |Amount
+-------------------|------------------------------------------------|---------------
+Core               |Something that does a calculation               |One or more per CPU
+CPU                |A collection of cores that share the same memory|One or more per node
+Node               |A collection of CPUs that share the same memory |One or more per HPC cluster
+HPC cluster        |A collection of nodes                           |One or more per universe
+The universe `[1]` |A collection of HPC clusters                    |One
 
 <!-- markdownlint-enable MD013 -->
+
+- `[1]` this is a pun to distributed parallelism
 
 !!! warning "Simplifications used"
 
