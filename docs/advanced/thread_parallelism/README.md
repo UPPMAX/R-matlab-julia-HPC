@@ -1,3 +1,12 @@
+---
+tags:
+  - advanced
+  - session
+  - thread
+  - threaded
+  - parallelism
+---
+
 # Thread parallelism
 
 !!! info "Learning outcomes"
