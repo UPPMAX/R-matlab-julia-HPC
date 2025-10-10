@@ -384,4 +384,3 @@ I've prepared good enough:
 - Video is made
 - MATLAB does not work
 
-
