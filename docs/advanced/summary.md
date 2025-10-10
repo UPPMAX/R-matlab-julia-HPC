@@ -2,7 +2,7 @@
 
 ## Parallel computing
 
-!!! info "Learning outcomes"
+!!! important "Learning outcomes"
 
     - I can name and describe 3 types of parallel computation
     - I can explain at least 1 advantage of parallel computation
@@ -11,7 +11,7 @@
 
 ## Thread parallelism
 
-!!! info "Learning outcomes"
+!!! important "Learning outcomes"
 
     - I can schedule jobs with thread parallelism
     - I can explain how jobs with thread parallelism are scheduled
@@ -21,9 +21,11 @@
     - I can argue why I should stick to my programming language,
       even if it is not the fastest
 
+!!! info
+
 ## Distributed parallelism
 
-!!! info "Learning outcomes"
+!!! important "Learning outcomes"
 
     - I can schedule jobs with distributed parallelism
     - I know the basic difference between threads and distributed memory in terms of memory share
@@ -31,24 +33,21 @@
 
 ## Big data
 
-!!! info "Learning outcomes"
+!!! important "Learning outcomes"
 
     - I understand how I can work with big data
     - I know where to find more information about big data
 
 ## Introduction to GPUs
 
-!!! note "Objectives"
+!!! important "Learning outcomes"
 
-    - Get an intro to common schemes for GPU code acceleration
-    - Learn about the GPU nodes at HPC2N, UPPMAX, LUNARC, NSC, PDC, and C3SE
-    - Learn how to make a batch script asking for GPU nodes at HPC2N, UPPMAX, LUNARC, NSC, PDC, and C3SE
-
+    - I can explain the difference between a CPU and a GPU
+    - I can use GPUs with my language
 
 ## Machine Learning
 
-!!! note "Questions"
+!!! important "Learning outcomes"
 
-    - What is it?
-    - When/why to use it?
-    - How to use it at HPC centres (R. MATLAB, Julia)
+    - I can check if an ML package is installed with a module
+    - I can run ML code with my language
