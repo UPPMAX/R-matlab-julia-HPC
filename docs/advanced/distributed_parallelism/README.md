@@ -62,7 +62,6 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
 - In the **distributed parallelization scheme** the workers (processes) can **share some common memory** but they can also exchange information by sending and receiving messages for instance.
     - This is often built-in or written in the actual language (R, MATLAB, Julia 
 
-
 ## Summary
 
 - Distributed memory
@@ -87,17 +86,9 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
     - More details for the MPI parallelization scheme in Python can be found in a previous [MPI course](https://github.com/MPI-course-collaboration/MPI-course) offered by some of us.
     - [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
 
-### How it is used in programming languages of this course?
+## How it is used in programming languages of this course?
 
 !!! admonition "Language-specific nuances for distributed programming"
-
-    === "Julia"
-
-        - The mechanism here is called `Julia processes` which  can be activated by executing a script as follows
-         ``julia -p X script.jl``, where *X* is the number of processes. Code modifications are required to support the
-         workers. 
-         
-         - Julia also supports MPI through the package ``MPI.jl``.
 
     === "R"
 
@@ -114,49 +105,54 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
         - Matlab doesn't support MPI function calls in Matlab code, it could be used indirectly through
          [mex](https://se.mathworks.com/help/matlab/ref/mex.html) functions though.
 
+    === "Julia"
 
-#### R 
+        - The mechanism here is called `Julia processes` which  can be activated by executing a script as follows
+         ``julia -p X script.jl``, where *X* is the number of processes. Code modifications are required to support the
+         workers. 
+         - Julia also supports MPI through the package ``MPI.jl``.
 
-##### Packages
+!!! admonition "Packages and syntax"
 
-- parallel
-- doParallel
-- Rmpi
-    - pdbMPI on Dardel
+    === "R" 
+
+        - Packages
+            - parallel
+            - doParallel
+            - Rmpi
+            - pdbMPI on Dardel
+        - Syntax for parallel/doParallel
  
-##### Some syntax for parallel/doParallel
+            - makeCluster
+            - registerDoParallel
+            - foreach
+            - stopCluster
 
-- makeCluster
-- registerDoParallel
-- foreach
-- stopCluster
+        - Some syntax for MPI
 
-##### Some syntax for MPI
+            - mpi.universe
 
-- mpi.universe
+    === "MATLAB"
+    
+        - Syntax
+            - parpool
+            - parcluster
+            - parfor
+            - parfeval
+            - spmd
 
-#### MATLAB syntax
+    === "Julia"
 
-- parpool
-- parcluster
-- parfor
-- parfeval
-- spmdd
-
-#### Julia 
-
-##### Packages
-
-- Distributed (native to Julia)
-    - Convenient
-    - Not difficult to code
-- SharedArrays
-- MPI
+        - Packages
+            - Distributed (native to Julia)
+                - Convenient
+                - Not difficult to code
+            - SharedArrays
+            - MPI
  
-##### Syntax for distributed/shared arrays
-
-- addprocs(nworkers)
-- SharedVector
+        - Syntax for distributed/shared arrays
+            - addprocs(nworkers)
+            - sharedVector
 
 <!---
 
