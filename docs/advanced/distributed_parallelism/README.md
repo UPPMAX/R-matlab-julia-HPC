@@ -88,9 +88,10 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
  
 !!! note "Read more"
 
-    - [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
-    - [Older explanation](https://youtu.be/GHbrpg75qbQ)
-    - [Newer explanation](https://youtu.be/c7pVEBhPohk)
+    - Courses from Aalto University, Finland
+        - [MPI parallelism: multi-task programs](https://scicomp.aalto.fi/triton/tut/parallel-mpi/)
+        - [Older explanation (video)](https://youtu.be/GHbrpg75qbQ)
+        - [Newer explanation (video)](https://youtu.be/c7pVEBhPohk)
     - More details for the MPI parallelization scheme in Python can be found in a previous [MPI course](https://github.com/MPI-course-collaboration/MPI-course) offered by some of us.
     - [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
 
