@@ -24,7 +24,6 @@
 
 -->
 
-![Arnold (at the left): a robot that was controlled by MPI](arnold.jpg)
 
 ## Why distributed parallelism is important
 
@@ -34,7 +33,7 @@ Type of parallelism   |Number of cores|Number of nodes|Memory                   
 ----------------------|---------------|---------------|----------------------------|-------
 Single-threaded       |1              |1              |As given by operating system|None
 Threaded/shared memory|Multiple       |1              |Shared by all cores         |OpenMP
-Distributed           |Multiple       |1 or Multiple  |Distributed                 |MPI (Example OpenMPI/MPICH)
+Distributed           |Multiple       |1 or Multiple  |Distributed                 |Language package or MPI (Example OpenMPI/MPICH)
 
 <!-- markdownlint-enable MD013 -->
 
@@ -94,6 +93,10 @@ Passing Interface (MPI)**. In general, MPI requires refactoring of your code.
     - [Newer explanation](https://youtu.be/c7pVEBhPohk)
     - More details for the MPI parallelization scheme in Python can be found in a previous [MPI course](https://github.com/MPI-course-collaboration/MPI-course) offered by some of us.
     - [MATLAB: choose between threads and processes](https://se.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
+
+![Arnold (at the left): a robot that was controlled by MPI](arnold.jpg)
+> Arnold (at the left): a robot that was controlled by MPI
+
 
 ## How it is used in programming languages of this course?
 
