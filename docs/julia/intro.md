@@ -1,29 +1,21 @@
 # Why Julia?
 
 !!! info "Learning outcomes for today"
-
     - When Julia is and isn't the right tool
-    - How to load Julia modules
+    - How to load cluster modules providing Julia
     - How to use Julia environments, and why
-    - Familiarize with Julia packages installation with `Pkg`
-    - Acquire the knowledge of writing batch scripts for running Julia
-    - Discover and explore the different Julia parallelization tools
+    - Get familiar with `Pkg`, installing and managing Julia packages
+    - How to write batch scripts for running non-interactive Julia jobs
+    - How to work interactively with Julia on the clusters
 
 !!! info "This will be on Friday"
+    - Explore different Julia parallelization tools
     - Learn how Julia supports GPU computing
-    - Gain knowledge on how to run ML jobs in Julia
+    - How to run ML jobs in Julia
 
-
-!!! info "Your expectations?"
-
-    - Find best practices for using Julia at Swedish academic clusters
-    - Get the hang of packages functioning
-    - Use the HPC performance with Julia
-
-    **Not covered**
-
+!!! info "Not covered in this course"
     - Improve Julia *coding* skills
-    - Other clusters
+    - Other clusters or systems
     
 ## Why it was created
 
