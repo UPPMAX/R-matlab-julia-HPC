@@ -17,7 +17,7 @@
     - Allocate resources like above with salloc/interactive
     - When these steps are ready continue below!
 
-??? example "Start Jupyter"
+!!! example "Start Jupyter"
 
     === "NSC"
 
