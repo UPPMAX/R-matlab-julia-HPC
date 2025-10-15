@@ -9,20 +9,32 @@ julia> using Pluto
 
 ## Start Pluto
 
-First try:
+### First try:
 
 ``` { .julia-repl }
 > Pluto.run()
 ```
 
 - At some places it actually starts a web browser
-- Otherwise, do
+
+### Otherwise, do
 
 ``` { .julia-repl }
 julia> Pluto.run(; launch_browser=false)
 ```
 
 and note the url given and paste it into a browser opened from the menu of ThinLinc.
+
+### Otherwise, do
+
+``` { .julia-repl }
+julia> Pluto.run(; host="0.0.0.0")
+```
+
+- Note the url given and paste it into a browser opened from the menu of ThinLinc.
+- also note the node you got when starting the interactive session (like ``n701`` or similar on Tetralith).
+- change ``0.0.0.0`` to that hostname
+- Example for Tetralith to be in web browser url: ``http://n701:1234/?secret=mAzEDw9R``
 
 ## How does it look like?
 
