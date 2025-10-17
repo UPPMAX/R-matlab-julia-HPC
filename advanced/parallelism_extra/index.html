@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Extra reading about parallelism - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Extra reading about parallelism";
+        var mkdocs_page_input_path = "advanced/parallelism_extra.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Extra reading about parallelism</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/advanced/parallelism_extra.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="extra-reading-about-parallelism">Extra reading about parallelism<a class="headerlink" href="#extra-reading-about-parallelism" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="threaded-programming">Threaded programming<a class="headerlink" href="#threaded-programming" title="Anchor link to this section for reference">&para;</a></h2>
+<p>To take advantage of the shared memory of the cores, <strong>threaded</strong> mechanisms can be used.
+Low-level programming languages, such as Fortran/C/C++, use OpenMP as the standard
+application programming interface (API) to parallelize programs by using a threaded mechanism.
+Here, all threads have access to the same data and can do computations simultaneously.
+From this  we infer that without doing any modification to our code
+we can get the benefits from parallel computing by turning-on/off external libraries,
+by setting environment variables such as <code>OMP_NUM_THREADS</code>.</p>
+<p>Higher-level languages have their own mechanisms to generate threads and this can be
+confusing especially if the code is using external libraries, linear algebra for instance
+(LAPACK, BLAS, &hellip;). These libraries have their own threads (OpenMP for example) and
+the code you are writing (R, Julia, Python, or Matlab) can also have some internal threded mechanism.</p>
+<div class="language-text highlight"><pre><span></span><code>- Here there are some examples (of many) of what you will need to pay attention when porting
+ a parallel code from your laptop (or another HPC center) to our clusters:
+</code></pre></div>
+<p>A common issue with shared memory programming is <em>data racing</em> which happens when
+different threads write on the same memory address.</p>
+<details class="language-specific nuances for threaded programming">
+<summary>Language-specific</summary>
+<p>=== Julia</p>
+<div class="language-text highlight"><pre><span></span><code>The mechanism here is called `Julia threads` which is performant and can be activated by
+executing a script as follows ``julia --threads X script.jl``, where *X* is the number of
+threads. Code modifications are required to support the threads.
+</code></pre></div>
+<p>=== R</p>
+<div class="language-text highlight"><pre><span></span><code>R doesn&#39;t have a threaded mechanism as the other languages discussed in this course. Some
+functions provided by certain packages (parallel, doParallel, etc.), for instance, *foreach*,
+offer parallel features but memory is not shared across the workers. This could lead to
+[data replication](https://hpc2n.github.io/intro-course/software/#recommendations).
+</code></pre></div>
+<p>=== Matlab</p>
+<div class="language-text highlight"><pre><span></span><code>Starting from version 2020a, Matlab offers the [ThreadPool](https://se.mathworks.com/help/parallel-computing/parallel.threadpool.html)
+functionality that can leverage the power of threads sharing a common memory. This could
+potentially lead to a faster code compared to other schemes (Distributed discussed below)
+but notice that the code is not expected to support multi-node simulations.
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Demonstrations</summary>
+<p>The idea is to parallelize a simple <em>for loop</em> (language-agnostic):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span>start<span class="w"> </span>at<span class="w"> </span><span class="m">1</span><span class="w"> </span>end<span class="w"> </span>at<span class="w"> </span><span class="m">4</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w"> </span><span class="nb">wait</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>second
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>end<span class="w"> </span>the<span class="w"> </span><span class="k">for</span><span class="w"> </span>loop
+</span></code></pre></div>
+<p>The waiting step is used to simulate a task without writing too much code. In this way,
+one can realize how faster the loop can be executed when threads are added:</p>
+<p><img alt="parallel-loop" src="../../img/parallel-loop.png" width="200" /></p>
+<p>=== Julia</p>
+<div class="language-text highlight"><pre><span></span><code>In the following example ``sleep-threads.jl`` the `sleep()` function is called `n` times
+first in serial mode and then by using `n` threads. The *BenchmarkTools* package
+help us to time the code (as this package is not in the base Julia installation you will need
+to install it).
+
+```julia
+
+using BenchmarkTools
+using .Threads
+
+n = 4   # number of iterations
+
+function sleep_serial(n)   #Serial version
+    for i in 1:n
+        sleep(1)
+    end
+end
+
+@btime sleep_serial(n) evals=1 samples=1
+
+function sleep_threaded(n) #Parallel version
+    @threads for i = 1:n
+        sleep(1)
+    end
+end
+
+@btime sleep_threaded(n) evals=1 samples=1
+```
+
+First load the Julia module ``ml Julia/1.8.5-linux-x86_64`` and then run the script
+with the command  ``srun -A &quot;your-project&quot; -n 1 -c 4 -t 00:05:00 julia --threads 4 sleep-threads.jl``
+to use 4 Julia threads.
+
+We can also use the *Distributed* package that allows the scaling of simulations beyond
+a single node (call the script ``sleep-distributed.jl``):
+
+```julia
+
+using BenchmarkTools
+using Distributed
+
+n = 4   # number of iterations
+
+function sleep_parallel(n)
+   @sync @distributed for i in 1:n
+        sleep(1)
+    end
+end
+
+@btime sleep_parallel(n) evals=1 samples=1
+```
+
+Run the script with the command  ``srun -A &quot;your-project&quot; -n 1 -c 4 -t 00:05:00 julia -p 4 sleep-distributed.jl``
+to use 4 Julia processes.
+</code></pre></div>
+<p>=== R</p>
+<div class="language-text highlight"><pre><span></span><code>In the following example ``sleep.R`` the `Sys.sleep()` function is called `n` times
+first in serial mode and then by using `n` processes. Start by loading the
+modules ``ml GCC/12.2.0  OpenMPI/4.1.4 R/4.2.2``
+
+```r
+library(doParallel)
+
+# number of iterations = number of processes
+n &lt;- 4
+
+sleep_serial &lt;- function(n) {
+  for (i in 1:n) {
+      Sys.sleep(1)
+  }
+}
+
+serial_time &lt;- system.time(   sleep_serial(n)   )[3]
+serial_time
+
+sleep_parallel &lt;- function(n) {
+  r &lt;- foreach(i=1:n) %dopar% Sys.sleep(1)
+}
+
+cl &lt;- makeCluster(n)
+registerDoParallel(cl)
+parallel_time &lt;- system.time(    sleep_parallel(n)   )[3]
+stopCluster(cl)
+parallel_time
+```
+
+Run the script with the command  ``srun -A &quot;your-project&quot; -n 1 -c 4 -t 00:05:00 Rscript --no-save --no-restore sleep.R``.
+</code></pre></div>
+<p>=== Matlab</p>
+<div class="language-text highlight"><pre><span></span><code>In Matlab one can use the function `pause()` to wait for some number of secods.
+The Matlab module we tested can be loaded as ``ml MATLAB/2023a.Update4``.
+
+```matlab
+% Get a handler for the cluster
+c=parcluster(&#39;kebnekaise&#39;);
+
+n = 4;  % Number of iterations
+
+% Run the job with 1 worker and submit the job to the batch queue
+j = c.batch(@sleep_serial, 1, {4}, &#39;pool&#39;, 1);
+% Wait till the job has finished
+j.wait;
+% Fetch the result after the job has finished
+t = j.fetchOutputs{:};
+fprintf(&#39;Time taken for serial version: %.2f seconds\n&#39;, t);
+
+% Run the job with 4 worker and submit the job to the batch queue
+j = c.batch(@sleep_parallel, 1, {4}, &#39;pool&#39;, 4);
+% Wait till the job has finished
+j.wait;
+% Fetch the result after the job has finished
+t = j.fetchOutputs{:};
+fprintf(&#39;Time taken for parallel version: %.2f seconds\n&#39;, t);
+
+% Serial version
+function t_serial = sleep_serial(n)
+% Start timming
+tic;
+   for i = 1:n
+      pause(1);
+   end
+t_serial = toc;  % stop timing
+end
+
+% Parallel version
+function t_parallel = sleep_parallel(n)
+% Start timing
+tic;
+   parfor i = 1:n
+      pause(1);
+   end
+t_parallel = toc; % stop timing
+end
+```
+
+You can run this code directly in the Matlab GUI.
+</code></pre></div>
+</details>
+<h2 id="distributed-programming">Distributed programming<a class="headerlink" href="#distributed-programming" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Although threaded programming is convenient because one can achieve considerable initial speedups
+with little code modifications, this approach does not scale for more than hundreds of
+cores. Scalability can be achieved with distributed programming. Here, there is not
+a common shared memory but the individual <code>processes</code> (notice the different terminology
+with <code>threads</code> in shared memory) have their own memory space. Then, if a process requires
+data from or should transfer data to another process, it can do that by using <code>send</code> and
+<code>receive</code> to transfer messages. A standard API for distributed computing is the Message
+Passing Interface (MPI). In general, MPI requires refactoring of your code.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
