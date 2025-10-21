@@ -149,7 +149,7 @@ start_time <- Sys.time()
 # Each worker produces a value in the vector,
 # e.g. c(0.1, 0.2, -0.3) denotes a run with 3 workers,
 # of which the first had 0.1 as its volume under the surface
-results_of_workers <- foreach(worker_index = 1:n_workers, .combine = c) %dopar% {
+results_of_workers <- foreach(worker_index = 1:n_workers, .combine = c) %dopar% { # nolint
   integration2d(grid_size, n_workers, worker_index)
 }
 
