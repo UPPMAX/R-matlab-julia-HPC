@@ -122,17 +122,6 @@ the number of files you can have in your home directory. If this becomes a
 problem, talk to us and we will find a way.
 
 
-## Using packages
-
-Packages are imported or loaded by the commands `import` and `using`,
-respectively. The difference is (briefly):
-
-> To use "module" functions, use `import <module>` to import the "module", and
-> `Module.fn(x)` to use the functions. Alternatively, `using <Module>` will
-> import *all* exported Module functions into the *current namespace*, i.e.
-> `Module.fn(x)` becomes `fn(x)`.
-
-
 ## Non-interactive use of Pkg
 
 Once you have created an environment, it can be activated in several manners.
