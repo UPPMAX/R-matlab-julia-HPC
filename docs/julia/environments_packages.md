@@ -124,13 +124,13 @@ problem, talk to us and we will find a way.
 
 ## Non-interactive use of Pkg
 
-Once you have created an environment, it can be activated in several manners.
-The one we saw before is by activating it in `package` mode with the command
-`activate .`. You may also be able to activate the environment inside the
-Julia script by calling these lines in your `.jl` file:
+We've seen how to use Pkg interactively, with its special REPL mode. All the functions of Pkg can also be used by loading the `Pkg` module and calling its functions just like any other module. On the clusters, this is especially useful for activating or even setting up an environment from inside a
+Julia script, so that you can run it in a batch job. For example: activate the environment of the current folder by calling these two lines in your `.jl` file:
 
-    julia> using Pkg
-    julia> Pkg.activate(".")
+``` julia
+    using Pkg
+    Pkg.activate(".")
+```
 
 Besides the previous two options for activating an environment, you can also
 activate it on the Linux command line (assuming that you are located in the
