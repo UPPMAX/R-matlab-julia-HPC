@@ -50,7 +50,6 @@ you've asked for, the latter specifies all packages loaded including their exact
 versions. Include both of these files (`Project.toml` all the time, `Manifest.toml` at points for which you want exact reproducibility) in your version control and you get
 traceable, reproducible environments with minimal effort!
 
-
 ## Getting started
 
 To get started we will go to the Julia documentation and make use of the
@@ -104,14 +103,13 @@ official tutorial on the Julia package manager:
 
 ### Choosing package versions
 
-```julia
-    ] add <package> @<version>
-
+``` julia
+] add <package> @<version>
 ```
 
 Example: 
 
-```julia
+``` julia
 ] add DataFrames @1.1
 ```
 
@@ -195,9 +193,9 @@ environment directory):
 
     !!! info "Bianca Intermediate workshop"
 
-        [Info page](https://docs.uppmax.uu.se/courses_workshops/bianca_intermediate/)
-        [Course material](https://uppmax.github.io/bianca_workshops/intermediate/intro/)
-        [Julia on Bianca](https://uppmax.github.io/bianca_workshops/extra/julia/]
+        - [Info page](https://docs.uppmax.uu.se/courses_workshops/bianca_intermediate/)
+        - [Course material](https://uppmax.github.io/bianca_workshops/intermediate/intro/)
+        - [Julia on Bianca](https://uppmax.github.io/bianca_workshops/extra/julia/)
     
 ## Exercises
 
