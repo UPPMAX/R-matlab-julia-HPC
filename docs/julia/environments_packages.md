@@ -102,16 +102,29 @@ official tutorial on the Julia package manager:
             julia> empty!(LOAD_PATH)        # this will clean out the path
             julia> push!(LOAD_PATH, "@")    # this will add the current environment
 
+### Choosing package versions
+
+```julia
+    ] add <package> @<version>
+
+```
+
+Example: 
+
+```julia
+] add DataFrames @1.1
+```
+
 ## But where are the packages installed?
 
 Each environment only consists of two files, the code is not here. Packages will
 be installed to and loaded from paths defined by the global Julia variable
 [`DEPOT_PATH`](https://docs.julialang.org/en/v1/base/constants/#Base.DEPOT_PATH).
-In a default Julia installation on the clusters this will be:
+In a Julia installation on the clusters this will by default be set to:
 
-`~/.julia` where `~` is the user home as appropriate on the system;
+`~/.julia` where `~` is the user home as appropriate on the system.
 
-???- note "If Julia is installed "centrally"
+???- note "If Julia is installed *centrally*"
 
     On a local system like a personal linux computer or if Julia would have been installed at a "system level" and not i a module system
 
@@ -120,7 +133,7 @@ In a default Julia installation on the clusters this will be:
 
 Packages can consist of relatively many files and some clusters have a limit on
 the number of files you can have in your home directory. If this becomes a
-problem, you can set the DEPOT_PATH to a Project folder
+problem, you can set the ``DEPOT_PATH`` to a Project folder
 
 
 ## Non-interactive use of Pkg
@@ -180,7 +193,12 @@ environment directory):
               "@stdlib"
               "/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8"
 
+    !!! info "Bianca Intermediate workshop"
 
+        [Info page](https://docs.uppmax.uu.se/courses_workshops/bianca_intermediate/)
+        [Course material](https://uppmax.github.io/bianca_workshops/intermediate/intro/)
+        [Julia on Bianca](https://uppmax.github.io/bianca_workshops/extra/julia/]
+    
 ## Exercises
 
 - We need the packages ``IJulia`` and ``Pluto`` for running the integrated development environments (IDEs) Jupyter and Pluto.
