@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Environments and packages - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Environments and packages";
+        var mkdocs_page_input_path = "julia/environments_packages.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Environments and packages</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#summary-of-what-weve-seen-so-far">Summary of what we&rsquo;ve seen so far</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#choosing-package-versions">Choosing package versions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#but-where-are-the-packages-installed">But where are the packages installed?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#non-interactive-use-of-pkg">Non-interactive use of Pkg</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Julia</li>
+      <li class="breadcrumb-item active">Environments and packages</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/environments_packages.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="managing-environments-and-packages">Managing environments and packages<a class="headerlink" href="#managing-environments-and-packages" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes for this session</p>
+<ul>
+<li>How to work with Julia&rsquo;s environment and package management.</li>
+<li>How to check for and use site-installed packages, if any.</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Your background?</p>
+<ul>
+<li>Have you used Python?</li>
+<li>Have you used Matlab? Were you at yesterdays Matlab sessions?</li>
+<li>Have you used Git?</li>
+<li>Are you completely new to this, code packages and version control?</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Key points</p>
+<ul>
+<li>Environments<ul>
+<li>Project</li>
+<li>Version control</li>
+<li>Nested, base, tools not part of the project, use with caution</li>
+</ul>
+</li>
+<li>Packages</li>
+</ul>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Packages are pieces of software to be used by your scripts or interactive
+sessions as-is or modified, stand-alone or&mdash;most often&mdash;in combinations to
+make a full toolkit customized to your task. Such a toolkit may itself become a
+new package. Packages allow us to cooperate on code that can be useful in
+several places.</p>
+<p>Environments are sets of packages that are available for use simultaneously and,
+if all is right, work together.</p>
+<p>If you come from Python, you have likely seen that there are several different
+ways to deal with environments and package management in this language, for
+instance, <code>conda</code> and <code>pip</code>. The situation can be described as several
+ecosystems of packages. You may have come across the term &ldquo;dependency hell&rdquo; or
+even had a taste (or perhaps far more than you could stomach) of this yourself.</p>
+<p>Julia comes with a great system for environments and packages included. As a
+result there is essentially a single ecosystem of packages and &ldquo;dependency hell&rdquo;
+is as close to eliminated as it can be.</p>
+<p>Julia environments are defined by two TOML (Tom&rsquo;s Obvious Minimal Language)
+files, <code>Project.toml</code> and <code>Manifest.toml</code>. The former specifies which packages
+you&rsquo;ve asked for, the latter specifies all packages loaded including their exact
+versions. Include both of these files (<code>Project.toml</code> all the time, <code>Manifest.toml</code> at points for which you want exact reproducibility) in your version control and you get
+traceable, reproducible environments with minimal effort!</p>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Anchor link to this section for reference">&para;</a></h2>
+<p>To get started we will go to the Julia documentation and make use of the
+official tutorial on the Julia package manager:
+<a href="https://docs.julialang.org/en/v1/stdlib/Pkg/#Pkg">https://docs.julialang.org/en/v1/stdlib/Pkg/#Pkg</a></p>
+<h3 id="summary-of-what-weve-seen-so-far">Summary of what we&rsquo;ve seen so far<a class="headerlink" href="#summary-of-what-weve-seen-so-far" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Get to the Pkg REPL by pressing <code>]</code> in the Julia REPL</li>
+<li>In the Pkg REPL, use the following commands:<ul>
+<li><code>?</code> to get help</li>
+<li><code>activate</code> to activate an existing or new environment</li>
+<li><code>st</code> (alias for <code>status</code>) to see which packages have been added to the active environment</li>
+<li><code>add</code> to add packages to the active environment, this may or may not have download and precompilation steps that take a bit of time</li>
+<li><code>rm</code> (alias for <code>remove</code>) to remove packages from the active environment</li>
+<li><code>up</code> (alias for <code>update</code>) to update packages in the active environment</li>
+</ul>
+</li>
+<li><code>Project.toml</code> stores what packages you&rsquo;ve asked for</li>
+<li><code>Manifest.toml</code> stores how Pkg resolved this, with all dependencies and exact versions</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Environment stacking</p>
+<p>When you have not activated any specific environment, the active environment
+is your personal base environment for the Julia version you&rsquo;re currently
+running (called e.g. @v1.11). This is normally reachable in addition to your
+active environment. This can be a convenient way to access development
+tools that you want active but your project <em>does not depend on</em>.</p>
+<p>If you have tools available through your base environment and you need to
+check that your project can be reproduced properly without your base
+environment, you&rsquo;ll want to read this:</p>
+<details class="note">
+<summary>Loading project environment <em>only</em></summary>
+<p>The full stack of reachable environments are defined by the global Julia variable
+<a href="https://docs.julialang.org/en/v1/base/constants/#Base.LOAD_PATH"><code>LOAD_PATH</code></a>:</p>
+<div class="language-text highlight"><pre><span></span><code>julia&gt;LOAD_PATH
+3-element Vector{String}:
+&quot;@&quot;
+&quot;@v#.#&quot;
+&quot;@stdlib&quot;
+</code></pre></div>
+<p>where <code>@</code> is the active environment, <code>@v#.#</code> is your base environment for the
+Julia version in use, and <code>@stdlib</code> is the standard library.</p>
+<p>To include just the current environment we can modify the <code>LOAD_PATH</code>
+variable from the julian prompt with the following functions:</p>
+<div class="language-text highlight"><pre><span></span><code>julia&gt; empty!(LOAD_PATH)        # this will clean out the path
+julia&gt; push!(LOAD_PATH, &quot;@&quot;)    # this will add the current environment
+</code></pre></div>
+</details>
+</div>
+<h3 id="choosing-package-versions">Choosing package versions<a class="headerlink" href="#choosing-package-versions" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">]</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="nd">@&lt;</span><span class="n">version</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Example: </p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">]</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">DataFrames</span><span class="w"> </span><span class="err">@</span><span class="mf">1.1</span>
+</span></code></pre></div>
+<h2 id="but-where-are-the-packages-installed">But where are the packages installed?<a class="headerlink" href="#but-where-are-the-packages-installed" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Each environment only consists of two files, the code is not here. Packages will
+be installed to and loaded from paths defined by the global Julia variable
+<a href="https://docs.julialang.org/en/v1/base/constants/#Base.DEPOT_PATH"><code>DEPOT_PATH</code></a>.
+In a Julia installation on the clusters this will by default be set to:</p>
+<p><code>~/.julia</code> where <code>~</code> is the user home as appropriate on the system.</p>
+<details class="- note">
+<summary>If Julia is installed <em>centrally</em></summary>
+<p>On a local system like a personal linux computer or if Julia would have been installed at a &ldquo;system level&rdquo; and not i a module system</p>
+<ol>
+<li>an architecture-specific shared system directory, e.g. <code>/usr/local/share/julia</code>;</li>
+<li>an architecture-independent shared system directory, e.g. <code>/usr/share/julia</code>.</li>
+</ol>
+</details>
+<p>Packages can consist of relatively many files and some clusters have a limit on
+the number of files you can have in your home directory. If this becomes a
+problem, you can set the <code>DEPOT_PATH</code> to a Project folder</p>
+<h2 id="non-interactive-use-of-pkg">Non-interactive use of Pkg<a class="headerlink" href="#non-interactive-use-of-pkg" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We&rsquo;ve seen how to use Pkg interactively, with its special REPL mode. All the functions of Pkg can also be used by loading the <code>Pkg</code> module and calling its functions just like any other module. On the clusters, this is especially useful for activating or even setting up an environment from inside a
+Julia script, so that you can run it in a batch job. For example: activate the environment of the current folder by calling these two lines in your <code>.jl</code> file:</p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Besides the previous two options for activating an environment, you can also
+activate it on the Linux command line (assuming that you are located in the
+environment directory):</p>
+<div class="language-text highlight"><pre><span></span><code>julia --project=.
+</code></pre></div>
+<details class="- note">
+<summary>Bianca</summary>
+<ul>
+<li>
+<p>At Bianca there is a central library with installed packages.</p>
+</li>
+<li>
+<p>You may control the present &ldquo;central library&rdquo; by typing <code>ml help julia/&lt;version&gt;</code> in the BASH shell.</p>
+</li>
+<li>A possibly more up-to-date status can be found from the Julia shell:</li>
+</ul>
+<div class="language-julia-repl highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.8&quot;</span><span class="p">);</span><span class="w">     </span><span class="c">#change version (1.8) accordingly if you have another main version of Julia</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.8&quot;</span><span class="p">);</span><span class="w">     </span><span class="c">#to return to user library</span>
+</span></code></pre></div>
+<p>A selection of the Julia packages and libraries installed on Bianca are:</p>
+<div class="language-text highlight"><pre><span></span><code>- BenchmarkTools
+- CSV
+- CUDA
+- MPI
+- Distributed
+- IJulia
+- Plots
+- PyPlot
+- Gadfly
+- DataFrames
+- DistributedArrays
+- PlotlyJS
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Site-installed packages in environments</p>
+<p>At Bianca the central environment adds to the environment stack:</p>
+<div class="language-text highlight"><pre><span></span><code>julia&gt; LOAD_PATH
+4-element Vector{String}:
+  &quot;@&quot;
+  &quot;@v#.#&quot;
+  &quot;@stdlib&quot;
+  &quot;/sw/comp/julia/1.8.5/rackham/lib/glob_pkg/environments/v1.8&quot;
+</code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Bianca Intermediate workshop</p>
+<ul>
+<li><a href="https://docs.uppmax.uu.se/courses_workshops/bianca_intermediate/">Info page</a></li>
+<li><a href="https://uppmax.github.io/bianca_workshops/intermediate/intro/">Course material</a></li>
+<li><a href="https://uppmax.github.io/bianca_workshops/extra/julia/">Julia on Bianca</a></li>
+</ul>
+</div>
+</details>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>We need the packages <code>IJulia</code> and <code>Pluto</code> for running the integrated development environments (IDEs) Jupyter and Pluto.</li>
+<li>
+<p>We also need the MPI package on Friday.</p>
+</li>
+<li>
+<p>Make these exercises be the installation of the packages that we will later use.</p>
+</li>
+<li>It might be advisable to install IJulia and Pluto in separate environments.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Challenge 1. Install Pluto</p>
+<ul>
+<li>It may take 5-10 minutes or so.</li>
+<li>This you can do in an ordinary terminal</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">NSC</label><label for="__tabbed_1_2">PDC</label><label for="__tabbed_1_3">UPPMAX (Bianca/Rackham)</label><label for="__tabbed_1_4">UPPMAX (Pelle)</label><label for="__tabbed_1_5">HPC2N &amp; LUNARC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>ml<span class="w"> </span>julia/1.10.2-bdist
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Note: not fully tested successfully, but this step works</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w"> </span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.10.9-LTS-linux-x86_64
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCCcore/13.2.0<span class="w">  </span>Julia/1.9.3-linux-x86_64
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>In Julia for all clusters (output may differ for different clusters and Julia versions):</p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="w">    </span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">pluto</span><span class="o">-</span><span class="n">env</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">pluto</span><span class="o">-</span><span class="n">env</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="p">(</span><span class="nd">@v1</span><span class="mf">.10</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">      </span><span class="n">Activating</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`path-to-folder\pluto-env`</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p">(</span><span class="n">pluto</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">Pluto</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="p">(</span><span class="n">pluto</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">            </span><span class="n">Status</span><span class="w"> </span><span class="sb">`path-to-folder\pluto-env\Project.toml`</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">            </span><span class="p">[</span><span class="n">c3e4b0f8</span><span class="p">]</span><span class="w"> </span><span class="n">Pluto</span><span class="w"> </span><span class="n">v0</span><span class="mf">.20.19</span>
+</span></code></pre></div>
+</div>
+<div class="admonition challenge">
+<p class="admonition-title">2. Install IJulia</p>
+<ul>
+<li>This is done only once, but for each combination of Julia you would like to use.</li>
+<li>Also Python must be loaded</li>
+<li>It may take 5-10 minutes or so.</li>
+<li>This you can do in an ordinary terminal (book an interactive session, for safety)</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">NSC</label><label for="__tabbed_2_2">PDC</label><label for="__tabbed_2_3">UPPMAX (Bianca/Rackham)</label><label for="__tabbed_2_4">UPPMAX (Pelle)</label><label for="__tabbed_2_5">HPC2N &amp; LUNARC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>ml<span class="w"> </span>Python/3.11.5-env-hpc1-gcc-2023b-eb
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>$<span class="w"> </span>ml<span class="w"> </span>julia/1.10.2-bdist
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>$<span class="w"> </span>ml<span class="w"> </span>cray-python/3.11.5
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python/3.9.5
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.10.9-LTS-linux-x86_64
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>JupyterLab/4.2.5-GCCcore-13.3.0
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w">  </span>JupyterLab/4.2.0
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>$<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>In Julia for all clusters (output may differ for different clusters and Julia versions):</p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">    </span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">jupyter</span><span class="o">-</span><span class="n">env</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">jupyter</span><span class="o">-</span><span class="n">env</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="p">(</span><span class="nd">@v1</span><span class="mf">.10</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">      </span><span class="n">Activating</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`path-to-folder\jupyter-env`</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="p">(</span><span class="n">jupyter</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">IJulia</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="p">(</span><span class="n">jupyter</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">            </span><span class="n">Status</span><span class="w"> </span><span class="sb">`path-to-folder\jupyter-env\Project.toml`</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">            </span><span class="p">[</span><span class="mi">7073</span><span class="n">ff75</span><span class="p">]</span><span class="w"> </span><span class="n">IJulia</span><span class="w"> </span><span class="n">v1</span><span class="mf">.27.0</span>
+</span></code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 3. Required package for parallel jobs</p>
+<p>In order to use MPI with Julia you will need to follow the next steps (only the first time):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">UPPMAX (Bianca/Rackham)</label><label for="__tabbed_3_2">UPPMAX (Pelle)</label><label for="__tabbed_3_3">HPC2N</label><label for="__tabbed_3_4">LUNARC</label><label for="__tabbed_3_5">PDC</label><label for="__tabbed_3_6">NSC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Load the tool chain which contains a MPI library</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>$<span class="w"> </span>ml<span class="w"> </span>gcc/11.3.0<span class="w"> </span>openmpi/4.1.3
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># Load Julia</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>$<span class="w"> </span>ml<span class="w"> </span>Julia/1.8.5
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># Start Julia on the command line</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>$<span class="w"> </span>julia
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Change to ``package mode`` and add the ``MPI`` package</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Load the tool chain which contains a MPI library</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>$<span class="w"> </span>ml<span class="w"> </span>OpenMPI/5.0.3-GCC-13.3.0
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Load Julia</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>$<span class="w"> </span>ml<span class="w"> </span>Julia/1.10.9-LTS-linux-x86_64<span class="w"> </span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1"># Start Julia on the command line</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>$<span class="w"> </span>julia
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1"># Change to ``package mode``</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Load the tool chain which contains a MPI library</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>$<span class="w"> </span>ml<span class="w"> </span>foss/2021b
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Load Julia</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>$<span class="w"> </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># Start Julia on the command line</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>$<span class="w"> </span>julia
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># Change to ``package mode``</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Load the tool chain which contains a MPI library</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>$<span class="w"> </span>ml<span class="w"> </span>foss/2021b
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># Load Julia</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>$<span class="w"> </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1"># Start Julia on the command line</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>$<span class="w"> </span>julia
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Change to ``package mode``</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Load the tool chain for Julia which already contains a MPI library (cray-mpich)</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>$<span class="w"> </span>ml<span class="w"> </span>PDCOLD/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># Start Julia on the command line</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>$<span class="w"> </span>julia
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># Change to ``package mode``</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Load the tool chain which contains a MPI library</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>$<span class="w"> </span>ml<span class="w"> </span>buildtool-easybuild/4.8.0-hpce082752a2<span class="w"> </span>foss/2023b
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># Load Julia</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>$<span class="w"> </span>ml<span class="w"> </span>julia/1.9.4-bdist
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># Start Julia on the command line</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>$<span class="w"> </span>julia
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1"># Change to ``package mode``</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>In Julia for all clusters (output may differ for different clusters and Julia versions):</p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">MPI</span><span class="o">-</span><span class="n">env</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">MPI</span><span class="o">-</span><span class="n">env</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">(</span><span class="nd">@v1</span><span class="mf">.10</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">      </span><span class="n">Activating</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`path-to-folder\MPI-env`</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="p">(</span><span class="n">MPI</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">MPI</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c"># In the ``julian`` mode run these commands:</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="p">(</span><span class="n">MPI</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">MPI</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="p">(</span><span class="n">MPI</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MPI</span><span class="o">.</span><span class="n">install_mpiexecjl</span><span class="p">()</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">        </span><span class="p">[</span><span class="w"> </span><span class="n">Info</span><span class="o">:</span><span class="w"> </span><span class="n">Installing</span><span class="w"> </span><span class="sb">`mpiexecjl`</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="sb">`/home/u/username/.julia/bin`</span><span class="o">...</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w">        </span><span class="p">[</span><span class="w"> </span><span class="n">Info</span><span class="o">:</span><span class="w"> </span><span class="n">Done!</span>
+</span></code></pre></div>
+<ul>
+<li>End Julia with <code>&lt;CTRL&gt;+D</code></li>
+<li>In <strong>terminal shell</strong> for all clusters (output may differ for different clusters and Julia versions):</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Add the installed ``mpiexecjl`` wrapper to your path on the Linux command line</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>~/.julia/bin:<span class="nv">$PATH</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="c1"># Now the wrapper should be available on the command line</span>
+</span></code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Extra Challenge. Project environment with csv</p>
+<p>Create a project environment called <code>new-env</code> and activate it. Then, install the
+package <code>CSV</code> in this environment. For your knowledge, <code>CSV</code> is a package that
+offers tools for dealing with <code>.csv</code> files. After this, check that this package
+was installed. Finally, deactivate the environment.</p>
+<details class="note">
+<summary>Solution for all centres</summary>
+<p>``` julia</p>
+<div class="language-text highlight"><pre><span></span><code>    shell&gt; mkdir new-env
+    shell&gt; cd new-env
+    (@v1.8) pkg&gt; activate .
+          Activating new project at `path-to-folder\new-env`
+    (new-env) pkg&gt; add CSV
+    (new-env) pkg&gt; status
+          Status `path-to-folder\new-env\Project.toml`
+          [336ed68f] CSV v0.10.9
+    (new-env) pkg&gt; deactivate
+</code></pre></div>
+<p>```</p>
+</details>
+</div>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Environments in Julia created by Julia itself so third party software are not required.</li>
+<li>With a virtual environment you can tailor an environment with specific versions for Julia
+ and packages, not interfering with other installed Julia versions and packages.</li>
+<li>Make it for each project you have for reproducibility.</li>
+<li>The environments in Julia are lightweight so it is recommended to start a new environment
+ for each project that you are developing.</li>
+<li>Bianca</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Extra reading</p>
+<ul>
+<li><a href="https://docs.julialang.org/en/v1/manual/code-loading/#Environments">Julia environments</a></li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../load_run/" class="btn btn-neutral float-left" title="Load and run"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../batch/" class="btn btn-neutral float-right" title="Batch jobs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../load_run/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../batch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

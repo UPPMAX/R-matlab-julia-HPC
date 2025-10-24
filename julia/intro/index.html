@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Intro - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Intro";
+        var mkdocs_page_input_path = "julia/intro.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Intro</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-it-was-created">Why it was created</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reasons-to-choose-julia">Reasons to choose Julia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reasons-to-choose-something-else">Reasons to choose something else</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#more-on-julia">More on Julia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#julia-documentation-at-the-centers">Julia documentation at the centers</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Julia</li>
+      <li class="breadcrumb-item active">Intro</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/intro.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="why-julia">Why Julia?<a class="headerlink" href="#why-julia" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes for today</p>
+<ul>
+<li>When Julia is and isn&rsquo;t the right tool</li>
+<li>How to load cluster modules providing Julia</li>
+<li>How to use Julia environments, and why</li>
+<li>Get familiar with <code>Pkg</code>, installing and managing Julia packages</li>
+<li>How to write batch scripts for running non-interactive Julia jobs</li>
+<li>How to work interactively with Julia on the clusters</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">This will be on Friday</p>
+<ul>
+<li>Explore different Julia parallelization tools</li>
+<li>Learn how Julia supports GPU computing</li>
+<li>How to run ML jobs in Julia</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Not covered in this course</p>
+<ul>
+<li>Improve Julia <em>coding</em> skills</li>
+<li>Other clusters or systems</li>
+</ul>
+</div>
+<h2 id="why-it-was-created">Why it was created<a class="headerlink" href="#why-it-was-created" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Quoting from the <a href="https://julialang.org/blog/2012/02/why-we-created-julia/">2012 blogpost</a>
+that announced Julia to the world:</p>
+<blockquote>
+<p>In short, because we are greedy.</p>
+</blockquote>
+<p>They mention Matlab, Lisp, Python, Ruby, Perl, Mathematica, R and C.</p>
+<blockquote>
+<p>We love all of these languages; they are wonderful and powerful. For the work
+we do — scientific computing, machine learning, data mining, large-scale
+linear algebra, distributed and parallel computing — each one is perfect for
+some aspects of the work and terrible for others. Each one is a trade-off.</p>
+<p>We are greedy: we want more.</p>
+</blockquote>
+<p>No language can be everything for everyone, but Julia was created to get as
+close as possible for a certain set of users. If the work you do falls in the
+categories mentioned, as HPC work does, this target audience includes you.</p>
+<h2 id="reasons-to-choose-julia">Reasons to choose Julia<a class="headerlink" href="#reasons-to-choose-julia" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The strengths of Julia are based on flexibility. Moreso than forcing either your
+code or your workflow into anything, it enables you to choose the right way to
+write or work for the task at hand.</p>
+<ul>
+<li>Special compilation model<ul>
+<li>Enables interactive use and development without the drawbacks of
+  interpreted languages</li>
+</ul>
+</li>
+<li>Special type system<ul>
+<li>Hierarchical, deep, types can be defined as precisely or loosely as makes
+  sense for each situation</li>
+<li>This (along with multiple dispatch and the compilation model) enables not
+  only great flexibility but also great composability</li>
+</ul>
+</li>
+<li>Built for numerical computing, but works well also for general tasks</li>
+<li>Built-in powerful package management (based on Git) with efficient
+  per-project environments, very good for reproducibility</li>
+</ul>
+<p>Finally, the built-in or integrated documentation tools are good enough that
+many Julia packages have relatively good documentation.</p>
+<p>In addition to the strengths of the core language, a few standout packages that
+you may want to make use of:</p>
+<ul>
+<li><a href="https://plutojl.org">Pluto</a>: Reproducible (even without Pluto), gittable,
+  extraordinarily interactive programming notebooks</li>
+<li><a href="https://fluxml.ai">Flux</a>: Machine learning stack based on differentiable
+  programming, which Julia does especially well</li>
+<li><a href="https://github.com/SciML/DifferentialEquations.jl">DifferentialEquations</a>,
+  which is especially state-of-the-art, or other components from the large
+  <a href="https://docs.sciml.ai/Overview/stable/">SciML</a> toolkit for ML in scientific
+  computing</li>
+<li><a href="https://jump.dev">JuMP</a>, a modeling language and toolkit for mathematical
+  optimization</li>
+</ul>
+<h2 id="reasons-to-choose-something-else">Reasons to choose something else<a class="headerlink" href="#reasons-to-choose-something-else" title="Anchor link to this section for reference">&para;</a></h2>
+<p>An interpreted language (such as R or MATLAB) will execute your instructions
+immediately, without compilation. If your code changes and recompiles a lot in
+relation to the time spent running the code and the computations, this will give
+you a better interactive experience and save CPU time.</p>
+<p>For really large projects, the structure and consistency enforced by a more
+rigid language such as Java can be an important benefit.</p>
+<p>As always, it may be faster to use a tool you already know well than to use a
+tool that you have not learned yet.</p>
+<p>There are some cases where existing tools are best used from their own
+environments (often the case for graphical tools), but in general the Julia
+solutions for using packages and libraries from other languages (R, MATLAB,
+Python, Fortran, C) are very useful.</p>
+<div class="admonition info">
+<p class="admonition-title">Questions?</p>
+<ul>
+<li>What are your first impressions, what do you hope that Julia can solve for
+  you?</li>
+<li>Which tools do you need to find to start using Julia?</li>
+<li>What do you need to learn from us, and what can you easily learn from
+  online resources?</li>
+</ul>
+</div>
+<h2 id="more-on-julia">More on Julia<a class="headerlink" href="#more-on-julia" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Almost everything you could ask for can be found from or on the official website
+<a href="https://julialang.org">https://julialang.org</a>. Some shortcuts:</p>
+<ul>
+<li><a href="https://docs.julialang.org/en/v1/">Official Julia documentation</a></li>
+<li><a href="https://discourse.julialang.org">Official Julia discussion/support forum</a></li>
+<li>Many other channels, e.g. Slack, Zulip, Discord are found <a href="https://julialang.org/community/otherchannels/">in this
+  list</a></li>
+<li>The list of <a href="https://julialang.org/community/organizations/">GitHub
+  organizations</a> can be a
+  starting point for finding the packages relevant to your field</li>
+</ul>
+<p>And a few other extra resources:</p>
+<ul>
+<li>A big list of <a href="https://github.com/svilupp/awesome-generative-ai-meets-julia-language">AI tools</a></li>
+<li><a href="https://www.youtube.com/watch?v=bXHe7Kj3Xxg">HPC2N YouTube video on Julia in HPC</a></li>
+<li><a href="../extra/">Extra materials in these course pages</a></li>
+</ul>
+<h2 id="julia-documentation-at-the-centers">Julia documentation at the centers<a class="headerlink" href="#julia-documentation-at-the-centers" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li><a href="http://docs.uppmax.uu.se/software/julia/">UPPMAX</a></li>
+<li><a href="https://www.hpc2n.umu.se/resources/software/julia">HPC2N</a></li>
+<li>LUNARC has no specific Julia documentation, but here you can find <a href="https://lunarc-documentation.readthedocs.io/en/latest/software/installed_software/">installed versions</a></li>
+<li><a href="https://www.nsc.liu.se/software/installed/tetralith/julia/">NSC</a></li>
+<li><a href="https://support.pdc.kth.se/doc/applications/julia/">PDC</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../schedule/" class="btn btn-neutral float-left" title="Schedule"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../load_run/" class="btn btn-neutral float-right" title="Load and run">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../schedule/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../load_run/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

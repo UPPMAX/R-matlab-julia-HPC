@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reflection - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reflection";
+        var mkdocs_page_input_path = "reflections/20241024_richel/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Reflection</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/reflections/20241024_richel/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reflection">Reflection<a class="headerlink" href="#reflection" title="Anchor link to this section for reference">&para;</a></h1>
+<ul>
+<li>Teaching day: 2024-10-24</li>
+<li>Topic: R</li>
+<li>Written on 2024-10-24</li>
+</ul>
+<h2 id="schedule">Schedule<a class="headerlink" href="#schedule" title="Anchor link to this section for reference">&para;</a></h2>
+<p>This is the schedule of that day:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9:00</td>
+<td>(optional) First login</td>
+<td>BB + PO + RB</td>
+</tr>
+<tr>
+<td>9:45</td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td>10:00</td>
+<td>Introduction</td>
+<td>RB</td>
+</tr>
+<tr>
+<td>10:10</td>
+<td>Syllabus</td>
+<td>RB</td>
+</tr>
+<tr>
+<td>10:20</td>
+<td>Load modules and run</td>
+<td>RB</td>
+</tr>
+<tr>
+<td>10:45</td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td>11:00</td>
+<td>Packages</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>11:30</td>
+<td>Isolated environments</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>12:00</td>
+<td>Lunch</td>
+<td>.</td>
+</tr>
+<tr>
+<td>13:00</td>
+<td>Batch</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>13:30</td>
+<td>Parallel</td>
+<td>PO</td>
+</tr>
+<tr>
+<td>14:15</td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td>14:30</td>
+<td>Simultaneous session</td>
+<td>PO * RB * RP</td>
+</tr>
+<tr>
+<td>15:15</td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td>15:30</td>
+<td>Machine learning</td>
+<td>BB or PO</td>
+</tr>
+<tr>
+<td>16:00</td>
+<td>Summary and evaluation</td>
+<td>RB</td>
+</tr>
+<tr>
+<td>16:15</td>
+<td>Done</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="login-session">Login session<a class="headerlink" href="#login-session" title="Anchor link to this section for reference">&para;</a></h2>
+<p>4 learners showed up for this optional session:</p>
+<ul>
+<li>3x could already login</li>
+<li>1x a LUNARC user that needed help, I put him in a Zoom room with the LUNARC
+  teacher</li>
+</ul>
+<h2 id="session-1000-1045-intro-and-syllabus-and-load-and-run-r">Session: 10:00-10:45: intro and syllabus and load and run R<a class="headerlink" href="#session-1000-1045-intro-and-syllabus-and-load-and-run-r" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There were 5 learners. I did the regular teaching cycles, with a Prior
+at the start. There were 3 that -per my request- turned on their camera,
+with 2 left after the announcement that the session will be recorded.
+At 10:21 I started the exercise and at 10:40 I discussed it.
+At 10:40, upon asking for a yes/no reaction, 5 out of 5 learners signalled
+they had been able to do the exercise. I rounded of the session
+by going over the key points again.</p>
+<p>As already was in the lesson plan, I don&rsquo;t like this session.
+I do think many people think this stock-standard way of teaching
+is fine, but I&rsquo;d enjoy better to have the learners learn from
+each center&rsquo;s documentation, as this will be more helpful.
+Instead, now, the session is more a copy-paste exercise, except
+for the Prior and Repeat. I can imagine learners like it (we know
+learners like passive teaching), but they could actually have learned
+more.</p>
+<ul>
+<li>[ ] In the next course iteration: use more active learning methods in this
+  session</li>
+</ul>
+<h2 id="session-1430-1515-interactive-and-rstudio">Session 14:30-15:15: interactive and RStudio<a class="headerlink" href="#session-1430-1515-interactive-and-rstudio" title="Anchor link to this section for reference">&para;</a></h2>
+<p>It was delayed 15 minutes, which was no problem.
+Prior took 15 minutes, in which I recapped earlier sessions too.
+I gave the learners 15 minutes for the exercise.
+All 4 learners were able to complete the procedure.</p>
+<p>During the 15 minutes, there was 1 learner that shared her
+screen with a question beyond the content of this session.
+1 learner needed to install a local ThinLinc client and this
+did not work. That learner did see how it looked like
+and stated she is confident she could do it via the website.</p>
+<p>As the learning objectives were achieved, I ended the session earlier
+(there were no more questions).
+I do think the session&rsquo;s length is correct, in the case there would
+be some slower learners.</p>
+<p>I told the 4 learners when the next session would start,
+which was 15 minutes later on the schedule, as
+I expected other sessions to do take the scheduled amount of time.
+However, it turned out that the next session would like to start
+earlier. I took the blame and hoped for the best.
+What I did not know is that it would be only the UPPMAX learners left,
+so we could have easily started 15 minutes earlier.</p>
+<h2 id="session-1600-1615-summary-and-evaluation">Session 16:00-16:15: summary and evaluation<a class="headerlink" href="#session-1600-1615-summary-and-evaluation" title="Anchor link to this section for reference">&para;</a></h2>
+<p>I&rsquo;ve not shown the summary, although it follows the
+evaluation questions, as I feel it increases the evaluation
+results, as the confidences will be higher, due to the refresher.
+The full procedure took 3 minutes. It took 5 minutes
+for the 5 learners to fill in the evaluation forms.
+All learners said bye, except for 1.
+That 1 learner had a question, which was answered.</p>
+<p>I discussed this story with a colleague afterwards.
+He will try out a combination of showing
+summary yes/no, answers in summary yes/no
+and report to me.</p>
+<h2 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Anchor link to this section for reference">&para;</a></h2>
+<p><a href="20241024_counts.csv">20241024_counts.csv</a></p>
+<p><img alt="Centers of R learners" src="centers_venn.png" /></p>
+<blockquote>
+<p>Centers of R learners</p>
+</blockquote>
+<p><img alt="Languages of R learners" src="languages_venn.png" /></p>
+<blockquote>
+<p>Languages of R learners</p>
+</blockquote>
+<p><img alt="Number of learners per language" src="n_learners_per_language.png" /></p>
+<blockquote>
+<p>Number of learners per language</p>
+</blockquote>
+<p><img alt="Learners in time" src="n_learners_in_time.png" /></p>
+<blockquote>
+<p>Learners in time</p>
+</blockquote>
+<h2 id="evaluation-results">Evaluation results<a class="headerlink" href="#evaluation-results" title="Anchor link to this section for reference">&para;</a></h2>
+<p>5 responses</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1. Overall, how would you rate today&#39;s training event?
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>- 7.4. Average Number
+</span></code></pre></div>
+<p>Useless info to me.</p>
+<!-- markdownlint-disable MD013 -->
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>2. Today&#39;s content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>- &quot;I liked being able to run through the examples myself. &quot;
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>- &quot;Pedro&#39;s sessions&quot;
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+
+<p>Useless to me, nice for Pedro!</p>
+<!-- markdownlint-disable MD013 -->
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>3. Today&#39;s content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>- &quot;I think sometimes there could have been slightly less kinds of examples, and one main example per module with extra focus and more time to complete. &quot;
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+
+<p>I think I focussed well on one example and did have enough time for exercises.</p>
+<!-- markdownlint-disable MD013 -->
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>4. Training event organisation (e.g. announcement, registration, ...): – What did you like best? – Where should we improve?
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- &quot;I liked the general organization, felt like any questions one might have where answered in the introductory email.&quot;
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+
+<p>Nice for Birgitte!</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>5. Length of teaching today was
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Adequate 4 
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Too short 0 
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Too long 1 
+</span></code></pre></div>
+<p>Useless to me: which sessions?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>6. Depth of content was
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Adequate 4 
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Too superficial 1 
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Too profound 0 
+</span></code></pre></div>
+<p>Useless to me: which sessions?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>7. The pace of teaching was
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Adequate 3 
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Too slow 0 
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Too fast 2 
+</span></code></pre></div>
+<p>Useless to me: which sessions?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>8. Teaching aids used (e.g. slides) were well prepared
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Agree completely 2 
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Agree 3 
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>No strong feelings 0 
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Disagree 0 
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>Disagree completely 0 
+</span></code></pre></div>
+<p>Useless to me: which sessions?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>9. Hands-on exercises and demonstrations were
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Adequate 3 
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Too few 2 
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Too many 0 
+</span></code></pre></div>
+<p>Useless to me: which sessions?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>10. Hands-on exercises and demonstrations were well prepared
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Agree completely 2 
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Agree 3 
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>No strong feelings 0 
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Disagree 0 
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Disagree completely 0 
+</span></code></pre></div>
+<p>Useless to me: which sessions?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>11. How would you rate the separate sessions?
+</span></code></pre></div>
+<p><img alt="Ratings" src="../../evaluations/20241024_r/evaluation_4.png" /></p>
+<p>Only my sessions:</p>
+<ul>
+<li>Introduction: 2x very good, 2x excellent</li>
+<li>Load and run: 4x excellent</li>
+<li>Interactive work on the compute node: 1x very good, 4x excellent</li>
+<li>Using RStudio: 2x very good, 2x excellent</li>
+</ul>
+<p>So, although I dislike my &lsquo;Load and run&rsquo; session, it has been
+appreciated by the learners.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>12. Give your confidence levels of the following statements
+</span></code></pre></div>
+<p><img alt="Confidences 1" src="../../evaluations/20241024_r/evaluation_5.png" />
+<img alt="Confidences 2" src="../../evaluations/20241024_r/evaluation_6.png" /></p>
+<p>My learning objectives:</p>
+<ul>
+<li>I can find the module to be able to run R: 1x some, 1x good, 3x absolutely</li>
+<li>I can load the module to be able to run R: 1 some, 1 good, 3 absolutely</li>
+<li>I can run the R interpreter: 1 some, 1 good, 3 absolutely</li>
+<li>I can run the R command to get the list of installed R packages:
+  1 some, 1 good, 3 absolutely</li>
+<li>I can run an R script from the command-line: 1 some, 2 good, 2 absolutely</li>
+<li>I can find out if an R package is already installed:
+  1 some, 1 good, 3 absolutely</li>
+<li>I can start an interactive session: 1 low, 1 some, 1 good, 2 absolutely</li>
+<li>I can verify I am on the login node yes/no: 2 some, 2 good, 1 absolutely</li>
+<li>I can start an interactive session with multiple cores:
+  2 some, 1 good, 2 absolutely</li>
+<li>I can start RStudio: 1 some, 1 good, 3 absolutely</li>
+</ul>
+<p>It seems my simultaneous session was weakest: they did feel confident to
+start RStudio, but starting an interactive node and verify on which node(s)
+was indeed done a bit too informal in hindsight. It is weird that a learner
+has a low confidence in starting any interactive session, but some confidence
+when it is multiple cores&hellip;?</p>
+<p>To do next time:</p>
+<ul>
+<li>[ ] In the simultaneous session, stay formal</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>13.Did today&#39;s course meet your expectation?
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Yes 3 
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>No 0 
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Not sure 2 
+</span></code></pre></div>
+<p>Useless info.</p>
+<!-- markdownlint-disable MD013 -->
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>14. Which future training topics would you like to be provided by the training host(s)?
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>- 2 responses
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+
+<p>No idea what those are</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>15. Do you have any additional comments?
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>- 1 response
+</span></code></pre></div>
+<p>No idea what those are</p>
+<!-- Will not split up verbatim text over lines, hence will break 80 characters per line --><!-- Will not split up verbatim text over lines, hence will break 80 characters per line --><!-- Will not split up verbatim text over lines, hence will break 80 characters per line --><!-- Will not split up verbatim text over lines, hence will break 80 characters per line -->
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

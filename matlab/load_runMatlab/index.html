@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Load and run - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Load and run";
+        var mkdocs_page_input_path = "matlab/load_runMatlab.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Load and run</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#check-for-matlab-versions">Check for MATLAB versions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#type-along">Type-Along</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-a-matlab-module">Load a MATLAB module</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#type-along_1">Type-along</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#start-matlab-at-the-command-line">Start MATLAB at the Command Line</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#type-along_2">Type-along</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#start-the-matlab-gui">Start the MATLAB GUI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MATLAB</li>
+      <li class="breadcrumb-item active">Load and run</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/matlab/load_runMatlab.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="load-and-run-matlab">Load and Run MATLAB<a class="headerlink" href="#load-and-run-matlab" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Load MATLAB</li>
+<li>Run MATLAB scripts</li>
+<li>Start the MATLAB graphical user interface (GUI)</li>
+</ul>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Different recommended procedures for each HPC center:</p>
+<ul>
+<li><strong>UPPMAX, NSC, and HPC2N</strong>: use module system to load at command line</li>
+<li><strong>LUNARC</strong>: recommended to use Desktop On-Demand menu, but interactive and non-interactive command lines available</li>
+<li><strong>PDC</strong>: recommended to load at command line; can run interactively on a compute node with X-forwarding and <code>salloc</code>. ThinLinc access is restricted to 30 users for the whole Dardel cluster.</li>
+</ul>
+</div>
+<p>Most HPC centres in Sweden use the same or a similar module system for their software. The difference lies in which modules are installed and their versions/naming. The general examples below will be similar for all HPC centres in Sweden, with some variation in naming and available versions.</p>
+<details class="faq">
+<summary>Short cheat sheet</summary>
+<ul>
+<li>See which modules exists: <code>module spider</code> or <code>ml spider</code></li>
+<li>Find module versions for a particular software: <code>module spider &lt;software&gt;</code></li>
+<li>Modules depending only on what is currently loaded: <code>module avail</code> or <code>ml av</code></li>
+<li>See which modules are currently loaded: <code>module list</code> or <code>ml</code></li>
+<li>Load a module: <code>module load &lt;module&gt;/&lt;version&gt;</code> or <code>ml &lt;module&gt;/&lt;version&gt;</code></li>
+<li>Unload a module: <code>module unload &lt;module&gt;/&lt;version&gt;</code> or <code>ml -&lt;module&gt;/&lt;version&gt;</code></li>
+<li>More information about a module: <code>module show &lt;module&gt;/&lt;version&gt;</code> or <code>ml show &lt;module&gt;/&lt;version&gt;</code></li>
+<li>Unload all modules except the &ldquo;sticky&rdquo; modules: <code>module purge</code> or <code>ml purge</code></li>
+<li>Save currently loaded modules: <code>module save &lt;collection_name&gt;</code> (especially useful on Dardel)</li>
+<li>(Re)load modules from saved collection: <code>module restore &lt;collection_name&gt;</code></li>
+</ul>
+</details>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>Note that the module systems at UPPMAX, HPC2N, LUNARC, NSC, and PDC are slightly different.</li>
+<li>There is no system MATLAB that comes preloaded like Python at any of these HPC resources, but <code>ml load matlab</code> with no release date will load the latest release, which is periodically updated. For reproducibility reasons, you should be sure to load the same release throughout a given project.</li>
+<li>While all modules at UPPMAX and NSC not directly related to bio-informatics are shown by <code>ml avail</code>, modules at the other centers may be hidden until one has loaded a prerequisite, like the compiler <code>GCC</code>.</li>
+<li>You need to use <code>module spider</code> to see all modules at HPC2N, LUNARC, and PDC, and <code>ml avail</code> for those available to load given your currently loaded prerequisites.</li>
+<li>New sessions on Dardel (PDC) start with 13 modules loaded, but only one of them is sticky (i.e. will remain loaded after a <code>ml purge</code> command). We highly recommended that you save the preloaded modules as a collection so that you can quickly restore the default modules if you accidentally use <code>ml purge</code> instead of <code>ml unload &lt;module&gt;</code>.</li>
+</ul>
+</div>
+<h2 id="check-for-matlab-versions">Check for MATLAB versions<a class="headerlink" href="#check-for-matlab-versions" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="type-along">Type-Along<a class="headerlink" href="#type-along" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Below we have examples for how to check for MATLAB versions on different clusters. Follow along at your cluster.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">UPPMAX (Rackham and Pelle) and NSC (Tetralith)</label><label for="__tabbed_1_2">HPC2N</label><label for="__tabbed_1_3">LUNARC</label><label for="__tabbed_1_4">PDC (Dardel)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Check all available MATLAB versions with:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>module<span class="w"> </span>avail<span class="w"> </span>matlab
+</span></code></pre></div>
+Output on Rackham as of 22 September 2025:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>----------------------------<span class="w"> </span>/sw/mf/rackham/applications<span class="w"> </span>----------------------------
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">   </span>matlab/R2014a<span class="w">    </span>matlab/R2018a<span class="w">    </span>matlab/R2022b<span class="w">          </span>matlab/7.10
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">   </span>matlab/R2015a<span class="w">    </span>matlab/R2018b<span class="w">    </span>matlab/R2023a<span class="w">          </span>matlab/7.13
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">   </span>matlab/R2015b<span class="w">    </span>matlab/R2019a<span class="w">    </span>matlab/R2023b<span class="w"> </span><span class="o">(</span>D<span class="o">)</span><span class="w">      </span>matlab/8.0
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">   </span>matlab/R2016a<span class="w">    </span>matlab/R2020b<span class="w">    </span>matlab/7.4<span class="w">             </span>matlab/8.1
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">   </span>matlab/R2017a<span class="w">    </span>matlab/R2022a<span class="w">    </span>matlab/7.8
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>Where:
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">   </span>D:<span class="w">  </span>Default<span class="w"> </span>Module
+</span></code></pre></div>
+<p>Output on Pelle as of 22 September 2025:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>----------------------------<span class="w"> </span>/sw/mf/pelle/applications<span class="w"> </span>----------------------------
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">   </span>MATLAB/2023b-update4
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">   </span>MATLAB/2024a
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>Where:
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">   </span>D:<span class="w">  </span>Default<span class="w"> </span>Module
+</span></code></pre></div>
+<p>Output on Tetralith as of 27 Feb 2025:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>---------------------<span class="w"> </span>/software/sse2/tetralith_el9/modules<span class="w"> </span>---------------------
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">   </span>MATLAB/recommendation<span class="w"> </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>MATLAB/2023b-bdist
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">   </span>MATLAB/2023a-bdist<span class="w">           </span>MATLAB/2024a-hpc1-bdist
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>Where:
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">   </span>D:<span class="w">  </span>Default<span class="w"> </span>Module
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Check all available MATLAB versions with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>module<span class="w"> </span>spider<span class="w"> </span>MATLAB
+</span></code></pre></div>
+<p>As of 26 Sep 2024, the above outputs the following on Kebnekaise:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>----------------------------------------------------------------------------
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>MATLAB:
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>----------------------------------------------------------------------------
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>Description:
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">      </span>MATLAB<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>high-level<span class="w"> </span>language<span class="w"> </span>and<span class="w"> </span>interactive<span class="w"> </span>environment<span class="w"> </span>that
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span>enables<span class="w"> </span>you<span class="w"> </span>to<span class="w"> </span>perform<span class="w"> </span>computationally<span class="w"> </span>intensive<span class="w"> </span>tasks<span class="w"> </span>faster<span class="w"> </span>than
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span>with<span class="w"> </span>traditional<span class="w"> </span>programming<span class="w"> </span>languages<span class="w"> </span>such<span class="w"> </span>as<span class="w"> </span>C,<span class="w"> </span>C++,<span class="w"> </span>and<span class="w"> </span>Fortran.
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">     </span>Versions:
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span>MATLAB/2019b.Update2
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span>MATLAB/2021a
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span>MATLAB/2021b
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span>MATLAB/2022b.Update3
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span>MATLAB/2023a.Update4
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">     </span>Other<span class="w"> </span>possible<span class="w"> </span>modules<span class="w"> </span>matches:
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span>MATLAB-parallel-support
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>----------------------------------------------------------------------------
+</span></code></pre></div>
+<p>Note that it is case-sensitive and must be in ALL-CAPS. There will be results if you type <code>matlab</code>, but they won&rsquo;t be the ones you want.
+To see how to load a specific version of MATLAB, including the prerequisites, do</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>module<span class="w"> </span>spider<span class="w"> </span>MATLAB/&lt;version&gt;
+</span></code></pre></div>
+<p>Example for MATLAB 2023a.Update4</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>module<span class="w"> </span>spider<span class="w"> </span>MATLAB/2023a.Update4
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>See all available MATLAB versions at the command line with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ml<span class="w"> </span>spider<span class="w"> </span>matlab
+</span></code></pre></div>
+<p>Or, if on Desktop On-Demand, select <code>Applications</code> in the top left corner and hover over <code>Applications - Matlab</code> (see also GUI section below).</p>
+<p>As of 27 Feb 2025, <code>ml spider matlab</code> on COSMOS outputs the following:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>----------------------------------------------------------------------------
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>matlab:
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>----------------------------------------------------------------------------
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span>Versions:
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span>matlab/2022a
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span>matlab/2023a
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span>matlab/2023b
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span>matlab/2024b
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>----------------------------------------------------------------------------
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>For<span class="w"> </span>detailed<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span><span class="s2">&quot;matlab&quot;</span><span class="w"> </span>package<span class="w"> </span><span class="o">(</span>including<span class="w"> </span>how<span class="w"> </span>to
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>load<span class="w"> </span>the<span class="w"> </span>modules<span class="o">)</span><span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>module<span class="err">&#39;</span>s<span class="w"> </span>full<span class="w"> </span>name.<span class="w"> </span>Note<span class="w"> </span>that<span class="w"> </span>names<span class="w"> </span>that<span class="w"> </span>have<span class="w"> </span>a
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>trailing<span class="w"> </span><span class="o">(</span>E<span class="o">)</span><span class="w"> </span>are<span class="w"> </span>extensions<span class="w"> </span>provided<span class="w"> </span>by<span class="w"> </span>other<span class="w"> </span>modules.
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>For<span class="w"> </span>example:
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>module<span class="w"> </span>spider<span class="w"> </span>matlab/2023b
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>----------------------------------------------------------------------------
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>See all available MATLAB versions at the command line with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ml<span class="w"> </span>spider<span class="w"> </span>matlab
+</span></code></pre></div>
+<p>As of 17 Mar 2025, the above command outputs the following on Dardel:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Versions:
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>matlab/r2020b
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>matlab/r2021b
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>matlab/r2022b
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span>matlab/r2023a
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span>matlab/r2024a-ps
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span>matlab/r2024a
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span>matlab/r2024b
+</span></code></pre></div>
+<p>On Dardel, all MATLAB versions have a prerequisite that needs to be loaded (it will called something like PDC/xx.xx or PDCOLD/xx.xx). To view the prerequisites for a specific version of MATLAB, do</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>module<span class="w"> </span>spider<span class="w"> </span>matlab/&lt;version&gt;
+</span></code></pre></div>
+<p>For example, <code>module spider matlab/r2024b</code> outputs the following:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>matlab:<span class="w"> </span>matlab/r2024b
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span>You<span class="w"> </span>will<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>all<span class="w"> </span>module<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>any<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>lines<span class="w"> </span>below<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;matlab/r2024b&quot;</span><span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>to<span class="w"> </span>load.
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span>PDC/23.12
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span>Help:
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span>For<span class="w"> </span>more<span class="w"> </span>information,<span class="w"> </span>visit:
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">       </span>https://www.mathworks.com
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="load-a-matlab-module">Load a MATLAB module<a class="headerlink" href="#load-a-matlab-module" title="Anchor link to this section for reference">&para;</a></h2>
+<p>For reproducibility, we recommend ALWAYS loading a specific module instead of using the default version!</p>
+<p>For this course, we recommend using MATLAB R2023x at UPPMAX (R2023b), NSC (2023b), and HPC2N (2023b), or R2024b at LUNARC (2024b). At PDC, we recommend r2024b.</p>
+<h3 id="type-along_1">Type-along<a class="headerlink" href="#type-along_1" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Try loading a MATLAB module at the command line. First, go back and check which MATLAB modules were available.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">UPPMAX</label><label for="__tabbed_2_2">HPC2N (Kebnekaise)</label><label for="__tabbed_2_3">LUNARC (COSMOS)</label><label for="__tabbed_2_4">NSC (Tetralith)</label><label for="__tabbed_2_5">PDC (Dardel)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Rackham.</strong> To load version 2023b, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>module<span class="w"> </span>load<span class="w"> </span>matlab/R2023b
+</span></code></pre></div>
+<p>Note: all lowercase except the R.
+ For short, you can also use <code>ml</code> instead of <code>module load</code></p>
+<p><strong>Pelle.</strong> To load version 2023b-update4, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2023b-update4
+</span></code></pre></div>
+<p>Note: MATLAB is all uppercase.
+ For short, you can also use <code>ml</code> instead of <code>module load</code></p>
+</div>
+<div class="tabbed-block">
+<p>To load version 2023b, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2023b
+</span></code></pre></div>
+<p>Note: all Uppercase except for the letter after the year.
+ For short, you can also use:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ml<span class="w"> </span>MATLAB/2023b
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>To load version 2024b, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>module<span class="w"> </span>load<span class="w"> </span>matlab/2024b
+</span></code></pre></div>
+<p>Note: all lowercase.
+ For short, you can also use:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ml<span class="w"> </span>matlab/2024b
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>To load version 2023b, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2023b-bdist
+</span></code></pre></div>
+<p>Note: all Uppercase except for the letter after the year.
+ For short, you can also use:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ml<span class="w"> </span>MATLAB/2023b
+</span></code></pre></div>
+<p>If you check with <code>ml</code> which version is loaded, you will see the <code>-bdist</code> suffix was added automatically. Versions without <code>-bdist</code> at the end only appear with <code>ml spider matlab</code> and they do not appear to be loadable.</p>
+</div>
+<div class="tabbed-block">
+<p>Go back and check which MATLAB modules were available, and what their prerequisites are. To load version 2024b, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>module<span class="w"> </span>load<span class="w"> </span>PDC/23.12
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>module<span class="w"> </span>load<span class="w"> </span>matlab/r2024b
+</span></code></pre></div>
+<p>Notes: the module name is all lowercase including the <code>r</code> before the year.
+ For short, you can also use:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>matlab/r2024b
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="start-matlab-at-the-command-line">Start MATLAB at the Command Line<a class="headerlink" href="#start-matlab-at-the-command-line" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Most of the time, you will run either MATLAB live scripts (<code>.mlx</code>) or basic script or function files (<code>.m</code>).
+Live scripts can only be opened and worked on in the GUI, while basic function or script files can also be run from a batch script and/or at the command line.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the command line, function definition is typically not supported unless the function is short and anonymous.
+User-defined functions must generally be written up and saved to separate <code>.m</code> files.</p>
+</div>
+<p>The GUI is often the recommended interface where it is offered. SLURM jobs can be set up through the <code>Parallel Computing Toolbox</code>, which will be discussed later. The resources required to run the GUI and those required to run a job submitted to SLURM are separate, so do not worry if the maximum allocation time for a MATLAB GUI session is much less than the limit for a SLURM job.</p>
+<div class="admonition important">
+<p class="admonition-title"><code>-singleCompThread</code></p>
+<p>When starting MATLAB from the command line, the <code>-singleCompThread</code> flag is usually required to prevent MATLAB from spawning as many processes as it thinks it needs up to the full capacity of a node. At most HPC centers, terminal instances launch MATLAB (either the GUI or command line) on a login node by default. Hogging a login node can disrupt jobs and access for other users, and violates the NAISS user agreement. HPC center staff reserve the right to kill disruptive tasks without warning. A few HPC centers detect if you have started on a login node and set <code>maxCompThreads</code> to 1 automatically, but when in doubt, use <code>-singleCompThread</code> to be safe.</p>
+<p>Setting <code>-singleCompThread</code> does <strong>not</strong> prevent MATLAB from sending parallelised and/or multi-threaded jobs to SLURM or the MATLAB Distributed Computing Server (MDCS).</p>
+</div>
+<h3 id="type-along_2">Type-along<a class="headerlink" href="#type-along_2" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Try starting MATLAB at the command line. We will use the same versions as in the previous section.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">UPPMAX (Rackham and Pelle?) and NSC (Tetralith)</label><label for="__tabbed_3_2">HPC2N (Kebnekaise)</label><label for="__tabbed_3_3">LUNARC (COSMOS)</label><label for="__tabbed_3_4">PDC (Dardel)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Once you&rsquo;ve loaded your preferred version of MATLAB, type:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>matlab<span class="w"> </span>-nodisplay
+</span></code></pre></div>
+<p>to start MATLAB in the terminal. The maximum number of computational threads will be set to 1 automatically if you are on a log-in node.</p>
+</div>
+<div class="tabbed-block">
+<p>The GUI can be started in a ThinLinc session by going to &ldquo;Application&rdquo; &rarr; &ldquo;HPC2N Applications&rdquo; &rarr; &ldquo;Applications&rdquo; &rarr; &ldquo;Matlab <version>&rdquo; and clicking the desired version.</p>
+<p>To start MATLAB in the terminal, load matlab/2023b or your preferred version, and then type:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay
+</span></code></pre></div>
+<p>to start MATLAB in the terminal. The <code>-singleCompThread</code> is important to prevent MATLAB from hogging a whole node, and the <code>-nodisplay</code> flag prevents the GUI from launching.</p>
+</div>
+<div class="tabbed-block">
+<p>It is recommended that GUI be started in ThinLinc at the LUNARC HPC Desktop On-Demand.</p>
+<p>To start MATLAB in the terminal, you must first choose the correct terminal. There are several in the Applications menu:</p>
+<ul>
+<li>three in <code>Applications - General</code>, which can safely launch either the MATLAB GUI or MATLAB command line on a compute node, </li>
+<li>one in <code>Applications - Visualization</code>, which should be reserved for very graphics-heavy jobs, and </li>
+<li>one in <code>Favorites</code>, which <strong>MATLAB users should avoid</strong> because it runs on a login node.</li>
+</ul>
+<p>Starting any of the ones under menu headings starting with <code>Applications -</code> will open a GfxLauncher popup that prompts you for your account and resource choices. Even users who have been awarded GPU time are encouraged to use the CPU-only terminal whenever possible, as they are abundant, less resource intensive, and allow longer wall times.</p>
+<p>Once you&rsquo;ve opened a terminal session and loaded your preferred version type:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Starting a MATLAB session on Dardel looks different depending on whether or not you are affiliated KTH or have been added to the MATLAB user group by PDC support (e.g. as part of this course, if you signed up in time). If you are a KTH affiliate or another PDC-approved academic user, you are covered by KTH&rsquo;s university license. Otherwise, you will need to have a MathWorks account and be logged into it in your browser before getting started, because MATLAB on Dardel will ask you provide the email associated with your MathWorks account and a one-time password (OTP) sent to that account online (which you will have to copy from your browser).</p>
+<p>Either way, you will first need to load the corresponding PDC, PDCOLD, or PDCTEST prerequisite. The current default is PDC/23.12, and that makes available any MATLAB version from 2024. The only version that reliably works for non-KTH users without asking for credentials is r2024-ps.</p>
+<p>If you, for example, wanted to start matlab/r2024a-ps in the terminal, the sequence would look as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ml<span class="w"> </span>PDC/23.12<span class="w">  </span>matlab/r2024a-ps
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-nodisplay
+</span></code></pre></div>
+<p>If you are an academic user who has been vetted by PDC staff, the above should be enough to eventually take you to the MATLAB command prompt. Otherwise, you will see the following:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Please<span class="w"> </span>enter<span class="w"> </span>your<span class="w"> </span>MathWorks<span class="w"> </span>Account<span class="w"> </span>email<span class="w"> </span>address<span class="w"> </span>and<span class="w"> </span>press<span class="w"> </span>Enter:<span class="w"> </span>&lt;your.email@your.institute.se&gt;
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">   </span>You<span class="w"> </span>need<span class="w"> </span>a<span class="w"> </span>one-time<span class="w"> </span>password<span class="w"> </span>to<span class="w"> </span>sign<span class="w"> </span><span class="k">in</span>.<span class="w"> </span>To<span class="w"> </span>get<span class="w"> </span>a<span class="w"> </span>one-time<span class="w"> </span>password,<span class="w"> </span>follow<span class="w"> </span>these<span class="w"> </span>steps:
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">     </span><span class="m">1</span>.<span class="w"> </span>Go<span class="w"> </span>to<span class="w"> </span>https://www.mathworks.com/mwa/otp
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">     </span><span class="m">2</span>.<span class="w"> </span>Enter<span class="w"> </span>your<span class="w"> </span>MathWorks<span class="w"> </span>Account<span class="w"> </span>email<span class="w"> </span>address.
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">     </span><span class="m">3</span>.<span class="w"> </span>Copy<span class="w"> </span>the<span class="w"> </span>generated<span class="w"> </span>one-time<span class="w"> </span>password.
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">     </span><span class="m">4</span>.<span class="w"> </span>Return<span class="w"> </span>here<span class="w"> </span>and<span class="w"> </span>enter<span class="w"> </span>the<span class="w"> </span>password.
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">   </span>Enter<span class="w"> </span>the<span class="w"> </span>one-time<span class="w"> </span>password:
+</span></code></pre></div>
+<p>If you are a student or staff member at KTH and you see these credential requests, that means PDC support did not receive your request for MATLAB access.</p>
+<p>!!! note</p>
+<div class="language-text highlight"><pre><span></span><code> PDC users may also go through ThinLinc and open MATLAB from the On-Demand Applications menu, but this is not recommended. Only 30 users are allowed to interface with Dardel via ThinLinc at any one time, and queue times are very long.
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="start-the-matlab-gui">Start the MATLAB GUI<a class="headerlink" href="#start-the-matlab-gui" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Running the MATLAB GUI requires that users be logged into a ThinLinc session. Refer to <a href="../../common/login/##step-1-log-in">the login section</a> for help.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">HPC2N (Kebnekaise)</label><label for="__tabbed_4_2">UPPMAX (Pelle)</label><label for="__tabbed_4_3">NSC (Tetralith)</label><label for="__tabbed_4_4">LUNARC (COSMOS)</label><label for="__tabbed_4_5">PDC (Dardel)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>For HPC2N, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the <code>-nodisplay</code> flag is omitted (as are <code>-nodesktop -nosplash</code> if applicable). You should still include <code>-singleCompThread</code>!</p>
+<p>It is possible to start the MATLAB GUI on a compute node on Kebnekaise (HPC2N). The procedure uses <code>salloc</code> and <code>srun</code> to achieve what other facilities often do with the <code>interactive</code> command (edit time, resources, project ID, and MATLAB version as needed):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>salloc<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:30:00<span class="w"> </span>-A<span class="w"> </span>hpc2n20YY-XXX
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2023b
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>srun<span class="w"> </span>matlab
+</span></code></pre></div>
+<p>Finally, HPC2N also has MATLAB available through the Open OnDemand portal. We will cover this briefly <a href="https://uppmax.github.io/R-matlab-julia-HPC/common/on-demand/">in a later lecture</a>, and there is more specific documentation in the <a href="https://docs.hpc2n.umu.se/tutorials/connections/#interactive__apps__-__matlab__proxy">HPC2N connection guides</a>.</p>
+</div>
+<div class="tabbed-block">
+<p>For UPPMAX users, once logged into the remote desktop, the procedure for starting the MATLAB GUI is the same as what was shown above to start it at the command line, except that the <code>-nodisplay</code> flag is omitted (as are <code>-nodesktop -nosplash</code> if applicable). You should still include <code>-singleCompThread</code>!</p>
+<p><img alt="MATLAB GUI, Rackham" src="../../img/Rackham-Matlab.png" /></p>
+<p>It is also possible to start the MATLAB GUI on the login node. A MATLAB GUI session on a compute node can be run with the following commands (again, edit time, resources, project ID, and MATLAB version as needed):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>interactive<span class="w">  </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:30:00<span class="w"> </span>-A<span class="w"> </span>uppmax2025-2-360
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2023b-update4
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>matlab
+</span></code></pre></div>
+<p>In the above example, <code>-n 4</code> means the job will run on 4 cores. Pelle nodes have 96 cores. Please refer to <a href="https://docs.uppmax.uu.se/cluster_guides/snowy/#using-the-batch-system">this link</a> for allowed combinations of <code>interactive</code> parameters.</p>
+</div>
+<div class="tabbed-block">
+<p>The best way to start the MATLAB GUI on Tetralith depends on how intensively you plan to use the GUI. Most of the time, it is recommended to use the <code>interactive</code> command first to get an allocation on a compute node. The commands you will need to enter look like the following (change the MATLAB version and interactive job specifications as needed):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>interactive<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>-t<span class="w"> </span><span class="m">4</span>:00:00
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2024a-hpc1-bdist
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>matlab<span class="w"> </span>-softwareopengl
+</span></code></pre></div>
+<p>For short (&lt;&lt;1 hour) tasks requiring few resources, once you&rsquo;ve loaded your preferred version of MATLAB, you can use the following command to start MATLAB on a login node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>vglrun<span class="w"> </span>matlab<span class="w"> </span>-nosoftwareopengl
+</span></code></pre></div>
+<p>You do not need to include <code>-singleCompThread</code> because <code>maxNumCompThreads</code> will be set to 1 automatically to account for starting on a login node.</p>
+</div>
+<div class="tabbed-block">
+<p>The recommended way to open the MATLAB GUI on COSMOS is by using <a href="https://uppmax.github.io/R-matlab-julia-HPC/common/on-demand/">Desktop On-Demand</a>. We will go over this in the first session after lunch.</p>
+<p>There are 3 versions per MATLAB release in the Apps menu&mdash;regular, (CPU), and (HEP,CPU)&mdash;and your resource choices partly depend on which of those you select.</p>
+<p><img alt="MATLAB GUI, COSMOS" src="../../img/Cosmos-AppMenu-Matlab.png" /></p>
+<p>The (HEP,CPU) nodes are private. The regular versions may run on either AMD/NVIDIA A40 48-core nodes or Intel/NVIDIA A40 32-core nodes, and the maximum allowed wall times for each are 24 and 48 hours, respectively. If you do not plan to do any intensive graphical work inside the GUI, you can choose the (CPU) version of your preferred release to access an AMD A100 48-core node, which also allows you to run for up to 7 days (168:00:00).</p>
+</div>
+<div class="tabbed-block">
+<p>There are 2 ways to run MATLAB interactively on Dardel: via SSH with X-forwarding (recommended), or via Desktop On-Demand in a ThinLinc window. ThinLinc access to Dardel is limited to 30 users total, and even if you do get through, interactive jobs are likely to be stuck in queues for a long time.</p>
+<p><strong>SSH with X-forwarding.</strong> When you first ssh into Dardel, you will need to have added the <code>-X</code> flag between <code>ssh</code> and your username. Once you are logged in, you need to book a compute node with <code>salloc</code>, and then SSH (again with the <code>-X</code> flag) into whichever node you are assigned to by <code>salloc</code>. The <code>salloc</code> step and its output will look something like this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>salloc<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:30:00<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-262<span class="w"> </span>-p<span class="w"> </span>main
+</span></code></pre></div>
+<p>if you request a full node, or</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>salloc<span class="w"> </span>-c<span class="w"> </span><span class="m">16</span><span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:30:00<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-262<span class="w"> </span>-p<span class="w"> </span>shared
+</span></code></pre></div>
+<p>if you request, for example, 16 cores on a shared node. Adjust the time, resources, and account number as needed. <code>salloc</code> will then print a handful of lines about the progress of allocating and queuing your job. The last line of output, something like <code>salloc: Nodes nid00xxxx are ready for job</code>, will contain the ID of the node you booked. Copy that, and then run the following lines (after the <code>:~&gt;</code> prompt; adjust the node ID as needed):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>&lt;user&gt;@login1:~&gt;<span class="w"> </span>ssh<span class="w"> </span>-X<span class="w"> </span>nid001756
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>&lt;user&gt;@nid001756:~&gt;<span class="w"> </span>ml<span class="w"> </span>PDC/23.12
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>&lt;user&gt;@nid001756:~&gt;<span class="w"> </span>ml<span class="w"> </span>matlab/r2024a-ps
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>&lt;user&gt;@nid001756:~&gt;<span class="w"> </span>matlab
+</span></code></pre></div>
+<p>The GUI will take a few minutes to load.</p>
+<p>If you are lucky enough to get into Dardel via ThinLinc, the process looks very similar to LUNARC because Dardel uses the same Desktop On-Demand interface, except that the MATLAB versions in the app menu are under <code>PDC - Matlab</code> and are not separated by the types of nodes to run on.</p>
+</div>
+</div>
+</div>
+<h3 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Try them yourself! Note that <code>$</code> indicates a bash prompt and <code>&gt;&gt;</code> indicates the MATLAB prompt; those characters should not be included at the front of your input.</p>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 1.</strong> Load MATLAB in the terminal or GUI.</p>
+<p>Then do a few simple commands at the command line. For example,
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>$<span class="w"> </span>ml<span class="w"> </span>matlab/2023b
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>$<span class="w"> </span>matlab<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">                            </span>&lt;<span class="w"> </span>M<span class="w"> </span>A<span class="w"> </span>T<span class="w"> </span>L<span class="w"> </span>A<span class="w"> </span>B<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>&gt;
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">               </span>Copyright<span class="w"> </span><span class="m">1984</span>-2023<span class="w"> </span>The<span class="w"> </span>MathWorks,<span class="w"> </span>Inc.
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">           </span>R2023b<span class="w"> </span>Update<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">(</span><span class="m">23</span>.2.0.2515942<span class="o">)</span><span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span>glnxa64<span class="o">)</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">                           </span>January<span class="w"> </span><span class="m">30</span>,<span class="w"> </span><span class="m">2024</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>doc.
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>For<span class="w"> </span>product<span class="w"> </span>information,<span class="w"> </span>visit<span class="w"> </span>www.mathworks.com.
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>&gt;&gt;<span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">;</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>&gt;&gt;<span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>eye<span class="o">(</span><span class="m">2</span><span class="o">)</span><span class="p">;</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>&gt;&gt;<span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a+b
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="nv">c</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="w">    </span><span class="m">6</span><span class="w">     </span><span class="m">5</span>
+</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="w">    </span><span class="m">5</span><span class="w">     </span><span class="m">6</span>
+</span></code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 2.</strong> Run a function.</p>
+<p>Copy the example function below to a file called <code>add2.m</code> in your working directory or the MATLAB directory that the configuration step created for you in your Documents folder. Then run it at the MATLAB command line.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">function</span><span class="w"> </span>result<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">add2</span><span class="p">(</span>x,y<span class="p">)</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="n">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="o">+</span><span class="n">y</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="nb">disp</span><span class="p">(</span><span class="s">&quot;The sum of &quot;</span><span class="o">+</span><span class="n">x</span><span class="o">+</span><span class="s">&quot; and &quot;</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="s">&quot; is &quot;</span><span class="o">+</span><span class="n">result</span><span class="p">)</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">end</span>
+</span></code></pre></div>
+</div>
+<details class="check">
+<summary>Solution</summary>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">add2</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">result</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">    </span><span class="mi">13</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="n">The</span><span class="w"> </span><span class="s">sum</span><span class="w"> </span><span class="s">of</span><span class="w"> </span><span class="s">5</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">8</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">13</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="o">&gt;&gt;</span>
+</span></code></pre></div>
+</details>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 3.</strong> Exit the MATLAB command line.</p>
+<p>Use <code>quit</code> or <code>exit</code> (this can take a few seconds).</p>
+</div>
+<details class="check">
+<summary>Solution</summary>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">exit</span>
+</span></code></pre></div>
+</details>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>You can start MATLAB either in a GUI or, with the <code>-nodisplay</code> flag, run it in the terminal.</li>
+<li>If you start either interface from the terminal, you must first load the correct module(s).</li>
+<li>For interactive work, you will usually have to reserve time on a compute node, but some facilities have a Desktop On-Demand interface that makes that easier.</li>
+<li>If you take the risk of starting on a login node, use the <code>-singleCompThread</code> flag in the starting command to avoid hogging the node, unless you are sure that your cluster sets that constraint on the login node automatically.</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../intro-matlab/" class="btn btn-neutral float-left" title="Intro"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../slurmMatlab/" class="btn btn-neutral float-right" title="MATLAB terminal and Slurm">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../intro-matlab/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../slurmMatlab/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
