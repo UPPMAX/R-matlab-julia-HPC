@@ -1,0 +1,29 @@
+Id,Starttid,Slutförandetid,E-post,Namn,Språk,"Overall, how would you rate today's training event?",What do you think about the pace of teaching overall?,"Give your confidence levels of the following statements
+.I can find the module to be able to run R","Give your confidence levels of the following statements
+.I can load the module to be able to run R","Give your confidence levels of the following statements
+.I can run the R interpreter","Give your confidence levels of the following statements
+.I can run the R command to get the list of installed R packages","Give your confidence levels of the following statements
+.I can run an R script from the command-line","Give your confidence levels of the following statements
+.I can find out if an R package is already installed","Give your confidence levels of the following statements
+.I can load the pre-installed R packages","Give your confidence levels of the following statements
+.I can install an R package from CRAN","Give your confidence levels of the following statements
+.I can submit a job to the scheduler to run an R script with regular code","Give your confidence levels of the following statements
+.I can submit a job to the scheduler to run an R script that uses parallel code","Give your confidence levels of the following statements
+.I can start an interactive session","Give your confidence levels of the following statements
+.I can verify I am on the login node yes/no","Give your confidence levels of the following statements
+.I can start an interactive session with multiple cores","Give your confidence levels of the following statements
+.I can start RStudio",Would you recommend this course to someone else?,"Which future training topics would you like to be provided by the training host(s)?
+
+Note: we will not provide courses on things like area-specific R packages.","Do you have any additional comments? 
+
+Suggestions/ideas:
+
+- What did you like best? (materials, exercises, structure)
+- Where should we improve? (materials, exercises, structure) 
+- Training organiza"
+1,10/6/2025 14:45,10/6/2025 14:48,anonymous,,,10,"Could have covered a bit more, but good pace for a beginner course.",I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,Yes,,
+2,10/6/2025 14:54,10/6/2025 14:55,anonymous,,,1,uneaven and not balanced based on the difficulty of the task,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I have some confidence I can do this,I can absolutely do this!,I can absolutely do this!,I have no confidence I can do this,I have some confidence I can do this,I have some confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,No,COSMOS SENS,
+3,10/6/2025 14:53,10/6/2025 14:57,anonymous,,,9,It was good,I have good confidence I can do this,I have some confidence I can do this,I have good confidence I can do this,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I have some confidence I can do this,I have low confidence I can do this,I have low confidence I can do this,I have some confidence I can do this,I have low confidence I can do this,I can absolutely do this!,Yes,,"I liked the online material about how to prepare and get everything set up, which has been my main issue so far. Unfortunately I could not initially run R via the terminal/ssh, so I couldn't do the practicals on batch, but I am sure I can figure it out myself."
+4,10/6/2025 14:53,10/6/2025 14:58,anonymous,,,9,good,I can absolutely do this!,I have good confidence I can do this,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I have some confidence I can do this,I have no confidence I can do this,I have good confidence I can do this,I have good confidence I can do this,I have some confidence I can do this,I can absolutely do this!,Yes,"instead of using the zip files you provided, where and how to creat .sh file?",no
+5,10/6/2025 14:53,10/6/2025 14:59,anonymous,,,9,good,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I have good confidence I can do this,I have good confidence I can do this,I have good confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,I did not attend that session,I can absolutely do this!,Yes,fundamental coding strategies in R (treating with dataframes/csv,no
+6,10/17/2025 13:09,10/17/2025 13:12,anonymous,,,8,uneven but mostly ok,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I can absolutely do this!,I have good confidence I can do this,I have good confidence I can do this,I have good confidence I can do this,I have good confidence I can do this,I have some confidence I can do this,I have some confidence I can do this,I have low confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,I have no confidence I can do this,Yes,opencl,awesome material and good that you record but could you record during the lectures all of you so we get the exact thing that is thought? i'm also not fond of having to have the camera on which i felt there was pressure to do so i watched most after the course instead
