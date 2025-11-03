@@ -60,6 +60,19 @@ get_teacher_per_learning_outcome <- function() {
 get_teacher_per_learning_outcome()
 
 ###############################################################
+#
+###############################################################
+t <- read_data()
+names(t)
+t$`Would you recommend this course to someone else?`
+
+
+t |> dplyr::select(tidyselect::starts_with("What do you think about the pace"))
+
+readr::write_csv(x = t |> dplyr::select(tidyselect::starts_with("Do you have any additional comments?")), file = "other_feedback.txt")
+
+
+###############################################################
 # Confidences
 ###############################################################
 t <- merge(read_confidences(), get_teacher_per_learning_outcome())
