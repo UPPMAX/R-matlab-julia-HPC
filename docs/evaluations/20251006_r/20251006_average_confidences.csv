@@ -1,0 +1,15 @@
+learning_outcome,teacher,mean
+I can start an interactive session with multiple cores,RB+RP,1.4
+I can start an interactive session,BB,1.5
+I can submit a job to the scheduler to run an R script that uses parallel code,BB,1.5
+I can verify I am on the login node yes/no,RB+RP,1.5
+I can submit a job to the scheduler to run an R script with regular code,BB,2
+I can start RStudio,RB+RP,2.6666666666666665
+I can install an R package from CRAN,BB,3
+I can load the module to be able to run R,RB,3.5
+I can run an R script from the command-line,RB,3.5
+I can find out if an R package is already installed,BB,3.6666666666666665
+I can load the pre-installed R packages,BB,3.6666666666666665
+I can find the module to be able to run R,RB,3.8333333333333335
+I can run the R interpreter,RB,3.8333333333333335
+I can run the R command to get the list of installed R packages,RB,4
