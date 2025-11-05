@@ -183,5 +183,11 @@ incorrect (they do seem incomplete) I can imagine that the
 COSMOS SENS person had problems here. I conclude that me and Rebecca
 did a perfect job!
 
+This brings us to another problem: the learner that was absent
+filled in a 'I have no confidence I can do this'
+over skipping the question. As far as I remember, it was impossible
+to skip questions.
 
+- [ ] Suggest to make confidences optional (i.e. one can get away
+  to not fill in a confidence) to remove this skew
 
