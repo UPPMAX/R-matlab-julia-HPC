@@ -163,7 +163,8 @@ Taking a look at the confidences per question for RStudio:
 
 ![Confidences per question for RStudio](20251006_confidences_per_question_rstudio.png)
 
-Could it be that I scored 2x a 5 and Rebecca scored 2x a 5?
+Could it be that I scored 2x a 'I can absolutely do this!'
+and Rebecca scored 2x a 'I can absolutely do this!'?
 
 Starting time   |Confidence for 'I can start RStudio'
 ----------------|------------------------------------
@@ -174,5 +175,10 @@ Starting time   |Confidence for 'I can start RStudio'
 10/6/2025 14:53 |I can absolutely do this!
 10/17/2025 13:09|I have no confidence I can do this
 
-The last person may not have followed this session at all?
+The last person may not have followed this session at all? It would make
+sense: I've had 2 and Rebecca had -according to my notes- 2.
+I think it is likely enough that the 4x 'I can absolutely do this!'
+comes from the 4x people attending our session. If my notes are
+incorrect (they do seem incomplete) I can imagine that the
+COSMOS SENS person had problems here.
 
