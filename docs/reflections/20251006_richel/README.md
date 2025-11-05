@@ -137,6 +137,17 @@ I can start an interactive session                                            |N
 So in this case, higher learning outcomes were achieved in the sessions
 with a camera, including by the person that did not like using a camera.
 
+About having videos to the material,
+I find that live recordings have
+'No performance advantage was found for viewing recordings despite students'
+positive perception of their utility.'
+[Lesser, Melissa, and Lora Packel. "Educational Lessons from a Pandemic: 
+Lecture Recording and Learning Outcomes." 
+Internet Journal of Allied Health Sciences and Practice 22.2 (2024): 9., 
+[Link to paper](https://nsuworks.nova.edu/ijahsp/vol22/iss2/9/)].
+However, that paper does find positive effects for learners that, unlike
+here, use it **after** attending a session.
+
 ## The RStudio sessions
 
 I've compared the simultaneous sessions of this course's
