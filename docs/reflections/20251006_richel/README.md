@@ -180,5 +180,8 @@ sense: I've had 2 and Rebecca had -according to my notes- 2.
 I think it is likely enough that the 4x 'I can absolutely do this!'
 comes from the 4x people attending our session. If my notes are
 incorrect (they do seem incomplete) I can imagine that the
-COSMOS SENS person had problems here.
+COSMOS SENS person had problems here. I conclude that me and Rebecca
+did a perfect job!
+
+
 
