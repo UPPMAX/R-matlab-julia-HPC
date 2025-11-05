@@ -6,3 +6,4 @@
 - Active participants: 1
 - Inactive participants: 1
 - OS: 1x macOS and Linux (Ubuntu)
+- [Reflection by Richel](../../reflections/20251010/README)
