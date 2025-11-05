@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Intro - Introduction to R, MATLAB, and Julia in HPC</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Intro";
+        var mkdocs_page_input_path = "r/intro/README.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../img/new-logo.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Prequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Intro</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#first-overview-of-r">First overview of R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#schedule">Schedule</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises-used-in-the-course">Exercises used in the course</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/">Packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../batch/">Batch</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rstudio/">RStudio</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">MATLAB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Julia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Machine Learning</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra reading</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../morepackages/">More about R packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">R</li>
+<li class="breadcrumb-item active">Intro</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/r/intro/README.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="introduction-r">Introduction R<a class="headerlink" href="#introduction-r" title="Anchor link to this section for reference">¶</a></h1>
+<p><img alt="The R logo" src="r_logo_50.png"/></p>
+<details class="- note">
+<summary>Prefer this session as video?</summary>
+<p>See <a href="https://youtu.be/N-TRzv9LdF4">this YouTube video</a>
+to see this session as a video.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>see a first overview of the R programming language</li>
+<li>see the overview of the course</li>
+<li>hear about ‘the tarball with exercises’</li>
+</ul>
+</div>
+<details class="- note">
+<summary>For teachers</summary>
+<p>Learning outomes are:</p>
+<ul>
+<li>Learners have seen an overview of the course</li>
+<li>Learners have seen an first overview of the R programming language</li>
+</ul>
+<p>Priors:</p>
+<ul>
+<li>What is R?</li>
+<li>What are features of R?</li>
+<li>What are R packages?</li>
+<li>What is the R interpreter?</li>
+<li>What is RStudio?</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Course learning outcomes</p>
+<ul>
+<li>use the module system to load R</li>
+<li>use the module system to load site-installed R packages</li>
+<li>find out which versions of R and packages are installed</li>
+<li>run R scripts</li>
+<li>write a batch script for running R</li>
+<li>install R packages from CRAN</li>
+<li>see how to install other R packages yourself</li>
+<li>start batch jobs</li>
+<li>run RStudio</li>
+</ul>
+<p>on the NAISS clusters COSMOS, Dardel, Kebnekaise, Rackham and Tetralith.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Course non-goals</p>
+<ul>
+<li>improve R coding skills</li>
+<li>use R on other HPC clusters</li>
+<li>transfer files (tip: see <a href="https://uppmax.github.io/naiss_file_transfer_course/">the NAISS ‘File transfer’ course</a>)</li>
+</ul>
+</div>
+<h2 id="first-overview-of-r">First overview of R<a class="headerlink" href="#first-overview-of-r" title="Anchor link to this section for reference">¶</a></h2>
+<p>R is a programming language for statistical computing and data visualization
+(<a href="https://en.wikipedia.org/wiki/R_(programming_language)">Wikipedia</a>).</p>
+<div class="mermaid">graph TD
+
+    subgraph r[R]
+      r_interpreter[the R interpreter]
+      r_packages[R packages]
+      r_language[the R programming language]
+      r_dev[R software development]
+      rstudio[RStudio]
+
+      interpreted_language[Interpreted]
+      cran[CRAN]
+    end
+
+    r_language --&gt; |has| r_dev
+    r_language --&gt; |is| interpreted_language
+    r_language --&gt; |uses| r_packages
+    interpreted_language --&gt; |done by| r_interpreter
+    r_packages --&gt; |maintained by| cran
+    r_dev --&gt; |commonly done in| rstudio
+</div>
+<p>The main general R resources are:</p>
+<ul>
+<li><a href="https://www.r-project.org/">The R homepage</a></li>
+<li><a href="https://cran.r-project.org/manuals.html">The official R documentation</a></li>
+<li><a href="https://cran.r-project.org/">The CRAN homepage</a></li>
+</ul>
+<p>R is used in many NAISS centres:</p>
+<ul>
+<li><a href="http://docs.uppmax.uu.se/software/r/#overview-of-naiss-centers-and-their-documentation-about-r">An overview of NAISS centres and their R documentation</a></li>
+<li><a href="http://docs.uppmax.uu.se/software/r/#learning-r">An (incomplete) overview of R courses being taught at NAISS</a></li>
+</ul>
+<h2 id="schedule">Schedule<a class="headerlink" href="#schedule" title="Anchor link to this section for reference">¶</a></h2>
+<div class="mermaid">graph TD
+
+    subgraph login[HPC login]
+      ssh[0.SSH]
+      remote_desktop_website[5.Remote desktop website]
+      remote_desktop_local_thinlinc_client[5.Remote desktop with local ThinLinc client]
+    end
+    subgraph scheduler[scheduler]
+      running_batch_jobs[3.Running batch jobs]
+      running_interactive_session[5.Running an interactive session]
+    end
+
+    login --&gt; |allows for| scheduler
+
+</div>
+<div class="mermaid">graph TD
+
+    subgraph r[R]
+      r_interpreter[1.the R interpreter]
+      r_packages[2.R packages]
+      r_virtual_environments[2.R virtual environments]
+      r_language[1.the R programming language]
+      parallel_and_multithreaded_functions[A.Parallel and multithreaded functions]
+      r_dev[5.R software development]
+      rstudio[5.RStudio]
+      ml[A.Machine learning]
+      interpreted_language[1.Interpreted]
+      cran[1.CRAN]
+    end
+    subgraph modules[modules]
+      r_module[1.R module]
+      r_packages_module[2.R_packages module]
+      rstudio_module[5.RStudio module]
+    end
+
+
+    r_language --&gt; |has| r_dev
+    r_language --&gt; |is| interpreted_language
+    r_language --&gt; |uses| r_packages
+    interpreted_language --&gt; |done by| r_interpreter
+    r_packages --&gt; |maintained by| cran
+    r_packages --&gt; |isolated by|r_virtual_environments
+    r_language --&gt; |allows| parallel_and_multithreaded_functions
+    r_language --&gt; |provides for| ml
+    r_dev --&gt; |commonly done in| rstudio
+
+    r_interpreter --&gt; |loaded by|r_module
+    r_packages --&gt; |loaded by|r_packages_module
+    rstudio --&gt; |loaded by|rstudio_module
+
+    rstudio_module --&gt; |automatically loads latest| r_packages_module
+    r_packages_module --&gt; |automatically loads corresponding version of| r_module
+</div>
+<h2 id="exercises-used-in-the-course">Exercises used in the course<a class="headerlink" href="#exercises-used-in-the-course" title="Anchor link to this section for reference">¶</a></h2>
+<p>The course uses a so-called tarball files with exercises as
+used in this course.</p>
+<p>See <a href="../../common/use_tarball/">How to use the course tarball</a>
+how to get and decompress it.</p>
+<p>In the ‘Load and run R’ session, there is the time to do so.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../schedule/" title="Schedule"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../load_run/" title="Load and run">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC" style="color: #fcfcfc"> GitHub</a>
+</span>
+<span><a href="../schedule/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../load_run/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/tippy-bundle.umd.js"></script>
+<script src="../../js/clipboard.js"></script>
+<script src="../../js/extra.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

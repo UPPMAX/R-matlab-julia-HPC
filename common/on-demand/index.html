@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Desktop on demand - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Desktop on demand";
+        var mkdocs_page_input_path = "common/on-demand.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Desktop on demand</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-desktop-on-demand-is-it-right-for-my-job">What is Desktop On Demand? Is it right for my job?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#starting-the-on-demand-interface">Starting the On-Demand Interface</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-job-parameters">Setting Job Parameters</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Common</li>
+      <li class="breadcrumb-item active">Desktop on demand</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/common/on-demand.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="on-demand-applications">On Demand Applications<a class="headerlink" href="#on-demand-applications" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Learning Objectives</p>
+<ul>
+<li>What are On-Demand applications and when to use it</li>
+<li>Which interface to use on each resource and how to start them</li>
+<li>How to set the job parameters for your application</li>
+</ul>
+</div>
+<h2 id="what-is-desktop-on-demand-is-it-right-for-my-job">What is Desktop On Demand? Is it right for my job?<a class="headerlink" href="#what-is-desktop-on-demand-is-it-right-for-my-job" title="Anchor link to this section for reference">&para;</a></h2>
+<p>On Cosmos (LUNARC), Kebnekaise (HPC2N), and Dardel (PDC), some applications are available through one of a couple of On Demand services. On Demand applications provide an interactive environment to schedule jobs on compute nodes using a graphic user interface (GUI) instead of the typical batch submission script. How you reach this interface is dependent on the system you use and their choice of On Demand client.</p>
+<ul>
+<li><strong>Cosmos</strong> and <strong>Dardel</strong> use the On-Demand Desktop developed at LUNARC, which is accessible via Thinlinc.</li>
+<li><strong>Kebnekaise</strong> uses Open OnDemand<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> via a dedicated web portal at <a href="https://portal.hpc2n.umu.se">https://portal.hpc2n.umu.se</a>.</li>
+</ul>
+<p>Desktop On-Demand is most appropriate for <em>interactive</em> work requiring small-to-medium amounts of computing resources. Non-interactive jobs and jobs that take more than a day or so should generally be submitted as batch jobs. If you have a longer job that requires an interactive interface to submit, make sure you keep track of the wall time limits for your facility.</p>
+<p>On-Demand applications are <em>not</em> accessible via SSH; you must use either Thinlinc (Cosmos and Dardel) or the dedicated web portal (Kebnekaise).</p>
+<div class="admonition info">
+<p class="admonition-title">On-Demand App Availability for this Course</p>
+<ul>
+<li>RStudio and MATLAB are both available as On-Demand applications at all 3 facilities covered on this page.</li>
+<li>On Cosmos, there are also interactive On-Demand command lines (for CPUs and GPUs) under <code>Applications - General</code> that you may want to use with Julia, or that may still let you use RStudio or MATLAB if for some reason those apps fail to start with the more direct methods described below.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Batch jobs submitted from within these interactive sessions are <em>not</em> bound by the same job parameters as the On-Demand interface. E.g., if you are in the MATLAB GUI and submit a job with the <code>batch</code> command, the batch job will not be interrupted if the GUI is closed or times out.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Thinlinc Access Limited on Dardel (PDC)</p>
+<p>Here we focus on Cosmos and Kebnekaise because access to Dardel via Thinlinc is severely restricted. Only 30 users total may have an active ThinLinc session at a time, and queue times are very long. Other PDC resources not tested in this course may be more flexible, but if you must run a program on Dardel interactively, it is better to use SSH with X-forwarding (that is, log in with <code>ssh -X &lt;user&gt;@dardel.pdc.kth.se</code>) and then <a href="https://support.pdc.kth.se/doc/run_jobs/run_interactively/">follow the workflow described in this link</a>.</p>
+<p>Keep in mind that if you do not need a full node, you can also select a number of cores on Dardel&rsquo;s <code>shared</code> partition, which may help reduce your time in the queue. See <a href="https://support.pdc.kth.se/doc/run_jobs/job_scheduling/#dardel-partitions">here for information on Dardel partitions</a>.</p>
+</div>
+<h2 id="starting-the-on-demand-interface">Starting the On-Demand Interface<a class="headerlink" href="#starting-the-on-demand-interface" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">COSMOS (and Dardel)</label><label for="__tabbed_1_2">Kebnekaise</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>For most programs, the start-up process is roughly the same:</p>
+<ol>
+<li>Log into COSMOS (or Dardel) via your usual Thinlinc client or browser interface to start an HPC Desktop session.</li>
+<li>
+<p>Click <code>Applications</code> in the top left corner, hover over the items prefixed with <code>Applications -</code> until you find your desired application (on Dardel, On-Demand applications are prefixed with <code>PDC-</code>), and click it. The top-level Applications menu on Cosmos looks like this:</p>
+<p><img alt="Cosmos On-Demand apps menu" src="../Cosmos-AppMenu.png" width="400px" /></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you start a terminal session or another application from <code>Favorites</code>, <code>System Tools</code>, or other menu headings not prefixed with <code>Applications -</code> or <code>PDC-</code>, and launch an interactive program from that, it will run on a login node. Do not run intensive programs this way!</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>To start an Open OnDemand session on Kebnekaise,</p>
+<ol>
+<li>
+<p>Open <a href="https://portal.hpc2n.umu.se">https://portal.hpc2n.umu.se</a> in your browser. The page looks like this:</p>
+<p><img src="https://docs.hpc2n.umu.se/images/open-ondemand-portal.png" alt="HPC2N Open On-Demand Portal" width="1200"/></p>
+</li>
+<li>
+<p>Click the blue button labeled &ldquo;Login to HPC2N OnDemand&rdquo;.</p>
+</li>
+<li>A login window should open with boxes for your login credentials. Enter your HPC2N username and password, then click &ldquo;Sign In&rdquo;.</li>
+<li>
+<p>You will now be on the HPC2N Open OnDemand dashboard. The top of it looks like this:</p>
+<p><img src="https://docs.hpc2n.umu.se/images/open-ondemand-dashboard.png" alt="HPC2N Open On-Demand Portal" width="1200"/></p>
+</li>
+<li>
+<p>Find the <code>Interactive Apps</code> tab in the menu bar along the top and click it to open a drop-down menu of available apps. The menu currently looks like this:</p>
+<p><img src="https://docs.hpc2n.umu.se/images/open-ondemand-apps.png" alt="HPC2N Open On-Demand dashboard" width="1200"/></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unlike on Cosmos and Dardel, On-Demand applications on Kebnekaise are <strong>not</strong> reachable through Thinlinc, regardless of whether you use the desktop client or a browser! If you find similar-looking applications in the Thinlinc interface, be aware that they all run on login nodes!</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="setting-job-parameters">Setting Job Parameters<a class="headerlink" href="#setting-job-parameters" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">COSMOS (and Dardel)</label><label for="__tabbed_2_2">Kebnekaise</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Upon clicking your chosen application, a pop-up interface called the <strong>GfxLauncher</strong> will appear and let you set the following options:</p>
+<ol>
+<li><strong>Wall time</strong> - how long your interactive session will remain open. <em>When it ends, the whole window closes immediately and any unsaved work is lost.</em> You can select the time from a drop-down menu, or type in the time manually. On Cosmos, CPU-only applications (indicated with &ldquo;(CPU)&rdquo; in the name) can run for up to 168 hours (7 days), but the rest are limited to 48 hours. Default is 30 minutes.</li>
+<li>
+<p><strong>Requirements</strong> - how many tasks per node you need. The default is usually 1 or 4 tasks per node. There is also a <strong>gear icon</strong> to the right of this box that can pull up a second menu (see figure below) where you can set</p>
+<ul>
+<li>the name of your job, </li>
+<li>the number of tasks per node, </li>
+<li>the amount of memory per CPU core, and/or </li>
+<li>whether or not to use a full node.</li>
+</ul>
+</li>
+<li>
+<p><strong>Resource</strong> - which kind of node you want in terms of the architecture (AMD or Intel) and number of cores in the CPU (or GPU). Options and defaults vary by program.</p>
+</li>
+<li><strong>Project</strong> - choose from a drop-down menu the project with which your work is associated. This is mainly to keep your usage in line with your licenses and permissions, and to send any applicable invoices to the correct PI. Licensed software will only work for projects whose group members are covered by the license.</li>
+</ol>
+<p><img alt="Cosmos On-Demand options for MATLAB" src="../Cosmos-OnDemand-Matlab23b-advreqs.png" width="500px" /></p>
+<blockquote>
+<p>The GfxLauncher GUI (here used to launch MATLAB). The box on the left is the basic menu and the box on the right is what pops up when the gear icon next to <code>Requirements</code> is clicked.  </p>
+</blockquote>
+<p>When you&rsquo;re happy with your settings, click &ldquo;Start&rdquo;. The GfxLauncher menu will stay open in the background so that you can monitor your wall time usage with the <code>Usage</code> bar. Leave this window open&mdash;your application depends on it!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Closing the GfxLauncher popup after your application starts will kill the application immediately!</p>
+</div>
+<p>If you want, you can also look at the associated SLURM scripts by clicking the &ldquo;More&rdquo; button at the bottom of the GfxLauncher menu and clicking the &ldquo;Script&rdquo; tab (example below), or view the logs under the &ldquo;Logg&rdquo; tab.</p>
+<p><img alt="Cosmos On-Demand MATLAB more script" src="../Cosmos-OnDemand-Matlab23b-more-script.png" width="500px" /></p>
+<p>If an app fails to start, the first step of troubleshooting will always be to check the &ldquo;Logg&rdquo; tab.</p>
+<div class="admonition note">
+<p class="admonition-title">Terminals on Compute nodes</p>
+<p>If you don&rsquo;t see the program you want to run interactively listed under any other <code>Applications</code> sub-menus, or if the usual menu item fails to launch the application, you may still be able to launch it via one of the terminals under <code>Applications - General</code>, or the GPU Accelerated Terminal under <code>Applications - Visualization</code>.</p>
+<p>The CPU terminal allows for a wall time of up to 168 hours (7 days), while the two GPU terminals can only run for 48 hours (2 days) at most. For more on the specifications of the different nodes these terminals can run on, see <a href="https://www.lunarc.lu.se/systems/cosmos/">LUNARC&rsquo;s webpage on COSMOS</a>.</p>
+</div>
+<p>If you finish before your wall time is up and close the app, the app should stop in the GfxLauncher window within a couple of minutes, but you can always force it to stop by clicking the &ldquo;Stop&rdquo; button. This may be necessary for Jupyter Lab.</p>
+</div>
+<div class="tabbed-block">
+<p>If you select any of the options under &ldquo;Interactive apps&rdquo;, a page will open that looks like this (using RStudio as an example):</p>
+<p><img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio.png" alt="Open OnDemand RStudio options" width="1200"/></p>
+<p>Most of the options you have to set will be the same whether you choose RStudio Server, MATLAB Proxy, Jupyter Notebook, or even the Kebnekaise desktop. The parameters required for all apps include:</p>
+<ul>
+<li><strong>Compute Project</strong> - Dropdown menu where you can choose (one of) your compute projects to launch with. </li>
+<li><strong>Number of Hours</strong> - Wall time. The maximum is 12 hours, but you should avoid using more than you need to conserve your allocation and minimize queuing time.</li>
+<li><strong>Node type</strong> - Choose from options described below the dropdown menu. If you pick &ldquo;any GPU&rdquo;, leave &ldquo;Number of Cores&rdquo; empty.   </li>
+<li><strong>Number of Cores</strong> - Choose any number up to 28. Each core has 4GB of memory. This is only a valid field if you pick &ldquo;any&rdquo; or &ldquo;Large memory&rdquo; for the &ldquo;Node type&rdquo; selection. </li>
+<li><strong>Working directory</strong> - Default is $HOME. You can either type a full path manually or click &ldquo;Select Path&rdquo; to open a file browser if you are unsure of the full path.</li>
+<li><strong>&ldquo;I would like to receive an email when my job starts&rdquo;</strong> - Check box if you agree.</li>
+</ul>
+<p>For some apps, like RStudio and Jupyter Notebook, you will also see an option to choose a <strong>Runtime environment.</strong> Choose from &ldquo;System provided&rdquo;, &ldquo;Project provided&rdquo;, or &ldquo;User provided&rdquo;. If you or your project do not have a custom environment (with specific Python or R packages, for instance), then use &ldquo;System provided&rdquo;.</p>
+<p>Once you enter your desired parameters, click <strong>Launch</strong>. If the parameters are all valid, the page will reload and looks something like this for as long as your job is in the queue (using RStudio as an example):</p>
+<p><img src="https://docs.hpc2n.umu.se/images/open-ondemand-Rstudio-waiting.png" alt="Open OnDemand RStudio waiting" width="1200"/></p>
+<p>When the job starts, the title bar of the box containing your job will turn from blue to green, the status message will change from &ldquo;Queued&rdquo; to &ldquo;Running&rdquo;, and the number of nodes and cores with appear in the title bar. You can have more than one OnDemand job running or queued. Running jobs will look like these:</p>
+<p><img src="https://docs.hpc2n.umu.se/images/open-ondemand-sessions.png" alt="Open OnDemand jobs ready" width="1200"/>
+</div></p>
+<p>For all apps, the equivalent of a start button will be a bright blue rectangle near the bottom of the job box, though the words on the button may vary. When you click this button, your app should launch in a new window.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Closing the GUI window for your app before time runs out (e.g. the MATLAB GUI or the browser for Jupyter Notebook) does not stop your job or release the resources associated with it! If you want to stop your job and avoid spending any more of your resource budget on it, you must click the red &ldquo;Delete&rdquo; button near the top right of your interactive job listing. Otherwise, you can reopen any closed app as long as time remains in the job allocated for it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Open OnDemand is a web service that allows HPC users to schedule jobs, run notebooks and work interactively on a remote cluster from any device that supports a modern browser. The Open OnDemand project was funded by NSF and is currently maintained by the Ohio SuperComputing Centre. Read more about <a href="https://openondemand.org/">OpenOndemand.org</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../other_courses/" class="btn btn-neutral float-left" title="Other courses"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../r/schedule/" class="btn btn-neutral float-right" title="Schedule">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../other_courses/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../r/schedule/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+Id,Starttid,Slutförandetid,E-post,Namn,Språk,"Overall, how would you rate today's training event?",What do you think about the pace of teaching overall?,"Give your confidence level of the following statements
+.I can use the module system to load a specific version of Matlab","Give your confidence level of the following statements
+.I can start Matlab on the terminal","Give your confidence level of the following statements
+.I can configure the cluster ","Give your confidence level of the following statements
+.I can add job settings needed to run jobs from Matlab ","Give your confidence level of the following statements
+.I can start the Matlab GUI","Give your confidence level of the following statements
+.I can work in Matlab terminal interface","Give your confidence level of the following statements
+.I can submit jobs from inside the Matlab terminal interface","Give your confidence level of the following statements
+.I can submit jobs from inside the Matlab GUI","Give your confidence level of the following statements
+.I can write and submit a Matlab batch script","Give your confidence level of the following statements
+.I can use the Matlab client on the desktop","Give your confidence level of the following statements
+.I can run Matlab in Jupyter","Give your confidence level of the following statements
+.I can view add-ons and Toolboxes","Give your confidence level of the following statements
+.I can install add-ons",Would you recommend this course to someone else?,"Which future training topics would you like to be provided by the training host(s)?
+
+Note: we will not provide courses on things like area-specific MATLAB packages.","Do you have any additional comments?
+
+Suggestions/ideas:
+
+- What did you like best? (materials, exercises, structure)
+- Where should we improve? (materials, exercises, structure)
+- Training organizati"
+1,10/17/2025 13:13,10/17/2025 13:18,anonymous,,,7,"generally ok but sometimes also a bit uneven like for R, some sessions took longer than needed while some too fast. Very happy there was a session on using matlab from the terminal since we need that and also submit batch jobs which is rarely covered otherwise. Thanx!",I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I absolutely can do this!,I have good confidence I can do this,I have good confidence I can do this,I did not attend that session,I have no confidence I can do this,I did not attend that session,Yes,parallel matlab batch scripts,you have made some really great material. thanx for recording - i didn't feel well to follow the course live so it was good to be able to watch later. I also look forward to watch the advanced session when will that be up?

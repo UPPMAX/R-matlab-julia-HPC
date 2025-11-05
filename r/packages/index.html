@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Packages - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Packages";
+        var mkdocs_page_input_path = "r/packages.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Packages</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#package-libraries">Package libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#preinstalled-package-libraries">Preinstalled package libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-your-own-packages">Installing your own packages</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automatical-download-and-install-from-cran">Automatical download and install from CRAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install-own-packages-on-bianca">Install own packages on Bianca</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">R</li>
+      <li class="breadcrumb-item active">Packages</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/r/packages.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="packages">Packages<a class="headerlink" href="#packages" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">R packages</p>
+<ul>
+<li>R packages is the main way of extending the functionality of R and
+ <strong>broadens the use of R</strong> to almost infinity! </li>
+<li>Instead of writing code yourself there may be others that have done the
+ same!</li>
+<li>Many <strong>scientific tools</strong> are distributed as <strong>R packages</strong>. This makes it possible to just run a script from the prompt. You can define files to be analysed and use arguments to define exactly what to do.</li>
+<li>For more details about packages and in particular developing your own,
+ see: <a href="https://r-pkgs.org">R packages</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>What is an R package?</li>
+<li>How do I find which packages and versions are available?</li>
+<li>What to do if I need other packages?</li>
+<li>Are there differences between HPC2N, UPPMAX, LUNARC, NSC, and PDC?</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Check if an R package is installed</li>
+<li>Load and use R packages </li>
+<li>Install R packages yourself</li>
+</ul>
+</div>
+<h2 id="package-libraries">Package libraries<a class="headerlink" href="#package-libraries" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In R, a library is a directory containing installed packages, sort of like a library for books. Unfortunately, in the R world, you will frequently encounter confused usage of the words “library” and “package”. It’s common for someone to refer to dplyr, for example, as a library when it is actually a package (Wickham &amp; Hadley, 2023).</p>
+<p>We might want to know where the <code>R</code> interpreter will be searching for packages, i.e. where the libraries are located (could be several). The easiest way to check is probably starting the interpreter and running the <code>libPaths()</code> function.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">NSC</label><label for="__tabbed_1_2">PDC</label><label for="__tabbed_1_3">UPPMAX</label><label for="__tabbed_1_4">HPC2N</label><label for="__tabbed_1_5">LUNARC</label><label for="__tabbed_1_6">C3SE</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Load <code>R</code>, e.g. version 4.2.2 and start the Interpreter </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$<span class="w"> </span>R<span class="w"> </span>
+</span></code></pre></div>
+<p>Then check find the path of the library using the <code>libPaths()</code> function.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&gt;<span class="w"> </span>.libPaths<span class="o">()</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;/software/sse2/tetralith_el9/manual/R/4.2.2/g11/hpc1/lib64/R/library&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Load <code>R</code>, e.g. version 4.4.1 and start the Interpreter </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12<span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>R<span class="w"> </span>
+</span></code></pre></div>
+<p>Then check find the path of the library using the <code>libPaths()</code> function. </p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">()</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/cfs/klemming/home/b/bbrydsoe/.R/23.12/4.4.1/library&quot;</span><span class="w">                  </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/cfs/klemming/pdc/software/dardel/23.12/eb/software/R/4.4.1-cpeGNU-23.12/lib64/R/library&quot;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">&gt;</span><span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Load <code>R</code>, e.g. version 4.4.2 and start the Interpreter</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R/4.4.2-gfbf-2024a
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span>R
+</span></code></pre></div>
+<p>Then check find the path of the library using the <code>libPaths()</code> function.</p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">()</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/sw/arch/eb/software/R/4.4.2-gfbf-2024a/lib64/R/library&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Load <code>R</code>, e.g. version R/4.4.1 and start the Interpreter</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>ml<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1<span class="w"> </span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>$<span class="w"> </span>R
+</span></code></pre></div>
+<p>Then check find the path of the library using the <code>libPaths()</code> function.</p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/cvmfs/ebsw.hpc2n.umu.se/amd64_ubuntu2004_bdw/software/R/4.4.1-gfbf-2023b/lib/R/library&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Load <code>R</code>, e.g. version 4.2.1 and start the Interpreter</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>ml<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>$<span class="w"> </span>R
+</span></code></pre></div>
+<p>Then check find the path of the library using the <code>libPaths()</code> function.</p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">()</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/home/bbrydsoe/R-packages-4.2.1&quot;</span><span class="w">                                     </span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/sw/easybuild_milan/software/R/4.2.1-foss-2022a/lib64/R/library&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Load <code>R</code>, e.g. version 4.2.1 and start the Interpreter </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R/4.2.1-foss-2022a<span class="w"> </span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>$<span class="w"> </span>R
+</span></code></pre></div>
+<p>Then check to find the path of the library using the <code>libPaths()</code> function. </p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">()</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/apps/Arch/software/R/4.2.1-foss-2022a/lib64/R/library&quot;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="o">&gt;</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning: Modules on Dardel</p>
+<p>If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do <code>module purge</code> there, they will all be removed together with the application software modules you wanted to purge. This may cause problems. </p>
+<p>List of modules that are pre-loaded (March 2025) <em>and</em> which will be removed with <code>module purge</code>: </p>
+<ul>
+<li>craype-x86-rome</li>
+<li>libfabric/1.20.1</li>
+<li>craype-network-ofi</li>
+<li>perftools-base/23.12.0</li>
+<li>xpmem/2.8.2-1.0_3.9__g84a27a5.shasta</li>
+<li>cce/17.0.0</li>
+<li>craype/2.7.30</li>
+<li>cray-dsmml/0.2.2</li>
+<li>cray-mpich/8.1.28</li>
+<li>cray-libsci/23.12.5</li>
+<li>PrgEnv-cray/8.5.0</li>
+<li>snic-env/1.0.0</li>
+</ul>
+<p>You may have to reload all of these if you do <code>module purge</code>. The easiest solution is this: </p>
+<ul>
+<li>Immediately after logging in, and before loading any modules (assuming you have not added any to <code>.bashrc</code> do </li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>module<span class="w"> </span>save<span class="w"> </span>preload
+</span></code></pre></div>
+<ul>
+<li>then, when you have done a <code>module purge</code> to remove some application software modules you have loaded (like R and prerequisites) and want to load a different version perhaps, do </li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>module<span class="w"> </span>restore<span class="w"> </span>preload<span class="w"> </span>
+</span></code></pre></div>
+<p>That will restore the preloaded modules. </p>
+</div>
+<h2 id="preinstalled-package-libraries">Preinstalled package libraries<a class="headerlink" href="#preinstalled-package-libraries" title="Anchor link to this section for reference">&para;</a></h2>
+<p>UPPMAX, HPC2N, LUNARC, NSC, and PDC all offer larger or smaller amounts of preinstalled packages.</p>
+<div class="admonition note">
+<p class="admonition-title">HPC2N</p>
+<ul>
+<li>On HPC2N it depends on the version, but for R/4.4.1 only a smaller number of these (around 110 packages) come with the <code>R</code> module, but additional ones are in the <code>R-bundle-Bioconductor</code>. Most of the packages are in the module <code>R-bundle-CRAN</code> and a few more in <code>R-bundle-CRAN-extra</code>. For older versions of R, most packages come with the R module (around 750 packages). Older versions of R also usually have OpenMPI as prerequisite. Use <code>module spider &lt;module&gt;/&lt;version&gt;</code> to check for prerequisites, as usual. </li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">UPPMAX</p>
+<p>On UPPMAX the module <code>R</code> contains only a smaller number of packages (110), but almost all packages in the CRAN and BioConductor repositories are in the <code>R-bundle-CRAN</code> respectively <code>R-bundle-Bioconductor</code> modules. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">LUNARC</p>
+<p>On LUNARC most of the R packages come with the <code>R</code> module. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">NSC</p>
+<p>On NSC, a small number of the R packages come with the <code>R</code> module. You will have to install the rest yourself.  </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">PDC</p>
+<p>On PDC about 250 packages come with the <code>R</code> module. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">C3SE</p>
+<p>On Alvis at C3SE, around 1340 packages are installed with R/4.2.1 - but much fewer with R/4.3.3. </p>
+</div>
+<p>There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within <code>R</code> (you can also get a list of all packages with <code>installed.packages()</code> but that can be overwhelming): </p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">package</span><span class="o">-</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div>
+<p>To learn about other ways, see the page &ldquo;More about R packages&rdquo; under &ldquo;Extra reading&rdquo; in the left menu. </p>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../img/shell-logo_small.png"> Exercise</p>
+<p>Start R (remember to load a module + prerequisites if you have not already). Check if the packages <code>pillar</code> and <code>caret</code> are installed, as shown above. </p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">UPPMAX (Pelle)</label><label for="__tabbed_2_2">HPC2N</label><label for="__tabbed_2_3">LUNARC</label><label for="__tabbed_2_4">NSC</label><label for="__tabbed_2_5">PDC</label><label for="__tabbed_2_6">C3SE</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition note">
+<p class="admonition-title">Solution</p>
+<p>If you want, you can try loading the libraries inside R without loading either the R-bundle-CRAN or R-bundle-Bioconductor modules and see that almost nothing is installed. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a<span class="w"> </span>R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2<span class="w">  </span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># You&#39;ll get R/4.4.2-gfbf-2024a on the fly!</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>$<span class="w"> </span>R
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>R<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.4.2<span class="w"> </span><span class="o">(</span><span class="m">2024</span>-10-31<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Pile of Leaves&quot;</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>Platform:<span class="w"> </span>x86_64-pc-linux-gnu
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">  </span>Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>&gt;<span class="w"> </span>library<span class="o">(</span>pillar<span class="o">)</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>&gt;<span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>ggplot2
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>lattice
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>&gt;<span class="w">   </span>
+</span></code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition note">
+<p class="admonition-title">Solution</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R-bundle-CRAN/2024.06<span class="w"> </span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>$<span class="w"> </span>R
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>R<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.4.1<span class="w"> </span><span class="o">(</span><span class="m">2024</span>-06-14<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Race for Your Life&quot;</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>Platform:<span class="w"> </span>x86_64-pc-linux-gnu
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">  </span>Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>&gt;<span class="w"> </span>library<span class="o">(</span>pillar<span class="o">)</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>&gt;<span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>ggplot2
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>lattice
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>&gt;
+</span></code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition note">
+<p class="admonition-title">Solution</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>$<span class="w"> </span>R
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>R<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.2.1<span class="w"> </span><span class="o">(</span><span class="m">2022</span>-06-23<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Funny-Looking Kid&quot;</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>Platform:<span class="w"> </span>x86_64-pc-linux-gnu<span class="w"> </span><span class="o">(</span><span class="m">64</span>-bit<span class="o">)</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">  </span>Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>&gt;<span class="w"> </span>library<span class="o">(</span>pillar<span class="o">)</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>&gt;<span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>ggplot2
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>lattice
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>&gt;<span class="w"> </span>
+</span></code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition note">
+<p class="admonition-title">Solution</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>$<span class="w"> </span>R<span class="w"> </span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>R<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.2.2<span class="w"> </span><span class="o">(</span><span class="m">2022</span>-10-31<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Innocent and Trusting&quot;</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>Platform:<span class="w"> </span>x86_64-pc-linux-gnu<span class="w"> </span><span class="o">(</span><span class="m">64</span>-bit<span class="o">)</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>&gt;<span class="w"> </span>library<span class="o">(</span>pillar<span class="o">)</span>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>library<span class="o">(</span>pillar<span class="o">)</span><span class="w"> </span>:<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span>package<span class="w"> </span>called<span class="w"> </span>‘pillar’
+</span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>&gt;<span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span><span class="w"> </span>:<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span>package<span class="w"> </span>called<span class="w"> </span>‘caret’
+</span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>&gt;<span class="w"> </span>
+</span></code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition note">
+<p class="admonition-title">Solution</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12<span class="w"> </span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>$<span class="w"> </span>R<span class="w"> </span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>R<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.4.1<span class="w"> </span><span class="o">(</span><span class="m">2024</span>-06-14<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Race for Your Life&quot;</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>Platform:<span class="w"> </span>x86_64-suse-linux-gnu
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">  </span>Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.<span class="w"> </span>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>&gt;<span class="w"> </span>library<span class="o">(</span>pillar<span class="o">)</span>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>&gt;<span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span><span class="w"> </span>:<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span>package<span class="w"> </span>called<span class="w"> </span>‘caret’
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>&gt;
+</span></code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition note">
+<p class="admonition-title">Solution</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R/4.2.1-foss-2022a
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>$<span class="w"> </span>R
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>Platform:<span class="w"> </span>x86_64-pc-linux-gnu<span class="w"> </span><span class="o">(</span><span class="m">64</span>-bit<span class="o">)</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">  </span>Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>&gt;<span class="w"> </span>library<span class="o">(</span>pillar<span class="o">)</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>&gt;<span class="w"> </span>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>ggplot2
+</span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>Loading<span class="w"> </span>required<span class="w"> </span>package:<span class="w"> </span>lattice
+</span><span id="__span-20-25"><a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>&gt;
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="installing-your-own-packages">Installing your own packages<a class="headerlink" href="#installing-your-own-packages" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Sometimes you will need R packages that are not already installed. The solution
+to this is to install your own packages. These packages will usually come from
+CRAN (https://cran.r-project.org/) - the Comprehensive R Archive Network, or
+sometimes from other places, like GitHub or R-Forge</p>
+<p>Here we will look at installing R packages with automatic download and with
+manual download. It is also possible to install from inside Rstudio. </p>
+<h3 id="setup">Setup<a class="headerlink" href="#setup" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We need to create a place for the own-installed packages to be and to tell R
+where to find them. The initial setup only needs to be done once, but separate
+package directories need to be created for each R version used. </p>
+<p>R reads the <code>$HOME/.Renviron</code> file to setup its environment. It should be
+created by R on first run, or you can create it with the command: <code>touch
+$HOME/.Renviron</code></p>
+<p><strong>NOTE</strong>: In this example we are going to assume you have chosen to place the R packages in a directory under your home directory, but in general it might be good to use the project storage for space reasons. As mentioned, you will need
+separate ones for each R version.</p>
+<p>If you have not yet installed any packages to R yourself, the environment file should be empty and you can update it like this: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>If it is <strong>not empty</strong>, you can edit <code>$HOME/.Renviron</code> with your favorite editor so that <code>R_LIBS_USER</code> contains the path to your chosen directory for own-installed R packages. </li>
+</ul>
+</div>
+<p>It should look something like this when you are done:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;/home/u/user/R-packages-%V&quot;</span>
+</span></code></pre></div>
+<p><strong>NOTE</strong> Replace <code>/home/u/user</code> with the value of <code>$HOME</code>. Run <code>echo $HOME</code> to see its value.</p>
+<p><strong>NOTE</strong> The <code>%V</code> should be written as-is, it&rsquo;s substituted at runtime with the active R version.</p>
+<p><strong>NOTE</strong> At Dardel (PDC) the path is <code>/cfs/klemming/home/u/user</code> but you can see it with <code>echo $HOME</code>. </p>
+<p>For each version of R you are using, create a directory matching the pattern
+used in <code>.Renviron</code> to store your packages in. This example is shown for R
+version 4.1.1 (change to version suitable for your centre):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/R-packages-4.1.1
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you will be installing many R packages yourself, it is a good idea to place them in your project storage instead, as they can take up a lot of space and your home directory is not very large.</p>
+<p>In that case you would instead do the setup as: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;&lt;path-to-your-space-on-proj-storage&gt;/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+</span></code></pre></div>
+<p>And then create directories for each R version you use there, like this, for R/4.1.1. DO NOT JUST DO IT FOR R/4.1.1! Change to the version you will be using, depending on centre! See under <a href="#package-libraries">Package libraries</a>. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>&lt;path-to-your-space-on-proj-storage&gt;/R-packages-4.1.1
+</span></code></pre></div>
+</div>
+<h3 id="automatical-download-and-install-from-cran">Automatical download and install from CRAN<a class="headerlink" href="#automatical-download-and-install-from-cran" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You find a list of packages in CRAN (https://cran.r-project.org/) and a list of repos here: https://cran.r-project.org/mirrors.html </p>
+<p>Please choose a location close to you when picking a repo. </p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">From command line</label><label for="__tabbed_3_2">From inside R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>$<span class="w"> </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;&lt;r-package&gt;&#39;, repos=&#39;&lt;repo&gt;&#39;)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-R highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;&lt;r-package&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;&lt;repo&gt;&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>In either case, the dependencies of the package will be downloaded and
+installed as well. </p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Anchor link to this section for reference">&para;</a></h4>
+<p>In this example, we will install the R package <code>nuggets</code> and use the
+repository http://ftp.acc.umu.se/mirror/CRAN/ </p>
+<p><strong>Note</strong>: You need to load R (and any prerequisites, and possibly R-bundle-Bioconductor if you need packages from that) before installing packages. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">From command line</label><label for="__tabbed_4_2">From inside R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>$<span class="w"> </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;nuggets&#39;, repos=&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-R highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;nuggets&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Solution for installing nuggets</p>
+<p>1)</p>
+<ul>
+<li>UPPMAX (Pelle): <code>module load R/4.4.2-gfbf-2024a</code></li>
+<li>UPPMAX (Rackham): <code>module load R_packages/4.1.1</code></li>
+<li>HPC2N: <code>module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1</code></li>
+<li>LUNARC: <code>module load GCC/11.3.0  OpenMPI/4.1.4 R/4.2.1</code></li>
+<li>NSC: <code>module load R/4.2.2-hpc1-gcc-11.3.0-bare</code> </li>
+<li>PDC: <code>module load PDC/23.12 R/4.4.1-cpeGNU-23.12</code> </li>
+<li>C3SE: <code>module load R/4.2.1-foss-2022a</code> </li>
+</ul>
+<p>2)</p>
+<ul>
+<li><code>echo R_LIBS_USER="$HOME/R-packages-%V" &gt; ~/.Renviron</code></li>
+</ul>
+<p>OR (option if UPPMAX, HPC2N, NSC, PDC, or C3SE)</p>
+<ul>
+<li>UPPMAX: <code>echo R_LIBS_USER="/proj/r-matlab-julia-pelle/&lt;yourdir&gt;/R-packages-%V" &gt; ~/.Renviron</code></li>
+<li>HPC2N: <code>echo R_LIBS_USER="/proj/nobackup/fall-courses/&lt;yourdir&gt;/R-packages-%V" &gt; ~/.Renviron</code></li>
+<li>NSC: <code>echo R_LIBS_USER="/proj/courses-fall-2025/&lt;yourdir&gt;/R-packages-%V" &gt; ~/.Renviron</code></li>
+<li>PDC: <code>echo R_LIBS_USER="/cfs/klemming/projects/supr/courses-fall-2025/&lt;yourdir&gt;/R-packages-%V" &gt; ~/.Renviron</code></li>
+<li>C3SE: <code>echo R_LIBS_USER=/mimer/NOBACKUP/groups/courses-fall-2025/&lt;yourdir&gt;/R-packages-%V" &gt; ~/.Renviron</code></li>
+</ul>
+<p>3) Create directory for R packages:</p>
+<ul>
+<li>LUNARC: <code>mkdir -p $HOME/R-packages-4.2.1</code></li>
+<li>UPPMAX (Pelle):<ul>
+<li><code>mkdir -p $HOME/R-packages-4.4.2</code></li>
+<li>OR <code>mkdir -p /proj/r-matlab-julia-pelle/&lt;yourdir&gt;/R-packages-4.4.2</code></li>
+</ul>
+</li>
+<li>UPPMAX (Rackham):<ul>
+<li><code>mkdir -p $HOME/R-packages-4.1.1</code></li>
+<li>OR <code>mkdir -p /proj/r-matlab-julia-pelle/&lt;yourdir&gt;/R-packages-4.1.1</code></li>
+</ul>
+</li>
+<li>HPC2N:<ul>
+<li><code>mkdir -p $HOME/R-packages-4.2.1</code></li>
+<li>OR <code>mkdir -p /proj/nobackup/fall-courses/&lt;yourdir&gt;/R-packages-4.2.1</code></li>
+</ul>
+</li>
+<li>NSC: <ul>
+<li><code>mkdir -p $HOME/R-packages-4.2.2</code></li>
+<li>OR <code>mkdir -p /proj/courses-fall-2025/users/&lt;yourdir&gt;/R-packages-4.2.2</code></li>
+</ul>
+</li>
+<li>PDC: <ul>
+<li><code>mkdir -p $HOME/R-packages-4.4.1</code></li>
+<li>OR ``mkdir -p /cfs/klemming/projects/supr/courses-fall-2025/<yourdir>/R-packages-4.4.1```</li>
+</ul>
+</li>
+<li>C3SE: <ul>
+<li><code>mkdir -p $HOME/R-packages-4.2.1</code></li>
+<li>OR <code>mkdir -p /mimer/NOBACKUP/groups/courses-fall-2025/&lt;yourdir&gt;/R-packages-4.2.1</code></li>
+</ul>
+</li>
+</ul>
+<p>4) Either of</p>
+<ul>
+<li>Start R and install: <code>install.packages('nuggets', repos='http://ftp.acc.umu.se/mirror/CRAN/')</code></li>
+<li>Install from command line: <code>R --quiet --no-save --no-restore -e "install.packages('nuggets', repos='http://ftp.acc.umu.se/mirror/CRAN/')"</code></li>
+</ul>
+</div>
+<p>For other ways to install R packages, including from GitHub or manually, look at the &ldquo;More about R packages&rdquo; from the &ldquo;Extra reading&rdquo; section in the bottom left side of the menu. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Places to look for R packages</p>
+<ul>
+<li>CRAN (https://cran.r-project.org/)</li>
+<li>R-Forge (https://r-forge.r-project.org/)</li>
+<li>Project&rsquo;s own GitHub page</li>
+<li>etc.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>You can check for installed packages <ul>
+<li>from inside R with <code>installed.packages()</code></li>
+</ul>
+</li>
+<li>from BASH shell with the <ul>
+<li><code>ml help R/&lt;version&gt;</code> at UPPMAX</li>
+<li><code>ml spider R/&lt;version&gt;</code> at HPC2N<ul>
+<li><code>ml spider R/&lt;version&gt;</code> at LUNARC </li>
+<li><code>ml spider R/version&gt;</code> at NSC</li>
+<li><code>ml spider R/version&gt; at PDC</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Installation of R packages can be done either from within R or from the
+ command line (BASH shell)</li>
+<li>CRAN is the recommended place to look for R-packages, but many packages can be found on GitHub and if you want the development version of a package you likely need to get it from GitHub or other place outside CRAN. You would then either download and install manually or install with something like devtools, from within R. </li>
+</ul>
+</div>
+<h4 id="extra-example-nsc">Extra example, NSC<a class="headerlink" href="#extra-example-nsc" title="Anchor link to this section for reference">&para;</a></h4>
+<p>For NSC you need to install <code>doParallel</code> and <code>foreach</code>, and <code>pbdMPI</code> (since <code>Rmpi</code> does not work) yourself to do the exercises in the section about batch. You can either do that now, exactly the same way a above for <code>nuggets</code> or you do it later today, during the batch session. </p>
+<ul>
+<li>If you have the setup done, and R loaded, then: <ul>
+<li>Start R</li>
+<li>Then <code>install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')</code>  </li>
+<li>and <code>install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')</code></li>
+<li>and <code>install.packages('pbdMPI', repos='http://ftp.acc.umu.se/mirror/CRAN/')</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="extra-example-pdc">Extra example, PDC<a class="headerlink" href="#extra-example-pdc" title="Anchor link to this section for reference">&para;</a></h4>
+<p>For PDC the package <code>Rmpi</code> does not work correctly, so we will instead use the package <code>pbdMPI</code>, which you need to install yourself to do one of the exercises in the advanced section about parallelism. You can either do that now, or you can do it that day, during the parallel session.</p>
+<ul>
+<li>If you have the setup done, and the R module loaded, then (on the command line, not inside R):<ul>
+<li>First copy the tarball: <code>cp /cfs/klemming/projects/snic/r-matlab-julia-naiss/pbdMPI_0.5-2.tar.gz .</code> while standing in your own directory that you are running R scripts from.  </li>
+<li>Then do: <code>R CMD INSTALL pbdMPI_0.5-2.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="install-own-packages-on-bianca">Install own packages on Bianca<a class="headerlink" href="#install-own-packages-on-bianca" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>If an R package is not not available on Bianca already (like Conda repositories) you may have to use the wharf to install the library/package</li>
+<li>Typical workflow<ul>
+<li>Install on Rackham</li>
+<li>Transfer to Wharf</li>
+<li>Move package to local Bianca R package path</li>
+<li>Test your installation</li>
+</ul>
+</li>
+<li>Demo and exercise from our Bianca course:<ul>
+<li><code>Installing R packages on Bianca &lt;https://uppmax.github.io/bianca_workshops/extra/rpackages/&gt;</code>_</li>
+</ul>
+</li>
+</ul>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Install a package with automatic download</p>
+<ol>
+<li>First do the setup of <code>.Renviron</code> and create the directory for installing R packages (Recommended load R version 4.4.1 on Pelle, 4.1.2 on Kebnekaise, 4.2.1 on LUNARC, 4.2.2 on NSC, and 4.4.1 on PDC)</li>
+<li>From the command line. Suggestion: <code>anomalize</code></li>
+<li>From inside R. Suggestion: <code>BGLR</code></li>
+<li>Start R and see if the library can be loaded. </li>
+</ol>
+<p>These are both on CRAN, and this way any dependencies will be installed as well. </p>
+<p>Remember to pick a repo that is nearby, to install from: https://cran.r-project.org/mirrors.html </p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Solution for 4.4.2 on Pelle (change <user>)</p>
+<p>Solution is very similar for the other centres - just change the R version (for instance to 4.2.1 for LUNARC and 4.4.1 for HPC2N and 4.0.0 for NSC and 4.4.2 for PDC).  </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Setup</label><label for="__tabbed_5_2">Command line</label><label for="__tabbed_5_3">Inside R</label><label for="__tabbed_5_4">Load library</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/R-packages-4.4.2
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Installing package &ldquo;anomalize&rdquo;. Using the repo http://ftp.acc.umu.se/mirror/CRAN/</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>$<span class="w"> </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;anomalize&#39;, repo=&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;)&quot;</span>
+</span></code></pre></div>
+<p>This assumes you have already loaded the R module. If not, then do so first. </p>
+</div>
+<div class="tabbed-block">
+<p>Installing package &ldquo;BGLR&rdquo;. Using the repo http://ftp.acc.umu.se/mirror/CRAN/</p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;BGLR&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="o">=</span><span class="s">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="p">)</span><span class="w">        </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-R highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="o">$</span><span class="w"> </span><span class="n">R</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;anomalize&quot;</span><span class="p">)</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;BGLR&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>&ldquo;BGLR&rdquo; outputs some text/advertisment when loaded. You can ignore this. </p>
+</div>
+</div>
+</div>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../load_run/" class="btn btn-neutral float-left" title="Load and run"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../batch/" class="btn btn-neutral float-right" title="Batch">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../load_run/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../batch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

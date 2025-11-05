@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>With R - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "With R";
+        var mkdocs_page_input_path = "advanced/MLR.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Machine Learning</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">With R</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#installed-ml-tools">Installed ML tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-your-code">Running your code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#r-batch-scripts-for-ml">R batch scripts for ML</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#serial-jobs">Serial jobs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#parallel-jobs">Parallel jobs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#gpu-jobs">GPU jobs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Advanced</li>
+          <li class="breadcrumb-item">Machine Learning</li>
+      <li class="breadcrumb-item active">With R</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/advanced/MLR.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ml-with-r">ML with R<a class="headerlink" href="#ml-with-r" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>Is R suitable for Machine Learning (ML)?</li>
+<li>Which machine learning tools are installed at HPCs?</li>
+<li>How to run R ML jobs on an HPC system (NSC, PDC, C3SE, UPPMAX, HPC2N, LUNARC)</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Short introduction to ML with R</li>
+<li>Overview of installed ML tools at Swedish HPC centres </li>
+<li>Workflow</li>
+<li>Show the structure of a suitable batch script</li>
+<li>Examples to try</li>
+<li><strong>We will not learn about:</strong><ul>
+<li>How to write and optimize ML/DL code.</li>
+<li>How to use multi-node setup for training models on CPU and GPU.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>R provides many packages that are specifically designed for machine learning. R is also known for its statistical capabilities for analysis and interpretation of data.</p>
+<p>This all makes it easier to develop and deploy models, also without having to write a lot of code yourself.</p>
+<p>The R community has contributed many powerful packages, both for machine learning and data science. Some of the popular packages are:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dplyr</td>
+<td>Enables dataframe manipulation in an intuitive, user-friendly way. One of the core <br>packages of the popular tidyverse set of packages</td>
+</tr>
+<tr>
+<td>Tidyr</td>
+<td>Provides a bunch of tools to help tidy up your messy datasets. tidyr is a member of <br>the core tidyverse</td>
+</tr>
+<tr>
+<td>Caret</td>
+<td>A set of functions that attempt to streamline the process for creating predictive <br>models. Short for Classification And REgression Training</td>
+</tr>
+<tr>
+<td>MLR</td>
+<td>R has no standardized interface for its ML algorithms. MLR provides this <br>infrastructure. The framework provides supervised methods like classification, regression <br>and survival analysis along with their corresponding evaluation and optimization <br>methods, as well as unsupervised methods like clustering. You can extend it yourself <br>or deviate from the implemented convenience methods and construct your own <br>complex experiments or algorithms</td>
+</tr>
+<tr>
+<td>ggplot2</td>
+<td>A system for declaratively creating graphics. Part of tidyverse</td>
+</tr>
+<tr>
+<td>randomForest</td>
+<td>implements Breiman’s random forest algorithm</td>
+</tr>
+<tr>
+<td>mlbench</td>
+<td>A collection of artificial and real-world machine learning benchmark problem</td>
+</tr>
+<tr>
+<td>stringr</td>
+<td>Provides a cohesive set of functions designed to make working with strings as easy <br>as possible</td>
+</tr>
+<tr>
+<td>tidyverse</td>
+<td>A set of packages that work in harmony because they share common data representations <br>and API design. Some of the popular packages in this set is: ggplot2, dplyr, tidyr, stringr, <br>and many more</td>
+</tr>
+</tbody>
+</table>
+<p>and others.</p>
+<h2 id="installed-ml-tools">Installed ML tools<a class="headerlink" href="#installed-ml-tools" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There are differences depending on the centre as well as minor differences depending on the version of R.</p>
+<p>This table is not exhaustive, but lists the more popular libraries/packages and what the module is called at the various centres. Please do <code>module spider</code> on them to see how to load them as well as which versions are available. </p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>NSC</th>
+<th>PDC</th>
+<th>C3SE</th>
+<th>UPPMAX (Rackham)</th>
+<th>UPPMAX (Pelle)</th>
+<th>HPC2N</th>
+<th>LUNARC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dplyr</td>
+<td>N/A</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>tidyr</td>
+<td>N/A</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>caret</td>
+<td>N/A</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>mlr</td>
+<td>N/A</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>randomForest</td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+<tr>
+<td>stringr</td>
+<td>N/A</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+</tr>
+<tr>
+<td>kernlab</td>
+<td>N/A</td>
+<td>R</td>
+<td>R</td>
+<td>R_packages</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+<td>R-bundle-CRAN</td>
+</tr>
+</tbody>
+</table>
+<p>Some centes have several packages installed with R, some have module &ldquo;bundles&rdquo; of R packages installed at the various centres: </p>
+<ul>
+<li>NSC (R/4.4.0): ~30 packages installed with R. You will have to install the rest yourself. </li>
+<li>PDC (R/4.4.2): ~1250 packages installed with R. In addition, there are many Bioconductor packages installed with the Rbio module </li>
+<li>C3SE: R(R/4.2.1): ~1340 packages installed with R. (The R/4.3.3 only has ~100 packages installed with R).  </li>
+<li>HPC2N (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN, R-bundle-CRAN-extra, R-bundle-Bioconductor</li>
+<li>UPPMAX - Rackham (R/4.1.1): Almost all packages in CRAN and BioConductor are contained in the R_packages module, as is a small number of other R packages not in CRAN/BioConductor. Total of 23476 R packages are installed.  </li>
+<li>UPPMAX - Pelle (R/4.4.2): ~100 packages installed with R. In addition many installed with R-bundle-CRAN, R-bundle-Bioconductor</li>
+<li>LUNARC (R/4.4.1): ~100 packages installed with R. In addition many installed with R-bundle-CRAN and R-bundle-Bioconductor </li>
+</ul>
+<h2 id="running-your-code">Running your code<a class="headerlink" href="#running-your-code" title="Anchor link to this section for reference">&para;</a></h2>
+<p><strong>Workflow</strong></p>
+<ol>
+<li>Determine if you need any R libraries that are not already installed (load R module and R_packages/R-bundle-CRAN/R-bundle-Bioconductor and check)</li>
+<li>Determine if you want to run on CPUs or GPUs - some of the R version modules are not CUDA-aware</li>
+<li>Install any missing R libraries in an isolated environment</li>
+<li>Possibly download any datasets</li>
+<li>Write a batch script</li>
+<li>Submit the batch script</li>
+</ol>
+<p><strong>Example</strong></p>
+<div class="admonition hint">
+<p class="admonition-title">Type-along</p>
+<p>We will run a simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/</p>
+<p>If you cannot access remote data-sets, change the R code as mentioned inside to use a local data-set, which has already been downloaded</p>
+<p><strong>NOTE</strong>: normally we would not run this on the command line, but through a batch script, but since these are short examples we will run it on the command line.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">NSC</label><label for="__tabbed_1_2">PDC</label><label for="__tabbed_1_3">C3SE</label><label for="__tabbed_1_4">UPPMAX</label><label for="__tabbed_1_5">HPC2N</label><label for="__tabbed_1_6">LUNARC</label><label for="__tabbed_1_7">iris_ml.R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>You need to install <code>caret</code>, <code>kernlab</code>, and <code>randomForest</code> before running, as shown below. If it asks, agree to install in local directory.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R/4.4.0-hpc1-gcc-11.3.0-bare
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$<span class="w"> </span>R
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;caret&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;kernlab&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s1">&#39;randomForest&#39;</span>,<span class="w"> </span><span class="nv">repos</span><span class="o">=</span><span class="s1">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="o">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>&gt;<span class="w"> </span>quit<span class="o">()</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>All the needed packages are part of the R module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>PDC/24.11<span class="w"> </span>R/4.4.2-cpeGNU-24.11
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Use version 4.2.1 of R, as that version has <code>caret</code>, <code>kernlab</code>, and <code>randomForest</code> included (the newest, 4.3.3, does not have these packages).  </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R/4.2.1-foss-2022a<span class="w">        </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><strong>Rackham</strong>: </p>
+<p>All the needed packages are part of the R_packages module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R_packages/4.1.1
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+<p><strong>Pelle</strong>: </p>
+<p>The needed packages are in R, R-bundle-CRAN modules, and R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R/4.4.2-gfbf-2024a<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a<span class="w"> </span>R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>All the needed packages are part of the R-bundle-CRAN module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R/4.4.1<span class="w"> </span>R-bundle-CRAN/2024.06<span class="w"> </span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>All the needed packages are part of the R-bundle-CRAN module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w">  </span>OpenMPI/4.1.5<span class="w"> </span>R/4.4.1<span class="w"> </span>R-bundle-CRAN/2023.12-R-4.4.1<span class="w"> </span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>$<span class="w"> </span>Rscript<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Simple example taken from https://machinelearningmastery.com/machine-learning-in-r-step-by-step/</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># COMMENT OUT THIS SECTION IF YOU CANNOT ACCESS REMOTE DATA-SETS</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># --------------------------------------------------------------</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># attach the iris dataset to the environment</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>data<span class="o">(</span>iris<span class="o">)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># rename the dataset</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>dataset<span class="w"> </span>&lt;-<span class="w"> </span>iris
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># ---------------------------------------------------------------</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># REMOVE THE COMMENTS ON THIS SECTION (except comments...) TO USE LOCAL DATA-SETS</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># -------------------------------------------------------------------------------</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c1"># define the filename</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="c1">#filename &lt;- &quot;iris.csv&quot;</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1"># load the CSV file from the local directory</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1">#dataset &lt;- read.csv(filename, header=FALSE)</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="c1"># -------------------------------------------------------------------------------</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="c1"># set the column names in the dataset</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>colnames<span class="o">(</span>dataset<span class="o">)</span><span class="w"> </span>&lt;-<span class="w"> </span>c<span class="o">(</span><span class="s2">&quot;Sepal.Length&quot;</span>,<span class="s2">&quot;Sepal.Width&quot;</span>,<span class="s2">&quot;Petal.Length&quot;</span>,<span class="s2">&quot;Petal.Width&quot;</span>,<span class="s2">&quot;Species&quot;</span><span class="o">)</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="c1"># create a list of 80% of the rows in the original dataset we can use for training</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>validation_index<span class="w"> </span>&lt;-<span class="w"> </span>createDataPartition<span class="o">(</span>dataset<span class="nv">$Species</span>,<span class="w"> </span><span class="nv">p</span><span class="o">=</span><span class="m">0</span>.80,<span class="w"> </span><span class="nv">list</span><span class="o">=</span>FALSE<span class="o">)</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="c1"># select 20% of the data for validation</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>validation<span class="w"> </span>&lt;-<span class="w"> </span>dataset<span class="o">[</span>-validation_index,<span class="o">]</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="c1"># use the remaining 80% of data to training and testing the models</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>dataset<span class="w"> </span>&lt;-<span class="w"> </span>dataset<span class="o">[</span>validation_index,<span class="o">]</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="c1"># Run algorithms using 10-fold cross validation</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>control<span class="w"> </span>&lt;-<span class="w"> </span>trainControl<span class="o">(</span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;cv&quot;</span>,<span class="w"> </span><span class="nv">number</span><span class="o">=</span><span class="m">10</span><span class="o">)</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>metric<span class="w"> </span>&lt;-<span class="w"> </span><span class="s2">&quot;Accuracy&quot;</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="c1"># a) linear algorithms</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>fit.lda<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;lda&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="c1"># b) nonlinear algorithms</span>
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="c1"># CART</span>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>fit.cart<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rpart&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="c1"># kNN</span>
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a>fit.knn<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;knn&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="c1"># c) advanced algorithms</span>
+</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="c1"># SVM</span>
+</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a>fit.svm<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;svmRadial&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="c1"># Random Forest</span>
+</span><span id="__span-7-48"><a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a>set.seed<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+</span><span id="__span-7-49"><a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>fit.rf<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>Species~.,<span class="w"> </span><span class="nv">data</span><span class="o">=</span>dataset,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span>,<span class="w"> </span><span class="nv">metric</span><span class="o">=</span>metric,<span class="w"> </span><span class="nv">trControl</span><span class="o">=</span>control<span class="o">)</span>
+</span><span id="__span-7-50"><a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a>
+</span><span id="__span-7-51"><a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="c1"># summarize accuracy of models</span>
+</span><span id="__span-7-52"><a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a>results<span class="w"> </span>&lt;-<span class="w"> </span>resamples<span class="o">(</span>list<span class="o">(</span><span class="nv">lda</span><span class="o">=</span>fit.lda,<span class="w"> </span><span class="nv">cart</span><span class="o">=</span>fit.cart,<span class="w"> </span><span class="nv">knn</span><span class="o">=</span>fit.knn,<span class="w"> </span><span class="nv">svm</span><span class="o">=</span>fit.svm,<span class="w"> </span><span class="nv">rf</span><span class="o">=</span>fit.rf<span class="o">))</span>
+</span><span id="__span-7-53"><a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a>summary<span class="o">(</span>results<span class="o">)</span>
+</span><span id="__span-7-54"><a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a>
+</span><span id="__span-7-55"><a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a><span class="c1"># summarize Best Model</span>
+</span><span id="__span-7-56"><a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a>print<span class="o">(</span>fit.lda<span class="o">)</span>
+</span><span id="__span-7-57"><a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a>
+</span><span id="__span-7-58"><a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a><span class="c1"># estimate skill of LDA on the validation dataset</span>
+</span><span id="__span-7-59"><a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a>predictions<span class="w"> </span>&lt;-<span class="w"> </span>predict<span class="o">(</span>fit.lda,<span class="w"> </span>validation<span class="o">)</span>
+</span><span id="__span-7-60"><a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a>confusionMatrix<span class="o">(</span>predictions,<span class="w"> </span>validation<span class="nv">$Species</span><span class="o">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="r-batch-scripts-for-ml">R batch scripts for ML<a class="headerlink" href="#r-batch-scripts-for-ml" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Since most R codes for Machine Learning would run for a fairly long time, you would usually have to run them in a batch script.</p>
+<h3 id="serial-jobs">Serial jobs<a class="headerlink" href="#serial-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Type-along</p>
+<p>Short serial batch example for running the R code above, <code>iris_ml.R</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">NSC</label><label for="__tabbed_2_2">PDC</label><label for="__tabbed_2_3">C3SE</label><label for="__tabbed_2_4">UPPMAX</label><label for="__tabbed_2_5">HPC2N</label><label for="__tabbed_2_6">LUNARC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Short serial example for running on Tetralith. Loading R/4.4.0-hpc1-gcc-11.3.0-bare</p>
+<p>NOTE: if you did not install the packages <code>caret</code>, <code>kernlab</code>, and <code>randomForest</code> above, you have to do so now before running the script.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">#SBATCH -A naiss2025-22-934 # Change to your own project ID</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># Load any modules you need, here R/4.4.0-hpc1-gcc-11.3.0-bare</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.4.0-hpc1-gcc-11.3.0-bare
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Dardel. Loading PDC/24.11 R/4.4.2-cpeGNU-24.11 </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">#SBATCH -A naiss2025-22-934 # Change to your own project ID</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># Load any modules you need, here R/4.4.2-cpeGNU-24.11 and prerequisites</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>module<span class="w"> </span>load<span class="w"> </span>PDC/24.11<span class="w"> </span>R/4.4.2-cpeGNU-24.11
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Alvis is only for running GPU jobs </p>
+</div>
+<div class="tabbed-block">
+<p>Short serial example script for Pelle. Loading R/4.4.2-gfbf-2024a R-bundle-CRAN/2024.11-foss-2024a R-bundle-Bioconductor </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">#SBATCH -A uppmax2025-2-360 # Course project id. Change to your own project ID after the course</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Load any modules you need, here R/4.4.2-gfbf-2024a and R-bundle-CRAN/2024.11-foss-2024a and R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.4.2-gfbf-2024a<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a<span class="w"> </span>R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2<span class="w"> </span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Kebnekaise. Loading R/4.4.1 and prerequisites, also R-bundle-Bioconductor/3.19-R-4.4.1 and R-bundle-CRAN/2024.06 </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">#SBATCH -A hpc2n2025-151 # Change to your own project ID</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Load any modules you need, here R/4.4.1 and prerequisites + R-bundle-CRAN/2024.06 and R-bundle-Bioconductor/3.19-R-4.4.1 </span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1<span class="w"> </span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>module<span class="w"> </span>load<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R-bundle-CRAN/2024.06<span class="w"> </span>R-bundle-Bioconductor/3.19-R-4.4.1
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites, also a suitable R-bundle-Bioconductor</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1">#SBATCH -A lu2025-2-94 # Change to your own project ID</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Load any modules you need, here R/4.2.1 and prerequisites + R-bundle-Bioconductor</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w">  </span>R/4.2.1<span class="w"> </span>R-bundle-Bioconductor/3.15-R-4.2.1
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># Run your R script (here &#39;iris_ml.R&#39;)</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>iris_ml.R
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Send the script to the batch:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</span></code></pre></div>
+<p><strong>NOTE</strong> you could also run the R code inside the batch script with &ldquo;Rscript program.R&rdquo;. </p>
+</div>
+<h3 id="parallel-jobs">Parallel jobs<a class="headerlink" href="#parallel-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Type-along</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">UPPMAX</label><label for="__tabbed_3_2">HPC2N</label><label for="__tabbed_3_3">LUNARC</label><label for="__tabbed_3_4">NSC</label><label for="__tabbed_3_5">PDC</label><label for="__tabbed_3_6">C3SE</label><label for="__tabbed_3_7">MyRscript.R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Short ML example for running on Pelle.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1">#SBATCH -A uppmax2025-2-360</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">#Asking for 10 min.</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1">#SBATCH --exclusive</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1">#SBATCH --cpus-per-task=8</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1">#Writing output and error files</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1">#SBATCH --output=output%J.out</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1">#SBATCH --error=error%J.error</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>ml<span class="w"> </span>R/4.4.2-gfbf-2024a<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a<span class="w"> </span>R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>srun<span class="w"> </span>Rscript<span class="w"> </span>MyRscript.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short ML example for running on Kebnekaise.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1">#SBATCH -A hpc2n2025-151 # Change to your own project ID</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">#Asking for 10 min.</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1">#SBATCH --cpus-per-task=8</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">#Writing output and error files</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1">#SBATCH --output=output%J.out</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">#SBATCH --error=error%J.error</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>module<span class="w"> </span>load<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R-bundle-CRAN/2024.06
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>module<span class="w"> </span>load<span class="w"> </span>R-bundle-Bioconductor/3.19-R-4.4.1
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>srun<span class="w"> </span>Rscript<span class="w"> </span>MyRscript.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short ML example for running on Cosmos.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1">#SBATCH -A lu2025-2-94 # Change to your own project ID</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1">#Asking for 10 min.</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1">#SBATCH --cpus-per-task=8</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1">#Writing output and error files</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="c1">#SBATCH --output=output%J.out</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c1">#SBATCH --error=error%J.error</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w"> </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>srun<span class="w"> </span>Rscript<span class="w"> </span>MyRscript.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short ML example for running on Tetralith.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">#SBATCH -A naiss2025-23-934 # Change to your own project ID</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1">#Asking for 10 min.</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1">#SBATCH --cpus-per-task=8 </span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1">#Writing output and error files</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="c1">#SBATCH --output=output%J.out</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c1">#SBATCH --error=error%J.error</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.4.0-hpc1-gcc-11.3.0-bare
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>srun<span class="w"> </span>Rscript<span class="w"> </span>MyRscript.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short ML example for running on Dardel.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1">#SBATCH -A naiss2025-22-934 # Change to your own project ID</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1">#Asking for 10 min.</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1">#SBATCH --ntasks-per-node=8</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1">#SBATCH -p main</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1">#Writing output and error files</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="c1">#SBATCH --output=output%J.out</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="c1">#SBATCH --error=error%J.error</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>module<span class="w"> </span>load<span class="w"> </span>PDC/24.11<span class="w"> </span>R/4.4.2-cpeGNU-24.11
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>srun<span class="w"> </span>Rscript<span class="w"> </span>MyRscript.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Alvis is only for running GPU jobs </p>
+</div>
+<div class="tabbed-block">
+<p>Short ML example.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">#Example taken from https://github.com/lgreski/datasciencectacontent/blob/master/markdown/pml-randomForestPerformance.md</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>library<span class="o">(</span>mlbench<span class="o">)</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>data<span class="o">(</span>Sonar<span class="o">)</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>library<span class="o">(</span>caret<span class="o">)</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>set.seed<span class="o">(</span><span class="m">95014</span><span class="o">)</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># create training &amp; testing data sets</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>inTraining<span class="w"> </span>&lt;-<span class="w"> </span>createDataPartition<span class="o">(</span>Sonar<span class="nv">$Class</span>,<span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.75,<span class="w"> </span><span class="nv">list</span><span class="o">=</span>FALSE<span class="o">)</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>training<span class="w"> </span>&lt;-<span class="w"> </span>Sonar<span class="o">[</span>inTraining,<span class="o">]</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>testing<span class="w"> </span>&lt;-<span class="w"> </span>Sonar<span class="o">[</span>-inTraining,<span class="o">]</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="c1"># set up training run for x / y syntax because model format performs poorly</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>x<span class="w"> </span>&lt;-<span class="w"> </span>training<span class="o">[</span>,-61<span class="o">]</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>y<span class="w"> </span>&lt;-<span class="w"> </span>training<span class="o">[</span>,61<span class="o">]</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="c1">#Serial mode</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>fitControl<span class="w"> </span>&lt;-<span class="w"> </span>trainControl<span class="o">(</span><span class="nv">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cv&quot;</span>,
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">                           </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>,
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">                           </span><span class="nv">allowParallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FALSE<span class="o">)</span>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>stime<span class="w"> </span>&lt;-<span class="w"> </span>system.time<span class="o">(</span>fit<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>x,y,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span>,data<span class="o">=</span>Sonar,trControl<span class="w"> </span><span class="o">=</span><span class="w"> </span>fitControl<span class="o">))</span>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="c1">#Parallel mode</span>
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>library<span class="o">(</span>parallel<span class="o">)</span>
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>library<span class="o">(</span>doParallel<span class="o">)</span>
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>cluster<span class="w"> </span>&lt;-<span class="w"> </span>makeCluster<span class="o">(</span><span class="m">1</span><span class="o">)</span>
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a>registerDoParallel<span class="o">(</span>cluster<span class="o">)</span>
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a>
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>fitControl<span class="w"> </span>&lt;-<span class="w"> </span>trainControl<span class="o">(</span><span class="nv">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cv&quot;</span>,
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">                           </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>,
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">                           </span><span class="nv">allowParallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE<span class="o">)</span>
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>
+</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a>ptime<span class="w"> </span>&lt;-<span class="w"> </span>system.time<span class="o">(</span>fit<span class="w"> </span>&lt;-<span class="w"> </span>train<span class="o">(</span>x,y,<span class="w"> </span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span>,data<span class="o">=</span>Sonar,trControl<span class="w"> </span><span class="o">=</span><span class="w"> </span>fitControl<span class="o">))</span>
+</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a>
+</span><span id="__span-19-36"><a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a>stopCluster<span class="o">(</span>cluster<span class="o">)</span>
+</span><span id="__span-19-37"><a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a>registerDoSEQ<span class="o">()</span>
+</span><span id="__span-19-38"><a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a>
+</span><span id="__span-19-39"><a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a>fit
+</span><span id="__span-19-40"><a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a>fit<span class="nv">$resample</span>
+</span><span id="__span-19-41"><a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a>confusionMatrix.train<span class="o">(</span>fit<span class="o">)</span>
+</span><span id="__span-19-42"><a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a>
+</span><span id="__span-19-43"><a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="c1">#Timings</span>
+</span><span id="__span-19-44"><a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a>timing<span class="w"> </span>&lt;-<span class="w"> </span>rbind<span class="o">(</span><span class="nv">sequential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>stime,<span class="w"> </span><span class="nv">parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ptime<span class="o">)</span>
+</span><span id="__span-19-45"><a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a>timing
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</span></code></pre></div>
+</div>
+<h3 id="gpu-jobs">GPU jobs<a class="headerlink" href="#gpu-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Some packages are now able to use GPUs for ML jobs in R. One of them is <code>xgboost &lt;https://xgboost.readthedocs.io/en/latest/install.html&gt;</code>_.
+In the following demo you will find instructions to install this package and run a test case with GPUs.</p>
+<div class="admonition hint">
+<p class="admonition-title">Demo</p>
+<details class="note">
+<summary>Prerequisites</summary>
+<p>Choose an R version &gt; 4.1 and a CUDA module. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">NSC</label><label for="__tabbed_4_2">PDC</label><label for="__tabbed_4_3">C3SE</label><label for="__tabbed_4_4">HPC2N</label><label for="__tabbed_4_5">LUNARC</label><label for="__tabbed_4_6">UPPMAX</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>There is no compatible CUDA and R, so the best option seems to be to be to install your own R with conda. It will take quite some space, so do it in your project storage: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span>ml<span class="w"> </span>buildenv-gcccuda/11.6.2-gcc9-hpc1<span class="w"> </span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>$<span class="w"> </span>ml<span class="w"> </span>buildtool-easybuild/4.9.4-hpc71cbb0050<span class="w"> </span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>$<span class="w"> </span>ml<span class="w"> </span>Miniforge/24.7.1-2-hpc1<span class="w"> </span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/proj/courses-fall-2025/users/&lt;username&gt;<span class="w"> </span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>myenv
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>$<span class="w"> </span>mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>R<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>r-base<span class="w"> </span>-y
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>$<span class="w"> </span>mamba<span class="w"> </span>activate<span class="w"> </span>R
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>$<span class="w"> </span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>r-essentials
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>$<span class="w"> </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;tictoc&#39;, repos=&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>The example with xgboost will unfortunately not work on Dardel, as it works only for CUDA-capable GPUs. </p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R/4.2.1-foss-2022a
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>$<span class="w"> </span>ml<span class="w"> </span>CUDA/12.9.1
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ml<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1<span class="w"> </span>CUDA/12.1.1<span class="w"> </span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>ml<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R-bundle-CRAN/2024.06<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w"> </span>OpenMPI/4.1.5<span class="w"> </span>R/4.4.1<span class="w"> </span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>module<span class="w"> </span>load<span class="w"> </span>R-bundle-CRAN/2023.12-R-4.4.1<span class="w"> </span>CUDA<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ml<span class="w"> </span>R/4.4.2-gfbf-2024a<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a<span class="w"> </span>R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<p>Get a release <code>xgboost</code> version with GPU support and place it in the package directory for your R version 
+- if you are using the project storage, change to that
+- If you have not created a package directory for the version of R you will use here, then follow the steps under <a href="../../r/packages/#setup">setup</a></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/u/username/R-packages-4.4.1
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w"> </span>wget<span class="w"> </span>https://github.com/dmlc/xgboost/releases/download/v1.5.0rc1/xgboost_r_gpu_linux.tar.gz
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If on NSC, activate your newly created conda environment, if you are not already there. Create a suitable directory for installing (probably for R 4.5.1) and add to .bashrc if you have not already: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/proj/courses-fall-2025/users/&lt;username&gt;/R-packages-4.5.1
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;&lt;path-to-your-space-on-proj-storage&gt;/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+</span></code></pre></div>
+</div>
+<p>Then, install the package</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>R<span class="w"> </span>CMD<span class="w"> </span>INSTALL<span class="w"> </span>./xgboost_r_gpu_linux.tar.gz
+</span></code></pre></div>
+<p>Download a data set like the <a href="https://archive.ics.uci.edu/dataset/280/higgs" target="blank">HIGGS</a> data set for detecting Higgs particles that is large enough to benefit from GPU acceleration (it can take several minutes to download and uncompress). Do not put in the R-packages library:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>wget<span class="w"> </span>https://archive.ics.uci.edu/static/public/280/higgs.zip
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>unzip<span class="w"> </span>higgs.zip
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>gunzip<span class="w"> </span>HIGGS.csv.gz
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>HIGGS.csv is a big file. If this is done during the course, you will find the HIGGS.csv file in the top of the project storage for the course. Use that instead of your own copy, and instead create a soft link for the file in your working directory: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/path/to/projdir/yourdir/workdir/
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>$<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/path/to/projdir/HIGGS.csv<span class="w"> </span>HIGGS.csv
+</span></code></pre></div>
+</div>
+<p>Copy and paste the following R script for predicting if the detected particles in the data set are Higgs bosons or not:</p>
+<details class="note">
+<summary>gpu-script-db-higgs.R</summary>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># Inspired by the benchmarking of Anatoly Tsyplenkov:</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># https://anatolii.nz/posts/2024/xgboost-gpu-r</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="c1">#     step 0: Install these packages if you haven&#39;t done it</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1">#install.packages(c(&quot;xgboost&quot;, &quot;data.table&quot;, &quot;tictoc&quot;))</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="nf">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="nf">library</span><span class="p">(</span><span class="n">tictoc</span><span class="p">)</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="c1">#     step 1: Extract the ZIP file (if not already extracted)</span>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="c1">#unzip(&quot;higgs.zip&quot;)  # Extracts to the current working directory</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="c1">#     step 2: Read the CSV file</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="n">higgs_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;HIGGS.csv&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># Reads large datasets efficiently</span>
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="c1">#     step 3: Preprocess Data</span>
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="c1"># The first column is the target (0 or 1), the rest are features</span>
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="n">X</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">higgs_data</span><span class="p">[,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">])</span><span class="w">  </span><span class="c1"># Remove first column</span>
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="n">higgs_data</span><span class="o">$</span><span class="n">V1</span><span class="p">)</span><span class="w">  </span><span class="c1"># Target column</span>
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a>
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="c1"># Train-test split (75% train, 25% test)</span>
+</span><span id="__span-31-21"><a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">111</span><span class="p">)</span>
+</span><span id="__span-31-22"><a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="__span-31-23"><a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a><span class="n">train_idx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample.int</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">0.75</span><span class="p">)</span>
+</span><span id="__span-31-24"><a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a>
+</span><span id="__span-31-25"><a id="__codelineno-31-25" name="__codelineno-31-25" href="#__codelineno-31-25"></a><span class="n">dtrain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">xgb.DMatrix</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">])</span>
+</span><span id="__span-31-26"><a id="__codelineno-31-26" name="__codelineno-31-26" href="#__codelineno-31-26"></a><span class="n">dtest</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">xgb.DMatrix</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="n">train_idx</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="n">train_idx</span><span class="p">])</span>
+</span><span id="__span-31-27"><a id="__codelineno-31-27" name="__codelineno-31-27" href="#__codelineno-31-27"></a><span class="n">evals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtest</span><span class="p">)</span>
+</span><span id="__span-31-28"><a id="__codelineno-31-28" name="__codelineno-31-28" href="#__codelineno-31-28"></a>
+</span><span id="__span-31-29"><a id="__codelineno-31-29" name="__codelineno-31-29" href="#__codelineno-31-29"></a><span class="c1">#     step 4: Define XGBoost Parameters</span>
+</span><span id="__span-31-30"><a id="__codelineno-31-30" name="__codelineno-31-30" href="#__codelineno-31-30"></a><span class="n">param</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w"> </span><span class="n">objective</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;binary:logistic&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">eval_metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">,</span>
+</span><span id="__span-31-31"><a id="__codelineno-31-31" name="__codelineno-31-31" href="#__codelineno-31-31"></a><span class="w">   </span><span class="n">eval_metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;logloss&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">max_depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">eta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span>
+</span><span id="__span-31-32"><a id="__codelineno-31-32" name="__codelineno-31-32" href="#__codelineno-31-32"></a>
+</span><span id="__span-31-33"><a id="__codelineno-31-33" name="__codelineno-31-33" href="#__codelineno-31-33"></a><span class="c1">#     step 5: Train on CPU</span>
+</span><span id="__span-31-34"><a id="__codelineno-31-34" name="__codelineno-31-34" href="#__codelineno-31-34"></a><span class="nf">tic</span><span class="p">()</span>
+</span><span id="__span-31-35"><a id="__codelineno-31-35" name="__codelineno-31-35" href="#__codelineno-31-35"></a><span class="n">xgb_cpu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">xgb.train</span><span class="p">(</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">watchlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evals</span><span class="p">,</span>
+</span><span id="__span-31-36"><a id="__codelineno-31-36" name="__codelineno-31-36" href="#__codelineno-31-36"></a><span class="n">nrounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">tree_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hist&quot;</span><span class="p">)</span>
+</span><span id="__span-31-37"><a id="__codelineno-31-37" name="__codelineno-31-37" href="#__codelineno-31-37"></a><span class="nf">toc</span><span class="p">()</span>
+</span><span id="__span-31-38"><a id="__codelineno-31-38" name="__codelineno-31-38" href="#__codelineno-31-38"></a>
+</span><span id="__span-31-39"><a id="__codelineno-31-39" name="__codelineno-31-39" href="#__codelineno-31-39"></a><span class="c1">#     step 6: Train on GPU</span>
+</span><span id="__span-31-40"><a id="__codelineno-31-40" name="__codelineno-31-40" href="#__codelineno-31-40"></a><span class="nf">tic</span><span class="p">()</span>
+</span><span id="__span-31-41"><a id="__codelineno-31-41" name="__codelineno-31-41" href="#__codelineno-31-41"></a><span class="n">xgb_gpu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">xgb.train</span><span class="p">(</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtrain</span><span class="p">,</span><span class="w"> </span><span class="n">watchlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evals</span><span class="p">,</span>
+</span><span id="__span-31-42"><a id="__codelineno-31-42" name="__codelineno-31-42" href="#__codelineno-31-42"></a><span class="n">nrounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">tree_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hist&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cuda&quot;</span><span class="p">)</span>
+</span><span id="__span-31-43"><a id="__codelineno-31-43" name="__codelineno-31-43" href="#__codelineno-31-43"></a><span class="nf">toc</span><span class="p">()</span>
+</span><span id="__span-31-44"><a id="__codelineno-31-44" name="__codelineno-31-44" href="#__codelineno-31-44"></a>
+</span><span id="__span-31-45"><a id="__codelineno-31-45" name="__codelineno-31-45" href="#__codelineno-31-45"></a><span class="c1"># Print models</span>
+</span><span id="__span-31-46"><a id="__codelineno-31-46" name="__codelineno-31-46" href="#__codelineno-31-46"></a><span class="nf">print</span><span class="p">(</span><span class="n">xgb_cpu</span><span class="p">)</span>
+</span><span id="__span-31-47"><a id="__codelineno-31-47" name="__codelineno-31-47" href="#__codelineno-31-47"></a><span class="nf">print</span><span class="p">(</span><span class="n">xgb_gpu</span><span class="p">)</span>
+</span></code></pre></div>
+</details>
+<p>You can use the following template for your batch script:</p>
+<details class="note">
+<summary>job-gpu.sh</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:6"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">NSC</label><label for="__tabbed_5_2">PDC</label><label for="__tabbed_5_3">C3SE</label><label for="__tabbed_5_4">HPC2N</label><label for="__tabbed_5_5">LUNARC</label><label for="__tabbed_5_6">UPPMAX</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="c1"># Remember to change this to your own project ID after the course!</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="c1">#SBATCH -A naiss2025-22-934</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># Asking for runtime: hours, minutes, seconds. At most 1 week</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="c1">#SBATCH --time=03:00:00</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="c1"># Ask for resources, including GPU resources</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="c1">#SBATCH -c 32</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="c1">#SBATCH --gpus-per-task=1</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="c1"># Remove any loaded modules and load the ones we need</span>
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>module<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>ml<span class="w"> </span>buildenv-gcccuda/11.6.2-gcc9-hpc1
+</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>ml<span class="w"> </span>buildtool-easybuild/4.9.4-hpc71cbb0050
+</span><span id="__span-32-15"><a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>ml<span class="w"> </span>Miniforge/24.7.1-2-hpc1
+</span><span id="__span-32-16"><a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>conda<span class="w"> </span>activate<span class="w"> </span>myenv
+</span><span id="__span-32-17"><a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>mamba<span class="w"> </span>activate<span class="w"> </span>R<span class="w">  </span>
+</span><span id="__span-32-18"><a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>
+</span><span id="__span-32-19"><a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>gpu-script-db-higgs.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Dardel has AMD GPUs so we cannot run the xgboost R package.     </p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="c1"># Remember to change this to your own project ID after the course!</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="c1">#SBATCH -A NAISS2025-22-934</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="c1">#SBATCH -t 03:00:00</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="c1">#SBATCH -p alvis</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="c1">#SBATCH -N 1 --gpus-per-node=T4:1</span>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.1-foss-2022a<span class="w"> </span>CUDA/12.9.1<span class="w"> </span>
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>gpu-script-db-higgs.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="c1">#SBATCH -A hpc2n2025-151 # Change to your own project ID</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="c1">#Asking for 1 hour.</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="c1">#SBATCH -t 03:00:00</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="c1">#SBATCH -C l40s</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="c1">#Writing output and error files</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="c1">#SBATCH --output=output%J.out</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="c1">#SBATCH --error=error%J.error</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>ml<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1<span class="w"> </span>CUDA/12.1.1
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>ml<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R-bundle-CRAN/2024.06
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>gpu-script-db-higgs.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="c1"># Remember to change this to your own project ID after the course!</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1">#SBATCH -A lu2025-2-94</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># Asking for runtime: hours, minutes, seconds. At most 1 week</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="c1">#SBATCH --time=03:00:00</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="c1"># Ask for GPU resources - x is how many cards, 1 or 2 </span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="c1">#SBATCH -p gpua100</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="c1">#SBATCH --gres=gpu:x</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="c1"># Remove any loaded modules and load the ones we need</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>module<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w"> </span>OpenMPI/4.1.5<span class="w"> </span>R/4.4.1<span class="w"> </span>
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>module<span class="w"> </span>load<span class="w"> </span>R-bundle-CRAN/2023.12-R-4.4.1<span class="w"> </span>CUDA
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>gpu-script-db-higgs.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1">#SBATCH -A uppmax2025-2-360 # Change to your own project ID</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="c1">#Asking for 3 hours.</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="c1">#SBATCH -t 03:00:00</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="c1">#SBATCH -p gpu </span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="c1">#SBATCH --gpus:l40s:1</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="c1">#Writing output and error files</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="c1">#SBATCH --output=output%J.out</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="c1">#SBATCH --error=error%J.error</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>ml<span class="w"> </span>R/4.4.2-gfbf-2024a<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a<span class="w"> </span>R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2<span class="w"> </span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-f<span class="w"> </span>gpu-script-db-higgs.R
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<details class="note">
+<summary>Timings</summary>
+<p>```R</p>
+<blockquote>
+<h1 id="step-5-train-on-cpu">step 5: Train on CPU<a class="headerlink" href="#step-5-train-on-cpu" title="Anchor link to this section for reference">&para;</a></h1>
+<p>tic()
+xgb_cpu &lt;- xgb.train( params = param, data = dtrain, watchlist = evals,
+ + nrounds = 10000, verbose = 0, tree_method = &ldquo;hist&rdquo;)
+toc()
+ 10337.386 sec elapsed</p>
+<h1 id="step-6-train-on-gpu">step 6: Train on GPU<a class="headerlink" href="#step-6-train-on-gpu" title="Anchor link to this section for reference">&para;</a></h1>
+<p>tic()
+xgb_gpu &lt;- xgb.train( params = param, data = dtrain, watchlist = evals,
+ + nrounds = 10000, verbose = 0, tree_method = &ldquo;hist&rdquo;, device = &ldquo;cuda&rdquo;)
+toc()
+ 199.416 sec elapsed
+ ```</p>
+</blockquote>
+</details>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../img/shell-logo_small.png"> Exercise</p>
+<p>Run validation.R with Rscript</p>
+<p>This example is taken from <a href="https://www.geeksforgeeks.org/cross-validation-in-r-programming/" target="_blank">https://www.geeksforgeeks.org/cross-validation-in-r-programming/</a>. </p>
+<details class="note">
+<summary><code>validation.R</code></summary>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># R program to implement</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="c1"># validation set approach</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="c1"># Taken from https://www.geeksforgeeks.org/cross-validation-in-r-programming/</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">datarium</span><span class="p">)</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="c1"># setting seed to generate a</span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="c1"># reproducible random sampling</span>
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="c1"># creating training data as 80% of the dataset</span>
+</span><span id="__span-37-13"><a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a><span class="n">random_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">marketing</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</span><span id="__span-37-14"><a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>
+</span><span id="__span-37-15"><a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a><span class="c1"># generating training dataset</span>
+</span><span id="__span-37-16"><a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a><span class="c1"># from the random_sample</span>
+</span><span id="__span-37-17"><a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a><span class="n">training_dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">marketing</span><span class="p">[</span><span class="n">random_sample</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-37-18"><a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a>
+</span><span id="__span-37-19"><a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a><span class="c1"># generating testing dataset</span>
+</span><span id="__span-37-20"><a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a><span class="c1"># from rows which are not</span>
+</span><span id="__span-37-21"><a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a><span class="c1"># included in random_sample</span>
+</span><span id="__span-37-22"><a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a><span class="n">testing_dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">marketing</span><span class="p">[</span><span class="o">-</span><span class="n">random_sample</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-37-23"><a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a>
+</span><span id="__span-37-24"><a id="__codelineno-37-24" name="__codelineno-37-24" href="#__codelineno-37-24"></a><span class="c1"># Building the model</span>
+</span><span id="__span-37-25"><a id="__codelineno-37-25" name="__codelineno-37-25" href="#__codelineno-37-25"></a>
+</span><span id="__span-37-26"><a id="__codelineno-37-26" name="__codelineno-37-26" href="#__codelineno-37-26"></a><span class="c1"># training the model by assigning sales column</span>
+</span><span id="__span-37-27"><a id="__codelineno-37-27" name="__codelineno-37-27" href="#__codelineno-37-27"></a><span class="c1"># as target variable and rest other columns</span>
+</span><span id="__span-37-28"><a id="__codelineno-37-28" name="__codelineno-37-28" href="#__codelineno-37-28"></a><span class="c1"># as independent variables</span>
+</span><span id="__span-37-29"><a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">sales</span><span class="w"> </span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">training_dataset</span><span class="p">)</span>
+</span><span id="__span-37-30"><a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a>
+</span><span id="__span-37-31"><a id="__codelineno-37-31" name="__codelineno-37-31" href="#__codelineno-37-31"></a><span class="c1"># predicting the target variable</span>
+</span><span id="__span-37-32"><a id="__codelineno-37-32" name="__codelineno-37-32" href="#__codelineno-37-32"></a><span class="n">predictions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="p">)</span>
+</span><span id="__span-37-33"><a id="__codelineno-37-33" name="__codelineno-37-33" href="#__codelineno-37-33"></a>
+</span><span id="__span-37-34"><a id="__codelineno-37-34" name="__codelineno-37-34" href="#__codelineno-37-34"></a><span class="c1"># computing model performance metrics</span>
+</span><span id="__span-37-35"><a id="__codelineno-37-35" name="__codelineno-37-35" href="#__codelineno-37-35"></a><span class="nf">data.frame</span><span class="p">(</span><span class="w"> </span><span class="n">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">R2</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">),</span><span class="w"> </span><span class="n">RMSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">RMSE</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">),</span><span class="w"> </span><span class="n">MAE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">MAE</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">testing_dataset</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">sales</span><span class="p">))</span>
+</span></code></pre></div>
+</details>
+</div>
+<details class="note">
+<summary>Solution</summary>
+<p>NOTE: you may or may not have to install the &ldquo;datarium&rdquo; package. Check! Load R, R-bundle-CRAN, R-bundle-Bioconductor, etc. and test!</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>$<span class="w"> </span>Rscript<span class="w"> </span>validation.R
+</span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../img/shell-logo_small.png"> Exercise</p>
+<p>Create a batch script to run <code>validation.R</code></p>
+<p>You can find example batch scripts in the <code>exercises/r</code> directory and you can also look at the examples on this page.</p>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ML/" class="btn btn-neutral float-left" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../MLjulia/" class="btn btn-neutral float-right" title="With Julia">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../ML/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../MLjulia/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

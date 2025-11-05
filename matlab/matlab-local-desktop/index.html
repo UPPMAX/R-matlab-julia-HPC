@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Session-UPPMAX: MATLAB client on the desktop - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Session-UPPMAX: MATLAB client on the desktop";
+        var mkdocs_page_input_path = "matlab/matlab-local-desktop.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Session-UPPMAX: MATLAB client on the desktop</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/matlab/matlab-local-desktop.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="session-uppmax-matlab-client-on-the-desktop">Session-UPPMAX: MATLAB client on the desktop<a class="headerlink" href="#session-uppmax-matlab-client-on-the-desktop" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Use own computer&rsquo;s MATLAB</p>
+<ul>
+<li>Would you like to try run batch jobs on the Rackham or Snowy cluster but use the faster graphics that you can achieve on your own computer?</li>
+<li>Do you have all your work locally but sometimes need the cluster to do parallel runs?</li>
+<li>UPPMAX offers this now.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This solution is possible only if
+ - you have an UPPMAX compute project
+ - a working matlab on your computer with one of the version available on the cluster:</p>
+<p>Check with <code>module avail matlab</code> (output shown below):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>ml<span class="w"> </span>avail<span class="w"> </span>matlab
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>----------------------------<span class="w"> </span>/sw/mf/rackham/applications<span class="w"> </span>----------------------------
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">   </span>matlab/R2014a<span class="w">    </span>matlab/R2018a<span class="w">    </span>matlab/R2022b<span class="w">          </span>matlab/7.10
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">   </span>matlab/R2015a<span class="w">    </span>matlab/R2018b<span class="w">    </span>matlab/R2023a<span class="w">          </span>matlab/7.13
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">   </span>matlab/R2015b<span class="w">    </span>matlab/R2019a<span class="w">    </span>matlab/R2023b<span class="w"> </span><span class="o">(</span>L,D<span class="o">)</span><span class="w">    </span>matlab/8.0
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">   </span>matlab/R2016a<span class="w">    </span>matlab/R2020b<span class="w">    </span>matlab/7.4<span class="w">             </span>matlab/8.1
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">   </span>matlab/R2017a<span class="w">    </span>matlab/R2022a<span class="w">    </span>matlab/7.8
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span>Where:
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">   </span>L:<span class="w">  </span>Module<span class="w"> </span>is<span class="w"> </span>loaded
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">   </span>D:<span class="w">  </span>Default<span class="w"> </span>Module
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Use<span class="w"> </span><span class="s2">&quot;module spider&quot;</span><span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>all<span class="w"> </span>possible<span class="w"> </span>modules<span class="w"> </span>and<span class="w"> </span>extensions.
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Use<span class="w"> </span><span class="s2">&quot;module keyword key1 key2 ...&quot;</span><span class="w"> </span>to<span class="w"> </span>search<span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>possible<span class="w"> </span>modules<span class="w"> </span>matching<span class="w"> </span>any
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>of<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;keys&quot;</span>.
+</span></code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Want a video?</p>
+</div>
+<p>See <a href="https://www.youtube.com/watch?v=wwqxy2gVjlk&amp;list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&amp;index=44">UPPMAX Matlab client on the desktop (Oct 2024)</a></p>
+<h2 id="lets-get-started">Let&rsquo;s get started!<a class="headerlink" href="#lets-get-started" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Try to type along with the following demonstration.</p>
+<p>The Rackham MATLAB support package can be found in <a href="https://github.com/UPPMAX/UPPMAX-documentation/raw/main/docs/software/files/matlab/uppsala.Desktop.zip">uppsala.Desktop.zip</a></p>
+<ul>
+<li>Download the ZIP file and start MATLAB.</li>
+<li>Unzip the ZIP file in the location returned by calling</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">userpath</span>
+</span></code></pre></div>
+<ul>
+<li>You can unzip from within MATLAB&rsquo;s Command window.</li>
+<li>Configure MATLAB to run parallel jobs on the cluster by calling <code>configCluster</code>. <code>configCluster</code> only needs to be called once per version of MATLAB.</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">configCluster</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">Username</span><span class="w"> </span><span class="s">on</span><span class="w"> </span><span class="s">RACKHAM</span><span class="w"> </span><span class="s">(e.g.</span><span class="w"> </span><span class="s">jdoe):</span>
+</span></code></pre></div>
+<ul>
+<li>Type your Rackham user name.</li>
+<li>The resulting output will be (using the 2022b release, for example,):</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Complete</span><span class="p">.</span><span class="w">  </span><span class="n">Default</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="nb">profile</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;Rackham R2022b&quot;</span><span class="p">.</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To submit jobs to the local machine instead of the cluster, run the following:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Get a handle to the local resources</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;local&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<h3 id="configuring-slurm-details">Configuring Slurm details<a class="headerlink" href="#configuring-slurm-details" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Prior to submitting the job, various parameters can be assigned, such as queue, e-mail, walltime, etc. See AdditionalProperties for the complete list. </p>
+<p>You must always set <code>AccountName</code>, <code>WallTime</code>, and <code>ProcsPerNode</code>. Other parameters, like <code>Partition</code>, <code>MemPerCPU</code>, <code>GPUcard</code>, etc. depend on the type, amount, and distribution of resources you need.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Get a handle to the cluster</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">Generic</span><span class="w"> </span><span class="s">Cluster</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">   </span><span class="n">Properties</span><span class="p">:</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">                  </span><span class="n">Profile</span><span class="p">:</span><span class="w"> </span><span class="n">Rackham</span><span class="w"> </span><span class="n">R2022b</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">                 </span><span class="n">Modified</span><span class="p">:</span><span class="w"> </span><span class="nb">false</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">                     </span><span class="n">Host</span><span class="p">:</span><span class="w"> </span><span class="n">UUC</span><span class="o">-</span>4<span class="n">GM8L33</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">uu</span><span class="p">.</span><span class="n">se</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">               </span><span class="n">NumWorkers</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">               </span><span class="n">NumThreads</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="n">JobStorageLocation</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nb">path</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">locally</span><span class="o">&gt;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">     </span><span class="n">ClusterMatlabRoot</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">sw</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">matlab</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">R2022b</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">       </span><span class="n">OperatingSystem</span><span class="p">:</span><span class="w"> </span><span class="nb">unix</span>
+</span></code></pre></div>
+<p>Set some additional parameters related to Slurm on Rackham:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Specify the account</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">AccountName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;uppmax2025-2-272&#39;</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Specify the wall time (e.g., 1 day, 5 hours, 30 minutes</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">WallTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;00:30:00&#39;</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Specify cores per node</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">ProcsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</span></code></pre></div>
+<p>(Optional parameters:)</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Specify the partition</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Partition</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;devcore&#39;</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Specify another cluster: &#39;snowy&#39;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">ClusterName</span><span class="p">=</span><span class="s">&#39;snowy&#39;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">ProcsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Specify number of GPUs</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GPUsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GPUCard</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;gpu-card&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Do not forget to save your changes!</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+<p>To see the values of the current configuration options, display <code>AdditionalProperties</code>:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% To view current properties</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span>
+</span></code></pre></div>
+<p>Unset a value when no longer needed:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c">% Example Turn off email notifications</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">EmailAddress</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
+<h3 id="start-job">Start job<a class="headerlink" href="#start-job" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Copy the script below and paste into a new file called <code>parallel_example_local.m</code>. Save it in your current working directory (check with <code>pwd</code> in the MATLAB Command Window).</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">function</span><span class="w"> </span>t<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">parallel_example_local</span><span class="p">(</span>nLoopIters, sleepTime<span class="p">)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">t0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tic</span><span class="p">;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">parfor</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">nLoopIters</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="n">A</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">idx</span><span class="p">;</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="nb">pause</span><span class="p">(</span><span class="n">sleepTime</span><span class="p">);</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">end</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">toc</span><span class="p">(</span><span class="n">t0</span><span class="p">);</span>
+</span></code></pre></div>
+<ul>
+<li>The script is supposed to loop over <code>sleepTime</code> seconds of work <code>nLoopIters</code> times.</li>
+<li>We will define the number of processes in the batch submit line.</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parallel_example_local</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;Pool&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">&#39;CurrentFolder&#39;</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<ul>
+<li>Submission to the cluster requires SSH credentials.</li>
+<li>You will be prompted for username and password or identity file (private key).<ul>
+<li>It will not ask again until you define a new cluster handle <code>c</code> or in next session.</li>
+</ul>
+</li>
+</ul>
+<div align="center">
+  <img src="../../docs-sphinx/matlab/img/matlab_usercred.PNG" alt="MATLAB user credentials prompt" width="500"/>
+</div>
+
+<div align="center">
+  <img src="../../docs-sphinx/matlab/img/matlab_enterpassword.PNG" alt="MATLAB password prompt" width="500"/>
+</div>
+
+<ul>
+<li>Jobs will now default to the cluster rather than submit to the local machine.</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">State</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="s">&#39;running&#39;</span>
+</span></code></pre></div>
+<ul>
+<li>You can run this several times until it gives</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">State</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">   </span><span class="s">&#39;finished&#39;</span>
+</span></code></pre></div>
+<ul>
+<li>You can also watch the queue</li>
+</ul>
+<div align="center">
+  <img src="../../docs-sphinx/matlab/img/matlab_jobmonitor.PNG" alt="MATLAB job monitor" width="500"/>
+</div>
+
+<ul>
+<li>Example on Rackham (it really runs there!):</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>bjornc2@rackham2<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>squeue<span class="w"> </span>-u<span class="w"> </span>bjornc2
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">         </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">      </span><span class="m">50827312</span><span class="w">   </span>devcore<span class="w"> </span>MATLAB_R<span class="w">  </span>bjornc2<span class="w">  </span>R<span class="w">       </span><span class="m">2</span>:20<span class="w">      </span><span class="m">1</span><span class="w"> </span>r483
+</span></code></pre></div>
+<ul>
+<li>Then fetch the output:</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:}</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">   </span><span class="mf">2.4853</span>
+</span></code></pre></div>
+<ul>
+<li>The script looped over 1 s work 16 times, but with 8 processes.</li>
+<li>In an ideal world it would have taken <code>16 / 8 = 2 s</code>. Here it took 2.5 s because there is some &ldquo;overhead.&rdquo;</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Run on Snowy</p>
+</div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">ClusterName</span><span class="p">=</span><span class="s">&#39;snowy&#39;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">ProcsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+</span></code></pre></div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 1.</strong> Configure your local MATLAB to talk to UPPMAX</p>
+<ul>
+<li>Use the instructions above to try to make it work!</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title"><strong>Challenge 2.</strong> Run a script on Snowy.</p>
+<ul>
+<li>Try to run a script from the <a href="./MatlabGUIslurm">MATLAB GUI and SLURM session</a></li>
+<li>Check in a rackham terminal: <code>squeue -M snowy --me</code></li>
+</ul>
+</div>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Steps to configure  first time</li>
+<li>download and decompress UPPMAX configure file.</li>
+<li>run configCluster on local MATLAB and set user name</li>
+<li>Steps to run</li>
+<li>set <code>parcluster</code> settings, like you do otherwise.</li>
+<li>Note: only <code>parcluster</code> will work, not <code>parpool</code>.</li>
+</ul>
+</div>
+<div class="admonition faq">
+<p class="admonition-title">Did you have problems?</p>
+<ul>
+<li>Send a support ticket to UPPMAX via <a href="https://supr.naiss.se/support/?centre_resource=c4" onclick="window.open(this.href,'_blank','toolbar=1,location=1,status=1,menubar=1,scrollbars=1,resizable=1'); return false;"> supr.naiss.se/support </a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>Extra:</strong> Helper Functions</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Function</th>
+<th style="text-align: left;">Description</th>
+<th>Applies Only to Desktop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><code>clusterFeatures</code></td>
+<td style="text-align: left;">List of cluster features/constraints</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>clusterGpuCards</code></td>
+<td style="text-align: left;">List of cluster GPU cards</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>clusterPartitionNames</code></td>
+<td style="text-align: left;">List of cluster partitions</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>disableArchiving</code></td>
+<td style="text-align: left;">Modify file archive to resolve file mirroring issue</td>
+<td>True</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>fixConnection</code></td>
+<td style="text-align: left;">Reestablish cluster connection (e.g., after VPN disruption)</td>
+<td>True</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>willRun</code></td>
+<td style="text-align: left;">Explain why job is queued</td>
+<td>&mdash;</td>
+</tr>
+</tbody>
+</table>
+</div>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

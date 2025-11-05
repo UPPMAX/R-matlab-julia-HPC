@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Thread parallelism - Introduction to R, MATLAB, and Julia in HPC</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Thread parallelism";
+        var mkdocs_page_input_path = "advanced/thread_parallelism/README.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../img/new-logo.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Prequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">MATLAB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Julia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_computing/">Parallel computing</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Thread parallelism</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#why-thread-parallelism-is-important">Why thread parallelism is important</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#goal">Goal</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#benchmark-script">Benchmark script</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-script">Slurm script</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#language-script">Language script</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-1-start-the-benchmark-on-your-hpc-cluster">Exercise 1: start the benchmark on your HPC cluster</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-2-read-the-benchmark-script">Exercise 2: read the benchmark script</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-3-read-the-slurm-script">Exercise 3: read the Slurm script</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-4-read-the-language-script">Exercise 4: read the language script</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-5-share-the-results">Exercise 5: share the results</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-6-analyse-the-results">Exercise 6: analyse the results</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-7-compare-to-others">Exercise 7: compare to others</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-x1-job-scheduling-problem">Exercise X1: job scheduling problem?</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-x2-learn-a-faster-programming-language">Exercise X2: learn a faster programming language?</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-go-next">Where to go next?</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#t1-invalid-account-or-accountpartition-combination-specified">T1. Invalid account or account/partition combination specified</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#t2-there-is-no-package-called-doparallel">T2. There is no package called ‘doParallel’</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#t3-namespace-rlang-0412-is-already-loaded-but-110-is-required">T3. ‘namespace ‘rlang’ 0.4.12 is already loaded, but &gt;= 1.1.0 is required’</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#matlab-error">MATLAB error</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../distributed_parallelism/">Distributed parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../big_data_managers/">Big data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gpus/">Introduction to GPUs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Machine Learning</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../ML/">Introduction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../MLR/">With R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../MLjulia/">With Julia</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../MLmatlab/">With MATLAB</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra reading</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">Advanced</li>
+<li class="breadcrumb-item active">Thread parallelism</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/advanced/thread_parallelism/README.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="thread-parallelism">Thread parallelism<a class="headerlink" href="#thread-parallelism" title="Anchor link to this section for reference">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>I can schedule jobs with thread parallelism</li>
+<li>I can explain how jobs with thread parallelism are scheduled</li>
+<li>I can explain how Julia/MATLAB/R code makes use of thread parallelism</li>
+<li>I can explain the results of a correct benchmark</li>
+<li>I can explain the results of an incorrect benchmark</li>
+<li>I can argue why I should stick to my programming language,
+  even if it is not the fastest</li>
+</ul>
+</div>
+<details class="- note">
+<summary>For teachers</summary>
+<p>Teaching goals are:</p>
+<ul>
+<li>Schedule and run a job that needs more cores,
+  with a calculation in their favorite language</li>
+<li>Learners have scheduled and run a job that needs more cores,
+  with a calculation in their favorite language</li>
+<li>Learners understand when it is possible/impossible
+  and/or useful/useless to run a job with multiple cores</li>
+<li>Learners can argue why they should stick to their programming languages,
+  even if it is not the fastest</li>
+</ul>
+<p>Prior:</p>
+<ul>
+<li>What is thread parallelism?</li>
+<li>Why use thread parallelism?</li>
+<li>Are there other ways to make your code run faster?</li>
+<li>What is a benchmark?</li>
+<li>Why do a benchmark?</li>
+</ul>
+<p>Feedback:</p>
+<ul>
+<li>When to use parallel computing?</li>
+<li>When not to use parallel computing?</li>
+</ul>
+</details>
+<details class="- note">
+<summary>Status overview</summary>
+<table>
+<thead>
+<tr>
+<th>HPC cluster</th>
+<th>Julia</th>
+<th>MATLAB</th>
+<th>R</th>
+<th>Other comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alvis</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Bianca</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COSMOS</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Dardel</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Kebnekaise</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>.</td>
+</tr>
+<tr>
+<td>LUMI</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Rackham</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Pelle</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Tetralith</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Seems to eat up jobs</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="- hint">
+<summary>Prefer this session as a video?</summary>
+<p>The watch the YouTube video
+<a href="https://youtu.be/zSu-MWvM0Us">R-Julia-MATLAB course, advanced day: Thread parallelism</a></p>
+</details>
+<h2 id="why-thread-parallelism-is-important">Why thread parallelism is important<a class="headerlink" href="#why-thread-parallelism-is-important" title="Anchor link to this section for reference">¶</a></h2>
+<p>Because it is one way to speedup (pun intended) the calculation.</p>
+<h2 id="goal">Goal<a class="headerlink" href="#goal" title="Anchor link to this section for reference">¶</a></h2>
+<p>In this session, we are going to benchmark thread parallelism,
+as we should not make claims about performance without measurements <code>[CppCore Per.6]</code>.</p>
+<div class="mermaid">flowchart TD
+  user[User]
+  benchmark_script[Benchmark script]
+  slurm_script[Slurm script]
+  r_script[R script]
+  julia_script[Julia script]
+  matlab_script[MATLAB script]
+
+  user --&gt; |Account, language| benchmark_script
+  benchmark_script --&gt; |Account, language, number of cores| slurm_script
+  slurm_script --&gt; julia_script
+  slurm_script --&gt; matlab_script
+  slurm_script --&gt; r_script
+</div>
+<h2 id="benchmark-script">Benchmark script<a class="headerlink" href="#benchmark-script" title="Anchor link to this section for reference">¶</a></h2>
+<p><a href="benchmark_2d_integration.sh"><code>benchmark_2d_integration.sh</code></a>
+is the script that starts a benchmark,
+by submitting multiple jobs to the Slurm queue,
+using the Slurm script below.</p>
+<p>The goal of the benchmark script is to
+do a fixed unit of work
+with increasingly more cores.</p>
+<p>As the script itself only does light calculations,
+you can run it directly. Here is how to call the script:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>bash<span class="w"> </span>benchmark_2d_integration.sh<span class="w"> </span><span class="o">[</span>account<span class="o">]</span><span class="w"> </span><span class="o">[</span>language<span class="o">]</span>
+</span></code></pre></div>
+<details class="- hint">
+<summary>Why not call the script with <code>./benchmark_2d_integration.sh</code>?</summary>
+<p>Because that would require one extra step:
+to make the script executable.</p>
+</details>
+<p>For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>bash<span class="w"> </span>benchmark_2d_integration.sh<span class="w"> </span>staff<span class="w"> </span>r
+</span></code></pre></div>
+<p>If you use the incorrect spelling, the script will help you.</p>
+<h2 id="slurm-script">Slurm script<a class="headerlink" href="#slurm-script" title="Anchor link to this section for reference">¶</a></h2>
+<p>This is the script that schedules a job with thread parallelism.</p>
+<p>The goal of the script is to
+submit a calculation that uses thread parallelism,
+with a custom amount of cores.</p>
+<p>This Slurm script is called by the benchmark script,
+i.e. not directly by a user. If the Slurm script is absent,
+the benchmark script will (try to) download it for you.</p>
+<details class="- hint">
+<summary>How do I run it anyways?</summary>
+<p>You do not, instead you will run the benchmark script below.</p>
+<p>However, you can run it as such:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sbatch<span class="w"> </span>-A<span class="w"> </span><span class="o">[</span>account<span class="o">]</span><span class="w"> </span>-n<span class="w"> </span><span class="o">[</span>number_of_cores<span class="o">]</span><span class="w"> </span>do_<span class="o">[</span>language<span class="o">]</span>_2d_integration.sh
+</span></code></pre></div>
+<p>For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sbatch<span class="w"> </span>-A<span class="w"> </span>staff<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>do_r_2d_integration.sh
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1"># On Dardel</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>sbatch<span class="w"> </span>-A<span class="w"> </span>staff<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-p<span class="w"> </span>main<span class="w"> </span>do_r_2d_integration.sh
+</span></code></pre></div>
+</details>
+<p>There are 3 Slurm scripts, 1 per language:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Script with calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Julia</td>
+<td><a href="do_julia_2d_integration.sh">do_julia_2d_integration.sh</a></td>
+</tr>
+<tr>
+<td>MATLAB</td>
+<td><a href="do_matlab_2d_integration.sh">do_matlab_2d_integration.sh</a></td>
+</tr>
+<tr>
+<td>R</td>
+<td><a href="do_r_2d_integration.sh">do_r_2d_integration.sh</a></td>
+</tr>
+</tbody>
+</table>
+<p>Each of these Slurm scripts are called by the benchmark script,
+where the benchmark script supplies the desired number of cores.</p>
+<h2 id="language-script">Language script<a class="headerlink" href="#language-script" title="Anchor link to this section for reference">¶</a></h2>
+<p>This is the code (in your favorite language)
+that performs a job with thread parallelism.</p>
+<p>The goal of the language script is to have a fixed unit of work that
+can be done by a custom amount of cores.</p>
+<p>This language script is called by the Slurm script,
+i.e. not directly by a user. If the language script is absent,
+the benchmark script will (try to) download it for you.</p>
+<details class="- hint">
+<summary>How do I run it anyways?</summary>
+<p>Check the Slurm script for your favorite language.</p>
+<p>In general, you can run it as such:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">[</span>interpreter<span class="o">]</span><span class="w"> </span><span class="o">[</span>script_name<span class="o">]</span><span class="w"> </span><span class="o">[</span>number_of_cores<span class="o">]</span><span class="w"> </span><span class="o">[</span>grid_size<span class="o">]</span>
+</span></code></pre></div>
+<p>On a login node, use 1 core and a grid size of 1 to start
+the lightest calculation possible:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>julia<span class="w"> </span>integration2d.jl<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>Rscript<span class="w"> </span>integration2d.R<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+</span></code></pre></div>
+</details>
+<!-- markdownlint-disable MD013 -->
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Script with calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Julia</td>
+<td><a href="do_2d_integration.jl">do_2d_integration.jl</a></td>
+</tr>
+<tr>
+<td>MATLAB</td>
+<td><a href="do_2d_integration.m">do_2d_integration.m</a></td>
+</tr>
+<tr>
+<td>R</td>
+<td><a href="do_2d_integration.R">do_2d_integration.R</a></td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable MD013 -->
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">¶</a></h2>
+<h2 id="exercise-1-start-the-benchmark-on-your-hpc-cluster">Exercise 1: start the benchmark on your HPC cluster<a class="headerlink" href="#exercise-1-start-the-benchmark-on-your-hpc-cluster" title="Anchor link to this section for reference">¶</a></h2>
+<p>The goal of this exercise is to start the benchmark script
+on your HPC cluster, as well as some troubleshooting.</p>
+<p>On your HPC cluster:</p>
+<ul>
+<li>Download the benchmark script</li>
+</ul>
+<details class="- hint">
+<summary>How to do that?</summary>
+<p>There are many ways to do so.</p>
+<p>One way is to download it directly from
+<a href="https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/docs/advanced/thread_parallelism/benchmark_2d_integration.sh">this course’s repository</a>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/UPPMAX/R-matlab-julia-HPC/refs/heads/main/docs/advanced/thread_parallelism/benchmark_2d_integration.sh
+</span></code></pre></div>
+</details>
+<ul>
+<li>Run the benchmark script. 
+  Tip: see <a href="#benchmark-script">the ‘Benchmark script’ section</a>.</li>
+</ul>
+<details class="- hint">
+<summary>How to do that?</summary>
+<p><a href="#benchmark-script">The ‘Benchmark script’ section</a> shows how:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>bash<span class="w"> </span>benchmark_2d_integration.sh<span class="w"> </span>staff<span class="w"> </span>r
+</span></code></pre></div>
+<p>You can use <a href="../../projects/">our projects overview page</a>
+to find the course NAISS project for your HPC cluster.</p>
+</details>
+<ul>
+<li>Check the Slurm output files for problems.
+  If there are problems: fix these, then run the benchmark script again</li>
+</ul>
+<details class="- hint">
+<summary>How to do that?</summary>
+<p>There are many ways to do so.</p>
+<p>One way is to show all files with the <code>.out</code> extension:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>cat<span class="w"> </span>*.out
+</span></code></pre></div>
+</details>
+<h2 id="exercise-2-read-the-benchmark-script">Exercise 2: read the benchmark script<a class="headerlink" href="#exercise-2-read-the-benchmark-script" title="Anchor link to this section for reference">¶</a></h2>
+<p>Now that <a href="benchmark_2d_integration.sh">the benchmark script</a> is running,
+we have the time to figure out what it is doing.</p>
+<ul>
+<li>What is the most important single line in this script,
+  i.e. the line it is all about?
+  Tip: start looking from the bottom of the script</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>For all HPC clusters except Dardel:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sbatch<span class="w"> </span>-A<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">slurm_job_account</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>-N<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">n_nodes</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">n_cores</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">slurm_script_name</span><span class="si">}</span><span class="s2">"</span>
+</span></code></pre></div>
+<p>For the Dardel HPC cluster:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>sbatch<span class="w"> </span>-A<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">slurm_job_account</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>-N<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">n_nodes</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>--ntasks<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">n_cores</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>-p<span class="w"> </span>shared<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">slurm_script_name</span><span class="si">}</span><span class="s2">"</span>
+</span></code></pre></div>
+</details>
+<ul>
+<li>In English, describe what the line does in general terms</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>Schedule to run …</p>
+<ul>
+<li>on some account</li>
+<li>with some amount of nodes</li>
+<li>with some amount of cores</li>
+<li>(on Dardel) on the <code>main</code> partition</li>
+<li>a script with some name</li>
+</ul>
+</details>
+<ul>
+<li>This line of code is part of a <code>for</code> loop.
+  In English, what does the <code>for</code> loop achieve?</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>The <code>for</code> loop achieves that the same calculation is scheduled
+to be done with 1 core, then with 2 cores, then with 3 cores, etc.,
+to 64 cores.</p>
+</details>
+<h2 id="exercise-3-read-the-slurm-script">Exercise 3: read the Slurm script<a class="headerlink" href="#exercise-3-read-the-slurm-script" title="Anchor link to this section for reference">¶</a></h2>
+<p>The benchmark script submits
+<a href="#slurm-script">a Slurm script of your favorite language</a>
+multiple times to the queue: once with 1 cores, once with 2 cores, etc.</p>
+<ul>
+<li>What is the most important single line in this script,
+  i.e. the line it is all about?
+  Tip: start looking from the bottom of the script</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>The last line.</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Most important line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Julia</td>
+<td><code>julia --threads "${SLURM_NPROCS}" do_2d_integration.jl "${SLURM_NPROCS}"</code></td>
+</tr>
+<tr>
+<td>MATLAB</td>
+<td><code>matlab -nodisplay -nosplash -nojvm -batch "run(\"${matlab_target_filename}\"); exit;"</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td><code>Rscript --no-save --no-restore do_2d_integration.R "${SLURM_NPROCS}"</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<ul>
+<li>In English, describe what the line does in general terms.
+  Tip: this is the same answer for all programming languages.
+  Tip 2: assume ‘procedure’ is synonym for ‘core’. 
+  Tip 3: the Julia line is closest to English.</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>Run a Julia/MATLAB/R script for the booked number of cores,
+without doing anything else (e.g. showing a splash screen or restoring a
+computational environment).</p>
+</details>
+<h2 id="exercise-4-read-the-language-script">Exercise 4: read the language script<a class="headerlink" href="#exercise-4-read-the-language-script" title="Anchor link to this section for reference">¶</a></h2>
+<p>The Slurm script runs 
+<a href="#language-script">a script of your favorite language</a>
+for a specified number of cores.</p>
+<ul>
+<li>Locate the lines of code that make the calculation perform in parallel.</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">Julia</label><label for="__tabbed_1_2">MATLAB</label><label for="__tabbed_1_3">R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">Threads</span><span class="o">.</span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">worker_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">n_workers</span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">   </span><span class="n">results</span><span class="p">[</span><span class="n">worker_index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integration2d</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span><span class="w"> </span><span class="n">n_workers</span><span class="p">,</span><span class="w"> </span><span class="n">worker_index</span><span class="p">)</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="k">end</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">parfor</span><span class="w"> </span><span class="n">worker_index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n_workers</span>
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="n">partial_results</span><span class="p">(</span><span class="n">worker_index</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">integration2d</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span><span class="w"> </span><span class="n">n_workers</span><span class="p">,</span><span class="w"> </span><span class="n">worker_index</span><span class="p">);</span>
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="k">end</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-r highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="n">results_of_workers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">foreach</span><span class="p">(</span><span class="n">worker_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_workers</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span><span class="nf">integration2d</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span><span class="w"> </span><span class="n">n_workers</span><span class="p">,</span><span class="w"> </span><span class="n">worker_index</span><span class="p">)</span>
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<ul>
+<li>In English, describe what these lines does in general terms.</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>For each available worker: per worker, do part of a calculation
+and combine the results</p>
+</details>
+<ul>
+<li>Optional: what is <code>grid_size</code>? What does it do? What would be a better
+  variable name?</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p><code>grid_size</code> determines the accuracy of the calculation: the bigger
+<code>grid_size</code>, the smaller intervals will be integrated.</p>
+<p>A better variable name could be <code>accuracy</code>. However, with such a
+variable name, there is no natural understanding that the range
+of its value goes from 1 to infinity. For the name <code>grid_size</code>,
+this range is easier to feel right, as sizes are non-zero
+positive values by nature</p>
+</details>
+<ul>
+<li>Locate the keyword that make the calculation perform in parallel. Or:
+  locate the word that, when removed, would ‘downgrade’ the calculation
+  to be single-threaded.</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>The last line.</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Keyword to indicate a parallel calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Julia</td>
+<td><code>Threads.@threads</code></td>
+</tr>
+<tr>
+<td>MATLAB</td>
+<td><code>parfor</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td><code>%dopar%</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<ul>
+<li>The function that is run in parallel (i.e. <code>integration2d</code>) is
+  <strong>made suitable</strong> to be run in parallel. In English, describe
+  which changes are made to make it suitable.</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>The function has three (instead of one) arguments:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Function signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Julia</td>
+<td><code>function integration2d(grid_size::Int, n_workers::Int, worker_index::Int)</code></td>
+</tr>
+<tr>
+<td>MATLAB</td>
+<td><code>function integration2d(grid_size, n_workers, worker_index)</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td><code>integration2d &lt;- function(grid_size, n_workers, worker_index)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The extra arguments are <code>n_workers</code> and <code>worker_index</code>.</p>
+<p>These allow the <code>worker_index</code>-th worker to know which share of the
+calculation it must do. </p>
+</details>
+<ul>
+<li>What do these changes achieve?</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>These changes allow each thread to know what it needs to know to
+run its part of the calculation.</p>
+</details>
+<ul>
+<li>Bonus: do you spot the bug in <code>integrate2d</code>?
+  Is this a problem? Why would someone keep
+  it in anyways?</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>The calculation of <code>begin_index</code> and <code>end_index</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/><input id="__tabbed_2_2" name="__tabbed_2" type="radio"/><input id="__tabbed_2_3" name="__tabbed_2" type="radio"/><div class="tabbed-labels"><label for="__tabbed_2_1">Julia</label><label for="__tabbed_2_2">MATLAB</label><label for="__tabbed_2_3">R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">workload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fld</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span><span class="w"> </span><span class="n">n_workers</span><span class="p">)</span>
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">begin_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">worker_index</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">end_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workload</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">worker_index</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">grid_cells_per_worker</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">(</span><span class="n">grid_size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n_workers</span><span class="p">);</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="n">begin_index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">grid_cells_per_worker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">worker_index</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="n">end_index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">grid_cells_per_worker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">worker_index</span><span class="p">;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="n">grid_cells_per_worker</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">floor</span><span class="p">(</span><span class="n">grid_size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n_workers</span><span class="p">)</span>
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="n">begin_index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">grid_cells_per_worker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">worker_index</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-16-3"><a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="n">end_index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">grid_cells_per_worker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">worker_index</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>To most clearly demonstrate this, imagine a <code>grid_size</code> of 3
+for an <code>n_workers</code> of 2:</p>
+<table>
+<thead>
+<tr>
+<th>Variable name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grid_size</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>n_workers</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>grid_cells_per_worker</code></td>
+<td><code>3 / 2 (rounded down) =</code> 1</td>
+</tr>
+<tr>
+<td><code>begin_index</code> for first worker</td>
+<td><code>1 * (1 - 1) + 1 =</code> 1</td>
+</tr>
+<tr>
+<td><code>end_index</code>   for first worker</td>
+<td><code>1 * 1 =</code> 1</td>
+</tr>
+<tr>
+<td><code>begin_index</code> for second worker</td>
+<td><code>1 * (2 - 1) + 1 =</code> 2</td>
+</tr>
+<tr>
+<td><code>end_index</code>   for second worker</td>
+<td><code>1 * 2 =</code> 2</td>
+</tr>
+</tbody>
+</table>
+<p>This means that, although the calculation is split in 3 parts,
+only 2 of these are performed.</p>
+<p>For bigger grid sizes, however, this problem gets less.</p>
+<p>One would keep such a bug in for readability:
+this session is about thread parallelism, not about the extensive
+calculation of these indices.</p>
+</details>
+<h2 id="exercise-5-share-the-results">Exercise 5: share the results<a class="headerlink" href="#exercise-5-share-the-results" title="Anchor link to this section for reference">¶</a></h2>
+<p>By now, some of the calculations in exercise 1 will be finished.
+If not: no worries, just continue!</p>
+<ul>
+<li>In the terminal on your favorite HPC cluster, run the
+  following command to collect all results:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>grep<span class="w"> </span>-EoRh<span class="w"> </span><span class="s2">"^[jmlr].*,.*"</span><span class="w"> </span>--include<span class="o">=</span>*.out<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq
+</span></code></pre></div>
+<ul>
+<li>Copy-paste these results to 
+  <a href="https://hackmd.io/@qfRrKmbUR9-jszg-SvdO9A/rk3j1XB6eg/edit">our shared HackMD document</a>.</li>
+</ul>
+<h2 id="exercise-6-analyse-the-results">Exercise 6: analyse the results<a class="headerlink" href="#exercise-6-analyse-the-results" title="Anchor link to this section for reference">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Take it easy</p>
+<p>Doing this analysis yourself is useful,
+if you are fluent in analysing data.</p>
+<p>If not, you are encouraged to use:</p>
+<ul>
+<li><a href="analysis.ods">This spreadsheet</a></li>
+<li><a href="plot_benchmark_results.R">This R script</a></li>
+</ul>
+</div>
+<ul>
+<li>Copy-paste the results of the previous exercise
+  into a comma-separated file called <code>my_results.csv</code>.</li>
+</ul>
+<p>These are the descriptions of the variables:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>language</code></td>
+<td>Your programming language</td>
+</tr>
+<tr>
+<td><code>hpc_cluster</code></td>
+<td>Your HPC cluster</td>
+</tr>
+<tr>
+<td><code>grid_size</code></td>
+<td>Accuracy</td>
+</tr>
+<tr>
+<td><code>n_workers</code></td>
+<td>Number of cores used</td>
+</tr>
+<tr>
+<td><code>core_secs</code></td>
+<td>Core seconds used, i.e. the time used by all cores together</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Load the comma-separated file (<code>my_results.csv</code>)
+  in a spreadsheet or read it in your favorite programming language</li>
+<li>Add a column called <code>wall_clock_sec</code>, which equals
+  <code>core_secs</code> divided by <code>n_workers</code>. <code>wall_clock_sec</code> 
+  is the time it took the calculation to complete</li>
+<li>Add a column called <code>speedup</code>, which equals
+  the wall clock time for 1 core divided by the wall clock
+  time of that amount of cores</li>
+<li>Plot the speedup (on the y axis) per number of workers (on the x axis).</li>
+<li>Compare your speedup with the Amdahl’s Law figure of
+  <a href="../parallel_computing/#exercises">the previous session, above ‘Exercises’</a>).
+  What do you estimate is the maximum speedup?</li>
+<li>What do you estimate is the percentage of code that can be parallelized
+  (i.e. the ‘parallel portion’ in the figure of Amdahl’s Law)?</li>
+</ul>
+<h2 id="exercise-7-compare-to-others">Exercise 7: compare to others<a class="headerlink" href="#exercise-7-compare-to-others" title="Anchor link to this section for reference">¶</a></h2>
+<p>Compare your results to others,
+that ran the same benchmark,
+yet for other HPC clusters
+and other programming languages:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/><input id="__tabbed_3_2" name="__tabbed_3" type="radio"/><input id="__tabbed_3_3" name="__tabbed_3" type="radio"/><div class="tabbed-labels"><label for="__tabbed_3_1">Total core seconds</label><label for="__tabbed_3_2">Efficiency</label><label for="__tabbed_3_3">Speedup</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Benchmark results: core seconds" src="benchmark_results_core_seconds.png"/></p>
+<blockquote>
+<p>Benchmark: the total core seconds per number of workers</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p><img alt="Benchmark results: efficiency" src="benchmark_results_efficiency.png"/></p>
+<blockquote>
+<p>Benchmark: Efficiency per number of workers</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p><img alt="Benchmark results: speedup" src="benchmark_results_speedup.png"/></p>
+<blockquote>
+<p>Benchmark: Speedup per number of workers</p>
+</blockquote>
+</div>
+</div>
+</div>
+<ul>
+<li>What do you notice?</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>This question is vague on purpose:
+there are many things going on here and many answers are correct:</p>
+<ul>
+<li>Measurements are messier than you may have thought</li>
+<li>Julia is 30x faster than R</li>
+<li>The MATLAB code is single-threaded</li>
+<li>R works best at being efficient in parallel</li>
+<li>HPC clusters differ</li>
+<li>The points on Kebnekaise differ more than other HPC clusters:
+  this is because Kebnekaise is the most heterogeneous (i.e. has
+  the highest number of different hardware)</li>
+</ul>
+</details>
+<h2 id="exercise-x1-job-scheduling-problem">Exercise X1: job scheduling problem?<a class="headerlink" href="#exercise-x1-job-scheduling-problem" title="Anchor link to this section for reference">¶</a></h2>
+<p>You have just submitted some multithreaded jobs to the queue.
+What went wrong here? Why is this a problem?</p>
+<!-- markdownlint-disable MD013 -->
+<div class="language-console highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="gp">[richel@pelle1 thread_parallelism]$ </span>squeue<span class="w"> </span>--me
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="go">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="go">             54197     pelle do_r_2d_   richel  R       0:14      1 p66</span>
+</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="go">             54200     pelle do_r_2d_   richel  R       0:14      4 p[64-67]</span>
+</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="go">             54216     pelle do_r_2d_   richel  R       0:14      3 p[104-106]</span>
+</span><span id="__span-18-6"><a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="go">             54217     pelle do_r_2d_   richel  R       0:14      6 p[106-111]</span>
+</span><span id="__span-18-7"><a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="go">             54169     pelle do_r_2d_   richel  R       0:15      1 p70</span>
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+<details class="- hint">
+<summary>Answer</summary>
+<p>The multithreaded jobs are split over multiple nodes.
+This means that the cores booked do not have shared memory.
+This will make the calculation slower, as the results have to
+be shared by sending data between nodes.</p>
+</details>
+<h2 id="exercise-x2-learn-a-faster-programming-language">Exercise X2: learn a faster programming language?<a class="headerlink" href="#exercise-x2-learn-a-faster-programming-language" title="Anchor link to this section for reference">¶</a></h2>
+<p>As can be seen in the benchmark, some programming languages
+are faster than others. This warrants the question:
+should you learn to program in the programming language
+that does calculations fastest?</p>
+<p>The theoretically fastest programming languages
+allow you to write machine code.
+Assembler lets you do so directly.
+Some other languages (most notably C, C++ and Rust)
+allow you to insert machine code.
+Hence, these are the theoretically fastest
+languages.</p>
+<p>To write fast code, should one learn those languages instead?</p>
+<p>Below is a figure from <code>[Prechelt, 2000]</code>.
+It shows the distribution of runtime speeds of a certain problem
+(called <code>z1000</code>), for different programming languages.</p>
+<p><img alt="Figure 2, from Prechelt, 2000" src="prechelt_fig_2.png"/></p>
+<p>Take a close look at the figure.
+The paper has an advice to yes/no learn a ‘faster’
+programming language. What do you think the advice is?</p>
+<details class="- hint">
+<summary>Answer</summary>
+<p>The variance within a programming
+language is bigger than variance between
+languages (adapted fig 2, from <code>[Prechelt, 2000]</code>).</p>
+<p>Instead of learning a faster language, learn how to be fast in
+your language.</p>
+</details>
+<ul>
+<li>Still, the Julia code is 30x faster than the R code.
+  Why would this advice still hold?</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>Because none of the code is optimized for speed.</p>
+<p>Both Julia and R can call C code, where C
+is the fastest higher-level language.</p>
+<p>It would be interesting to see how this benchmark
+would look like for optimized code.</p>
+</details>
+<ul>
+<li>Are there other factors that decide which programming language to use?
+  If yes, name some.</li>
+</ul>
+<details class="- hint">
+<summary>Answer</summary>
+<p>There are many reasons why to use a ‘slower’ programming language:</p>
+<ul>
+<li>you already know the ‘slower’ programming language</li>
+<li>you need access to specific libraries/packages</li>
+<li>you have colleagues that are willing to teach you</li>
+<li>you need to to work from code that has been written
+  someone else</li>
+</ul>
+</details>
+<h2 id="where-to-go-next">Where to go next?<a class="headerlink" href="#where-to-go-next" title="Anchor link to this section for reference">¶</a></h2>
+<p>If you want to scale up,
+distributed parallelism allows you to
+do a calculation on many computers.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Anchor link to this section for reference">¶</a></h2>
+<h3 id="t1-invalid-account-or-accountpartition-combination-specified">T1. Invalid account or account/partition combination specified<a class="headerlink" href="#t1-invalid-account-or-accountpartition-combination-specified" title="Anchor link to this section for reference">¶</a></h3>
+<!-- markdownlint-disable MD013 -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>failed:<span class="w"> </span>Invalid<span class="w"> </span>account<span class="w"> </span>or<span class="w"> </span>account/partition<span class="w"> </span>combination<span class="w"> </span>specified
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+<p>You’ve specified the wrong account.</p>
+<p>Run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>projinfo
+</span></code></pre></div>
+<h2 id="t2-there-is-no-package-called-doparallel">T2. There is no package called ‘doParallel’<a class="headerlink" href="#t2-there-is-no-package-called-doparallel" title="Anchor link to this section for reference">¶</a></h2>
+<p>This is an R error.</p>
+<p>You can find it by checking the log files:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>cat<span class="w"> </span>*.out
+</span></code></pre></div>
+<p>When you see, for example, the text below,
+it is clearly stated that there is no package called <code>doParallel</code>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>HPC cluster: tetralith
+</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>Slurm job account used: naiss2025-22-934
+</span><span id="__span-22-3"><a href="#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a>Number of cores booked in Slurm: 32
+</span><span id="__span-22-4"><a href="#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a>Error in library(doParallel, quietly = TRUE) : 
+</span><span id="__span-22-5"><a href="#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a>  there is no package called ‘doParallel’
+</span><span id="__span-22-6"><a href="#__codelineno-22-6" id="__codelineno-22-6" name="__codelineno-22-6"></a>Execution halted
+</span></code></pre></div>
+<p>To fix this:</p>
+<ul>
+<li>load the correct module</li>
+<li>install that package from the terminal.</li>
+</ul>
+<p>To load the correct module, load the R module(s) as loaded by the
+<a href="do_r_2d_integration.sh"><code>do_r_2d_integration.sh</code></a> script,
+for example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.4.0-hpc1-gcc-11.3.0-bare
+</span></code></pre></div>
+<details class="- hint">
+<summary>Could you expand on that?</summary>
+<p>Open the <a href="do_r_2d_integration.sh"><code>do_r_2d_integration.sh</code></a> script.</p>
+<p>Search for the part where modules are loaded, which is at the
+bottom.</p>
+<p>Find the lines where the modules are loaded for your favorite HPC cluster,
+e.g.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="si">${</span><span class="nv">hpc_cluster</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"rackham"</span><span class="w"> </span><span class="o">]</span>
+</span><span id="__span-24-2"><a href="#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="k">then</span>
+</span><span id="__span-24-3"><a href="#__codelineno-24-3" id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="w">  </span>module<span class="w"> </span>load<span class="w"> </span>R_packages/4.1.1<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-24-4"><a href="#__codelineno-24-4" id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="k">fi</span>
+</span></code></pre></div>
+<p>Copy the part that loads the modules, excluding the <code>&gt;</code> and after,
+and run these in a terminal on your favorite
+HPC cluster:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>module<span class="w"> </span>load<span class="w"> </span>R_packages/4.1.1
+</span></code></pre></div>
+<p>You have now loaded the packages needed for the calculation.</p>
+</details>
+<p>To install that package from the terminal,
+<a href="../../r/packages/">check this course’s material on how to do so</a>.</p>
+<h2 id="t3-namespace-rlang-0412-is-already-loaded-but-110-is-required">T3. ‘namespace ‘rlang’ 0.4.12 is already loaded, but &gt;= 1.1.0 is required’<a class="headerlink" href="#t3-namespace-rlang-0412-is-already-loaded-but-110-is-required" title="Anchor link to this section for reference">¶</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>loadNamespace<span class="o">(</span>i,<span class="w"> </span>c<span class="o">(</span>lib.loc,<span class="w"> </span>.libPaths<span class="o">())</span>,<span class="w"> </span><span class="nv">versionCheck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>vI<span class="o">[[</span>i<span class="o">]])</span><span class="w"> </span>:<span class="w"> </span>
+</span><span id="__span-26-2"><a href="#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="w">  </span>namespace<span class="w"> </span>‘rlang’<span class="w"> </span><span class="m">0</span>.4.12<span class="w"> </span>is<span class="w"> </span>already<span class="w"> </span>loaded,<span class="w"> </span>but<span class="w"> </span>&gt;<span class="o">=</span><span class="w"> </span><span class="m">1</span>.1.0<span class="w"> </span>is<span class="w"> </span>required
+</span><span id="__span-26-3"><a href="#__codelineno-26-3" id="__codelineno-26-3" name="__codelineno-26-3"></a>Calls:<span class="w"> </span>&lt;Anonymous&gt;<span class="w"> </span>...<span class="w"> </span>waldo_compare<span class="w"> </span>-&gt;<span class="w"> </span>loadNamespace<span class="w"> </span>-&gt;<span class="w"> </span>namespaceImport<span class="w"> </span>-&gt;<span class="w"> </span>loadNamespace
+</span><span id="__span-26-4"><a href="#__codelineno-26-4" id="__codelineno-26-4" name="__codelineno-26-4"></a>Execution<span class="w"> </span>halted
+</span></code></pre></div>
+<p>This only happens on Rackham, since 2025-09-25.</p>
+<h2 id="matlab-error">MATLAB error<a class="headerlink" href="#matlab-error" title="Anchor link to this section for reference">¶</a></h2>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="n">Warning</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="nb">startup</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nb">matlabrc</span><span class="p">.</span>
+</span><span id="__span-27-2"><a href="#__codelineno-27-2" id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="n">This</span><span class="w"> </span><span class="s">indicates</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">potentially</span><span class="w"> </span><span class="s">serious</span><span class="w"> </span><span class="s">problem</span><span class="w"> </span><span class="s">in</span><span class="w"> </span><span class="s">your</span><span class="w"> </span><span class="s">MATLAB</span><span class="w"> </span><span class="s">setup,</span><span class="w"> </span><span class="s">which</span><span class="w"> </span><span class="s">should</span>
+</span><span id="__span-27-3"><a href="#__codelineno-27-3" id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="n">be</span><span class="w"> </span><span class="s">resolved</span><span class="w"> </span><span class="s">as</span><span class="w"> </span><span class="s">soon</span><span class="w"> </span><span class="s">as</span><span class="w"> </span><span class="s">possible.</span><span class="w">  </span><span class="s">Error</span><span class="w"> </span><span class="s">detected</span><span class="w"> </span><span class="s">was:</span>
+</span><span id="__span-27-4"><a href="#__codelineno-27-4" id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="n">MATLAB</span><span class="p">:</span><span class="n">undefinedVarOrClass</span>
+</span><span id="__span-27-5"><a href="#__codelineno-27-5" id="__codelineno-27-5" name="__codelineno-27-5"></a><span class="n">Unable</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">resolve</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">name</span><span class="w"> </span><span class="s">'java.net.InetAddress.getLocalHost.getHostAddress'.</span><span class="w"> </span>
+</span><span id="__span-27-6"><a href="#__codelineno-27-6" id="__codelineno-27-6" name="__codelineno-27-6"></a><span class="n">Error</span><span class="w"> </span><span class="s">using</span><span class="w"> </span><span class="s">run</span>
+</span><span id="__span-27-7"><a href="#__codelineno-27-7" id="__codelineno-27-7" name="__codelineno-27-7"></a><span class="n">RUN</span><span class="w"> </span><span class="s">cannot</span><span class="w"> </span><span class="s">execute</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">'do_2d_integration.m 48'.</span><span class="w"> </span><span class="s">RUN</span><span class="w"> </span><span class="s">requires</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">valid</span>
+</span><span id="__span-27-8"><a href="#__codelineno-27-8" id="__codelineno-27-8" name="__codelineno-27-8"></a><span class="n">MATLAB</span><span class="w"> </span><span class="s">script</span>
+</span></code></pre></div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li><code>[CppCore Per.6]</code>
+<a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#per6-dont-make-claims-about-performance-without-measurements">C++ Core Guidelines: Per.6: Don’t make claims about performance without measurements</a></li>
+<li><code>[Prechelt, 2000]</code> Prechelt, Lutz. “An empirical comparison of C, C++, Java, Perl, Python, REXX and TCL.” IEEE Computer 33.10 (2000): 23-29.</li>
+</ul>
+<!-- Tables cannot be split up over lines, hence will break 80 characters per line --><!-- Tables cannot be split up over lines, hence will break 80 characters per line --><!-- Verbatim error message cannot be split up over lines, hence will break 80 characters per line -->
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../parallel_computing/" title="Parallel computing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../distributed_parallelism/" title="Distributed parallelism">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC" style="color: #fcfcfc"> GitHub</a>
+</span>
+<span><a href="../parallel_computing/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../distributed_parallelism/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/tippy-bundle.umd.js"></script>
+<script src="../../js/clipboard.js"></script>
+<script src="../../js/extra.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

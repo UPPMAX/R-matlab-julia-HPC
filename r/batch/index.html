@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Batch - Introduction to R, MATLAB, and Julia in HPC</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Batch";
+        var mkdocs_page_input_path = "r/batch.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../img/new-logo.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Prequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/">Packages</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Batch</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-uppmax-systems">Overview of the UPPMAX systems</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-hpc2n-system">Overview of the HPC2N system</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-lunarc-system">Overview of the LUNARC system</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-nsc-system">Overview of the NSC system</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-commands-to-the-batch-system">Useful commands to the batch system</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-r-batch-scripts">Example R batch scripts</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-code">Serial code</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-code">Parallel code</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-gpus-in-a-batch-job">Using GPUs in a batch job</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rstudio/">RStudio</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">MATLAB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Julia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Machine Learning</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra reading</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../morepackages/">More about R packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">R</li>
+<li class="breadcrumb-item active">Batch</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/r/batch.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="running-r-in-batch-mode">Running R in batch mode<a class="headerlink" href="#running-r-in-batch-mode" title="Anchor link to this section for reference">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>What is a batch job?</li>
+<li>How to write a batch script and submit a batch job?</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Short introduction to SLURM scheduler</li>
+<li>Show structure of a batch script</li>
+<li>Examples to try</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compute allocations in this workshop</p>
+<ul>
+<li>Pelle/Rackham: <code>uppmax2025-2-360</code></li>
+<li>Kebnekaise: <code>hpc2n2025-151</code></li>
+<li>Cosmos: <code>lu2025-2-94</code></li>
+<li>Tetralith: <code>naiss2025-22-934</code></li>
+<li>Dardel: <code>naiss2025-22-934</code> </li>
+<li>Alvis: <code>naiss2025-22-934</code></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Storage space for this workshop</p>
+<ul>
+<li>Pelle/Rackham: <code>/proj/r-matlab-julia-pelle</code></li>
+<li>Kebnekaise: <code>/proj/nobackup/fall-courses</code></li>
+<li>Tetralith: <code>/proj/courses-fall-2025/users/</code></li>
+<li>Dardel: <code>/cfs/klemming/projects/snic/courses-fall-2025</code></li>
+<li>Alvis: <code>/mimer/NOBACKUP/groups/courses-fall-2025/</code></li>
+</ul>
+</div>
+<h2 id="overview-of-the-uppmax-systems">Overview of the UPPMAX systems<a class="headerlink" href="#overview-of-the-uppmax-systems" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="UPPMAX systems" src="../../img/uppmax.png"/></p>
+<h2 id="overview-of-the-hpc2n-system">Overview of the HPC2N system<a class="headerlink" href="#overview-of-the-hpc2n-system" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="HPC2N system" src="../../img/hpc2n.png"/></p>
+<h2 id="overview-of-the-lunarc-system">Overview of the LUNARC system<a class="headerlink" href="#overview-of-the-lunarc-system" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="Cosmos resource" src="../../img/cosmos-resources.png"/></p>
+<h2 id="overview-of-the-nsc-system">Overview of the NSC system<a class="headerlink" href="#overview-of-the-nsc-system" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="Tetralith" src="../../img/mermaid-tetralith.png"/></p>
+<p>Any longer, resource-intensive, or parallel jobs must be run through a <strong>batch script</strong>.</p>
+<p>The batch system used at UPPMAX, HPC2N, LUNARC, NSC, and PDC (and most other HPC centres in Sweden) is called Slurm.  </p>
+<p>Slurm is an Open Source job scheduler, which provides three key functions</p>
+<ul>
+<li>Keeps track of available system resources</li>
+<li>Enforces local system resource usage and job scheduling policies</li>
+<li>Manages a job queue, distributing work across resources according to policies</li>
+</ul>
+<p>In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).</p>
+<p>Guides and documentation at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ and https://docs.uppmax.uu.se/cluster_guides/slurm/ and https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_intro/ and https://www.nsc.liu.se/support/batch-jobs/introduction/ and https://support.pdc.kth.se/doc/support-docs/run_jobs/job_scheduling/ </p>
+<h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li>Write a batch script</li>
+<li>Inside the batch script you need to load the modules you need (R and any prerequisites) </li>
+<li>If you are using any own-installed packages, make sure R_LIBS_USER is set (export R_LIBS_USER=/path/to/my/R-packages) </li>
+<li>Ask for resources depending on if it is a parallel job or a serial job, if you need GPUs or not, etc.</li>
+<li>Give the command(s) to your R script</li>
+<li>Submit batch script with <code>sbatch &lt;my-batch-script-for-R.sh&gt;</code> </li>
+</ul>
+<p>Common file extensions for batch scripts are <code>.sh</code> or <code>.batch</code>, but they are not necessary. You can choose any name that makes sense to you. </p>
+<h2 id="useful-commands-to-the-batch-system">Useful commands to the batch system<a class="headerlink" href="#useful-commands-to-the-batch-system" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li>Submit job: <code>sbatch &lt;jobscript.sh&gt;</code></li>
+<li>Get list of your jobs: <code>squeue --me</code> OR <code>squeue -u &lt;username&gt;</code></li>
+<li>Check on a specific job: <code>scontrol show job &lt;job-id&gt;</code></li>
+<li>Delete a specific job: <code>scancel &lt;job-id&gt;</code></li>
+<li>Useful info about a job: <code>sacct -l -j &lt;job-id&gt; | less -S</code></li>
+<li>Url to a page with info about the job (Kebnekaise only): <code>job-usage &lt;job-id&gt;</code></li>
+</ul>
+<p>.. keypoints::</p>
+<ul>
+<li>The Slurm scheduler handles allocations to the calculation nodes</li>
+<li>Interactive sessions was presented in the previous presentation</li>
+<li>Batch jobs runs without interaction with the user</li>
+<li>A batch script consists of a part with Slurm parameters describing the allocation and a second part describing the actual work within the job, for instance one or several R scripts.<ul>
+<li>Remember to include possible input arguments to the R script in the batch script.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning: Modules on Dardel</p>
+<p>If you are using Dardel, then note that there are 13 pre-loaded modules when you login, most of which are related to the machine being a Cray. If you do <code>module purge</code> there, they will all be removed together with the application software modules you wanted to purge. This may cause problems.</p>
+<p>List of modules that are pre-loaded (March 2025) <em>and</em> which will be removed with <code>module purge</code>:</p>
+<ul>
+<li>craype-x86-rome</li>
+<li>libfabric/1.20.1</li>
+<li>craype-network-ofi</li>
+<li>perftools-base/23.12.0</li>
+<li>xpmem/2.8.2-1.0_3.9__g84a27a5.shasta</li>
+<li>cce/17.0.0</li>
+<li>craype/2.7.30</li>
+<li>cray-dsmml/0.2.2</li>
+<li>cray-mpich/8.1.28</li>
+<li>cray-libsci/23.12.5</li>
+<li>PrgEnv-cray/8.5.0</li>
+<li>snic-env/1.0.0</li>
+</ul>
+<p>You may have to reload all of these if you do <code>module purge</code>. The easiest solution is this:</p>
+<ul>
+<li>Immediately after logging in, and before loading any modules (assuming you have not added any to <code>.bashrc</code> do</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>module<span class="w"> </span>save<span class="w"> </span>preload
+</span></code></pre></div>
+<ul>
+<li>then, when you have done a <code>module purge</code> to remove some application software modules you have loaded (like R and prerequisites) and want to load a different version perhaps, do</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>module<span class="w"> </span>restore<span class="w"> </span>preload<span class="w"> </span>
+</span></code></pre></div>
+<p>That will restore the preloaded modules.</p>
+</div>
+<h2 id="example-r-batch-scripts">Example R batch scripts<a class="headerlink" href="#example-r-batch-scripts" title="Anchor link to this section for reference">¶</a></h2>
+<h3 id="serial-code">Serial code<a class="headerlink" href="#serial-code" title="Anchor link to this section for reference">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Type-along</p>
+<p>Short serial batch example for running the code <code>hello.R</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><input id="__tabbed_1_4" name="__tabbed_1" type="radio"/><input id="__tabbed_1_5" name="__tabbed_1" type="radio"/><input id="__tabbed_1_6" name="__tabbed_1" type="radio"/><input id="__tabbed_1_7" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">UPPMAX</label><label for="__tabbed_1_2">HPC2N</label><label for="__tabbed_1_3">LUNARC</label><label for="__tabbed_1_4">NSC</label><label for="__tabbed_1_5">PDC</label><label for="__tabbed_1_6">C3SE</label><label for="__tabbed_1_7">hello.R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Short serial example script for Pelle. Loading R/4.4.2</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">#SBATCH -A uppmax2025-2-360 # Course project id. Change to your own project ID after the course</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="c1"># Load any modules you need, here R/4.4.2  </span>
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.4.2-gfbf-2024a<span class="w"> </span>
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1"># Run your R script (here 'hello.R')</span>
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Kebnekaise. Loading R/4.4.1 and prerequisites   </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">#SBATCH -A hpc2n2025-151 # Change to your own project ID</span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1"># Load any modules you need, here R/4.4.1 and prerequisites </span>
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># Run your R script (here 'hello.R')</span>
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Cosmos. Loading R/4.2.1 and prerequisites</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1">#SBATCH -A lu2025-2-94 # Change to your own project ID</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="c1"># Load any modules you need, here R/4.1.2 and prerequisites </span>
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c1"># Run your R script (here 'hello.R')</span>
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Tetralith. Loading R/4.2.2 </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1">#SBATCH -A naiss2025-22-934</span>
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="c1"># Load any modules you need, here R/4.2.2 </span>
+</span><span id="__span-5-7"><a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare<span class="w"> </span>
+</span><span id="__span-5-8"><a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="c1"># Run your R script (here 'hello.R')</span>
+</span><span id="__span-5-10"><a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short serial example for running on Dardel. Loading R/4.4.1  </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="c1">#SBATCH -A naiss2025-22-934</span>
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="c1">#SBATCH -p main</span>
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="c1"># Load any modules you need, here R/4.4.1</span>
+</span><span id="__span-6-8"><a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12
+</span><span id="__span-6-9"><a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="c1"># Run your R script (here 'hello.R')</span>
+</span><span id="__span-6-11"><a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a>R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>hello.R<span class="w">             </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Alvis is only for running GPU code. </p>
+</div>
+<div class="tabbed-block">
+<p>R example code</p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">message</span><span class="w"> </span><span class="o">&lt;-</span><span class="s">"Hello World!"</span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="w">  </span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Send the script to the batch:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>$<span class="w"> </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</span></code></pre></div>
+</div>
+<h3 id="parallel-code">Parallel code<a class="headerlink" href="#parallel-code" title="Anchor link to this section for reference">¶</a></h3>
+<h4 id="foreach-and-doparallel">foreach and doParallel<a class="headerlink" href="#foreach-and-doparallel" title="Anchor link to this section for reference">¶</a></h4>
+<div class="admonition hint">
+<p class="admonition-title">Type-along</p>
+<p>Short parallel example, using foreach and doParallel</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/><input id="__tabbed_2_2" name="__tabbed_2" type="radio"/><input id="__tabbed_2_3" name="__tabbed_2" type="radio"/><input id="__tabbed_2_4" name="__tabbed_2" type="radio"/><input id="__tabbed_2_5" name="__tabbed_2" type="radio"/><input id="__tabbed_2_6" name="__tabbed_2" type="radio"/><input id="__tabbed_2_7" name="__tabbed_2" type="radio"/><div class="tabbed-labels"><label for="__tabbed_2_1">UPPMAX</label><label for="__tabbed_2_2">HPC2N</label><label for="__tabbed_2_3">LUNARC</label><label for="__tabbed_2_4">NSC</label><label for="__tabbed_2_5">PDC</label><label for="__tabbed_2_6">C3SE</label><label for="__tabbed_2_7">parallel_foreach.R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Short parallel example (Since we are using packages “foreach” and “doParallel”, you need to use module R/4.4.2-gfbf-2024a and the R-bundle-CRAN/2024.11-foss-2024a module. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="c1">#SBATCH -A uppmax2025-2-360</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="c1">#SBATCH -c 4</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a>ml<span class="w"> </span>R/4.4.2-gfbf-2024a<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="c1"># Batch script to submit the R program parallel_foreach.R </span>
+</span><span id="__span-9-11"><a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a>R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “foreach” and “doParallel” which are included in the R module) for running on Kebnekaise. Loading R/4.4.1 and its prerequisites, as well as R-bundle-CRAN/2024.06 and extra prerequisites for that. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="c1">#SBATCH -A hpc2n2025-151 # Change to your own project ID</span>
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-10-5"><a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="c1">#SBATCH -c 4</span>
+</span><span id="__span-10-6"><a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-10-8"><a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>ml<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R-bundle-CRAN/2024.06
+</span><span id="__span-10-9"><a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="c1"># Batch script to submit the R program parallel_foreach.R </span>
+</span><span id="__span-10-11"><a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a>R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “foreach” and “doParallel” which are included in the R module) for running on Cosmos. Loading R/4.2.1 and its prerequisites.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="c1"># A batch script for running the R program parallel_foreach.R</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="c1">#SBATCH -A lu2025-2-94 # Change to your own project ID</span>
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-11-5"><a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-11-6"><a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="c1">#SBATCH -c 4</span>
+</span><span id="__span-11-7"><a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-11-9"><a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a>ml<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w">  </span>R/4.2.1
+</span><span id="__span-11-10"><a href="#__codelineno-11-10" id="__codelineno-11-10" name="__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a href="#__codelineno-11-11" id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+</span><span id="__span-11-12"><a href="#__codelineno-11-12" id="__codelineno-11-12" name="__codelineno-11-12"></a>R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “foreach” and “doParallel” which you at Tetralith need to install first) for running on Tetralith. Loading R/4.2.2. <br/>
+Installing <code>foreach</code> and <code>doParallel</code> (with R module <code>R/4.2.2-hpc1-gcc-11.3.0-bare</code> loaded but not inside R): </p>
+<ul>
+<li><code>R --quiet --no-save --no-restore -e "install.packages('foreach', repos='http://ftp.acc.umu.se/mirror/CRAN/')"</code> </li>
+<li>and <code>R --quiet --no-save --no-restore -e "install.packages('doParallel', repos='http://ftp.acc.umu.se/mirror/CRAN/')"</code> </li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="c1"># A batch script for running the R program parallel_foreach.R </span>
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="c1">#SBATCH -A naiss2025-22-934</span>
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="c1">#SBATCH -c 4</span>
+</span><span id="__span-12-7"><a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-12-9"><a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a>ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare<span class="w"> </span>
+</span><span id="__span-12-10"><a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a href="#__codelineno-12-11" id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+</span><span id="__span-12-12"><a href="#__codelineno-12-12" id="__codelineno-12-12" name="__codelineno-12-12"></a>R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “foreach” and “doParallel” which are included in the R module) for running on Dardel. Loading R/4.4.1. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1"># A batch script for running the R program parallel_foreach.R</span>
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="c1">#SBATCH -A naiss2025-22-934 </span>
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-13-6"><a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="c1">#SBATCH -c 4</span>
+</span><span id="__span-13-7"><a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="c1">#SBATCH -p main</span>
+</span><span id="__span-13-8"><a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a href="#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="c1"># If you do ml purge you also need to restore the preloaded modules which you should have saved </span>
+</span><span id="__span-13-10"><a href="#__codelineno-13-10" id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="c1"># when you logged in. Otherwise uncomment the two following lines. </span>
+</span><span id="__span-13-11"><a href="#__codelineno-13-11" id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="c1">#ml purge &gt; /dev/null 2&gt;&amp;1</span>
+</span><span id="__span-13-12"><a href="#__codelineno-13-12" id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="c1">#ml restore preload</span>
+</span><span id="__span-13-13"><a href="#__codelineno-13-13" id="__codelineno-13-13" name="__codelineno-13-13"></a>module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>
+</span><span id="__span-13-14"><a href="#__codelineno-13-14" id="__codelineno-13-14" name="__codelineno-13-14"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.4.1-cpeGNU-23.12<span class="w"> </span>
+</span><span id="__span-13-15"><a href="#__codelineno-13-15" id="__codelineno-13-15" name="__codelineno-13-15"></a>
+</span><span id="__span-13-16"><a href="#__codelineno-13-16" id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="c1"># Batch script to submit the R program parallel_foreach.R</span>
+</span><span id="__span-13-17"><a href="#__codelineno-13-17" id="__codelineno-13-17" name="__codelineno-13-17"></a>R<span class="w"> </span>-q<span class="w"> </span>--slave<span class="w"> </span>-f<span class="w"> </span>parallel_foreach.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Alvis is only for running GPU code on. </p>
+</div>
+<div class="tabbed-block">
+<p>This R script uses packages “foreach” and “doParallel”. </p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="c1"># Function for calculating PI with no values</span>
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="n">calcpi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">no</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="n">no</span><span class="p">)</span>
+</span><span id="__span-14-7"><a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="n">no</span><span class="p">)</span>
+</span><span id="__span-14-8"><a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="m">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+</span><span id="__span-14-9"><a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">  </span><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">z</span><span class="o">&lt;=</span><span class="m">1</span><span class="p">))</span><span class="o">*</span><span class="m">4</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-14-10"><a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="p">}</span>
+</span><span id="__span-14-11"><a href="#__codelineno-14-11" id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="c1"># Detect the number of cores</span>
+</span><span id="__span-14-12"><a href="#__codelineno-14-12" id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="n">no_cores</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">detectCores</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-14-13"><a href="#__codelineno-14-13" id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="c1"># Loop to max number of cores</span>
+</span><span id="__span-14-14"><a href="#__codelineno-14-14" id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">no_cores</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-15"><a href="#__codelineno-14-15" id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">  </span><span class="c1"># print how many cores we are using</span>
+</span><span id="__span-14-16"><a href="#__codelineno-14-16" id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-14-17"><a href="#__codelineno-14-17" id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">  </span><span class="c1"># Set start time</span>
+</span><span id="__span-14-18"><a href="#__codelineno-14-18" id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">  </span><span class="n">start_time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Sys.time</span><span class="p">()</span>
+</span><span id="__span-14-19"><a href="#__codelineno-14-19" id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">  </span><span class="c1"># Create a cluster</span>
+</span><span id="__span-14-20"><a href="#__codelineno-14-20" id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="w">  </span><span class="n">nproc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-14-21"><a href="#__codelineno-14-21" id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">  </span><span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span>
+</span><span id="__span-14-22"><a href="#__codelineno-14-22" id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="w">  </span><span class="c1"># Create a vector 1000 length with 100 randomizations</span>
+</span><span id="__span-14-23"><a href="#__codelineno-14-23" id="__codelineno-14-23" name="__codelineno-14-23"></a><span class="w">  </span><span class="n">input</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span>
+</span><span id="__span-14-24"><a href="#__codelineno-14-24" id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="w">  </span><span class="c1"># Use foreach on n cores</span>
+</span><span id="__span-14-25"><a href="#__codelineno-14-25" id="__codelineno-14-25" name="__codelineno-14-25"></a><span class="w">  </span><span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span>
+</span><span id="__span-14-26"><a href="#__codelineno-14-26" id="__codelineno-14-26" name="__codelineno-14-26"></a><span class="w">  </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'+'</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+</span><span id="__span-14-27"><a href="#__codelineno-14-27" id="__codelineno-14-27" name="__codelineno-14-27"></a><span class="w">    </span><span class="nf">calcpi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-14-28"><a href="#__codelineno-14-28" id="__codelineno-14-28" name="__codelineno-14-28"></a><span class="w">  </span><span class="c1"># Print the mean of the results</span>
+</span><span id="__span-14-29"><a href="#__codelineno-14-29" id="__codelineno-14-29" name="__codelineno-14-29"></a><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">input</span><span class="p">))</span>
+</span><span id="__span-14-30"><a href="#__codelineno-14-30" id="__codelineno-14-30" name="__codelineno-14-30"></a><span class="w">  </span><span class="c1"># Stop the cluster</span>
+</span><span id="__span-14-31"><a href="#__codelineno-14-31" id="__codelineno-14-31" name="__codelineno-14-31"></a><span class="w">  </span><span class="nf">stopCluster</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span>
+</span><span id="__span-14-32"><a href="#__codelineno-14-32" id="__codelineno-14-32" name="__codelineno-14-32"></a><span class="w">  </span><span class="c1"># print end time</span>
+</span><span id="__span-14-33"><a href="#__codelineno-14-33" id="__codelineno-14-33" name="__codelineno-14-33"></a><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span>
+</span><span id="__span-14-34"><a href="#__codelineno-14-34" id="__codelineno-14-34" name="__codelineno-14-34"></a><span class="w">  </span><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Send the script to the batch:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>$<span class="w"> </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</span></code></pre></div>
+</div>
+<h4 id="rmpi">Rmpi<a class="headerlink" href="#rmpi" title="Anchor link to this section for reference">¶</a></h4>
+<div class="admonition hint">
+<p class="admonition-title">Type-along</p>
+<p>Short parallel example using package “Rmpi” (“pbdMPI on Dardel”)  </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/><input id="__tabbed_3_2" name="__tabbed_3" type="radio"/><input id="__tabbed_3_3" name="__tabbed_3" type="radio"/><input id="__tabbed_3_4" name="__tabbed_3" type="radio"/><input id="__tabbed_3_5" name="__tabbed_3" type="radio"/><input id="__tabbed_3_6" name="__tabbed_3" type="radio"/><input id="__tabbed_3_7" name="__tabbed_3" type="radio"/><div class="tabbed-labels"><label for="__tabbed_3_1">UPPMAX</label><label for="__tabbed_3_2">HPC2N</label><label for="__tabbed_3_3">LUNARC</label><label for="__tabbed_3_4">NSC</label><label for="__tabbed_3_5">PDC</label><label for="__tabbed_3_6">Rmpi.R</label><label for="__tabbed_3_7">pbdMPI.R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Short parallel example (using package “Rmpi”, so we need to load both the module R/4.4.2-gfbf-2024a and the module R-bundle-CRAN/2024.11-foss-2024a. A suitable openmpi module, OpenMPI/5.0.3-GCC-13.3.0, is loaded with these.)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="c1">#SBATCH -A uppmax2025-2-360</span>
+</span><span id="__span-16-3"><a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="c1">#Asking for 10 min.</span>
+</span><span id="__span-16-4"><a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-16-5"><a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="c1">#SBATCH -n 8</span>
+</span><span id="__span-16-6"><a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-16-8"><a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_btl_openib_allow_ib</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-16-9"><a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a>
+</span><span id="__span-16-10"><a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-16-11"><a href="#__codelineno-16-11" id="__codelineno-16-11" name="__codelineno-16-11"></a>ml<span class="w"> </span>R/4.4.2-gfbf-2024a
+</span><span id="__span-16-12"><a href="#__codelineno-16-12" id="__codelineno-16-12" name="__codelineno-16-12"></a>ml<span class="w"> </span>OpenMPI/5.0.3-GCC-13.3.0<span class="w"> </span>R-bundle-CRAN/2024.11-foss-2024a<span class="w"> </span>R-bundle-Bioconductor/3.20-foss-2024a-R-4.4.2
+</span><span id="__span-16-13"><a href="#__codelineno-16-13" id="__codelineno-16-13" name="__codelineno-16-13"></a>
+</span><span id="__span-16-14"><a href="#__codelineno-16-14" id="__codelineno-16-14" name="__codelineno-16-14"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>Rmpi.R<span class="w"> </span>output.out<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “Rmpi”). Loading R/4.4.1 and its prerequisites, as well as R-bundle-CRAN/2024.06 and its prerequisites. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="c1">#SBATCH -A hpc2n2025-151 # Change to your own project ID</span>
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="c1">#Asking for 10 min.</span>
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="c1">#SBATCH -n 8</span>
+</span><span id="__span-17-6"><a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-17-8"><a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a href="#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-17-10"><a href="#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a>ml<span class="w"> </span>GCC/13.2.0<span class="w"> </span>R/4.4.1
+</span><span id="__span-17-11"><a href="#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a>ml<span class="w"> </span>OpenMPI/4.1.6<span class="w"> </span>R-bundle-CRAN/2024.06
+</span><span id="__span-17-12"><a href="#__codelineno-17-12" id="__codelineno-17-12" name="__codelineno-17-12"></a>
+</span><span id="__span-17-13"><a href="#__codelineno-17-13" id="__codelineno-17-13" name="__codelineno-17-13"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>Rscript<span class="w"> </span>Rmpi.R<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “Rmpi”). Loading R/4.2.1 and its prerequisites. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="c1">#SBATCH -A lu2025-2-94 # Change to your own project ID</span>
+</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="c1"># Asking for 10 min.</span>
+</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="c1">#SBATCH -n 8</span>
+</span><span id="__span-18-6"><a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mpi_warn_on_fork</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-18-8"><a href="#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a href="#__codelineno-18-9" id="__codelineno-18-9" name="__codelineno-18-9"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-18-10"><a href="#__codelineno-18-10" id="__codelineno-18-10" name="__codelineno-18-10"></a>ml<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4
+</span><span id="__span-18-11"><a href="#__codelineno-18-11" id="__codelineno-18-11" name="__codelineno-18-11"></a>ml<span class="w"> </span>R/4.2.1
+</span><span id="__span-18-12"><a href="#__codelineno-18-12" id="__codelineno-18-12" name="__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a href="#__codelineno-18-13" id="__codelineno-18-13" name="__codelineno-18-13"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>Rmpi.R<span class="w"> </span>output.out
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “pbdMPI as “Rmpi” does not work correctly on NSC). Loading R/4.2.2. </p>
+<p>Note: for NSC you first need to install “pdbMPI” (<code>module load R/4.2.2-hpc1-gcc-11.3.0-bare</code>, start <code>R</code>, <code>install.packages('pbdMPI')</code>, pick CRAN mirror (Denmark, Finland, Sweden or other closeby)) </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-19-2"><a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="c1">#SBATCH -A naiss2025-22-934 </span>
+</span><span id="__span-19-3"><a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="c1"># Asking for 15 min.</span>
+</span><span id="__span-19-4"><a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="c1">#SBATCH -t 00:15:00</span>
+</span><span id="__span-19-5"><a href="#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="c1">#SBATCH -n 8</span>
+</span><span id="__span-19-6"><a href="#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="c1">#SBATCH --exclusive </span>
+</span><span id="__span-19-7"><a href="#__codelineno-19-7" id="__codelineno-19-7" name="__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a href="#__codelineno-19-8" id="__codelineno-19-8" name="__codelineno-19-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-19-9"><a href="#__codelineno-19-9" id="__codelineno-19-9" name="__codelineno-19-9"></a>ml<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare<span class="w"> </span>
+</span><span id="__span-19-10"><a href="#__codelineno-19-10" id="__codelineno-19-10" name="__codelineno-19-10"></a>
+</span><span id="__span-19-11"><a href="#__codelineno-19-11" id="__codelineno-19-11" name="__codelineno-19-11"></a>srun<span class="w"> </span>--mpi<span class="o">=</span>pmix<span class="w"> </span>Rscript<span class="w"> </span>pbdMPI.R<span class="w">  </span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Short parallel example (using packages “pbdMPI”). Loading R/4.4.1. </p>
+<p>Note: for PDC you first need to install “pbdMPI” (“Rmpi” does not work).</p>
+<ul>
+<li>You can find the tarball in <code>/cfs/klemming/projects/supr/courses-fall-2025/pbdMPI_0.5-4.tar.gz</code>. </li>
+<li>Copy it to your own subdirectory under the project directory and then do: <ul>
+<li><code>module load PDC/24.11 R/4.4.2-cpeGNU-24.11</code></li>
+<li><code>R CMD INSTALL pbdMPI_0.5-4.tar.gz --configure-args=" --with-mpi-include=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/include --with-mpi-libpath=/opt/cray/pe/mpich/8.1.28/ofi/gnu/12.3/lib --with-mpi-type=MPICH2" --no-test-load</code></li>
+</ul>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="ch">#!/bin/bash -l </span>
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="c1">#SBATCH -A naiss2025-22-934</span>
+</span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="c1"># Asking for 10 min.</span>
+</span><span id="__span-20-4"><a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-20-5"><a href="#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="c1">#SBATCH --nodes 2</span>
+</span><span id="__span-20-6"><a href="#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="c1">#SBATCH --ntasks-per-node=8</span>
+</span><span id="__span-20-7"><a href="#__codelineno-20-7" id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="c1">#SBATCH -p main</span>
+</span><span id="__span-20-8"><a href="#__codelineno-20-8" id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="c1">#SBATCH --output=pbdMPI-test_%J.out </span>
+</span><span id="__span-20-9"><a href="#__codelineno-20-9" id="__codelineno-20-9" name="__codelineno-20-9"></a>
+</span><span id="__span-20-10"><a href="#__codelineno-20-10" id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="c1"># If you do ml purge you also need to restore the preloaded modules which you should have saved </span>
+</span><span id="__span-20-11"><a href="#__codelineno-20-11" id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="c1"># when you logged in. Otherwise leave the two following lines outcommented. </span>
+</span><span id="__span-20-12"><a href="#__codelineno-20-12" id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="c1">#ml purge &gt; /dev/null 2&gt;&amp;1</span>
+</span><span id="__span-20-13"><a href="#__codelineno-20-13" id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="c1">#ml restore preload</span>
+</span><span id="__span-20-14"><a href="#__codelineno-20-14" id="__codelineno-20-14" name="__codelineno-20-14"></a>ml<span class="w"> </span>PDC/24.11
+</span><span id="__span-20-15"><a href="#__codelineno-20-15" id="__codelineno-20-15" name="__codelineno-20-15"></a>ml<span class="w"> </span>R/4.4.2-cpeGNU-24.11
+</span><span id="__span-20-16"><a href="#__codelineno-20-16" id="__codelineno-20-16" name="__codelineno-20-16"></a>
+</span><span id="__span-20-17"><a href="#__codelineno-20-17" id="__codelineno-20-17" name="__codelineno-20-17"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>Rscript<span class="w"> </span>pbdMPI.R
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>This R script uses package “Rmpi”. </p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="c1"># Load the R MPI package if it is not already loaded.</span>
+</span><span id="__span-21-2"><a href="#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">is.loaded</span><span class="p">(</span><span class="s">"mpi_initialize"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-21-3"><a href="#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="nf">library</span><span class="p">(</span><span class="s">"Rmpi"</span><span class="p">)</span>
+</span><span id="__span-21-4"><a href="#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="p">}</span>
+</span><span id="__span-21-5"><a href="#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="nf">print</span><span class="p">(</span><span class="nf">mpi.universe.size</span><span class="p">())</span>
+</span><span id="__span-21-6"><a href="#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="n">ns</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mpi.universe.size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-21-7"><a href="#__codelineno-21-7" id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="nf">mpi.spawn.Rslaves</span><span class="p">(</span><span class="n">nslaves</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+</span><span id="__span-21-8"><a href="#__codelineno-21-8" id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="c1">#</span>
+</span><span id="__span-21-9"><a href="#__codelineno-21-9" id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="c1"># In case R exits unexpectedly, have it automatically clean up</span>
+</span><span id="__span-21-10"><a href="#__codelineno-21-10" id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="c1"># resources taken up by Rmpi (slaves, memory, etc...)</span>
+</span><span id="__span-21-11"><a href="#__codelineno-21-11" id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="n">.Last</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(){</span>
+</span><span id="__span-21-12"><a href="#__codelineno-21-12" id="__codelineno-21-12" name="__codelineno-21-12"></a><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">is.loaded</span><span class="p">(</span><span class="s">"mpi_initialize"</span><span class="p">)){</span>
+</span><span id="__span-21-13"><a href="#__codelineno-21-13" id="__codelineno-21-13" name="__codelineno-21-13"></a><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">mpi.comm.size</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">){</span>
+</span><span id="__span-21-14"><a href="#__codelineno-21-14" id="__codelineno-21-14" name="__codelineno-21-14"></a><span class="nf">print</span><span class="p">(</span><span class="s">"Please use mpi.close.Rslaves() to close slaves."</span><span class="p">)</span>
+</span><span id="__span-21-15"><a href="#__codelineno-21-15" id="__codelineno-21-15" name="__codelineno-21-15"></a><span class="nf">mpi.close.Rslaves</span><span class="p">()</span>
+</span><span id="__span-21-16"><a href="#__codelineno-21-16" id="__codelineno-21-16" name="__codelineno-21-16"></a><span class="p">}</span>
+</span><span id="__span-21-17"><a href="#__codelineno-21-17" id="__codelineno-21-17" name="__codelineno-21-17"></a><span class="nf">print</span><span class="p">(</span><span class="s">"Please use mpi.quit() to quit R"</span><span class="p">)</span>
+</span><span id="__span-21-18"><a href="#__codelineno-21-18" id="__codelineno-21-18" name="__codelineno-21-18"></a><span class="nf">.Call</span><span class="p">(</span><span class="s">"mpi_finalize"</span><span class="p">)</span>
+</span><span id="__span-21-19"><a href="#__codelineno-21-19" id="__codelineno-21-19" name="__codelineno-21-19"></a><span class="p">}</span>
+</span><span id="__span-21-20"><a href="#__codelineno-21-20" id="__codelineno-21-20" name="__codelineno-21-20"></a><span class="p">}</span>
+</span><span id="__span-21-21"><a href="#__codelineno-21-21" id="__codelineno-21-21" name="__codelineno-21-21"></a><span class="c1"># Tell all slaves to return a message identifying themselves</span>
+</span><span id="__span-21-22"><a href="#__codelineno-21-22" id="__codelineno-21-22" name="__codelineno-21-22"></a><span class="nf">mpi.remote.exec</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">"I am"</span><span class="p">,</span><span class="nf">mpi.comm.rank</span><span class="p">(),</span><span class="s">"of"</span><span class="p">,</span><span class="nf">mpi.comm.size</span><span class="p">(),</span><span class="nf">system</span><span class="p">(</span><span class="s">"hostname"</span><span class="p">,</span><span class="n">intern</span><span class="o">=</span><span class="bp">T</span><span class="p">)))</span>
+</span><span id="__span-21-23"><a href="#__codelineno-21-23" id="__codelineno-21-23" name="__codelineno-21-23"></a>
+</span><span id="__span-21-24"><a href="#__codelineno-21-24" id="__codelineno-21-24" name="__codelineno-21-24"></a><span class="c1"># Test computations</span>
+</span><span id="__span-21-25"><a href="#__codelineno-21-25" id="__codelineno-21-25" name="__codelineno-21-25"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
+</span><span id="__span-21-26"><a href="#__codelineno-21-26" id="__codelineno-21-26" name="__codelineno-21-26"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mpi.remote.exec</span><span class="p">(</span><span class="n">rnorm</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-21-27"><a href="#__codelineno-21-27" id="__codelineno-21-27" name="__codelineno-21-27"></a><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-21-28"><a href="#__codelineno-21-28" id="__codelineno-21-28" name="__codelineno-21-28"></a><span class="n">x</span>
+</span><span id="__span-21-29"><a href="#__codelineno-21-29" id="__codelineno-21-29" name="__codelineno-21-29"></a>
+</span><span id="__span-21-30"><a href="#__codelineno-21-30" id="__codelineno-21-30" name="__codelineno-21-30"></a><span class="c1"># Tell all slaves to close down, and exit the program</span>
+</span><span id="__span-21-31"><a href="#__codelineno-21-31" id="__codelineno-21-31" name="__codelineno-21-31"></a><span class="nf">mpi.close.Rslaves</span><span class="p">()</span>
+</span><span id="__span-21-32"><a href="#__codelineno-21-32" id="__codelineno-21-32" name="__codelineno-21-32"></a>
+</span><span id="__span-21-33"><a href="#__codelineno-21-33" id="__codelineno-21-33" name="__codelineno-21-33"></a><span class="nf">mpi.quit</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>This R script uses package “pbdMPI”. </p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">pbdMPI</span><span class="p">)</span>
+</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a href="#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="n">ns</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">comm.size</span><span class="p">()</span>
+</span><span id="__span-22-4"><a href="#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a href="#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="c1"># Tell all R sessions to return a message identifying themselves</span>
+</span><span id="__span-22-6"><a href="#__codelineno-22-6" id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="n">id</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">comm.rank</span><span class="p">()</span>
+</span><span id="__span-22-7"><a href="#__codelineno-22-7" id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="n">ns</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">comm.size</span><span class="p">()</span>
+</span><span id="__span-22-8"><a href="#__codelineno-22-8" id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="n">host</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">system</span><span class="p">(</span><span class="s">"hostname"</span><span class="p">,</span><span class="w"> </span><span class="n">intern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span id="__span-22-9"><a href="#__codelineno-22-9" id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="nf">comm.cat</span><span class="p">(</span><span class="s">"I am"</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">"on"</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="s">"of"</span><span class="p">,</span><span class="w"> </span><span class="n">ns</span><span class="p">,</span><span class="w"> </span><span class="s">"\n"</span><span class="p">,</span><span class="w"> </span><span class="n">all.rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span id="__span-22-10"><a href="#__codelineno-22-10" id="__codelineno-22-10" name="__codelineno-22-10"></a>
+</span><span id="__span-22-11"><a href="#__codelineno-22-11" id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="c1"># Test computations</span>
+</span><span id="__span-22-12"><a href="#__codelineno-22-12" id="__codelineno-22-12" name="__codelineno-22-12"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
+</span><span id="__span-22-13"><a href="#__codelineno-22-13" id="__codelineno-22-13" name="__codelineno-22-13"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-22-14"><a href="#__codelineno-22-14" id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="nf">comm.print</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span id="__span-22-15"><a href="#__codelineno-22-15" id="__codelineno-22-15" name="__codelineno-22-15"></a><span class="nf">comm.print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">all.rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span id="__span-22-16"><a href="#__codelineno-22-16" id="__codelineno-22-16" name="__codelineno-22-16"></a>
+</span><span id="__span-22-17"><a href="#__codelineno-22-17" id="__codelineno-22-17" name="__codelineno-22-17"></a><span class="nf">finalize</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Send the script to the batch system: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>$<span class="w"> </span>sbatch<span class="w"> </span>&lt;batch<span class="w"> </span>script&gt;
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="using-gpus-in-a-batch-job">Using GPUs in a batch job<a class="headerlink" href="#using-gpus-in-a-batch-job" title="Anchor link to this section for reference">¶</a></h3>
+<p>There are generally either not GPUs on the login nodes or they cannot be accessed for computations. To use them you need to either launch an interactive job or submit a batch job.</p>
+<h4 id="uppmax-only">UPPMAX only<a class="headerlink" href="#uppmax-only" title="Anchor link to this section for reference">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Rackham/Snowy or Pelle</p>
+<ul>
+<li>Rackham’s compute nodes do not have GPUs. You need to use Snowy for that. </li>
+<li>The new cluster Pelle has GPUs. </li>
+</ul>
+</div>
+<p>On Rackham, you need to use this batch command (for x being the number of cards, 1 or 2):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="c1">#SBATCH -M snowy</span>
+</span><span id="__span-24-2"><a href="#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="c1">#SBATCH --gres=gpu:x</span>
+</span></code></pre></div>
+<p>On Pelle, you need to use this batch command </p>
+<p>for L40s GPUs (up to 10 GPU cards) </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="c1">#SBATCH -p gpu</span>
+</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="c1">#SBATCH --gpus:l40s:&lt;number of GPUs&gt;</span>
+</span></code></pre></div>
+<p>or for H100 GPUs (up to 2 GPU cards) </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="c1">#SBATCH -p gpu</span>
+</span><span id="__span-26-2"><a href="#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="c1">#SBATCH --gpus=h100:&lt;number of GPUs&gt;</span>
+</span></code></pre></div>
+<h4 id="hpc2n">HPC2N<a class="headerlink" href="#hpc2n" title="Anchor link to this section for reference">¶</a></h4>
+<p>Kebnekaise’s GPU nodes are considered a separate resource, and the regular compute nodes do not have GPUs.  </p>
+<p>Kebnekaise has a great many different types of GPUs:</p>
+<ul>
+<li>V100 (2 cards/node)</li>
+<li>A40 (8 cards/node)</li>
+<li>A6000 (2 cards/node)</li>
+<li>L40s (2 or 6 cards/node)</li>
+<li>A100 (2 cards/node)</li>
+<li>H100 (4 cards/node)</li>
+<li>MI100 (2 cards/node)</li>
+</ul>
+<p>To access them, you need to use this to the batch system:</p>
+<p><code>#SBATCH --gpus=x</code></p>
+<p>where <code>x</code> is the number of GPU cards you want. Above are given how many are on each type, so you can ask for up to that number.</p>
+<p>In addition, you need to add this to the batch system:</p>
+<p><code>#SBATCH -C &lt;type&gt;</code></p>
+<p>where type is</p>
+<ul>
+<li>v100</li>
+<li>a40</li>
+<li>a6000</li>
+<li>l40s</li>
+<li>a100</li>
+<li>h100</li>
+<li>mi100</li>
+</ul>
+<p>For more information, see HPC2N’s guide to the different parts of the batch system: https://docs.hpc2n.umu.se/documentation/batchsystem/resources/</p>
+<h4 id="lunarc">LUNARC<a class="headerlink" href="#lunarc" title="Anchor link to this section for reference">¶</a></h4>
+<p>LUNARC has Nvidia A100 GPUs and Nvidia A40 GPUs, but the latter ones are reserved for interactive graphics work on the on-demand system, and Slurm jobs should not be submitted to them.</p>
+<p>Thus in order to use the A100 GPUs on Cosmos, add this to your batch script:</p>
+<ul>
+<li>A100 GPUs on AMD nodes:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="c1">#SBATCH -p gpua100</span>
+</span><span id="__span-27-2"><a href="#__codelineno-27-2" id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="c1">#SBATCH --gres=gpu:1</span>
+</span></code></pre></div>
+<p>These nodes are configured as exclusive access and will not be shared between users. User projects will be charged for the entire node (48 cores). A job on a node will also have access to all memory on the node.</p>
+<ul>
+<li>A100 GPUs on Intel nodes:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1">#SBATCH -p gpua100i</span>
+</span><span id="__span-28-2"><a href="#__codelineno-28-2" id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="c1">#SBATCH --gres=gpu:&lt;number&gt;</span>
+</span></code></pre></div>
+<p>where <number> is 1 or 2 (Two of the nodes have 1 GPU and two have 2 GPUs).</number></p>
+<h4 id="nsc">NSC<a class="headerlink" href="#nsc" title="Anchor link to this section for reference">¶</a></h4>
+<p>Tetralith has Nvidia T4 GPUs. In order to access them, add this to your batch script or interactive job:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-29-2"><a href="#__codelineno-29-2" id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="c1">#SBATCH -c 32</span>
+</span><span id="__span-29-3"><a href="#__codelineno-29-3" id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="c1">#SBATCH --gpus-per-task=1</span>
+</span></code></pre></div>
+<h4 id="pdc">PDC<a class="headerlink" href="#pdc" title="Anchor link to this section for reference">¶</a></h4>
+<p>Dardel has AMD Instinct™ MI250X GPU chips. In order to access them, add this to your batch script or interactive job: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="c1">#SBATCH -N 1</span>
+</span><span id="__span-30-2"><a href="#__codelineno-30-2" id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="c1">#SBATCH --ntasks-per-node=1</span>
+</span><span id="__span-30-3"><a href="#__codelineno-30-3" id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="c1">#SBATCH -p gpu  </span>
+</span></code></pre></div>
+<h4 id="c3se">C3SE<a class="headerlink" href="#c3se" title="Anchor link to this section for reference">¶</a></h4>
+<p>Alvis is meant for GPU jobs. There is no node-sharing on multi-node jobs (–exclusive is automatic). </p>
+<p>NOTE: Requesting <code>-N 1</code> does not mean 1 full node</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a href="#__codelineno-31-1" id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="c1">#SBATCH -p alvis</span>
+</span><span id="__span-31-2"><a href="#__codelineno-31-2" id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="c1">#SBATCH -N &lt;nodes&gt;</span>
+</span><span id="__span-31-3"><a href="#__codelineno-31-3" id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="c1">#SBATCH --gpus-per-node=&lt;type&gt;:x</span>
+</span></code></pre></div>
+<p>where <code>&lt;type&gt;</code> is one of </p>
+<ul>
+<li>V100</li>
+<li>T4</li>
+<li>A100</li>
+</ul>
+<p>and <code>x</code> is number of GPU cards </p>
+<ul>
+<li>1-4 for V100</li>
+<li>1-8 for T4</li>
+<li>1-4 for A100 </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more about how to use GPUs at the centres, see the [“Introduction to GPUs”](../../advanced/gpus] section. </p>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Challenge: Serial batch script for R</p>
+<p>Run the serial batch script from further up on the page, but for the add2.R code. Remember the arguments. This is not for Alvis since that resource is only for GPU code. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Solution for UPPMAX</p>
+<details class="note">
+<summary>Serial script on Rackham</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a href="#__codelineno-32-1" id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-32-2"><a href="#__codelineno-32-2" id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="c1">#SBATCH -A uppmax2025-2-360 # Change to your own after the course</span>
+</span><span id="__span-32-3"><a href="#__codelineno-32-3" id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-32-4"><a href="#__codelineno-32-4" id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-32-5"><a href="#__codelineno-32-5" id="__codelineno-32-5" name="__codelineno-32-5"></a>
+</span><span id="__span-32-6"><a href="#__codelineno-32-6" id="__codelineno-32-6" name="__codelineno-32-6"></a><span class="c1"># Load any modules you need, here for R/4.1.1</span>
+</span><span id="__span-32-7"><a href="#__codelineno-32-7" id="__codelineno-32-7" name="__codelineno-32-7"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.1.1
+</span><span id="__span-32-8"><a href="#__codelineno-32-8" id="__codelineno-32-8" name="__codelineno-32-8"></a>
+</span><span id="__span-32-9"><a href="#__codelineno-32-9" id="__codelineno-32-9" name="__codelineno-32-9"></a><span class="c1"># Run your R script </span>
+</span><span id="__span-32-10"><a href="#__codelineno-32-10" id="__codelineno-32-10" name="__codelineno-32-10"></a>Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
+</span></code></pre></div>
+<p>Same for Pelle, except you should use R/4.4.2-gfbf-2024a </p>
+</details>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Solution for HPC2N</p>
+<details class="note">
+<summary>Serial script on Kebnekaise</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a href="#__codelineno-33-1" id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-33-2"><a href="#__codelineno-33-2" id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="c1">#SBATCH -A hpc2n2025-151 # Change to your own project ID</span>
+</span><span id="__span-33-3"><a href="#__codelineno-33-3" id="__codelineno-33-3" name="__codelineno-33-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-33-4"><a href="#__codelineno-33-4" id="__codelineno-33-4" name="__codelineno-33-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-33-5"><a href="#__codelineno-33-5" id="__codelineno-33-5" name="__codelineno-33-5"></a>
+</span><span id="__span-33-6"><a href="#__codelineno-33-6" id="__codelineno-33-6" name="__codelineno-33-6"></a><span class="c1"># Load any modules you need, here for R/4.1.2</span>
+</span><span id="__span-33-7"><a href="#__codelineno-33-7" id="__codelineno-33-7" name="__codelineno-33-7"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1<span class="w"> </span>R/4.1.2
+</span><span id="__span-33-8"><a href="#__codelineno-33-8" id="__codelineno-33-8" name="__codelineno-33-8"></a>
+</span><span id="__span-33-9"><a href="#__codelineno-33-9" id="__codelineno-33-9" name="__codelineno-33-9"></a><span class="c1"># Run your R script </span>
+</span><span id="__span-33-10"><a href="#__codelineno-33-10" id="__codelineno-33-10" name="__codelineno-33-10"></a>Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Solution for LUNARC</p>
+<details class="note">
+<summary>Serial script on Cosmos</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a href="#__codelineno-34-1" id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-34-2"><a href="#__codelineno-34-2" id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="c1">#SBATCH -A lu2025-2-94 # Change to your own project ID</span>
+</span><span id="__span-34-3"><a href="#__codelineno-34-3" id="__codelineno-34-3" name="__codelineno-34-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-34-4"><a href="#__codelineno-34-4" id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-34-5"><a href="#__codelineno-34-5" id="__codelineno-34-5" name="__codelineno-34-5"></a>
+</span><span id="__span-34-6"><a href="#__codelineno-34-6" id="__codelineno-34-6" name="__codelineno-34-6"></a><span class="c1"># Load any modules you need, here for R/4.2.1</span>
+</span><span id="__span-34-7"><a href="#__codelineno-34-7" id="__codelineno-34-7" name="__codelineno-34-7"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.3.0<span class="w">  </span>OpenMPI/4.1.4<span class="w"> </span>R/4.2.1
+</span><span id="__span-34-8"><a href="#__codelineno-34-8" id="__codelineno-34-8" name="__codelineno-34-8"></a>
+</span><span id="__span-34-9"><a href="#__codelineno-34-9" id="__codelineno-34-9" name="__codelineno-34-9"></a><span class="c1"># Run your R script </span>
+</span><span id="__span-34-10"><a href="#__codelineno-34-10" id="__codelineno-34-10" name="__codelineno-34-10"></a>Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Solution for NSC</p>
+<details class="note">
+<summary>Serial script on Tetralith</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a href="#__codelineno-35-1" id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-35-2"><a href="#__codelineno-35-2" id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="c1">#SBATCH -A naiss2025-22-934 </span>
+</span><span id="__span-35-3"><a href="#__codelineno-35-3" id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-35-4"><a href="#__codelineno-35-4" id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-35-5"><a href="#__codelineno-35-5" id="__codelineno-35-5" name="__codelineno-35-5"></a>
+</span><span id="__span-35-6"><a href="#__codelineno-35-6" id="__codelineno-35-6" name="__codelineno-35-6"></a><span class="c1"># Load any modules you need, here for R/4.2.2 </span>
+</span><span id="__span-35-7"><a href="#__codelineno-35-7" id="__codelineno-35-7" name="__codelineno-35-7"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.2-hpc1-gcc-11.3.0-bare<span class="w"> </span>
+</span><span id="__span-35-8"><a href="#__codelineno-35-8" id="__codelineno-35-8" name="__codelineno-35-8"></a>
+</span><span id="__span-35-9"><a href="#__codelineno-35-9" id="__codelineno-35-9" name="__codelineno-35-9"></a><span class="c1"># Run your R script </span>
+</span><span id="__span-35-10"><a href="#__codelineno-35-10" id="__codelineno-35-10" name="__codelineno-35-10"></a>Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Solution for PDC</p>
+<details class="note">
+<summary>Serial script on Dardel</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a href="#__codelineno-36-1" id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-36-2"><a href="#__codelineno-36-2" id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="c1">#SBATCH -A naiss2025-22-934 </span>
+</span><span id="__span-36-3"><a href="#__codelineno-36-3" id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+</span><span id="__span-36-4"><a href="#__codelineno-36-4" id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+</span><span id="__span-36-5"><a href="#__codelineno-36-5" id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="c1">#SBATCH -p main </span>
+</span><span id="__span-36-6"><a href="#__codelineno-36-6" id="__codelineno-36-6" name="__codelineno-36-6"></a>
+</span><span id="__span-36-7"><a href="#__codelineno-36-7" id="__codelineno-36-7" name="__codelineno-36-7"></a><span class="c1"># Load any modules you need, here for R/4.4.1 </span>
+</span><span id="__span-36-8"><a href="#__codelineno-36-8" id="__codelineno-36-8" name="__codelineno-36-8"></a>module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>R/4.4.1-cpeGNU-23.12<span class="w"> </span>
+</span><span id="__span-36-9"><a href="#__codelineno-36-9" id="__codelineno-36-9" name="__codelineno-36-9"></a>
+</span><span id="__span-36-10"><a href="#__codelineno-36-10" id="__codelineno-36-10" name="__codelineno-36-10"></a><span class="c1"># Run your R script </span>
+</span><span id="__span-36-11"><a href="#__codelineno-36-11" id="__codelineno-36-11" name="__codelineno-36-11"></a>Rscript<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Challenge: Parallel job run</p>
+<p>Try making a batch script for running the parallel example with “foreach” from further up on the page. </p>
+</div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../packages/" title="Packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../interactive/" title="Interactive work on the compute nodes">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC" style="color: #fcfcfc"> GitHub</a>
+</span>
+<span><a href="../packages/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../interactive/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/tippy-bundle.umd.js"></script>
+<script src="../../js/clipboard.js"></script>
+<script src="../../js/extra.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

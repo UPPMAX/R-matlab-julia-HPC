@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Parallel computing - Introduction to R, MATLAB, and Julia in HPC</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Parallel computing";
+        var mkdocs_page_input_path = "advanced/parallel_computing/README.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../img/new-logo.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Prequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">MATLAB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Julia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Parallel computing</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#why-parallel-computing-is-important">Why parallel computing is important</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hpc-cluster-architecture">HPC cluster architecture</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#types-of-doing-more-things-at-the-same-time">Types of ‘doing more things at the same time’</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-ideal-effectiveness-of-parallelism">The ideal effectiveness of parallelism</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-1-change-your-zoom-name">Question -1: change your Zoom name</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-0-remember-your-zoom-room">Question 0: remember your Zoom room</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-1">Question 1</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-2">Question 2</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-3">Question 3</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-4">Question 4</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-5">Question 5</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-6">Question 6</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#question-7">Question 7</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../thread_parallelism/">Thread parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../distributed_parallelism/">Distributed parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../big_data_managers/">Big data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gpus/">Introduction to GPUs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Machine Learning</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../ML/">Introduction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../MLR/">With R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../MLjulia/">With Julia</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../MLmatlab/">With MATLAB</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra reading</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">Advanced</li>
+<li class="breadcrumb-item active">Parallel computing</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/advanced/parallel_computing/README.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="parallel-computation">Parallel computation<a class="headerlink" href="#parallel-computation" title="Anchor link to this section for reference">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>I can name and describe 3 types of parallel computation</li>
+<li>I can explain at least 1 advantage of parallel computation</li>
+<li>I can explain at least 2 disadvantages of parallel computation</li>
+<li>I can explain how to use my computational resources effectively</li>
+</ul>
+</div>
+<details class="- note">
+<summary>For teachers</summary>
+<p>Teaching goals are:</p>
+<ul>
+<li>Learners have scheduled and run a job that needs more cores,
+  with a calculation in their favorite language</li>
+<li>Learners understand when it is possible/impossible
+  and/or useful/useless to run a job with multiple cores</li>
+</ul>
+<p>Lesson plan:</p>
+<ul>
+<li>10 mins: Prior</li>
+<li>5 mins: Present</li>
+<li>15 mins: Challenge</li>
+<li>15 mins: Feedback</li>
+</ul>
+<p>Prior:</p>
+<ul>
+<li>In an HPC context, what is a core?</li>
+<li>In an HPC context, what is a node?</li>
+<li>In an HPC context, what are computational resources?</li>
+<li>What is parallel computing?</li>
+<li>How does parallel computing work?</li>
+<li>When to use parallel computing?</li>
+</ul>
+<p>Feedback:</p>
+<ul>
+<li>When to use parallel computing?</li>
+<li>When not to use parallel computing?</li>
+<li>The main section is called ‘The ideal effectiveness of parallelism’.
+  What does ‘ideal’ mean in this context?
+  What could make parallelism less ideal?</li>
+</ul>
+</details>
+<details class="- hint">
+<summary>Prefer this session as a video?</summary>
+<p>The watch the YouTube video
+<a href="https://youtu.be/3OTMgBche74">R-Julia-MATLAB course, advanced day: Parallel computation</a></p>
+</details>
+<p><img alt="CoRA, the robotic platform for Arnold" src="cora.jpg"/></p>
+<blockquote>
+<p>Figure 1: CoRA, a robotic platform in which all computers
+(e.g. the one connected to the camera, another connected to the gripper, etc)
+sent messages to one receiving computer:
+an example of distributed parallelism</p>
+</blockquote>
+<h2 id="why-parallel-computing-is-important">Why parallel computing is important<a class="headerlink" href="#why-parallel-computing-is-important" title="Anchor link to this section for reference">¶</a></h2>
+<p>Most HPC clusters use 7-10 days as a maximum duration for a job.
+Your calculation may take longer than that.
+One technique that may work is to use parallel computing,
+where one uses multiple CPU cores to work together on a same calculation</p>
+<h2 id="hpc-cluster-architecture">HPC cluster architecture<a class="headerlink" href="#hpc-cluster-architecture" title="Anchor link to this section for reference">¶</a></h2>
+<p>Here is a simplified picture of HPC cluster architecture:</p>
+<div class="mermaid">flowchart TD
+  subgraph hpc_cluster[HPC cluster]
+    subgraph node_1[Node]
+      subgraph cpu_1_1[CPU]
+      core_1_1_1[Core]
+      end
+    end
+  end
+</div>
+<!-- markdownlint-disable MD013 -->
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What it loosely is</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core</td>
+<td>Something that does a calculation</td>
+<td>One or more per CPU</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>A collection of cores that share the same memory</td>
+<td>One or more per node</td>
+</tr>
+<tr>
+<td>Node</td>
+<td>A collection of CPUs that share the same memory</td>
+<td>One or more per HPC cluster</td>
+</tr>
+<tr>
+<td>HPC cluster</td>
+<td>A collection of nodes</td>
+<td>One or more per universe</td>
+</tr>
+<tr>
+<td>The universe <code>[1]</code></td>
+<td>A collection of HPC clusters</td>
+<td>One</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable MD013 -->
+<ul>
+<li><code>[1]</code> this is a pun to distributed parallelism</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Simplifications used</p>
+<p>1 core is 1 worker is 1 thread is 1 procedure is 1 task</p>
+</div>
+<details class="tip">
+<summary>Why do we use this simplification?</summary>
+<p>Because we start from the assumption that we
+are reasonably smart, i.e.
+we will run as much threads as we have cores.</p>
+<p>There is an exercise where this assumption is broken.</p>
+</details>
+<h2 id="types-of-doing-more-things-at-the-same-time">Types of ‘doing more things at the same time’<a class="headerlink" href="#types-of-doing-more-things-at-the-same-time" title="Anchor link to this section for reference">¶</a></h2>
+<p>There are many types of ‘doing more things at the same time’.
+One way to distinguish these, is to separate these on
+the extent of the parallelism:</p>
+<table>
+<thead>
+<tr>
+<th>Extent</th>
+<th>Parallelism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core</td>
+<td>Single-threaded (you already do this)</td>
+</tr>
+<tr>
+<td>Node</td>
+<td>Thread parallelism (this session)</td>
+</tr>
+<tr>
+<td>HPC cluster</td>
+<td>Distributed parallelism (next session)</td>
+</tr>
+<tr>
+<td>The universe</td>
+<td>Distributed parallelism</td>
+</tr>
+</tbody>
+</table>
+<p>Today, we will extend your toolkit from a single-threaded
+calculation (you already do this) to thread parallelism.</p>
+<h2 id="the-ideal-effectiveness-of-parallelism">The ideal effectiveness of parallelism<a class="headerlink" href="#the-ideal-effectiveness-of-parallelism" title="Anchor link to this section for reference">¶</a></h2>
+<p>Before going into details, we will look at the
+effectiveness of parallelism in the most optimal case,
+with the goal that you can determine if it is worth it.</p>
+<p>By now, you can probably guess that parallel computing spreads
+a calculation over multiple things that can calculate.</p>
+<p>Imagine a calculation that takes 16 time units, represented as this:</p>
+<p><img alt="1 core" src="amdahls_law_example_1.png"/></p>
+<blockquote>
+<p>Figure 2: a calculation of 16 time units run on 1 core,
+following the legend below:</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Square</th>
+<th>A unit of calculation time that …</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="🟥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f7e5.svg" title=":red_square:"/></td>
+<td>cannot be run in parallel</td>
+</tr>
+<tr>
+<td><img alt="🟩" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f7e9.svg" title=":green_square:"/></td>
+<td>can be run in parallel</td>
+</tr>
+<tr>
+<td><img alt="◻" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/25fb.svg" title=":white_medium_square:"/></td>
+<td>is spent doing nothing</td>
+</tr>
+</tbody>
+</table>
+<p>This calculation time is expressed in a time unit such as seconds
+and hence, can be split up into smaller blocks.</p>
+<p>Using 2 calculation units, this results in:</p>
+<p><img alt="2 cores" src="amdahls_law_example_2.png"/></p>
+<blockquote>
+<p>Figure 2: a calculation of 16 time units run on 2 cores,
+where square is a time unit of calculation.</p>
+</blockquote>
+<p>This takes the calculation down from 16 to 10 time units.
+The so-called ‘speedup’ of using two workers is 16 / 10 = 1.6.</p>
+<details class="hint">
+<summary>How did you calculate the speedup exactly?</summary>
+<p>Following <code>[Hennessy and Patterson, 2011]</code> (section 1.8),
+the speedup <code>n</code> (as in the sentence ‘X is <code>n</code> times faster than Y’)
+equals:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>n = t_y / t_x
+</span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>t_x</code> is the time the new/enhanced process takes</li>
+<li><code>t_y</code> is the time the regular/unenhanced process takes</li>
+</ul>
+<p>In this context, the
+‘new/enhanced process’ is the calculation performed by multiple cores.</p>
+<p>Do not be confused by another version of Amdahl’s Law,
+that is expressed and the calculation units used (and where the
+numerator and denominator are swapped):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>n =  performance_x / performance_y
+</span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>performance_x</code> is the performance (e.g. tasks completed per time unit)
+  the new/enhanced process does</li>
+<li><code>performance_y</code> is the performance of the regular process</li>
+</ul>
+</details>
+<details class="hint">
+<summary>Isn’t that Gustafson’s Law?</summary>
+<p>Not directly.</p>
+<p>We do use the same term ‘speedup’ as is calculated in Gustafson’s Law,
+yet we apply it to compare between a single-core and a multi-core
+process.</p>
+<p>Gustafson’s Law predict the maximum speedup, which is</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>S = s + (p * N) = N - ((N - 1) * s) = 1 + ((N - 1) * p)
+</span></code></pre></div>
+<ul>
+<li><code>S</code> is the speedup</li>
+<li><code>s</code> is fraction of the calculation that cannot be parallelized. The ‘s’ stands ‘serial’</li>
+<li><code>p</code> is fraction of the calculation that can be parallelized</li>
+<li><code>N</code> is the number of workers, in our case: cores</li>
+</ul>
+</details>
+<p>However, 4 (out of 20) calculations units are spent waiting.
+This means that 16 / 20 = 80% of the calculation time
+is spent efficiently.</p>
+<details class="hint">
+<summary>How did you calculate the efficiency exactly?</summary>
+<p>The efficiency, <code>f</code>, equals:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>f = t_used_effectively / t_total`
+</span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>t_used_effectively</code> is the time spend on a calculation,
+  summed up over all cores</li>
+<li><code>t_total</code> is the total time all spent by all cores</li>
+</ul>
+<p>These two can be calculated as such:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>t_used_effectively = (p + s) + (p * (N - 1))
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>t_total = time * N
+</span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>s</code> is fraction of the calculation that cannot be parallelized. The
+  ‘s’ stands ‘serial’</li>
+<li><code>p</code> is fraction of the calculation that can be parallelized</li>
+<li><code>N</code> is the number of workers, in our case: cores</li>
+</ul>
+</details>
+<p>Here one can see this calculation for more cores:</p>
+<!-- markdownlint-disable MD013 -->
+<table>
+<thead>
+<tr>
+<th>Program runtime</th>
+<th>Number of cores</th>
+<th>Time</th>
+<th>Speedup</th>
+<th>Efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="1 core" src="amdahls_law_example_1.png"/></td>
+<td>1</td>
+<td>16</td>
+<td>16 / 16 = 100%</td>
+<td>16 / 16 = 100%</td>
+</tr>
+<tr>
+<td><img alt="2 cores" src="amdahls_law_example_2.png"/></td>
+<td>2</td>
+<td>10</td>
+<td>16 / 10 = 160%</td>
+<td>(10 + 6) / (10 * 2) = 16 / 20 = 80%</td>
+</tr>
+<tr>
+<td><img alt="3 cores" src="amdahls_law_example_3.png"/></td>
+<td>3</td>
+<td>8</td>
+<td>16 / 8 = 200%</td>
+<td>(10 + 4 + 4) / (10 * 3) = 60%</td>
+</tr>
+<tr>
+<td><img alt="4 cores" src="amdahls_law_example_4.png"/></td>
+<td>4</td>
+<td>7</td>
+<td>16 / 7 = 229%</td>
+<td>(10 + 3 + 3 + 3) / (10 * 4) = 48%</td>
+</tr>
+<tr>
+<td><img alt="6 cores" src="amdahls_law_example_6.png"/></td>
+<td>6</td>
+<td>6</td>
+<td>16 / 6 = 267%</td>
+<td>(10 + (2^5)) / (10 * 6) = 70%</td>
+</tr>
+<tr>
+<td>.</td>
+<td>12</td>
+<td>5</td>
+<td>16 / 5 = .%</td>
+<td>(10 + (1^11)) / (10 * 12) = 10%</td>
+</tr>
+<tr>
+<td>.</td>
+<td>24</td>
+<td>4.5</td>
+<td>16 / 4.5 = .%</td>
+<td>(10 + (0.5^23)) / (10 * 24) = 34 / 50 = 68%</td>
+</tr>
+<tr>
+<td>.</td>
+<td>48</td>
+<td>4.25</td>
+<td>16 / 4.25 = .%</td>
+<td>(10 + (0.25^47)) / (10 * 48) = 34 / 50 = 68%</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable MD013 -->
+<p>The best possible speed gain (as shown here) is called Amdahl’s Law
+(inspired by <code>[Amdahl, 1967]</code>)
+and, in a general form, is plotted like this:</p>
+<p><img alt="Amdahl's law" src="amdahls_law.png"/></p>
+<!-- Note that this was not the plot as in the original paper -->
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">¶</a></h2>
+<h2 id="question-1-change-your-zoom-name">Question -1: change your Zoom name<a class="headerlink" href="#question-1-change-your-zoom-name" title="Anchor link to this section for reference">¶</a></h2>
+<p>Change your Zoom name, to include your HPC cluster and favorite
+programming language, e.g. make <code>Sven</code> into <code>Sven [Alvis, R]</code>.</p>
+<p>You can do so by right-click on the video of yourself,
+then click ‘Rename’ to change your Zoom name.</p>
+<h2 id="question-0-remember-your-zoom-room">Question 0: remember your Zoom room<a class="headerlink" href="#question-0-remember-your-zoom-room" title="Anchor link to this section for reference">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>HPC cluster name</th>
+<th>Main breakout room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alvis</td>
+<td>Room 1</td>
+</tr>
+<tr>
+<td>Bianca</td>
+<td>Room 2</td>
+</tr>
+<tr>
+<td>COSMOS</td>
+<td>Room 3</td>
+</tr>
+<tr>
+<td>Dardel</td>
+<td>Room 4</td>
+</tr>
+<tr>
+<td>Kebnekaise</td>
+<td>Room 5</td>
+</tr>
+<tr>
+<td>LUMI</td>
+<td>Room 6</td>
+</tr>
+<tr>
+<td>Pelle</td>
+<td>Room 7</td>
+</tr>
+<tr>
+<td>Rackham</td>
+<td>Room 8</td>
+</tr>
+<tr>
+<td>Tetralith</td>
+<td>Room 9</td>
+</tr>
+</tbody>
+</table>
+<h2 id="question-1">Question 1<a class="headerlink" href="#question-1" title="Anchor link to this section for reference">¶</a></h2>
+<p>Which of the lines in the graph of Amdahl’s Law corresponds
+with the worked-out example of 16 time units?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The red dotted line.</p>
+<p>Using a different unit (i.e. ‘relative speed’, instead of ‘speedup’)
+was done on purpose. It is easy to convert between the two: just
+take the inverse (i.e. divide 1 by the value you have)</p>
+</details>
+<h2 id="question-2">Question 2<a class="headerlink" href="#question-2" title="Anchor link to this section for reference">¶</a></h2>
+<p>In the example of 16 time units, what is the shortest amount of time that
+can be spent on the calculation, given infinite resources?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The length of the calculation that cannot be run in parallel,
+which is 4 time units.</p>
+</details>
+<h2 id="question-3">Question 3<a class="headerlink" href="#question-3" title="Anchor link to this section for reference">¶</a></h2>
+<p>In the example of 16 time units, what is the maximal possible speedup?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>400%, as the calculation takes 16 units of work on a single core,
+and 4 time units on an infinite amount of cores.</p>
+<p>In mathematical form, the speedup, <code>S</code>, equals:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>S = t_regular / t_enhanced
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>S = 16 / 4
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>S = 4
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>S = 400%
+</span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>t_enhanced</code> is the time the enhanced process takes</li>
+<li><code>t_regular</code> is the time the regular/unenhanced process takes</li>
+</ul>
+</details>
+<h2 id="question-4">Question 4<a class="headerlink" href="#question-4" title="Anchor link to this section for reference">¶</a></h2>
+<p>For your research project, you need to run a lot of calculations.
+Each calculation takes 10 hours. How do you make optimal use
+of your computational resources?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Run the calculation on a single core for 100% efficiency</p>
+</details>
+<h2 id="question-5">Question 5<a class="headerlink" href="#question-5" title="Anchor link to this section for reference">¶</a></h2>
+<p>For your research project, you also have a calculation that takes 11 days.
+Your HPC cluster allows a calculation of at most 10 days.
+Assume your HPC center will not extend your job
+(they will probably do so when asked: we are there to help!).
+How do you make optimal use of your computational resources?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>If your calculation already has parallelism built-in,
+then run the calculation on two cores: this only involves changing your
+Slurm script, with a low loss of computational resources.</p>
+<p>If you are a really tight on computational resources, you can
+implement a ‘save state’ in your calculation, so that you can schedule
+two runs of nine days in succession, each with 100% efficiency.</p>
+<p>Alternatively, you can added thread parallelism to allow running
+with multiple cores.</p>
+</details>
+<h2 id="question-6">Question 6<a class="headerlink" href="#question-6" title="Anchor link to this section for reference">¶</a></h2>
+<p>Your colleague runs many jobs with a lot of cores. ‘It is way faster!’,
+he/she states. That same colleague, however, also complains about long
+waiting times before his/her jobs start. How would you explain this
+situation?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The colleague used up (or: ‘wasted’) all his/her computational resources
+(commonly 10,000 core hours per month on UPPMAX).</p>
+<p>Due to this, his/her jobs are only run when the HPC cluster has a low workload and activates the so-called ‘bonus queue’ (UPPMAX) or generally have to wait for their priority to go up again.</p>
+</details>
+<h2 id="question-7">Question 7<a class="headerlink" href="#question-7" title="Anchor link to this section for reference">¶</a></h2>
+<p>Your colleague has also done the exercises in this session
+and decided to measure the same features of her code.
+Below you can see the plots produced by this benchmark.
+What seemed to be the percentage of his/her code
+that could be run in parallel?</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">Total core seconds</label><label for="__tabbed_1_2">Efficiency</label><label for="__tabbed_1_3">Speedup</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Benchmark core seconds" src="benchmark_results_core_seconds.png"/></p>
+<blockquote>
+<p>Benchmark: the total core seconds per number of workers</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p><img alt="Benchmark efficiency" src="benchmark_results_efficiency.png"/></p>
+<blockquote>
+<p>Benchmark: Efficiency per number of workers</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p><img alt="Benchmark speedup" src="benchmark_results_speedup.png"/></p>
+<blockquote>
+<p>Benchmark: Speedup per number of workers</p>
+</blockquote>
+</div>
+</div>
+</div>
+<details class="tip">
+<summary>Answer</summary>
+<p>It is <strong>unknown</strong> what portion of the code can be run in parallel.</p>
+<p>Instead, this benchmark shows how it looks if code is run in single-thread
+mode. In this case, the colleague forgot that the number of threads used
+must be specified when calling Julia.</p>
+<p>Note that these plots are less clear than you may have expected:</p>
+<ul>
+<li>The total core seconds is expected to increase linearily</li>
+<li>The efficiency is expected to follow the dashed line</li>
+<li>The speedup is expected to be at 100%</li>
+</ul>
+<p>It may be unexpected that also in computer science,
+results can be messier than you would expect :-)</p>
+</details>
+<h2 id="references">References<a class="headerlink" href="#references" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li><code>[Amdahl, 1967]</code> Amdahl, Gene M. 
+  “Validity of the single processor approach to achieving large scale
+  computing capabilities.” Proceedings of the April 18-20, 1967,
+  spring joint computer conference. 1967.
+  Fun facts: it contains a single hand-drawn plot and no equations</li>
+<li><code>[Hennessy and Patterson, 2011]</code> Hennessy, John L., and David A. Patterson.
+  Computer architecture: a quantitative approach. Elsevier, 2011.</li>
+</ul>
+<!-- Tables cannot be split up over lines, hence will break 80 characters per line --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../schedule/" title="Schedule"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../thread_parallelism/" title="Thread parallelism">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC" style="color: #fcfcfc"> GitHub</a>
+</span>
+<span><a href="../schedule/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../thread_parallelism/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/tippy-bundle.umd.js"></script>
+<script src="../../js/clipboard.js"></script>
+<script src="../../js/extra.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

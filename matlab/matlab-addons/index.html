@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>MATLAB Add-Ons - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MATLAB Add-Ons";
+        var mkdocs_page_input_path = "matlab/matlab-addons.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">MATLAB Add-Ons</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#matlab-add-ons-manager">MATLAB Add-Ons manager</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#install-add-ons">Install Add-Ons</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MATLAB</li>
+      <li class="breadcrumb-item active">MATLAB Add-Ons</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/matlab/matlab-addons.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="add-ons">Add-Ons<a class="headerlink" href="#add-ons" title="Anchor link to this section for reference">&para;</a></h1>
+<p>Add-ons extend the capabilities of MATLAB® by providing additional functionality for specific tasks and applications, such as:</p>
+<ul>
+<li>connecting to hardware devices</li>
+<li>additional algorithms</li>
+<li>interactive apps</li>
+</ul>
+<p>Encompass a wide variety of resources</p>
+<ul>
+<li>products</li>
+<li>apps</li>
+<li>toolboxes</li>
+<li>support packages</li>
+</ul>
+<p>Available from:</p>
+<ul>
+<li>MathWorks®</li>
+<li>the global MATLAB user community</li>
+</ul>
+<p>For more information about Add-Ons, <a href="https://se.mathworks.com/help/matlab/add-ons.html?s_tid=CRUX_lftnavZ">Mathworks</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Navigate to toolboxes and Add-Ons</li>
+<li>View Add-Ons and toolboxes</li>
+<li>Install and use Add-Ons</li>
+</ul>
+</div>
+<p>Before going into installing Add-Ons, let&rsquo;s have a background to the MATLAB environments and ecosystem!</p>
+<div class="admonition tip">
+<p class="admonition-title">Want a video?</p>
+<p>See <a href="https://www.youtube.com/watch?v=TLXdzEF06xU&amp;list=PL6jMHLEmPVLwzXjygOpG__54j6oG4IRFN&amp;index=42">Matlab add-ons (Oct 2024)</a></p>
+</div>
+<h2 id="matlab-add-ons-manager">MATLAB Add-Ons manager<a class="headerlink" href="#matlab-add-ons-manager" title="Anchor link to this section for reference">&para;</a></h2>
+<figure>
+  <img alt="Toolbar add-ons" src="../img/Toolbar_Add-Ons.PNG" width="400" />
+<br />
+<figcaption>Toolbar of Add-Ons.</figcaption>
+</figure>
+<p>In the GUI, the Add-Ons manager can be selected from the menu at the top. The drop-down menu options allow users to:</p>
+<ul>
+<li><strong>Browse a library of Add-Ons to download.</strong> Note that some Add-Ons require a separate license.</li>
+</ul>
+<details class="- tip">
+<summary>What does that look like?</summary>
+<p><img alt="Add-on explorer" src="../img/Add-On_explorer.PNG" /></p>
+</details>
+<ul>
+<li><strong>Manage Add-Ons already downloaded.</strong></li>
+</ul>
+<details class="- tip">
+<summary>What does that look like?</summary>
+<p><img alt="Add-on manager" src="../img/Add-On_manager.PNG" /></p>
+</details>
+<ul>
+<li>
+<p>Package user-generated code as a Toolbox or App</p>
+</li>
+<li>
+<p>Get hardware-related support packages</p>
+</li>
+</ul>
+<p>Here we will only focus on the first two options.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note that very many packages are already included in the Academic installation and license. You can go to the Add-On explorer and select &ldquo;View My Products&rdquo; to see what is available.</p>
+<p><img alt="View my products" src="../img/my_products.PNG" /></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">See also</p>
+<p>Some typical toolboxes include:</p>
+<ul>
+<li>Parallel Computing</li>
+<li>Simulink</li>
+<li>Symbolic Math</li>
+<li>Signal Processing</li>
+<li>Machine Learning</li>
+</ul>
+<p>Some toolboxes provide a <strong>GUI</strong> for their tools/Apps</p>
+<p>We won&rsquo;t cover the usage of most toolboxes here!</p>
+<ul>
+<li><a href="../extra/#add-ons">Read more about Add-Ons</a></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check which toolboxes are installed by the MATLAB command <code>ver</code> at a MATLAB prompt.</p>
+<details class="-">
+<summary>Example output from Pelle</summary>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">ver</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">---------------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">MATLAB</span><span class="w"> </span><span class="s">Version:</span><span class="w"> </span><span class="s">24.1.0.2689473</span><span class="w"> </span><span class="s">(R2024a)</span><span class="w"> </span><span class="s">Update</span><span class="w"> </span><span class="s">6</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">MATLAB</span><span class="w"> </span><span class="s">License</span><span class="w"> </span><span class="s">Number:</span><span class="w"> </span><span class="s">863987</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">Operating</span><span class="w"> </span><span class="s">System:</span><span class="w"> </span><span class="s">Linux</span><span class="w"> </span><span class="s">5.14.0-570.42.2.el9_6.x86_64</span><span class="w"> </span><span class="s">#1</span><span class="w"> </span><span class="s">SMP</span><span class="w"> </span><span class="s">PREEMPT_DYNAMIC</span><span class="w"> </span><span class="s">Sun</span><span class="w"> </span><span class="s">Sep</span><span class="w"> </span><span class="s">14</span><span class="w"> </span><span class="s">13:59:34</span><span class="w"> </span><span class="s">UTC</span><span class="w"> </span><span class="s">2025</span><span class="w"> </span><span class="s">x86_64</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">Java</span><span class="w"> </span><span class="s">Version:</span><span class="w"> </span><span class="s">Java</span><span class="w"> </span><span class="s">1.8.0_202-b08</span><span class="w"> </span><span class="s">with</span><span class="w"> </span><span class="s">Oracle</span><span class="w"> </span><span class="s">Corporation</span><span class="w"> </span><span class="s">Java</span><span class="w"> </span><span class="s">HotSpot(TM)</span><span class="w"> </span><span class="s">64-Bit</span><span class="w"> </span><span class="s">Server</span><span class="w"> </span><span class="s">VM</span><span class="w"> </span><span class="s">mixed</span><span class="w"> </span><span class="s">mode</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="o">---------------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">MATLAB</span><span class="w">                                                </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">Simulink</span><span class="w">                                              </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">5G</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                            </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">AUTOSAR</span><span class="w"> </span><span class="s">Blockset</span><span class="w">                                      </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">Aerospace</span><span class="w"> </span><span class="s">Blockset</span><span class="w">                                    </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">Aerospace</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                     </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">Antenna</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                       </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">Audio</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                         </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">Automated</span><span class="w"> </span><span class="s">Driving</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                             </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">Bioinformatics</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">Bluetooth</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                     </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">C2000</span><span class="w"> </span><span class="s">Microcontroller</span><span class="w"> </span><span class="s">Blockset</span><span class="w">                        </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">Communications</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">Computer</span><span class="w"> </span><span class="s">Vision</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                               </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">Control</span><span class="w"> </span><span class="s">System</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">Curve</span><span class="w"> </span><span class="s">Fitting</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                 </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">DDS</span><span class="w"> </span><span class="s">Blockset</span><span class="w">                                          </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">DSP</span><span class="w"> </span><span class="s">HDL</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                       </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="n">DSP</span><span class="w"> </span><span class="s">System</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                    </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">Database</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                      </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">Datafeed</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                      </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="n">Deep</span><span class="w"> </span><span class="s">Learning</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                 </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">Econometrics</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                  </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="n">Embedded</span><span class="w"> </span><span class="s">Coder</span><span class="w">                                        </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="n">Filter</span><span class="w"> </span><span class="s">Design</span><span class="w"> </span><span class="s">HDL</span><span class="w"> </span><span class="s">Coder</span><span class="w">                               </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="n">Financial</span><span class="w"> </span><span class="s">Instruments</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                         </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="n">Financial</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                     </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">Fixed</span><span class="o">-</span><span class="n">Point</span><span class="w"> </span><span class="n">Designer</span><span class="w">                                  </span><span class="n">Version</span><span class="w"> </span><span class="mf">24.1</span><span class="w">        </span><span class="p">(</span><span class="n">R2024a</span><span class="p">)</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="n">Fuzzy</span><span class="w"> </span><span class="s">Logic</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                   </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="n">GPU</span><span class="w"> </span><span class="s">Coder</span><span class="w">                                             </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="n">Global</span><span class="w"> </span><span class="s">Optimization</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                           </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="n">HDL</span><span class="w"> </span><span class="s">Coder</span><span class="w">                                             </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="n">HDL</span><span class="w"> </span><span class="s">Verifier</span><span class="w">                                          </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="n">Image</span><span class="w"> </span><span class="s">Acquisition</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                             </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="n">Image</span><span class="w"> </span><span class="s">Processing</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                              </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="n">Industrial</span><span class="w"> </span><span class="s">Communication</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                      </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="n">Instrument</span><span class="w"> </span><span class="s">Control</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                            </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="n">LTE</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                           </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="n">Lidar</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                         </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="n">MATLAB</span><span class="w"> </span><span class="s">Coder</span><span class="w">                                          </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="n">MATLAB</span><span class="w"> </span><span class="s">Parallel</span><span class="w"> </span><span class="s">Server</span><span class="w">                                </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="n">MATLAB</span><span class="w"> </span><span class="s">Report</span><span class="w"> </span><span class="s">Generator</span><span class="w">                               </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="n">MATLAB</span><span class="w"> </span><span class="s">Test</span><span class="w">                                           </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="n">Mapping</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                                       </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="n">Medical</span><span class="w"> </span><span class="s">Imaging</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                               </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="n">Mixed</span><span class="o">-</span><span class="n">Signal</span><span class="w"> </span><span class="n">Blockset</span><span class="w">                                 </span><span class="n">Version</span><span class="w"> </span><span class="mf">24.1</span><span class="w">        </span><span class="p">(</span><span class="n">R2024a</span><span class="p">)</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="n">Model</span><span class="w"> </span><span class="s">Predictive</span><span class="w"> </span><span class="s">Control</span><span class="w"> </span><span class="s">Toolbox</span><span class="w">                      </span><span class="s">Version</span><span class="w"> </span><span class="s">24.1</span><span class="w">        </span><span class="s">(R2024a)</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="k">...</span>
+</span></code></pre></div>
+</details>
+</div>
+<h3 id="install-add-ons">Install Add-Ons<a class="headerlink" href="#install-add-ons" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Search in Add-Ons explorer and install.</li>
+</ul>
+<p><img alt="Search for Add-ons" src="../img/searchforaddons.PNG" /></p>
+<ul>
+<li>Installation goes in local folder, <code>~/MATLAB Add-Ons</code>, and should be accessible wherever you are in the file tree.</li>
+<li>It&rsquo;s in the path so it should be possible to run directly if you don&rsquo;t need to run an installation file.</li>
+<li>For more information about a specific support package install location, see the documentation for the package.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To be able to install you need to use the email for a <strong>personal mathworks account</strong>.</p>
+</div>
+<p>You can install some Add-Ons manually using an installation file. This is useful in several situations:</p>
+<ul>
+<li>The add-on is not available for installation through the Add-On Explorer, for example, if you create a custom add-on yourself or receive one from someone else.</li>
+<li>You downloaded the add-on from the Add-On Explorer without installing it.</li>
+<li>You downloaded the add-on from the File Exchange at MATLAB Central™.</li>
+</ul>
+<details class="- note">
+<summary>Bianca</summary>
+<ul>
+<li>One way to get a MATLAB package to Bianca is to download it on your working computer without installing it.</li>
+<li>Then you use the wharf to get the (tared) file(s) on Bianca.</li>
+<li>Then move it to the <code>~/MATLAB Add-Ons</code> folder on Bianca.</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">See also</p>
+<p><a href="https://se.mathworks.com/help/matlab/matlab_env/get-add-ons.html">MathWorks page on getting Add-Ons</a></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Demo</p>
+<ul>
+<li>Search for <code>kalmanf</code></li>
+<li>Click &ldquo;Learning the Kalman Filter&rdquo;</li>
+<li>Look at the documentation</li>
+<li>Test if the command works today:</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">kalmanf</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Unrecognized</span><span class="w"> </span><span class="s">function</span><span class="w"> </span><span class="s">or</span><span class="w"> </span><span class="s">variable</span><span class="w"> </span><span class="s">&#39;kalmanf&#39;.</span>
+</span></code></pre></div>
+<ul>
+<li>OK, it is not there</li>
+<li>Click &ldquo;Add&rdquo;, and &ldquo;Download and Add to path&rdquo;</li>
+<li>Type email address connected to your MathWorks account (not needed for some versions at Dardel)</li>
+<li>Installation starts</li>
+<li>It will end up in the <code>~/MATLAB\ Add-Ons/</code> folder</li>
+<li>This is how the file tree looked for me (<code>tree</code> command is available at some centres)</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gp">$ </span>tree<span class="w"> </span>MATLAB<span class="se">\ </span>Add-Ons/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="go">MATLAB\ Add-Ons/</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="go">└── Collections</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="go">|   └── Efficient\ GRIB1\ data\ reader</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="go">|       ├── core.28328</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="go">|       ├── license.txt</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="go">|       ├── readGRIB1.c</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="go">|       ├── readGRIB1.mexa64</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="go">|       └── resources</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="go">|           ├── addons_core.xml</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="go">|           ├── matlab_path_entries.xml</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="go">|           ├── metadata.xml</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="go">|           ├── previewImage.png</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="go">|           ├── readGRIB1.zip</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="go">|           └── screenshot.png</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="go">└── Functions</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="go">    └── Learning\ the\ Kalman\ Filter</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="go">        ├── kalmanf.m</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="go">        └── resources</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="go">            ├── addons_core.xml</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="go">            ├── kalmanf.zip</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="go">            ├── matlab_path_entries.xml</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="go">            ├── metadata.xml</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="go">            ├── previewImage.png</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="go">            └── screenshot.png</span>
+</span></code></pre></div>
+<ul>
+<li>Evidently it is a <code>function</code>. Note that I already have something classified as <code>collections</code></li>
+<li>Now test:</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">kalmanf</span><span class="p">()</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s">&#39;kalmanf&#39;</span><span class="w"> </span><span class="n">requires</span><span class="w"> </span><span class="n">Learning</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Kalman</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="nb">version</span><span class="w"> </span><span class="mf">1.0</span><span class="p">.</span><span class="mf">0.0</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">enabled</span><span class="p">.</span>
+</span></code></pre></div>
+<ul>
+<li>OK. It is installed but may need some other things. Just an example!</li>
+</ul>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../img/shell-logo_small.png"> Exercise</p>
+<p>Find what Toolboxes are available in MATLAB at your place.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../img/shell-logo_small.png"> Exercise</p>
+<p>Find the <strong>kalmanf</strong> add-on, install it, and run a test command. Use the Demo as instruction.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../img/shell-logo_small.png"> Exercise</p>
+<p>Browse the add-ons and get inspired for your own work. Use the Demo as inspiration.</p>
+</div>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Many Add-Ons, like toolboxes and packages are available at the Clusters</li>
+<li>You can view Add-Ons and toolboxes with the Add-on manager</li>
+<li>It is all more or less graphical</li>
+<li>Use Add-Ons explorer to find and install add-ons/toolboxes.</li>
+<li>Add-ons installed by you can be found in <code>~/MATLAB\ Add-Ons/</code>, and folder is automatically added to the MATLAB PATH, so it should be found no matter which working directory you are working in.</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../MatlabGUIslurm/" class="btn btn-neutral float-left" title="MATLAB GUI and batch jobs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../matlab-summary/" class="btn btn-neutral float-right" title="Summary">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../MatlabGUIslurm/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../matlab-summary/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

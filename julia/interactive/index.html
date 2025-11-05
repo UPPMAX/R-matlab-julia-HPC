@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Interactive work on the compute nodes - Introduction to R, MATLAB, and Julia in HPC</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Interactive work on the compute nodes";
+        var mkdocs_page_input_path = "julia/interactive.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../img/new-logo.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Prequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">MATLAB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Julia</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environments_packages/">Environments and packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../batch/">Batch jobs</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Interactive work on the compute nodes</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#general">General</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-sessions-at-nsc-pdc-hpc2n-uppmax-and-lunarc">Interactive sessions at NSC, PDC, HPC2N, UPPMAX and LUNARC</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-an-interactive-session">Start an interactive session</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#end-an-interactive-session">End an interactive session</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-interactive-session">Exercise interactive session</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#notebooks">Notebooks</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter">Jupyter</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pluto">Pluto</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-choose-to-start-jupyter-or-pluto">Exercise: Choose to start Jupyter OR Pluto</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercises-run-scripts">Exercises run scripts</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluation-julia/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Machine Learning</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra reading</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extra/">More about Julia</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">Julia</li>
+<li class="breadcrumb-item active">Interactive work on the compute nodes</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/interactive.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="julia-interactively">Julia interactively<a class="headerlink" href="#julia-interactively" title="Anchor link to this section for reference">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes for today</p>
+<ul>
+<li>Be able to start interactive sessions</li>
+<li>Use the Julia REPL in the interactive session</li>
+<li>Be able to run Julia in Jupyter notebook OR Pluto</li>
+</ul>
+</div>
+<details class="note">
+<summary>Instructor note</summary>
+<ul>
+<li>Intro 5 min</li>
+<li>Lecture and 10 min</li>
+</ul>
+</details>
+<div class="admonition important">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>It is possible to run Julia directly on the login (including ThinLinc) nodes.</li>
+<li>But this should <em>only</em> be done for shorter jobs or jobs that do not use a lot of resources, as the login nodes can otherwise become slow for all users.</li>
+<li>If you want to work interactively with your code or data, you should start an interactive session.</li>
+<li>If you rather will run a script which won’t use any interactive user input while running, you can instead start a batch job, see next session.</li>
+</ul>
+</div>
+<p>There are several ways to run Julia interactively</p>
+<h2 id="general">General<a class="headerlink" href="#general" title="Anchor link to this section for reference">¶</a></h2>
+<p>In order to run interactively, you need to have compute nodes allocated to run on, and this is done through the Slurm system.</p>
+<h2 id="interactive-sessions-at-nsc-pdc-hpc2n-uppmax-and-lunarc">Interactive sessions at NSC, PDC, HPC2N, UPPMAX and LUNARC<a class="headerlink" href="#interactive-sessions-at-nsc-pdc-hpc2n-uppmax-and-lunarc" title="Anchor link to this section for reference">¶</a></h2>
+<p>Here we define an interactive session as a session with direct access to a compute node.
+Or alternatively: an interactive session is a session, in which there is no queue before a command is run on a compute node.</p>
+<p>This differs between HPC2N and UPPMAX :</p>
+<ul>
+<li>HPC2N: the user remains on a login node.
+  All commands can be sent directly to the compute node using <code>srun</code></li>
+<li>UPPMAX: the user is actually on a computer node.
+  Whatever command is done, it is run on the compute node</li>
+<li>LUNARC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node</li>
+<li>NSC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node</li>
+<li>PDC: the user is actually on a computer node if the correct menu option is chosen. Whatever command is done, it is run on the compute node</li>
+</ul>
+<h3 id="start-an-interactive-session">Start an interactive session<a class="headerlink" href="#start-an-interactive-session" title="Anchor link to this section for reference">¶</a></h3>
+<p>To start an interactive session,
+one needs to allocate resources on the cluster first.</p>
+<p>The command to request an interactive node differs per HPC cluster:</p>
+<table>
+<thead>
+<tr>
+<th>Cluster</th>
+<th style="text-align: center;"><code>interactive</code></th>
+<th><code>salloc</code></th>
+<th>GfxLauncher</th>
+<th>Open OnDemand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HPC2N</td>
+<td style="text-align: center;">Works</td>
+<td>Recommended</td>
+<td>N/A</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>UPPMAX</td>
+<td style="text-align: center;">Recommended</td>
+<td>Works</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>LUNARC</td>
+<td style="text-align: center;">Works</td>
+<td>N/A</td>
+<td>Recommended</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>NSC</td>
+<td style="text-align: center;">Recommended</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>PDC</td>
+<td style="text-align: center;">N/A</td>
+<td>Recommended</td>
+<td>Possible</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>Example, HPC2N vs. UPPMAX (also valid for NSC, PDC and LUNARC):</p>
+<div class="mermaid">graph TD
+  subgraph uppmax[UPPMAX]
+  subgraph login_node[Login nodes]
+    user_on_login_node[User on login node]
+  end
+
+  subgraph compute_node[Compute nodes]
+    user_on_computer_node[User on compute node]
+    job_on_compute_node[Job on compute node]
+  end
+  end
+
+  subgraph hpc2n[HPC2N]
+  subgraph hpc2n_login_node[Login nodes]
+    hpc2n_user_on_login_node[User on login node]
+    hpc2n_user_in_interactive_mode[User on login node in interactive session]
+  end
+
+  subgraph hpc2n_compute_node[Compute nodes]
+    hpcn2_job_on_compute_node[Job on compute node]
+  end
+  end
+
+  user_on_login_node --&gt; |interactive| user_on_computer_node
+  user_on_login_node --&gt; |sbatch| job_on_compute_node
+
+  user_on_computer_node --&gt; |exit| user_on_login_node
+  user_on_computer_node --&gt; |srun| user_on_computer_node
+
+  hpc2n_user_on_login_node --&gt; |salloc| hpc2n_user_in_interactive_mode
+  hpc2n_user_in_interactive_mode --&gt; |exit| hpc2n_user_on_login_node
+  hpc2n_user_on_login_node --&gt; |sbatch| hpcn2_job_on_compute_node
+  hpc2n_user_in_interactive_mode --&gt; |srun| hpcn2_job_on_compute_node
+</div>
+<ul>
+<li>First, you make a request for resources with <code>interactive</code>/<code>salloc</code>, like this:</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Interactive jobs</p>
+<p>Short serial example for running on different clusters.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><input id="__tabbed_1_4" name="__tabbed_1" type="radio"/><input id="__tabbed_1_5" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">NSC</label><label for="__tabbed_1_2">PDC</label><label for="__tabbed_1_3">UPPMAX</label><label for="__tabbed_1_4">LUNARC</label><label for="__tabbed_1_5">HPC2N</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>$<span class="w"> </span>interactive<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-934
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>salloc<span class="w"> </span>-n<span class="w"> </span>&lt;ntasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-934<span class="w"> </span>-p<span class="w"> </span>&lt;partition&gt;
+</span></code></pre></div>
+<p>Where <partition> is <code>shared</code>, <code>main</code> or <code>gpu</code></partition></p>
+<ul>
+<li>We recommend <code>shared</code></li>
+<li>Wait until you get the node</li>
+<li><code>ssh</code>  to the node given and then work there<ul>
+<li>
+<p>Example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>$<span class="w"> </span>ssh<span class="w"> </span>nid001057
+</span></code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>$<span class="w"> </span>interactive<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>uppmax2025-2-360
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>$<span class="w"> </span>interactive<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>lu2025-2-94
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>$<span class="w"> </span>salloc<span class="w"> </span>-n<span class="w"> </span>&lt;tasks&gt;<span class="w"> </span>--time<span class="o">=</span>HHH:MM:SS<span class="w"> </span>-A<span class="w"> </span>hpc2n2025-151
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>where <tasks> is the number of tasks (or cores, for default 1 task per core), time is given in hours, minutes, and seconds 
+(maximum T168 hours), and then you give the id for your project.</tasks></p>
+<p>Then, when you get the allocation, one can run programs in parallel by:</p>
+<ul>
+<li>
+<p><code>srun -n &lt;ntasks&gt; ./program</code></p>
+</li>
+<li>
+<p>Your request enters the job queue just like any other job, and interactive/salloc will tell you that it is waiting for the requested resources.</p>
+</li>
+<li>When salloc tells you that your job has been allocated resources, you can interactively run programs on those resources with <code>srun</code>.</li>
+<li>The commands you run with <code>srun</code> will then be executed on the resources your job has been allocated.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">On HPC2N</p>
+</div>
+<ul>
+<li>If you do not preface with <code>srun</code> the command is run on the login node!</li>
+<li>You can now run Julia scripts on the allocated resources directly instead of waiting for your batch job to return a result.</li>
+<li>This is an advantage if you want to test your Julia script or perhaps figure out which parameters are best.</li>
+</ul>
+<h3 id="end-an-interactive-session">End an interactive session<a class="headerlink" href="#end-an-interactive-session" title="Anchor link to this section for reference">¶</a></h3>
+<p>When you have finished using the allocation, either wait for it to end, or close it with <code>exit</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>$<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">logout</span>
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Documentation at the centers</p>
+</div>
+<ul>
+<li><a href="https://support.pdc.kth.se/doc/contact/contact_support/?sub=login/interactive_hpc/" target="_blank">Interactive allocation on PDC</a></li>
+<li><a href="https://www.nsc.liu.se/support/running-applications/#interactive-jobs" target="_blank">Interactive allocation on NSC</a></li>
+<li><a href="https://docs.uppmax.uu.se/cluster_guides/start_interactive_session/" target="_blank">Interactive allocation on UPPMAX</a></li>
+<li><a href="https://docs.hpc2n.umu.se/documentation/batchsystem/job_submission/#interactive" target="_blank">Interactive allocation on HPC2N</a></li>
+<li><a href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_interactive/#starting-an-interactive-session" target="_blank">Interactive allocation on LUNARC</a></li>
+</ul>
+<h2 id="exercise-interactive-session">Exercise interactive session<a class="headerlink" href="#exercise-interactive-session" title="Anchor link to this section for reference">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Run from ThinLinc (web or client!)</p>
+<ul>
+<li>
+<p><a href="../../common/login/#step-1-log-in">Log in page</a></p>
+</li>
+<li>
+<p>We will need it later for the notebooks!</p>
+</li>
+<li>
+<p>Start a terminal shell from ThinLinc.</p>
+</li>
+</ul>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Interactive jobs</p>
+<p>Requesting 4 cores for 10 minutes, then running Julia
+Short serial example for running on different clusters.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/><input id="__tabbed_2_2" name="__tabbed_2" type="radio"/><input id="__tabbed_2_3" name="__tabbed_2" type="radio"/><input id="__tabbed_2_4" name="__tabbed_2" type="radio"/><input id="__tabbed_2_5" name="__tabbed_2" type="radio"/><input id="__tabbed_2_6" name="__tabbed_2" type="radio"/><div class="tabbed-labels"><label for="__tabbed_2_1">NSC</label><label for="__tabbed_2_2">PDC</label><label for="__tabbed_2_3">UPPMAX (Pelle)</label><label for="__tabbed_2_4">UPPMAX (Rackham/Bianca)</label><label for="__tabbed_2_5">HPC2N</label><label for="__tabbed_2_6">LUNARC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="o">[</span>sm_bcarl@tetralith3<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>interactive<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:30:0<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-934
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">43071298</span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">43071298</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">43071298</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+</span><span id="__span-7-5"><a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">43071298</span>
+</span><span id="__span-7-6"><a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a>salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+</span><span id="__span-7-7"><a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a>salloc:<span class="w"> </span>Nodes<span class="w"> </span>n760<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</span><span id="__span-7-8"><a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="o">[</span>bjornc@r483<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.10.2-bdist
+</span></code></pre></div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="o">[</span>sm_bcarl@n760<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>hostname
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>n760
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>n760
+</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>n760
+</span><span id="__span-8-5"><a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a>n760
+</span></code></pre></div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>claremar@login1:~&gt;<span class="w"> </span>salloc<span class="w"> </span>--ntasks<span class="o">=</span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:30:00<span class="w"> </span>-p<span class="w"> </span>shared<span class="w"> </span>--qos<span class="o">=</span>normal<span class="w"> </span>-A<span class="w"> </span>naiss2025-22-934
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">9102757</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">9102757</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">9102757</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a>salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">9102757</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a>salloc:<span class="w"> </span>Nodes<span class="w"> </span>nid001057<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a>claremar@login1:~&gt;<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span></code></pre></div>
+<p>Let us check that we actually run on the compute node. This has to be done differently</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>claremar@login1:~&gt;<span class="w"> </span>srun<span class="w"> </span>hostname
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>nid001064
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>nid001063
+</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>nid001064
+</span><span id="__span-10-5"><a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>nid001063
+</span></code></pre></div>
+<p>Now, it seems that Dardel allows for “hyperthreading”, that is 2 threads per core.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>claremar@login1:~&gt;<span class="w"> </span>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">8</span><span class="w"> </span>hostname
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>nid001064
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>nid001064
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a>nid001063
+</span><span id="__span-11-5"><a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a>nid001063
+</span><span id="__span-11-6"><a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a>nid001064
+</span><span id="__span-11-7"><a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a>nid001064
+</span><span id="__span-11-8"><a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a>nid001063
+</span><span id="__span-11-9"><a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a>nid001063
+</span></code></pre></div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="o">[</span>bjornc@pelle<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>interactive<span class="w"> </span>-A<span class="w"> </span>uppmax2025-2-360<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:30:00
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>You<span class="w"> </span>receive<span class="w"> </span>the<span class="w"> </span>high<span class="w"> </span>interactive<span class="w"> </span>priority.
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a>There<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>cores,<span class="w"> </span>so<span class="w"> </span>your<span class="w"> </span>job<span class="w"> </span>is<span class="w"> </span>expected<span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>at<span class="w"> </span>once.
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a>Please,<span class="w"> </span>use<span class="w"> </span>no<span class="w"> </span>more<span class="w"> </span>than<span class="w"> </span><span class="m">6</span>.4<span class="w"> </span>GB<span class="w"> </span>of<span class="w"> </span>RAM.
+</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>job<span class="w"> </span><span class="m">29556505</span><span class="w"> </span>to<span class="w"> </span>start...
+</span><span id="__span-12-8"><a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a>Starting<span class="w"> </span>job<span class="w"> </span>now<span class="w"> </span>--<span class="w"> </span>you<span class="w"> </span>waited<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>second.
+</span><span id="__span-12-9"><a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="o">[</span>bjornc@p102<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.10.9-LTS-linux-x86_64
+</span></code></pre></div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="o">[</span>bjornc@p102<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>hostname
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>p102.uppmax.uu.se
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a>p102.uppmax.uu.se
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a>p102.uppmax.uu.se
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a>p102.uppmax.uu.se
+</span></code></pre></div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="o">[</span>bjornc@rackham2<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>interactive<span class="w"> </span>-A<span class="w"> </span>uppmax2025-2-360<span class="w"> </span>-p<span class="w"> </span>core<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:30:00
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>You<span class="w"> </span>receive<span class="w"> </span>the<span class="w"> </span>high<span class="w"> </span>interactive<span class="w"> </span>priority.
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>There<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>cores,<span class="w"> </span>so<span class="w"> </span>your<span class="w"> </span>job<span class="w"> </span>is<span class="w"> </span>expected<span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>at<span class="w"> </span>once.
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a>Please,<span class="w"> </span>use<span class="w"> </span>no<span class="w"> </span>more<span class="w"> </span>than<span class="w"> </span><span class="m">6</span>.4<span class="w"> </span>GB<span class="w"> </span>of<span class="w"> </span>RAM.
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>job<span class="w"> </span><span class="m">29556505</span><span class="w"> </span>to<span class="w"> </span>start...
+</span><span id="__span-14-8"><a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a>Starting<span class="w"> </span>job<span class="w"> </span>now<span class="w"> </span>--<span class="w"> </span>you<span class="w"> </span>waited<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>second.
+</span><span id="__span-14-9"><a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="o">[</span>bjornc@r102<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+</span></code></pre></div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="o">[</span>bjornc@r102<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>hostname
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>r102.uppmax.uu.se
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>r102.uppmax.uu.se
+</span><span id="__span-15-4"><a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>r102.uppmax.uu.se
+</span><span id="__span-15-5"><a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a>r102.uppmax.uu.se
+</span></code></pre></div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>salloc<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>--time<span class="o">=</span><span class="m">00</span>:30:00<span class="w"> </span>-A<span class="w"> </span>hpc2n2025-151
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">20174806</span>
+</span><span id="__span-16-3"><a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">20174806</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+</span><span id="__span-16-4"><a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a>salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">20174806</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+</span><span id="__span-16-5"><a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a>salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">20174806</span>
+</span><span id="__span-16-6"><a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+</span><span id="__span-16-7"><a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a>salloc:<span class="w"> </span>Nodes<span class="w"> </span>b-cn0241<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</span><span id="__span-16-8"><a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span>julia/1.8.5
+</span><span id="__span-16-9"><a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="o">[</span>~<span class="o">]</span>$
+</span></code></pre></div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>hostname
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a>b-cn0241.hpc2n.umu.se
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a>b-cn0241.hpc2n.umu.se
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a>b-cn0241.hpc2n.umu.se
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a>b-cn0241.hpc2n.umu.se
+</span></code></pre></div>
+<p>We are. Notice that we got a response from all four cores we have allocated.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="o">[</span>bjornc@cosmos1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>interactive<span class="w"> </span>-A<span class="w"> </span>lu2025-2-94<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span>:00
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>Cluster<span class="w"> </span>name:<span class="w"> </span>COSMOS
+</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>JOBID<span class="w"> </span><span class="m">930844</span><span class="w"> </span>to<span class="w"> </span>start
+</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="o">[</span>bjornc@cn050<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span></code></pre></div>
+<p>Let us check that we actually run on the compute node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="o">[</span>bjornc@cn050<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SLURM_CPUS_ON_NODE</span>
+</span><span id="__span-19-2"><a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="m">4</span>
+</span></code></pre></div>
+<p>We are, because the <em>$SLURM</em> environment variable gves an output. Notice that we got 4, which is not the size of the physcial node bt the allocation size.</p>
+</div>
+</div>
+</div>
+<p><strong>Test script</strong>: adding two numbers from user input (<code>serial-sum.jl</code>)</p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="w">    </span><span class="c"># This program will add two numbers that are provided by the user</span>
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="w">    </span><span class="c"># Get the numbers</span>
+</span><span id="__span-20-4"><a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-20-5"><a href="#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-20-6"><a href="#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="w">    </span><span class="c"># Add the two numbers together</span>
+</span><span id="__span-20-7"><a href="#__codelineno-20-7" id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="w">    </span><span class="n">summ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>
+</span><span id="__span-20-8"><a href="#__codelineno-20-8" id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"The sum of the two numbers is "</span><span class="p">,</span><span class="w"> </span><span class="n">summ</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>Running the script</strong></p>
+<ul>
+<li>Note that the commands should be the same for all clusters</li>
+</ul>
+<p>Running a Julia script in the allocation we made further up. Notice that since we asked for 4 cores, the script is run 4 times, since it is a serial script</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+</span><span id="__span-21-2"><a href="#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a>The<span class="w"> </span>sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>two<span class="w"> </span>numbers<span class="w"> </span>is:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-21-3"><a href="#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a>The<span class="w"> </span>sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>two<span class="w"> </span>numbers<span class="w"> </span>is:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-21-4"><a href="#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a>The<span class="w"> </span>sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>two<span class="w"> </span>numbers<span class="w"> </span>is:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-21-5"><a href="#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a>The<span class="w"> </span>sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>two<span class="w"> </span>numbers<span class="w"> </span>is:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-21-6"><a href="#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="o">[</span>~<span class="o">]</span>$
+</span></code></pre></div>
+<p>Without the <code>srun</code> command, Julia won’t understand that it can use several cores. Therefore the program is run only once.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>The<span class="w"> </span>sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>two<span class="w"> </span>numbers<span class="w"> </span>is:<span class="w"> </span><span class="m">7</span>
+</span></code></pre></div>
+<p><strong>Running Julia REPL</strong></p>
+<ul>
+<li>First start Julia using the 4 cores and check if workers are available</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>$<span class="w"> </span>julia<span class="w"> </span>-p<span class="w"> </span><span class="m">4</span>
+</span></code></pre></div>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nworkers</span><span class="p">()</span>
+</span><span id="__span-24-2"><a href="#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="mi">4</span>
+</span></code></pre></div>
+<p>Exit Julia</p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">CTRL</span><span class="o">-</span><span class="n">D</span><span class="o">&gt;</span>
+</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="mi">4</span>
+</span></code></pre></div>
+<p><strong>Do not exit yet!</strong></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Meanwhile waiting let’s talk about notebooks!</p>
+</div>
+<h2 id="notebooks">Notebooks<a class="headerlink" href="#notebooks" title="Anchor link to this section for reference">¶</a></h2>
+<h3 id="jupyter">Jupyter<a class="headerlink" href="#jupyter" title="Anchor link to this section for reference">¶</a></h3>
+<p><strong>JuPyteR</strong> was written for serving notebooks for Julia, Python and R</p>
+<p><img alt="Jupyter-Julia" src="../../img/Jupyter_julia.png"/>
+<img alt="Jupyter-started" src="../../img/jupyter_rackham_thinlinc.png"/></p>
+<h3 id="pluto">Pluto<a class="headerlink" href="#pluto" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Pluto, like Jupyter, is a programming notebook.</li>
+</ul>
+<p><img alt="Pluto cells" src="../../img/Pluto_cells2.png"/></p>
+<ul>
+<li>Reproducible (even without Pluto), gittable, extraordinarily interactive programming notebooks</li>
+<li>Offers a similar notebook experience to Jupyter, but understands global references between cells, and reactively re-evaluates cells affected by a code change.</li>
+</ul>
+<h2 id="exercise-choose-to-start-jupyter-or-pluto">Exercise: Choose to start Jupyter OR Pluto<a class="headerlink" href="#exercise-choose-to-start-jupyter-or-pluto" title="Anchor link to this section for reference">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li>You should be using ThinLinc.</li>
+<li>And from the terminal have started a interactive session</li>
+<li>See <a href="#exercise-interactive-session">last exercise</a></li>
+</ul>
+</div>
+<ul>
+<li><a href="../notebook_jupyter/">Start Jupyter</a></li>
+<li>
+<p><a href="../notebook_pluto/">Start Pluto</a></p>
+<p><strong>Exit</strong></p>
+<p>When you have finished using the allocation, either wait for it to end, or close it with <code>exit</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/><input id="__tabbed_3_2" name="__tabbed_3" type="radio"/><input id="__tabbed_3_3" name="__tabbed_3" type="radio"/><input id="__tabbed_3_4" name="__tabbed_3" type="radio"/><input id="__tabbed_3_5" name="__tabbed_3" type="radio"/><div class="tabbed-labels"><label for="__tabbed_3_1">NSC</label><label for="__tabbed_3_2">PDC</label><label for="__tabbed_3_3">UPPMAX</label><label for="__tabbed_3_4">HPC2N</label><label for="__tabbed_3_5">LUNARC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="o">[</span>sm_bcarl@n134<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-26-2"><a href="#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="nb">logout</span>
+</span><span id="__span-26-3"><a href="#__codelineno-26-3" id="__codelineno-26-3" name="__codelineno-26-3"></a>srun:<span class="w"> </span>error:<span class="w"> </span>n134:<span class="w"> </span>task<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>Exited<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">130</span>
+</span><span id="__span-26-4"><a href="#__codelineno-26-4" id="__codelineno-26-4" name="__codelineno-26-4"></a>srun:<span class="w"> </span>Terminating<span class="w"> </span><span class="nv">StepId</span><span class="o">=</span><span class="m">43071803</span>.interactive
+</span><span id="__span-26-5"><a href="#__codelineno-26-5" id="__codelineno-26-5" name="__codelineno-26-5"></a>salloc:<span class="w"> </span>Relinquishing<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">43071803</span>
+</span><span id="__span-26-6"><a href="#__codelineno-26-6" id="__codelineno-26-6" name="__codelineno-26-6"></a>salloc:<span class="w"> </span>Job<span class="w"> </span>allocation<span class="w"> </span><span class="m">43071803</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>revoked.
+</span><span id="__span-26-7"><a href="#__codelineno-26-7" id="__codelineno-26-7" name="__codelineno-26-7"></a><span class="o">[</span>sm_bcarl@tetralith3<span class="w"> </span>~<span class="o">]</span>$
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>claremar@login1:~&gt;<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-27-2"><a href="#__codelineno-27-2" id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="nb">exit</span>
+</span><span id="__span-27-3"><a href="#__codelineno-27-3" id="__codelineno-27-3" name="__codelineno-27-3"></a>salloc:<span class="w"> </span>Relinquishing<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">9103056</span>
+</span><span id="__span-27-4"><a href="#__codelineno-27-4" id="__codelineno-27-4" name="__codelineno-27-4"></a>claremar@login1:~&gt;
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="o">[</span>bjornc@r483<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-28-2"><a href="#__codelineno-28-2" id="__codelineno-28-2" name="__codelineno-28-2"></a>
+</span><span id="__span-28-3"><a href="#__codelineno-28-3" id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="nb">exit</span>
+</span><span id="__span-28-4"><a href="#__codelineno-28-4" id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="o">[</span>screen<span class="w"> </span>is<span class="w"> </span>terminating<span class="o">]</span>
+</span><span id="__span-28-5"><a href="#__codelineno-28-5" id="__codelineno-28-5" name="__codelineno-28-5"></a>Connection<span class="w"> </span>to<span class="w"> </span>r483<span class="w"> </span>closed.
+</span><span id="__span-28-6"><a href="#__codelineno-28-6" id="__codelineno-28-6" name="__codelineno-28-6"></a>
+</span><span id="__span-28-7"><a href="#__codelineno-28-7" id="__codelineno-28-7" name="__codelineno-28-7"></a><span class="o">[</span>bjornc@rackham2<span class="w"> </span>~<span class="o">]</span>$
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-29-2"><a href="#__codelineno-29-2" id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="nb">exit</span>
+</span><span id="__span-29-3"><a href="#__codelineno-29-3" id="__codelineno-29-3" name="__codelineno-29-3"></a>salloc:<span class="w"> </span>Relinquishing<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">20174806</span>
+</span><span id="__span-29-4"><a href="#__codelineno-29-4" id="__codelineno-29-4" name="__codelineno-29-4"></a>salloc:<span class="w"> </span>Job<span class="w"> </span>allocation<span class="w"> </span><span class="m">20174806</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>revoked.
+</span><span id="__span-29-5"><a href="#__codelineno-29-5" id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="o">[</span>~<span class="o">]</span>$
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-30-2"><a href="#__codelineno-30-2" id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="nb">exit</span>
+</span><span id="__span-30-3"><a href="#__codelineno-30-3" id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="o">[</span>screen<span class="w"> </span>is<span class="w"> </span>terminating<span class="o">]</span>
+</span><span id="__span-30-4"><a href="#__codelineno-30-4" id="__codelineno-30-4" name="__codelineno-30-4"></a>Connection<span class="w"> </span>to<span class="w"> </span>cn050<span class="w"> </span>closed.
+</span><span id="__span-30-5"><a href="#__codelineno-30-5" id="__codelineno-30-5" name="__codelineno-30-5"></a>
+</span><span id="__span-30-6"><a href="#__codelineno-30-6" id="__codelineno-30-6" name="__codelineno-30-6"></a><span class="o">[</span>~<span class="o">]</span>$
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+<h3 id="exercises-run-scripts">Exercises run scripts<a class="headerlink" href="#exercises-run-scripts" title="Anchor link to this section for reference">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Run scripts from an interactive session</p>
+<ul>
+<li>Try out one or two of the scripts from the exercise folder <code>batchJulia</code>.</li>
+<li>First create an interactive session with the right Slurm commands to the <code>interactive</code>/<code>salloc</code> command.</li>
+<li>use the commands from the batch job script belonging to the julia script at <a href="https://uppmax.github.io/R-matlab-julia-HPC/julia/batch/#examples-of-batch-scripts" target="_blank">examples of batch scripts for julia</a></li>
+</ul>
+</div>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>
+<p>Start an interactive session on a calculation node by a SLURM allocation</p>
+</li>
+<li>
+<p>At HPC2N: <code>salloc</code> …</p>
+</li>
+<li>
+<p>At UPPMAX/LUNARC: <code>interactive</code> …</p>
+</li>
+<li>
+<p>Follow the same procedure as usual by loading the Julia module and possible prerequisites.</p>
+</li>
+<li>
+<p>Run Julia in Jupyter lab/notebook</p>
+</li>
+<li>
+<p>Procedure is to use the IJulia package and start a jupyter notebook from the julia command line.</p>
+</li>
+</ul>
+</div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../batch/" title="Batch jobs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../summary/" title="Summary">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC" style="color: #fcfcfc"> GitHub</a>
+</span>
+<span><a href="../batch/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../summary/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/tippy-bundle.umd.js"></script>
+<script src="../../js/clipboard.js"></script>
+<script src="../../js/extra.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

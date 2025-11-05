@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>HPC clusters - Introduction to R, MATLAB, and Julia in HPC</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "HPC clusters";
+        var mkdocs_page_input_path = "common/hpc_clusters.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../img/new-logo.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Prequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../login/">Login</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../use_tarball/">Use the tarball</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../use_text_editor/">Use a text editor</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">HPC clusters</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#the-hpc-centers-uppmax-hpc2n-lunarc-nsc-and-pdc">The HPC centers UPPMAX, HPC2N, LUNARC, NSC and PDC</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#briefly-about-the-cluster-hardware-and-system-at-uppmax-hpc2n-lunarc-nsc-and-pdc">Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, NSC and PDC</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-features">Common features</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-uppmax-systems">Overview of the UPPMAX systems</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-hpc2n-system">Overview of the HPC2N system</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-lunarc-system">Overview of the LUNARC system</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-nsc-systems">Overview of the NSC systems</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other_courses/">Other courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../on-demand/">Desktop on demand</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">MATLAB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Julia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Machine Learning</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra reading</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">Common</li>
+<li class="breadcrumb-item active">HPC clusters</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/common/hpc_clusters.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="hpc-clusters">HPC clusters<a class="headerlink" href="#hpc-clusters" title="Anchor link to this section for reference">¶</a></h1>
+<h2 id="the-hpc-centers-uppmax-hpc2n-lunarc-nsc-and-pdc">The HPC centers UPPMAX, HPC2N, LUNARC, NSC and PDC<a class="headerlink" href="#the-hpc-centers-uppmax-hpc2n-lunarc-nsc-and-pdc" title="Anchor link to this section for reference">¶</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Five HPC centers</p>
+<p>There are many similarities:</p>
+<ul>
+<li>Login vs. calculation/compute nodes</li>
+<li>Environmental module system with
+  software hidden until loaded with <code>module load</code></li>
+<li>Slurm batch job and scheduling system</li>
+</ul>
+<p>… many small differences:</p>
+<ul>
+<li>commands to load R, Matlab and Julia and packages/libraries</li>
+<li>sometimes different versions of R, Matlab and Julia, etc.</li>
+<li>slightly different flags to Slurm</li>
+</ul>
+<p>… and some bigger differences:</p>
+<ul>
+<li>
+<p>UPPMAX has three different clusters</p>
+<ul>
+<li>Rackham for general purpose computing on CPUs only</li>
+<li>Snowy available for local projects and suits long
+jobs (&lt; 1 month) and has GPUs</li>
+<li>Bianca for sensitive data and has GPUs</li>
+</ul>
+</li>
+<li>
+<p>HPC2N has Kebnekaise with GPUs</p>
+</li>
+<li>LUNARC has Cosmos with GPUs (and Cosmos-SENS)</li>
+<li>NSC has several clusters<ul>
+<li>BerzeLiUs (AI/ML, NAISS)</li>
+<li>Tetralith (NAISS)</li>
+<li>Sigma (LiU local)</li>
+<li>Freja (R&amp;D, located at SMHI)</li>
+<li>Nebula (MET Norway R&amp;D)</li>
+<li>Stratus (weather forecasts, located at NSC)</li>
+<li>Cirrus (weather forecasts, located at SMHI)</li>
+<li>We will be using Tetralith, which also has GPUs</li>
+</ul>
+</li>
+<li>PDC has Dardel with AMD GPUs</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Terminology: modules</p>
+<p>We call the applications available via the <em>module system</em> <strong>modules</strong>.</p>
+<ul>
+<li><a href="https://docs.hpc2n.umu.se/software/modules/">HPC2N</a></li>
+<li><a href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/">LUNARC</a></li>
+<li><a href="https://www.nsc.liu.se/software/modules/">NSC</a></li>
+<li><a href="https://support.pdc.kth.se/doc/software/module/">PDC</a></li>
+<li><a href="https://docs.uppmax.uu.se/cluster_guides/modules/">UPPMAX</a></li>
+</ul>
+</div>
+<!-- markdownlint-disable MD013 -->
+<h2 id="briefly-about-the-cluster-hardware-and-system-at-uppmax-hpc2n-lunarc-nsc-and-pdc">Briefly about the cluster hardware and system at UPPMAX, HPC2N, LUNARC, NSC and PDC<a class="headerlink" href="#briefly-about-the-cluster-hardware-and-system-at-uppmax-hpc2n-lunarc-nsc-and-pdc" title="Anchor link to this section for reference">¶</a></h2>
+<!-- markdownlint-enable MD013 -->
+<p>What is a cluster?</p>
+<ul>
+<li>
+<p>Login nodes and calculations/computation nodes</p>
+</li>
+<li>
+<p>A network of computers, each computer working as a <strong>node</strong>.</p>
+</li>
+<li>
+<p>Each node contains several processor cores and RAM
+  and a local disk called scratch.</p>
+</li>
+</ul>
+<p><img alt="A node" src="../node.png"/></p>
+<ul>
+<li>The user logs in to <strong>login nodes</strong>  via Internet through ssh or Thinlinc.<ul>
+<li>Here the file management and lighter data analysis can be performed.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Multiple nodes" src="../nodes.png"/></p>
+<ul>
+<li>The <strong>calculation nodes</strong> have to be used for intense computing.</li>
+</ul>
+<h3 id="common-features">Common features<a class="headerlink" href="#common-features" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Linux kernel</li>
+<li>Bash shell</li>
+<li>x86-64 CPUs, some clusters with Intel processors and some with AMD.</li>
+<li>NVidia GPUs (HPC2N/LUNARC, also AMD) except for Dardel with AMD.</li>
+</ul>
+<!-- markdownlint-disable MD013 -->
+<table>
+<thead>
+<tr>
+<th>HPC Cluster</th>
+<th>Kebnekaise</th>
+<th>Rackham</th>
+<th>Snowy</th>
+<th>Bianca</th>
+<th>COSMOS</th>
+<th>Tetralith</th>
+<th>Dardel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cores/compute node</td>
+<td>28 (72 for largemem, 128/256 for AMD Zen3/Zen4)</td>
+<td>20</td>
+<td>16</td>
+<td>16</td>
+<td>48</td>
+<td>32</td>
+<td>128</td>
+</tr>
+<tr>
+<td>Memory/compute node</td>
+<td>128-3072 GB</td>
+<td>128-1024 GB</td>
+<td>128-4096 GB</td>
+<td>128-512 GB</td>
+<td>256-512 GB</td>
+<td>96-384 GB</td>
+<td>256-2048 GB</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>NVidia V100, A100, A6000, L40s, H100, A40, AMD MI100</td>
+<td>None</td>
+<td>NVidia T4</td>
+<td>NVidia A100</td>
+<td>NVidia A100</td>
+<td>NVidia T4</td>
+<td>four AMD Instinct™ MI250X á 2 GCDs</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable MD013 -->
+<h2 id="overview-of-the-uppmax-systems">Overview of the UPPMAX systems<a class="headerlink" href="#overview-of-the-uppmax-systems" title="Anchor link to this section for reference">¶</a></h2>
+<div class="mermaid">  graph TB
+
+  Node1 -- interactive --&gt; SubGraph2Flow
+  Node1 -- sbatch --&gt; SubGraph2Flow
+  subgraph "Snowy"
+  SubGraph2Flow(calculation nodes)
+        end
+
+        ThinLinc -- usr-sensXXX + 2FA + VPN ----&gt; SubGraph1Flow
+        Terminal/ThinLinc -- usr --&gt; Node1
+        Terminal -- usr-sensXXX + 2FA + VPN ----&gt; SubGraph1Flow
+        Node1 -- usr-sensXXX + 2FA + no VPN ----&gt; SubGraph1Flow
+
+        subgraph "Bianca"
+        SubGraph1Flow(Bianca login) -- usr+passwd --&gt; private(private cluster)
+        private -- interactive --&gt; calcB(calculation nodes)
+        private -- sbatch --&gt; calcB
+        end
+
+        subgraph "Rackham"
+        Node1[Login] -- interactive --&gt; Node2[calculation nodes]
+        Node1 -- sbatch --&gt; Node2
+        end
+</div>
+<h2 id="overview-of-the-hpc2n-system">Overview of the HPC2N system<a class="headerlink" href="#overview-of-the-hpc2n-system" title="Anchor link to this section for reference">¶</a></h2>
+<div class="mermaid"> graph TB
+
+
+        Terminal/ThinLinc -- usr --&gt; Node1
+
+
+        subgraph "Kebnekaise"
+        Node1[Login] -- interactive --&gt; Node2[compute nodes]
+        Node1 -- sbatch --&gt; Node2
+        end
+</div>
+<h2 id="overview-of-the-lunarc-system">Overview of the LUNARC system<a class="headerlink" href="#overview-of-the-lunarc-system" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="COSMOS resources" src="../cosmos-resources.png"/></p>
+<h2 id="overview-of-the-nsc-systems">Overview of the NSC systems<a class="headerlink" href="#overview-of-the-nsc-systems" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="Tetralith image" src="../mermaid-tetralith.png"/></p>
+<!-- Headers cannot be split up over lines, hence will break 80 characters per line --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../use_text_editor/" title="Use a text editor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../other_courses/" title="Other courses">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC" style="color: #fcfcfc"> GitHub</a>
+</span>
+<span><a href="../use_text_editor/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../other_courses/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/tippy-bundle.umd.js"></script>
+<script src="../../js/clipboard.js"></script>
+<script src="../../js/extra.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
