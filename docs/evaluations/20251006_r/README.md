@@ -7,6 +7,17 @@
 - Inactive participants: 1
 - OS: 3x macOS, 3x Windows
 
+## Analysis
+
+- [Evaluation results file](20251006_r.csv)
+- [Analysis script](analyse.R)
+
+![All confidences](20251006_all_confidences.png)
+
+![Confidences per question](20251006_confidences_per_question.png)
+
+![Average confidences per question](20251006_average_confidences_per_question.png)
+
 ## Do you have any additional comments?
 
 - I liked the online material about how to prepare and get everything set up,
@@ -21,3 +32,4 @@
   i'm also not fond of having to have the camera on
   which i felt there was pressure to do
   so i watched most after the course instead
+
