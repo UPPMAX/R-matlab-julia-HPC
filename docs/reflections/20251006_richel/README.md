@@ -98,11 +98,81 @@ The only useful item is 'Do you have any additional comments?':
   Unfortunately I could not initially run R via the terminal/ssh,
   so I couldn't do the practicals on batch,
   but I am sure I can figure it out myself.
+
+Too bad. Nothing to be done about that I guess ...?
+
 - no
+
+Sure :-)
+
 - no
+
+Sure :-)
+
 - awesome material and good that you record but could you record during
-  the lectures all of you so we get the exact thing that is thought?
+  the lectures all of you so we get the exact thing that is taught?
   i'm also not fond of having to have the camera on
   which i felt there was pressure to do
   so i watched most after the course instead
+
+This is an interesting comment: on the one hand this person
+mentions to not like the camera. On the other hand,
+the learning outcomes for my early sessions for that person are
+highest:
+
+Learning outcome                                                              |Camera|Confidence
+------------------------------------------------------------------------------|------|------------------------------------
+I can find the module to be able to run R                                     |Yes   |I can absolutely do this!
+I can load the module to be able to run R                                     |Yes   |I can absolutely do this!
+I can run the R interpreter                                                   |Yes   |I can absolutely do this!
+I can run the R command to get the list of installed R packages               |Yes   |I can absolutely do this!
+I can run an R script from the command-line                                   |Yes   |I have good confidence I can do this
+I can find out if an R package is already installed                           |No    |I have good confidence I can do this
+I can load the pre-installed R packages                                       |No    |I have good confidence I can do this
+I can install an R package from CRAN                                          |No    |I have good confidence I can do this
+I can submit a job to the scheduler to run an R script with regular code      |No    |I have some confidence I can do this
+I can submit a job to the scheduler to run an R script that uses parallel code|No    |I have some confidence I can do this
+I can start an interactive session                                            |No    |I have low confidence I can do this
+
+So in this case, higher learning outcomes were achieved in the sessions
+with a camera, including by the person that did not like using a camera.
+
+## The RStudio sessions
+
+I've compared the simultaneous sessions of this course's
+iteration with the previous course iteration where I was the only teacher:
+
+learning_outcome                                       |teacher| average_confidence
+-------------------------------------------------------|-------|-------------------
+I can start an interactive session with multiple cores |RB+RP  |           1.4
+I can verify I am on the login node yes/no             |RB+RP  |           1.5
+I can start RStudio                                    |RB+RP  |           2.7
+I can verify I am on the login node yes/no             |RB     |           3.1
+I can start an interactive session with multiple cores |RB     |           3.1
+I can start RStudio                                    |RB     |           3.4
+
+It seems same enough. The biggest differences are from things that one does not
+need when using Open OnDemand.
+
+- [ ] Remove learning outcome 
+  'I can start an interactive session with multiple cores'
+- [ ] Remove learning outcome 
+  'I can verify I am on the login node yes/no'
+
+Taking a look at the confidences per question for RStudio:
+
+![Confidences per question for RStudio](20251006_confidences_per_question_rstudio.png)
+
+Could it be that I scored 2x a 5 and Rebecca scored 2x a 5?
+
+Starting time   |Confidence for 'I can start RStudio'
+----------------|------------------------------------
+10/6/2025 14:45 |I can absolutely do this!
+10/6/2025 14:54 |I have no confidence I can do this
+10/6/2025 14:53 |I can absolutely do this!
+10/6/2025 14:53 |I can absolutely do this!
+10/6/2025 14:53 |I can absolutely do this!
+10/17/2025 13:09|I have no confidence I can do this
+
+The last person may not have followed this session at all?
 
