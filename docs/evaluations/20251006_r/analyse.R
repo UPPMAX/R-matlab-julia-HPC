@@ -10,6 +10,15 @@ read_data <- function() {
   readr::read_csv("20251006_r.csv", show_col_types = FALSE)
 }
 
+shorten_learning_outcomes <- function(learning_outcomes) {
+  learning_outcomes |> dplyr::case_match(
+    "I can submit a job to the scheduler to run an R script that uses parallel code" ~ "I can schedule an R with parallel code",
+    "I can submit a job to the scheduler to run an R script with regular code" ~ "I can schedule an R with regular code",
+    "I can run the R command to get the list of installed R packages" ~ "I can get the list of installed R packages from R",
+    .default = learning_outcomes
+  )
+}
+
 #' Read the confidences in the learning outcome
 read_confidences <- function() {
   t_wide <- read_data() |> dplyr::select(tidyselect::starts_with("Give your"))
@@ -17,6 +26,8 @@ read_confidences <- function() {
     names(t_wide),
     "Give your confidence levels of the following statements\n."
   )
+
+  names(t_wide) <- shorten_learning_outcomes(names(t_wide))
 
   t_long <- t_wide |> dplyr::select_all() |>
     tidyr::pivot_longer(cols = tidyr::everything())
@@ -37,9 +48,11 @@ read_confidences <- function() {
   t
 }
 
+testthat::expect_true(max(nchar(read_confidences()$learning_outcome)) < 60)
+
 get_teacher_per_learning_outcome <- function() {
 
-  tibble::tribble(
+  t <- tibble::tribble(
     ~teacher, ~learning_outcome,
     "RB", "I can find the module to be able to run R",
     "RB", "I can load the module to be able to run R",
@@ -56,6 +69,8 @@ get_teacher_per_learning_outcome <- function() {
     "RB+RP", "I can start an interactive session with multiple cores",
     "RB+RP", "I can start RStudio"
   )
+  t$learning_outcome <- shorten_learning_outcomes(t$learning_outcome)
+  t
 }
 get_teacher_per_learning_outcome()
 
