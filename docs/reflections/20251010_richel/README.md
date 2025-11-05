@@ -46,6 +46,9 @@ Exercise|Done
 X1      |No: exercise X2 was more interesting
 X2      |Yes
 
+- [ ] Consider removing 6
+- [ ] Consider swapping X1 and X2
+
 The main reason for not doing everything was due to (1) having 20 minutes less,
 (2) me preferring an in-depth discussion over doing more. Would it start
 at the scheduled starting time, I think it would have worked.
@@ -57,4 +60,8 @@ Kebnekaise are so noisy: Kebnekaise is very heterogeneous
 I've already added this to the course material during reading.
 
 All in all, I've had a good time with our learner and I think we spent it well.
+
+## Evaluation results
+
+There were none.
 
