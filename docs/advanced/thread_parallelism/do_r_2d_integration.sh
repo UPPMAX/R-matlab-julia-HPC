@@ -15,6 +15,8 @@
 
 hpc_cluster="unknown"
 
+[[ "${HOSTNAME}" =~ bianca.uppmax.uu.se$ ]] && hpc_cluster="bianca"
+[[ "${HOSTNAME}" =~ ^sens[0-9]+-b[0-9]+$ ]] && hpc_cluster="bianca"
 [[ "${HOSTNAME}" =~ ^cn[0-9]{1,6}$ ]] && hpc_cluster="cosmos"
 [[ "${HOSTNAME}" =~ ^nid[0-9]{1,6}$ ]] && hpc_cluster="dardel"
 [[ "${HOSTNAME}" =~ ^b-cn[0-9]{1,6}$ ]] && hpc_cluster="kebnekaise"

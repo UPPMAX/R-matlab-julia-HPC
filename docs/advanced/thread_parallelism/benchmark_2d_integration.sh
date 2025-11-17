@@ -80,6 +80,11 @@ if [ ! "$(get_language_script_name r)" == "do_2d_integration.R" ] ; then echo "I
 # Detect HPC cluster
 hpc_cluster="unknown"
 
+[[ "${HOSTNAME}" =~ bianca.uppmax.uu.se$ ]] && hpc_cluster="bianca"
+[[ "${HOSTNAME}" =~ ^sens[0-9]+-b[0-9]+$ ]] && hpc_cluster="bianca"
+
+
+
 [[ "${HOSTNAME}" =~ ^cosmos[1-4].int.lunarc$ ]] && hpc_cluster="cosmos"
 [[ "${HOSTNAME}" =~ ^login[1-4]$ ]] && hpc_cluster="dardel"
 [[ "${HOSTNAME}" =~ ^b-an0[1-4].hpc2n.umu.se$ ]] && hpc_cluster="kebnekaise"
