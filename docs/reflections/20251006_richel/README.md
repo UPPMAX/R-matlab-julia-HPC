@@ -85,7 +85,7 @@ My sessions went very well:
 
 ## Evaluation results
 
-- [My success score](../../evaluations/20251006_r/succes_score_richel.txt): 75%
+- [My success score](../../evaluations/20251006_r/20251006_succes_score_richel.txt): 75%
 
 ![Average confidences per question](../../evaluations/20251006_r/20251006_average_confidences_per_question.png)
 

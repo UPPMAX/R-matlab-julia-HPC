@@ -6,7 +6,7 @@
 - Active participants: 1
 - Inactive participants: 1
 - OS: 1x macOS and Linux (Ubuntu) for the 1 active learner
-- [Reflection by Richel](../../reflections/20251010/README)
+- [Reflection by Richel](../../reflections/20251010_richel/README.md)
 
 ## Evaluation results
 
