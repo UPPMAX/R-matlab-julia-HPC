@@ -249,16 +249,16 @@ Here one can see this calculation for more cores:
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
-Program runtime                      |Number of cores|Time|Speedup        |Efficiency
--------------------------------------|---------------|----|---------------|-----------------------------------------------
-![1 core](amdahls_law_example_1.png) |1              |16  |16 / 16 = 100% |16 / 16 = 100%
-![2 cores](amdahls_law_example_2.png)|2              |10  |16 / 10 = 160% |(10 + 6) / (10 * 2) = 16 / 20 = 80%
-![3 cores](amdahls_law_example_3.png)|3              |8   |16 / 8 = 200%  |(10 + 4 + 4) / (10 * 3) = 60%
-![4 cores](amdahls_law_example_4.png)|4              |7   |16 / 7 = 229%  |(10 + 3 + 3 + 3) / (10 * 4) = 48%
-![6 cores](amdahls_law_example_6.png)|6              |6   |16 / 6 = 267%  |(10 + (2^5)) / (10 * 6) = 70%
-.                                    |12             |5   |16 / 5 = .%    |(10 + (1^11)) / (10 * 12) = 10%
-.                                    |24             |4.5 |16 / 4.5 = .%  |(10 + (0.5^23)) / (10 * 24) = 34 / 50 = 68%
-.                                    |48             |4.25|16 / 4.25 = .% |(10 + (0.25^47)) / (10 * 48) = 34 / 50 = 68%
+Program runtime                      |Number of cores|Time|Speedup          |Efficiency
+-------------------------------------|---------------|----|-----------------|-----------------------------------------------
+![1 core](amdahls_law_example_1.png) |1              |16  |16 / 16 = 100%   |(10 + (0 * 12)) / 16 = 100%
+![2 cores](amdahls_law_example_2.png)|2              |10  |16 / 10 = 160%   |(10 + (1 * 6)) / (10 * 2) = 80%
+![3 cores](amdahls_law_example_3.png)|3              |8   |16 / 8 = 200%    |(10 + (2 * 4)) / (10 * 3) = 60%
+![4 cores](amdahls_law_example_4.png)|4              |7   |16 / 7 = 229%    |(10 + (3 * 3)) / (10 * 4) = 48%
+![6 cores](amdahls_law_example_6.png)|6              |6   |16 / 6 = 267%    |(10 + (5 * 2)) / (10 * 6) = 33%
+.                                    |12             |5   |16 / 5 = 320%    |(10 + (11 * 1)) / (10 * 12) = 18%
+.                                    |24             |4.5 |16 / 4.5 = 356%  |(10 + (23 * 0.5)) / (10 * 24) = 9%
+.                                    |48             |4.25|16 / 4.25 = 376% |(10 + (47 * 0.25)) / (10 * 48) = 5%
 
 <!-- markdownlint-enable MD013 -->
 
