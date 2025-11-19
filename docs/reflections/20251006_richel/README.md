@@ -111,7 +111,7 @@ Sure :-)
 
 - awesome material and good that you record but could you record during
   the lectures all of you so we get the exact thing that is taught?
-  i'm also not fond of having to have the camera on
+  I'm also not fond of having to have the camera on
   which i felt there was pressure to do
   so i watched most after the course instead
 
