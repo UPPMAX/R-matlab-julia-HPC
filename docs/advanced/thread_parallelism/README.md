@@ -461,13 +461,13 @@ for a specified number of cores.
     To most clearly demonstrate this, imagine a `grid_size` of 3
     for an `n_workers` of 2:
 
-    Variable name                 |Value
-    ------------------------------|----------------------------
-    `grid_size`                   |3
-    `n_workers`                   |2
-    `grid_cells_per_worker`       |`3 / 2 (rounded down) =` 1
-    `begin_index` for first worker|`1 * (1 - 1) + 1 =` 1
-    `end_index`   for first worker|`1 * 1 =` 1
+    Variable name                  |Value
+    -------------------------------|----------------------------
+    `grid_size`                    |3
+    `n_workers`                    |2
+    `grid_cells_per_worker`        |`3 / 2 (rounded down) =` 1
+    `begin_index` for first worker |`1 * (1 - 1) + 1 =` 1
+    `end_index`   for first worker |`1 * 1 =` 1
     `begin_index` for second worker|`1 * (2 - 1) + 1 =` 2
     `end_index`   for second worker|`1 * 2 =` 2
 
