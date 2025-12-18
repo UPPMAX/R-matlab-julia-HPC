@@ -83,11 +83,11 @@ What is a cluster?
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
-HPC Cluster        |Kebnekaise                                          |Rackham|Snowy|Bianca|COSMOS|Tetralith|Dardel
--------------------|----------------------------------------------------|-------|-----|------|------|---------|------
-Cores/compute node |28 (72 for largemem, 128/256 for AMD Zen3/Zen4)     |20|16|16|48|32|128
-Memory/compute node|128-3072 GB                                         |128-1024 GB|128-4096 GB|128-512 GB|256-512 GB|96-384 GB|256-2048 GB
-GPU                |NVidia V100, A100, A6000, L40s, H100, A40, AMD MI100|None       |NVidia T4  |NVidia A100|NVidia A100|NVidia T4|four AMD Instinct™ MI250X á 2 GCDs
+| HPC Cluster         | Kebnekaise                                           | Rackham     | Snowy       | Bianca      | COSMOS      | Tetralith | Dardel                             |
+|---------------------|------------------------------------------------------|-------------|-------------|-------------|-------------|-----------|------------------------------------|
+| Cores/compute node  | 28 (72 for largemem, 128/256 for AMD Zen3/Zen4)      | 20          | 16          | 16          | 48          | 32        | 128                                |
+| Memory/compute node | 128-3072 GB                                          | 128-1024 GB | 128-4096 GB | 128-512 GB  | 256-512 GB  | 96-384 GB | 256-2048 GB                        |
+| GPU                 | NVidia V100, A100, A6000, L40s, H100, A40, AMD MI100 | None        | NVidia T4   | NVidia A100 | NVidia A100 | NVidia T4 | four AMD Instinct™ MI250X á 2 GCDs |
 
 <!-- markdownlint-enable MD013 -->
 

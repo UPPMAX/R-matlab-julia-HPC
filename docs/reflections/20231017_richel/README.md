@@ -6,27 +6,27 @@
 
 This was the original course schedule:
 
-Time     |Topic                      |Teacher
----------|---------------------------|-------
-**9.00** |Syllabus                   |Birgitte
-**9.10** |Python in general          |Birgitte
-**9.20** |Load modules and run       |Birgitte
-**9.45** |Break                      |.
-**10:00**|Packages                   |Richel
-**10.45**|Break                      |.
-**11.00**|Isolated environments      |Richel
-**11:45**|Break or informal chat     |Richel
-**12.00**|Lunch                      |.
-**13.00**|Batch                      |Birgitte
-**13:20**|GPU                        |Birgitte
-**13.30**|Kebnekaise: Jupyter        |Birgitte
-.        |Rackham: Jupyter           |Richel
-**13.45**|Break                      |.
-**14.00**|Parallel and multithreaded functions|Pedro
-.        |Bianca: Conda, interactive |Richel
-**14.25**|Conclusion & Q/A           |Birgitte
-**14.45**|Evaluation                 |Richel
-**15.00**|END                        |.
+| Time      | Topic                                | Teacher  |
+|-----------|--------------------------------------|----------|
+| **9.00**  | Syllabus                             | Birgitte |
+| **9.10**  | Python in general                    | Birgitte |
+| **9.20**  | Load modules and run                 | Birgitte |
+| **9.45**  | Break                                | .        |
+| **10:00** | Packages                             | Richel   |
+| **10.45** | Break                                | .        |
+| **11.00** | Isolated environments                | Richel   |
+| **11:45** | Break or informal chat               | Richel   |
+| **12.00** | Lunch                                | .        |
+| **13.00** | Batch                                | Birgitte |
+| **13:20** | GPU                                  | Birgitte |
+| **13.30** | Kebnekaise: Jupyter                  | Birgitte |
+| .         | Rackham: Jupyter                     | Richel   |
+| **13.45** | Break                                | .        |
+| **14.00** | Parallel and multithreaded functions | Pedro    |
+| .         | Bianca: Conda, interactive           | Richel   |
+| **14.25** | Conclusion & Q/A                     | Birgitte |
+| **14.45** | Evaluation                           | Richel   |
+| **15.00** | END                                  | .        |
 
 What went well:
 
@@ -397,6 +397,7 @@ I like this suggestion!
 ### How would you rate the instructors overall teaching performances?
 
 Grade|Python (Day 1)(today)|R (Day 3)
+-----|---------------------|---------
 5    |1x                   |1x
 6    |3x                   |2x
 7    |3x                   |1x
