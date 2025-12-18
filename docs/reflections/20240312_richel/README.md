@@ -6,24 +6,24 @@
 
 ## Schedule
 
-Time     |Topic                      |Teacher
----------|---------------------------|-------
-**9.00** |Syllabus                   |Birgitte
-**9.10** |Python in general          |Birgitte
-**9.20** |Load modules and run       |Birgitte
-**9.45** |Break                      |.
-**10:00**|Packages  (45-->30)        |Richel
-**10.45**|Break                      |.
-**11.00**|Isolated environments      |Richel
-**12.00**|Lunch                      |.
-**13.00**|Batch                      |Birgitte
-**13:20**|GPU                        |Birgitte
-**13.30**|Kebnekaise: Jupyter        |Birgitte
-.        |Rackham:  Interactive session and Jupyter|Richel
-**13.45**|Break                      |.
-**14.00**|Parallel and multithreaded functions|Pedro
-**14.25**|Conclusion & Q/A           |Birgitte
-**14.45**|Evaluation                 |Richel
+| Time      | Topic                                     | Teacher  |
+|-----------|-------------------------------------------|----------|
+| **9.00**  | Syllabus                                  | Birgitte |
+| **9.10**  | Python in general                         | Birgitte |
+| **9.20**  | Load modules and run                      | Birgitte |
+| **9.45**  | Break                                     | .        |
+| **10:00** | Packages  (45-->30)                       | Richel   |
+| **10.45** | Break                                     | .        |
+| **11.00** | Isolated environments                     | Richel   |
+| **12.00** | Lunch                                     | .        |
+| **13.00** | Batch                                     | Birgitte |
+| **13:20** | GPU                                       | Birgitte |
+| **13.30** | Kebnekaise: Jupyter                       | Birgitte |
+| .         | Rackham:  Interactive session and Jupyter | Richel   |
+| **13.45** | Break                                     | .        |
+| **14.00** | Parallel and multithreaded functions      | Pedro    |
+| **14.25** | Conclusion & Q/A                          | Birgitte |
+| **14.45** | Evaluation                                | Richel   |
 
 ## Reflection 1
 

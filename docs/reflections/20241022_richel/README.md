@@ -22,7 +22,7 @@
 | 13:00 | Batch                                                                                          | BB                |
 | 13:30 | GPU                                                                                            | BB                |
 | 13:50 | Break                                                                                          | .                 |
-| 14:05 | Simultaneous sessions                                                                          | BB *RB* RP      |
+| 14:05 | Simultaneous sessions                                                                          | BB *RB* RP        |
 | 14:35 | Break                                                                                          | .                 |
 | 14:50 | Parallel and multi-threaded functions                                                          | PO                |
 | 15:35 | Summary and evaluation                                                                         | RB                |

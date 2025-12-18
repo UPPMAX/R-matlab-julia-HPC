@@ -28,7 +28,7 @@ This was the original course schedule:
 | **14.45** | Evaluation                           | Richel   |
 | **15.00** | END                                  | .        |
 
-What went well:
+  What went well:
 
 * [W1] Working as a team
 * [W2] All students (that could log in) completed their exercises within time
@@ -112,12 +112,12 @@ The shared document helped to collect questions and feedback during the lesson.
 
 ## [I1] Lengths of the course parts
 
-Topic   |Was scheduled|Actual time used|Suggested time
---------|-------------|----------------|--------------
-packages|45 mins      |15 mins         | 30 mins
-venv    |45 mins      |15 mins         | 30 mins
-Jupyter |15 mins      |15 mins         | 15 mins
-conda   |25 mins      |25 mins         | 30 mins
+| Topic    | Was scheduled | Actual time used | Suggested time |
+|----------|---------------|------------------|----------------|
+| packages | 45 mins       | 15 mins          | 30 mins        |
+| venv     | 45 mins       | 15 mins          | 30 mins        |
+| Jupyter  | 15 mins       | 15 mins          | 15 mins        |
+| conda    | 25 mins       | 25 mins          | 30 mins        |
 
 I/we could not predict the lengths of the topics.
 For 'packages' and 'venv', the learners had much time left.
@@ -396,15 +396,15 @@ I like this suggestion!
 
 ### How would you rate the instructors overall teaching performances?
 
-Grade|Python (Day 1)(today)|R (Day 3)
------|---------------------|---------
-5    |1x                   |1x
-6    |3x                   |2x
-7    |3x                   |1x
-8    |4x                   |3x
-9    |1x                   |2x
-10   |0x                   |2x
-Avg  |7.1                  |7.8
+| Grade | Python (Day 1)(today) | R (Day 3) |
+|-------|-----------------------|-----------|
+| 5     | 1x                    | 1x        |
+| 6     | 3x                    | 2x        |
+| 7     | 3x                    | 1x        |
+| 8     | 4x                    | 3x        |
+| 9     | 1x                    | 2x        |
+| 10    | 0x                    | 2x        |
+| Avg   | 7.1                   | 7.8       |
 
 Quite a variation here too, like at Day 3. However, Day 3 rated the average
 instructor performance 10% higher.
@@ -450,12 +450,12 @@ My parts indeed needed less time. We'll adept :-)
 
 * Suggest different lengths:
 
-Topic   |Was scheduled|Actual time used|Suggested time
---------|-------------|----------------|--------------
-packages|45 mins      |15 mins         | 30 mins
-venv    |45 mins      |15 mins         | 30 mins
-Jupyter |15 mins      |15 mins         | 15 mins
-conda   |25 mins      |25 mins         | 30 mins
+| Topic    | Was scheduled | Actual time used | Suggested time |
+|----------|---------------|------------------|----------------|
+| packages | 45 mins       | 15 mins          | 30 mins        |
+| venv     | 45 mins       | 15 mins          | 30 mins        |
+| Jupyter  | 15 mins       | 15 mins          | 15 mins        |
+| conda    | 25 mins       | 25 mins          | 30 mins        |
 
 * Have a pre-course login session for those that need it
 * No Zoom chat, only use shared document
