@@ -8,7 +8,7 @@ Below, we mention some courses and course material specifically.
 ## NAISS courses
 
 - [NAISS Introduction to Linux](https://hpc2n.github.io/intro-linux/)
-- [NAISS file transfer course](https://uppmax.github.io/naiss_file_transfer_course/)
+- [NAISS file transfer course](https://hpc.pages.naiss.se/training/connect-transfer/)
 
 ## Linux material by the NAISS HPC centers
 

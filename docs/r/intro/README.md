@@ -45,7 +45,7 @@
 
     - improve R coding skills
     - use R on other HPC clusters
-    - transfer files (tip: see [the NAISS 'File transfer' course](https://uppmax.github.io/naiss_file_transfer_course/))
+    - transfer files (tip: see [the NAISS 'File transfer' course](https://hpc.pages.naiss.se/training/connect-transfer/))
 
 ## First overview of R
 
