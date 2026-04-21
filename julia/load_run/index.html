@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Load and run - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Load and run";
+        var mkdocs_page_input_path = "julia/load_run.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Load and run</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#check-for-julia-versions">Check for Julia versions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#principle">Principle</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-a-julia-module">Load a Julia module</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run">Run</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#run-julia-as-a-session">Run Julia as a session</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modes-julian-mode">Modes: Julian mode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#shell-mode">Shell mode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#package-manager-mode">Package manager mode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#help-mode">Help mode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exiting">Exiting</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run-a-julia-script">Run a Julia script</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Julia</li>
+      <li class="breadcrumb-item active">Load and run</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/julia/load_run.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="load-and-run-julia">Load and run Julia<a class="headerlink" href="#load-and-run-julia" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>At the Swedish HPC centers we call the applications available via the <em>module system</em> <strong>modules</strong>:</p>
+<ul>
+<li><a href="https://www.nsc.liu.se/software/modules/">NSC</a></li>
+<li><a href="https://support.pdc.kth.se/doc/contact/contact_support/?sub=software/module/">PDC</a></li>
+<li><a href="https://docs.uppmax.uu.se/cluster_guides/modules/">UPPMAX</a></li>
+<li><a href="https://docs.hpc2n.umu.se/software/modules/">HPC2N</a></li>
+<li><a href="https://lunarc-documentation.readthedocs.io/en/latest/manual/manual_modules/#hierarchical-naming-scheme-concept">LUNARC</a></li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Learn to load Julia</li>
+<li>Get started with the Julia command line</li>
+<li>Learn to run Julia scripts</li>
+</ul>
+</div>
+<details class="note">
+<summary>Instructor note</summary>
+<ul>
+<li>Lecture and demo 15 min</li>
+<li>Exercise 15 min</li>
+<li>Total time 30 min</li>
+</ul>
+</details>
+<p>Julia can be started after a Julia module is loaded.
+The module activates paths to a specific version of the julia interpreter and its libraries and packages.</p>
+<details class="note">
+<summary>Short cheat sheet</summary>
+<ul>
+<li>See which modules exists: <code>module spider</code> or <code>ml spider</code>.</li>
+<li>Find module versions for a particular software: <code>module spider &lt;software&gt;</code></li>
+<li>Modules depending only on what is currently loaded: <code>module avail</code> or <code>ml av</code></li>
+<li>See which modules are currently loaded: <code>module list</code> or <code>ml</code></li>
+<li>Load a module: <code>module load &lt;module&gt;/&lt;version&gt;</code> or <code>ml &lt;module&gt;/&lt;version&gt;</code></li>
+<li>Unload a module: <code>module unload &lt;module&gt;/&lt;version&gt;</code> or <code>ml -&lt;module&gt;/&lt;version&gt;</code></li>
+<li>Unload all modules except the &lsquo;sticky&rsquo; modules: <code>module purge</code> or <code>ml purge</code></li>
+</ul>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that the module systems at UPPMAX and HPC2N are slightly different.
+All modules at UPPMAX, for instance, not directly related to bio-informatics are shown by <code>ml avail</code>.</p>
+<p>Modules at many other centres are only available when one has loaded all
+prerequisites, for instance the compilers (<code>GNU</code>, <code>Intel</code>, etc.).</p>
+</div>
+<h2 id="check-for-julia-versions">Check for Julia versions<a class="headerlink" href="#check-for-julia-versions" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Long-term support versions</p>
+<p>So far Julia has Long-term support (LTS) for</p>
+<ul>
+<li>1.6.7 </li>
+<li>1.10.X (high X is better)</li>
+</ul>
+<p>It might good to try to stick with such a version for future compatibility and support.</p>
+</div>
+<h3 id="principle">Principle<a class="headerlink" href="#principle" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>For some clusters</li>
+</ul>
+<div class="language-console highlight" data-copy="module avail julia"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">module avail julia</span>
+</span></code></pre></div>
+<details class="note">
+<summary>Example output</summary>
+<p>From Tetralith:</p>
+<div class="language-console highlight" data-copy="module avail julia"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gp">$ </span>module<span class="w"> </span>avail<span class="w"> </span>julia
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="go">---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="go">   julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="go">   julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="go">   julia/1.4.1                          julia/1.8.5-nsc1-bdist</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="go"> Where:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="go">  D:  Default Module</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="go">Use &quot;module spider&quot; to find all possible modules and extensions.</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="go">Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching any of the &quot;keys&quot;.</span>
+</span></code></pre></div>
+</details>
+<ul>
+<li>Or, at clusters that hides the modules until relevant dependencies are loaded (HPC2N &amp; PDC)</li>
+</ul>
+<div class="language-console highlight" data-copy="module spider julia"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">module spider julia</span>
+</span></code></pre></div>
+<details class="note">
+<summary>Example output</summary>
+<p>From Dardel:</p>
+<div class="language-console highlight" data-copy="module spider julia"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span>module<span class="w"> </span>spider<span class="w"> </span>julia
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go">  julia:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="go">    Description:</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="go">      Julia is a high-level general-purpose dynamic programming language that was originally designed</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="go">      to address the needs of high-performance numerical analysis and computational science, without</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="go">      the typical need of separate compilation to be fast, also usable for client and server web use,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="go">      low-level systems programming or as a specification language (wikipedia.org). Julia provides</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="go">      ease and expressiveness for high-level numerical computing, in the same way as languages such as</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="go">      R, MATLAB, and Python, but also supports general programming. To achieve this, Julia builds upon</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="go">      the lineage of mathematical programming languages, but also borrows much from popular dynamic</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="go">      languages, including Lisp, Perl, Python, Lua, and Ruby (julialang.org).</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="go">     Versions:</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="go">        julia/1.8.2-cpeGNU-22.06</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="go">        julia/1.9.3-cpeGNU-22.06</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="go">        julia/1.9.3-cpeGNU-23.03</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="go">        julia/1.10.2-cpeGNU-23.03</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="go">        julia/1.10.2-cpeGNU-23.12</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="go">     Other possible modules matches:</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="go">        Julia  libuv-julia</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="go">  To find other possible module matches execute:</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="gp">      $ </span>module<span class="w"> </span>-r<span class="w"> </span>spider<span class="w"> </span><span class="s1">&#39;.*julia.*&#39;</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="go">  For detailed information about a specific &quot;julia&quot; package (including how to load the modules) use the module&#39;s full name.</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="go">  Note that names that have a trailing (E) are extensions provided by other modules.</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="go">  For example:</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="gp">     $ </span>module<span class="w"> </span>spider<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="go">-------------------------------------------------------------------------------------------------------</span>
+</span></code></pre></div>
+</details>
+<h2 id="load-a-julia-module">Load a Julia module<a class="headerlink" href="#load-a-julia-module" title="Anchor link to this section for reference">&para;</a></h2>
+<p>For reproducibility, we recommend ALWAYS loading a specific module for the Julia version instead of using the
+default one.</p>
+<h4 id="principle_1">Principle<a class="headerlink" href="#principle_1" title="Anchor link to this section for reference">&para;</a></h4>
+<ul>
+<li>Use the output of existing module above!</li>
+<li>Load the module!</li>
+</ul>
+<p>At some clusters:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">module load julia/1.8.5</span>
+</span></code></pre></div>
+<p>or at cluster that includes &ldquo;architecture&rdquo; or &ldquo;build name&rdquo; in module name:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">ml julia/1.10.2-bdist</span>
+</span></code></pre></div>
+<p>Some clusters will require other modules to be loaded (Kebnekaise and Dardel)</p>
+<ul>
+<li>First check how to load (see Check for Julia versions above)</li>
+</ul>
+<div class="language-console highlight" data-copy="module spider julia/1.10.2-cpeGNU-23.12"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">$ </span>module<span class="w"> </span>spider<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">...</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="go">You will need to load all module(s) on any one of the lines below before the &quot;julia/1.10.2-cpeGNU-23.12&quot; module is available to load.</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="go">PDC/23.12</span>
+</span></code></pre></div>
+<ul>
+<li>Load PDC/23.12 first and then the julia module</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">ml PDC/23.12 julia/1.10.2-cpeGNU-23.12</span>
+</span></code></pre></div>
+<h2 id="run">Run<a class="headerlink" href="#run" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="run-julia-as-a-session">Run Julia as a session<a class="headerlink" href="#run-julia-as-a-session" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>After loading the appropriate modules for Julia, you will have access to the <strong>read-eval-print-loop (REPL)</strong> command line by typing <code>julia</code>:</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">julia</span>
+</span></code></pre></div>
+<ul>
+<li>In julia REPL</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>This is what loading the Julia REPL looks like on Pelle:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="gp">[username@pelle1 ~]$ </span>ml
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">No modules loaded</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="gp">[username@pelle1 ~]$ </span>ml<span class="w"> </span>Julia/1.10.9
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="gp">[username@pelle1 ~]$ </span>ml
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="go">Currently Loaded Modules:</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="go">  1) Julia/1.10.9-LTS-linux-x86_64</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="gp">[username@pelle1 ~]$ </span>julia
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="go">           _</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="go">   _       _ _(_)_     |  Documentation: https://docs.julialang.org</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="go">  (_)     | (_) (_)    |</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="go">   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="go">  | | | | | | |/ _` |  |</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="go">  | | |_| | | | (_| |  |  Version 1.10.9 (2025-03-10)</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="go"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="go">|__/                   |</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="go">julia&gt; </span>
+</span></code></pre></div>
+</div>
+<h3 id="modes-julian-mode">Modes: Julian mode<a class="headerlink" href="#modes-julian-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Julia has different modes, the one we arrive at is the so-called <code>Julian</code> mode, where one can execute commands.</li>
+<li>The description for accessing these modes will be given in the following paragraphs.</li>
+<li>Once you are done with your work in any of the modes, you can return to the <code>Julian</code> mode by pressing the <code>backspace</code> key.</li>
+</ul>
+<h3 id="shell-mode">Shell mode<a class="headerlink" href="#shell-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<p>While being on the Julian mode you can enter the <code>shell</code> mode by typing <code>;</code>:</p>
+<div class="language-julia-repl highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">   julia&gt;;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="go">   shell&gt;pwd</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="go">   /current-folder-path</span>
+</span></code></pre></div>
+<p>this will allow you to use Linux commands. Notice that the availability of these commands
+depend on the OS, for instance, on Windows it will depend on the terminal that you have
+installed and if it is visible to the Julia installation.</p>
+<h3 id="package-manager-mode">Package manager mode<a class="headerlink" href="#package-manager-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Another mode available in Julia is the <code>package manager</code> mode, it can be accessed by typing
+<code>]</code> in the <code>Julian</code> mode:</p>
+<div class="language-julia-repl highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">   julia&gt;]</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">   (v1.8) pkg&gt;</span>
+</span></code></pre></div>
+<p>this will make your interaction with the package manager <strong>Pkg</strong> easier, for instance,
+instead of typing the complete name of <strong>Pkg</strong> commands such as <code>Pkg.status()</code> in the
+<code>Julian</code> mode, you can just type <code>status</code> in the <code>package</code> mode.</p>
+<h3 id="help-mode">Help mode<a class="headerlink" href="#help-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The last mode is the <code>help</code> mode, you can enter this mode from the <code>Julian</code> one by
+typing <code>?</code>, then you may type some string from which you need more information:</p>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="w">   </span><span class="n">julia</span><span class="o">&gt;?</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">   </span><span class="n">help</span><span class="o">?&gt;</span><span class="w"> </span><span class="n">ans</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">   </span><span class="n">search</span><span class="o">:</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="n">transpose</span><span class="w"> </span><span class="n">transcode</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">expanduser</span><span class="w"> </span><span class="n">instances</span><span class="w"> </span><span class="n">MathConstants</span><span class="w"> </span><span class="n">readlines</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">   </span><span class="kt">LinearIndices</span><span class="w"> </span><span class="n">leading_ones</span><span class="w"> </span><span class="n">leading_zeros</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">   </span><span class="n">ans</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">referring</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="n">computed</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">automatically</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">interactive</span><span class="w"> </span><span class="n">prompt</span><span class="o">.</span>
+</span></code></pre></div>
+<h3 id="exiting">Exiting<a class="headerlink" href="#exiting" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Exit with</p>
+<div class="language-julia-repl highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">   julia&gt; &lt;Ctrl-D&gt;</span>
+</span></code></pre></div>
+<p>or</p>
+<div class="language-julia-repl highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="go">   julia&gt; exit()</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">The Julian modes summary</p>
+<ul>
+<li>enter the <em>shell mode</em> by typing <code>;</code></li>
+<li>go back to <em>Julian</em> mode by <code>&lt;backspace&gt;</code></li>
+<li>access the <em>package manager</em> mode by typing <code>]</code> in the <em>Julian</em> mode</li>
+<li>use the <em>help mode</em> by typing <code>?</code> in the <em>Julian mode</em></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">See also</p>
+<p><a href="https://docs.julialang.org/en/v1/stdlib/REPL">More detailed information about the modes in Julia can be found</a>.</p>
+</div>
+<h3 id="run-a-julia-script">Run a Julia script<a class="headerlink" href="#run-a-julia-script" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can run a Julia script on the Linux shell as follows:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">   $ </span>julia<span class="w"> </span>example.jl
+</span></code></pre></div>
+<p>where the script is a text file could contain these lines:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="w">   </span>println<span class="o">(</span><span class="s2">&quot;hello world&quot;</span><span class="o">)</span>
+</span></code></pre></div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Challenge 1a. Find out which versions are on your cluster from documentation</p>
+<ul>
+<li>Find/search for that documentation!</li>
+</ul>
+<details class="note">
+<summary>Solutions</summary>
+<ul>
+<li><a href="http://docs.uppmax.uu.se/software/julia/">UPPMAX</a></li>
+<li><a href="https://www.hpc2n.umu.se/resources/software/julia">HPC2N</a></li>
+<li><a href="The user demand on Julia has been low, so there is currently no site-specific documentation.">LUNARC</a></li>
+<li><a href="https://www.nsc.liu.se/software/installed/tetralith/julia/">NSC</a></li>
+<li><a href="https://support.pdc.kth.se/doc/applications/">PDC</a></li>
+</ul>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 1b. Find out which versions are on your cluster from command line</p>
+<ul>
+<li>Use the <code>spider</code> or <code>avail</code> module commands</li>
+</ul>
+<details class="note">
+<summary>Solutions</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">UPPMAX</label><label for="__tabbed_1_2">HPC2N</label><label for="__tabbed_1_3">LUNARC</label><label for="__tabbed_1_4">Tetralith</label><label for="__tabbed_1_5">Dardel</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Check all available Julia versions with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="gp">    $ </span>module<span class="w"> </span>avail<span class="w"> </span>julia
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Check all available version Julia versions with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>julia
+</span></code></pre></div>
+<p>Notice that the output if you are working on the Intel (<em>kebnekaise.hpc2n.umu.se</em>) or AMD
+(<em>kebnekaise-amd.hpc2n.umu.se</em>) login nodes is different. In the former, you will see more
+installed versions of Julia as this hardware is older.</p>
+<p>To see how to load a specific version of Julia, including the prerequisites, do</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/&lt;version&gt;
+</span></code></pre></div>
+<p>Example for Julia 1.8.5</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Check all available version Julia versions with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia
+</span></code></pre></div>
+<p>To see how to load a specific version of Julia, including the prerequisites, do</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/&lt;version&gt;
+</span></code></pre></div>
+<p>Example for Julia 1.8.5</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Check all available version Julia versions with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="gp">   $ </span>module<span class="w"> </span>avail<span class="w"> </span>Julia
+</span></code></pre></div>
+<p>Example for Julia 1.8.5</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>julia/1.8.5-nsc1-bdist
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Check all available version Julia versions with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia
+</span></code></pre></div>
+<p>To see how to load a specific version of Julia, including the prerequisites, do</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/&lt;version&gt;
+</span></code></pre></div>
+<p>Example for Julia 1.8.5</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<details class="note">
+<summary>Output at UPPMAX as of Oct 2025</summary>
+<p>Rackham/(Bianca)</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="gp">  $ </span>module<span class="w"> </span>avail<span class="w"> </span>julia
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="go">  ----------------------------- /sw/mf/rackham/compilers -----------------------------</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="go">     julia/1.0.5_LTS    julia/1.6.1        julia/1.7.2    julia/1.9.3</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="go">     julia/1.1.1        julia/1.6.3        julia/1.8.5    julia/1.10.10_LTS</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="go">     julia/1.4.2        julia/1.6.7_LTS    julia/1.9.1    julia/1.11.6      (D)</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="go">   Where:</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="go">    D:  Default Module</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="go">  Use &quot;module spider&quot; to find all possible modules and extensions.</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="go">  Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching any of the &quot;keys&quot;.</span>
+</span></code></pre></div>
+<p>Pelle </p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="gp">$ </span>ml<span class="w"> </span>av<span class="w"> </span>Julia
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="go">---------------------------------------------------- /sw/arch/eb/modules/all --------------------</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="go">   Julia/1.10.9-LTS-linux-x86_64    Julia/1.11.3-linux-x86_64 (D)</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="go">  Where:</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="go">   D:  Default Module</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="go">If the avail list is too long consider trying:</span>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="go">&quot;module --default avail&quot; or &quot;ml -d av&quot; to just list the default modules.</span>
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="go">&quot;module overview&quot; or &quot;ml ov&quot; to display the number of modules for each name.</span>
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="go">Use &quot;module spider&quot; to find all possible modules and extensions.</span>
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="go">Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching any of the &quot;keys&quot;.</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Output at HPC2N as of Oct 2025</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>julia<span class="w">  </span><span class="c1"># Assuming you are working on the Intel login nodes</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="go">   ------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="go">     Julia:</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="go">   ------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="go">     Description:</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="go">       Julia is a high-level, high-performance dynamic programming language for numerical</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="go">       computing</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="go">     Versions:</span>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="go">        Julia/1.5.3-linux-x86_64</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="go">        Julia/1.7.1-linux-x86_64</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="go">        Julia/1.8.5-linux-x86_64</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="go">        Julia/1.9.3-linux-x86_64</span>
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="go">   ------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="go">     For detailed information about a specific &quot;Julia&quot; package (including how to load the modules) use the module&#39;s full name.</span>
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="go">     Note that names that have a trailing (E) are extensions provided by other modules.</span>
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="go">     For example:</span>
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a>
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="gp">        $ </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="go">   ------------------------------------------------------------------------------------------------</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Output at LUNARC as of Oct 2025</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>julia
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="go">   -----------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="go">     Julia:</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="go">   -----------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="go">       Description:</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="go">         Julia is a high-level, high-performance dynamic programming language for numerical computing</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="go">        Versions:</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="go">           Julia/1.8.5-linux-x86_64</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="go">           Julia/1.9.0-linux-x86_64</span>
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="go">           Julia/1.9.2-linux-x86_64</span>
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="go">           Julia/1.9.3-linux-x86_64</span>
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="go">           Julia/1.10.4-linux-x86_64</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Output at NSC as of Mar 2025</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="gp">   $ </span>module<span class="w"> </span>avail<span class="w"> </span>julia
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="go">   ---------------------------------- /software/sse2/tetralith_el9/modules -----------------------------------</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="go">      julia/recommendation          (D)    julia/1.6.1-nsc1-bdist    julia/1.9.4-bdist</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="go">      julia/1.1.0-nsc1-gcc-2018a-eb        julia/1.7.2-nsc1-bdist    julia/1.10.2-bdist</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="go">      julia/1.4.1                          julia/1.8.5-nsc1-bdist</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Output at PDC as of Oct 2025</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="gp">   $ </span>module<span class="w"> </span>spider<span class="w"> </span>julia
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="go">   -------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="go">     julia:</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="go">   -------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="go">       Description:</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="go">         Julia is a high-level general-purpose dynamic programming language that was originally designed</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="go">         to address the needs of high-performance numerical analysis and computational science, without</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="go">         the typical need of separate compilation to be fast, also usable for client and server web use,</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="go">         low-level systems programming or as a specification language (wikipedia.org). Julia provides</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="go">         ease and expressiveness for high-level numerical computing, in the same way as languages such as</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="go">         R, MATLAB, and Python, but also supports general programming. To achieve this, Julia builds upon</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="go">         the lineage of mathematical programming languages, but also borrows much from popular dynamic</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="go">         languages, including Lisp, Perl, Python, Lua, and Ruby (julialang.org).</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="go">        Versions:</span>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="go">           julia/1.8.2-cpeGNU-22.06</span>
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="go">           julia/1.9.3-cpeGNU-22.06</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="go">           julia/1.9.3-cpeGNU-23.03</span>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="go">           julia/1.10.2-cpeGNU-23.03</span>
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="go">           julia/1.10.2-cpeGNU-23.12</span>
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="go">           julia/1.11.4-cpeAMD-24.11</span>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="go">        Other possible modules matches:</span>
+</span><span id="__span-34-23"><a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="go">           Julia  libuv-julia</span>
+</span><span id="__span-34-24"><a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a>
+</span><span id="__span-34-25"><a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a><span class="go">   -------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-34-26"><a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a><span class="go">     To find other possible module matches execute:</span>
+</span><span id="__span-34-27"><a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a>
+</span><span id="__span-34-28"><a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a><span class="gp">         $ </span>module<span class="w"> </span>-r<span class="w"> </span>spider<span class="w"> </span><span class="s1">&#39;.*julia.*&#39;</span>
+</span><span id="__span-34-29"><a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a>
+</span><span id="__span-34-30"><a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a><span class="go">   -------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-34-31"><a id="__codelineno-34-31" name="__codelineno-34-31" href="#__codelineno-34-31"></a><span class="go">     For detailed information about a specific &quot;julia&quot; package (including how to load the modules) use the module&#39;s full name.</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 1c. Which method to trust?</p>
+<p>Shall one trust the documentation or the commandline on the cluster more?</p>
+<details class="note">
+<summary>Solution</summary>
+<p>Looking for modules in a session on the cluster is closer to the truth</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 2. Try to start julia without having loaded julia module</p>
+<ul>
+<li>
+<p>If you have a <code>julia</code> module loaded already, you may unload it with the <code>unload</code> command.</p>
+</li>
+<li>
+<p><strong>Tip:</strong> Type: <code>unload julia</code> and press <code>&lt;tab&gt;</code> until the full module name is shown, then press <code>&lt;enter&gt;</code>. (If the Julia module starts with an uppercase, use that instead!)</p>
+</li>
+</ul>
+<details class="note">
+<summary>Solution</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="gp"> $ </span>julia
+</span></code></pre></div>
+<p>It doesn&rsquo;t work! The Julia interpreter is not found.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 3.  Load and start <code>julia</code> the right way from the command line</p>
+<details class="note">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">UPPMAX</label><label for="__tabbed_2_2">HPC2N</label><label for="__tabbed_2_3">LUNARC</label><label for="__tabbed_2_4">NSC</label><label for="__tabbed_2_5">PDC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Rackham/Bianca</p>
+<p>Go back and check which Julia modules were available. To load version 1.8.5, do:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="gp">  $ </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+</span></code></pre></div>
+<p>Note: Lowercase <code>j</code>.</p>
+<p>For short, you can also use:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="gp">   $ </span>ml<span class="w"> </span>julia/1.8.5
+</span></code></pre></div>
+<p>Pelle</p>
+<p>Go back and check which Julia modules were available. To load version 1.10.9, do:</p>
+<p><div class="language-console highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="gp">  $ </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.10.9-LTS-linux-x86_64
+</span></code></pre></div>
+Note: Uppercase <code>j</code>.</p>
+<p>For short, you can also use:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="gp">   $ </span>ml<span class="w"> </span>Julia/1.10.9-LTS-linux-x86_64
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-console highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="gp">   $ </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="go">Note: Uppercase ``J``.</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="go">For short, you can also use:</span>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="go">```console</span>
+</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>
+</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="gp">   $ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-console highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="gp">   $ </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span></code></pre></div>
+<p>Note: Uppercase <code>J</code>.</p>
+<p>For short, you can also use:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="gp">   $ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-console highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="gp">   $ </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.10.2-bdist
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="go">Note: lowercase ``j``.</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="go">For short, you can also use:</span>
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a><span class="go">```console</span>
+</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a>
+</span><span id="__span-43-9"><a id="__codelineno-43-9" name="__codelineno-43-9" href="#__codelineno-43-9"></a><span class="gp">   $ </span>ml<span class="w"> </span>julia/1.10.2-bdist
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-console highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="gp">   $ </span>module<span class="w"> </span>load<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span></code></pre></div>
+<p>Note: lowercase <code>j</code>.</p>
+<p>For short, you can also use:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="gp">   $ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 4. Getting familiar with Julia REPL</p>
+<ul>
+<li>It is important that you know how to navigate on the Julia command line. Here is where you work live with data and test aout things and you may install packages.</li>
+<li>
+<p>This exercise will help you to become more familiar with the REPL. Do the following steps:</p>
+</li>
+<li>
+<p>Start a Julia session. In the <code>Julian</code> mode, compute the sum the numbers
+     5 and 6</p>
+</li>
+<li>Change to the <code>shell</code> mode and display the current directory</li>
+<li>Now, go to the <code>package</code> mode and list the currently installed packages</li>
+<li>Finally, display help information of the function <code>println</code> in <code>help</code> mode.</li>
+</ul>
+<details class="note">
+<summary>Solution</summary>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="w">    </span><span class="o">$</span><span class="w"> </span><span class="n">julia</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="w">    </span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="w">    </span><span class="n">julia</span><span class="o">&gt;</span><span class="p">;</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="w">    </span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pwd</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="w">    </span><span class="n">julia</span><span class="o">&gt;</span><span class="p">]</span>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a><span class="w">    </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="w">    </span><span class="n">julia</span><span class="o">&gt;?</span>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="w">    </span><span class="n">help</span><span class="o">?&gt;</span><span class="w"> </span><span class="n">println</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 5. Load another module and run a script</p>
+<ul>
+<li>Load the latest version</li>
+<li>Run the following serial script (<code>serial-sum.jl</code>) which accepts two integer arguments as input:</li>
+</ul>
+<div class="language-julia highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="n">summ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="n">println</span><span class="p">(</span><span class="s">&quot;The sum of the two numbers is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">summ</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li>Enter two numbers, like 2 &amp; 3.</li>
+</ul>
+<details class="note">
+<summary>Solution for HPC2N</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="gp">    $ </span>ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">       </span><span class="c1"># recommended purge</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="gp">    $ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">      </span><span class="c1"># Julia module</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="gp">    $ </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Solution for UPPMAX</summary>
+<p>Rackham/Bianca</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="gp">    $ </span>ml<span class="w"> </span>julia/1.8.5<span class="w">                   </span><span class="c1"># Julia module</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="go">    julia serial-sum.jl Arg1 Arg2      # run the serial script</span>
+</span></code></pre></div>
+<p>Pelle</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="gp">    $ </span>ml<span class="w"> </span>Julia/1.10.9-LTS-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="go">    julia serial-sum.jl Arg1 Arg2       # run the serial script</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Solution for LUNARC</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="gp">    $ </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">           </span><span class="c1"># Julia module</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="go">    julia serial-sum.jl Arg1 Arg2      # run the serial script</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Solution for NSC</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="gp">    $ </span>ml<span class="w"> </span>julia/1.10.2-bdist<span class="w">           </span><span class="c1"># Julia module</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="go">    julia serial-sum.jl Arg1 Arg2      # run the serial script</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Solution for PDC</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="gp">    $ </span>ml<span class="w"> </span>PDC/23.12<span class="w"> </span>julia/1.10.2-cpeGNU-23.12<span class="w">           </span><span class="c1"># Julia module</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="go">    julia serial-sum.jl Arg1 Arg2      # run the serial script</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge 6. Check your understanding</p>
+<ul>
+<li>Check your understanding and answer in the shared document</li>
+<li>
+<p>Can you start Julia without loading a Julia module?</p>
+<ul>
+<li>Yes?</li>
+<li>No?</li>
+</ul>
+</li>
+<li>
+<p>Which character to use to toggle</p>
+<ul>
+<li>to the <code>package</code> mode?</li>
+<li>back to the <code>Julia</code> mode?</li>
+<li>to the <code>help</code> mode?</li>
+<li>to the <code>shell</code> mode?</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>Solution</summary>
+<ul>
+<li>to the <code>package</code> mode? <code>]</code></li>
+<li>back to the <code>Julia</code> mode? <code>&lt;backspace&gt;</code></li>
+<li>to the <code>help</code> mode? <code>?</code></li>
+<li>to the <code>shell</code> mode? <code>;</code></li>
+</ul>
+</details>
+</div>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Before you can run Julia scripts or work in a Julia shell, first load a Julia module with <code>module load &lt;julia module&gt;</code></li>
+<li>Start a Julia shell session with <code>julia</code></li>
+<li>
+<p>It offers several modes that can make your workflow easier, i.e.</p>
+<ul>
+<li><code>Julian</code></li>
+<li><code>shell</code></li>
+<li><code>package manager</code></li>
+<li><code>help</code></li>
+</ul>
+</li>
+<li>
+<p>Run scripts with <code>julia &lt;script.jl&gt;</code></p>
+</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../intro/" class="btn btn-neutral float-left" title="Intro"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../environments_packages/" class="btn btn-neutral float-right" title="Environments and packages">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../intro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../environments_packages/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

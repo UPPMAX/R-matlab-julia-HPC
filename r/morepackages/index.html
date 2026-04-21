@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>More about R packages - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "More about R packages";
+        var mkdocs_page_input_path = "r/morepackages.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">More about R packages</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#r-packages-a-short-primer">R packages: A short Primer</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-a-package-really">What is a package, really?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#package-states">Package states</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#finding-out-if-an-r-package-is-installed">Finding out if an R package is installed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-your-own-packages">Installing your own packages</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automatical-download-and-install-from-cran">Automatical download and install from CRAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automatic-download-and-install-from-github">Automatic download and install from GitHub</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example_1">Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#manual-download-and-install">Manual download and install</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install-own-packages-on-bianca">Install own packages on Bianca</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Extra reading</li>
+      <li class="breadcrumb-item active">More about R packages</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/r/morepackages.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="more-about-r-packages">More about R packages<a class="headerlink" href="#more-about-r-packages" title="Anchor link to this section for reference">&para;</a></h1>
+<p>This page contains some more advanced information about R packages.</p>
+<h2 id="r-packages-a-short-primer">R packages: A short Primer<a class="headerlink" href="#r-packages-a-short-primer" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="what-is-a-package-really">What is a package, really?<a class="headerlink" href="#what-is-a-package-really" title="Anchor link to this section for reference">&para;</a></h3>
+<p>An R package is essentially a contained folder and file structure containing R
+code (and possibly C/C++ or other code) and other files relevant for the
+package e.g. documentation(vignettes), licensing and configuration files. Let
+us look at a very simple example</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/MatPiq/R_example.git
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>R_example
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>$<span class="w"> </span>tree
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>.
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├──<span class="w"> </span>DESCRIPTION
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├──<span class="w"> </span>NAMESPACE
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>├──<span class="w"> </span>R
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│<span class="w">   </span>└──<span class="w"> </span>hello.R
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├──<span class="w"> </span>man
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│<span class="w">   </span>└──<span class="w"> </span>hello.Rd
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>└──<span class="w"> </span>r_example.Rproj
+</span></code></pre></div>
+<details class="note">
+<summary>Installing tree as non-root on Linux Ubuntu</summary>
+<p>If you are on a Linux Ubuntu system where tree is not installed, and you do not have root permissions, you can do this to install it in your own area</p>
+<p>1) Create a directory (in your home folder) to install in:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>~/mytree
+</span></code></pre></div>
+<p>Change to that directory:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/mytree
+</span></code></pre></div>
+<p>Now download tree:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>apt<span class="w"> </span>download<span class="w"> </span>tree
+</span></code></pre></div>
+<p>Unpack the files:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dpkg-deb<span class="w"> </span>-xv<span class="w"> </span>./*deb<span class="w"> </span>./
+</span></code></pre></div>
+<p>You can use tree like this now, giving the full path:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>~/mytree/usr/bin/tree
+</span></code></pre></div>
+<p><strong>Note</strong>: if you want to be able to use it with the command &ldquo;tree&rdquo; you could set an alias in your ~/.bashrc file and then <code>source</code> it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;alias tree=&quot;$HOME/mytree/usr/bin/tree&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+</details>
+<h3 id="package-states">Package states<a class="headerlink" href="#package-states" title="Anchor link to this section for reference">&para;</a></h3>
+<p>An R packages can exist in five possible states</p>
+<ul>
+<li>Source: &ldquo;source code&rdquo; or &ldquo;source files&rdquo;. Development form.</li>
+<li>Bundled: The source code compressed into a single file, usually <code>tar.gz</code> and
+  sometimes referred to as &ldquo;source tarballs&rdquo;. Files in <code>.Rbuildignore</code> are
+  excluded.</li>
+<li>Binary: A compressed and pre-compiled version of a bundle built for a
+  specific architecture. Usually how the package is provided by CRAN. Much
+  faster than having to compile yourself and no need for dev/build tools.</li>
+<li>Installed: A decompressed binary package located in a package <em>library</em> (more
+  on this later).</li>
+<li>In-memory: When the installed package has been loaded from the library into
+  memory, using <code>require(pkg)</code> or <code>library(pkg)</code>.</li>
+</ul>
+<p><img alt="R package states" src="../../img/R-pkg-states.png" /></p>
+<p>Source:</p>
+<ul>
+<li>https://r-pkgs.org/structure.html and</li>
+<li>https://nbisweden.github.io/RaukR-2021/rpackages_Sebastian/presentation/rpackages_Sebastian.html</li>
+</ul>
+<h2 id="finding-out-if-an-r-package-is-installed">Finding out if an R package is installed<a class="headerlink" href="#finding-out-if-an-r-package-is-installed" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within R</p>
+<p><code>library(package-name)</code></p>
+<p>Another option would be to create a dataframe of all the installed packages</p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">ip</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">installed.packages</span><span class="p">()[,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="o">:</span><span class="m">4</span><span class="p">)])</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">ip</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ip</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">ip</span><span class="o">$</span><span class="n">Priority</span><span class="p">),</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">]</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nf">print</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</span></code></pre></div>
+<p>However, this might not be so helpful unless you do additional filtering.
+<br></p>
+<p>Another simple option is to <code>grep</code> the library directory. For example, both when loading <code>R_packages</code> at UPPMAX and <code>R-bundle-Bioconductor</code> at HPC2N the environment variable <code>R_LIBS_SITE</code> will be set to the path of the package
+library.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">UPPMAX</label><label for="__tabbed_1_2">HPC2N</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Load <code>R_packages</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>ml<span class="w"> </span>R_packages/4.1.1
+</span></code></pre></div>
+<p>Then grep for some package</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$R_LIBS_SITE</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>glmnet
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dr-xr-sr-x<span class="w">  </span><span class="m">9</span><span class="w"> </span>douglas<span class="w"> </span>sw<span class="w">  </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>EBglmnet
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>dr-xr-sr-x<span class="w"> </span><span class="m">11</span><span class="w"> </span>douglas<span class="w"> </span>sw<span class="w">  </span><span class="m">4096</span><span class="w"> </span>Nov<span class="w"> </span><span class="m">11</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>glmnet
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>dr-xr-sr-x<span class="w">  </span><span class="m">8</span><span class="w"> </span>douglas<span class="w"> </span>sw<span class="w">  </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>glmnetcr
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>dr-xr-sr-x<span class="w">  </span><span class="m">7</span><span class="w"> </span>douglas<span class="w"> </span>sw<span class="w">  </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>glmnetUtils
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Load <code>R-bundle-Bioconductor</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>ml<span class="w"> </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1<span class="w"> </span>R-bundle-Bioconductor/3.14-R-4.1.2
+</span></code></pre></div>
+<p>Check the <code>R_LIBS_SITE</code> environment variable</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$R_LIBS_SITE</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>/hpc2n/eb/software/R-bundle-Bioconductor/3.14-foss-2021b-R-4.1.2:/hpc2n/eb/software/arrow-R/6.0.0.2-foss-2021b-R-4.1.2
+</span></code></pre></div>
+<p>Then grep for some package in the BioConductor package library</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/hpc2n/eb/software/R-bundle-Bioconductor/3.14-foss-2021b-R-4.1.2<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>RNA
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>drwxr-xr-x<span class="w">  </span><span class="m">9</span><span class="w"> </span>easybuild<span class="w"> </span>easybuild<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">30</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>DeconRNASeq/
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>drwxr-xr-x<span class="w">  </span><span class="m">7</span><span class="w"> </span>easybuild<span class="w"> </span>easybuild<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">30</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>RNASeqPower/
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="installing-your-own-packages">Installing your own packages<a class="headerlink" href="#installing-your-own-packages" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Sometimes you will need R packages that are not already installed. The solution
+to this is to install your own packages. These packages will usually come from
+CRAN (https://cran.r-project.org/) - the Comprehensive R Archive Network, or
+sometimes from other places, like GitHub or R-Forge</p>
+<p>Here we will look at installing R packages with automatic download and with
+manual download. It is also possible to install from inside Rstudio.</p>
+<h3 id="setup">Setup<a class="headerlink" href="#setup" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We need to create a place for the own-installed packages to be and to tell R
+where to find them. The initial setup only needs to be done once, but separate
+package directories need to be created for each R version used.</p>
+<p>R reads the <code>$HOME/.Renviron</code> file to setup its environment. It should be
+created by R on first run, or you can create it with the command: <code>touch
+$HOME/.Renviron</code></p>
+<p><strong>NOTE</strong>: In this example we are going to assume you have chosen to place the R packages in a directory under your home directory, but in general it might be good to use the project storage for space reasons. As mentioned, you will need
+separate ones for each R version.</p>
+<p>If you have not yet installed any packages to R yourself, the environment file should be empty and you can update it like this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/R-packages-%V&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>If it is <strong>not empty</strong>, you can edit <code>$HOME/.Renviron</code> with your favorite editor so that <code>R_LIBS_USER</code> contains the path to your chosen directory for own-installed R packages.</li>
+</ul>
+</div>
+<p>It should look something like this when you are done:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;/home/u/user/R-packages-%V&quot;</span>
+</span></code></pre></div>
+<p><strong>NOTE</strong> Replace <code>/home/u/user</code> with the value of <code>$HOME</code>. Run <code>echo $HOME</code> to see its value.
+<strong>NOTE</strong> The <code>%V</code> should be written as-is, it&rsquo;s substituted at runtime with the active R version.</p>
+<p>For each version of R you are using, create a directory matching the pattern
+used in <code>.Renviron</code> to store your packages in. This example is shown for R
+version 4.1.1:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/R-packages-4.1.1
+</span></code></pre></div>
+<h3 id="automatical-download-and-install-from-cran">Automatical download and install from CRAN<a class="headerlink" href="#automatical-download-and-install-from-cran" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You find a list of packages in CRAN (https://cran.r-project.org/) and a list of repos here: https://cran.r-project.org/mirrors.html</p>
+<p>Please choose a location close to you when picking a repo.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">From command line</label><label for="__tabbed_2_2">From inside R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;&lt;r-package&gt;&#39;, repos=&#39;&lt;repo&gt;&#39;)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-R highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;&lt;r-package&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;&lt;repo&gt;&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>In either case, the dependencies of the package will be downloaded and
+installed as well.</p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Anchor link to this section for reference">&para;</a></h4>
+<p>In this example, we will install the R package <code>stringr</code> and use the repository http://ftp.acc.umu.se/mirror/CRAN/</p>
+<p><strong>Note</strong>: You need to load R (and any prerequisites, and possibly R-bundle-Bioconductor if you need packages from that) before installing packages.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">From command line</label><label for="__tabbed_3_2">From inside R</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>$<span class="w"> </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;stringr&#39;, repos=&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;)&quot;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-R highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;stringr&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>There are other ways to install R packages, including from GitHub.</p>
+<h3 id="automatic-download-and-install-from-github">Automatic download and install from GitHub<a class="headerlink" href="#automatic-download-and-install-from-github" title="Anchor link to this section for reference">&para;</a></h3>
+<p>If you want to install a package that is not on CRAN, but which do have a GitHub page, then there is an automatic way of installing, but you need to handle prerequsites yourself by installing those first. It can also be that the package is not in as finished a state as those on CRAN, so be careful. </p>
+<p>To install packages from GitHub directly, from inside R, you first need to install the devtools package. Note that you only need to install this <strong>once</strong>.</p>
+<p>This is how you install a package from GitHub, inside R: </p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;devtools&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1"># ONLY ONCE</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;DeveloperName/package&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Anchor link to this section for reference">&para;</a></h3>
+<p>In this example we want to install the package <code>quantstrat</code>. It is not on CRAN, so let&rsquo;s get it from the GitHub page for the project: https://github.com/braverock/quantstrat</p>
+<p>We also need to install devtools so we can install packages from GitHub. In addition, <code>quantstrat</code> has some prerequisites, some on CRAN, some on GitHub, so we need to install those as well.</p>
+<div class="language-R highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;devtools&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># ONLY ONCE</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;FinancialInstrument&quot;</span><span class="p">)</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;PerformanceAnalytics&quot;</span><span class="p">)</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;braverock/blotter&quot;</span><span class="p">)</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;braverock/quantstrat&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="manual-download-and-install">Manual download and install<a class="headerlink" href="#manual-download-and-install" title="Anchor link to this section for reference">&para;</a></h3>
+<p>If the package is not on CRAN or you want the development version, or you for other reason want to install a package you downloaded, then this is how to install from the command line:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>R<span class="w"> </span>CMD<span class="w"> </span>INSTALL<span class="w"> </span>-l<span class="w"> </span>&lt;path-to-R-package&gt;/R-package.tar.gz
+</span></code></pre></div>
+<p><strong>NOTE</strong> that if you install a package this way, you need to handle any dependencies yourself.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Places to look for R packages</p>
+<ul>
+<li>CRAN (https://cran.r-project.org/)</li>
+<li>R-Forge (https://r-forge.r-project.org/)</li>
+<li>Project&rsquo;s own GitHub page</li>
+<li>etc.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>You can check for installed packages<ul>
+<li>from inside R with <code>installed.packages()</code></li>
+<li>from BASH shell with the
+         - <code>ml help R/&lt;version&gt;</code> at UPPMAX
+         - <code>ml spider R/&lt;version&gt;</code> at HPC2N</li>
+</ul>
+</li>
+<li>Installation of R packages can be done either from within R or from the command line (BASH shell)</li>
+<li>CRAN is the recommended place to look for R-packages, but many packages can be found on GitHub and if you want the development version of a package you likely need to get it from GitHub or other place outside CRAN. You would then either download and install manually or install with something like devtools, from within R.</li>
+</ul>
+</div>
+<h2 id="install-own-packages-on-bianca">Install own packages on Bianca<a class="headerlink" href="#install-own-packages-on-bianca" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>If an R package is not not available on Bianca already (like Conda repositories) you may have to use the wharf to install the library/package</li>
+<li>Typical workflow</li>
+<li>Install on Rackham</li>
+<li>Transfer to Wharf</li>
+<li>Move package to local Bianca R package path</li>
+<li>Test your installation</li>
+<li>Demo and exercise from our Bianca course:</li>
+<li><a href="https://uppmax.github.io/bianca_workshops/extra/rpackages/" target="_blank">Installing R packages on Bianca</a> </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../reflections/" class="btn btn-neutral float-left" title="Reflections"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../matlab/extra/" class="btn btn-neutral float-right" title="More about Matlab">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../reflections/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../matlab/extra/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
