@@ -109,7 +109,7 @@ In the file [`.markdownlintignore`](.markdownlintignore).
 
 Theme      |Admonitions test page
 -----------|------------------------
-ReadTheDocs|[Admonitions test page](https://uppmax.github.io/linux-command-line-201/misc/test_admonitions/)
+ReadTheDocs|[Admonitions test page](https://uppmax.github.io/linux-command-line-102/misc/test_admonitions/)
 materials  |[Admonitions test page](https://uppmax.github.io/naiss_intro_python/misc/test_admonitions/)
 
 <!-- markdownlint-enable MD013 -->
