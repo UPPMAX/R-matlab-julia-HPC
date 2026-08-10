@@ -120,13 +120,16 @@ I quote:
 - Students learn new material better and can remember it longer when they learn
   it by engaging in an activity than when they passively watch or listen
   to an instructor talk [8 references]
+  (page 92, item 2)
 - [...] long lectures and presentations will fail because students stop
   viewing and listening after about six minutes.
   This phenomenon parallels McKeachie's earlier classroom findings about
   inattention after five to ten minutes [reference].
+  <!-- I do not believe McKeachie anymore, thanks to: Wilson, Karen, and James H. Korn. "Attention during lectures: Beyond ten minutes." Teaching of Psychology 34.2 (2007): 85-89. -->
   In online classes, such student inattention becomes explicitly visible
   through electronic monitoring of activities and questions
   from students about what has already been covered in a long presentation.
+  (page 69, part of 'Choosing online and offline content', 1st paragraph)
 
 Reasons why learners do not turn on their camera, is
 
