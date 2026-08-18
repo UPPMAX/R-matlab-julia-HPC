@@ -2,11 +2,11 @@
 
 - [Prerequisites](prereqs.md)
 
-Day                       |Language|Schedule
---------------------------|--------|-----------------------------------------
-?October 2026 [1]         | R      |[R schedule](r/schedule.md)
-?October 2026 [1]         |MATLAB  |[MATLAB schedule](matlab/schedule.md)
-?October 2026 [1]         |Julia   |[Julia schedule](julia/schedule.md)
-?October 2026 [1]         |Advanced|[Advanced schedule](advanced/schedule.md)
+Day                           |Language|Schedule
+------------------------------|--------|-----------------------------------------
+Tuesday 20 October 2026 [1]   |R       |[R schedule](r/schedule.md)
+Wednesday 21 October 2026 [1] |MATLAB  |[MATLAB schedule](matlab/schedule.md)
+Thursday 22 October 2026 [1]  |Julia   |[Julia schedule](julia/schedule.md)
+ Monday 26 October 2026 [1]   |Advanced|[Advanced schedule](advanced/schedule.md)
 
-- [1] Personal communication via Matrix channel
+- [1] Personal communication via Matrix channel, ongoing discussion
