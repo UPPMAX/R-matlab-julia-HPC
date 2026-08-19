@@ -22,3 +22,7 @@ Iteration|Date      |Language|Evaluations
 .        |2025-10-07|MATLAB  |[Evaluation](20251007_matlab/README.md)
 .        |2025-10-08|Julia   |[Evaluation](20251008_julia/README.md)
 .        |2025-10-10|Advanced|[Evaluation](20251010_advanced/README.md)
+7        |2026-10-19|R       |[Evaluation](20261019_r/README.md)
+.        |2026-10-20|MATLAB  |[Evaluation](20261020_matlab/README.md)
+.        |2026-10-21|Julia   |[Evaluation](20261021_julia/README.md)
+.        |2026-10-22|Advanced|[Evaluation](20261022_advanced/README.md)

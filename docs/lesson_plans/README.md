@@ -9,3 +9,5 @@ Iteration|Date      |Language|Lesson plans
 5        |2025-03-24|R       |[Lesson plan](20250324_richel/README.md)
 6        |2025-10-06|R       |[Lesson plan](20251006_richel/README.md)
 .        |2025-10-10|Advanced|[Lesson plan](20251010_richel/README.md)
+7        |2026-10-19|R       |[Lesson plan](20261019_richel/README.md)
+.        |2026-10-22|Advanced|[Lesson plan](20261022_richel/README.md)
