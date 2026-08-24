@@ -63,6 +63,7 @@ nav:
     - Misc: 
       - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
+      - Meeting notes: meeting_notes/README.md
       - Reflections: reflections/README.md
     - Extra reading: 
       - More about R packages: r/morepackages.md
