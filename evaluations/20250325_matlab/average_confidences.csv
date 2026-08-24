@@ -1,0 +1,16 @@
+question,mean
+I can add job settings needed to run jobs from Matlab,4.25
+I can configure the cluster,4.25
+I can run Matlab in Jupyter,1.6666666666666667
+I can start Matlab on the terminal,4.75
+I can start the Matlab GUI,4.5
+I can submit jobs from inside the Matlab GUI,3.75
+I can submit jobs from inside the Matlab terminal interface,4.5
+I can use GPUs with Matlab,2.25
+I can use the Matlab client on the desktop,3.5
+I can use the module system to load a specific version of Matlab,4.75
+I can work in Matlab terminal interface,5
+I can work with Matlab in parallel,3
+I can write and submit a Matlab batch script,4
+I can install add-ons,3.5
+I can view add-ons and Toolboxes,3.75

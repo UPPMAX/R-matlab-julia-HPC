@@ -1,0 +1,10 @@
+question,mean
+I can install a Julia package,3.6666666666666665
+I can run Julia,4.666666666666667
+I can run a Julia script,4.666666666666667
+I can submit a batch script to the job scheduler,4
+I can use the Julia interpreter,5
+I can use the module system to load a specific verison of Julia,4.666666666666667
+I can work interactively with Julia on the compute nodes,3.3333333333333335
+I can work with Julia project environments,3.3333333333333335
+I can write a batch script,3.6666666666666665
