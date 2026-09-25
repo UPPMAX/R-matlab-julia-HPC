@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Spring 2024 - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Spring 2024";
+        var mkdocs_page_input_path = "meeting_notes/2024_1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Spring 2024</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/meeting_notes/2024_1.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="spring-2024">Spring 2024<a class="headerlink" href="#spring-2024" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="dates">Dates<a class="headerlink" href="#dates" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>11 March 11:00-12:00: On-boarding</li>
+<li>12 March: Python</li>
+<li>13 March: Julia</li>
+<li>14 March: R</li>
+</ul>
+<h2 id="evaluation-meeting-2024-03-27-at-1330">Evaluation meeting 2024-03-27 at 13.30<a class="headerlink" href="#evaluation-meeting-2024-03-27-at-1330" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>
+<p>Student evaluations:</p>
+<ul>
+<li><a href="https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=gYUW4FOr3fmmsYmBv20YfsRGEQUDXKUw&amp;id=-aZLWjH1Mk-UZzmPGead5I9DA_EX6qtGpq8zJf2ohI1UMVpNM1dGUEhPVFpKUDVOUlBRWkgyUFlWMi4u">Python</a></li>
+<li><a href="https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=gYUW4FOr3fmmsYmBv20YfsRGEQUDXKUw&amp;id=-aZLWjH1Mk-UZzmPGead5I9DA_EX6qtGpq8zJf2ohI1UNlY3NFUwODFMWDlDVFhUUkRMS01CSkQzSS4u">Julia</a></li>
+<li><a href="https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=gYUW4FOr3fmmsYmBv20YfsRGEQUDXKUw&amp;id=-aZLWjH1Mk-UZzmPGead5I9DA_EX6qtGpq8zJf2ohI1UQ0NUU1pWQ0taNlE2V0JRUllDQlMwMkdXSi4u">R</a></li>
+</ul>
+</li>
+<li>
+<p>[Decided in meeting] Make the Python day last until 16:00</p>
+</li>
+<li>[Decided in meeting] Seperate email for introduction to course and the prerequisites,
+  most important info at the top; it&rsquo;s OK to repeat info</li>
+<li>
+<p>We conclude that the course is improving from the course ratings, all of them have gone up</p>
+</li>
+<li>
+<p>[Ri, all, suggest/vote, 5 mins] I think Python by far got the most attention by us. What about try to have seperate meetings going per day?</p>
+<ul>
+<li>BiBjRi: Yes</li>
+</ul>
+</li>
+<li>[Ri, all] I am happy to see the prereqs page and the obvious love put in it. I am unsure of the page&rsquo;s purpose. Could we come up with a purpose of the page and vote? I volunteer to do the work. If we discuss: The goal of the prereqs page is &hellip;<ul>
+<li>BiBjRi: &hellip; that our learners can test/verify that they have the minimum skillset and have installed the minimum requirements for the course</li>
+<li>[other votes]: [other suggestions]</li>
+</ul>
+</li>
+<li>[Pedro, discuss] Make course material (even) more course agnostic by adding more links to other centers in course material. Bi: we should focus on one or two centers. Bi: in the near future, we may already be using Dardel, so we&rsquo;ll do this automatically. Bi: for UmU, course material must gathered at the course&rsquo;s site (i.e. cannot only link to UmU pages).</li>
+<li>[Bi, discuss] Will we use Rackham or Dardel in the fall? We will decide before summer.</li>
+<li>[Richel, Python &amp; R, discuss] I think the summary of the evaluations of Python and R is &lsquo;talk less, demonstrate slower, more time for exercises&rsquo;. To me, this seems like a recurring pattern. What about we help encourage outselves to commit to fixing this? My suggestion: to the learners&rsquo; evaluation, add &lsquo;Which section(s) scheduled enough time for exercises?&rsquo; as a means to encourage use to do better<ul>
+<li>[VOTED] BiBjPeRi: Yes</li>
+</ul>
+</li>
+<li>[Ri, Python &amp; R, discuss] When reflecting on the evaluation results, Most questions were useless to me, as they did not help answer my teaching questions. I cannot predict which questions are mandatory, nor which are useful to others. Result: we inherited these questions and we do use these to some extent<ul>
+<li>[Agreed] We should check on adding text comments, next to the &lsquo;give a rating&rsquo; qestions</li>
+<li>[Agreed] Which section(s) scheduled enough time for exercises?</li>
+<li>[Is more-or-less already in, keep the original question] What should we keep doing?</li>
+<li>[Is more-or-less already in, keep the original question] What should we improve?</li>
+<li>[Is more-or-less already in, keep the original question] Other comments?</li>
+</ul>
+</li>
+<li>
+<p>[AGREED][Ri, Python] Suggest at least 30 mins of time for UPPMAX&rsquo;s interactive+Jupyter: 15 mins is too short</p>
+</li>
+<li>
+<p>Fall planning</p>
+<ul>
+<li>week 43: Tue 22 Oct -Fri 25 Oct<ul>
+<li>onboarding: Mon 21 Oct</li>
+<li>Python: Tuesday 22nd Oct:</li>
+<li>Julia: Wednesday 23rd Oct:</li>
+<li>R: Thursday 24th Oct:</li>
+<li>Matlab: Friday 25th Oct: Bi + Bj + Pe</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HPC Python: May 15th: leave everything the same: Bi + Bj + Pe teach, Ri assists<ul>
+<li>with updates of course from earlier learnings</li>
+<li>py/3.11 (GPU UPPMAX perhaps other solution)</li>
+</ul>
+</li>
+</ul>
+<h2 id="planning-meeting-2024-03-11-930-max1030">Planning meeting 2024-03-11 9:30-(max)10:30<a class="headerlink" href="#planning-meeting-2024-03-11-930-max1030" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>[Richel, 1 min, FYI] Richel has not gotten the link checker to work, probably does not have the time to do so<ul>
+<li>skip for now</li>
+</ul>
+</li>
+<li>.wordlist can be updated by all of us</li>
+<li>[Richel, 3 mins, FYI] Richel has not tested <a href="https://uppmax.github.io/R-python-julia-HPC/python/packages.html">Python packages</a> and <a href="https://uppmax.github.io/R-python-julia-HPC/python/isolated.html">Python isolated environments</a> on Kebnekaise yet, instead used the code that was present. AFAIK, I have no access to Kebnekaise<ul>
+<li>Birgitte has already double-checked, so we assume it to work :-)</li>
+</ul>
+</li>
+<li>Should <code>--devcore</code> (UPPMAX only) be included in the session on batch?<ul>
+<li>[ ] Björn will add it :-)</li>
+</ul>
+</li>
+<li>Onboarding at 11:00, we predict few people show up :-)</li>
+<li>[Richel, 3 mins, discuss] Time to put schedule of HackMD on Sphinx website?<ul>
+<li>Schedule can be assumed to be up-to-date&hellip;</li>
+<li>Tip: Richel uses <a href="https://tableconvert.com/restructuredtext-generator">this website</a> to create RST tables :-)</li>
+</ul>
+</li>
+<li>[Richel, 3 mins, discuss] Evaluations before Q&amp;A on all days?<ul>
+<li>[x] If yes: who does that? Björn will do <img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":+1:" /></li>
+</ul>
+</li>
+<li>Evaluations: Birgitte has them, will be in the Q&amp;A document</li>
+<li>Parallel functions<ul>
+<li>[x] move to last Jl and R days</li>
+<li>demo on kebnekaise<ul>
+<li>[x] Björn added demo box</li>
+</ul>
+</li>
+<li>exercises on batch<ul>
+<li>make clearer instructions how to run<ul>
+<li>UPPMAX: Björn</li>
+<li>HPC2N: Pedro</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When parallel tracks, an Umeåner needs to start the recording in both Zoom rooms<ul>
+<li>First Zoom room:<ul>
+<li><code>[Zoom URL]</code></li>
+<li>Meeting ID: 619 2226 4837</li>
+<li>Passcode: 416707</li>
+</ul>
+</li>
+<li>Second Zoom room:<ul>
+<li>In the Q&amp;A document: <code>[Zoom URL]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>[x] Reschedule R to mimic Python day: Björn will do so</li>
+<li>[x] Reschedule Julia to mimic Python day: Björn will contact Pedro when ready</li>
+<li>Exercises Julia added by Pedro<ul>
+<li>[x] all except last exercise</li>
+<li>[ ] batch exercise</li>
+</ul>
+</li>
+</ul>
+<h2 id="planning-meeting-2024-03-06-at-1300-1400">Planning meeting 2024-03-06 at 13:00-14:00<a class="headerlink" href="#planning-meeting-2024-03-06-at-1300-1400" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Status<ul>
+<li>[Richel, Python, technical] : <code>python_ML_packages/3.9.5-gpu</code> seems to works perfectly with the <code>pytorch_fitting_gpu.py</code> script:</li>
+</ul>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>module load python_ML_packages/3.9.5-gpu
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git clone https://github.com/UPPMAX/R-python-julia-HPC
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cd R-python-julia-HPC
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>pip install -r requirements.txt
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cd Exercises
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python pytorch_fitting_gpu.py
+</span></code></pre></div>
+<ul>
+<li>Birgitte: <code>pytorch_fitting_gpu-snowy.sh</code> does not work. Richel: I indeed needed <code>pip install -r requirements.txt</code>. Hence, the metapackage does not work correctly, as you need to install pytorch using pip</li>
+<li>Birgitte: <code>seaborn-code.py</code> in <a href="https://uppmax.github.io/R-python-julia-HPC/python/batchPython.html#serial-code-self-installed-package-in-virt-env">the course content</a> does not work</li>
+<li>
+<p>comment(BC):</p>
+<ul>
+<li>Seems we have to stick with 3.9.5, since installation of 3.11.8 has not succeeded yet</li>
+<li>If 3.11.8 is installed, use that one. Else, use 3.9.5.</li>
+<li>Decision: Thursday March 7 12:00</li>
+</ul>
+</li>
+<li>
+<p>Discussion</p>
+<ul>
+<li>[Richel, Python, isolated environments] The schedule states <code>**10.45**|Isolated environments (ML, venv, **conda**)|Richel (45--&gt;60)</code>, with a stress on conda. Sharing the new teaching goals for isolated environments (below), however, showed the need for venv again. What need the teaching goals be?</li>
+</ul>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>        - learners have created, activated, used and deactivated a conda virtual environment
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        - learners have used an ML package
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        - learners have heard about venv
+</span></code></pre></div>
+<p>or back to the earlier: <strong>YES</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>        - learners have created, activated, used and deactivated a venv
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        - learners have used an ML package
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        - learners have heard about conda
+</span></code></pre></div>
+<p>Conclusion: use the good old venv, Richel misunderstood :-)</p>
+<ul>
+<li>
+<p>Björn moved some content from index page to prereqs. <a href="https://uppmax.github.io/R-python-julia-HPC/prereqs.html">https://uppmax.github.io/R-python-julia-HPC/prereqs.html</a></p>
+<ul>
+<li>the links for improving programming skills</li>
+<li>most of the cluster information</li>
+<li>Comments?<ul>
+<li>Add using 2FA on the ThinLinc local client /Björn</li>
+</ul>
+</li>
+<li>To discuss:<ul>
+<li>Is it OK to take a quick explanation of the most important things<ul>
+<li>login &amp; compute nodes and cores</li>
+<li>similarities and differences between Kebnekaise and UPPMAX clusters</li>
+</ul>
+</li>
+<li>DONE</li>
+</ul>
+</li>
+<li>Richel: teacher is boss :-) . The UPPMAX docs are tested and nice and used by other courses: prefer working on one source of content<ul>
+<li>SSH X forwarding<a href="http://docs.uppmax.uu.se/software/ssh_x_forwarding/">http://docs.uppmax.uu.se/software/ssh_x_forwarding/</a><ul>
+<li>DONE</li>
+</ul>
+</li>
+<li>Björn adds XMING in prereqs<ul>
+<li>DONE</li>
+</ul>
+</li>
+<li>Refer to UPPMAX doc <a href="http://docs.uppmax.uu.se/getting_started/login_rackham/#remote-desktop">Remote desktop via webbrowser</a>, including using 2FA<ul>
+<li>DONE</li>
+</ul>
+</li>
+<li>Text editors: <a href="http://docs.uppmax.uu.se/software/text_editors/">http://docs.uppmax.uu.se/software/text_editors/</a><ul>
+<li>DONE</li>
+</ul>
+</li>
+<li>Linux: <a href="http://docs.uppmax.uu.se/getting_started/linux/">http://docs.uppmax.uu.se/getting_started/linux/</a><ul>
+<li>DONE</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>[Richel, 5 mins] Suggest to conformize folder names at <a href="https://github.com/UPPMAX/R-python-julia-HPC">https://github.com/UPPMAX/R-python-julia-HPC</a>: <code>Exercises</code>, <code>R</code>, <code>docs</code>, <code>summaryPython.rst</code>, <code>packages_suggest.rst</code>, <code>sequential-python.sh</code></p>
+<ul>
+<li>Richel&rsquo;s suggestion: <code>all_lower_snake_case_with_underscores</code>, Richel volunteers to do so</li>
+<li>Birgitte: this year folders only, next time I&rsquo;ll promise to rename the files :-) .<ul>
+<li><code>exercises</code>, <code>folder_with_more_names</code></li>
+<li>[ ] Richel does it today before 23:59 <img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":+1:" /></li>
+<li>[ ] Richel checks link checker</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Birgitte: some UPPMAX questions. These were already answered :-)</p>
+</li>
+<li>Type-alongs<ul>
+<li>Björn added <code>.. type-along::</code> are the tags for type-along blocks.</li>
+<li>Björn  can continue for R</li>
+<li>Instructors will add this to their content if it is used in Python</li>
+</ul>
+</li>
+<li>Next events:<ul>
+<li>Onboarding: Monday March 11th 11:00-(max)12:00</li>
+<li>Planning meeting: Monday March 11th 9:30-(max)10:30</li>
+</ul>
+</li>
+</ul>
+<h2 id="planning-meeting-2024-02-29-1100-1200">Planning meeting 2024-02-29 11:00-12:00<a class="headerlink" href="#planning-meeting-2024-02-29-1100-1200" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Richel will be absent</li>
+<li>
+<p>Björn and Richel thought that they had a nearly-mandatory event in the afternoon at the R day on March 14th. However, it was in the morning. Vote:</p>
+<ul>
+<li>Björn and Richel teach in the afternoon of the R day, Birgitte and Pedro teach in the morning: <img alt="👎" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44e.svg" title=":-1:" /></li>
+<li>Björn and Richel cancel the nearly-mandatory event and teach in the morning: <strong>We do this</strong></li>
+<li>Move the R day to another date: <img alt="👎" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44e.svg" title=":-1:" /></li>
+<li>Latest info: the nearly-mandatory event may be prostponed for other reasons</li>
+</ul>
+</li>
+<li>
+<p>Status:</p>
+<ul>
+<li>Problems with ML_packages installation</li>
+</ul>
+</li>
+<li>
+<p>ToDos</p>
+<ul>
+<li>Richel<ul>
+<li>check 3.11 compatibility with exercises at UPPMAX</li>
+<li>will go through <a href="https://uppmax.github.io/R-python-julia-HPC/python/isolated.html">https://uppmax.github.io/R-python-julia-HPC/python/isolated.html</a> and check if it work with python/3.11.8 combined with ML_packages/3.11.8-GPU Tuesday 5th March</li>
+</ul>
+</li>
+<li>Björn:<ul>
+<li>type-along boxes<ul>
+<li>julia done?</li>
+</ul>
+</li>
+<li>index page strip</li>
+<li>Prereqs more info</li>
+<li>Julia parts updates</li>
+<li>quiz</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="planning-meeting-2024-02-22-11001200">Planning meeting 2024-02-22 11:00–12:00<a class="headerlink" href="#planning-meeting-2024-02-22-11001200" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>
+<p>Status</p>
+<ul>
+<li>Diana is installing ML_packages/3.11.8-GPU today<ul>
+<li>theano problem??</li>
+<li>Theano is not compatible with modern numpy 1.25.x (as we have with Python 3.1</li>
+<li>pytensor is the continuation</li>
+<li>but use first in HPC-python course</li>
+<li>pytensor will be installed at Rackham</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>ToDos</p>
+<ul>
+<li>Björn:<ul>
+<li>check 3.11 compatibility with exercises at UPPMAX</li>
+<li>type-along boxes</li>
+<li>Prereqs more info</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="schedule-for-the-spring-2024-version">Schedule for the spring 2024 version<a class="headerlink" href="#schedule-for-the-spring-2024-version" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="python-tuesday-2024-03-12">Python (Tuesday 2024-03-12)<a class="headerlink" href="#python-tuesday-2024-03-12" title="Anchor link to this section for reference">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>9.00</strong></td>
+<td>Syllabus</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>9.10</strong></td>
+<td>Python in general</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>9.20</strong></td>
+<td>Load modules and run</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>9.45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10:00</strong></td>
+<td>Packages  (45&ndash;&gt;30)</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>10.30</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10.45</strong></td>
+<td>Isolated environments (ML, venv, <strong>conda</strong>)</td>
+<td>Richel (45&ndash;&gt;60)</td>
+</tr>
+<tr>
+<td><strong>11:45</strong></td>
+<td>Break or informal chat</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>12.00</strong></td>
+<td>Lunch</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>13.00</strong></td>
+<td>Batch</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13:20</strong></td>
+<td>GPU</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13.30</strong></td>
+<td>Kebnekaise: Jupyter</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Rackham:  Interactive session and Jupyter</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>13.45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>14.00</strong></td>
+<td>Parallel and multithreaded functions</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td><strong>14.25</strong></td>
+<td>Conclusion &amp; Q/A</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>14.45</strong></td>
+<td>Evaluation</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>15.00</strong></td>
+<td>END</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="julia-wednesday-2024-03-13">Julia (Wednesday 2024-03-13)<a class="headerlink" href="#julia-wednesday-2024-03-13" title="Anchor link to this section for reference">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>9.00</strong></td>
+<td>Syllabus    7</td>
+<td>Björn</td>
+</tr>
+<tr>
+<td><strong>9.10</strong></td>
+<td>Intro, Julia in general 23</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td><strong>9.30</strong></td>
+<td>Load modules and run   16</td>
+<td>Björn</td>
+</tr>
+<tr>
+<td><strong>9:45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10:00</strong></td>
+<td>Packages and isolated 47</td>
+<td>Pedro (and Björn)</td>
+</tr>
+<tr>
+<td><strong>11:00</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>11:15</strong></td>
+<td>Parallel and multithreaded functions 30</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td><strong>11.45</strong></td>
+<td>Break or informal chat or exer</td>
+<td>all?</td>
+</tr>
+<tr>
+<td><strong>12.00</strong></td>
+<td>Lunch</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>13.00</strong></td>
+<td>Batch and GPU     46</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td><strong>13.50</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>14.00</strong></td>
+<td>UPPMAX: Jupyter and interactive 25</td>
+<td>Björn</td>
+</tr>
+<tr>
+<td>.</td>
+<td>HPC2N: Jupyter</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td><strong>14.25</strong></td>
+<td>Conclusion and summary, Q/A</td>
+<td>Björn</td>
+</tr>
+<tr>
+<td><strong>14.35</strong></td>
+<td>Evaluation</td>
+<td>Anon [R volunteers]</td>
+</tr>
+<tr>
+<td><strong>14.45</strong></td>
+<td>Q/A</td>
+<td>Anon [R volunteers]</td>
+</tr>
+<tr>
+<td><strong>15.00</strong></td>
+<td>END</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="r-thursday-2024-03-14">R (Thursday 2024-03-14)<a class="headerlink" href="#r-thursday-2024-03-14" title="Anchor link to this section for reference">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>9:00</strong></td>
+<td>Syllabus</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>9:10</strong></td>
+<td>R in general</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>9:20</strong></td>
+<td>Load modules and run</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>9:45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10:00</strong></td>
+<td>Packages</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>10:30</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10:45</strong></td>
+<td>Kebnekaise, ThinLinc &amp; RStudio</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td>.</td>
+<td>UPPMAX: ThinLinc, RStudio, inter-</td>
+<td>Björn &lt;&mdash; NEW</td>
+</tr>
+<tr>
+<td><strong>11:15</strong></td>
+<td>Parallel</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td><strong>11:50</strong></td>
+<td>Break or informal chat</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>12:00</strong></td>
+<td>Lunch</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>13:00</strong></td>
+<td>Isolated environments</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13:20</strong></td>
+<td>Batch</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13:50</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>14:00</strong></td>
+<td>ML</td>
+<td>Birgitte or Pedro &lt;&mdash; NEW</td>
+</tr>
+<tr>
+<td><strong>14:35</strong></td>
+<td>Conclusion &amp; Q/A</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>14:45</strong></td>
+<td>Evaluation</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>15:00</strong></td>
+<td>END</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="planning-meeting-2024-02-15-11001200">Planning meeting 2024-02-15 11:00–12:00<a class="headerlink" href="#planning-meeting-2024-02-15-11001200" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>How many registered<ul>
+<li>55</li>
+</ul>
+</li>
+<li>
+<p>Status</p>
+<ul>
+<li>BC: started prereq page to be filled</li>
+</ul>
+</li>
+<li>
+<p>Discuss</p>
+<ul>
+<li>Skip bianca parallel session for all days. Vote yes!</li>
+<li>No intro at 9.00 for slurm</li>
+</ul>
+</li>
+<li>
+<p>ToDos:</p>
+<ul>
+<li>Björn:<ul>
+<li>type-along boxes</li>
+<li>Py-ml UPPMAX</li>
+<li>Prereqs more info</li>
+</ul>
+</li>
+<li>Pedro: several docs for parallel</li>
+</ul>
+</li>
+</ul>
+<h2 id="planning-meeting-2024-02-09-11001200">Planning meeting 2024-02-09 11:00–12:00<a class="headerlink" href="#planning-meeting-2024-02-09-11001200" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Discuss:<ul>
+<li>depth of parallelism/ML for python<ul>
+<li>same level as for julia and R?</li>
+<li>Yes, show an ML example</li>
+</ul>
+</li>
+<li>We use R 4.1.x! R versions 4.3.1 + 4.3. (Birgitte checks the packages)<ul>
+<li>HPC2N has R/4.3.2 but a lot fewer packages than for R/4.0.4. I have inquired about getting some packages installed as modules</li>
+<li>4.3.2 is lacking many packages, including the Bioconductor bundle which is not yet available for installation.</li>
+<li><strong>4.1.x chosen instead.</strong></li>
+<li>UPPMAX: 4.1.1</li>
+</ul>
+</li>
+<li>python_ML new version would be nice [name=Björn] checks<ul>
+<li>wish: 3.11.(3,8)</li>
+<li>At HPC2N, Python <strong>3.11.3</strong> is installed. All relevant packages except Theano and ASE are available for that version of Python. We can probably ask for those packages if we need them</li>
+<li>At UPPMAX: <strong>3.11.8</strong></li>
+</ul>
+</li>
+<li>julia 1.8.5</li>
+<li>[R, suggest vote] follow pace of schedule or follow pace of learners?<ul>
+<li>[VOTED FOR] Pace of schedule with flexibility of 15 mins in both directions<ul>
+<li>pro:<ul>
+<li>easy to schedule who teaches what</li>
+<li>comfortable to teach</li>
+<li>higher evaluation scores</li>
+<li>clear for learners when takes place what</li>
+</ul>
+</li>
+<li>con:<ul>
+<li>can mismatch with learners</li>
+</ul>
+</li>
+<li>votes: Birgitte, Björn, Pedro</li>
+</ul>
+</li>
+<li>Pace of learners<ul>
+<li>pro:<ul>
+<li>the right speed</li>
+<li>needs procedure, e.g. <a href="https://richelbilderbeek.github.io/awk_course/misc/exercise_procedure/">https://richelbilderbeek.github.io/awk_course/misc/exercise_procedure/</a></li>
+</ul>
+</li>
+<li>con:<ul>
+<li>harder to schedule</li>
+<li>not everyone comfortable with teaching like that</li>
+<li>setting learners to work will result in lower evaluation scores</li>
+</ul>
+</li>
+<li>votes: Richel</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>[R, suggest vote] evaluation yes/no?<ul>
+<li>[VOTED] Yes (pro: we get feedback, con: can be unpleasant): Birgitte, Björn, Pedro, Richel</li>
+<li>No (pro: not unpleasant, con: no feedback to improve on): -</li>
+</ul>
+</li>
+<li>[R, suggest vote] order: evaluation-then-Q&amp;A or Q&amp;A-then-evaluation?<ul>
+<li>[VOTED] evaluation-then-Q&amp;A (pro: learners can leave at Q&amp;A): Birgitte, Björn, Pedro, Richel</li>
+<li>Q&amp;A-then-evaluation: -</li>
+</ul>
+</li>
+<li>[R, suggest vote] publish evaluation results online yes/no?<ul>
+<li>[VOTED] Yes (pro: shows transparency (e.g. <a href="https://github.com/richelbilderbeek/teaching">https://github.com/richelbilderbeek/teaching</a>), con: not everyone can rightly value an evaluation): Birgitte, Björn, Pedro, Richel</li>
+<li>No (pro: no trouble, con: links and info get lost):</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Menti responsible (the person needs to nbe available all day)<ul>
+<li>Python day: no polls, so no person needed</li>
+<li>Julia day: Björn</li>
+<li>R day: Birgitte</li>
+</ul>
+</li>
+<li>[False positive] Although <a href="https://www.uppmax.uu.se/support/courses-and-workshops/r-python-julia">https://www.uppmax.uu.se/support/courses-and-workshops/r-python-julia</a> links to <a href="https://uppmax.github.io/uppmax_intro_python/">https://uppmax.github.io/uppmax_intro_python/</a> it does not matter: it is not the course material :-)</li>
+</ul>
+<h2 id="planning-meeting-2024-01-31">Planning meeting 2024-01-31<a class="headerlink" href="#planning-meeting-2024-01-31" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>[Vote] Use Zoom Poll or Menti or text in shared document: will use Menti. Birgitte will prepare<ul>
+<li>Zoom Poll: only host<ul>
+<li>Votes: Birgitte, Pedro</li>
+</ul>
+</li>
+<li>Menti: everyone more-or-less needs separate account<ul>
+<li>Votes: Richel, Björn, Birgitte</li>
+</ul>
+</li>
+<li>Plain text (in a shared document)<ul>
+<li>Votes: Richel, Pedro, (Birgitte)</li>
+</ul>
+</li>
+<li>MENTI WON!</li>
+</ul>
+</li>
+<li>[Richel, FYI] Björn and/or Richel can teach R at March 14th in the morning, but not in the afternoon.<ul>
+<li>We rescheduled so that Uppsala people teach in the morning and the Umeå people in the afternoon</li>
+</ul>
+</li>
+<li>[Richel, vote] some UPPMAX courses are restructured by <strong>referring to the UPPMAX documentation pages</strong>. In that way, content can be found in exactly one place. An example can be found <a href="https://uppmax.github.io/uppmax_intro_python/morning_session/working_with_python_scripts/#exercise-1-create-a-python-script">here</a>. As this course also teaches Kebnekaise, referring to <a href="https://www.hpc2n.umu.se/support">its documentation</a> would work too. Richel volunteers to do so for the Python course (as he taught another similar Python course too). Good idea yes/no?<ul>
+<li>Important with new tab. Try this time!</li>
+<li>VOTE:<ul>
+<li>for: Richel, Björn, Birgitte, (Pedro)</li>
+<li>against: (Pedro)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Evaluations<ul>
+<li>Both Julia &amp; R: Type-along clearer (boxes) and talk about it!</li>
+<li>good level</li>
+<li>more exercises</li>
+<li>more about ThinLinc (technical prereqs can be expanded with more info and background and pros and cons)</li>
+</ul>
+</li>
+</ul>
+<h3 id="schedule">Schedule<a class="headerlink" href="#schedule" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>slurm is integrated with interactive/batch each day (take a break!)</li>
+</ul>
+<h4 id="r-thursday-2024-03-14_1">R (Thursday 2024-03-14)<a class="headerlink" href="#r-thursday-2024-03-14_1" title="Anchor link to this section for reference">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>9:00</strong></td>
+<td>Syllabus</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>9:10</strong></td>
+<td>R in general</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>9:20</strong></td>
+<td>Load modules and run</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>9:45</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10:00</strong></td>
+<td>Packages</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>10:30</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>10:45</strong></td>
+<td>Kebnekaise, ThinLinc &amp; RStudio</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td>.</td>
+<td>UPPMAX: ThinLinc, RStudio, inter-</td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>11:15</strong></td>
+<td>Kebnekaise: Parallel</td>
+<td>Pedro</td>
+</tr>
+<tr>
+<td>.</td>
+<td>skip? <em>UPPMAX: Bianca</em></td>
+<td>Richel</td>
+</tr>
+<tr>
+<td><strong>11:50</strong></td>
+<td>Break or informal chat</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>12:00</strong></td>
+<td>Lunch</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>13:00</strong></td>
+<td>Isolated environments</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13:20</strong></td>
+<td>Batch</td>
+<td>Birgitte</td>
+</tr>
+<tr>
+<td><strong>13:50</strong></td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>14:00</strong></td>
+<td>ML</td>
+<td>?</td>
+</tr>
+<tr>
+<td><strong>14:35</strong></td>
+<td>Conclusion &amp; Q/A</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>14:45</strong></td>
+<td>?Evaluation</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>15:00</strong></td>
+<td>END</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Teachers<ul>
+<li>Python (Tue)<ul>
+<li>Richèl, same topics as previous time: Packages, Isolated environments, Rackham: Jupyter, Bianca: Conda, interactive</li>
+<li>Birgitte, same topics as previous time</li>
+</ul>
+</li>
+<li>Julia (Wed)<ul>
+<li>Björn (same as last time)</li>
+<li>Pedro</li>
+</ul>
+</li>
+<li>R (Thu)<ul>
+<li>Richel can teach morning only</li>
+<li>Björn teach first hour (afternoon if needed) or standby</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="planning-meeting-jan-24-at-11">Planning meeting (Jan 24 at 11)<a class="headerlink" href="#planning-meeting-jan-24-at-11" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>
+<p>Discuss</p>
+<ul>
+<li>menti</li>
+<li>
+<p>Zoom can also do something similar called a Poll, which is ideal for quicker things. It does need to be shared :-)</p>
+<ul>
+<li><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":+1:" /> <img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":+1:" /></li>
+</ul>
+</li>
+<li>
+<p>We will vote between using Zoom Poll and Menti next week Wednesday 31 Jan at 13:00, Birgitte will prepare</p>
+</li>
+<li>We used Python version 3.9.5, because that worked well with ML. We try to go to a newer version of Python, if that has made to works well with ML too.</li>
+</ul>
+</li>
+<li>
+<p>Evaluations</p>
+<ul>
+<li>python: done, see results <a href="https://github.com/UPPMAX/R-python-julia-HPC/tree/main/evaluations/20231017">here</a></li>
+<li>Julia</li>
+<li>R</li>
+<li>General<ul>
+<li>cheat sheets</li>
+<li>short intros</li>
+<li>slurm first 30 minutes everyday or so</li>
+<li>think about extending</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Teachers</p>
+<ul>
+<li>Python (Tue)<ul>
+<li>Richèl, same topics as previous time: Packages, Isolated environments, Rackham: Jupyter, Bianca: Conda, interactive</li>
+<li>Birgitte, same topics as previous time</li>
+</ul>
+</li>
+<li>Julia (Wed)<ul>
+<li>Björn (same as last time)</li>
+<li>Pedro</li>
+</ul>
+</li>
+<li>R (Thu)<ul>
+<li>Richel can teach morning only</li>
+<li>Björn teach first hour (afternoon if needed) or standby</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Needed updates</p>
+<ul>
+<li>
+<p>Py module</p>
+<ul>
+<li>UPPMAX update ML</li>
+</ul>
+</li>
+<li>
+<p>R module</p>
+<ul>
+<li>newer?</li>
+</ul>
+</li>
+<li>Don&rsquo;t go too deep. Examples:<ul>
+<li>determining number of cores</li>
+<li>ML and multiple GPUs?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

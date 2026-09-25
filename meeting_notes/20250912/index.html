@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Introduction to running R, MATLAB and Julia in HPC - Introduction to R, MATLAB, and Julia in HPC</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Introduction to running R, MATLAB and Julia in HPC";
+        var mkdocs_page_input_path = "meeting_notes/20250912.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../img/new-logo.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Prequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">MATLAB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Julia</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Machine Learning</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../">Meeting notes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra reading</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Introduction to running R, MATLAB and Julia in HPC</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/meeting_notes/20250912.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="introduction-to-running-r-matlab-and-julia-in-hpc">Introduction to running R, MATLAB and Julia in HPC<a class="headerlink" href="#introduction-to-running-r-matlab-and-julia-in-hpc" title="Anchor link to this section for reference">¶</a></h1>
+<ul>
+<li>Course ZOOM:<ul>
+<li>Meeting ID:</li>
+<li>Passcode:</li>
+</ul>
+</li>
+<li>Planning zoom:</li>
+</ul>
+<h2 id="materials-page">Materials page<a class="headerlink" href="#materials-page" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li><a href="https://uppmax.github.io/R-matlab-julia-HPC/">Rendered</a></li>
+<li><a href="https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main">Source</a></li>
+</ul>
+<h2 id="topics-planning">Topics planning<a class="headerlink" href="#topics-planning" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li>R</li>
+<li>Matlab</li>
+<li>Julia</li>
+</ul>
+<h2 id="autumn-2025">Autumn 2025<a class="headerlink" href="#autumn-2025" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li><strong>6-8 October</strong></li>
+<li>R: Mon 6 Oktober</li>
+<li>MATLAB: Tue 7 Oktober</li>
+<li>Julia: Wed 8 Oktober</li>
+<li>Advanced: Fri 10 Oct</li>
+</ul>
+<h2 id="meeting-fre-12-sep-kl-11-12">Meeting Fre 12 Sep kl 11-12<a class="headerlink" href="#meeting-fre-12-sep-kl-11-12" title="Anchor link to this section for reference">¶</a></h2>
+<h3 id="goals">Goals<a class="headerlink" href="#goals" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Decide on Theme</li>
+<li>Decide on working branch</li>
+<li>Get closer to preliminary schedules?</li>
+</ul>
+<h3 id="agenda">Agenda<a class="headerlink" href="#agenda" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Status</li>
+<li>Discussion and decisions<ul>
+<li>themes and branch</li>
+<li>schedules</li>
+<li>issues</li>
+</ul>
+</li>
+<li>TODOs</li>
+</ul>
+<h3 id="status">Status<a class="headerlink" href="#status" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>
+<p>Course project is created:</p>
+<ul>
+<li>naiss2025-22-934 (NSC, PDC, C3SE)</li>
+<li>hpc2n2025-151 (HPC2N)</li>
+<li>need Pelle/Rackham+COSMOS (Björn+Rebecca)</li>
+<li>1 Oct 31 Dec if course by course</li>
+</ul>
+</li>
+<li>
+<p>Theme</p>
+<ul>
+<li>We wanted MkDocs with materials theme + RTD look because<ul>
+<li>We voted for <strong>RTD look</strong> but wanted <strong>mermaid</strong> to work
+    LS: I voted for RTD for search, not for look</li>
+</ul>
+</li>
+<li>There may not be any RTD STYLE plugin to Materials THEME
+  (seems to have been a <strong>style</strong> vs <strong>platform</strong> <strong>mix-up</strong> in earlier
+  discussions within NAISS)</li>
+<li><strong>RTD THEME now works with Mermaid</strong> if changing <code>flowchart</code>
+  to <code>graph</code> in code.
+  See <a href="https://uppmax.github.io/linux-command-line-102/misc/test_mermaid/">Linux201 test</a><ul>
+<li>RB: Yes, that is the DOT language <img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":+1:"/></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Schedule:</p>
+<ul>
+<li>Just the order is there but not timings.</li>
+<li>Perhaps last day will be shorter</li>
+<li>Some languages things still to be solved</li>
+</ul>
+</li>
+<li>
+<p>rst to md</p>
+<h2 id="-bc-starting-next-week">- BC: starting next week<a class="headerlink" href="#-bc-starting-next-week" title="Anchor link to this section for reference">¶</a></h2>
+</li>
+</ul>
+<h3 id="discussions-and-decisions">Discussions and decisions<a class="headerlink" href="#discussions-and-decisions" title="Anchor link to this section for reference">¶</a></h3>
+<h3 id="theme">Theme<a class="headerlink" href="#theme" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>RB: sounds like an issue to me :-) .
+  I will not volunteer, as I think the voted-for option does not exist</li>
+<li>
+<p>BC: Since I got mermaid graphs by Richel working now in ordinary RTD theme
+  I vote for that solution.
+  Most of us have experience from Linux201 and modules course here.</p>
+</li>
+<li>
+<p>Can we use config files straight from another of the RTD theme NAISS courses?</p>
+<ul>
+<li>YES, one of the below (you may know if there are any differences)
+  and modify if needed. <strong>BC</strong><ul>
+<li>[DECIDED][Linux201](https://uppmax.github.io/linux-command-line-102/)<ul>
+<li>BC (check if it is well populated + CSS (Already there))</li>
+</ul>
+</li>
+<li><a href="https://hpc2n.github.io/selecting-modules/">Modules</a></li>
+</ul>
+</li>
+<li>NO, I know another repo that may be even better</li>
+<li>NO, materials of this reason:</li>
+</ul>
+</li>
+</ul>
+<h3 id="where-to-work">Where to work<a class="headerlink" href="#where-to-work" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>docs-mk !</li>
+<li>NOTE: Now <code>docs</code>. old docs renamed to <code>docs-sphinx</code></li>
+<li>Pages deployed from MAIN branch<ul>
+<li>Still branches can be used by us if we don’t want to work in main.</li>
+<li>actions are updated accordingly (copied from developed)</li>
+</ul>
+</li>
+<li>Can we merge develop branch to main or will it ruin?<ul>
+<li>probably not but Björn investigate with Richel</li>
+</ul>
+</li>
+</ul>
+<h3 id="friday-schedule"><a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/advanced/schedule.md">Friday schedule</a><a class="headerlink" href="#friday-schedule" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>
+<p>RB: would like to teach 1 or 2 slots (i.e. 1 or 2 times a 45/50 minute block)
+  ‘Parallel and multithreaded functions’,
+  with (draft) learning outcomes below.
+  I don’t care where on the day it is: if lunch breaks my session in two,
+  I will be fine with it too. I will prefer not do 3 slots,
+  as I feel other topics are more important and/or interesting.</p>
+<ul>
+<li>Schedule and run a job that needs more cores,
+  with a calculation in their favorite language</li>
+<li>Understand when it is possible/impossible
+  and/or useful/useless to run a job with multiple cores</li>
+</ul>
+</li>
+<li>
+<p>[DECIDED] 2 slots will be enough for paralle</p>
+</li>
+<li>
+<p>[DECIDED] 1 slot for ML</p>
+</li>
+</ul>
+<p>ML</p>
+<ul>
+<li>R (some examples are there)</li>
+<li>MATLAB<ul>
+<li>inspiration from Mondays (BC+PO+RP look)</li>
+<li>graphical</li>
+<li>–&gt; separate session</li>
+</ul>
+</li>
+<li>
+<p>Julia</p>
+<ul>
+<li>one example is there</li>
+<li>Linus may add</li>
+</ul>
+</li>
+<li>
+<p>BC: May be good/interesting to have an hour for open-floor or extra exercises.</p>
+<ul>
+<li>an idea but decide later</li>
+</ul>
+</li>
+</ul>
+<h3 id="language-schedules">Language schedules<a class="headerlink" href="#language-schedules" title="Anchor link to this section for reference">¶</a></h3>
+<h4 id="makes-issues">makes issues<a class="headerlink" href="#makes-issues" title="Anchor link to this section for reference">¶</a></h4>
+<ul>
+<li>RB: I am fine with anyone making issues and assigning me. I will make my own issues.</li>
+<li>There are some new</li>
+</ul>
+<h2 id="earlier-meetings">Earlier meetings<a class="headerlink" href="#earlier-meetings" title="Anchor link to this section for reference">¶</a></h2>
+<p><a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/meeting_notes/20250901.md">Meeting 1 Sep</a></p>
+<p><a href="https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/meeting_notes">All meetings</a></p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/R-matlab-julia-HPC" style="color: #fcfcfc"> GitHub</a>
+</span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/tippy-bundle.umd.js"></script>
+<script src="../../js/clipboard.js"></script>
+<script src="../../js/extra.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>4-day Introduction to running R, Python, Julia, MATLAB in HPC - Introduction to R, MATLAB, and Julia in HPC</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "4-day Introduction to running R, Python, Julia, MATLAB in HPC";
+        var mkdocs_page_input_path = "meeting_notes/20250320.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/new-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Prequisites</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prereqs/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_account/">Preparations with course project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../preparations_cluster/">Preparations on the cluster</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_tarball/">Use the tarball</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/use_text_editor/">Use a text editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/hpc_clusters/">HPC clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/other_courses/">Other courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../common/on-demand/">Desktop on demand</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">R</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/packages/">Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/batch/">Batch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/rstudio/">RStudio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MATLAB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/intro-matlab/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/load_runMatlab/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/slurmMatlab/">MATLAB terminal and Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/MatlabGUIslurm/">MATLAB GUI and batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-addons/">MATLAB Add-Ons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/matlab-summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/evaluation-matlab/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Julia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/intro/">Intro</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/load_run/">Load and run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/environments_packages/">Environments and packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/batch/">Batch jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/interactive/">Interactive work on the compute nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/evaluation-julia/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/parallel_computing/">Parallel computing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/thread_parallelism/">Thread parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/distributed_parallelism/">Distributed parallelism</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/big_data_managers/">Big data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/gpus/">Introduction to GPUs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Machine Learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/ML/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLR/">With R</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLjulia/">With Julia</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/MLmatlab/">With MATLAB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/summary/">Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Misc</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra reading</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../r/morepackages/">More about R packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../matlab/extra/">More about Matlab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../julia/extra/">More about Julia</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Introduction to R, MATLAB, and Julia in HPC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">4-day Introduction to running R, Python, Julia, MATLAB in HPC</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/docs/meeting_notes/20250320.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-day-introduction-to-running-r-python-julia-matlab-in-hpc">4-day Introduction to running R, Python, Julia, MATLAB in HPC<a class="headerlink" href="#4-day-introduction-to-running-r-python-julia-matlab-in-hpc" title="Anchor link to this section for reference">&para;</a></h1>
+<ul>
+<li>Course ZOOM: <code>[URL]</code></li>
+<li>Planning zoom: <code>[URL]</code></li>
+</ul>
+<h2 id="materials-page">Materials page<a class="headerlink" href="#materials-page" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li><a href="https://uppmax.github.io/R-matlab-julia-HPC/">Rendered</a></li>
+<li><a href="https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main">Source</a></li>
+</ul>
+<h2 id="topics-planning">Topics planning<a class="headerlink" href="#topics-planning" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li><a href="https://hackmd.io/ERX9FIgyR_6wDbmcqi_8HA#">Julia</a></li>
+<li><a href="https://hackmd.io/gV_gdctHQPWz6eElFWfq6Q#">R</a></li>
+<li><a href="https://hackmd.io/RTujs9MnS0ehsGD7ufNBfA#">Matlab</a></li>
+</ul>
+<h1 id="spring-2025">Spring 2025<a class="headerlink" href="#spring-2025" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="dates">Dates<a class="headerlink" href="#dates" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>21 Mar 11.00-12.00 Onboarding</li>
+<li>24 Mar R</li>
+<li>25 Mar Matlab</li>
+<li>26 Mar Julia</li>
+</ul>
+<h2 id="meeting-20-march-1500">Meeting 20 March 15:00<a class="headerlink" href="#meeting-20-march-1500" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="status">Status<a class="headerlink" href="#status" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Number of registrations: 45<ul>
+<li>Of which Dardel users: 11</li>
+</ul>
+</li>
+<li>Where are we?<ul>
+<li>Any panic? Nope</li>
+<li>MATLAB gives the most problems :-)</li>
+<li>Emails are sent out to learners</li>
+<li>Dardel has only 30 ThinLinc licenses. Unknown if this is a problem</li>
+<li>BB: Can access the MATLAB that works</li>
+<li>BC: Lots to do with the lessons! Prereqs/parations done? Login almost</li>
+<li>PO: Testing examples and exercises on the clusters</li>
+<li>RB: Perfectly on schedule! Todo: logins via ThinLinc/website: doc and video</li>
+<li>RP: Mosty OK. Prepared for potential shortage of Dardel ThinLinc licenses :-)</li>
+</ul>
+</li>
+</ul>
+<h3 id="evaluation-questions">Evaluation questions<a class="headerlink" href="#evaluation-questions" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>[KEEP] 1. Overall, how would you rate today&rsquo;s training event?<ul>
+<li>BB: remove only if all agree. Prefers this over average learning outcome of 12</li>
+<li>BC: neutral</li>
+<li>PO: neutral</li>
+<li>RB: Neutral. I&rsquo;d prefer to use the average learning outcome
+  of question 12.</li>
+<li>RP: neutral</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15] 2.Today&rsquo;s content and feedback to the lecturers (e.g. materials, exercises, structure): – What did you like best?<ul>
+<li>Add suggestions to &lsquo;Extra feedback&rsquo;</li>
+<li>BB: remove only if all agree</li>
+<li>BC: Nudge in last text question</li>
+<li>PO: agree to nudge</li>
+<li>RB: Suggest to remove, question 15 is fine for this</li>
+<li>RP: Agree to nudge in last text question</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15] 3.Today&rsquo;s content and feedback to the lecturers (e.g. materials, exercises, structure): – Where should we improve?<ul>
+<li>BB: remove only if all agree</li>
+<li>BC: RM</li>
+<li>PO:</li>
+<li>RB: Suggest to remove, question 15 is fine for this</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15] 4.Training event organisation (e.g. announcement, registration, &hellip;):  –   What did you like best?      – Where should we improve?<ul>
+<li>BB: remove only if all agree</li>
+<li>BC: rm</li>
+<li>PO:</li>
+<li>RB: Suggest to remove, unless the course coordinator likes this question</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15]5.Length of teaching today was<ul>
+<li>BB: remove only if all agree</li>
+<li>BC: nudge in 15</li>
+<li>PO:</li>
+<li>RB: Suggest to remove, question 15 is fine for this</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15]6.Depth of content was<ul>
+<li>BB: would agree to remove too</li>
+<li>BC:</li>
+<li>PO:</li>
+<li>RB: Suggest to remove: there are too many teachers</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REWORD] 7.The pace of teaching was<ul>
+<li>Reword to: &lsquo;What do you think about the pace of teaching overall?&rsquo;, then open question</li>
+<li>BB: would agree to remove too</li>
+<li>BC: reword!</li>
+<li>PO: agree to reword</li>
+<li>RB: Suggest to remove: there are too many teachers. Like to try out the reword</li>
+<li>RP: Agree to reword</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15]8.Teaching aids used (e.g. slides) were well prepared<ul>
+<li>BB: would agree to remove too</li>
+<li>BC:</li>
+<li>PO:</li>
+<li>RB: Suggest to remove: there are too many teachers</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15]9.Hands-on exercises and demonstrations were<ul>
+<li>BB: would agree to remove too</li>
+<li>BC:</li>
+<li>PO:</li>
+<li>RB: Suggest to remove: there are too many teachers</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15]10.Hands-on exercises and demonstrations were well prepared<ul>
+<li>BB: would agree to remove too</li>
+<li>BC:</li>
+<li>PO:</li>
+<li>RB: Suggest to remove: there are too many teachers</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REMOVE, ADD POKE IN 15] 11.How would you rate the separate sessions?<ul>
+<li>BB: I agree to remove 11</li>
+<li>BC: kind of like this division of topics after the Q12</li>
+<li>PO: rm</li>
+<li>RB: Suggest to remove: this is too harsh on a person</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[KEEP]12.Give your confidence levels of the following statements<ul>
+<li>BB: Useful</li>
+<li>BC: useful</li>
+<li>PO:</li>
+<li>RB: Awesome! Love this!</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[REWORD] 13.Did today&rsquo;s course meet your expectation?<ul>
+<li>Reword to &lsquo;Would you recommend this course to someone else?&rsquo;</li>
+<li>BB: Neutral</li>
+<li>BC: reword</li>
+<li>PO: reword</li>
+<li>RB: Suggest to remove: too big overlap with question 1. Would accept reword</li>
+<li>RP:</li>
+</ul>
+</li>
+<li>[KEEP] 14.Which future training topics would you like to be provided by the training host(s)?<ul>
+<li>Add policy of things we will not provide <img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":+1:" /></li>
+<li>BB: Neutral</li>
+<li>BC: nice to have: keep</li>
+<li>PO: keep</li>
+<li>RB: Suggest to remove</li>
+<li>RP: Nice to have</li>
+</ul>
+</li>
+<li>[KEEP] 15.Do you have any additional comments?<ul>
+<li>add the pokes from above</li>
+<li>BB: Neutral</li>
+<li>BC: YES</li>
+<li>PO: nice to have</li>
+<li>RB: Awesome! Love this!</li>
+<li>RP:</li>
+</ul>
+</li>
+</ul>
+<p>Reasoning BB:</p>
+<ul>
+<li>Problem with removing a lot of the questions is that people will not unprompted say anything about things they like/don&rsquo;t like in the extra comments. The many questions at the beginning were added to get some input so I would not want to remove 1-5 unless everyone agrees to do so.</li>
+<li>I can agree with removing 6-10, even if they have in the past given us useful info on what to improve - I agree they are less useful with many teachers. We can then see if people say something useful in extra comments and if not we can add some back in.
+I do find 12. useful but I don&rsquo;t agree that you can really tell that much about how good the course was from it unless we also check people before the course, so I do think we need 1. for that
+(1-10 + 13-14 are questions I got from PRACE as officially required when we did some courses as PRACE training, and for lack of better we just reused for our other courses)</li>
+</ul>
+<p>Reasoning RB:</p>
+<p>Just to post it somewhere, my responses are below. You&rsquo;ll see I am conservative in asking many questions, as (1) I prefer not to overburden the learners, (2) I&rsquo;ve seen in my reflections ( <a href="https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/reflections/20241022_richel#summary-of-evaluation-results">https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/reflections/20241022_richel#summary-of-evaluation-results</a> ) that most of these questions were useless to me.</p>
+<p>The OSes we run on our own computers:</p>
+<ul>
+<li>BB: Linux</li>
+<li>BC: Windows, <strong>Mac</strong></li>
+<li>PO: <strong>Windows</strong></li>
+<li>RB: Linux</li>
+<li>RP: Linux, Windows as back-up</li>
+</ul>
+<h2 id="earlier-meetings">Earlier meetings<a class="headerlink" href="#earlier-meetings" title="Anchor link to this section for reference">&para;</a></h2>
+<p><a href="https://github.com/UPPMAX/R-matlab-julia-HPC/blob/main/meeting_notes/20250314.md">Meeting 14 March</a></p>
+<p><a href="https://github.com/UPPMAX/R-matlab-julia-HPC/tree/main/meeting_notes">All meetings</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/R-matlab-julia-HPC" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/tippy-bundle.umd.js"></script>
+      <script src="../../js/clipboard.js"></script>
+      <script src="../../js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

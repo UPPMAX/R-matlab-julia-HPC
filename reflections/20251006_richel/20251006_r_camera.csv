@@ -1,0 +1,37 @@
+Id,Camera?,6
+Starttid,,10/17/2025 13:09
+"Give your confidence levels of the following statements
+.I can find the module to be able to run R",Yes,I can absolutely do this!
+"Give your confidence levels of the following statements
+.I can load the module to be able to run R",Yes,I can absolutely do this!
+"Give your confidence levels of the following statements
+.I can run the R interpreter",Yes,I can absolutely do this!
+"Give your confidence levels of the following statements
+.I can run the R command to get the list of installed R packages",Yes,I can absolutely do this!
+"Give your confidence levels of the following statements
+.I can run an R script from the command-line",Yes,I have good confidence I can do this
+"Give your confidence levels of the following statements
+.I can find out if an R package is already installed",No,I have good confidence I can do this
+"Give your confidence levels of the following statements
+.I can load the pre-installed R packages",No,I have good confidence I can do this
+"Give your confidence levels of the following statements
+.I can install an R package from CRAN",No,I have good confidence I can do this
+"Give your confidence levels of the following statements
+.I can submit a job to the scheduler to run an R script with regular code",No,I have some confidence I can do this
+"Give your confidence levels of the following statements
+.I can submit a job to the scheduler to run an R script that uses parallel code",No,I have some confidence I can do this
+"Give your confidence levels of the following statements
+.I can start an interactive session",No,I have low confidence I can do this
+"Give your confidence levels of the following statements
+.I can verify I am on the login node yes/no",Unsure if learner was there,I have no confidence I can do this
+"Give your confidence levels of the following statements
+.I can start an interactive session with multiple cores",Unsure if learner was there,I have no confidence I can do this
+"Give your confidence levels of the following statements
+.I can start RStudio",Unsure if learner was there,I have no confidence I can do this
+"Do you have any additional comments? 
+
+Suggestions/ideas:
+
+- What did you like best? (materials, exercises, structure)
+- Where should we improve? (materials, exercises, structure) 
+- Training organiza",,awesome material and good that you record but could you record during the lectures all of you so we get the exact thing that is thought? i'm also not fond of having to have the camera on which i felt there was pressure to do so i watched most after the course instead
