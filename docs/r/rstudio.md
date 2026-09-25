@@ -102,7 +102,6 @@ Use the documentation of your HPC cluster for help.
     Kebnekaise |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_kebnekaise/)
     LUMI       |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_lumi/)
     Pelle      |[UPPMAX documentation](https://docs.uppmax.uu.se/software/rstudio_on_pelle/)
-    Rackham    |[UPPMAX documentation](https://docs.uppmax.uu.se/software/rstudio_on_rackham/)
     Tetralith  |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_tetralith/)
     Vera       |[UPPMAX documentation](https://docs.uppmax.uu.se/naiss/rstudio_on_vera/)
 

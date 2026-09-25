@@ -34,7 +34,7 @@ Dardel     |No documentation
 Kebnekaise |[Reasonable documentation](https://docs.hpc2n.umu.se/tutorials/connections/#interactive__apps__-__rstudio__server)
 LUMI       |No documentation
 Pelle      |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_pelle/)
-Rackham    |[Documentation](https://docs.uppmax.uu.se/software/rstudio_on_rackham/)
+Rackham    |No longer is documented
 Tetralith  |[As good as no documentation](https://nsc.liu.se/software/catalogue/tetralith/modules/rstudio.html), use [UPPMAX docs](https://docs.uppmax.uu.se/naiss/rstudio_on_tetralith/)
 Vera       |Only [OpenOnDemand doc](https://www.c3se.chalmers.se/documentation/connecting/ondemand/)
 

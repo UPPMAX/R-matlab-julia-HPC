@@ -4,5 +4,5 @@
 - Course: R
 - Author: Richel
 - [Lesson plan](../../lesson_plans/20261019_richel/README.md)
-- [Evaluation](../../evaluations/20261019/README.md)
+- [Evaluation](../../evaluations/20261019_r/README.md)
 - [Reflection](../../reflections/20261019_richel/README.md)
