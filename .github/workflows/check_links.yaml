@@ -27,7 +27,7 @@ jobs:
 
       - name: Remove folders that need no link checking
         run: |
-          rm -rf meeting_notes
+          rm -rf docs/meeting_notes
 
       - name: Remove files that want no link checking (yet)
         run: |
