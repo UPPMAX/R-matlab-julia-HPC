@@ -49,5 +49,5 @@ is a national centre that supports industry, public administration
 and academia accessing and using European supercomputers.
 They give higher-level training of programming and specific software.
 
-- [ENCCS training material](https://enccs.se/lessons/)
+- [ENCCS training material for self-study](https://enccs.github.io/lessons/)
 
